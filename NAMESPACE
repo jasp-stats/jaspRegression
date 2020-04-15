@@ -1,0 +1,6 @@
+export(Correlation)
+export(RegressionLinear)
+export(RegressionLogistic)
+export(CorrelationBayesian)
+export(CorrelationBayesianPairs)
+export(RegressionLinearBayesian)
