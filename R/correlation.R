@@ -381,7 +381,7 @@ Correlation <- function(jaspResults, dataset, options){
                                                                    hypothesis = alternative, confLevel = conf.level,
                                                                    method = method)
       }
-      result$vsmpr <- .VovkSellkeMPR(result$p.value)
+      result$vsmpr <- JASP:::.VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       result <- unlist(result[stats], use.names = FALSE)
       names(result) <- statsNames
@@ -408,7 +408,7 @@ Correlation <- function(jaspResults, dataset, options){
           result$p.value <- 1 - result$p.value/2
         }
       }
-      result$vsmpr <- .VovkSellkeMPR(result$p.value)
+      result$vsmpr <- JASP:::.VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       # TODO: CIs for partial correlations
       result$lower.ci <- NA
@@ -536,6 +536,35 @@ Correlation <- function(jaspResults, dataset, options){
       if(!is.null(res$shapiro$errors))  shapiroTable$addFootnote(message = res$shapiro$errors, rowNames = name)
     }
   }
+}
+
+.multivariateShapiroComputation <- function(dataset, options) {
+  # From mvnormtest
+  depData <- t(as.matrix(dataset[, .v(options$dependent)]))
+  Us <- apply(depData, 1, mean, na.rm = TRUE)
+  R <- depData - Us
+  
+  tryResult <- try(expr = {
+    M.1 <- solve(R %*% t(R), tol = 1e-200)
+    Rmax <- diag(t(R) %*% M.1 %*% R)
+    C <- M.1 %*% R[, which.max(Rmax)]
+    Z <- t(C) %*% depData
+    
+    result <- stats::shapiro.test(Z)
+  }, silent = TRUE)
+  
+  if (isTryError(tryResult)) {
+    result <- NULL
+    if (grepl(tryResult[[1]], pattern = "singular"))
+      errors <- gettext("The design matrix is not invertible. This might be due to collinear dependent variables.")
+    else
+      errors <- .extractErrorMessage(tryResult)
+  } else {
+    errors <- NULL
+  }
+  
+  
+  return(list(result = result, errors = errors))
 }
 
 ### Fill Tables ----
