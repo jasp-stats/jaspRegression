@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2018 University of Amsterdam
+# Copyright (C) 2013-2020 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -290,8 +290,8 @@ Correlation <- function(jaspResults, dataset, options){
   pcor <- !length(options$conditioningVariables) == 0
 
   results <- list()
-  #startProgressbar(length(vpair) * nrow(dataset)) # ticked in .createNonparametricConfidenceIntervals
-
+  
+  startProgressbar(length(vpair) * nrow(dataset)) 
   for(i in seq_along(vpair)){
     # some variable pairs might be reusable, so we don't need to compute them again
     if(!is.null(jaspResults[[vpair[i]]])) {
@@ -358,7 +358,7 @@ Correlation <- function(jaspResults, dataset, options){
       jaspResults[[vpair[i]]] <- state
     }
     
-    # progressbarTick()
+    progressbarTick()
   }
   
   
