@@ -291,7 +291,7 @@ Correlation <- function(jaspResults, dataset, options){
 
   results <- list()
   
-  startProgressbar(length(vpair) * nrow(dataset)) 
+  startProgressbar(length(vpair)) 
   for(i in seq_along(vpair)){
     # some variable pairs might be reusable, so we don't need to compute them again
     if(!is.null(jaspResults[[vpair[i]]])) {
@@ -1391,7 +1391,6 @@ Correlation <- function(jaspResults, dataset, options){
  if (method == "kendall") {
    concordanceSumsVector <- numeric(n)
     for (i in 1:n) {
-      #progressbarTick() #Started in .corrComputeResults
       concordanceSumsVector[i] <- .addConcordances(x, y, i)
     }
     sigmaHatSq <- 2 * (n-2) * var(concordanceSumsVector) / (n*(n-1))
