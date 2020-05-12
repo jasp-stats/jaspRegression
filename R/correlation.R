@@ -291,7 +291,7 @@ Correlation <- function(jaspResults, dataset, options){
 
   results <- list()
   
-  startProgressbar(length(vpair)) 
+  #startProgressbar(length(vpair)) 
   for(i in seq_along(vpair)){
     # some variable pairs might be reusable, so we don't need to compute them again
     if(!is.null(jaspResults[[vpair[i]]])) {
@@ -352,13 +352,13 @@ Correlation <- function(jaspResults, dataset, options){
       # store state for pair
       state <- createJaspState(object = results[[vpair[i]]])
       state$dependOn(options = c("hypothesis", "confidenceIntervalsInterval", "missingValues",
-                                 "pearson", "spearman", "kendallsTauB"), 
+                                 "pearson", "spearman", "kendallsTauB"),
                      optionContainsValue = list(variables = .unv(vcomb[[i]])))
-      
+
       jaspResults[[vpair[i]]] <- state
     }
     
-    progressbarTick()
+    #progressbarTick()
   }
   
   
@@ -1334,7 +1334,7 @@ Correlation <- function(jaspResults, dataset, options){
 
 ### helpers ----
 ### Utility functions for nonparametric confidence intervals ###
-.NormalApproxConfidenceIntervals <- function(obsCor, n, hypothesis="two-sided", confLevel=0.95){
+.NormalApproxConfidenceIntervals <- function(obsCor, n, hypothesis="two.sided", confLevel=0.95){
   zCor <- atanh(obsCor)
   se   <- 1/sqrt(n-3)
   
