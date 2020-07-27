@@ -224,7 +224,6 @@ Correlation <- function(jaspResults, dataset, options){
   mainTable$transposeWithOvertitle <- FALSE
   
   mainTable$addColumnInfo(name = "var1", title = "", type = "string", combine = FALSE, overtitle = "Variable")
-  # mainTable$addColumns(list(var1 = variables))
   
   whichtests <- c(options$pearson, options$spearman, options$kendallsTauB)
   
@@ -290,7 +289,6 @@ Correlation <- function(jaspResults, dataset, options){
   pcor <- !length(options$conditioningVariables) == 0
 
   results <- list()
-  
   #startProgressbar(length(vpair)) 
   for(i in seq_along(vpair)){
     # some variable pairs might be reusable, so we don't need to compute them again
@@ -356,7 +354,7 @@ Correlation <- function(jaspResults, dataset, options){
                                  "confidenceIntervals", "confidenceIntervalsInterval",
                                  "missingValues"),
                      optionContainsValue = list(variables = .unv(vcomb[[i]])))
-
+      
       jaspResults[[vpair[i]]] <- state
     }
     
@@ -377,6 +375,7 @@ Correlation <- function(jaspResults, dataset, options){
 .corr.test <- function(x, y, z = NULL, alternative, method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
   stats <- c("estimate", "p.value", "conf.int", "vsmpr")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr")
+  
   if(isFALSE(compute)){
     result <- rep(NaN, length(statsNames))
     names(result) <- statsNames
@@ -397,9 +396,10 @@ Correlation <- function(jaspResults, dataset, options){
         result$conf.int <- .createNonparametricConfidenceIntervals(x = x, y = y, obsCor = result$estimate,
                                                                    hypothesis = alternative, confLevel = conf.level,
                                                                    method = method)
-      } else if(method != "pearson"){
+      } else if(is.null(result$conf.int)){
         result$conf.int <- c(NA, NA)
       }
+      
       result$vsmpr <- JASP:::.VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       result <- unlist(result[stats], use.names = FALSE)
@@ -439,6 +439,7 @@ Correlation <- function(jaspResults, dataset, options){
   
   return(list(result = result, errors = errors))
 }
+
 
 .corrAssumptions <- function(jaspResults, dataset, options, ready, corrResults){
   # uses .multivariateShapiroComputation from manova.R
@@ -555,35 +556,6 @@ Correlation <- function(jaspResults, dataset, options){
       if(!is.null(res$shapiro$errors))  shapiroTable$addFootnote(message = res$shapiro$errors, rowNames = name)
     }
   }
-}
-
-.multivariateShapiroComputation <- function(dataset, options) {
-  # From mvnormtest
-  depData <- t(as.matrix(dataset[, .v(options$dependent)]))
-  Us <- apply(depData, 1, mean, na.rm = TRUE)
-  R <- depData - Us
-  
-  tryResult <- try(expr = {
-    M.1 <- solve(R %*% t(R), tol = 1e-200)
-    Rmax <- diag(t(R) %*% M.1 %*% R)
-    C <- M.1 %*% R[, which.max(Rmax)]
-    Z <- t(C) %*% depData
-    
-    result <- stats::shapiro.test(Z)
-  }, silent = TRUE)
-  
-  if (isTryError(tryResult)) {
-    result <- NULL
-    if (grepl(tryResult[[1]], pattern = "singular"))
-      errors <- gettext("The design matrix is not invertible. This might be due to collinear dependent variables.")
-    else
-      errors <- .extractErrorMessage(tryResult)
-  } else {
-    errors <- NULL
-  }
-  
-  
-  return(list(result = result, errors = errors))
 }
 
 ### Fill Tables ----
@@ -1341,7 +1313,6 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 ### helpers ----
-### Utility functions for nonparametric confidence intervals ###
 .corrNormalApproxConfidenceIntervals <- function(obsCor, n, hypothesis="two.sided", confLevel=0.95){
   zCor <- atanh(obsCor)
   se   <- 1/sqrt(n-3)
@@ -1365,6 +1336,7 @@ Correlation <- function(jaspResults, dataset, options){
   return(c(lower.ci,upper.ci))
 }
 
+### Utility functions for nonparametric confidence intervals ###
 .concordanceFunction <- function(i, j) {
   concordanceIndicator <- 0
   ij <- (j[2] - i[2]) * (j[1] - i[1])
@@ -1399,6 +1371,7 @@ Correlation <- function(jaspResults, dataset, options){
  if (method == "kendall") {
    concordanceSumsVector <- numeric(n)
     for (i in 1:n) {
+      # progressbarTick() #Started in .corrComputeResults
       concordanceSumsVector[i] <- .addConcordances(x, y, i)
     }
     sigmaHatSq <- 2 * (n-2) * var(concordanceSumsVector) / (n*(n-1))
