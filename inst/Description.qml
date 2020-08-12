@@ -3,7 +3,7 @@ import JASP.Module 	1.0
 
 Description
 {
-	name		: "Regression"
+	name		: "jaspRegression"
 	title		: qsTr("Regression")
 	description	: qsTr("This module offers the standard Frequentist and Bayesian Regression analyses.")
 	icon		: "analysis-classical-regression.svg"

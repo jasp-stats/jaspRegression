@@ -1,4 +1,4 @@
-Package: Regression
+Package: jaspRegression
 Type: Package
 Title: Regression Module for JASP
 Version: 0.0.0
