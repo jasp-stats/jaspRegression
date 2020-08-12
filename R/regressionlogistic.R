@@ -1067,7 +1067,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   }
   
   # then perform the theme and return the ggplot object
-  p <- JASPgraphs::themeJasp(p, legend.position = "none")
+  p <- jaspGraphs::themeJasp(p, legend.position = "none")
   
   p <- p + ggplot2::xlab(pred) + ggplot2::ylab(ytitle) +
     custom_x_axis(ribdat) + custom_y_axis() 
@@ -1128,7 +1128,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     ggplot2::theme_bw() +
     custom_y_axis(ggdat[["resid"]]) + custom_x_axis(ggdat[["x"]]) 
   
-  p <- JASPgraphs::themeJasp(p, legend.position = "none")
+  p <- jaspGraphs::themeJasp(p, legend.position = "none")
   
   return(p)
 }
@@ -1167,7 +1167,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     custom_y_axis(plotDat[["pres"]]) + custom_x_axis() +
     ggplot2::labs(x = gettext("Predicted Probability"), y = gettext("Squared Pearson Residual"))
   
-  p <- JASPgraphs::themeJasp(p, legend.position = "none")
+  p <- jaspGraphs::themeJasp(p, legend.position = "none")
   
   return(p)
 }

@@ -623,7 +623,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   labelPos[1, 1] <- .55
   labelPos[4, 2] <- .65
   
-  obj <- try(JASPgraphs::ggMatrixPlot(plotList = plotMat, leftLabels = vars, topLabels = vars,
+  obj <- try(jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = vars, topLabels = vars,
                                       scaleXYlabels = 0.9, labelPos=labelPos))
   
   if (isTryError(obj)) {
@@ -804,7 +804,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
                        "greater"="greater",
                        "less"="smaller"
   )
-  plotResult <- try(JASPgraphs::PlotPriorAndPosterior(
+  plotResult <- try(jaspGraphs::PlotPriorAndPosterior(
     dfLines, dfPoints, BF10, "CRI" = CRI, "CRItxt" = CRItxt, "median" = medianPoint, "xName" = xName, 
     "hypothesis" = hypothesis, bfType = "BF10")
   )
@@ -1050,7 +1050,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     pointColors  <- pointColors[1:nPoints]
     pointFill  <- pointFill[1:nPoints]
     
-    bfLegendLabel <- JASPgraphs::getBFSubscripts(bfPlotType, hypothesis=hypothesisJASPgraphsName)[1]
+    bfLegendLabel <- jaspGraphs::getBFSubscripts(bfPlotType, hypothesis=hypothesisJASPgraphsName)[1]
     legendText1 <- vector("character", length(xPoint))
     legendText2 <- vector("character", length(xPoint))
     
@@ -1077,14 +1077,14 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
       x = xPoint,
       y = logYPoint,
       g = legendText1,
-      label1 = JASPgraphs::parseThis(legendText1),
-      label2 = JASPgraphs::parseThis(legendText2),
+      label1 = jaspGraphs::parseThis(legendText1),
+      label2 = jaspGraphs::parseThis(legendText2),
       stringsAsFactors = FALSE
     )
   }
   
   
-  plotResult <- try(JASPgraphs::PlotRobustnessSequential(
+  plotResult <- try(jaspGraphs::PlotRobustnessSequential(
     dfLines         = dfLines,
     xName           = bquote(paste(.(gettext("Stretched beta prior width")), ~kappa)),
     dfPoints        = dfPoints,
@@ -1137,7 +1137,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
       BF <- .recodeBFtype(BF, newBFtype = bfType, oldBFtype = "BF10")
     }
     
-    plotResult <- try(JASPgraphs::PlotRobustnessSequential(
+    plotResult <- try(jaspGraphs::PlotRobustnessSequential(
       dfLines      = dfLines,
       xName        = gettext("n"),
       BF           = BF,

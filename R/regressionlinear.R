@@ -1447,8 +1447,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   yticks <- pretty(c(ylow, yhigh, 0))
 
   # format axes labels
-  xLabs <- JASPgraphs::axesLabeller(xticks, digits = 3)
-  yLabs <- JASPgraphs::axesLabeller(yticks, digits = 3)
+  xLabs <- jaspGraphs::axesLabeller(xticks, digits = 3)
+  yLabs <- jaspGraphs::axesLabeller(yticks, digits = 3)
 
   if (standardizedResiduals == TRUE) {
 
@@ -1460,7 +1460,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     dfYr <- data.frame(x = Inf, xend = Inf, y = stAxisOriginalScale[1],
                        yend = stAxisOriginalScale[length(stAxisOriginalScale)])
 
-    p <- JASPgraphs::drawAxis(xName = xlab, yName = ylab, xBreaks = xticks, yBreaks = yticks, yLabels = yLabs, xLabels = xLabs, force = TRUE,
+    p <- jaspGraphs::drawAxis(xName = xlab, yName = ylab, xBreaks = xticks, yBreaks = yticks, yLabels = yLabs, xLabels = xLabs, force = TRUE,
                               secondaryYaxis = ggplot2::sec_axis(~.+0, breaks = stAxisOriginalScale, name = gettext("Standardized Residuals\n"),labels = stAxis))
 
     p <- p + ggplot2::geom_segment(data = dfYr,
@@ -1471,7 +1471,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   } else {
 
     dfYr  <- data.frame(x = Inf, xend = Inf, y = yticks[1], yend = yticks[length(yticks)])
-    p     <- JASPgraphs::drawAxis(xName = xlab, yName = ylab, xBreaks = xticks, yBreaks = yticks, yLabels = yLabs, xLabels = xLabs, force = TRUE)
+    p     <- jaspGraphs::drawAxis(xName = xlab, yName = ylab, xBreaks = xticks, yBreaks = yticks, yLabels = yLabs, xLabels = xLabs, force = TRUE)
 
   }
 
@@ -1522,10 +1522,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     
   }
   
-  p <- JASPgraphs::drawPoints(p, dat = data.frame(x = xVar, y = res), size = 3)
+  p <- jaspGraphs::drawPoints(p, dat = data.frame(x = xVar, y = res), size = 3)
 
   # JASP theme
-  p <- JASPgraphs::themeJasp(p)
+  p <- jaspGraphs::themeJasp(p)
 
   return(p)
 }
@@ -1539,7 +1539,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   ylow    <- 0
   xticks  <- base::pretty(c(res, h$breaks), min.n= 3)
 
-  p <- JASPgraphs::drawAxis(xName = resName, yName = gettext("Density"), xBreaks = xticks, yBreaks = c(ylow, yhigh), force = TRUE, yLabels = NULL, xLabels = xticks)
+  p <- jaspGraphs::drawAxis(xName = resName, yName = gettext("Density"), xBreaks = xticks, yBreaks = c(ylow, yhigh), force = TRUE, yLabels = NULL, xLabels = xticks)
   p <- p + ggplot2::geom_histogram(data = data.frame(res), mapping = ggplot2::aes(x = res, y = ..density..),
                                    binwidth = (h$breaks[2] - h$breaks[1]),
                                    fill = "grey",
@@ -1549,7 +1549,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   p <- p + ggplot2::geom_line(data = data.frame(x = density$x, y = density$y), mapping = ggplot2::aes(x = x, y = y), lwd = .7, col = "black")
   p <- p + ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
 
-  p <- JASPgraphs::themeJasp(p)
+  p <- jaspGraphs::themeJasp(p)
 
   return(p)
 }
@@ -1577,12 +1577,12 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       yLabs[i] <- format(yticks[i], digits= 3, scientific = TRUE)
   }
 
-  p <- JASPgraphs::drawAxis(xName = gettext("Theoretical Quantiles"), yName = gettext("Standardized Residuals"), xBreaks = xticks, yBreaks = xticks, force = TRUE)
+  p <- jaspGraphs::drawAxis(xName = gettext("Theoretical Quantiles"), yName = gettext("Standardized Residuals"), xBreaks = xticks, yBreaks = xticks, force = TRUE)
   p <- p + ggplot2::geom_line(data = data.frame(x = c(min(xticks), max(xticks)), y = c(min(xticks), max(xticks))), mapping = ggplot2::aes(x = x, y = y), col = "darkred", size = 1)
-  p <- JASPgraphs::drawPoints(p, dat = data.frame(xVar, yVar), size = 3)
+  p <- jaspGraphs::drawPoints(p, dat = data.frame(xVar, yVar), size = 3)
 
   # JASP theme
-  p <- JASPgraphs::themeJasp(p)
+  p <- jaspGraphs::themeJasp(p)
 
   return(p)
 }

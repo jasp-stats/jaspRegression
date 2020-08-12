@@ -400,7 +400,7 @@ Correlation <- function(jaspResults, dataset, options){
         result$conf.int <- c(NA, NA)
       }
       
-      result$vsmpr <- JASP:::.VovkSellkeMPR(result$p.value)
+      result$vsmpr <- jaspBase:::.VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       result <- unlist(result[stats], use.names = FALSE)
       names(result) <- statsNames
@@ -430,7 +430,7 @@ Correlation <- function(jaspResults, dataset, options){
           result$p.value <- 1 - result$p.value/2
         }
       }
-      result$vsmpr <- JASP:::.VovkSellkeMPR(result$p.value)
+      result$vsmpr <- jaspBase:::.VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       # TODO: CIs for partial correlations
       result$lower.ci <- NA
@@ -770,7 +770,7 @@ Correlation <- function(jaspResults, dataset, options){
                                       drawAxes = FALSE)
         
       
-      plot$plotObject <- JASPgraphs::ggMatrixPlot(plotMat, 
+      plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat, 
                                                   bottomLabels = c(comb[[i]][1],       gettext("Density")),
                                                   leftLabels   = c(gettext("Density"), comb[[i]][2]))
     }
@@ -789,7 +789,7 @@ Correlation <- function(jaspResults, dataset, options){
                                       drawAxes = TRUE)
       plotMat[[1, 2]] <- .corrValuePlot(corrResults[[vpairs[i]]], options = options)
       
-      plot$plotObject <- JASPgraphs::ggMatrixPlot(plotMat)
+      plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
     }
   } else{
     for(i in seq_along(vcomb)){
@@ -856,7 +856,7 @@ Correlation <- function(jaspResults, dataset, options){
     }
   }
   
-  p <- JASPgraphs::ggMatrixPlot(plotList = plotMat, leftLabels = vars, topLabels = vars,
+  p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = vars, topLabels = vars,
                                 scaleXYlabels = NULL)
   plot$plotObject <- p
   
@@ -1058,7 +1058,7 @@ Correlation <- function(jaspResults, dataset, options){
     #ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 270, hjust = 0, vjust = 0.5))
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1))
   
-  JASPgraphs::themeJasp(p)
+  jaspGraphs::themeJasp(p)
 }
 
 ## Old plotting (still in use)----
@@ -1073,7 +1073,7 @@ Correlation <- function(jaspResults, dataset, options){
 		p <- ggplot2::ggplot(data = data.frame(x = variable))
 		h <- hist(variable, plot = FALSE)
   	hdiff <- h$breaks[2L] - h$breaks[1L]
-		xBreaks <- JASPgraphs::getPrettyAxisBreaks(c(variable, h$breaks), min.n = 3)
+		xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(variable, h$breaks), min.n = 3)
 		dens <- h$density
   	yBreaks <- c(0, 1.2*max(h$density))
 
@@ -1118,7 +1118,7 @@ Correlation <- function(jaspResults, dataset, options){
   p <- p +
   	ggplot2::scale_y_continuous(name = yName, breaks = yBreaks, labels = c("", ""), limits = yLim) +
   	ggplot2::theme()
-  return(JASPgraphs::themeJasp(p) + thm)
+  return(jaspGraphs::themeJasp(p) + thm)
 
 }
 
@@ -1170,7 +1170,7 @@ Correlation <- function(jaspResults, dataset, options){
   	d$y <- as.factor(d$y)
 
   if (is.null(xBreaks))
-    xBreaks <- JASPgraphs::getPrettyAxisBreaks(d$x)
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(d$x)
 
   fit <- NULL
   
@@ -1182,16 +1182,16 @@ Correlation <- function(jaspResults, dataset, options){
   	yLimits <- range(c(pretty(yVar)), rangeLineObj)
 
   	if (is.null(yBreaks))
-  		yBreaks <- JASPgraphs::getPrettyAxisBreaks(yLimits)
+  		yBreaks <- jaspGraphs::getPrettyAxisBreaks(yLimits)
 
   } else if (is.null(yBreaks)) {
 
-  	yBreaks <- JASPgraphs::getPrettyAxisBreaks(d$y)
+  	yBreaks <- jaspGraphs::getPrettyAxisBreaks(d$y)
 
   }
 
   p <- ggplot2::ggplot(data = d, ggplot2::aes(x = x, y = y)) +
-    JASPgraphs::geom_point()
+    jaspGraphs::geom_point()
 
   if (bothNumeric) {
   	xr <- range(xBreaks)
@@ -1231,7 +1231,7 @@ Correlation <- function(jaspResults, dataset, options){
     p <- p + ggplot2::scale_y_continuous(name = NULL, breaks = yBreaks, labels = NULL, limits = range(yBreaks))
   }
 
-  return(JASPgraphs::themeJasp(p))
+  return(jaspGraphs::themeJasp(p))
 }
 
 #### display correlation value ####
