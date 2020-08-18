@@ -8,3 +8,28 @@ Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
 Description: This module offers the standard Frequentist and Bayesian Regression analyses.
 License: GPL (>= 2)
+Encoding: UTF-8
+Imports:
+  BAS,
+  boot,
+  bstats,
+  car,
+  ggplot2,
+  ggrepel,
+  hmeasure,
+  jaspAnova,
+  jaspBase,
+  jaspDescriptives,
+  jaspGraphs,
+  lmtest,
+  MASS,
+  matrixStats,
+  mdscore,
+  ppcor,
+  purrr
+Remotes:
+  AlexanderLyNL/bstats,
+  jasp-stats/jaspAnova,
+  jasp-stats/jaspBase,
+  jasp-stats/jaspDescriptives,
+  jasp-stats/jaspGraphs

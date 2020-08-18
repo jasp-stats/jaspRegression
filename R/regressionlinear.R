@@ -1027,7 +1027,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       ssTotal		  <- ssResidual + ssModel
 
       p           <- pf(q = Fvalue, df1 = dfModel, df2 = dfResidual, lower.tail = FALSE)
-      vovksellke  <- .VovkSellkeMPR(p)
+      vovksellke  <- VovkSellkeMPR(p)
     } else {
       Fvalue <- mssResidual <- mssModel <- dfResidual <- dfModel <- dfTotal <- ssResidual <- ssModel <- ssTotal <- p <- vovksellke <- "."
     }
@@ -1083,7 +1083,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
         upper        = confInterval[i, 2]
       )
 
-      row <- c(row, list(vovksellke = .VovkSellkeMPR(row[["p"]])))
+      row <- c(row, list(vovksellke = VovkSellkeMPR(row[["p"]])))
 
       if (predictor != "(Intercept)") {
         row <- c(row, list(

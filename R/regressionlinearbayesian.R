@@ -17,66 +17,66 @@
 
 RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
   ready <- length(options$modelTerms) > 0 && options$dependent != ""
-  
+
   if (ready) {
     dataset <- .basregReadData(dataset, options)
     .basregCheckErrors(dataset, options)
   }
-  
+
   basregContainer <- .basregGetModelContainer(jaspResults, position = 1)
   basregModel     <- .basregGetModel(basregContainer, dataset, options, ready)
 
   if (is.null(basregContainer[["modelComparisonTable"]]))
     .basregTableModelComparison(basregContainer, basregModel, options, position = 11)
-  
+
   if (options$postSummaryTable || options$postSummaryPlot)
     postSumContainer <- .basregGetPosteriorSummaryContainer(basregContainer, position = 12)
-    
+
   if (options$postSummaryTable || options$postSummaryPlot || options$plotCoefficientsPosterior)
     postSumModel <- .basregGetPosteriorSummary(basregContainer, basregModel, dataset, options, ready)
-  
+
   if (options$postSummaryTable && is.null(basregContainer[["postSumContainer"]][["postSumTable"]]))
     .basregTablePosteriorSummary(postSumContainer, postSumModel, basregModel, options, position = 121)
-  
+
   if (options$postSummaryPlot && is.null(basregContainer[["postSumContainer"]][["postSumPlot"]]))
     .basregPlotPosteriorSummary(postSumContainer, postSumModel, options, position = 122)
-  
+
   if (options$plotLogPosteriorOdds && is.null(basregContainer[["logPosteriorOddsPlot"]]))
     .basregPlotPosteriorLogOdds(basregContainer, basregModel, options, position = 13)
-    
+
   if (options$plotResidualsVsFitted && is.null(basregContainer[["ResidualsVsFittedPlot"]]))
     .basregPlotResidualsVsFitted(basregContainer, basregModel, position = 14)
-  
+
   if (options$plotModelProbabilities && is.null(basregContainer[["modelProbabilitiesPlot"]]))
     .basregPlotModelProbabilities(basregContainer, basregModel, position = 15)
-  
+
   if (options$plotModelComplexity && is.null(basregContainer[["modelComplexityPlot"]]))
     .basregPlotModelComplexity(basregContainer, basregModel, position = 16)
-    
+
   if (options$plotInclusionProbabilities && is.null(basregContainer[["inclusionProbabilitiesPlot"]]))
     .basregPlotInclusionProbabilities(basregContainer, basregModel, position = 17)
-  
+
   if (options$plotQQplot && is.null(basregContainer[["qqPlot"]]))
     .basregPlotQQ(basregContainer, basregModel, position = 18)
-  
+
   if (options$plotCoefficientsPosterior && is.null(basregContainer[["postDistContainer"]]))
     .basregPlotsPosteriorDistribution(basregContainer, postSumModel, basregModel, options, position = 19)
-  
+
   if (options$descriptives && is.null(jaspResults[["descriptivesTable"]]))
     .basregTableDescriptives(jaspResults, dataset, options, ready, position = 2)
 }
 
 .basregReadData <- function(dataset, options) {
-  if (!is.null(dataset)) 
+  if (!is.null(dataset))
     return(dataset)
-  
+
   vars <- c(options$dependent, unlist(options$covariates))
   if (options$wlsWeights != "") {
     vars <- c(vars, options$wlsWeights)
   }
-  
+
   dataset <- .readDataSetToEnd(columns = vars, exclude.na.listwise = vars)
-  
+
   return(dataset)
 }
 
@@ -97,7 +97,7 @@ RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
         }
       }
     })
-  
+
   .hasErrors(dataset = dataset,
              type = c("infinity", "observations", "variance", "modelInteractions"), custom = customChecks,
              infinity.target = c(options$covariates, options$dependent, options$wlsWeight),
@@ -138,21 +138,21 @@ RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
 .basregTableModelComparison <- function(basregContainer, basregModel, options, position) {
   if(options[['dependent']] == "")
     modelComparisonTable <- createJaspTable(gettext("Model Comparison"))
-  else 
+  else
     modelComparisonTable <- createJaspTable(gettextf("Model Comparison - %s", options[['dependent']]))
-  
+
   modelComparisonTable$position <- position
   modelComparisonTable$dependOn(c(
     "bayesFactorType", "bayesFactorOrder", "shownModels", "numShownModels"
   ))
-  
+
   modelComparisonTable$addCitation(c(
     "Clyde, M. A. (2018). BAS: Bayesian Adaptive Sampling for Bayesian Model Averaging. (Version 1.5.3)[Computer software].",
     "Clyde, M. A., Ghosh, J., & Littman, M. L. (2011). Bayesian adaptive sampling for variable selection and model averaging. Journal of Computational and Graphical Statistics, 20, 80-101.",
     "Consonni, G., Fouskakis, D., Liseo, B., & Ntzoufras, I. (2018). Prior Distributions for Objective Bayesian Analysis. Bayesian Analysis, 13, 627-679.",
     "Liang, F., Paulo, R., Molina, G., Clyde, M. A., & Berger, J. O. (2008). Mixtures of g Priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103, 410-423."
   ))
-  
+
   if (options$modelPrior == "Wilson") {
     modelComparisonTable$addCitation(
       "Wilson, M. A., Iversen, E. S., Clyde, M. A., Schmidler, S. C., & Schildkraut, J. M. (2010). Bayesian model search and multilevel inference for SNP association studies. The annals of applied statistics, 4(3), 1342."
@@ -173,19 +173,19 @@ for sparse regression when there are more covariates than observations (Castillo
   if (options$bayesFactorType == "BF10")      bfTitle <- gettext("BF<sub>10</sub>")
   else if (options$bayesFactorType == "BF01") bfTitle <- gettext("BF<sub>01</sub>")
   else                                        bfTitle <- gettext("Log(BF<sub>10</sub>)")
-  
+
   modelComparisonTable$addColumnInfo(name = "Models",         type = "string", title = gettext("Models"))
   modelComparisonTable$addColumnInfo(name = "priorProbModel", type = "number", title = gettext("P(M)"))
   modelComparisonTable$addColumnInfo(name = "postProbModel",  type = "number", title = gettext("P(M|data)"))
   modelComparisonTable$addColumnInfo(name = "BFM",            type = "number", title = gettext("BF<sub>M</sub>"))
   modelComparisonTable$addColumnInfo(name = "BF",             type = "number", title = bfTitle)
   modelComparisonTable$addColumnInfo(name = "R2",             type = "number", title = gettextf("R%s", "\u00B2"), format = "dp:3")
-  
+
   if (!is.null(basregModel)) {
     generalNote <- NULL
     if (sum(basregModel$nuisanceTerms) > 0)
       generalNote <- gettextf("All models include %s.", paste(names(which(basregModel$nuisanceTerms)), collapse = ", "))
-    
+
     if (options$shownModels == "limited" && options$numShownModels < length(basregModel$which)) {
       if (is.null(generalNote)) {
         s1 <- ""
@@ -194,13 +194,13 @@ for sparse regression when there are more covariates than observations (Castillo
       }
       generalNote <- gettextf("%sTable displays only a subset of models; to see all models, select \"No\" under \"Limit No. Models Shown\".", s1)
     }
-    
+
     if (!is.null(generalNote))
       modelComparisonTable$addFootnote(message = generalNote)
-    
+
     .basregFillTableModelComparison(modelComparisonTable, basregModel, options)
   }
-  
+
   basregContainer[["modelComparisonTable"]] <- modelComparisonTable
 }
 
@@ -208,13 +208,13 @@ for sparse regression when there are more covariates than observations (Castillo
   nModels <- length(basregModel$which)
   if (options$shownModels == "limited" && options$numShownModels < nModels)
     nModels <- options$numShownModels
-  
+
   allModelIndices <- .basregGetModelOrder(basregModel, options$bayesFactorOrder)
   modelIndices <- allModelIndices[1:nModels]
-  
+
   models <- basregModel$which[modelIndices]
   modelNames <- .basregGetModelNames(basregModel)[modelIndices]
-  
+
   # get the Bayes factors for the models
   logMarg <- basregModel$logmarg[modelIndices]
   if (options$bayesFactorType == "BF10")
@@ -223,7 +223,7 @@ for sparse regression when there are more covariates than observations (Castillo
     bayesFactors <- exp(logMarg[1] - logMarg)
   else # logBF10
     bayesFactors <- logMarg - logMarg[1]
-  
+
   # calculate the BFM for the models
   postProbs <- basregModel$postprobs[modelIndices]
   priorProbs <- basregModel$priorprobs[modelIndices]
@@ -242,15 +242,15 @@ for sparse regression when there are more covariates than observations (Castillo
   ))
 }
 
-.basregGetModelOrder <- function(basregModel, order) {  
+.basregGetModelOrder <- function(basregModel, order) {
   # ordered indices based on posterior probabilities of the models
   sortedModels <- order(basregModel$postprobs, decreasing = TRUE)
-  
+
   if (order == "nullModelTop") {
     indexNullModel <- which(sortedModels == 1)
     sortedModels <- c(1, sortedModels[-indexNullModel])
   }
-  
+
   return(sortedModels)
 }
 
@@ -261,11 +261,11 @@ for sparse regression when there are more covariates than observations (Castillo
   if (sum(nuisanceTerms) > 0) {
     nullModel <- gettextf("Null model (incl. %s)", paste(names(which(nuisanceTerms)), collapse = ", "))
   }
-  
+
   models <- basregModel$which
   allModelsVisited <- any(lengths(models) == 0) # analysis will crash if TRUE
   modelNames <- character(length(models))
-  
+
   # generate all model names
   for (i in 1:length(models)) {
     model <- models[[i]]
@@ -282,7 +282,7 @@ for sparse regression when there are more covariates than observations (Castillo
       modelNames[i] <- paste(names(nonNuisance), collapse = " + ")
     }
   }
-  
+
   return(modelNames)
 }
 
@@ -290,11 +290,11 @@ for sparse regression when there are more covariates than observations (Castillo
   postSumTable <- createJaspTable(title = gettext("Posterior Summaries of Coefficients"))
   postSumTable$position <- position
   postSumTable$dependOn(c("postSummaryTable", "effectsType", "bayesFactorType"))
-  
+
   bfTitle <- gettext("BF<sub>inclusion</sub>")
   if (options$bayesFactorType == "LogBF10")
     bfTitle <- gettext("Log(BF<sub>inclusion</sub>)")
-  
+
   overtitle <- gettextf("%s%% Credible Interval", format(100*options[["posteriorSummaryPlotCredibleIntervalValue"]], digits = 3))
   postSumTable$addColumnInfo(name = "coefficient", title = gettext("Coefficient"),   type = "string")
   postSumTable$addColumnInfo(name = "pInclprior",  title = gettext("P(incl)"),       type = "number")
@@ -306,15 +306,15 @@ for sparse regression when there are more covariates than observations (Castillo
   postSumTable$addColumnInfo(name = "sd",          title = gettext("SD"),            type = "number")
   postSumTable$addColumnInfo(name = "lowerCri",    title = gettext("Lower"),         type = "number", overtitle = overtitle)
   postSumTable$addColumnInfo(name = "upperCri",    title = gettext("Upper"),         type = "number", overtitle = overtitle)
-  
+
   if (!is.null(basregModel) && !is.null(postSumModel)) {
     footnote <- postSumModel[["footnotes"]]
     if (!is.null(footnote))
       postSumTable$addFootnote(footnote, symbol = gettext("<em>Warning.</em>"))
-    
+
     .basregFillTablePosteriorSummary(postSumTable, postSumModel, basregModel, options)
   }
-  
+
   postSumContainer[["postSumTable"]] <- postSumTable
 }
 
@@ -347,7 +347,7 @@ for sparse regression when there are more covariates than observations (Castillo
     rownames(terms) <- colnames(terms)
     effectNames <- colnames(terms)
 
-    tmp <- .BANOVAcomputMatchedInclusion(
+    tmp <- jaspAnova::BANOVAcomputMatchedInclusion(
       effectNames, inclMat, terms, priorModelProbs, postModelProbs
     )
     probne0     <- c(1 ,tmp[["postInclProb"]])
@@ -357,29 +357,29 @@ for sparse regression when there are more covariates than observations (Castillo
     postExcl    <- c(0, tmp[["postExclProb"]])
 
   }
-  
+
   # show BFinclusion for nuisance predictors as 1, rather than NaN
   priorInclIs1 <- is.nan(BFinclusion) | abs(1 - priorProbs) <= sqrt(.Machine$double.eps)
   BFinclusion[priorInclIs1] <- 1
-  
+
   if (options$bayesFactorType == "LogBF10")
     BFinclusion <- log(BFinclusion)
-  
+
   nModels <- basregModel[["n.models"]]
   coef <- postSumModel[["coef"]]
   coefficients <- postSumModel[["coefficients"]]
   loopIdx <- postSumModel[["loopIdx"]]
   confInt <- postSumModel[["conf95"]]
-  
+
   topm <- order(-basregModel$postprobs)[1:nModels]
   mostComplex <- which.max(lengths(basregModel$which)[topm])
-  
+
   for (i in loopIdx) {
     coefficient <- coefficients[i]
     pIncl <- probne0[i]
     pInclprior <- priorProbs[i]
     BFincl <- BFinclusion[i]
-    
+
     if (options$summaryType == "complex") {
       mean <- unname(coef$conditionalmeans[mostComplex, i])
       sd <- unname(coef$conditionalsd[mostComplex, i])
@@ -389,7 +389,7 @@ for sparse regression when there are more covariates than observations (Castillo
     }
     lowerCri <- confInt[i, 1]
     upperCri <- confInt[i, 2]
-    
+
     row <- list(coefficient = coefficient, mean = mean, sd = sd, pIncl = pIncl,
       pInclprior = pInclprior, BFincl = BFincl, lowerCri = lowerCri, upperCri = upperCri,
       pExclprior = priorExcl[i], pExcl = postExcl[i]
@@ -406,7 +406,7 @@ for sparse regression when there are more covariates than observations (Castillo
   postSumPlot$dependOn(c("postSummaryPlot", "omitIntercept"))
 
   postSumContainer[["postSumPlot"]] <- postSumPlot
-  
+
   if (!is.null(postSumModel))
     .basregFillPlotPosteriorSummary(postSumPlot, postSumModel, options)
 }
@@ -417,11 +417,11 @@ for sparse regression when there are more covariates than observations (Castillo
   loopIdx <- postSumModel[["loopIdx"]]
   coefficients <- postSumModel[["coefficients"]]
   coefficients <- .basregReplaceInteractionUnicodeSymbol(coefficients)
-  
+
   # exlude intercept if it's not the only predictor?
   if (options[["omitIntercept"]] && length(loopIdx) > 1)
     loopIdx <- loopIdx[-1, drop = FALSE]
-  
+
   confInt <- confInt[loopIdx, , drop = FALSE] # only plot parameters present in table
   df <- data.frame(
     x = factor(coefficients[loopIdx], levels = coefficients[loopIdx]),
@@ -429,7 +429,7 @@ for sparse regression when there are more covariates than observations (Castillo
     lower = confInt[, 1],
     upper = confInt[, 2]
   )
-  
+
   p <- try({
     yBreaks <- jaspGraphs::getPrettyAxisBreaks(range(c(confInt)), eps.correct = 2)
     g <- ggplot2::ggplot(data = df, mapping = ggplot2::aes(x = x, y = y, ymin = lower, ymax = upper)) +
@@ -442,7 +442,7 @@ for sparse regression when there are more covariates than observations (Castillo
         axis.title.y = ggplot2::element_text(angle = 0, vjust = .5, size = 20)
       )
   })
-  
+
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
     postSumPlot$setError(errorMessage)
@@ -455,22 +455,22 @@ for sparse regression when there are more covariates than observations (Castillo
   postLogOddsPlot <- createJaspPlot(title = gettext("Posterior Log Odds"), width = 530, height = 400)
   postLogOddsPlot$position <- position
   postLogOddsPlot$dependOn("plotLogPosteriorOdds")
-  
+
   basregContainer[["logPosteriorOddsPlot"]] <- postLogOddsPlot
 
   if (options$samplingMethod == "MCMC") {
     postLogOddsPlot$setError(gettext("Cannot display Posterior Log Odds when sampling method is MCMC."))
     return(postLogOddsPlot)
   }
-  
+
   if (!is.null(basregModel))
     .basregFillPlotPosteriorLogOdds(postLogOddsPlot, basregModel)
 }
 
 .basregFillPlotPosteriorLogOdds <- function(postLogOddsPlot, basregModel) {
   basregModel$namesx <- .basregReplaceInteractionUnicodeSymbol(basregModel$namesx)
-  postLogOddsPlot$plotObject <- function() { 
-    BAS:::image.bas(basregModel, rotate = FALSE) 
+  postLogOddsPlot$plotObject <- function() {
+    BAS:::image.bas(basregModel, rotate = FALSE)
   }
 }
 
@@ -508,12 +508,12 @@ for sparse regression when there are more covariates than observations (Castillo
 #   colors = switch(color,
 #                   rainbow = c("black", rainbow(top.models +1, start = 0.75, end = 0.05)),
 #                   blackandwhite = gray(seq(0, 1, length = top.models)))
-  
+
 #   # end of code from BAS:::image.bas
-  
+
 #   w <- diff(mat)
 #   w <- c(w[1], w)
-  
+
 #   dfHeat <- data.frame(
 #     x = rep(rev(mat), ncol(which.mat)),
 #     y = rep(1:nvar, each = nrow(which.mat)),
@@ -531,7 +531,7 @@ for sparse regression when there are more covariates than observations (Castillo
 #     y = rep(c(.5, nvar+.5), length(mat)+1),
 #     g = factor(rep(1:(length(mat)+1), each = 2))
 #   )
-  
+
 #   discrete <- TRUE
 #   if (discrete) {
 #     show.legend <- FALSE
@@ -542,7 +542,7 @@ for sparse regression when there are more covariates than observations (Castillo
 #     show.legend <- TRUE
 #     mapping = ggplot2::aes(x = x, y = y, fill = z, width = w)
 #   }
-  
+
 #   g <- jaspGraphs::drawHeatmap(dat = dfHeat, show.legend = show.legend, fillColor = colors,
 #                                mapping = mapping,
 #                                geom = "tile")
@@ -556,7 +556,7 @@ for sparse regression when there are more covariates than observations (Castillo
 #                              color = "gray50", alpha = .7, size = 2)
 #   g <- jaspGraphs::themeJasp(graph = g, legend.position = "right", axisTickLength = 0,
 #                              bty = "o")
-  
+
 #   # this plot needs some additional treatment
 #   unit <- jaspGraphs::graphOptions("axisTickLengthUnit")
 #   fillLg <- ggplot2::guide_colorbar(title = "", default.unit = unit,
@@ -565,7 +565,7 @@ for sparse regression when there are more covariates than observations (Castillo
 #     axis.text.x.bottom = ggplot2::element_text(margin = ggplot2::margin(0, 0, .5, 0, unit)),
 #     axis.text.x.top = ggplot2::element_text(margin = ggplot2::margin(.5, 0, 0, 0, unit))
 #   ) + ggplot2::guides(fill = fillLg)
-  
+
 #   return(g)
 # }
 
@@ -573,12 +573,12 @@ for sparse regression when there are more covariates than observations (Castillo
   residualsVsFittedPlot <- createJaspPlot(title = gettext("Residuals vs Fitted"), width = 530, height = 400)
   residualsVsFittedPlot$position <- position
   residualsVsFittedPlot$dependOn("plotResidualsVsFitted")
-  
+
   basregContainer[["ResidualsVsFittedPlot"]] <- residualsVsFittedPlot
-  
+
   if (!is.null(basregModel))
     .basregFillPlotResidualsVsFitted(residualsVsFittedPlot, basregModel)
-  
+
 }
 
 .basregFillPlotResidualsVsFitted <- function(residualsVsFittedPlot, basregModel) {
@@ -588,7 +588,7 @@ for sparse regression when there are more covariates than observations (Castillo
     x = x,
     y = y
   )
-  
+
   p <- try({
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(dfPoints[["x"]], 3)
     g <- jaspGraphs::drawAxis()
@@ -614,7 +614,7 @@ for sparse regression when there are more covariates than observations (Castillo
   modelProbabilitiesPlot$dependOn("plotModelProbabilities")
 
   basregContainer[["modelProbabilitiesPlot"]] <- modelProbabilitiesPlot
-  
+
   if (!is.null(basregModel))
     .basregFillPlotModelProbabilities(modelProbabilitiesPlot, basregModel)
 }
@@ -622,12 +622,12 @@ for sparse regression when there are more covariates than observations (Castillo
 .basregFillPlotModelProbabilities <- function(modelProbabilitiesPlot, basregModel) {
   cum.prob = cumsum(basregModel$postprobs)
   m.index = 1:basregModel$n.models
-  
+
   dfPoints <- data.frame(
     x = m.index,
     y = cum.prob
   )
-  
+
   p <- try({
     xBreaks <- round(seq(1, basregModel$n.models, length.out = min(5, basregModel$n.models)))
     g <- jaspGraphs::drawSmooth(dat = dfPoints, color = "red", alpha = .7)
@@ -636,7 +636,7 @@ for sparse regression when there are more covariates than observations (Castillo
       ggplot2::scale_x_continuous(name = gettext("Model Search Order"), breaks = xBreaks)
     jaspGraphs::themeJasp(g)
   })
-  
+
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
     modelProbabilitiesPlot$setError(errorMessage)
@@ -651,7 +651,7 @@ for sparse regression when there are more covariates than observations (Castillo
   modelComplexityPlot$dependOn("plotModelComplexity")
 
   basregContainer[["modelComplexityPlot"]] <- modelComplexityPlot
-  
+
   if (!is.null(basregModel))
     .basregFillPlotModelComplexity(modelComplexityPlot, basregModel)
 }
@@ -659,12 +659,12 @@ for sparse regression when there are more covariates than observations (Castillo
 .basregFillPlotModelComplexity <- function(modelComplexityPlot, basregModel) {
   logmarg = basregModel$logmarg
   dim = basregModel$size
-  
+
   dfPoints <- data.frame(
     x = dim,
     y = logmarg
   )
-  
+
   p <- try({
     # gonna assume here that dim (the number of parameters) is always an integer
     xBreaks <- unique(round(pretty(dim)))
@@ -674,7 +674,7 @@ for sparse regression when there are more covariates than observations (Castillo
       ggplot2::scale_x_continuous(name = gettext("Model Dimension"), breaks = xBreaks)
     jaspGraphs::themeJasp(g)
   })
-  
+
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
     modelComplexityPlot$setError(errorMessage)
@@ -689,7 +689,7 @@ for sparse regression when there are more covariates than observations (Castillo
   inclusionProbabilitiesPlot$dependOn("plotInclusionProbabilities")
 
   basregContainer[["inclusionProbabilitiesPlot"]] <- inclusionProbabilitiesPlot
-  
+
   if (!is.null(basregModel))
     .basregFillPlotInclusionProbabilities(inclusionProbabilitiesPlot, basregModel)
 }
@@ -699,13 +699,13 @@ for sparse regression when there are more covariates than observations (Castillo
   variables <- basregModel$namesx[-1] # 1:basregModel$n.vars
   variables <- .basregReplaceInteractionUnicodeSymbol(variables)
   priorProb <- basregModel$priorprobsPredictor[1:basregModel$n.vars][-1]
-  
+
   # reorder from low to high
   o <- order(probne0, decreasing = FALSE)
   probne0 <- probne0[o]
   variables <- variables[o]
   priorProb <- priorProb[o]
-  
+
   width <- .8 # width of the bars
   dfBar <- data.frame(
     x = factor(variables, levels = variables),
@@ -718,25 +718,25 @@ for sparse regression when there are more covariates than observations (Castillo
     g0 = factor(1)
   )
   base <- .1
-  
+
   p <- try({
     yLimits <- c(0, base * ceiling(max(c(priorProb, probne0)) / base))
     yBreaks <- seq(yLimits[1], yLimits[2], length.out = 5)
-    
-    g <- ggplot2::ggplot(data = dfBar, mapping = ggplot2::aes(x = x, y = y)) + 
+
+    g <- ggplot2::ggplot(data = dfBar, mapping = ggplot2::aes(x = x, y = y)) +
       ggplot2::geom_bar(width = width, stat = "identity", fill = "gray80", show.legend = FALSE)
     g <- jaspGraphs::drawLines(g, dat = dfLine,
                                mapping = ggplot2::aes(x = x, y = y, group = g, linetype = g0), show.legend = TRUE) +
       ggplot2::scale_y_continuous(gettext("Marginal Inclusion Probability"), breaks = yBreaks, limits = yLimits) +
       ggplot2::xlab("") +
       ggplot2::scale_linetype_manual(name = "", values = 2, labels = gettext("Prior\nInclusion\nProbabilities"))
-    
+
     jaspGraphs::themeJasp(g, horizontal = TRUE, legend.position = "right") +
       ggplot2::theme(
         legend.title = ggplot2::element_text(size = .8*jaspGraphs::graphOptions("fontsize"))
       )
   })
-  
+
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
     inclusionProbabilitiesPlot$setError(errorMessage)
@@ -762,7 +762,7 @@ for sparse regression when there are more covariates than observations (Castillo
     y <- basregModel$Y - x
     jaspGraphs::plotQQnorm(y)
   })
-  
+
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
     qqPlot$setError(errorMessage)
@@ -775,15 +775,15 @@ for sparse regression when there are more covariates than observations (Castillo
   postDistContainer <- createJaspContainer(gettext("Marginal Posterior Distributions")) #TODO: check if this name is ok
   postDistContainer$position <- position
   postDistContainer$dependOn(c(
-    "plotCoefficientsPosterior", "summaryType", 
+    "plotCoefficientsPosterior", "summaryType",
     "posteriorSummaryPlotCredibleIntervalValue", "nSimForCRI", "seed", "setSeed"
   )) #TODO: check if dependencies are correct for this item: was probably wrong in release
 
   .basregInsertPosteriorDistributionPlots("placeholders", postDistContainer, plotNames, options, basregModel)
-    
+
   if (!is.null(basregModel) && !is.null(postSumModel))
       .basregInsertPosteriorDistributionPlots("fill", postDistContainer, plotNames, options, basregModel, postSumModel)
-  
+
   basregContainer[["postDistContainer"]] <- postDistContainer
 }
 
@@ -796,16 +796,16 @@ for sparse regression when there are more covariates than observations (Castillo
     isNuisance <- basregModel[["nuisanceTerms"]]
     names(isNuisance) <- .basregReplaceInteractionUnicodeSymbol(names(isNuisance))
   }
-  
+
   for (plotName in plotNames) {
     if (plotName != "Intercept" && isNuisance[which(names(isNuisance) == plotName)])
       next
-      
+
     if (type == "placeholders")
       postDistContainer[[plotName]] <- createJaspPlot(title = plotName, width = 530, height = 400)
     else
       .basregFillPlotPosteriorDistribution(postDistContainer[[plotName]], which(plotNames == plotName), postSumModel)
-      
+
   }
 }
 
@@ -815,12 +815,12 @@ for sparse regression when there are more covariates than observations (Castillo
   conf95 <- postSumModel[["conf95BMA"]]
   subset <- list(index)
   e      <- 1e-04
-  
+
   # based on BAS:::plot.coef.bas.
   # start of copied code
   df <- x$df
   i  <- index
-  
+
   sel      <- x$conditionalmeans[, i] != 0
   prob0    <- 1 - x$probne0[i]
   mixprobs <- x$postprobs[sel]/(1 - prob0)
@@ -829,9 +829,9 @@ for sparse regression when there are more covariates than observations (Castillo
   name     <- x$namesx[i]
   name     <- .basregReplaceInteractionUnicodeSymbol(name)
   df.sel   <- df[sel]
-  
+
   df <- df.sel # modified from original
-  
+
   p <- try(silent = FALSE, expr = {
     nsteps <- 500
     if (prob0 == 1 | length(means) == 0) {
@@ -849,7 +849,7 @@ for sparse regression when there are more covariates than observations (Castillo
         xupper <- qmax
       }
     }
-    
+
     xx    <- seq(xlower, xupper, length.out = nsteps)
     yy    <- rep(0, times = length(xx))
     maxyy <- 1
@@ -862,17 +862,17 @@ for sparse regression when there are more covariates than observations (Castillo
     }
     ymax <- max(prob0, 1 - prob0)
     # end of copied code
-    
+
     dens    <- (1 - prob0) * yy/maxyy
     dfLines <- data.frame(
       x = c(0, 0, xx),
       y = c(0, prob0, dens),
       g = factor(rep(1:2, c(2, length(xx))))
     )
-    
+
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(c(xlower, xupper))
     yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(0, 1.15*max(dfLines$y)))
-    
+
     # figure out whether to draw text left or right of 0
     step      <- (xupper + abs(xlower)) / (nsteps - 1)  # stepsize of grid
     idx0      <- round(abs(xlower / step))              # idx of x closest to 0
@@ -880,37 +880,37 @@ for sparse regression when there are more covariates than observations (Castillo
     maxX      <- xx[idxMax]                             # x value at maximum of density
     maxHeight <- dens[idxMax]                        # y value at maximum of density
     if (prob0 > maxHeight) { # if text drawn above posterior no action is required
-      
+
       xText <- 0.05 * xBreaks[length(xBreaks)]
       hjust <- "left"
       # text below maxheight
-      
+
     } else {
-      
+
       # text is drawn right if:
       # - density is below textheight
       # - peak of density is left of textheight
-      
+
       # text drawn at similar height as posterior
       if (maxX < 0 && dens[idx0] < prob0) {
         # peak is left of text; density is below text height
         xText <- 0.05 * xBreaks[length(xBreaks)]
         hjust <- "left"
-        
+
       } else {
-        
+
         xText <- -abs(0.05 * xBreaks[1])
         hjust <- "right"
-        
+
       }
-      
+
     }
     dfText <- data.frame(
       x = xText,
       y = prob0,
       label = format(prob0, digits = 3, scientific = -2)
     )
-    
+
     # obtain credible interval given that predictor is in model
     cri <- conf95[i, 1:2]
     # find closest x-locations on grid to credible interval
@@ -929,7 +929,7 @@ for sparse regression when there are more covariates than observations (Castillo
       y = 0.975 * yBreaks[length(yBreaks)],
       label = format(cri, digits = 3, scientific = -2)
     )
-    
+
     g <- ggplot2::ggplot(data = dfLines, mapping = ggplot2::aes(x = x, y = y, group = g, color = g)) +
       ggplot2::geom_line(size = 1.25, show.legend = FALSE) +
       ggplot2::scale_y_continuous(name = "Density", breaks = yBreaks, limits = range(yBreaks)) +
@@ -942,7 +942,7 @@ for sparse regression when there are more covariates than observations (Castillo
                                      height = hBarHeight, inherit.aes = FALSE) +
       ggplot2::geom_text(data = dfCriText, mapping = ggplot2::aes(x = x, y = y, label = label), size = 6,
                          hjust = c("right", "left"), inherit.aes = FALSE)
-    
+
     jaspGraphs::themeJasp(g)
   })
 
@@ -958,15 +958,15 @@ for sparse regression when there are more covariates than observations (Castillo
   descriptivesTable <- createJaspTable(title = gettext("Descriptives"))
   descriptivesTable$position <- position
   descriptivesTable$dependOn(c("descriptives", "dependent", "covariates"))
-  
+
   descriptivesTable$addColumnInfo(name = "v",     title = "",              type = "string")
   descriptivesTable$addColumnInfo(name = "N",     title = gettext("N"),    type = "integer")
   descriptivesTable$addColumnInfo(name = "mean",  title = gettext("Mean"), type = "number")
   descriptivesTable$addColumnInfo(name = "sd",    title = gettext("SD"),   type = "number")
-  
+
   if (ready)
     .basregFillTableDescriptives(descriptivesTable, dataset, options)
-  
+
   jaspResults[["descriptivesTable"]] <- descriptivesTable
 }
 
@@ -977,7 +977,7 @@ for sparse regression when there are more covariates than observations (Castillo
     n <- length(data)
     mean <- mean(data)
     sd <- sd(data)
-    
+
     descriptivesTable$addRows(list(v = variable, N = n, mean = mean, sd = sd))
   }
 }
@@ -985,26 +985,26 @@ for sparse regression when there are more covariates than observations (Castillo
 .basregGetModel <- function(basregContainer, dataset, options, ready) {
   if (!ready || basregContainer$getError())
     return()
-    
+
   if (!is.null(basregContainer[["basregModel"]]))
     return(basregContainer[["basregModel"]]$object)
-  
+
   formula <- .basregCreateFormula(options$dependent, options$modelTerms)
   isNuisance <- .basregCreateNuisanceLookupVector(options$modelTerms)
   nPreds <- length(options$modelTerms)
-  
+
   # set initprobs (BAS' method for nuisance terms)
   initProbs <- rep(0.5, nPreds + 1) # the + 1 is the intercept
   index <- c(1, which(isNuisance) + 1)
   initProbs[index] <- 1
-  
+
   # get the weights
   wlsWeights <- NULL
   if (options$wlsWeights != "") {
     weightsVar <- options$wlsWeights
     wlsWeights <- dataset[[ .v(weightsVar) ]]
   }
-  
+
   # select the type of model prior
   if (options$modelPrior == "beta.binomial")
     modelPrior <- BAS::beta.binomial(as.numeric(options$betaBinomialParamA), as.numeric(options$betaBinomialParamB))
@@ -1016,17 +1016,17 @@ for sparse regression when there are more covariates than observations (Castillo
     modelPrior <- BAS::beta.binomial(1.0, as.numeric(nPreds * options$wilsonParamLambda))
   else if (options$modelPrior == "Castillo")
     modelPrior <- BAS::beta.binomial(1.0, as.numeric(nPreds ^ options$castilloParamU))
-  
+
   # number of models
   n.models <- NULL
   if (options$samplingMethod == "BAS" && options$numberOfModels > 0)
     n.models <- options$numberOfModels
-  
+
   # iterations for MCMC
   MCMC.iterations <- NULL
   if (options$samplingMethod == "MCMC" && options$iterationsMCMC > 0)
     MCMC.iterations <- options$iterationsMCMC
-  
+
   # parameter for hyper-g's or jzs (all use same alpha param in bas.lm)
   alpha <- switch(
     options$priorRegressionCoefficients,
@@ -1036,7 +1036,7 @@ for sparse regression when there are more covariates than observations (Castillo
     "JZS" = options$rScale^2,
     NULL
   )
-  
+
   # Bayesian Adaptive Sampling
   .setSeedJASP(options)
   bas_lm <- try(BAS::bas.lm(
@@ -1052,16 +1052,16 @@ for sparse regression when there are more covariates than observations (Castillo
     weights         = wlsWeights,
     renormalize     = TRUE
   ))
-  
+
   if (isTryError(bas_lm)) {
     errorMsg <- .extractErrorMessage(bas_lm)
     basregContainer$setError(errorMsg)
     return()
   }
-  
+
   if (bas_lm$n.models > 1 && nPreds > 1) # can crash without this check
     bas_lm <- BAS::force.heredity.bas(bas_lm)
-  
+
   # fix for prior probs all returning 1 with uniform and bernoulli 0.5 priors
   bas_lm[["priorprobs"]] <- bas_lm[["priorprobs"]] / sum(bas_lm[["priorprobs"]])
   bas_lm[["priorprobsPredictor"]] <- .basregComputePriorMarginalInclusionProbs(bas_lm)
@@ -1071,7 +1071,7 @@ for sparse regression when there are more covariates than observations (Castillo
   bas_lm[["nuisanceTerms"]] <- setNames(isNuisance, .unvf(names(isNuisance)))
 
   basregContainer[["basregModel"]] <- createJaspState(bas_lm)
-  
+
   return(bas_lm)
 }
 
@@ -1101,15 +1101,15 @@ for sparse regression when there are more covariates than observations (Castillo
 .basregGetPosteriorSummary <- function(basregContainer, basregModel, dataset, options, ready) {
   if (!ready || basregContainer$getError())
     return()
-  
+
   if (!is.null(basregContainer[["postSumModel"]]))
     return(basregContainer[["postSumModel"]]$object)
-  
+
   # required for the marginal posterior plots
   # done here such that the information in the plots and tables always matches
   # if a user selects the same options. (The method uses approximations and otherwise decimals are off)
   footnote <- NULL
-  
+
   .setSeedJASP(options)
   coefBMA <- .basregOverwritecoefBas(basregModel, estimator = "BMA", dataset = dataset, options = options, weights = basregModel[["weights"]])
   conf95BMA <- try(stats::confint(coefBMA, level = 0.95, nsim = options$nSimForCRI))
@@ -1120,7 +1120,7 @@ for sparse regression when there are more covariates than observations (Castillo
     conf95BMA[is.nan(conf95BMA)] <- NA
     footnote <- gettext("Parameters estimates and/or credible intervals could not be calculated.")
   }
-  
+
   # check if results of table and plots should match
   estimator <- switch(options$summaryType, best = "HPM", median = "MPM", "BMA")
   criVal <- options[["posteriorSummaryPlotCredibleIntervalValue"]]
@@ -1132,7 +1132,7 @@ for sparse regression when there are more covariates than observations (Castillo
     coef <- .basregOverwritecoefBas(basregModel, estimator = estimator, dataset = dataset, options = options, weights = basregModel[["weights"]])
     conf95 <- stats::confint(coef, level = criVal, nsim = options$nSimForCRI)
   }
-  
+
   probne0 <- coef[["probne0"]]
   coefficients <- basregModel[["namesx"]]
   if (estimator == "HPM") {
@@ -1143,14 +1143,14 @@ for sparse regression when there are more covariates than observations (Castillo
   } else {
     loopIdx <- seq_along(coefficients)
   }
-  
+
   postSumModel <- list(coef = coef, loopIdx = loopIdx, coefficients = coefficients, probne0 = probne0,
                            conf95 = conf95, coefBMA = coefBMA, conf95BMA = conf95BMA, footnote = footnote)
-  
+
   basregContainer[["postSumModel"]] <- createJaspState(postSumModel)
   basregContainer[["postSumModel"]]$dependOn(c("summaryType", "posteriorSummaryPlotCredibleIntervalValue", "nSimForCRI",
                                                "seed", "setSeed"))
-  
+
   return(postSumModel)
 }
 
@@ -1167,10 +1167,10 @@ for sparse regression when there are more covariates than observations (Castillo
   # JASP does not guarantree that this lookup structure works
   # so we need to modify this function.
   # this is only the case for the median model!
-  
+
   # if there are future updates to the BAS package, this function can probably be removed
   # the code below is a small test for when an error happens.
-  
+
   # data(UScrime, package = "MASS")
   # UScrime <- UScrime[, 1:5]
   # form <- M ~ So + Ed + Po1 + Po2
@@ -1182,12 +1182,12 @@ for sparse regression when there are more covariates than observations (Castillo
   #  initprobs = c(1, 0.5, 0.5, 0.5, 0.5),
   #  renormalize = TRUE)
   # BAS:::coef.bas(crime.bic, estimator = "MPM") # <-- this function call will error
-  
+
   # additionaly, the code previously failed (in JASP) for the correlation dataset (Big 5)
   # and selecting estimator = "MPM" (median model)
   # if neither of these errors occur in a future version then the original function can
   # probably be used again
-  
+
   if (estimator == "MPM") {
     formula <- .basregCreateFormula(options$dependent, options$modelTerms)
     nvar = basregModel$n.vars - 1
@@ -1252,56 +1252,56 @@ for sparse regression when there are more covariates than observations (Castillo
   #
   # Return:
   #   vector of inclusion probabilities (including intercept)
-  
+
   allModels <- basregModel$which
   modelProbs <- basregModel$priorprobs
   nPreds <- length(basregModel$probne0)
-  
+
   # model prior has been modified, recalculate the prior inclusion probs
   nModels <- length(allModels)
   priorProbs <- numeric(nPreds)
-  
+
   for (i in 1:nModels) {
-    
+
     idx <- allModels[[i]] + 1 # +1 to change 0 for intercept into a 1 so it can be used as an index
     priorProbs[idx] = priorProbs[idx] + modelProbs[i]
-    
+
   }
-  
+
   return(priorProbs)
 }
 
 .basregComputeInclusionBF <- function(basregModel) {
   nModels <- basregModel[["n.models"]]
   nPred <- length(basregModel[["probne0"]])
-  
+
   # should this work on a log scale??
   # first row is numerator of the odds; second row is denominator
   priorOdds <- matrix(0, 2, nPred)
   posteriorOdds <- matrix(0, 2, nPred)
   for (i in seq_len(nModels)) {
-    
+
     idxN <- basregModel[["which"]][[i]] + 1
     idxD <- (1:nPred)[-idxN]
-    
+
     # increment numerators
     priorOdds[1, idxN] <- priorOdds[1, idxN] + basregModel[["priorprobs"]][i]
     posteriorOdds[1, idxN] <- posteriorOdds[1, idxN] + basregModel[["postprobs"]][i]
-    
+
     # increment denominators
     priorOdds[2, idxD] <- priorOdds[2, idxD] + basregModel[["priorprobs"]][i]
     posteriorOdds[2, idxD] <- posteriorOdds[2, idxD] + basregModel[["postprobs"]][i]
-    
+
   }
-  
+
   priOdds <- priorOdds[1, ] / priorOdds[2, ]
   posOdds <- posteriorOdds[1, ] / posteriorOdds[2, ]
   BFinclusion <- posOdds / priOdds
-  
+
   # nuisance terms and intercept are always included
   BFinclusion[-1][basregModel[["nuisanceTerms"]]] <- 1 # nuisance terms
   BFinclusion[1] <- 1 # intercept
-  
+
   return(BFinclusion)
 }
 

@@ -339,7 +339,7 @@ Correlation <- function(jaspResults, dataset, options){
         currentResults[[test]] <- r[['result']]
       }
       # stolen from manova.R
-      shapiro <- .multivariateShapiroComputation(data, list(dependent = .unv(vcomb[[i]])))
+      shapiro <- jaspAnova::.multivariateShapiroComputation(data, list(dependent = .unv(vcomb[[i]])))
       
       results[[vpair[i]]] <- list(vars       = .unv(vcomb[[i]]), 
                                   vvars      = vcomb[[i]],
@@ -400,7 +400,7 @@ Correlation <- function(jaspResults, dataset, options){
         result$conf.int <- c(NA, NA)
       }
       
-      result$vsmpr <- jaspBase:::.VovkSellkeMPR(result$p.value)
+      result$vsmpr <- jaspBase:::VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       result <- unlist(result[stats], use.names = FALSE)
       names(result) <- statsNames
@@ -430,7 +430,7 @@ Correlation <- function(jaspResults, dataset, options){
           result$p.value <- 1 - result$p.value/2
         }
       }
-      result$vsmpr <- jaspBase:::.VovkSellkeMPR(result$p.value)
+      result$vsmpr <- jaspBase:::VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       # TODO: CIs for partial correlations
       result$lower.ci <- NA
@@ -481,7 +481,7 @@ Correlation <- function(jaspResults, dataset, options){
 
     if(ready) {
       dataset <- dataset[complete.cases(dataset),,drop=FALSE]
-      shapiroResult <- .multivariateShapiroComputation(dataset, list(dependent = options$variables))
+      shapiroResult <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = options$variables))
       shapiroErrors <- shapiroResult$errors
       shapiroResult <- shapiroResult$result
       shapiroTable$addRows(list(W = shapiroResult$statistic, p = shapiroResult$p.value))
@@ -498,10 +498,10 @@ Correlation <- function(jaspResults, dataset, options){
     if(ready){
       dataset <- dataset[complete.cases(dataset),,drop=FALSE]
       shapiroResult <- list()
-      shapiroResult[['All']]          <- .multivariateShapiroComputation(dataset, list(dependent = c(options$variables,
+      shapiroResult[['All']]          <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = c(options$variables,
                                                                                                      options$conditioningVariables)))
-      shapiroResult[['Conditioned']]  <- .multivariateShapiroComputation(dataset, list(dependent = options$variables))
-      shapiroResult[['Conditioning']] <- .multivariateShapiroComputation(dataset, list(dependent = options$conditioningVariables))
+      shapiroResult[['Conditioned']]  <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = options$variables))
+      shapiroResult[['Conditioning']] <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = options$conditioningVariables))
 
       form <- sprintf("cbind(%s) ~ %s",
                       paste(.v(options$variables), collapse = ", "),
@@ -511,7 +511,7 @@ Correlation <- function(jaspResults, dataset, options){
       if(isTryError(resids)){
         shapiroResult[['Residuals']] <- list(errors = .extractErrorMessage(resids))
       } else{
-        shapiroResult[['Residuals']] <- .multivariateShapiroComputation(resids, list(dependent = options$variables))
+        shapiroResult[['Residuals']] <- jaspAnova::.multivariateShapiroComputation(resids, list(dependent = options$variables))
       }
 
       for(i in seq_along(shapiroResult)){
@@ -1177,7 +1177,7 @@ Correlation <- function(jaspResults, dataset, options){
   if (bothNumeric) {
 
   	fit <- lm(y ~ poly(x, 1, raw = TRUE), d)
-  	lineObj <- .poly.predDescriptives(fit, line = FALSE, xMin= xBreaks[1], xMax = xBreaks[length(xBreaks)], lwd = lwd)
+  	lineObj <- jaspDescriptives::.poly.predDescriptives(fit, line = FALSE, xMin= xBreaks[1], xMax = xBreaks[length(xBreaks)], lwd = lwd)
   	rangeLineObj <- c(lineObj[1], lineObj[length(lineObj)])
   	yLimits <- range(c(pretty(yVar)), rangeLineObj)
 

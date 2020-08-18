@@ -488,7 +488,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                         pval    = s[4],
                         waldsta = as.numeric(waldtest$W),
                         walddf  = as.numeric(1),
-                        vsmpr   = .VovkSellkeMPR(s[4]),
+                        vsmpr   = VovkSellkeMPR(s[4]),
                         cilo    = expon(s[1] - alpha * s[2]),
                         ciup    = expon(s[1] + alpha * s[2])))
     } else {
@@ -511,7 +511,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                           pval    = s[i,4],
                           waldsta = as.numeric(waldtest$W),
                           walddf  = as.numeric(1),
-                          vsmpr   = .VovkSellkeMPR(s[i,4]),
+                          vsmpr   = VovkSellkeMPR(s[i,4]),
                           cilo    = expon(s[i,1] - alpha * s[i,2]),
                           ciup    = expon(s[i,1] + alpha * s[i,2])))
       }
@@ -551,7 +551,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
           pval    = s[4],
           waldsta = as.numeric(waldtest$W),
           walddf  = as.numeric(1),
-          vsmpr   = .VovkSellkeMPR(s[4]),
+          vsmpr   = VovkSellkeMPR(s[4]),
           cilo    = expon(s[1] - alpha * s[2]),
           ciup    = expon(s[1] + alpha * s[2]),
           .isNewGroup = TRUE
@@ -576,7 +576,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
             pval    = s[i,4],
             waldsta = as.numeric(waldtest$W),
             walddf  = as.numeric(1),
-            vsmpr   = .VovkSellkeMPR(s[i,4]),
+            vsmpr   = VovkSellkeMPR(s[i,4]),
             cilo    = expon(s[i,1] - alpha * s[i,2]),
             ciup    = expon(s[i,1] + alpha * s[i,2]),
             .isNewGroup = (i == 1)
@@ -1282,7 +1282,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                              point.padding = 0.5,
                              size = 6)
   
-  p <- JASPgraphs::themeJasp(p, legend.position = "none") 
+  p <- jaspGraphs::themeJasp(p, legend.position = "none") 
   
   return(p)
 }
