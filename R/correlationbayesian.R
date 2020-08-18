@@ -1037,7 +1037,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     y = logYLine
   )
 
-  hypothesisJASPgraphsName <- switch(alternative,
+  hypothesisjaspGraphsName <- switch(alternative,
                                      "two.sided"="equal",
                                      "greater"="greater",
                                      "less"="smaller")
@@ -1051,7 +1051,8 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     pointColors  <- pointColors[1:nPoints]
     pointFill  <- pointFill[1:nPoints]
 
-    bfLegendLabel <- jaspGraphs::getBFSubscripts(bfPlotType, hypothesis=hypothesisJASPgraphsName)[1]
+    bfLegendLabel <- jaspGraphs::getBFSubscripts(bfPlotType, hypothesis=hypothesisjaspGraphsName)[1]
+
     legendText1 <- vector("character", length(xPoint))
     legendText2 <- vector("character", length(xPoint))
 
@@ -1092,7 +1093,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     bfType          = bfPlotType,
     pointColors     = pointColors,
     pointFill       = pointFill,
-    hypothesis      = hypothesisJASPgraphsName,
+    hypothesis      = hypothesisjaspGraphsName,
     plotLineOrPoint = "line"
   ))
 
