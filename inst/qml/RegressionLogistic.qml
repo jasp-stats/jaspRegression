@@ -48,8 +48,6 @@ Form
 	{
 		title: qsTr("Model")
 		
-		CheckBox { name: "includeIntercept"; label: qsTr("Include intercept"); checked: true }
-		
 		VariablesForm
 		{
 			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
@@ -64,6 +62,7 @@ Form
 			ModelTermsList { width: parent.width * 5 / 9 }
 		}
 		
+		CheckBox { name: "includeIntercept"; label: qsTr("Include intercept"); checked: true }
 	}
 	
 	Section
