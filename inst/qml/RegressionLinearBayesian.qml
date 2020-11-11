@@ -172,13 +172,13 @@ Form {
 			RadioButton { value: "BIC";			label: qsTr("BIC")		}
 			RadioButton { value: "EB-global";	label: qsTr("EB-global")}
 			RadioButton { value: "EB-local";	label: qsTr("EB-local")	}
-			RadioButton { value: "g-prior";		label: qsTr("g-prior")	}
 			GridLayout
 			{
 				rowSpacing: jaspTheme.rowGroupSpacing
 				columnSpacing: 0
 				Group
 				{
+					RadioButton { value: "g-prior";			label: qsTr("g-prior");				id: gprior			}
 					RadioButton { value: "hyper-g";			label: qsTr("Hyper-g");				id: hyperg			}
 					RadioButton { value: "hyper-g-laplace";	label: qsTr("Hyper-g-Laplace");		id: hyperglaplace	}
 					RadioButton { value: "hyper-g-n";		label: qsTr("Hyper-g-n");			id: hypergn			}
@@ -187,7 +187,7 @@ Form {
 				{
 					name: "alpha"
 					label: qsTr("alpha")
-					enabled: hyperg.checked || hyperglaplace.checked || hypergn.checked
+					enabled: gprior.checked || hyperg.checked || hyperglaplace.checked || hypergn.checked
 					defaultValue: 3.0
 					min: 2
 					max: 4
