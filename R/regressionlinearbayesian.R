@@ -1030,6 +1030,7 @@ for sparse regression when there are more covariates than observations (Castillo
   # parameter for hyper-g's or jzs (all use same alpha param in bas.lm)
   alpha <- switch(
     options$priorRegressionCoefficients,
+    "g-prior" = options$alpha,
     "hyper-g" = options$alpha,
     "hyper-g-laplace" = options$alpha,
     "hyper-g-n" = options$alpha,
