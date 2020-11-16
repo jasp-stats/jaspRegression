@@ -267,7 +267,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   coeffTable$showSpecifiedColumnsOnly <- TRUE
 
   coeffTable$addColumnInfo(name = "model",        title = gettext("Model"),          type = "string", combine = TRUE)
-  coeffTable$addColumnInfo(name = "name",         title = "",                        type = "string")
+  coeffTable$addColumnInfo(name = "name",         title = gettext("Parameter"),      type = "string")
+  if (length(options[["factors"]]) > 0L)
+    coeffTable$addColumnInfo(name = "level",      title = gettext("Level"),          type = "string")
   coeffTable$addColumnInfo(name = "unstandCoeff", title = gettext("Unstandardized"), type = "number")
   coeffTable$addColumnInfo(name = "SE",           title = gettext("Standard Error"), type = "number")
   coeffTable$addColumnInfo(name = "standCoeff",   title = gettext("Standardized"),   type = "number")
@@ -1058,41 +1060,66 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     estimates     <- summary(fit)$coefficients
     confInterval  <- confint(fit, level = options$regressionCoefficientsConfidenceIntervalsInterval)
 
-    if (length(predictors) > 1 || predictors != "(Intercept)")
-      collinearityDiagnostics <- .linregGetVIFAndTolerance(setdiff(predictors, "(Intercept)"), dataset, includeConstant = TRUE)
+    info <- .linregGetParametersAndLevels(estimates, predictors)
+    names <- info[["paramsClean"]]
+    rawNames <- info[["paramsRaw"]]
+    names[c(FALSE, names[-1L] == names[-length(names)])] <- ""
+    levels <- info[["levelsClean"]]
 
-    for (i in seq_along(rows)) {
-      predictor <- predictors[[i]]
+    rows <- vector("list", nrow(estimates))
 
-      terms <- unlist(strsplit(predictor, split = ":"))
-      name  <- paste0(.unv(terms), collapse = "\u2009\u273b\u2009")
+    if (length(predictors) > 1 || predictors != "(Intercept)") {
+      appropriatePredictors <- predictors[predictors != "(Intercept)"]
+      appropriatePredictors <- appropriatePredictors[!grepl(options[["factors"]], appropriatePredictors)]
+      if (length(appropriatePredictors) > 0L)
+        collinearityDiagnostics <- .linregGetVIFAndTolerance(appropriatePredictors, dataset, includeConstant = TRUE)
+    }
 
-      if (predictor %in% missingCoeffs) {
-        rows[[i]] <- list(unstandCoeff = NaN, SE = NaN, standCoeff = NaN, t = NaN, p = NaN, lower = NaN, upper = NaN, tolerance = NaN, VIF = NaN, vovksellke = NaN)
-        rows[[i]][["name"]] <- name
-        next
+    dataClasses <- attr(fit[["terms"]], "dataClasses")
+    rowIndex <- 1L
+
+    for (i in seq_along(names)) {
+
+      # TODO: figure out why this if statement existed
+      # if (predictor %in% missingCoeffs) {
+      #   rows[[i]] <- list(
+      #     name = names[i], level = levels[i],
+      #     unstandCoeff = NaN, SE = NaN, standCoeff = NaN, t = NaN, p = NaN, lower = NaN, upper = NaN, tolerance = NaN, VIF = NaN, vovksellke = NaN
+      #   )
+      #   next
+      # }
+
+      if (!identical(rawNames[[i]], "(Intercept)") && !any(dataClasses[rawNames[[i]]] == "factor")) {
+
+        predictor <- if (length(rawNames[[i]]) == 1L) rawNames[[i]] else paste(rawNames[[i]], collapse = ":")
+
+        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, row[["unstandCoeff"]], options[["factors"]])
+        tolerance  <- collinearityDiagnostics[["tolerance"]][[predictor]]
+        VIF        <- collinearityDiagnostics[["VIF"]][[predictor]]
+
+      } else {
+
+        standCoeff <- tolerance <- VIF <- NULL
+
       }
 
       row <- list(
-        name         = name,
+        name         = names[i],
+        level        = levels[i],
         unstandCoeff = estimates[i, "Estimate"],
         SE           = estimates[i, "Std. Error"],
         t            = estimates[i, "t value"],
         p            = estimates[i, "Pr(>|t|)"],
         lower        = confInterval[i, 1],
-        upper        = confInterval[i, 2]
+        upper        = confInterval[i, 2],
+        standCoeff   = standCoeff,
+        tolerance    = tolerance,
+        VIF          = VIF,
+        vovksellke   = VovkSellkeMPR(estimates[i, "Pr(>|t|)"])
       )
 
-      row <- c(row, list(vovksellke = VovkSellkeMPR(row[["p"]])))
-
-      if (predictor != "(Intercept)") {
-        row <- c(row, list(
-          standCoeff = .linregGetStandardizedCoefficient(dataset, .v(options$dependent), predictor, row[["unstandCoeff"]]),
-          tolerance  = collinearityDiagnostics[["tolerance"]][[predictor]],
-          VIF        = collinearityDiagnostics[["VIF"]][[predictor]]))
-      }
-
       rows[[i]] <- row
+
     }
 
   }
@@ -1736,4 +1763,33 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   jaspPlot            <- createJaspPlot(title = title, width = width, height = height)
   jaspPlot$status     <- "running"
   container[[index]]  <- jaspPlot
+}
+
+.linregGetParametersAndLevels <- function(estimates, predictors) {
+
+  # TODO: replace interation with stuff from jaspBase
+
+  orderedPredictors <- predictors[order(nchar(predictors))]
+  # escape the parentheses
+  orderedPredictors[which(orderedPredictors == "(Intercept)")] <- "\\(Intercept\\)"
+  regexAnyPredictor <- paste(orderedPredictors, collapse = "|")
+
+  rnms <- rownames(estimates)
+  lvls <- gsub(regexAnyPredictor, "", rnms)
+  idx <- startsWith(lvls, ":")
+  lvls[idx] <- substring(lvls[idx], 2L)
+
+  levelsRaw   <- strsplit(lvls, ":")
+  levelsClean <- gsub(":", "\u2009\u273b\u2009", lvls)
+
+  splitRnms <- strsplit(rnms, ":")
+  allPredsRegex <- paste0("(", regexAnyPredictor, ").*")
+  paramsRaw <- lapply(splitRnms, function(x) gsub(allPredsRegex, "\\1", x))
+  paramsClean <- unlist(lapply(paramsRaw, paste, collapse = "\u2009\u273b\u2009"))
+  return(list(
+    paramsClean = paramsClean,
+    levelsClean = levelsClean,
+    paramsRaw   = paramsRaw,
+    levelsRaw   = levelsRaw
+  ))
 }
