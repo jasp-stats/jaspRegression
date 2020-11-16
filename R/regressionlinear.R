@@ -152,9 +152,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 .linregCreateSummaryTable <- function(modelContainer, model, options, position) {
   if(options[['dependent']] == "")
     summaryTable <- createJaspTable(gettext("Model Summary"))
-  else 
+  else
     summaryTable <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
-  
+
   summaryTable$dependOn(c("residualsDurbinWatson", "rSquaredChange"))
   summaryTable$position <- position
   summaryTable$showSpecifiedColumnsOnly <- TRUE
@@ -300,10 +300,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (options$method %in% c("forward", "stepwise")) {
     includedPredictors <- unlist(lapply(model, "[[", "predictors"))
     neverIncludedPredictors <- setdiff(unlist(options$covariates), .unv(includedPredictors))
-    
+
     if (length(neverIncludedPredictors) > 0) {
-      message <- sprintf(ngettext(length(neverIncludedPredictors), 
-                                  "The following covariate was considered but not included: %s.", 
+      message <- sprintf(ngettext(length(neverIncludedPredictors),
+                                  "The following covariate was considered but not included: %s.",
                                   "The following covariates were considered but not included: %s."),
                          paste(neverIncludedPredictors, collapse=", "))
       coeffTable$addFootnote(message)
@@ -637,7 +637,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   title <- ngettext(length(predictors), "Partial Regression Plot", "Partial Regression Plots")
 
   partialPlotContainer <- createJaspContainer(title)
-  partialPlotContainer$dependOn(c("plotsPartialRegression", "plotsPartialConfidenceIntervals", "plotsPartialConfidenceIntervalsInterval", 
+  partialPlotContainer$dependOn(c("plotsPartialRegression", "plotsPartialConfidenceIntervals", "plotsPartialConfidenceIntervalsInterval",
                                   "plotsPartialPredictionIntervals", "plotsPartialPredictionIntervalsInterval"))
   partialPlotContainer$position <- position
   modelContainer[["partialPlotContainer"]] <- partialPlotContainer
@@ -664,20 +664,20 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   xVar      <- plotData[["residualsPred"]]
   resid     <- plotData[["residualsDep"]]
   dfResid   <- length(resid) - length(predictors) - 1
-  
+
   xlab      <- gettextf("Residuals %s", .unvf(predictor))
   ylab      <- gettextf("Residuals %s", options$dependent)
-  
+
   # Compute regresion lines
   weights <- dataset[[.v(options$wlsWeights)]]
   line <- as.list(setNames(lm(residualsDep~residualsPred, data = plotData, weights = weights)$coeff,
                            c("intercept", "slope"))
                   )
-  
+
   .linregInsertPlot(partialPlot, .linregPlotResiduals, xVar = xVar, res = resid, dfRes = dfResid, xlab = xlab, ylab = ylab,
-                    regressionLine = TRUE, confidenceIntervals = options$plotsPartialConfidenceIntervals, 
+                    regressionLine = TRUE, confidenceIntervals = options$plotsPartialConfidenceIntervals,
                     confidenceIntervalsInterval = options$plotsPartialConfidenceIntervalsInterval,
-                    predictionIntervals = options$plotsPartialPredictionIntervals, 
+                    predictionIntervals = options$plotsPartialPredictionIntervals,
                     predictionIntervalsInterval = options$plotsPartialPredictionIntervalsInterval,
                     standardizedResiduals = FALSE, intercept = line[['intercept']], slope = line[['slope']])
 }
@@ -1050,8 +1050,6 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (!is.null(fit)) {
     if (options$includeConstant)
       predictors <- c("(Intercept)", predictors)
-
-    rows <- vector("list", length(predictors))
 
     missingCoeffs <- NULL
     if (any(is.na(fit$coefficients)))
@@ -1430,7 +1428,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   formulaPred   <- .linregGetFormula(predictor, predictors = predictors, includeConstant = TRUE)
   fitPred       <- stats::lm(formula = formulaPred, data = dataset, weights = weights)
   residualsPred <- residuals(fitPred)
-  
+
   return(data.frame(residualsPred = residualsPred, residualsDep = residualsDep))
 }
 
@@ -1481,49 +1479,49 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     p <- p + ggplot2::geom_line(data = data.frame(x = c(min(xticks), max(xticks)),
                                                   y = intercept + slope * c(min(xticks), max(xticks))),
                                 mapping = ggplot2::aes(x = x, y = y), col = "darkred", size = .5)
-  
+
   if (regressionLine && confidenceIntervals) {
-    
-    seConf <- sqrt(sum(res^2) / dfRes) * 
+
+    seConf <- sqrt(sum(res^2) / dfRes) *
       sqrt(1 / length(res) + (xVar - mean(xVar))^2 / sum((xVar - mean(xVar))^2))
-    
+
     ciConf <- 1 - (1 - confidenceIntervalsInterval)/2
-    
+
     upperConfInt <- (intercept + slope * xVar) + qt(ciConf, dfRes) *  seConf
     lowerConfInt <- (intercept + slope * xVar) - qt(ciConf, dfRes) *  seConf
-    
+
     p <- p + ggplot2::geom_line(data = data.frame(x = xVar,
                                                   y = upperConfInt),
-                                mapping = ggplot2::aes(x = x, y = y), 
-                                col = "darkblue", linetype = "dashed", size = 1) + 
+                                mapping = ggplot2::aes(x = x, y = y),
+                                col = "darkblue", linetype = "dashed", size = 1) +
       ggplot2::geom_line(data = data.frame(x = xVar,
                                            y = lowerConfInt),
-                                mapping = ggplot2::aes(x = x, y = y), 
+                                mapping = ggplot2::aes(x = x, y = y),
                                 col = "darkblue", linetype = "dashed", size = 1)
-    
+
   }
-  
+
   if (regressionLine && predictionIntervals) {
-    
-    sePred <- sqrt(sum(res^2) / dfRes) * 
+
+    sePred <- sqrt(sum(res^2) / dfRes) *
       sqrt(1 + 1 / length(res) + (xVar - mean(xVar))^2 / sum((xVar - mean(xVar))^2))
-    
+
     ciPred <- 1 - (1 - predictionIntervalsInterval)/2
-    
+
     upperPredInt <- (intercept + slope * xVar) + qt(ciPred, dfRes) *  sePred
     lowerPredInt <- (intercept + slope * xVar) - qt(ciPred, dfRes) *  sePred
-    
+
     p <- p + ggplot2::geom_line(data = data.frame(x = xVar,
                                                   y = upperPredInt),
-                                mapping = ggplot2::aes(x = x, y = y), 
-                                col = "darkgreen", linetype = "longdash", size = 1) + 
+                                mapping = ggplot2::aes(x = x, y = y),
+                                col = "darkgreen", linetype = "longdash", size = 1) +
       ggplot2::geom_line(data = data.frame(x = xVar,
                                            y = lowerPredInt),
-                                mapping = ggplot2::aes(x = x, y = y), 
+                                mapping = ggplot2::aes(x = x, y = y),
                                 col = "darkgreen", linetype = "longdash", size = 1)
-    
+
   }
-  
+
   p <- jaspGraphs::drawPoints(p, dat = data.frame(x = xVar, y = res), size = 3)
 
   # JASP theme
