@@ -268,7 +268,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   coeffTable$addColumnInfo(name = "model",        title = gettext("Model"),          type = "string", combine = TRUE)
   coeffTable$addColumnInfo(name = "name",         title = gettext("Parameter"),      type = "string")
-  if (length(options[["factors"]]) > 0L)
+  hasFactors <- length(options[["factors"]]) > 0L
+  if (hasFactors)
     coeffTable$addColumnInfo(name = "level",      title = gettext("Level"),          type = "string")
   coeffTable$addColumnInfo(name = "unstandCoeff", title = gettext("Unstandardized"), type = "number")
   coeffTable$addColumnInfo(name = "SE",           title = gettext("Standard Error"), type = "number")
@@ -287,7 +288,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (options$collinearityDiagnostics) {
     overtitle <- gettext("Collinearity Statistics")
     coeffTable$addColumnInfo(name = "tolerance",  title = gettext("Tolerance"),  type = "number", format = "dp:3", overtitle = overtitle)
-    coeffTable$addColumnInfo(name = "VIF",        title = gettext("VIF"),        type = "number", overtitle = overtitle)
+    coeffTable$addColumnInfo(name = "VIF",        title = gettext("VIF"),        type = "number",                  overtitle = overtitle)
+
+    if (hasFactors)
+      coeffTable$addFootnote(colNames = c("VIF", "tolerance"), message = gettext("Collinearity statistics can only be computed for continuous predictors."))
   }
 
   if (!is.null(model)) {
@@ -449,6 +453,21 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   covMatTable$addColumnInfo(name = "name",  title = "",               type = "string")
 
   if (!is.null(model)) {
+    browser()
+    # TODO: this goes horribly wrong! figure out what the default behavior is here with respect to which model is used to show the covariance matrix!
+    predictors <- .linregGetPredictorColumnNames(model, options[["modelTerms"]])
+    if (length(predictors) > 0) {
+      info <- .linregGetParametersAndLevels(model[[length(model)]]$fit, predictors)
+      titles <- .unvf(predictors)
+      if (includeConstant) {
+        predictors <- c("(Intercept)", predictors)
+        titles <- c("(Intercept)", titles)
+      }
+      for (i in seq_along(predictors)) jaspTable$addColumnInfo(name = predictors[i],
+                                                               title = titles[i], type = type, format = format,
+                                                               overtitle = overtitle)
+    }
+
     .linregAddPredictorsAsColumns(covMatTable, model, options$modelTerms, includeConstant = FALSE)
     .linregAddInterceptNotShownFootnote(covMatTable, model, options)
     .linregFillCoefficientsCovarianceMatrixTable(covMatTable, model, options)
@@ -1053,6 +1072,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     if (options$includeConstant)
       predictors <- c("(Intercept)", predictors)
 
+    factors <- options[["factors"]]
+    hasFactors <- length(factors) > 0L
+
     missingCoeffs <- NULL
     if (any(is.na(fit$coefficients)))
       missingCoeffs <- names(fit$coefficients)[which(is.na(fit$coefficients))]
@@ -1060,7 +1082,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     estimates     <- summary(fit)$coefficients
     confInterval  <- confint(fit, level = options$regressionCoefficientsConfidenceIntervalsInterval)
 
-    info <- .linregGetParametersAndLevels(estimates, predictors)
+    info <- .linregGetParametersAndLevels(fit, predictors)
     names <- info[["paramsClean"]]
     rawNames <- info[["paramsRaw"]]
     names[c(FALSE, names[-1L] == names[-length(names)])] <- ""
@@ -1070,7 +1092,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
     if (length(predictors) > 1 || predictors != "(Intercept)") {
       appropriatePredictors <- predictors[predictors != "(Intercept)"]
-      appropriatePredictors <- appropriatePredictors[!grepl(options[["factors"]], appropriatePredictors)]
+      if (hasFactors)
+        appropriatePredictors <- appropriatePredictors[!grepl(factors, appropriatePredictors)]
       if (length(appropriatePredictors) > 0L)
         collinearityDiagnostics <- .linregGetVIFAndTolerance(appropriatePredictors, dataset, includeConstant = TRUE)
     }
@@ -1093,7 +1116,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
         predictor <- if (length(rawNames[[i]]) == 1L) rawNames[[i]] else paste(rawNames[[i]], collapse = ":")
 
-        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, row[["unstandCoeff"]], options[["factors"]])
+        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, row[["unstandCoeff"]])
         tolerance  <- collinearityDiagnostics[["tolerance"]][[predictor]]
         VIF        <- collinearityDiagnostics[["VIF"]][[predictor]]
 
@@ -1765,7 +1788,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   container[[index]]  <- jaspPlot
 }
 
-.linregGetParametersAndLevels <- function(estimates, predictors) {
+.linregGetParametersAndLevels <- function(fit, predictors) {
 
   # TODO: replace interation with stuff from jaspBase
 
@@ -1774,7 +1797,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   orderedPredictors[which(orderedPredictors == "(Intercept)")] <- "\\(Intercept\\)"
   regexAnyPredictor <- paste(orderedPredictors, collapse = "|")
 
-  rnms <- rownames(estimates)
+  rnms <- colnames(stats::model.matrix(fit))
   lvls <- gsub(regexAnyPredictor, "", rnms)
   idx <- startsWith(lvls, ":")
   lvls[idx] <- substring(lvls[idx], 2L)
