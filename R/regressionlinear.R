@@ -267,10 +267,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   coeffTable$showSpecifiedColumnsOnly <- TRUE
 
   coeffTable$addColumnInfo(name = "model",        title = gettext("Model"),          type = "string", combine = TRUE)
-  coeffTable$addColumnInfo(name = "name",         title = gettext("Parameter"),      type = "string")
-  hasFactors <- length(options[["factors"]]) > 0L
-  if (hasFactors)
-    coeffTable$addColumnInfo(name = "level",      title = gettext("Level"),          type = "string")
+  coeffTable$addColumnInfo(name = "name",         title = "",                        type = "string")
   coeffTable$addColumnInfo(name = "unstandCoeff", title = gettext("Unstandardized"), type = "number")
   coeffTable$addColumnInfo(name = "SE",           title = gettext("Standard Error"), type = "number")
   coeffTable$addColumnInfo(name = "standCoeff",   title = gettext("Standardized"),   type = "number")
@@ -290,7 +287,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     coeffTable$addColumnInfo(name = "tolerance",  title = gettext("Tolerance"),  type = "number", format = "dp:3", overtitle = overtitle)
     coeffTable$addColumnInfo(name = "VIF",        title = gettext("VIF"),        type = "number",                  overtitle = overtitle)
 
-    if (hasFactors)
+    if (length(options[["factors"]]) > 0L)
       coeffTable$addFootnote(colNames = c("VIF", "tolerance"), message = gettext("Collinearity statistics can only be computed for continuous predictors."))
   }
 
@@ -453,21 +450,6 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   covMatTable$addColumnInfo(name = "name",  title = "",               type = "string")
 
   if (!is.null(model)) {
-    browser()
-    # TODO: this goes horribly wrong! figure out what the default behavior is here with respect to which model is used to show the covariance matrix!
-    predictors <- .linregGetPredictorColumnNames(model, options[["modelTerms"]])
-    if (length(predictors) > 0) {
-      info <- .linregGetParametersAndLevels(model[[length(model)]]$fit, predictors)
-      titles <- .unvf(predictors)
-      if (includeConstant) {
-        predictors <- c("(Intercept)", predictors)
-        titles <- c("(Intercept)", titles)
-      }
-      for (i in seq_along(predictors)) jaspTable$addColumnInfo(name = predictors[i],
-                                                               title = titles[i], type = type, format = format,
-                                                               overtitle = overtitle)
-    }
-
     .linregAddPredictorsAsColumns(covMatTable, model, options$modelTerms, includeConstant = FALSE)
     .linregAddInterceptNotShownFootnote(covMatTable, model, options)
     .linregFillCoefficientsCovarianceMatrixTable(covMatTable, model, options)
@@ -580,6 +562,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(finalModel)) {
     predictors <- finalModel$predictors
+
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(residualsVsCovContainer, index = .unvf(predictor), title = gettextf("Residuals vs. %s", .unvf(predictor)))
 
@@ -1082,23 +1065,23 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     estimates     <- summary(fit)$coefficients
     confInterval  <- confint(fit, level = options$regressionCoefficientsConfidenceIntervalsInterval)
 
-    info <- .linregGetParametersAndLevels(fit, predictors)
-    names <- info[["paramsClean"]]
+    info <- .linregGetParametersAndLevels(.linregGetParameterNames(fit), predictors)
+    names <- .linregMakePrettyNames(info)
     rawNames <- info[["paramsRaw"]]
     names[c(FALSE, names[-1L] == names[-length(names)])] <- ""
     levels <- info[["levelsClean"]]
+
 
     rows <- vector("list", nrow(estimates))
 
     if (length(predictors) > 1 || predictors != "(Intercept)") {
       appropriatePredictors <- predictors[predictors != "(Intercept)"]
-      if (hasFactors)
-        appropriatePredictors <- appropriatePredictors[!grepl(factors, appropriatePredictors)]
+      appropriatePredictors <- .linregRemoveFactors(fit, appropriatePredictors)
       if (length(appropriatePredictors) > 0L)
         collinearityDiagnostics <- .linregGetVIFAndTolerance(appropriatePredictors, dataset, includeConstant = TRUE)
     }
 
-    dataClasses <- attr(fit[["terms"]], "dataClasses")
+    dataClasses <- attr(terms(fit), "dataClasses")
     rowIndex <- 1L
 
     for (i in seq_along(names)) {
@@ -1112,11 +1095,13 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       #   next
       # }
 
+      unstandCoeff <- estimates[i, "Estimate"]
       if (!identical(rawNames[[i]], "(Intercept)") && !any(dataClasses[rawNames[[i]]] == "factor")) {
+        # these don't exist for the intercept or categorical parameters
 
-        predictor <- if (length(rawNames[[i]]) == 1L) rawNames[[i]] else paste(rawNames[[i]], collapse = ":")
+        predictor <- paste(rawNames[[i]], collapse = ":")
 
-        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, row[["unstandCoeff"]])
+        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, unstandCoeff)
         tolerance  <- collinearityDiagnostics[["tolerance"]][[predictor]]
         VIF        <- collinearityDiagnostics[["VIF"]][[predictor]]
 
@@ -1128,8 +1113,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
       row <- list(
         name         = names[i],
-        level        = levels[i],
-        unstandCoeff = estimates[i, "Estimate"],
+        unstandCoeff = unstandCoeff,
         SE           = estimates[i, "Std. Error"],
         t            = estimates[i, "t value"],
         p            = estimates[i, "Pr(>|t|)"],
@@ -1290,10 +1274,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     covmatrix                       <- vcov(fit)
     covmatrix[lower.tri(covmatrix)] <- NA
 
-    if (includeConstant)
-      covmatrix <- covmatrix[-1, -1, drop = FALSE] # remove intercept row and column
-
+    prettyNames <- .linregMakePrettyNames(fit)
     # Check whether variables in the regression model are redundant
+    # TODO: I don't think the is.na(fit$coefficients[i]) is ever TRUE...
     for (i in seq_along(names(fit$coefficients))) {
       if (is.na(fit$coefficients[i])) {
 
@@ -1301,7 +1284,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
         covmatrix <- cbind(covmatrix, NA)
         covmatrix <- rbind(covmatrix, NA)
 
-        name                <- names(fit(coefficients)[i])
+        name                <- prettyNames[i]
         rownames(covmatrix) <- c(rownames(covmatrix), name)
         colnames(covmatrix) <- c(colnames(covmatrix), name)
         # Add footnote for this case
@@ -1313,11 +1296,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     }
 
     if (nrow(covmatrix) > 0) {
-      data <- data.frame(.unvf(rownames(covmatrix)))
-      for (i in seq_along(colnames(covmatrix)))
-        data <- cbind(data, covmatrix[, i])
-
-      names(data) <- c("name", colnames(covmatrix))
+      colnames(covmatrix) <- prettyNames
+      data <- cbind(data.frame(name = prettyNames), covmatrix)
     }
   }
 
@@ -1715,18 +1695,33 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(intersect(allpredictors, usedPredictors)) # ensures that the terms appear in the covariance matrix like they appear in the model terms box
 }
 
+.linregGetParameterNames <- function(model) {
+  UseMethod(".linregGetParameterNames", model)
+}
+
+.linregGetParameterNames.lm <- function(model) {
+  return(colnames(model.matrix(model)))
+}
+
+.linregGetParameterNames.list <- function(model) {
+  usedParameterNames <- unique(unlist(lapply(model, function(x) .linregGetParameterNames(x[["fit"]])), use.names = FALSE))
+  return(usedParameterNames)
+}
+
 .linregAddPredictorsAsColumns <- function(jaspTable, model, modelTerms, includeConstant = TRUE, type = "number", format = NULL, overtitle = NULL) {
   predictors <- .linregGetPredictorColumnNames(model, modelTerms)
+  titles <- NULL
   if (length(predictors) > 0) {
-    titles <- .unvf(predictors)
-    if (includeConstant) {
-      predictors  <- c("(Intercept)", predictors)
-      titles      <- c("(Intercept)", titles)
-    }
 
-    for (i in seq_along(predictors))
-      jaspTable$addColumnInfo(name = predictors[i], title = titles[i], type = type, format = format, overtitle = overtitle)
+    info <- .linregGetParametersAndLevels(.linregGetParameterNames(model), predictors)
+    titles <- .linregMakePrettyNames(info)
+    predictors <- c("(Intercept)", predictors)
+
   }
+
+  for (title in titles)
+    jaspTable$addColumnInfo(name = title, title = title, type = type, format = format, overtitle = overtitle)
+
 }
 
 .linregAddPredictorsInNullFootnote <- function(jaspTable, modelTerms) {
@@ -1788,31 +1783,89 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   container[[index]]  <- jaspPlot
 }
 
-.linregGetParametersAndLevels <- function(fit, predictors) {
+.linregGetParametersAndLevels <- function(model, ...) {
+  UseMethod(".linregGetParametersAndLevels", model)
+}
+
+.linregGetParametersAndLevels.lm <- function(model) {
+  predictors <- all.vars(terms(model))[-1L]
+  .linregGetParametersAndLevels(.linregGetParameterNames(model), predictors)
+}
+
+.linregGetParametersAndLevels.default <- function(model, predictors) {
 
   # TODO: replace interation with stuff from jaspBase
+  # TODO: ensure that regex matches the start of the strings for predictors
 
   orderedPredictors <- predictors[order(nchar(predictors))]
   # escape the parentheses
   orderedPredictors[which(orderedPredictors == "(Intercept)")] <- "\\(Intercept\\)"
   regexAnyPredictor <- paste(orderedPredictors, collapse = "|")
 
-  rnms <- colnames(stats::model.matrix(fit))
-  lvls <- gsub(regexAnyPredictor, "", rnms)
-  idx <- startsWith(lvls, ":")
-  lvls[idx] <- substring(lvls[idx], 2L)
+  lvls <- gsub(regexAnyPredictor, "", model)
 
   levelsRaw   <- strsplit(lvls, ":")
+  levelsRaw[lengths(levelsRaw) == 0] <- list("")
+  if (length(levelsRaw[[1L]]) == 1L && levelsRaw[[1L]] == "(Intercept)")
+    levelsRaw[[1L]] <- ""
+
   levelsClean <- gsub(":", "\u2009\u273b\u2009", lvls)
 
-  splitRnms <- strsplit(rnms, ":")
-  allPredsRegex <- paste0("(", regexAnyPredictor, ").*")
+  splitRnms <- strsplit(model, ":")
+  allPredsRegex <- paste0("^(", regexAnyPredictor, ").*")
   paramsRaw <- lapply(splitRnms, function(x) gsub(allPredsRegex, "\\1", x))
-  paramsClean <- unlist(lapply(paramsRaw, paste, collapse = "\u2009\u273b\u2009"))
+  paramsClean <- unlist(lapply(paramsRaw, paste, collapse = "\u2009\u273b\u2009"), use.names = FALSE)
   return(list(
     paramsClean = paramsClean,
     levelsClean = levelsClean,
     paramsRaw   = paramsRaw,
     levelsRaw   = levelsRaw
   ))
+}
+
+.linregMakePrettyNames <- function(info) {
+  UseMethod(".linregMakePrettyNames", info)
+}
+
+.linregMakePrettyNames.lm <- function(info) {
+  .linregMakePrettyNames(.linregGetParametersAndLevels(info))
+}
+
+.linregMakePrettyNames.default <- function(info) {
+  title <- character(length(info[["paramsRaw"]]))
+  for (j in seq_along(title)) {
+
+    params <- info[["paramsRaw"]][[j]]
+    levels <- info[["levelsRaw"]][[j]]
+
+    ans <- character(length(params))
+    for (i in seq_along(params)) {
+      ans[i] <- if (levels[i] == "") params[i] else paste0(params[i], " (", levels[i], ")")
+    }
+    title[j] <- paste(ans, collapse = " \u2009\u273b\u2009 ")
+  }
+  return(title)
+}
+
+.linregRemoveFactors <- function(fit, predictors) {
+
+  terms <- terms(fit)
+  dataClasses <- attr(terms, "dataClasses")
+  factors     <- attr(terms, "factors")
+  result <- logical(length(predictors))
+  for (i in seq_along(result)) {
+    consistsOf <- names(which(factors[, predictors[i]] == 1))
+    result[i] <- !any(dataClasses[consistsOf] == "factor")
+  }
+  return(predictors[result])
+}
+
+.linregContainsFactor <- function(fit, predictors) {
+  # returns TRUE if the predictor is a factor or if it is an interaction that contains a factor
+  terms <- terms(fit)
+  dataClasses <- attr(terms, "dataClasses")
+  factors     <- attr(terms, "factors")
+  consistsOf <- names(which(factors[, predictors[i]] == 1))
+  return(!any(dataClasses[consistsOf] == "factor"))
+
 }
