@@ -6,13 +6,13 @@
 using namespace Rcpp;
 
 // concordanceVector_cpp
-IntegerVector concordanceVector_cpp(NumericVector x, NumericVector y);
+IntegerVector concordanceVector_cpp(const NumericVector& x, const NumericVector& y);
 RcppExport SEXP _jaspRegression_concordanceVector_cpp(SEXP xSEXP, SEXP ySEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< NumericVector >::type x(xSEXP);
-    Rcpp::traits::input_parameter< NumericVector >::type y(ySEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type x(xSEXP);
+    Rcpp::traits::input_parameter< const NumericVector& >::type y(ySEXP);
     rcpp_result_gen = Rcpp::wrap(concordanceVector_cpp(x, y));
     return rcpp_result_gen;
 END_RCPP
