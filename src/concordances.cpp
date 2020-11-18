@@ -1,12 +1,12 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-int sign(const double& x){
+int sign(double x){
 	return x == 0 ? 0 : x > 0 ? 1 : -1;
 }
 
 // Defined in Hollander, Wolfe & Chicken, Nonparametric Statistical Methods, 3ed., eq. (8.5), p. 394
-int Q(const double& a, const double& b, const double& c, const double& d) {
+int Q(double a, double b, double c, double d) {
 	return sign((d-b)*(c-a));
 }
 
