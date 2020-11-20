@@ -75,7 +75,6 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   # these output elements do not use statistics of a pre-calculated lm fit
   if (options$plotsPartialRegression && is.null(modelContainer[["partialPlotContainer"]]))
     .linregCreatePartialPlots(modelContainer, dataset, options, position = 16)
-
   if (options$descriptives && is.null(modelContainer[["descriptivesTable"]]))
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
 }
@@ -421,6 +420,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(model)) {
     .linregAddInterceptNotShownFootnote(partPartialTable, model, options)
+    if (length(options[["factors"]]) > 0L)
+      partPartialTable$addFootnote(gettext("Factors are omitted, as no meaningful information can be shown."))
     .linregFillPartialCorrelationsTable(partPartialTable, model, dataset, options)
   }
 
@@ -432,7 +433,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   for (i in indicesOfModelsWithPredictors) {
     isNewGroup <- i > 1
 
-    cors <- .linregGetPartAndPartialCorrelation(model[[i]]$predictors, dataset, options)
+    cors <- .linregGetPartAndPartialCorrelation(model[[i]]$fit, model[[i]]$predictors, dataset, options)
 
     for (j in seq_along(cors)) {
       partPartialTable$addRows(c(cors[[j]], list(.isNewGroup = isNewGroup, model = model[[i]]$title)))
@@ -566,8 +567,14 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(residualsVsCovContainer, index = .unvf(predictor), title = gettextf("Residuals vs. %s", .unvf(predictor)))
 
-    for (predictor in predictors)
-      .linregFillResidualsVsCovariatesPlot(residualsVsCovContainer[[.unvf(predictor)]], predictor, finalModel$fit, dataset)
+    for (predictor in predictors) {
+      if (.linregIsInteraction(predictor) && .linregContainsFactor(finalModel$fit, predictor)) {
+        # TODO: this is maybe possible when an interaction consists of only factors, but the plot won't be very pretty
+        residualsVsCovContainer[[.unvf(predictor)]]$setError(gettext("Cannot plot residuals versus an interaction with a factor."))
+      } else {
+        .linregFillResidualsVsCovariatesPlot(residualsVsCovContainer[[.unvf(predictor)]], predictor, finalModel$fit, dataset)
+      }
+    }
   }
 }
 
@@ -658,7 +665,11 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       .linregCreatePlotPlaceholder(partialPlotContainer, index = .unvf(predictor), title = gettextf("%1$s vs. %2$s", options$dependent, .unvf(predictor)))
 
     for (predictor in predictors) {
-      .linregFillPartialPlot(partialPlotContainer[[.unvf(predictor)]], predictor, predictors, dataset, options)
+      if (.linregContainsFactor(dataset, predictor)) {
+        partialPlotContainer[[.unvf(predictor)]]$setError(gettext("Partial plots are not supported for factors"))
+      } else {
+        .linregFillPartialPlot(partialPlotContainer[[.unvf(predictor)]], predictor, predictors, dataset, options)
+      }
     }
   }
 }
@@ -1229,7 +1240,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(unstandCoeff * sdIndependent / sdDependent)
 }
 
-.linregGetPartAndPartialCorrelation <- function(predictors, dataset, options) {
+.linregGetPartAndPartialCorrelation <- function(fit, predictors, dataset, options) {
+  predictors <- .linregRemoveFactors(fit, predictors)
   cors <- vector("list", length(predictors))
   for (i in seq_along(predictors)) {
 
@@ -1246,15 +1258,15 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     predictorsToControlFor <- setdiff(predictors, predictor)
     if (length(predictorsToControlFor) > 0) {
       formula1 <- .linregGetFormula(newVarName, predictorsToControlFor, includeConstant = TRUE)
-      formula2 <- .linregGetFormula(.v(options$dependent), predictorsToControlFor, includeConstant = TRUE)
+      formula2 <- .linregGetFormula(options$dependent, predictorsToControlFor, includeConstant = TRUE)
 
       cleanedPredictor <- residuals(lm(formula1, data = dataset))
       cleanedDependent <- residuals(lm(formula2, data = dataset))
 
-      partCor     <- cor(cleanedPredictor, dataset[[.v(options$dependent)]])
+      partCor     <- cor(cleanedPredictor, dataset[[options$dependent]])
       partialCor  <- cor(cleanedPredictor, cleanedDependent)
     } else { # if there are no variables to control for, return regular correlation
-      partCor <- partialCor <- cor(dataset[[.v(options$dependent)]], dataset[[newVarName]])
+      partCor <- partialCor <- cor(dataset[[options$dependent]], dataset[[newVarName]])
     }
 
     cors[[i]] <- list(
@@ -1264,7 +1276,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   }
 
-	return(cors)
+  return(cors)
 }
 
 .linregGetCovarianceMatrix <- function(fit, predictors, columns, includeConstant) {
@@ -1313,6 +1325,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     varianceProportions <- .linregGetVarianceProportions(fit)
 
     data <- data.frame(dimension = seq_along(names(fit$coefficients)), eigenvalue = eigenvalues, condIndex = conditionIndices)
+    colnames(varianceProportions) <- .linregMakePrettyNames(fit)
     data <- cbind(data, varianceProportions)
   }
 
@@ -1447,10 +1460,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (length(predictors) == 0)
     predictors <- NULL
 
-  weights <- dataset[[.v(options$wlsWeights)]]
+  weights <- dataset[[options$wlsWeights]]
 
   # Compute residuals dependent
-  formulaDep    <- .linregGetFormula(.v(options$dependent), predictors = predictors, includeConstant = TRUE)
+  formulaDep    <- .linregGetFormula(options$dependent, predictors = predictors, includeConstant = TRUE)
   fitDep        <- stats::lm(formula = formulaDep, data = dataset, weights = weights)
   residualsDep  <- residuals(fitDep)
 
@@ -1462,100 +1475,129 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(data.frame(residualsPred = residualsPred, residualsDep = residualsDep))
 }
 
-.linregPlotResiduals <- function(xVar = NULL, res = NULL, dfRes = Inf, xlab, ylab = gettext("Residuals"), cexPoints= 1.3, cexXAxis= 1.3, cexYAxis= 1.3, lwd= 2, lwdAxis=1.2, regressionLine = TRUE, confidenceIntervals = FALSE, confidenceIntervalsInterval = 0.95, predictionIntervals = FALSE, predictionIntervalsInterval = 0.95, standardizedResiduals = TRUE, intercept = 0, slope = 0) {
+.linregPlotResiduals <- function(xVar = NULL, res = NULL, dfRes = Inf, xlab, ylab = gettext("Residuals"), cexPoints= 1.3, cexXAxis= 1.3, cexYAxis= 1.3, lwd= 2, lwdAxis=1.2,
+                                 regressionLine = TRUE, confidenceIntervals = FALSE, confidenceIntervalsInterval = 0.95, predictionIntervals = FALSE, predictionIntervalsInterval = 0.95,
+                                 standardizedResiduals = TRUE, intercept = 0, slope = 0) {
+
+  # TODO: slope should consist of multiple values for factors with more than 2 levels
   d     <- data.frame(xx= xVar, yy= res)
   d     <- na.omit(d)
   xVar  <- d$xx
   res   <- d$yy
 
-  xlow    <- min(pretty(xVar))
-  xhigh   <- max(pretty(xVar))
-  xticks  <- pretty(c(xlow, xhigh))
-  ylow    <- min(pretty(res))
-  yhigh   <- max(pretty(res))
+  # construct here the x-axis scale which can be categorical or continuous
+  if (is.factor(xVar)) {
+    xScale <- ggplot2::scale_x_discrete(name = xlab)
+  } else {
+    xlow   <- min(pretty(xVar))
+    xhigh  <- max(pretty(xVar))
+    xticks <- pretty(c(xlow, xhigh))
+    xlabs  <- jaspGraphs::axesLabeller(xticks, digits = 3)
+    xScale <- ggplot2::scale_x_continuous(name = xlab, breaks = xticks, labels = xlabs)
+  }
 
+  # y-axis scale is always continuous (since the dependent variable in linear regression should be continous)
+  ylow   <- min(pretty(res))
+  yhigh  <- max(pretty(res))
   yticks <- pretty(c(ylow, yhigh, 0))
+  ylabs  <- jaspGraphs::axesLabeller(yticks, digits = 3)
 
-  # format axes labels
-  xLabs <- jaspGraphs::axesLabeller(xticks, digits = 3)
-  yLabs <- jaspGraphs::axesLabeller(yticks, digits = 3)
-
-  if (standardizedResiduals == TRUE) {
+  if (standardizedResiduals) {
 
     stAxisTmp               <- pretty( yticks / sd(res) )
     stAxisOriginalScaleTmp  <- stAxisTmp * sd(res)
     stAxisOriginalScale     <- stAxisOriginalScaleTmp[stAxisOriginalScaleTmp < max(yticks) & stAxisOriginalScaleTmp > min(yticks)]
     stAxis                  <- stAxisOriginalScale / sd(res)
 
-    dfYr <- data.frame(x = Inf, xend = Inf, y = stAxisOriginalScale[1],
-                       yend = stAxisOriginalScale[length(stAxisOriginalScale)])
-
-    p <- jaspGraphs::drawAxis(xName = xlab, yName = ylab, xBreaks = xticks, yBreaks = yticks, yLabels = yLabs, xLabels = xLabs, force = TRUE,
-                              secondaryYaxis = ggplot2::sec_axis(~.+0, breaks = stAxisOriginalScale, name = gettext("Standardized Residuals\n"),labels = stAxis))
-
-    p <- p + ggplot2::geom_segment(data = dfYr,
-                                   mapping = ggplot2::aes(x = x, y = y, xend = xend,yend = yend),
-                                   lwd = .3, position = ggplot2::PositionIdentity,
-                                   stat = ggplot2::StatIdentity, inherit.aes = FALSE, colour = "black")
+    yScaleSecAxis <- ggplot2::sec_axis(~.+0, breaks = stAxisOriginalScale, name = gettext("Standardized Residuals\n"),labels = stAxis)
 
   } else {
+    yScaleSecAxis <- ggplot2::waiver()
+  }
 
-    dfYr  <- data.frame(x = Inf, xend = Inf, y = yticks[1], yend = yticks[length(yticks)])
-    p     <- jaspGraphs::drawAxis(xName = xlab, yName = ylab, xBreaks = xticks, yBreaks = yticks, yLabels = yLabs, xLabels = xLabs, force = TRUE)
+  yScale <- ggplot2::scale_y_continuous(name = ylab, breaks = yticks, labels = ylabs, sec.axis = yScaleSecAxis)
+
+  regLine <- confidenceIntervalLines <- predictionIntervalLines <- NULL
+  if (regressionLine) {
+
+    regLine <- if (is.factor(xVar)) {
+      ggplot2::geom_line(
+        data = data.frame(x = as.numeric(unique(xVar)), y = intercept + slope),
+        mapping = ggplot2::aes(x = x, y = y),
+        col = "darkred", size = .5
+      )
+    } else {
+      ggplot2::geom_line(
+        data = data.frame(x = c(min(xticks), max(xticks)), y = intercept + slope * c(min(xticks), max(xticks))),
+        mapping = ggplot2::aes(x = x, y = y),
+        col = "darkred", size = .5
+      )
+    }
+
+    if (confidenceIntervals) {
+
+      seConf <- sqrt(sum(res^2) / dfRes) *
+        sqrt(1 / length(res) + (xVar - mean(xVar))^2 / sum((xVar - mean(xVar))^2))
+
+      ciConf <- 1 - (1 - confidenceIntervalsInterval)/2
+
+      upperConfInt <- (intercept + slope * xVar) + qt(ciConf, dfRes) * seConf
+      lowerConfInt <- (intercept + slope * xVar) - qt(ciConf, dfRes) * seConf
+
+      # ggplot2::geom_errorbar()
+
+      confidenceIntervalLines <- if (is.factor(xVar)) {
+        ggplot2::geom_errorbar(
+          data = data.frame(x = levels(xVar), ymax = upperConfInt, ymin = lowerConfInt),
+          mapping = ggplot2::aes(x = x, ymax = ymax, ymin = ymin),
+          colour = "darkblue", linetype = "dashed"
+        )
+      } else {
+        ggplot2::geom_line(
+          data = data.frame(x = xVar, y = c(upperConfInt, lowerConfInt), g = rep(1:2, c(length(upperConfInt), length(lowerConfInt)))),
+          mapping = ggplot2::aes(x = x, y = y, group = g),
+          colour = "darkblue", linetype = "dashed"
+        )
+      }
+
+    }
+
+    if (predictionIntervals) {
+
+      sePred <- sqrt(sum(res^2) / dfRes) *
+        sqrt(1 + 1 / length(res) + (xVar - mean(xVar))^2 / sum((xVar - mean(xVar))^2))
+
+      ciPred <- 1 - (1 - predictionIntervalsInterval)/2
+
+      upperPredInt <- (intercept + slope * xVar) + qt(ciPred, dfRes) * sePred
+      lowerPredInt <- (intercept + slope * xVar) - qt(ciPred, dfRes) * sePred
+
+      predictionIntervalLines <- if (is.factor(xVar)) {
+        ggplot2::geom_errorbar(
+          data = data.frame(x = levels(xVar), ymax = upperPredInt, ymin = lowerPredInt),
+          mapping = ggplot2::aes(x = x, ymax = ymax, ymin = ymin),
+          colour = "darkgreen", linetype = "longdash"
+        )
+      } else {
+        ggplot2::geom_line(data = data.frame(x = xVar, y = c(upperConfInt, lowerConfInt), g = rep(1:2, c(length(upperConfInt), length(lowerConfInt)))),
+                           mapping = ggplot2::aes(x = x, y = y, group = g),
+                           col = "darkblue", linetype = "dashed", size = 1)
+      }
+    }
+
 
   }
 
-  if (regressionLine)
-    p <- p + ggplot2::geom_line(data = data.frame(x = c(min(xticks), max(xticks)),
-                                                  y = intercept + slope * c(min(xticks), max(xticks))),
-                                mapping = ggplot2::aes(x = x, y = y), col = "darkred", size = .5)
+  residualPoints <- jaspGraphs::geom_point(data = data.frame(x = xVar, y = res), mapping = ggplot2::aes(x = x, y = y))
 
-  if (regressionLine && confidenceIntervals) {
-
-    seConf <- sqrt(sum(res^2) / dfRes) *
-      sqrt(1 / length(res) + (xVar - mean(xVar))^2 / sum((xVar - mean(xVar))^2))
-
-    ciConf <- 1 - (1 - confidenceIntervalsInterval)/2
-
-    upperConfInt <- (intercept + slope * xVar) + qt(ciConf, dfRes) *  seConf
-    lowerConfInt <- (intercept + slope * xVar) - qt(ciConf, dfRes) *  seConf
-
-    p <- p + ggplot2::geom_line(data = data.frame(x = xVar,
-                                                  y = upperConfInt),
-                                mapping = ggplot2::aes(x = x, y = y),
-                                col = "darkblue", linetype = "dashed", size = 1) +
-      ggplot2::geom_line(data = data.frame(x = xVar,
-                                           y = lowerConfInt),
-                                mapping = ggplot2::aes(x = x, y = y),
-                                col = "darkblue", linetype = "dashed", size = 1)
-
-  }
-
-  if (regressionLine && predictionIntervals) {
-
-    sePred <- sqrt(sum(res^2) / dfRes) *
-      sqrt(1 + 1 / length(res) + (xVar - mean(xVar))^2 / sum((xVar - mean(xVar))^2))
-
-    ciPred <- 1 - (1 - predictionIntervalsInterval)/2
-
-    upperPredInt <- (intercept + slope * xVar) + qt(ciPred, dfRes) *  sePred
-    lowerPredInt <- (intercept + slope * xVar) - qt(ciPred, dfRes) *  sePred
-
-    p <- p + ggplot2::geom_line(data = data.frame(x = xVar,
-                                                  y = upperPredInt),
-                                mapping = ggplot2::aes(x = x, y = y),
-                                col = "darkgreen", linetype = "longdash", size = 1) +
-      ggplot2::geom_line(data = data.frame(x = xVar,
-                                           y = lowerPredInt),
-                                mapping = ggplot2::aes(x = x, y = y),
-                                col = "darkgreen", linetype = "longdash", size = 1)
-
-  }
-
-  p <- jaspGraphs::drawPoints(p, dat = data.frame(x = xVar, y = res), size = 3)
-
-  # JASP theme
-  p <- jaspGraphs::themeJasp(p)
+  p <- ggplot2::ggplot() +
+    xScale + yScale +
+    regLine +
+    confidenceIntervalLines +
+    predictionIntervalLines +
+    residualPoints +
+    jaspGraphs::geom_rangeframe(sides = if (standardizedResiduals) "blr" else "bl") +
+    jaspGraphs::themeJaspRaw()
 
   return(p)
 }
@@ -1569,17 +1611,19 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   ylow    <- 0
   xticks  <- base::pretty(c(res, h$breaks), min.n= 3)
 
-  p <- jaspGraphs::drawAxis(xName = resName, yName = gettext("Density"), xBreaks = xticks, yBreaks = c(ylow, yhigh), force = TRUE, yLabels = NULL, xLabels = xticks)
-  p <- p + ggplot2::geom_histogram(data = data.frame(res), mapping = ggplot2::aes(x = res, y = ..density..),
-                                   binwidth = (h$breaks[2] - h$breaks[1]),
-                                   fill = "grey",
-                                   col = "black",
-                                   size = .3,
-                                   center = ((h$breaks[2] - h$breaks[1])/2))
-  p <- p + ggplot2::geom_line(data = data.frame(x = density$x, y = density$y), mapping = ggplot2::aes(x = x, y = y), lwd = .7, col = "black")
-  p <- p + ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
-
-  p <- jaspGraphs::themeJasp(p)
+  p <- ggplot2::ggplot() +
+    ggplot2::scale_x_continuous(name = resName,            breaks = xticks,         labels = xticks) +
+    ggplot2::scale_y_continuous(name = gettext("Density"), breaks = c(ylow, yhigh), labels = NULL) +
+    ggplot2::geom_histogram(
+      data = data.frame(res),
+      mapping = ggplot2::aes(x = res, y = ..density..),
+      binwidth = (h$breaks[2] - h$breaks[1]),
+      fill = "grey", col = "black", size = .3,
+      center = ((h$breaks[2] - h$breaks[1])/2)
+    ) +
+    ggplot2::geom_line(data = data.frame(x = density$x, y = density$y), mapping = ggplot2::aes(x = x, y = y), lwd = .7, col = "black") +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw()
 
   return(p)
 }
@@ -1607,12 +1651,20 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       yLabs[i] <- format(yticks[i], digits= 3, scientific = TRUE)
   }
 
-  p <- jaspGraphs::drawAxis(xName = gettext("Theoretical Quantiles"), yName = gettext("Standardized Residuals"), xBreaks = xticks, yBreaks = xticks, force = TRUE)
-  p <- p + ggplot2::geom_line(data = data.frame(x = c(min(xticks), max(xticks)), y = c(min(xticks), max(xticks))), mapping = ggplot2::aes(x = x, y = y), col = "darkred", size = 1)
-  p <- jaspGraphs::drawPoints(p, dat = data.frame(xVar, yVar), size = 3)
-
-  # JASP theme
-  p <- jaspGraphs::themeJasp(p)
+  p <- ggplot2::ggplot() +
+    ggplot2::scale_x_continuous(name = gettext("Theoretical Quantiles"), breaks = xticks) +
+    ggplot2::scale_y_continuous(name = gettext("Standardized Residuals"), breaks = xticks) +# TODO: why are xticks used here even though yticks exists?
+    ggplot2::geom_line(
+      data = data.frame(x = c(min(xticks), max(xticks)), y = c(min(xticks), max(xticks))),
+      mapping = ggplot2::aes(x = x, y = y),
+      col = "darkred", size = 1
+    ) +
+    jaspGraphs::geom_point(
+      data = data.frame(x = xVar, y = yVar),
+      mapping = ggplot2::aes(x = x, y = y)
+    ) +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw()
 
   return(p)
 }
@@ -1860,12 +1912,25 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(predictors[result])
 }
 
-.linregContainsFactor <- function(fit, predictors) {
+.linregContainsFactor <- function(x, predictors) {
+  UseMethod(".linregContainsFactor", x)
+}
+
+.linregContainsFactor.data.frame <- function(x, predictors) {
+  idx <- .linregIsInteraction(predictors)
+  if (any(idx))
+    predictors <- unique(unlist(strsplit(predictors, ":", fixed = TRUE), use.names = FALSE))
+
+  return(any(vapply(x[predictors], is.factor, logical(1L))))
+
+}
+
+.linregContainsFactor.lm <- function(x, predictors) {
   # returns TRUE if the predictor is a factor or if it is an interaction that contains a factor
-  terms <- terms(fit)
+  terms <- terms(x)
   dataClasses <- attr(terms, "dataClasses")
   factors     <- attr(terms, "factors")
-  consistsOf <- names(which(factors[, predictors[i]] == 1))
-  return(!any(dataClasses[consistsOf] == "factor"))
+  consistsOf <- names(which(factors[, predictors] == 1))
+  return(any(dataClasses[consistsOf] == "factor"))
 
 }
