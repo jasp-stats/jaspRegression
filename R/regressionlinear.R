@@ -286,12 +286,11 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     coeffTable$addColumnInfo(name = "tolerance",  title = gettext("Tolerance"),  type = "number", format = "dp:3", overtitle = overtitle)
     coeffTable$addColumnInfo(name = "VIF",        title = gettext("VIF"),        type = "number",                  overtitle = overtitle)
 
-    if (length(options[["factors"]]) > 0L)
-      coeffTable$addFootnote(colNames = c("VIF", "tolerance"), message = gettext("Collinearity statistics can only be computed for continuous predictors."))
   }
 
   if (!is.null(model)) {
     .linregAddFootnotePredictorsNeverIncluded(coeffTable, model, options)
+    .linregAddFootnoteFactors(coeffTable, options[["factors"]], options[["collinearityDiagnostics"]])
     .linregFillCoefficientsTable(coeffTable, model, dataset, options)
   }
 
@@ -310,6 +309,19 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
                          paste(neverIncludedPredictors, collapse=", "))
       coeffTable$addFootnote(message)
     }
+  }
+}
+
+.linregAddFootnoteFactors <- function(table, factors, collinearityDiagnostics = FALSE) {
+  if (length(factors) > 0L) {
+    if (collinearityDiagnostics) {
+      colNames <- c("standCoeff", "VIF", "tolerance")
+      message <- gettext("Standardized coefficients and collinearity statistics can only be computed for continuous predictors.")
+    } else {
+      colNames <- "standCoeff"
+      message <- gettext("Standardized coefficients can only be computed for continuous predictors.")
+    }
+    table$addFootnote(colNames = colNames, message = message)
   }
 }
 
@@ -350,13 +362,16 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   bootstrapCoeffTable$addFootnote(gettext("Bias corrected accelerated"), symbol = "\u002A")
 
   modelContainer[["bootstrapCoeffTable"]] <- bootstrapCoeffTable
-
-  if (!is.null(model))
+  if (!is.null(model)) {
+    # if (options[[regr]])
+    # .linregAddFootnoteFactors(bootstrapCoeffTable, options[["factors"]], FALSE)
     .linregFillBootstrapCoefficientsTable(bootstrapCoeffTable, modelContainer, model, dataset, options)
+  }
 }
 
 .linregFillBootstrapCoefficientsTable <- function(bootstrapCoeffTable, modelContainer, model, dataset, options) {
-  metaCols <- .linregGetTitlesAndIsNewGroups(model, options$includeConstant)
+
+  metaCols <- .linregGetTitlesAndIsNewGroups(model)
 
   if (is.null(modelContainer[["bootstrapCoefficients"]])) {
     startProgressbar(options$regressionCoefficientsBootstrappingReplicates * length(model))
@@ -382,9 +397,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     if (is.null(model[[i]]$fit))
       next
 
-    numPredictors <- length(model[[i]]$predictors)
-    if (includeConstant)
-      numPredictors <- numPredictors + 1
+    numPredictors <- length(stats::coef(model[[i]]$fit))
 
     isNewGroupCurrent <- i > 1
     if (numPredictors > 1)
@@ -1070,7 +1083,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     hasFactors <- length(factors) > 0L
 
     missingCoeffs <- NULL
-    if (any(is.na(fit$coefficients)))
+    if (anyNA(fit$coefficients))
       missingCoeffs <- names(fit$coefficients)[which(is.na(fit$coefficients))]
 
     estimates     <- summary(fit)$coefficients
@@ -1163,27 +1176,26 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   data <- data.frame(unstandCoeff = numeric(0), bias = numeric(0), SE = numeric(0), lower = numeric(0), upper = numeric(0))
 
   if (!is.null(fit)) {
-    if (options$includeConstant)
-      predictors <- c("(Intercept)", predictors)
 
     missingCoeffs <- NULL
-    if (any(is.na(fit$coefficients)))
-      missingCoeffs <- names(fit$coefficients)[which(is.na(fit$coefficients))]
+    coefNames <- names(coef(fit))
+    if (anyNA(fit$coefficients))
+      missingCoeffs <- coefNames[which(is.na(coef(fit)))]
 
 
     summary <- boot::boot(data = dataset, statistic = .bootstrapping,
                           R = options$regressionCoefficientsBootstrappingReplicates,
                           formula = formula(fit),
-                          wlsWeights = .v(options$wlsWeights))
+                          wlsWeights = options$wlsWeights)
 
     coefficients  <- matrixStats::colMedians(summary$t, na.rm = TRUE)
     bias          <- colMeans(summary$t, na.rm = TRUE) - summary$t0
     stdErrors     <- matrixStats::colSds(summary$t, na.rm = TRUE)
 
-    for (i in seq_along(predictors)) {
-      predictor <- predictors[[i]]
+    for (i in seq_along(coefNames)) {
+      coefName <- coefNames[[i]]
 
-      if (predictor %in% missingCoeffs) {
+      if (coefName %in% missingCoeffs) {
         data[i, ] <- rep(NaN, ncol(data))
         next
       }
@@ -1192,7 +1204,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       data[i, ] <- c(coefficients[i], bias[i], stdErrors[i], ci$bca[4], ci$bca[5])
     }
 
-    data[["name"]] <- .unvf(predictors)
+    data[["name"]] <- .linregMakePrettyNames(fit)
   }
 
   return(data)
@@ -1848,6 +1860,16 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   # TODO: replace interation with stuff from jaspBase
   # TODO: ensure that regex matches the start of the strings for predictors
+
+  # exception for intercept only model
+  if (length(predictors) == 0L && identical(model, "(Intercept)")) {
+    return(list(
+      paramsClean = model,
+      levelsClean = "",
+      paramsRaw   = model,
+      levelsRaw   = ""
+    ))
+  }
 
   orderedPredictors <- predictors[order(nchar(predictors))]
   # escape the parentheses
