@@ -78,7 +78,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (options$descriptives && is.null(modelContainer[["descriptivesTable"]]))
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
 }
-
+#TODO: capture crashes with many interactions between factors!
 .linregReadDataset <- function(dataset, options) {
   if (!is.null(dataset))
     return(dataset)
@@ -1858,9 +1858,6 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
 .linregGetParametersAndLevels.default <- function(model, predictors) {
 
-  # TODO: replace interation with stuff from jaspBase
-  # TODO: ensure that regex matches the start of the strings for predictors
-
   # exception for intercept only model
   if (length(predictors) == 0L && identical(model, "(Intercept)")) {
     return(list(
@@ -1883,12 +1880,12 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (length(levelsRaw[[1L]]) == 1L && levelsRaw[[1L]] == "(Intercept)")
     levelsRaw[[1L]] <- ""
 
-  levelsClean <- gsub(":", "\u2009\u273b\u2009", lvls)
+  levelsClean <- jaspBase::gsubInteractionSymbol(lvls)
 
   splitRnms <- strsplit(model, ":")
   allPredsRegex <- paste0("^(", regexAnyPredictor, ").*")
-  paramsRaw <- lapply(splitRnms, function(x) gsub(allPredsRegex, "\\1", x))
-  paramsClean <- unlist(lapply(paramsRaw, paste, collapse = "\u2009\u273b\u2009"), use.names = FALSE)
+  paramsRaw <- lapply(splitRnms, gsub, pattern = allPredsRegex, replacement = "\\1")
+  paramsClean <- unlist(lapply(paramsRaw, paste, collapse = jaspBase::interactionSymbol), use.names = FALSE)
   return(list(
     paramsClean = paramsClean,
     levelsClean = levelsClean,
