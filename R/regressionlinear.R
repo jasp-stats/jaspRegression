@@ -105,6 +105,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
         if (hasInteractions)
           return(gettext("Stepwise procedures are not supported for models containing interaction terms"))
+
+        if (any(vapply(dataset, is.factor, logical(1L))))
+          return(gettext("Stepwise procedures are not supported for models containing factors"))
       },
 
       checkIfPEntryIsValid <- function() {
@@ -325,16 +328,27 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   }
 }
 
+.linregAddFootnoteAliasedCoefficients <- function(table, rows) {
+  table$addFootnote(gettext("Missing coefficients are undefined because of singularities. Check the data for anything out of order!"))
+}
+
 .linregFillCoefficientsTable <- function(coeffTable, model, dataset, options) {
   for (i in seq_along(model)) {
     isNewGroup <- i > 1
 
-    coefficients <- .linregGetCoefficients(model[[i]]$fit, model[[i]]$predictors, dataset, options)
+    temp <- .linregGetCoefficients(model[[i]]$fit, model[[i]]$predictors, dataset, options)
+    coefficients <- temp[["coefficients"]]
+    footnoteRows <- temp[["footnote"]]
 
     for (j in seq_along(coefficients)) {
       coeffTable$addRows(c(coefficients[[j]], list(.isNewGroup = isNewGroup, model = model[[i]]$title)))
       isNewGroup <- FALSE
     }
+
+    # TODO: should this be done only after joining all obtained footnotes?
+    if (!is.null(footnoteRows))
+      .linregAddFootnoteAliasedCoefficients(coeffTable, footnoteRows)
+
   }
 }
 
@@ -362,11 +376,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   bootstrapCoeffTable$addFootnote(gettext("Bias corrected accelerated"), symbol = "\u002A")
 
   modelContainer[["bootstrapCoeffTable"]] <- bootstrapCoeffTable
-  if (!is.null(model)) {
-    # if (options[[regr]])
-    # .linregAddFootnoteFactors(bootstrapCoeffTable, options[["factors"]], FALSE)
+  if (!is.null(model))
     .linregFillBootstrapCoefficientsTable(bootstrapCoeffTable, modelContainer, model, dataset, options)
-  }
+
 }
 
 .linregFillBootstrapCoefficientsTable <- function(bootstrapCoeffTable, modelContainer, model, dataset, options) {
@@ -377,11 +389,18 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     startProgressbar(options$regressionCoefficientsBootstrappingReplicates * length(model))
     bootstrapCoeffTable$setData(metaCols)
 
+    anyMissingValues <- FALSE
     coefficients <- NULL
+
     for (i in seq_along(model)) {
-      coefficients <- rbind(coefficients, .linregGetBootstrapCoefficients(model[[i]]$fit, model[[i]]$predictors, dataset, options))
+      data <- .linregGetBootstrapCoefficients(model[[i]]$fit, dataset, options)
+      anyMissingValues <- anyNA(data[-1L])
+      coefficients <- rbind(coefficients, data)
       bootstrapCoeffTable$setData(.linregCombineMetaWithData(metaCols, coefficients))
     }
+
+    if (anyMissingValues)
+      bootstrapCoeffTable$addFootnote(gettext("Some bootstrap coefficients or confidence intervals could not be computed."))
 
     modelContainer[["bootstrapCoefficients"]] <- createJaspState(coefficients)
     modelContainer[["bootstrapCoefficients"]]$dependOn(c("regressionCoefficientsBootstrappingReplicates", "regressionCoefficientsConfidenceIntervalsInterval"))
@@ -464,7 +483,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   covMatTable$addColumnInfo(name = "name",  title = "",               type = "string")
 
   if (!is.null(model)) {
-    .linregAddPredictorsAsColumns(covMatTable, model, options$modelTerms, includeConstant = FALSE)
+    .linregAddPredictorsAsColumns(covMatTable, model, includeIntercept = FALSE)
     .linregAddInterceptNotShownFootnote(covMatTable, model, options)
     .linregFillCoefficientsCovarianceMatrixTable(covMatTable, model, options)
   }
@@ -473,12 +492,14 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregFillCoefficientsCovarianceMatrixTable <- function(covMatTable, model, options) {
-  columns <- .linregGetPredictorColumnNames(model, options$modelTerms)
+  rawNames    <- setdiff(.linregGetParameterNames(model), "(Intercept)") # names used by R
+  prettyNames <- setdiff(.linregMakePrettyNames(model),   "(Intercept)") # names shown in JASP
+
   indicesOfModelsWithPredictors <- .linregGetIndicesOfModelsWithPredictors(model, options)
   for (i in indicesOfModelsWithPredictors) {
     isNewGroup <- i > 1
 
-    covData <- .linregGetCovarianceMatrix(model[[i]]$fit, model[[i]]$predictors, columns, options$includeConstant)
+    covData <- .linregGetCovarianceMatrix(model[[i]]$fit, rawNames, prettyNames)
     if (nrow(covData) > 0) {
       covData <- cbind(covData, .isNewGroup = c(isNewGroup, rep(F, nrow(covData) - 1)), model = model[[i]]$title)
       covMatTable$addRows(covData)
@@ -497,7 +518,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   collDiagTable$addColumnInfo(name = "condIndex",  title = gettext("Condition Index"), type = "number")
 
   if (!is.null(model)) {
-    .linregAddPredictorsAsColumns(collDiagTable, model, options$modelTerms, options$includeConstant, overtitle = gettext("Variance Proportions"), format = "dp:3")
+    .linregAddPredictorsAsColumns(collDiagTable, model, options[["includeConstant"]], overtitle = gettext("Variance Proportions"), format = "dp:3")
     .linregAddInterceptNotShownFootnote(collDiagTable, model, options)
     .linregFillCollinearityDiagnosticsTable(collDiagTable, model, options)
   }
@@ -511,9 +532,15 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   for (i in indicesOfModelsWithPredictors) {
     isNewGroup <- i > 1
 
-    collDiagData <- .linregGetCollinearityDiagnostics(model[[i]]$fit, columns, options$includeConstant)
-    collDiagData <- cbind(collDiagData, .isNewGroup = c(isNewGroup, rep(F, nrow(collDiagData) - 1)), model = model[[i]]$title)
+    collDiagData <- try(.linregGetCollinearityDiagnostics(model[[i]]$fit, columns, options$includeConstant))
+    if (jaspBase::isTryError(collDiagData)) {
 
+      collDiagData <- cbind(.isNewGroup = isNewGroup, model = model[[i]]$title)
+      collDiagTable$addFootnote(gettext("Some collinearity diagnostics could not be computed. This is expected if the model contains singularities."))
+
+    } else {
+      collDiagData <- cbind(collDiagData, .isNewGroup = c(isNewGroup, rep(F, nrow(collDiagData) - 1)), model = model[[i]]$title)
+    }
     collDiagTable$addRows(collDiagData)
   }
 }
@@ -902,7 +929,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 .linregTryToAddOnePredictor <- function(prevModel = NULL, dependent, candidatePredictors, predictorsInNull, data, options, weights) {
   fValues <- numeric(length(candidatePredictors))
   pValues <- numeric(length(candidatePredictors))
-
+browser()
   for (i in seq_along(candidatePredictors)) {
     formula <- .linregGetFormula(dependent, c(prevModel$predictors, candidatePredictors[i]), options$includeConstant)
     fit     <- lm(formula, data = data, weights = weights, x = TRUE)
@@ -988,14 +1015,18 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetDurBinWatsonTestResults <- function(fit, weights) {
-    durbinWatson <- list(r = NaN, dw = NaN, p = NaN)
+  durbinWatson <- list(r = NaN, dw = NaN, p = NaN)
 
-    if (!is.null(fit)) {
-      durbinWatson <- car::durbinWatsonTest(fit, alternative = c("two.sided"))
+  if (!is.null(fit)) {
+    durbinWatson <- car::durbinWatsonTest(fit, alternative = c("two.sided"))
 
-      if (weights == "") # if regression is not weighted, calculate p-value with lmtest (car method is unstable)
-        durbinWatson[["p"]] <- lmtest::dwtest(fit, alternative = c("two.sided"))$p.value
-    }
+    if (weights == "") # if regression is not weighted, calculate p-value with lmtest (car method is unstable)
+      # TODO: this can fail when there are many interactions between factors. Do we want to show a footnote about that?
+      durbinWatson[["p"]] <- tryCatch(
+        lmtest::dwtest(fit, alternative = c("two.sided"))$p.value,
+        error = function(e) NaN
+      )
+  }
 
   return(durbinWatson)
 }
@@ -1082,18 +1113,24 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     factors <- options[["factors"]]
     hasFactors <- length(factors) > 0L
 
-    missingCoeffs <- NULL
-    if (anyNA(fit$coefficients))
-      missingCoeffs <- names(fit$coefficients)[which(is.na(fit$coefficients))]
+    summ          <- summary(fit)
+    missingCoeffs <- summ[["aliased"]]
 
-    estimates     <- summary(fit)$coefficients
+    # adapted from stats:::print.summary.lm -- automatically handles missing values
+    estimates <- matrix(NaN, length(missingCoeffs), 4, dimnames = list(names(missingCoeffs), colnames(coef(summ))))
+    estimates[!missingCoeffs, ] <- coef(summ)
     confInterval  <- confint(fit, level = options$regressionCoefficientsConfidenceIntervalsInterval)
+    confInterval[is.na(confInterval)] <- NaN
 
-    info <- .linregGetParametersAndLevels(.linregGetParameterNames(fit), predictors)
+    info <- .linregGetParametersAndLevels(fit)
     names <- .linregMakePrettyNames(info)
     rawNames <- info[["paramsRaw"]]
     names[c(FALSE, names[-1L] == names[-length(names)])] <- ""
-    levels <- info[["levelsClean"]]
+
+    # show footnote for missing coefficients
+    footnote <- NULL
+    if (any(missingCoeffs))
+      footnote <- list(rows = names[missingCoeffs])
 
 
     rows <- vector("list", nrow(estimates))
@@ -1110,18 +1147,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
     for (i in seq_along(names)) {
 
-      # TODO: figure out why this if statement existed
-      # if (predictor %in% missingCoeffs) {
-      #   rows[[i]] <- list(
-      #     name = names[i], level = levels[i],
-      #     unstandCoeff = NaN, SE = NaN, standCoeff = NaN, t = NaN, p = NaN, lower = NaN, upper = NaN, tolerance = NaN, VIF = NaN, vovksellke = NaN
-      #   )
-      #   next
-      # }
-
       unstandCoeff <- estimates[i, "Estimate"]
       if (!identical(rawNames[[i]], "(Intercept)") && !any(dataClasses[rawNames[[i]]] == "factor")) {
-        # these don't exist for the intercept or categorical parameters
+        # these don't exist for the intercept or categorical predictors
 
         predictor <- paste(rawNames[[i]], collapse = ":")
 
@@ -1131,7 +1159,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
       } else {
 
-        standCoeff <- tolerance <- VIF <- NULL
+        standCoeff <- tolerance  <- VIF <- NULL
 
       }
 
@@ -1155,10 +1183,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   }
 
-  return(rows)
+  return(list(coefficients = rows, footnote = footnote))
 }
 
-.linregGetBootstrapCoefficients <- function(fit, predictors, dataset, options) {
+.linregGetBootstrapCoefficients <- function(fit, dataset, options) {
   .bootstrapping <- function(data, indices, formula, wlsWeights) {
     progressbarTick()
 
@@ -1182,7 +1210,6 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     if (anyNA(fit$coefficients))
       missingCoeffs <- coefNames[which(is.na(coef(fit)))]
 
-
     summary <- boot::boot(data = dataset, statistic = .bootstrapping,
                           R = options$regressionCoefficientsBootstrappingReplicates,
                           formula = formula(fit),
@@ -1200,7 +1227,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
         next
       }
 
-      ci        <- boot::boot.ci(summary, type = "bca", conf = options$regressionCoefficientsConfidenceIntervalsInterval, index = i)
+      ci <- try(boot::boot.ci(summary, type = "bca", conf = options$regressionCoefficientsConfidenceIntervalsInterval, index = i))
+      if (jaspBase::isTryError(ci))
+        ci <- list(bca = rep(NaN, 5L))
+
       data[i, ] <- c(coefficients[i], bias[i], stdErrors[i], ci$bca[4], ci$bca[5])
     }
 
@@ -1291,37 +1321,20 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(cors)
 }
 
-.linregGetCovarianceMatrix <- function(fit, predictors, columns, includeConstant) {
+.linregGetCovarianceMatrix <- function(fit, rawNames, prettyNames) {
   data <- data.frame()
 
   if (!is.null(fit)) {
-    covmatrix                       <- vcov(fit)
+
+    namesInModel <- setdiff(names(coef(fit)), "(Intercept)")
+    covmatrix <- matrix(NA_real_, length(namesInModel), length(rawNames), dimnames = list(namesInModel, rawNames))
+    covmatrix[namesInModel, namesInModel] <- vcov(fit)[namesInModel, namesInModel]
     covmatrix[lower.tri(covmatrix)] <- NA
 
-    prettyNames <- .linregMakePrettyNames(fit)
-    # Check whether variables in the regression model are redundant
-    # TODO: I don't think the is.na(fit$coefficients[i]) is ever TRUE...
-    for (i in seq_along(names(fit$coefficients))) {
-      if (is.na(fit$coefficients[i])) {
-
-        # If so, covmatrix does not include this variable -> Add row and column with NA as "values"
-        covmatrix <- cbind(covmatrix, NA)
-        covmatrix <- rbind(covmatrix, NA)
-
-        name                <- prettyNames[i]
-        rownames(covmatrix) <- c(rownames(covmatrix), name)
-        colnames(covmatrix) <- c(colnames(covmatrix), name)
-        # Add footnote for this case
-        #.addFootnote(footnotes = footnotes, text = "One or more of the variables specified in the regression model are redundant. Therefore, they are dropped from the model covariance matrix.", symbol = "\u207A") # TODO add this footnote again if this ever occurs?
-
-        # Add footnote symbol to name of the redundant variable (if-statement needed as intercept is part of the coefficients but not of cov.matrix)
-        #  rownames.covmatrix[i] <- paste0(rownames.covmatrix[i], "\u207A")
-      }
-    }
-
-    if (nrow(covmatrix) > 0) {
+    if (nrow(covmatrix) > 0L) {
       colnames(covmatrix) <- prettyNames
-      data <- cbind(data.frame(name = prettyNames), covmatrix)
+      names <- prettyNames[rawNames %in% namesInModel]
+      data <- cbind(data.frame(name = names), covmatrix)
     }
   }
 
@@ -1437,10 +1450,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       type            <- types[i]
 
       residuals[[i]][["type"]] <- typesTranslated[[type]]
-      residuals[[i]][["min"]]  <- min( valuesPerType[[type]])
-      residuals[[i]][["max"]]  <- max( valuesPerType[[type]])
-      residuals[[i]][["mean"]] <- mean(valuesPerType[[type]])
-      residuals[[i]][["SD"]]   <- sd(  valuesPerType[[type]])
+      residuals[[i]][["min"]]  <- min( valuesPerType[[type]], na.rm = TRUE)
+      residuals[[i]][["max"]]  <- max( valuesPerType[[type]], na.rm = TRUE)
+      residuals[[i]][["mean"]] <- mean(valuesPerType[[type]], na.rm = TRUE)
+      residuals[[i]][["SD"]]   <- sd(  valuesPerType[[type]], na.rm = TRUE)
       residuals[[i]][["N"]]    <- N
     }
   }
@@ -1513,6 +1526,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   yhigh  <- max(pretty(res))
   yticks <- pretty(c(ylow, yhigh, 0))
   ylabs  <- jaspGraphs::axesLabeller(yticks, digits = 3)
+  ylim   <- range(yticks)
 
   if (standardizedResiduals) {
 
@@ -1527,7 +1541,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     yScaleSecAxis <- ggplot2::waiver()
   }
 
-  yScale <- ggplot2::scale_y_continuous(name = ylab, breaks = yticks, labels = ylabs, sec.axis = yScaleSecAxis)
+  yScale <- ggplot2::scale_y_continuous(name = ylab, breaks = yticks, labels = ylabs, limits = ylim, sec.axis = yScaleSecAxis)
 
   regLine <- confidenceIntervalLines <- predictionIntervalLines <- NULL
   if (regressionLine) {
@@ -1609,7 +1623,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     predictionIntervalLines +
     residualPoints +
     jaspGraphs::geom_rangeframe(sides = if (standardizedResiduals) "blr" else "bl") +
-    jaspGraphs::themeJaspRaw()
+    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
 
   return(p)
 }
@@ -1624,7 +1638,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   xticks  <- base::pretty(c(res, h$breaks), min.n= 3)
 
   p <- ggplot2::ggplot() +
-    ggplot2::scale_x_continuous(name = resName,            breaks = xticks,         labels = xticks) +
+    ggplot2::scale_x_continuous(name = resName,            breaks = xticks,         labels = xticks, limits = range(xticks)) +
     ggplot2::scale_y_continuous(name = gettext("Density"), breaks = c(ylow, yhigh), labels = NULL) +
     ggplot2::geom_histogram(
       data = data.frame(res),
@@ -1635,7 +1649,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     ) +
     ggplot2::geom_line(data = data.frame(x = density$x, y = density$y), mapping = ggplot2::aes(x = x, y = y), lwd = .7, col = "black") +
     jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw()
+    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2) +
+    ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
 
   return(p)
 }
@@ -1676,7 +1691,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       mapping = ggplot2::aes(x = x, y = y)
     ) +
     jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw()
+    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
 
   return(p)
 }
@@ -1772,16 +1787,11 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(usedParameterNames)
 }
 
-.linregAddPredictorsAsColumns <- function(jaspTable, model, modelTerms, includeConstant = TRUE, type = "number", format = NULL, overtitle = NULL) {
-  predictors <- .linregGetPredictorColumnNames(model, modelTerms)
-  titles <- NULL
-  if (length(predictors) > 0) {
+.linregAddPredictorsAsColumns <- function(jaspTable, model, includeIntercept = TRUE, type = "number", format = NULL, overtitle = NULL) {
 
-    info <- .linregGetParametersAndLevels(.linregGetParameterNames(model), predictors)
-    titles <- .linregMakePrettyNames(info)
-    predictors <- c("(Intercept)", predictors)
-
-  }
+  titles <- .linregMakePrettyNames(model)
+  if (!includeIntercept)
+    titles <- titles[-1L]
 
   for (title in titles)
     jaspTable$addColumnInfo(name = title, title = title, type = type, format = format, overtitle = overtitle)
@@ -1852,7 +1862,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetParametersAndLevels.lm <- function(model) {
-  predictors <- all.vars(terms(model))[-1L]
+  predictors <- all.vars(formula(model))[-1L]
   .linregGetParametersAndLevels(.linregGetParameterNames(model), predictors)
 }
 
@@ -1877,6 +1887,12 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   levelsRaw   <- strsplit(lvls, ":")
   levelsRaw[lengths(levelsRaw) == 0] <- list("")
+  # the above works except for n-way interactions between continuous predictors there needs to be one more empty level
+  # so that the number of levels matches the number of predictors. The regex below finds these interactions and adds an
+  # extra "" to the levels.
+  for (i in grep("^(:+)$", lvls))
+    levelsRaw[[i]] <- c(levelsRaw[[i]], "")
+
   if (length(levelsRaw[[1L]]) == 1L && levelsRaw[[1L]] == "(Intercept)")
     levelsRaw[[1L]] <- ""
 
@@ -1894,6 +1910,11 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   ))
 }
 
+#' Change R names into pretty names, e.g., PredictorLevel ->
+#'
+#' @param info either an lm object, a list where each sub element $fit contains an lm object, or the result of .linregGetParametersAndLevels.
+#'
+#' @details For example "PredictorLevel" becomes "Predictor" Level
 .linregMakePrettyNames <- function(info) {
   UseMethod(".linregMakePrettyNames", info)
 }
@@ -1902,7 +1923,13 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   .linregMakePrettyNames(.linregGetParametersAndLevels(info))
 }
 
-.linregMakePrettyNames.default <- function(info) {
+.linregMakePrettyNames.list <- function(info) {
+
+  if (is.null(names(info)) && !is.null(info[[1L]][["fit"]])) {
+    # we could also distinguish between these cases by giving the return value of .linregGetParametersAndLevels a class.
+    return(unique(unlist(lapply(info, function(x) .linregMakePrettyNames.lm(x[["fit"]])), use.names = FALSE)))
+  }
+
   title <- character(length(info[["paramsRaw"]]))
   for (j in seq_along(title)) {
 
