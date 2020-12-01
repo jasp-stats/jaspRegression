@@ -929,7 +929,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 .linregTryToAddOnePredictor <- function(prevModel = NULL, dependent, candidatePredictors, predictorsInNull, data, options, weights) {
   fValues <- numeric(length(candidatePredictors))
   pValues <- numeric(length(candidatePredictors))
-browser()
+
   for (i in seq_along(candidatePredictors)) {
     formula <- .linregGetFormula(dependent, c(prevModel$predictors, candidatePredictors[i]), options$includeConstant)
     fit     <- lm(formula, data = data, weights = weights, x = TRUE)
