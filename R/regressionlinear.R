@@ -1605,7 +1605,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
           colour = "darkgreen", linetype = "longdash"
         )
       } else {
-        ggplot2::geom_line(data = data.frame(x = xVar, y = c(upperConfInt, lowerConfInt), g = rep(1:2, c(length(upperConfInt), length(lowerConfInt)))),
+        ggplot2::geom_line(data = data.frame(x = xVar, y = c(upperPredInt, lowerPredInt), g = rep(1:2, c(length(upperPredInt), length(lowerPredInt)))),
                            mapping = ggplot2::aes(x = x, y = y, group = g),
                            col = "darkblue", linetype = "dashed", size = 1)
       }
