@@ -135,13 +135,15 @@
 }
 
 # TODO(Alexander):  ADAPTED from Simon
-# 
-.bCorScatter <- function(x, y, options, xBreaks = NULL, yBreaks = NULL, xName = NULL, yName = NULL, 
-                         drawAxes = TRUE) {
-  
-  if (!options[["pearson"]]) {
+#
+.bCorScatter <- function(x, y, xBreaks = NULL, yBreaks = NULL, xName = NULL, yName = NULL,
+                         drawAxes = TRUE, useRanks = FALSE) {
+
+  if (useRanks) {
     x <- rank(x)
     y <- rank(y)
+    xName <- .addRankToVariableName(xName)
+    yName <- .addRankToVariableName(yName)
   }
   
   # TODO(Alexander): Ask Simon: Why does it return an error if I add drawAxes = drawAxes? 
@@ -180,3 +182,9 @@
   return(allRowNames[itemNames])
 }
 
+.addRankToVariableName <- function(name) {
+  if (is.null(name))
+    return(NULL)
+  else
+    return(gettextf("Ranks of %s", name))
+}
