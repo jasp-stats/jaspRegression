@@ -145,10 +145,10 @@
     xName <- .addRankToVariableName(xName)
     yName <- .addRankToVariableName(yName)
   }
-  
-  # TODO(Alexander): Ask Simon: Why does it return an error if I add drawAxes = drawAxes? 
-  # 
-  .plotScatter(xVar = x, yVar = y, xBreaks = xBreaks, yBreaks = yBreaks, xName = xName, yName = yName) 
+
+  # TODO(Alexander): Ask Simon: Why does it return an error if I add drawAxes = drawAxes?
+  #
+  .plotScatter(xVar = x, yVar = y, xBreaks = xBreaks, yBreaks = yBreaks, xName = xName, yName = yName)
 }
 
 # Stolen from Simon's correlation.R: 
