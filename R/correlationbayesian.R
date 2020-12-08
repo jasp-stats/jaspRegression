@@ -522,10 +522,10 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   matrixPlot <- createJaspPlot(title=gettext("Bayesian Correlation Matrix Plot"))
   matrixPlot$position <- 2
 
-  matrixDependencies <- c("variables", "plotMatrix", "plotMatrixDensities", "plotMatrixPosteriors", "missingValues", "setSeed", "seed")
+  matrixDependencies <- c("variables", "plotMatrix", "plotMatrixDensities", "plotMatrixPosteriors", "missingValues", "setSeed", "seed", "pearson")
 
   if (options[["plotMatrixPosteriors"]])
-    matrixDependencies <- c(matrixDependencies, "pearson", "spearman", "kendall", "alternative", "kappa")
+    matrixDependencies <- c(matrixDependencies, "spearman", "kendall", "alternative", "kappa")
 
   matrixPlot$dependOn(matrixDependencies)
 
@@ -556,6 +556,8 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   nVariables <- length(vars)
   plotMat <- matrix(list(), nVariables, nVariables)
 
+  useRanks <- !options[["pearson"]]
+
   for (row in seq_len(nVariables-1)) {
     for (col in row:nVariables) {
       var1 <- vars[row]
@@ -580,7 +582,8 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         } else {
           subData <- dataset[, .v(c(var1, var2)), drop=FALSE]
           subData <- subData[complete.cases(subData), , drop=FALSE]
-          scatterPlot <- .bCorScatter(x=subData[[.v(var2)]], y=subData[[.v(var1)]], options)
+          scatterPlot <- .bCorScatter(x=subData[[.v(var2)]], y=subData[[.v(var1)]],
+                                      useRanks = useRanks)
         }
 
         plotMat[[row, col]] <- scatterPlot
@@ -624,15 +627,15 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   labelPos[1, 1] <- .55
   labelPos[4, 2] <- .65
 
-  obj <- try(jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = vars, topLabels = vars,
+  labels <- if (useRanks) .addRankToVariableName(vars) else vars
+
+  obj <- try(jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = labels, topLabels = labels,
                                       scaleXYlabels = 0.9, labelPos=labelPos))
 
   if (isTryError(obj)) {
     matrixPlot$setError(.extractErrorMessage(obj))
-    # plotResult$setError(.extractErrorMessage(obj))
   } else {
     matrixPlot$plotObject <- obj
-    # plotResult <- obj
   }
   return()
 }
@@ -877,7 +880,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     bfPlotPriorPosteriorDependencies <- c(bfPlotPriorPosteriorDependencies, "ciValue")
 
   plotItemDependencies <- list(
-    "plotScatter"=c("plotScatter", "plotScatterAddInfo"),
+    "plotScatter"=c("plotScatter", "plotScatterAddInfo", "pairsMethod"),
     "plotPriorPosterior"=c("plotPriorPosterior", bfPlotPriorPosteriorDependencies,
                            "plotPriorPosteriorAddTestingInfo", "plotPriorPosteriorAddEstimationInfo"),
     "plotBfRobustness"=c("plotBfRobustness", "plotBfRobustnessAddInfo", bfPlotDependencies),
@@ -965,7 +968,8 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         if (item == "plotScatter") {
           subData <- dataset[, .v(c(var1, var2)), drop=FALSE]
           subData <- subData[complete.cases(subData), , drop=FALSE]
-          plot <- try(.bCorScatter(x=subData[[.v(var1)]], y=subData[[.v(var2)]], xName=var1, yName=var2, options))
+          plot <- try(.bCorScatter(x=subData[[.v(var1)]], y=subData[[.v(var2)]], xName=var1, yName=var2,
+                                   useRanks = options[["pairsMethod"]] != "pearson"))
         } else if (item == "plotPriorPosterior") {
           plot <- .drawPosteriorPlotCorBayes(jaspResults, corModel, options, thisMethod, purpose="pairs", pairName)
         } else if (item == "plotBfRobustness") {
