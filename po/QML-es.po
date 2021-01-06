@@ -1,0 +1,1302 @@
+msgid ""
+msgstr ""
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Source-Language: American English\n"
+"X-Qt-Contexts: true\n"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Regression"
+msgstr "Regresión"
+
+#, fuzzy
+msgctxt "Description|"
+msgid ""
+"This module offers the standard Frequentist and Bayesian Regression analyses."
+msgstr ""
+"Este módulo ofrece los análisis estándar de regresión frecuentista y "
+"bayesiana."
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Classical"
+msgstr "Clásico"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Correlation"
+msgstr "Correlación"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Linear Regression"
+msgstr "Regresión lineal"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Logistic Regression"
+msgstr "Regresión logística"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Bayesian"
+msgstr "Bayesiano"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Bayesian Correlation"
+msgstr "Correlación bayesiana"
+
+#, fuzzy
+msgctxt "Description|"
+msgid "Bayesian Linear Regression"
+msgstr "Regresión lineal bayesiana"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Variables"
+msgstr "Variables"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Condition on"
+msgstr "Condición en"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Sample Correlation Coefficient"
+msgstr "Coeficiente de correlación muestral"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Pearson's r"
+msgstr "R de Pearson"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Spearman's rho"
+msgstr "Rho de Spearman"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Kendall's tau-b"
+msgstr "Tau-b de Kendall"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Additional Options"
+msgstr "Opciones adicionales"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Display pairwise"
+msgstr "Mostrar por pares"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Report significance"
+msgstr "Informe de importancia"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Flag significant correlations"
+msgstr "Marcar correlaciones significativas"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Confidence intervals"
+msgstr "Intervalos de confianza"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Interval"
+msgstr "Intervalo"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Vovk-Sellke maximum p-ratio"
+msgstr "Relación p máxima de Vovk-Sellke"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Sample size"
+msgstr "Tamaño de la muestra"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Alt. Hypothesis"
+msgstr "Alt. Hipótesis"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Correlated"
+msgstr "Correlacionado"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Correlated positively"
+msgstr "Correlacionado positivamente"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Correlated negatively"
+msgstr "Correlacionado negativamente"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Plots"
+msgstr "Parcelas"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Scatter plots"
+msgstr "Gráfico de dispersión"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Densities for variables"
+msgstr "Densidades para variables"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Prediction intervals"
+msgstr "Intervalos de predicción"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Heatmap"
+msgstr "Mapa de calor"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Assumption Checks"
+msgstr "Verificaciones de supuestos"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Multivariate Normality"
+msgstr "Normalidad multivariante"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Shapiro"
+msgstr "Shapiro"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Royston"
+msgstr "Royston"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Mardia"
+msgstr "Mardia"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Energy"
+msgstr "Energía"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Pairwise Normality"
+msgstr "Normalidad por pares"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Options"
+msgstr "Opciones"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Means and standard deviations"
+msgstr "Medias y desviaciones estándar"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Cross-product deviations and covariances"
+msgstr "Desviaciones y covarianzas entre productos"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Missing Values"
+msgstr "Valores faltantes"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Exclude cases pairwise"
+msgstr "Excluir casos por pares"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "Exclude cases listwise"
+msgstr "Excluir casos según la lista"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Population Correlation Coefficient"
+msgstr "Coeficiente de correlación poblacional"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Pearson's rho"
+msgstr "Rho de Pearson"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Spearman's rho"
+msgstr "Rho de Spearman"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Kendall's tau-b"
+msgstr "Tau-b de Kendall"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Additional Options"
+msgstr "Opciones adicionales"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Display pairwise table"
+msgstr "Mostrar tabla por pares"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Report Bayes factors"
+msgstr "Informe los factores de Bayes"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Flag supported correlations"
+msgstr "Marcar correlaciones compatibles"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Sample size"
+msgstr "Tamaño de la muestra"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Posterior median"
+msgstr "Mediana posterior"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Credible intervals"
+msgstr "Intervalos creíbles"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Interval"
+msgstr "Intervalo"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Alt. Hypothesis"
+msgstr "Alt. Hipótesis"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Correlated"
+msgstr "Correlacionado"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Correlated positively"
+msgstr "Correlacionado positivamente"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Correlated negatively"
+msgstr "Correlacionado negativamente"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Plots"
+msgstr "Parcelas"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Correlation matrix"
+msgstr "Matriz de correlación"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Densities for variables"
+msgstr "Densidades para variables"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Posteriors under H₁"
+msgstr "Posteriores debajo de H"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Prior"
+msgstr "Anterior"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Stretched beta prior width"
+msgstr "Ancho previo beta estirado"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Plot Individual Pairs"
+msgstr "Trazar pares individuales"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Correlation coefficient to plot"
+msgstr "Coeficiente de correlación para trazar"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Kendall's tau"
+msgstr "Tau de Kendall"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Scatterplot"
+msgstr "Gráfico de dispersión"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Robustness check"
+msgstr "Comprobación de robustez"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Prior and posterior"
+msgstr "Previo y posterior"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Estimation info"
+msgstr "Información de estimación"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Testing info"
+msgstr "Información de prueba"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Bayes factor robustness check"
+msgstr "Comprobación de la robustez del factor de Bayes"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Additional info"
+msgstr "información adicional"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Sequential analysis"
+msgstr "Análisis secuencial"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Options"
+msgstr "Opciones"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Missing Values"
+msgstr "Valores faltantes"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Exclude cases pairwise"
+msgstr "Excluir casos por pares"
+
+#, fuzzy
+msgctxt "CorrelationBayesian|"
+msgid "Exclude cases listwise"
+msgstr "Excluir casos según la lista"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Dependent Variable"
+msgstr "Variable dependiente"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Method"
+msgstr "Método"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Enter"
+msgstr "Entrar"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Backward"
+msgstr "Hacia atrás"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Forward"
+msgstr "Adelante"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Stepwise"
+msgstr "Paso a paso"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Covariates"
+msgstr "Covariables"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Factors"
+msgstr "Factores"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "WLS Weights (optional)"
+msgstr "Pesos WLS (opcional)"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Model"
+msgstr "Modelo"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Components"
+msgstr "Componentes"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Include intercept"
+msgstr "Incluir intercepción"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Regression Coefficients"
+msgstr "Coeficientes de regresión"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Estimates"
+msgstr "Estimados"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "From"
+msgstr "De"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "bootstraps"
+msgstr "bootstraps"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Confidence intervals"
+msgstr "Intervalos de confianza"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Covariance matrix"
+msgstr "Matriz de covarianza"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Vovk-Sellke maximum p-ratio"
+msgstr "Relación p máxima de Vovk-Sellke"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Model fit"
+msgstr "Ajuste del modelo"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "R squared change"
+msgstr "Cambio de R cuadrado"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Descriptives"
+msgstr "Descriptivos"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Part and partial correlations"
+msgstr "Correlaciones parciales y parciales"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Collinearity diagnostics"
+msgstr "Diagnóstico de colinealidad"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Residuals"
+msgstr "Derechos residuales de autor"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Durbin-Watson"
+msgstr "Durbin-Watson"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Casewise diagnostics"
+msgstr "Diagnósticos por caso"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Standard residual >"
+msgstr "Residual estándar>"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Cook's distance >"
+msgstr "Distancia del cocinero>"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "All"
+msgstr "Todas"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Method Specification"
+msgstr "Especificación del método"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Stepping Method Criteria"
+msgstr "Criterios del método escalonado"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Use p value"
+msgstr "Usar valor p"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Entry"
+msgstr "Entrada"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Removal"
+msgstr "Eliminación"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Use F value"
+msgstr "Usar valor F"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Missing Values"
+msgstr "Valores faltantes"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Exclude cases listwise"
+msgstr "Excluir casos según la lista"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Exclude cases pairwise"
+msgstr "Excluir casos por pares"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Plots"
+msgstr "Parcelas"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Residuals Plots"
+msgstr "Parcelas de residuos"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Residuals vs. dependent"
+msgstr "Residuos vs. dependientes"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Residuals vs. covariates"
+msgstr "Residuales frente a covariables"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Residuals vs. predicted"
+msgstr "Residuos vs. predichos"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Residuals vs. histogram"
+msgstr "Residuos vs. histograma"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Standardized residuals"
+msgstr "Residuos estandarizados"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Q-Q plot standardized residuals"
+msgstr "Gráfica Q-Q de residuos estandarizados"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Partial plots"
+msgstr "Parcelas parciales"
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Prediction intervals"
+msgstr "Intervalos de predicción"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Dependent Variable"
+msgstr "Variable dependiente"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Covariates"
+msgstr "Covariables"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "WLS Weights (optional)"
+msgstr "Pesos WLS (opcional)"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Output"
+msgstr "Salida"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Posterior summary"
+msgstr "Resumen posterior"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Across all models"
+msgstr "En todos los modelos"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Across matched models"
+msgstr "A través de modelos combinados"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Plot of coefficients"
+msgstr "Gráfico de coeficientes"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Omit intercept"
+msgstr "Omitir intercepción"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Best model"
+msgstr "Mejor modelo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Most complex model"
+msgstr "Modelo más complejo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Median model"
+msgstr "Modelo mediano"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Model averaged"
+msgstr "Modelo promediado"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Credible interval"
+msgstr "Intervalo creíble"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Order"
+msgstr "Orden"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Compare to best model"
+msgstr "Comparar con el mejor modelo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Compare to null model"
+msgstr "Comparar con el modelo nulo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Limit No. Models Shown"
+msgstr "Número límite de modelos mostrados"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "No"
+msgstr "No"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Yes, show best"
+msgstr "Sí, muestra mejor"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Data"
+msgstr "Datos"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Descriptives"
+msgstr "Descriptivos"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Model"
+msgstr "Modelo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Components"
+msgstr "Componentes"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Plots"
+msgstr "Parcelas"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Coefficients"
+msgstr "Coeficientes"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Inclusion probabilities"
+msgstr "Probabilidades de inclusión"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Marginal posterior distributions"
+msgstr "Distribuciones posteriores marginales"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Models"
+msgstr "Modelos"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Log posterior odds"
+msgstr "Registrar probabilidades posteriores"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Log(P(data|M)) vs. model size"
+msgstr "Log (P (datos | M)) frente al tamaño del modelo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Model probabilities"
+msgstr "Probabilidades del modelo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals"
+msgstr "Derechos residuales de autor"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals vs. fitted"
+msgstr "Residuos vs. ajustados"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Q-Q plot of model averaged residuals"
+msgstr "Gráfico Q-Q de los residuos promediados del modelo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Advanced Options"
+msgstr "Opciones avanzadas"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Prior"
+msgstr "Anterior"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "AIC"
+msgstr "AIC"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "BIC"
+msgstr "BIC"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "EB-global"
+msgstr "EB-global"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "EB-local"
+msgstr "EB-local"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "g-prior"
+msgstr "g-previo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Hyper-g"
+msgstr "Hyper-g"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Hyper-g-Laplace"
+msgstr "Hyper-g-Laplace"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Hyper-g-n"
+msgstr "Hyper-g-n"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "alpha"
+msgstr "alfa"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "JZS"
+msgstr "JZS"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "r scale"
+msgstr "escala r"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Model Prior"
+msgstr "Modelo anterior"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Beta binomial"
+msgstr "Binomio beta"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "a"
+msgstr "una"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "b"
+msgstr "si"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform"
+msgstr "Uniforme"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Wilson"
+msgstr "Wilson"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "λ"
+msgstr "λ"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Castillo"
+msgstr "Castillo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "u"
+msgstr "tu"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Bernoulli"
+msgstr "Bernoulli"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "p"
+msgstr "pags"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Sampling Method"
+msgstr "Método de muestreo"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "BAS"
+msgstr "BAS"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "No. models"
+msgstr "No modelos"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "MCMC"
+msgstr "MCMC"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "No. samples"
+msgstr "No muestras"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "Numerical Accuracy"
+msgstr "Precisión numérica"
+
+#, fuzzy
+msgctxt "RegressionLinearBayesian|"
+msgid "No. samples for credible interval"
+msgstr "No de muestras para un intervalo creíble"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Dependent Variable"
+msgstr "Variable dependiente"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Method"
+msgstr "Método"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Enter"
+msgstr "Entrar"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Backward"
+msgstr "Hacia atrás"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Forward"
+msgstr "Adelante"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Stepwise"
+msgstr "Paso a paso"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Covariates"
+msgstr "Covariables"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Factors"
+msgstr "Factores"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "WLS Weights (optional)"
+msgstr "Pesos WLS (opcional)"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Model"
+msgstr "Modelo"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Components"
+msgstr "Componentes"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Include intercept"
+msgstr "Incluir intercepción"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Statistics"
+msgstr "Estadísticas"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Descriptives"
+msgstr "Descriptivos"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Factor descriptives"
+msgstr "Descriptivos del factor"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Performance Diagnostics"
+msgstr "Diagnóstico de rendimiento"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Confusion matrix"
+msgstr "Matriz de confusión"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Proportions"
+msgstr "Dimensiones"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Regression Coefficients"
+msgstr "Coeficientes de regresión"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Estimates"
+msgstr "Estimados"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "From"
+msgstr "De"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "bootstraps"
+msgstr "bootstraps"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Standardized coefficients"
+msgstr "Coeficientes estandarizados"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Odds ratios"
+msgstr "Razones de probabilidades"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Confidence intervals"
+msgstr "Intervalos de confianza"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Interval"
+msgstr "Intervalo"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Odds ratio scale"
+msgstr "Escala de razón de probabilidades"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Robust standard errors"
+msgstr "Errores estándar robustos"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Vovk-Sellke maximum p-ratio"
+msgstr "Relación p máxima de Vovk-Sellke"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Performance Metrics"
+msgstr "Métricas de rendimiento"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "AUC"
+msgstr "AUC"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Sensitivity / Recall"
+msgstr "Sensibilidad / Recuperación"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Specificity"
+msgstr "Especificidad"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Precision"
+msgstr "Precisión"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "F-measure"
+msgstr "Medida F"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Brier score"
+msgstr "Puntuación de Brier"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "H-measure"
+msgstr "Medida H"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Residuals"
+msgstr "Derechos residuales de autor"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Casewise diagnostics"
+msgstr "Diagnósticos por caso"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Standard residual >"
+msgstr "Residual estándar>"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Cook's distance >"
+msgstr "Distancia del cocinero>"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "All"
+msgstr "Todas"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Plots"
+msgstr "Parcelas"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Inferential Plots"
+msgstr "Gráficos inferenciales"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Display conditional estimates plots"
+msgstr "Mostrar gráficos de estimaciones condicionales"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Confidence interval"
+msgstr "Intervalo de confianza"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Show data points"
+msgstr "Mostrar puntos de datos"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Residual Plots"
+msgstr "Parcelas residuales"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Predicted - residual plot"
+msgstr "Predicción - gráfico residual"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Predictor - residual plots"
+msgstr "Predictor - gráficos de residuos"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Squared Pearson residuals plot"
+msgstr "Gráfico de residuos de Pearson al cuadrado"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Residual Type"
+msgstr "Tipo residual"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Deviance"
+msgstr "Desviación"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Pearson"
+msgstr "Pearson"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Performance Plots"
+msgstr "Gráficos de rendimiento"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "ROC plot"
+msgstr "Gráfico de la República de China"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Cutoff step"
+msgstr "Paso de corte"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Add cutoff labels"
+msgstr "Agregar etiquetas de corte"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "PR plot"
+msgstr "Parcela PR"
