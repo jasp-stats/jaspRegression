@@ -19,8 +19,6 @@
   </clipPath>
 </defs>
 <rect x='82.70' y='20.71' width='568.45' height='486.38' style='stroke-width: 10.67; stroke: none;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
-<polyline points='108.54,484.99 625.32,42.82 ' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
-<line x1='651.16' y1='470.53' x2='651.16' y2='57.28' style='stroke-width: 0.64; stroke-linecap: butt;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
 <polyline points='108.54,263.91 625.32,263.91 ' style='stroke-width: 1.07; stroke: #8B0000; stroke-linecap: butt;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
 <circle cx='448.02' cy='116.40' r='3.56pt' style='stroke-width: 0.71; fill: #BEBEBE;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
 <circle cx='446.59' cy='424.48' r='3.56pt' style='stroke-width: 0.71; fill: #BEBEBE;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
@@ -224,6 +222,7 @@
 <circle cx='414.48' cy='407.18' r='3.56pt' style='stroke-width: 0.71; fill: #BEBEBE;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
 <line x1='108.22' y1='507.10' x2='625.64' y2='507.10' style='stroke-width: 0.64; stroke-linecap: butt;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
 <line x1='82.70' y1='485.31' x2='82.70' y2='42.50' style='stroke-width: 0.64; stroke-linecap: butt;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
+<line x1='651.16' y1='470.94' x2='651.16' y2='56.87' style='stroke-width: 0.64; stroke-linecap: butt;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
 <rect x='82.70' y='20.71' width='568.45' height='486.38' style='stroke-width: 0.00; stroke: none;' clip-path='url(#cpODIuNzB8NjUxLjE2fDUwNy4xMHwyMC43MQ==)' />
 <defs>
   <clipPath id='cpMC4wMHw3MjAuMDB8NTc2LjAwfDAuMDA='>
