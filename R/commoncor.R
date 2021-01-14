@@ -88,9 +88,9 @@
 }
 
 .bCorCitationsList <- list("pearson"=c("Ly, A., Verhagen, A. J. & Wagenmakers, E.-J. (2016). Harold Jeffreys's Default Bayes Factor Hypothesis Tests: Explanation, Extension, and Application in Psychology. Journal of Mathematical Psychology, 72, 19-32.",
-                                       "Ly, A., Marsman, M., Wagenmakers, E.-J. (2018). Analytic Posteriors for Pearson’s Correlation Coefficient. Statistica Neerlandica, 72(1), 4-13."),
-                           "kendall"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2018). Bayesian Inference for Kendall’s Rank Correlation Coefficient. The American Statistician, 72(4), 303-308.", 
-                                       "van Doorn, J.B., Ly, A., Marsman, M., & Wagenmakers, E.-J. (2019). Bayesian Estimation of Kendall’s tau Using a Latent Normal Approach. Statistics and Probability Letters, 145, 268-272."),
+                                       "Ly, A., Marsman, M., Wagenmakers, E.-J. (2018). Analytic Posteriors for Pearson's Correlation Coefficient. Statistica Neerlandica, 72(1), 4-13."),
+                           "kendall"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2018). Bayesian Inference for Kendall's Rank Correlation Coefficient. The American Statistician, 72(4), 303-308.", 
+                                       "van Doorn, J.B., Ly, A., Marsman, M., & Wagenmakers, E.-J. (2019). Bayesian Estimation of Kendall's tau Using a Latent Normal Approach. Statistics and Probability Letters, 145, 268-272."),
                            "spearman"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (in press). Bayesian Rank-Based Hypothesis Testing for the Rank Sum Test, the Signed Rank Test, and Spearman's rho. Manuscript submitted for publication")
 )
 
@@ -135,18 +135,20 @@
 }
 
 # TODO(Alexander):  ADAPTED from Simon
-# 
-.bCorScatter <- function(x, y, options, xBreaks = NULL, yBreaks = NULL, xName = NULL, yName = NULL, 
-                         drawAxes = TRUE) {
-  
-  if (!options[["pearson"]]) {
+#
+.bCorScatter <- function(x, y, xBreaks = NULL, yBreaks = NULL, xName = NULL, yName = NULL,
+                         drawAxes = TRUE, useRanks = FALSE) {
+
+  if (useRanks) {
     x <- rank(x)
     y <- rank(y)
+    xName <- .addRankToVariableName(xName)
+    yName <- .addRankToVariableName(yName)
   }
-  
-  # TODO(Alexander): Ask Simon: Why does it return an error if I add drawAxes = drawAxes? 
-  # 
-  .plotScatter(xVar = x, yVar = y, xBreaks = xBreaks, yBreaks = yBreaks, xName = xName, yName = yName) 
+
+  # TODO(Alexander): Ask Simon: Why does it return an error if I add drawAxes = drawAxes?
+  #
+  .plotScatter(xVar = x, yVar = y, xBreaks = xBreaks, yBreaks = yBreaks, xName = xName, yName = yName)
 }
 
 # Stolen from Simon's correlation.R: 
@@ -180,3 +182,9 @@
   return(allRowNames[itemNames])
 }
 
+.addRankToVariableName <- function(name) {
+  if (is.null(name))
+    return(NULL)
+  else
+    return(gettextf("Ranks of %s", name))
+}

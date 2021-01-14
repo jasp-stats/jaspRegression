@@ -34,7 +34,7 @@ test_that("Bayesian Correlation Table results match", {
 
 # Note(Alexander): The difference in the Kendall's version is quite small. The differences in ci is due to me using
 # a larger number of samplers.
-# 
+#
 # test_that("Main table results match", {
 #   options <- jaspTools::analysisOptions("CorrelationBayesian")
 #   options$variables <- c("contcor1", "contcor2")
@@ -95,7 +95,7 @@ test_that("Analysis handles errors", {
 })
 
 
-# Bayesian correlation pairs 
+# Bayesian correlation pairs
 test_that("Bayesian Pearson Correlation PAIRWISE table results match", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
   options$variables <- list("contcor1", "contcor2")
@@ -143,4 +143,36 @@ test_that("Scatterplot matches", {
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contcor1-contcor2"]][["collection"]][["pairsPlotCollection_contcor1-contcor2_plotScatter"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "scatterplot", dir="CorrelationBayesian")
+})
+
+options <- analysisOptions("CorrelationBayesian")
+options$variables <- list("facFive", "contBinom")
+options$pearson <- FALSE
+options$kendall <- TRUE
+options$displayPairwise <- TRUE
+options$plotMatrix <- TRUE
+options$pairsMethod <- "kendall"
+options$pairs <- list(c("facFive", "contBinom"))
+options$kappa <- 1
+set.seed(1)
+results <- runAnalysis("CorrelationBayesian", "test.csv", options)
+
+
+test_that("Bayesian Kendall's Tau Correlations table results match", {
+	table <- results[["results"]][["corBayesTable"]][["data"]]
+	jaspTools::expect_equal_tables(table,
+		list(0.309897604337613, -0.0896993701844904, "-", "facFive", "contBinom"
+			))
+})
+
+test_that("Bayesian Correlation Matrix Plot with ranks matches", {
+	plotName <- results[["results"]][["matrixPlot"]][["data"]]
+	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+	jaspTools::expect_equal_plots(testPlot, "bayesian-correlation-matrix-plot-with-ranks", dir="CorrelationBayesian")
+})
+
+test_that("Scatterplot with ranks matches", {
+	plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contBinom-facFive"]][["collection"]][["pairsPlotCollection_contBinom-facFive_plotScatter"]][["data"]]
+	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+	jaspTools::expect_equal_plots(testPlot, "scatterplot-with-ranks", dir="CorrelationBayesian")
 })

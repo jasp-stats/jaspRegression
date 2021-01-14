@@ -22,10 +22,10 @@ import JASP.Controls 1.0
 
 Form
 {
-	
+
 	VariablesForm
 	{
-		AvailableVariablesList { name: "allVariablesList" }		
+		AvailableVariablesList { name: "allVariablesList" }
 		AssignedVariablesList { name: "dependent";	title: qsTr("Dependent Variable");	suggestedColumns: ["scale"]; singleVariable: true;		}
 		DropDown
 		{
@@ -36,18 +36,18 @@ Form
 				{ label: qsTr("Backward"),	value: "backward"},
 				{ label: qsTr("Forward"),	value: "forward"},
 				{ label: qsTr("Stepwise"),	value: "stepwise"}
-			]			
+			]
 		}
-		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");			allowedColumns: ["scale"]								}
-        AssignedVariablesList { name: "factors";	title: qsTr("Factors");				suggestedColumns: ["ordinal", "nominal"]; debug: true	}
-		AssignedVariablesList { name: "wlsWeights";	title: qsTr("WLS Weights (optional)"); suggestedColumns: ["scale"]; singleVariable: true	}
+		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");				allowedColumns: ["scale"]								}
+		AssignedVariablesList { name: "factors";	title: qsTr("Factors");					allowedColumns: ["ordinal", "nominal", "nominalText"];	}
+		AssignedVariablesList { name: "wlsWeights";	title: qsTr("WLS Weights (optional)");	allowedColumns: ["scale"]; singleVariable: true			}
 	}
-	
-	
+
+
 	Section
 	{
 		title: qsTr("Model")
-		
+
 		VariablesForm
 		{
 			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
@@ -60,14 +60,14 @@ Form
 			}
 			ModelTermsList { width: parent.width * 5 / 9 }
 		}
-		
+
 		CheckBox { name: "includeConstant"; label: qsTr("Include intercept"); checked: true }
 	}
-	
+
 	Section
 	{
 		title: qsTr("Statistics")
-		
+
 		Group
 		{
 			title: qsTr("Regression Coefficients")
@@ -117,7 +117,7 @@ Form
 				CheckBox { name: "collinearityDiagnostics";		label: qsTr("Collinearity diagnostics")		}
 			}
 		}
-		
+
 		Group
 		{
 			title: qsTr("Residuals")
@@ -145,14 +145,14 @@ Form
 				}
 			}
 		}
-		
+
 	}
-	
+
 	Section
 	{
 		title: qsTr("Method Specification")
 		columns: 1
-		
+
 		RadioButtonGroup
 		{
 			name: "steppingMethodCriteriaType"
@@ -172,7 +172,7 @@ Form
 				DoubleField { name: "steppingMethodCriteriaFRemoval";	label: qsTr("Removal");	fieldWidth: 60; defaultValue: 2.71; decimals: 3 }
 			}
 		}
-		
+
 		RadioButtonGroup
 		{
 			name: "missingValues"
@@ -182,11 +182,11 @@ Form
 			RadioButton { value: "excludeCasesPairwise"; label: qsTr("Exclude cases pairwise")					}
 		}
 	}
-	
+
 	Section
 	{
 		title: qsTr("Plots")
-		
+
 		Group
 		{
 			title: qsTr("Residuals Plots")

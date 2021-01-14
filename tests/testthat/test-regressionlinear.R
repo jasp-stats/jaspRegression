@@ -520,15 +520,16 @@ test_that("Fields Book - Chapter 3 results match", {
   options$plotResidualsPredicted <- TRUE
   options$plotsPartialRegression <- TRUE
   options$plotResidualsQQ <- TRUE
+  set.seed(1)
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "SocialAnxietyRegression.csv", options)
   figure11a <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
-  #expect_equal_plots(figure11a, "?", dir="RegressionLinear") # This command needs to be updated
-  figure11b <- results[["state"]][["figures"]][[3]][["obj"]] # Partial Plot Adverts
-  #expect_equal_plots(figure11b, "?", dir="RegressionLinear") # This command needs to be updated
-  figure11c <- results[["state"]][["figures"]][[4]][["obj"]] # Partial Plot Airplay
-  #expect_equal_plots(figure11c, "?", dir="RegressionLinear") # This command needs to be updated
+  expect_equal_plots(figure11a, "socialAnxiety-residuals-vs.-predicted", dir="RegressionLinear") # This command needs to be updated
+  figure11b <- results[["state"]][["figures"]][[3]][["obj"]] # Partial Plot tosca
+  expect_equal_plots(figure11b, "socialAnxiety-partialplot-tosca", dir="RegressionLinear") # This command needs to be updated
+  figure11c <- results[["state"]][["figures"]][[4]][["obj"]] # Partial Plot obq
+  expect_equal_plots(figure11c, "socialAnxiety-partialplot-obq", dir="RegressionLinear") # This command needs to be updated
   figure11d <- results[["state"]][["figures"]][[2]][["obj"]] # Q-Q-Plot
-  #expect_equal_plots(figure11d, "?", dir="RegressionLinear") # This command needs to be updated
+  expect_equal_plots(figure11d, "socialAnxiety-QQ-plot", dir="RegressionLinear") # This command needs to be updated
 })
 
 
