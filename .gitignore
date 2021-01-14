@@ -6,6 +6,7 @@
 # Compiled Dynamic libraries
 *.so
 *.dylib
+*.dll
 
 # History files
 .Rhistory
@@ -61,3 +62,4 @@ state
 .Rproj.user/*
 Rproj.user
 .Rproj.user
+
