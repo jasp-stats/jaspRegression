@@ -1395,25 +1395,6 @@ Correlation <- function(jaspResults, dataset, options){
   return(c(lower.ci,upper.ci))
 }
 
-### Utility functions for nonparametric confidence intervals ###
-.concordanceFunction <- function(i, j) {
-  concordanceIndicator <- 0
-  ij <- (j[2] - i[2]) * (j[1] - i[1])
-  if (ij > 0) concordanceIndicator <- 1
-  if (ij < 0) concordanceIndicator <- -1
-  return(concordanceIndicator)
-}
-
-.addConcordances <- function(x, y, i) {
-  concordanceIndex <- 0
-  for (k in 1:length(x)) {
-    if (k != i) {
-      concordanceIndex <- concordanceIndex + .concordanceFunction(c(x[i], y[i]), c(x[k], y[k]))
-    }
-  }
-  return(concordanceIndex)
-}
-
 .createNonparametricConfidenceIntervals <- function(x, y, obsCor, hypothesis = "two-sided", confLevel = 0.95, method = "kendall"){
   # Based on sections 8.3 and 8.4 of Hollander, Wolfe & Chicken, Nonparametric Statistical Methods, 3e.
   alpha <- 1 - confLevel
@@ -1427,12 +1408,8 @@ Correlation <- function(jaspResults, dataset, options){
                        "greater" = "correlatedPositively",
                        "less" = "correlatedNegatively",
                        hypothesis)
- if (method == "kendall") {
-   concordanceSumsVector <- numeric(n)
-    for (i in 1:n) {
-      # progressbarTick() #Started in .corrComputeResults
-      concordanceSumsVector[i] <- .addConcordances(x, y, i)
-    }
+  if (method == "kendall") {
+    concordanceSumsVector <- concordanceVector_cpp(x, y)
     sigmaHatSq <- 2 * (n-2) * var(concordanceSumsVector) / (n*(n-1))
     sigmaHatSq <- sigmaHatSq + 1 - (obsCor)^2
     sigmaHatSq <- sigmaHatSq * 2 / (n*(n-1))

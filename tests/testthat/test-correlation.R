@@ -184,10 +184,45 @@ test_that("Pearson's partial correlation correct", {
   options$displayPairwise <- TRUE
   options$variables <- list("Exam", "Anxiety")
   options$conditioningVariables <- list("Revise")
-  
+
   results <- jaspTools::runAnalysis("Correlation", "Exam Anxiety.csv", options)
   table <- results[["results"]][["mainTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                       list(-0.246665820246124, 0.0124458135120866, "-", "Exam", "Anxiety"
                       ))
+})
+
+test_that("Concordance function works", {
+  # old r functions
+  concordanceFunction <- function(i, j) {
+    concordanceIndicator <- 0
+    ij <- (j[2] - i[2]) * (j[1] - i[1])
+    if (ij > 0) concordanceIndicator <- 1
+    if (ij < 0) concordanceIndicator <- -1
+    return(concordanceIndicator)
+  }
+  addConcordances <- function(x, y, i) {
+    concordanceIndex <- 0
+    for (k in 1:length(x)) {
+      if (k != i) {
+        concordanceIndex <- concordanceIndex + concordanceFunction(c(x[i], y[i]), c(x[k], y[k]))
+      }
+    }
+    return(concordanceIndex)
+  }
+  concordanceVector <- function(x, y){
+    n <- length(x)
+    concordanceSumsVector <- numeric(n)
+    for (i in 1:n) {
+      concordanceSumsVector[i] <- addConcordances(x, y, i)
+    }
+    return(concordanceSumsVector)
+  }
+
+  x <- rnorm(10)
+  y <- rnorm(10)
+
+  testthat::expect_equal(
+    concordanceVector(x, y),
+    jaspRegression:::concordanceVector_cpp(x, y))
 })

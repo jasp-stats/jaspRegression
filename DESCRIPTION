@@ -26,10 +26,13 @@ Imports:
   matrixStats,
   mdscore,
   ppcor,
-  purrr
+  purrr,
+  Rcpp
 Remotes:
   AlexanderLyNL/bstats,
   jasp-stats/jaspAnova,
   jasp-stats/jaspBase,
   jasp-stats/jaspDescriptives,
   jasp-stats/jaspGraphs
+LinkingTo:
+  Rcpp
