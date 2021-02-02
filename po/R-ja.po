@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2021-01-06 10:14\n"
-"PO-Revision-Date: 2021-02-01 08:41+0000\n"
+"PO-Revision-Date: 2021-02-03 07:41+0000\n"
 "Last-Translator: Yoshihiko Kunisato <ykunisato@psy.senshu-u.ac.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -405,16 +405,16 @@ msgid "Standardized"
 msgstr ""
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "%.0f%% CI"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "下"
 
 msgid "Upper"
-msgstr ""
+msgstr "上"
 
 msgid "Collinearity Statistics"
 msgstr ""
@@ -546,7 +546,7 @@ msgid "Descriptives"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "標準誤差"
 
 msgid "H%s"
 msgstr ""
@@ -744,7 +744,7 @@ msgid "Coefficients"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "推定"
 
 msgid "Standardized%s"
 msgstr ""
