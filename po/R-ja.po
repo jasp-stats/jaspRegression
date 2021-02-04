@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2021-01-06 10:14\n"
-"PO-Revision-Date: 2021-02-03 07:41+0000\n"
+"PO-Revision-Date: 2021-02-05 20:42+0000\n"
 "Last-Translator: Yoshihiko Kunisato <ykunisato@psy.senshu-u.ac.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -768,7 +768,7 @@ msgid "Standardized estimates represent estimates where the continuous predictor
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "バイアス補正を実施した。"
 
 msgid "Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."
 msgstr ""
@@ -808,6 +808,8 @@ msgstr ""
 
 msgid "Some confidence intervals could not be computed.\nPossibly too few bootstrap replicates."
 msgstr ""
+"いくつかの信頼区間が計算できませんでした。\n"
+"ブートストラップの再標本が少なすぎる可能性があります。"
 
 msgid "Residual plots"
 msgstr ""
