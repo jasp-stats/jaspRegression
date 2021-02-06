@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2021-01-06 10:14\n"
-"PO-Revision-Date: 2021-02-05 20:42+0000\n"
+"PO-Revision-Date: 2021-02-07 06:50+0000\n"
 "Last-Translator: Yoshihiko Kunisato <ykunisato@psy.senshu-u.ac.jp>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -351,10 +351,10 @@ msgid "F Change"
 msgstr ""
 
 msgid "df1"
-msgstr ""
+msgstr "自由度１"
 
 msgid "df2"
-msgstr ""
+msgstr "自由度２"
 
 msgid "Autocorrelation"
 msgstr ""
@@ -501,7 +501,7 @@ msgid "Mean"
 msgstr "平均値"
 
 msgid "SD"
-msgstr ""
+msgstr "標準偏差"
 
 msgid "N"
 msgstr "N"
@@ -555,7 +555,7 @@ msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
-msgstr ""
+msgstr "標準化された残差"
 
 msgid "Theoretical Quantiles"
 msgstr "理論上の分位数"
@@ -786,7 +786,7 @@ msgid "Factor Descriptives"
 msgstr ""
 
 msgid "Factor"
-msgstr ""
+msgstr "要因"
 
 msgid "Confusion matrix"
 msgstr ""
