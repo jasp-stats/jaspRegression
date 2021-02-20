@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2021-01-06 10:14\n"
 "PO-Revision-Date: 2021-02-21 06:50+0000\n"
-"Last-Translator: Yoshihiko Kunisato <ykunisato@psy.senshu-u.ac.jp>\n"
+"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
 "Language: ja\n"
@@ -104,7 +104,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -185,7 +185,7 @@ msgid "Shapiro-Wilk"
 msgstr "シャピロ-ウィルク"
 
 msgid "Variables"
-msgstr ""
+msgstr "変数"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr ""
@@ -249,7 +249,7 @@ msgid "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Valu
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "変数"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr ""
@@ -402,7 +402,7 @@ msgid "Standard Error"
 msgstr ""
 
 msgid "Standardized"
-msgstr ""
+msgstr "標準化"
 
 msgid "t"
 msgstr "t"
@@ -648,7 +648,7 @@ msgid "%s%% Credible Interval"
 msgstr ""
 
 msgid "Coefficient"
-msgstr ""
+msgstr "係数"
 
 msgid "P(incl)"
 msgstr ""
@@ -723,10 +723,10 @@ msgid "Deviance"
 msgstr ""
 
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "McFadden R%s"
 msgstr ""
@@ -753,7 +753,7 @@ msgid "Odds Ratio"
 msgstr ""
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Wald Statistic"
 msgstr ""
