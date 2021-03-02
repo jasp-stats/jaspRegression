@@ -38,7 +38,7 @@ Form
 				{ label: qsTr("Stepwise"),	value: "stepwise"}
 			]
 		}
-		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");				allowedColumns: ["scale"]								}
+		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");				allowedColumns: ["ordinal", "scale"]					}
 		AssignedVariablesList { name: "factors";	title: qsTr("Factors");					allowedColumns: ["ordinal", "nominal", "nominalText"];	}
 		AssignedVariablesList { name: "wlsWeights";	title: qsTr("WLS Weights (optional)");	allowedColumns: ["scale"]; singleVariable: true			}
 	}
