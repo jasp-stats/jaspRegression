@@ -35,6 +35,7 @@ The Correlation analysis allows estimation of the population correlation, as wel
 - Flag significant correlations: Mark statistically significant correlations.
 - Confidence Intervals: Confidence intervals for the population correlation (only available for the Pearson correlation).
   - Interval: Coverage of the confidence interval in percentages.
+  - From `...` bootstraps: By selecting this option, bootstrapped estimation is applied. By default, the number of replications is set to 1000. This can be changed into the desired number. 
 - Vovk-Selke maximum p-ratio: The bound 1/(-e p log(p)) is derived from the shape of the p-value distribution. Under the null hypothesis (H<sub>0</sub>) it is uniform (0,1), and under the alternative (H<sub>1</sub>) it is decreasing in p, e.g., a beta (α, 1) distribution, where 0 < α < 1. The Vovk-Sellke MPR is obtained by choosing the shape α of the distribution under H1 such that the obtained p-value is maximally diagnostic. The value is then the ratio of the densities at point p under H<sub>0</sub> and H<sub>1</sub>. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H<sub>0</sub>.
 - Sample size: The number of complete observations for a given pair of variables.
 

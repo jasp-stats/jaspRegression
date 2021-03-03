@@ -226,3 +226,35 @@ test_that("Concordance function works", {
     concordanceVector(x, y),
     jaspRegression:::concordanceVector_cpp(x, y))
 })
+
+
+test_that("Bootstrapping results match", {
+  options <- jaspTools::analysisOptions("Correlation")
+  options$pearson <- options$spearman <- options$kendallsTauB <- TRUE
+  options$confidenceIntervals <- TRUE
+  options$confidenceIntervalsInterval <- 0.9
+  options$bootstrap <- TRUE
+  options$bootstrapReplicates <- 100
+  options$displayPairwise <- TRUE
+  options$variables <- list("contNormal", "contcor1", "debMiss30")
+  options$conditioningVariables <- list("contcor2", "contGamma")
+
+  set.seed(1)
+  results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
+
+  table <- results[["results"]][["mainTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.111065415602727, -0.0106674384539135, 0.105175421195814, 0.223004988878642,
+                                      0.179666477474329, -0.0258136734077021, 0.0766902175159553,
+                                      0.366999564293026, "-", 0.195812907755063, -0.0105039066155208,
+                                      0.0533190778275557, 0.385072300563017, "contNormal", "contcor1",
+                                      -0.140516924209084, -0.297075421693744, 0.0901883731446404,
+                                      0.0217483226380507, -0.152460812916382, -0.392671953472995,
+                                      0.214536946611116, 0.097080265795533, "-", -0.203777241507667,
+                                      -0.431825302418417, 0.0955590913846829, 0.0398466256459261,
+                                      "contNormal", "debMiss30", -0.0439397364731327, -0.170603317638739,
+                                      0.596221799762719, 0.0864507284028914, -0.103189761028142, -0.301000158160151,
+                                      0.402374946397542, 0.11173981453089, "-", -0.0890439951881228,
+                                      -0.305200424483856, 0.470233930910906, 0.13155608581413, "contcor1",
+                                      "debMiss30"))
+})
