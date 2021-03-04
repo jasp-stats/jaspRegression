@@ -31,7 +31,7 @@ Correlation <- function(jaspResults, dataset, options){
   tests <- c("pearson", "spearman", "kendall")
   testsNames <- c(gettext("Pearson's"), gettext("Spearman's"), gettext("Kendall's Tau"))
 
-  whichTests <- c(options[['pearson']], options[['spearman']], options[['kendallTauB']])
+  whichTests <- c(options[['pearson']], options[['spearman']], options[['kendallsTauB']])
   usedTests <- tests[whichTests]
   usedTestsNames <- testsNames[whichTests]
 
@@ -383,12 +383,19 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 .corrCalculateBootstrapCI <- function(results, dataset, options) {
-  alpha <- options[["confidenceIntervalsInterval"]]
-  ciLevel <- c((1-alpha)/2, 1-(1-alpha)/2)
+  alpha <- 1-options[["confidenceIntervalsInterval"]]
+  ciLevel <- c(alpha/2, 1-alpha/2)
 
-  # bootstrapping function (returns bootstraps per variable pair and test)
-  .corrBoot <- function() {
-    idx <- sample(x = 1:nrow(dataset), size = nrow(dataset), replace = TRUE)
+  tests <- .corrGetTests(options)[["usedTests"]]
+
+  # run bootstraps
+  bootstraps <- array(NaN,
+                      dim = c(options[["bootstrapReplicates"]], length(results), length(tests)),
+                      dimnames = list(NULL, names(results), tests))
+
+  startProgressbar(expectedTicks = options[["bootstrapReplicates"]], label = gettext("Bootstrapping"))
+  for(i in seq_len(options[["bootstrapReplicates"]])) {
+    idx  <- sample(x = nrow(dataset), replace = TRUE)
     data <- dataset[idx,]
 
     if(length(options[["conditioningVariables"]]) > 0) {
@@ -397,38 +404,24 @@ Correlation <- function(jaspResults, dataset, options){
       z <- NULL
     }
 
-    out <- list()
     for(name in names(results)) {
-      out[[name]] <- list()
-      xy <- data[, results[[name]]$vars]
+      xy <- data[, results[[name]][["vars"]]]
 
-      for(method in c('pearson', 'spearman', 'kendall')){
-        compute <- .corrTestChecked(method, options)
-        if(compute) {
-          out[[name]][[method]] <- try(.corrFastParCor(xy = xy, z = z, method = method))
-        } else {
-          out[[name]][[method]] <- NaN
-        }
-
-        if(isTryError(out[[name]][[method]])) out[[name]][[method]] <- NA
+      for(test in tests){
+        bootstraps[i, name, test] <- tryCatch({
+          .corrFastParCor(xy = xy, z = z, method = test)
+        }, error = function() NaN)
       }
     }
 
     progressbarTick()
-    return(out)
   }
-
-  # bootstrap and reshape
-  startProgressbar(expectedTicks = options[["bootstrapReplicates"]], label = gettext("Bootstrapping"))
-  bootstraps <- replicate(options[["bootstrapReplicates"]], .corrBoot(), simplify = FALSE)
-  bootstraps <- purrr::transpose(bootstraps)
-  bootstraps <- lapply(bootstraps, function(b) do.call(rbind, b))
 
   # replace CIs in the results list with the bootstrapped ones
   for(name in names(results)) {
-    for(test in c('pearson', 'spearman', 'kendall')){
-      boots <- unlist(bootstraps[[name]][,test])
-      results[[name]][["res"]][[test]][c("lower.ci", "upper.ci")] <- quantile(boots, probs = ciLevel, na.rm=TRUE)
+    for(test in tests){
+      ci <- quantile(bootstraps[,name,test], probs = ciLevel, na.rm = TRUE)
+      results[[name]][["res"]][[test]][c("lower.ci", "upper.ci")] <- ci
     }
   }
 
