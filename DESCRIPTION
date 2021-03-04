@@ -21,6 +21,7 @@ Imports:
   jaspBase,
   jaspDescriptives,
   jaspGraphs,
+  jaspTTests,
   lmtest,
   MASS,
   matrixStats,
@@ -33,6 +34,7 @@ Remotes:
   jasp-stats/jaspAnova,
   jasp-stats/jaspBase,
   jasp-stats/jaspDescriptives,
-  jasp-stats/jaspGraphs
+  jasp-stats/jaspGraphs,
+  jasp-stats/jaspTTests
 LinkingTo:
   Rcpp
