@@ -17,24 +17,24 @@
 Correlation <- function(jaspResults, dataset, options){
   dataset <- .corrReadData(dataset, options)
   ready <- length(options$variables) >= 2
-  
+
   corrResults <- .corrMainResults(jaspResults, dataset, options, ready)
-  
+
   .corrAssumptions(jaspResults, dataset, options, ready, corrResults)
   .corrPlot(jaspResults, dataset, options, ready, corrResults)
   .corrHeatmap(jaspResults, options, corrResults, ready)
-  
+
   return()
 }
 
 .corrGetTests <- function(options){
   tests <- c("pearson", "spearman", "kendall")
   testsNames <- c(gettext("Pearson's"), gettext("Spearman's"), gettext("Kendall's Tau"))
-  
-  whichTests <- c(options[['pearson']], options[['spearman']], options[['kendallTauB']])
+
+  whichTests <- c(options[['pearson']], options[['spearman']], options[['kendallsTauB']])
   usedTests <- tests[whichTests]
   usedTestsNames <- testsNames[whichTests]
-  
+
   return(list(
     tests = tests, testsNames = testsNames,
     usedTests = usedTests, usedTestsNames = usedTestsNames
@@ -43,7 +43,7 @@ Correlation <- function(jaspResults, dataset, options){
 
 .corrTestChecked <- function(test = c('pearson', 'spearman', 'kendallsTauB'), options){
   test <- match.arg(test) # ensures that 'kendall' is also valid
-  
+
   return(isTRUE(options[[test]]))
 }
 
@@ -56,7 +56,7 @@ Correlation <- function(jaspResults, dataset, options){
     cond <- TRUE
     vars <- c(options$variables, options$conditioningVariables)
   }
-  
+
   if(!is.null(dataset)){
     return(dataset)
   } else if(options$missingValues == "excludePairwise"){
@@ -71,22 +71,22 @@ Correlation <- function(jaspResults, dataset, options){
 ### Main function ----
 .corrMainResults <- function(jaspResults, dataset, options, ready){
   if(!is.null(jaspResults[['mainTable']]) && !is.null(jaspResults[['results']])) return(jaspResults[['results']]$object)
-  
+
   # Init main table
   mainTable <- .corrInitMainTable(jaspResults, options)
-  
+
   # Compute results
   corrResults <- .corrComputeResults(jaspResults, dataset, options, ready)
-  
+
   # Fill table
   .corrFillTableMain(mainTable, corrResults, options, ready)
-  
+
   return(corrResults)
 }
 # Init tables ----
 .corrInitMainTable <- function(jaspResults, options){
   if(!is.null(jaspResults[['mainTable']])) return(jaspResults[['mainTable']])
-  
+
   if(length(options[['variables']]) == 0){
     variables <- c("...", "... ") # we need this trailing space so that 1 != 2
   } else if(length(options[['variables']]) == 1){
@@ -94,9 +94,9 @@ Correlation <- function(jaspResults, dataset, options){
   } else {
     variables <- options[['variables']]
   }
-  
+
   tests <- c(gettext("Pearson's"), gettext("Spearman's"), gettext("Kendall's Tau"))[c(options$pearson, options$spearman, options$kendallsTauB)]
-  
+
   if(length(tests) != 1){
     if(length(options$conditioningVariables) == 0){
       title <- gettext("Correlation Table")
@@ -110,23 +110,24 @@ Correlation <- function(jaspResults, dataset, options){
       title <- gettextf("%s Partial Correlations", tests)
     }
   }
-  
+
   mainTable <- createJaspTable(title = title)
   mainTable$dependOn(c("variables", "conditioningVariables",
                        "pearson", "spearman", "kendallsTauB", "displayPairwise", "reportSignificance",
                        "flagSignificant", "sampleSize",
                        "confidenceIntervals", "confidenceIntervalsInterval",
-                       "VovkSellkeMPR", "hypothesis", "missingValues"))
+                       "VovkSellkeMPR", "hypothesis", "missingValues",
+                       "bootstrap", "bootstrapReplicates"))
   mainTable$position <- 1
-  
+
   mainTable$showSpecifiedColumnsOnly <- TRUE
-  
+
   if(options[['displayPairwise']]){
     .corrInitPairwiseTable(mainTable, options, variables)
   } else{
     .corrInitCorrelationTable(mainTable, options, variables)
   }
-  
+
   if(options[['hypothesis']] == "correlatedPositively"){
     mainTable$addFootnote(message = gettext("All tests one-tailed, for positive correlation"))
     additionToFlagSignificant <- gettext(", one-tailed")
@@ -138,21 +139,28 @@ Correlation <- function(jaspResults, dataset, options){
   }
   if(options[['flagSignificant']]) mainTable$addFootnote(message = gettextf("p < .05, ** p < .01, *** p < .001%s",
                                                                            additionToFlagSignificant), symbol = "*")
-  
+
   if(length(options$conditioningVariables) > 0){
     message <- gettextf("Conditioned on variables: %s", paste(options$conditioningVariables, collapse = ", "))
-    mainTable$addFootnote(message = message, symbol = " ")
+    mainTable$addFootnote(message = message)
   }
+
+  if(length(options[["conditioningVariables"]]) != 0 && isTRUE(options[["confidenceIntervals"]]) && isFALSE(options[["bootstrap"]]))
+    mainTable$addFootnote(message = gettext("Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."))
+
+  if(isTRUE(options[["confidenceIntervals"]] && isTRUE(options[["bootstrap"]])))
+    mainTable$addFootnote(message = gettextf("Confidence intervals based on %i bootstrap replicates.", options[["bootstrapReplicates"]]))
+
   # show
   jaspResults[['mainTable']] <- mainTable
-  
+
   return(mainTable)
 }
 
 .corrInitPairwiseTable <- function(mainTable, options, variables){
   pairs <- combn(.v(variables), 2, simplify = FALSE)
   pairTitles <- combn(variables, 2, simplify = FALSE)
-  
+
   mainTable$addColumnInfo(name = "variable1", title = "", type = "string")
   mainTable$addColumnInfo(name = "separator", title = "", type = "separator")
   mainTable$addColumnInfo(name = "variable2", title = "", type = "string")
@@ -161,22 +169,22 @@ Correlation <- function(jaspResults, dataset, options){
   mainTable[['separator']] <- rep("-", length(pairTitles))
   mainTable[['variable2']] <- sapply(pairTitles, function(x) x[[2]])
 
-  
+
   mainTable$setExpectedSize(rows = length(pairs))
   for(row in 1:length(pairs)){
     rowName <- paste(pairs[[row]], collapse = "_")
-    
+
     mainTable$setRowName(row, rowName)
   }
-  
+
   options[["kendall"]] <- options[["kendallsTauB"]]
-  
+
   tests <- c("pearson", "spearman", "kendall")
   nTests <- sum(unlist(options[tests]))
   testNames <- c(pearson=gettext("Pearson"), spearman=gettext("Spearman"), kendall=gettext("Kendall"))
-  
+
   if(options$sampleSize) mainTable$addColumnInfo(name = "sample.size", title = "n", type = "integer")
-  
+
   for(test in tests){
     if(options[[test]]){
       if(nTests != 1){
@@ -184,22 +192,22 @@ Correlation <- function(jaspResults, dataset, options){
       } else{
         overtitle <- NULL
       }
-      
+
       mainTable$addColumnInfo(name = paste0(test, "_estimate"), title = .corrTitlerer(test, nTests),
                               type = "number", overtitle = overtitle)
-      
+
       if(options$reportSignificance)
         mainTable$addColumnInfo(name = paste0(test, "_p.value"), title = gettext("p"), type = "pvalue", overtitle = overtitle)
-      
+
       if(options$confidenceIntervals){
-        mainTable$addColumnInfo(name = paste0(test, "_lower.ci"), 
+        mainTable$addColumnInfo(name = paste0(test, "_lower.ci"),
                                 title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval), type = "number",
                                 overtitle = overtitle)
-        mainTable$addColumnInfo(name = paste0(test, "_upper.ci"), 
+        mainTable$addColumnInfo(name = paste0(test, "_upper.ci"),
                                 title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval), type = "number",
                                 overtitle = overtitle)
       }
-      
+
       if(options$VovkSellkeMPR){
         mainTable$addColumnInfo(name = paste0(test, "_vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
         mainTable$addFootnote(message = .corrGetTexts()$footnotes$VSMPR, symbol = "\u2020", colNames = paste0(test, "_vsmpr"))
@@ -215,30 +223,30 @@ Correlation <- function(jaspResults, dataset, options){
   } else{
     coeffs <- c(pearson = gettext("Pearson's r"), spearman = gettext("Spearman's rho"), kendall = gettext("Kendall's tau B"))
   }
-  
+
   return(coeffs[test])
 }
 
 .corrInitCorrelationTable <- function(mainTable, options, variables){
   mainTable$transpose <- TRUE
   mainTable$transposeWithOvertitle <- FALSE
-  
+
   mainTable$addColumnInfo(name = "var1", title = "", type = "string", combine = FALSE, overtitle = "Variable")
-  
+
   whichtests <- c(options$pearson, options$spearman, options$kendallsTauB)
-  
+
   #Apparently we are defining these titles over and over again, maybe .corrTitlerer could be reused or this stored somewhere globally?
   testsTitles <- c(gettext("Pearson's r"), gettext("Spearman's rho"), gettext("Kendall's Tau B"))[whichtests]
   tests <- c("pearson", "spearman", "kendall")[whichtests]
-  
+
   for(vi in seq_along(variables)){
     overtitle <- paste(vi, variables[vi], sep = ". ")
-    
+
     if(options$sampleSize) {
       mainTable$addColumnInfo(name = paste(.v(variables[vi]), "sample.size", sep = "_"), title = "n",
                               type = "integer", overtitle = overtitle)
     }
-    
+
     for(ti in seq_along(tests)){
       .corrInitCorrelationTableRowAsColumn(mainTable, options, variables[vi], testsTitles[ti], tests[ti], overtitle)
     }
@@ -249,24 +257,24 @@ Correlation <- function(jaspResults, dataset, options){
 .corrInitCorrelationTableRowAsColumn <- function(mainTable, options, var, coeff, test, overtitle){
   vvar <- .v(var)
   name <- paste(vvar, test, "%s", sep = "_")
-  
+
   mainTable$addColumnInfo(name = sprintf(name, "estimate"), title = coeff, type = "number", overtitle = overtitle)
-  
+
   if(options$reportSignificance)
     mainTable$addColumnInfo(name = sprintf(name, "p.value"), title = gettext("p-value"), type = "pvalue", overtitle = overtitle)
-  
+
   if(options$VovkSellkeMPR){
     mainTable$addColumnInfo(name = sprintf(name, "vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
     mainTable$addFootnote(colNames = sprintf(name, "vsmpr"), symbol = "\u2020",
                           message = .corrGetTexts()$footnotes$VSMPR)
     mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
   }
-  
+
   if(options$confidenceIntervals){
-    mainTable$addColumnInfo(name = sprintf(name, "upper.ci"), 
+    mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),
                             title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval),
                             type = "number", overtitle = overtitle)
-    mainTable$addColumnInfo(name = sprintf(name, "lower.ci"), 
+    mainTable$addColumnInfo(name = sprintf(name, "lower.ci"),
                             title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval),
                             type = "number", overtitle = overtitle)
   }
@@ -281,7 +289,7 @@ Correlation <- function(jaspResults, dataset, options){
   vcomb <- combn(vvars, 2, simplify = FALSE)
   vpair <- sapply(vcomb, paste, collapse = "_")
 
-  
+
   alt <- c(correlated = "two.sided",
            correlatedNegatively = "less",
            correlatedPositively = "greater")[options$hypothesis]
@@ -289,7 +297,7 @@ Correlation <- function(jaspResults, dataset, options){
   pcor <- !length(options$conditioningVariables) == 0
 
   results <- list()
-  #startProgressbar(length(vpair)) 
+  #startProgressbar(length(vpair))
   for(i in seq_along(vpair)){
     # some variable pairs might be reusable, so we don't need to compute them again
     if(!is.null(jaspResults[[vpair[i]]])) {
@@ -298,38 +306,38 @@ Correlation <- function(jaspResults, dataset, options){
       data <- dataset[vcomb[[i]]]
       whichComplete <- complete.cases(data)
       data <- data[whichComplete,,drop=FALSE]
-      
+
       if(pcor) {
         condData <- dataset[,.v(options$conditioningVariables), drop=FALSE]
         condData <- condData[whichComplete,,drop=FALSE]
       } else{
         condData <- NULL
       }
-      
-      errors <-.hasErrors(data, message = 'short', 
+
+      errors <-.hasErrors(data, message = 'short',
                           type = c('variance', 'infinity', 'observations'),
-                          all.target = .unv(vcomb[[i]]), 
+                          all.target = .unv(vcomb[[i]]),
                           observations.amount = sprintf("< %s", 3+length(options$conditioningVariables)),
                           exitAnalysisIfErrors = FALSE)
-      
+
       # for some reason .hasErrors does not flag this case
       if(nrow(data) == 0) errors <- list(observations = "All missing")
-      
+
       # shorten the message for observations.amount (do not list variables which is apparent in the output)
       if(is.list(errors) && !is.null(errors$observations)){
         errors$message <- gettextf("Number of observations is < %s", 3+length(options$conditioningVariables))
       }
-      
+
       currentResults <- list()
       testErrors     <- list()
       currentResults[['sample.size']] <- nrow(data)
-      
+
       # even if we do not want the specific tests results
       # we still want the output as NaN - to fill the jaspTables correctly
       # so we still loop over all tests - .corr.test() returns empty lists if isFALSE(compute)
       for(test in c('pearson', 'spearman', 'kendall')){
         compute <- isFALSE(errors) && .corrTestChecked(test, options)
-        
+
         r <- .corr.test(x = data[,1], y = data[,2], z = condData,
                         method = test, alternative = alt,
                         conf.interval = options$confidenceIntervals,
@@ -340,58 +348,120 @@ Correlation <- function(jaspResults, dataset, options){
       }
       # stolen from manova.R
       shapiro <- jaspAnova::.multivariateShapiroComputation(data, list(dependent = .unv(vcomb[[i]])))
-      
-      results[[vpair[i]]] <- list(vars       = .unv(vcomb[[i]]), 
+
+      results[[vpair[i]]] <- list(vars       = .unv(vcomb[[i]]),
                                   vvars      = vcomb[[i]],
                                   res        = currentResults,
-                                  errors     = errors, 
+                                  errors     = errors,
                                   testErrors = testErrors,
                                   shapiro    = shapiro)
-      
+
       # store state for pair
       state <- createJaspState(object = results[[vpair[i]]])
       state$dependOn(options = c("conditioningVariables", "hypothesis",
                                  "confidenceIntervals", "confidenceIntervalsInterval",
                                  "missingValues"),
                      optionContainsValue = list(variables = .unv(vcomb[[i]])))
-      
+
       jaspResults[[vpair[i]]] <- state
     }
-    
+
     #progressbarTick()
   }
-  
-  
+
+  if(options[["bootstrap"]])
+    results <- .corrCalculateBootstrapCI(results, dataset, options)
+
   jaspResults[['results']] <- createJaspState(object = results)
   jaspResults[['results']]$dependOn(options = c("variables", "conditioningVariables",  "hypothesis",
                                                 "confidenceIntervalsInterval", "missingValues",
-                                                "pearson", "spearman", "kendallsTauB"))
-  
-  
+                                                "pearson", "spearman", "kendallsTauB",
+                                                "bootstrap", "bootstrapReplicates"))
+
+
   return(results)
+}
+
+.corrCalculateBootstrapCI <- function(results, dataset, options) {
+  alpha <- 1-options[["confidenceIntervalsInterval"]]
+  ciLevel <- c(alpha/2, 1-alpha/2)
+
+  tests <- .corrGetTests(options)[["usedTests"]]
+
+  # run bootstraps
+  bootstraps <- array(NaN,
+                      dim = c(options[["bootstrapReplicates"]], length(results), length(tests)),
+                      dimnames = list(NULL, names(results), tests))
+
+  startProgressbar(expectedTicks = options[["bootstrapReplicates"]], label = gettext("Bootstrapping"))
+  for(i in seq_len(options[["bootstrapReplicates"]])) {
+    idx  <- sample(x = nrow(dataset), replace = TRUE)
+    data <- dataset[idx,]
+
+    if(length(options[["conditioningVariables"]]) > 0) {
+      z <- data[,options[["conditioningVariables"]], drop=FALSE]
+    } else {
+      z <- NULL
+    }
+
+    for(name in names(results)) {
+      xy <- data[, results[[name]][["vars"]]]
+
+      for(test in tests){
+        bootstraps[i, name, test] <- tryCatch({
+          .corrFastParCor(xy = xy, z = z, method = test)
+        }, error = function() NaN)
+      }
+    }
+
+    progressbarTick()
+  }
+
+  # replace CIs in the results list with the bootstrapped ones
+  for(name in names(results)) {
+    for(test in tests){
+      ci <- quantile(bootstraps[,name,test], probs = ciLevel, na.rm = TRUE)
+      results[[name]][["res"]][[test]][c("lower.ci", "upper.ci")] <- ci
+    }
+  }
+
+  return(results)
+}
+
+.corrFastParCor <- function(xy, z = NULL, method = c("pearson", "spearman", "kendall")) {
+  if(is.null(z)) return(stats::cor(xy[,1], xy[,2], use = "p", method = method))
+
+  xyz <- cbind(xy, z)
+  xyz <- na.omit(xyz)
+
+  cmat  <- stats::cov(xyz, method = method)
+  icmat <- chol2inv(chol(cmat))
+  pcmat <- -stats::cov2cor(icmat)
+
+  return(pcmat[1,2,drop=TRUE])
 }
 
 # helper that unifies output of cor.test and ppcor::pcor.test
 .corr.test <- function(x, y, z = NULL, alternative, method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
   stats <- c("estimate", "p.value", "conf.int", "vsmpr")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr")
-  
+
   if(isFALSE(compute)){
     result <- rep(NaN, length(statsNames))
     names(result) <- statsNames
     errors <- FALSE
   } else if(is.null(z)){
     result <- try(expr = {
-      cor.test(x = x, y = y, alternative = alternative, method = method, exact = exact, 
+      cor.test(x = x, y = y, alternative = alternative, method = method, exact = exact,
                conf.level = conf.level, continuity = continuity, ... = ...)}, silent = TRUE)
-    
+
     if(isTryError(result)) {
       errors <- .extractErrorMessage(result)
       result <- rep(NaN, length(statsNames))
       names(result) <- statsNames
     } else{
       errors <- FALSE
-      
+
       if(method != "pearson" && conf.interval){
         result$conf.int <- .createNonparametricConfidenceIntervals(x = x, y = y, obsCor = result$estimate,
                                                                    hypothesis = alternative, confLevel = conf.level,
@@ -399,7 +469,7 @@ Correlation <- function(jaspResults, dataset, options){
       } else if(is.null(result$conf.int)){
         result$conf.int <- c(NA, NA)
       }
-      
+
       result$vsmpr <- jaspBase:::VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
       result <- unlist(result[stats], use.names = FALSE)
@@ -439,7 +509,7 @@ Correlation <- function(jaspResults, dataset, options){
       names(result) <- statsNames
     }
   }
-  
+
   return(list(result = result, errors = errors))
 }
 
@@ -447,23 +517,23 @@ Correlation <- function(jaspResults, dataset, options){
 .corrAssumptions <- function(jaspResults, dataset, options, ready, corrResults){
   # uses .multivariateShapiroComputation from manova.R
   if(isFALSE(options$multivariateShapiro) && isFALSE(options$pairwiseShapiro)) return()
-  
+
   if(is.null(jaspResults[['assumptionsContainer']])){
     assumptionsContainer <- createJaspContainer(title = gettext("Assumption checks"))
     assumptionsContainer$dependOn(c("variables", "conditioningVariables"))
     assumptionsContainer$position <- 2
-    
+
     jaspResults[['assumptionsContainer']] <- assumptionsContainer
   } else {
     assumptionsContainer <- jaspResults[['assumptionsContainer']]
   }
-  
+
   if(isTRUE(options$multivariateShapiro) && is.null(assumptionsContainer[['multivariateShapiro']]))
     .corrMultivariateShapiro(assumptionsContainer, dataset, options, ready, corrResults)
 
   if(isTRUE(options$pairwiseShapiro) && is.null(assumptionsContainer[['pairwiseShapiro']]))
     .corrPairwiseShapiro(assumptionsContainer, dataset, options, ready, corrResults)
-  
+
 }
 
 .corrMultivariateShapiro <- function(assumptionsContainer, dataset, options, ready, corrResults){
@@ -564,15 +634,12 @@ Correlation <- function(jaspResults, dataset, options){
 ### Fill Tables ----
 .corrFillTableMain <- function(mainTable, corrResults, options, ready){
   if(!ready) return()
-  
+
   if(options$displayPairwise){
     .corrFillPairwiseTable(mainTable, corrResults, options)
   } else{
     .corrFillCorrelationMatrix(mainTable, corrResults, options)
   }
-  
-  if(length(options$conditioningVariables) != 0 && isTRUE(options$confidenceIntervals))
-    mainTable$addFootnote(message = gettext("Confidence intervals for partial correlations not yet available."))
 }
 
 .corrFillPairwiseTable <- function(mainTable, corrResults, options){
@@ -581,26 +648,26 @@ Correlation <- function(jaspResults, dataset, options){
   results <- lapply(corrResults, function(x) x[['res']])
   errors <- lapply(corrResults,function(x) x[['errors']])
   testErrors     <- lapply(corrResults, function(x) x[['testErrors']])
-  
+
   mainTable[['sample.size']] <- sapply(results, function(x) x[['sample.size']])
-  
+
   # would be nice to be able to fill table cell-wise, i.e., mainTable[[row, col]] <- value
   colNames <- character() # this is for error footnotes
   for(test in c("pearson", "spearman", "kendall")){
     res <- data.frame(do.call(rbind, lapply(results, function(x) {x[[test]]})), stringsAsFactors = FALSE)
-    
+
     for(col in colnames(res)) mainTable[[paste(test, col, sep = "_")]] <- res[[col]]
-    
+
     if(options[['flagSignificant']]) .corrFlagSignificant(mainTable, res[['p.value']],
                                                           paste(test, "estimate", sep="_"), pairs)
-    
+
     colNames <- c(colNames, paste(test, colnames(res), sep="_"))
   }
   for(i in seq_along(errors)){
     # add footnotes for general errors
     if(!isFALSE(errors[[i]])) mainTable$addFootnote(message = errors[[i]]$message, rowNames = pairs[i],
                                                     colNames = colNames)
-    
+
     # add footnotes for test specific errors
     for(test in c("pearson", "spearman", "kendall")){
       if(!isFALSE(testErrors[[i]][[test]])){
@@ -609,34 +676,34 @@ Correlation <- function(jaspResults, dataset, options){
       }
     }
   }
-  
+
 
 }
 
 .corrFlagSignificant <- function(table, p.values, colName, rowNames){
   p.values <- as.numeric(p.values)
-  
+
   s <- rowNames[!is.na(p.values) & !is.nan(p.values) & p.values < 0.05 & p.values >= 0.01]
   if(length(s) > 0){
     table$addFootnote(colNames = colName, rowNames = s, symbol = "*")
   }
-  
+
   ss <- rowNames[!is.na(p.values) & !is.nan(p.values) & p.values < 0.01 & p.values >= 0.001]
   if(length(ss) > 0){
     table$addFootnote(colNames = colName, rowNames = ss, symbol = "**")
   }
-  
+
   sss <- rowNames[!is.na(p.values) & !is.nan(p.values) & p.values < 0.001]
   if(length(sss) > 0){
     table$addFootnote(colNames = colName, rowNames = sss, symbol = "***")
   }
 }
-  
+
 .corrFillCorrelationMatrix <- function(mainTable, corrResults, options){
   vars  <- options$variables
   vvars <- .v(vars)
   pairs <- strsplit(names(corrResults), "_")
-  
+
   results <- lapply(corrResults, function(x) {
     res <- unlist(x[['res']]) # flatten the structure but preserve names (hierarchy separated by ".")
     # replace the first dot with _ to separate test from statistic
@@ -645,12 +712,12 @@ Correlation <- function(jaspResults, dataset, options){
     names(res) <- sub("(kendall\\.)",  "kendall_", names(res))
     res
     })
-  
+
   errors         <- lapply(corrResults, function(x) x[['errors']])
   testErrors     <- lapply(corrResults, function(x) x[['testErrors']])
   statsNames     <- names(results[[1]])
   nStats         <- length(statsNames)
-  
+
   # would be really (!) nice to be able to fill table cell-wise, i.e., mainTable[[row, col]] <- value
   # in the meantime we have to collect and fill the entire table in the resultList
   resultList <- list(var1 = vars)
@@ -672,13 +739,13 @@ Correlation <- function(jaspResults, dataset, options){
       resultList[[currentColumnName]] <- resList
     }
   }
-  
+
   mainTable$setData(resultList)
-  
+
   # Flag significant
   if(options[['flagSignificant']]){
     p.valueColumns <- names(resultList)[endsWith(names(resultList), "p.value")]
-    
+
     for(columnName in p.valueColumns){
       p.values <- unlist(resultList[[columnName]])
       .corrFlagSignificant(table = mainTable, p.values = p.values,
@@ -686,7 +753,7 @@ Correlation <- function(jaspResults, dataset, options){
                            rowNames = vvars)
     }
   }
-  
+
   # Report errors as footnotes
   for(i in seq_along(errors)){
     # display general errors (i.e., too much missing data, etc. identified from .hasErrors)
@@ -696,7 +763,7 @@ Correlation <- function(jaspResults, dataset, options){
       colNames <- paste(pair[2], colNames, sep = "_")
       mainTable$addFootnote(message = errors[[i]]$message, colNames = colNames, rowNames = pair[1])
     }
-    
+
     # display test errors (i.e., during calculating results, such as failure to invert a correlation matrix, etc.)
     for (test in c("pearson", "spearman", "kendall")) {
       if (!isFALSE(testErrors[[i]][[test]])) {
@@ -712,7 +779,7 @@ Correlation <- function(jaspResults, dataset, options){
 .corrPlot <- function(jaspResults, dataset, options, ready, corrResults){
   if(!ready) return()
   if(isFALSE(options$plotCorrelationMatrix)) return()
-  
+
   if(isTRUE(options[["displayPairwise"]])){
     .corrPairwisePlot(jaspResults, dataset, options, ready, corrResults)
   } else{
@@ -722,40 +789,40 @@ Correlation <- function(jaspResults, dataset, options){
 
 .corrPairwisePlot <- function(jaspResults, dataset, options, ready, corrResults, errors=NULL){
   if(!is.null(jaspResults[['corrPlot']])) return()
-  
+
   plotContainer <- createJaspContainer(title = gettext("Scatter plots"))
   plotContainer$dependOn(options = c("variables", "conditioningVariables", "pearson", "spearman", "kendallsTauB",
                                      "displayPairwise", "confidenceIntervals", "confidenceIntervalsInterval", "hypothesis",
-                                     "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals", 
+                                     "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals",
                                      "plotConfidenceIntervalsInterval", "plotPredictionIntervalsInterval",
                                      "plotPredictionIntervals", "missingValues"))
   plotContainer$position <- 3
   jaspResults[['corrPlot']] <- plotContainer
-  
+
   vars <- options$variables
   vvars <- .v(vars)
-  
+
   comb <- combn(vars, 2, simplify = FALSE)
   pairs <- sapply(comb, paste, collapse = " vs. ")
   vcomb <- combn(vvars, 2, simplify = FALSE)
   vpairs <- sapply(vcomb, paste, collapse = "_")
-  
+
   if(options[['plotDensities']]){
     for(i in seq_along(vcomb)){
       plot <- createJaspPlot(title = pairs[i], width = 550, height = 550)
       plotContainer[[vpairs[i]]] <- plot
-      
+
       plotMat <- matrix(list(), 2, 2)
-      
+
       data <- dataset[vcomb[[i]]]
       data <- data[complete.cases(data),]
-      
+
       plotMat[[1, 1]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE], varName = comb[[i]][1],
                                                    options = options, yName = NULL)
       plotMat[[2, 2]] <- .corrMarginalDistribution(variable = data[,2,drop=TRUE], varName = comb[[i]][2],
                                                    options = options, yName = NULL, coord_flip = TRUE)
       plotMat[[1, 2]] <- .corrValuePlot(corrResults[[vpairs[i]]], options = options)
-      
+
       # get consistent breaks for scatterplot with the densities
       var1Breaks <- try(expr = {ggplot2::ggplot_build(plotMat[[1, 1]])$layout$panel_params[[1]]$x.major_source},
                         silent=TRUE)
@@ -763,14 +830,14 @@ Correlation <- function(jaspResults, dataset, options){
       var2Breaks <- try(expr = {ggplot2::ggplot_build(plotMat[[2, 2]])$layout$panel_params[[1]]$y.major_source},
                         silent=TRUE)
       if(isTryError(var2Breaks)) var2Breaks <- NULL
-      plotMat[[2, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE], 
+      plotMat[[2, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                                       options = options,
                                       xBreaks = var1Breaks,
                                       yBreaks = var2Breaks,
                                       drawAxes = FALSE)
-        
-      
-      plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat, 
+
+
+      plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat,
                                                   bottomLabels = c(comb[[i]][1],       gettext("Density")),
                                                   leftLabels   = c(gettext("Density"), comb[[i]][2]))
     }
@@ -778,30 +845,30 @@ Correlation <- function(jaspResults, dataset, options){
     for(i in seq_along(vcomb)){
       plot <- createJaspPlot(title = pairs[i], width = 600, height = 300)
       plotContainer[[vpairs[i]]] <- plot
-      
+
       data <- dataset[vcomb[[i]]]
       data <- data[complete.cases(data),]
-      
+
       plotMat <- matrix(list(), 1, 2)
-      plotMat[[1, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE], 
+      plotMat[[1, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                                       options = options,
                                       xName = comb[[i]][1], yName = comb[[i]][2],
                                       drawAxes = TRUE)
       plotMat[[1, 2]] <- .corrValuePlot(corrResults[[vpairs[i]]], options = options)
-      
+
       plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
     }
   } else{
     for(i in seq_along(vcomb)){
       plot <- createJaspPlot(title = pairs[i], width = 400, height = 400)
       plotContainer[[vpairs[i]]] <- plot
-      
+
       data <- dataset[vcomb[[i]]]
       data <- data[complete.cases(data),]
-      
-      plot$plotObject <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE], 
+
+      plot$plotObject <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                                       options = options,
-                                      xName = comb[[i]][1], yName = comb[[i]][2], 
+                                      xName = comb[[i]][1], yName = comb[[i]][2],
                                       drawAxes = TRUE)
     }
   }
@@ -811,16 +878,16 @@ Correlation <- function(jaspResults, dataset, options){
   vars <- options$variables
   vvars <- .v(vars)
   len <- length(vars)
-  
-  
+
+
   plot <- createJaspPlot(title = gettext("Correlation plot"))
-  plot$dependOn(options = c("variables", "conditioningVariables", "pearson", "spearman", "kendallsTauB", 
+  plot$dependOn(options = c("variables", "conditioningVariables", "pearson", "spearman", "kendallsTauB",
                             "displayPairwise", "confidenceIntervals", "confidenceIntervalsInterval", "hypothesis",
-                            "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals", 
+                            "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals",
                             "plotConfidenceIntervalsInterval", "plotPredictionIntervalsInterval",
                             "plotPredictionIntervals", "missingValues"))
   plot$position <- 3
-  
+
   if (len <= 2 && (options$plotDensities || options$plotStatistics)) {
     plot$width <- 580
     plot$height <- 580
@@ -831,19 +898,19 @@ Correlation <- function(jaspResults, dataset, options){
     plot$width <- 250 * len + 20
     plot$height <- 250 * len + 20
   }
-  
-  
+
+
   jaspResults[['corrPlot']] <- plot
-  
-  
+
+
   plotMat <- matrix(list(), len, len)
   for(row in seq_len(len)){
     for(col in seq_len(len)){
       data <- dataset[,vvars[c(col,row)],drop=FALSE]
       data <- data[complete.cases(data),,drop=FALSE]
-      
+
       if(row == col) {
-        plotMat[[row, col]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE], 
+        plotMat[[row, col]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE],
                                                          varName = vars[col],
                                                          options = options, errors = errors)
       } else if(row > col){
@@ -855,11 +922,11 @@ Correlation <- function(jaspResults, dataset, options){
       }
     }
   }
-  
+
   p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = vars, topLabels = vars,
                                 scaleXYlabels = NULL)
   plot$plotObject <- p
-  
+
 }
 
 .corrValuePlot <- function(results, cexText= 2.5, cexCI= 1.7, options = options) {
@@ -867,22 +934,22 @@ Correlation <- function(jaspResults, dataset, options){
   if(!isFALSE(results$errors)){
     return(.displayError(errorMessage = gettextf("Correlation undefined: %s", results$errors$message)))
   }
-  
+
   res   <- results$res
   tests <- c()
 
   if (options$pearson)      tests <- c(tests, "pearson")
   if (options$spearman)     tests <- c(tests, "spearman")
   if (options$kendallsTauB) tests <- c(tests, "kendall")
-  
+
   CIPossible <- rep(TRUE, length(tests))
-  
+
   p <- ggplot2::ggplot(data = data.frame(), ggplot2::aes(x = seq_along(data.frame()),y = summary(data.frame()))) +
     ggplot2::theme_void() +
     ggplot2::theme(
       plot.margin = grid::unit(c(1,1,1,1), "cm")
     ) + ggplot2::xlim(0,2) + ggplot2::ylim(0,2)
-  
+
   if(length(tests) == 0){
     return(p)
   } else if(length(tests) == 1){
@@ -892,10 +959,10 @@ Correlation <- function(jaspResults, dataset, options){
   } else if(length(tests) == 3){
     ypos <- c(1.8, 1.2, .6)
   }
-  
+
   lab <- rep(NA, length(tests))
   cilab <- rep(NA, length(tests))
-  
+
   for(i in seq_along(tests)){
     estimate <- res[[tests[i]]][['estimate']]
     if (is.na(estimate)) {
@@ -906,7 +973,7 @@ Correlation <- function(jaspResults, dataset, options){
                        kendall =  paste("italic(tau) == 'NA'"))
     } else if (round(estimate, 8) == 1) {
       CIPossible[i] <- FALSE
-      
+
       #no clue as to what is going on down there... Should this be translated?
       lab[i] <- switch(tests[i],
                        pearson =  paste(  "italic(r) == '1.000'"),
@@ -914,7 +981,7 @@ Correlation <- function(jaspResults, dataset, options){
                        kendall =  paste("italic(tau) == '1.000'"))
     } else if(round(estimate, 8) == -1){
       CIPossible[i] <- FALSE
-      
+
       lab[i] <- switch(tests[i],
                        pearson =  paste(  "italic(r) == '-1.000'"),
                        spearman = paste("italic(rho) == '-1.000'"),
@@ -922,31 +989,31 @@ Correlation <- function(jaspResults, dataset, options){
     } else{
       lab[i] <- .corValueString(corValue = estimate, testType = tests[i], decimals = 3)
     }
-    
+
     if(CIPossible[i]){
       #these statements here could all be put together in the call to gettextf right? something like %.3d?
       lower.ci <- res[[tests[i]]][['lower.ci']]
       lower.ci <- formatC(lower.ci, format = "f", digits = 3)
-      
+
       upper.ci <- res[[tests[i]]][['upper.ci']]
       upper.ci <- formatC(upper.ci, format = "f", digits = 3)
-      
+
       cilab[i] <- gettextf("%s%% CI: [%s, %s]", 100*options$confidenceIntervalsInterval, lower.ci, upper.ci)
     } else{
       cilab[i] <- ""
     }
   }
-  
+
   p <- p + ggplot2::geom_text(data = data.frame(x = rep(1, length(ypos)), y = ypos),
                               mapping = ggplot2::aes(x = x, y = y, label =lab),
                               size = 7, parse = TRUE)
-  
+
   if(options$confidenceIntervals){
     p <- p + ggplot2::geom_text(data = data.frame(x = rep(1, length(ypos)), y = ypos - 0.25),
                                 mapping = ggplot2::aes(x = x, y = y, label = cilab),
                                 size = 5)
   }
-  
+
   return(p)
 }
 
@@ -955,42 +1022,42 @@ Correlation <- function(jaspResults, dataset, options){
   if(length(variable) < 3)            return(.displayError(errorMessage = gettext("Plotting not possible:\n Number of observations is < 3")))
   if(any(is.infinite(variable)))      return(.displayError(errorMessage = gettext("Plotting not possible: Infinite value(s)")))
 
-  
+
   if(isTRUE(options$plotRanks)) variable <- rank(variable)
-  
+
   p <- .plotMarginalCor(variable = variable, xName = xName, yName = yName)
-  
+
   if(coord_flip){
     p <- p + ggplot2::coord_flip() +
-      ggplot2::theme(axis.ticks.y = ggplot2::element_line(), axis.ticks.x = ggplot2::element_blank(), 
+      ggplot2::theme(axis.ticks.y = ggplot2::element_line(), axis.ticks.x = ggplot2::element_blank(),
                      axis.text.x = ggplot2::element_blank())
   }
-  
+
   p
 }
 
-.corrScatter <- function(xVar, yVar, options, xBreaks = NULL, yBreaks = NULL, xName = NULL, yName = NULL, 
+.corrScatter <- function(xVar, yVar, options, xBreaks = NULL, yBreaks = NULL, xName = NULL, yName = NULL,
                          drawAxes = TRUE) {
   if(length(xVar) <= 1 || length(yVar) <= 1) return(.displayError(errorMessage = gettext("Plotting not possible:\n Number of observations is < 2")))
-  errors <- .hasErrors(data.frame(xVar = xVar, yVar = yVar), message = 'short', 
+  errors <- .hasErrors(data.frame(xVar = xVar, yVar = yVar), message = 'short',
                        type = c('infinity'),
-                       all.target = c("xVar", "yVar"), 
+                       all.target = c("xVar", "yVar"),
                        exitAnalysisIfErrors = FALSE)
   if(is.list(errors)) return(.displayError(errorMessage = gettextf("Plotting not possible: %s", errors$message)))
-  
+
   if(isTRUE(options$plotRanks)) {
     xVar <- rank(xVar)
     yVar <- rank(yVar)
   }
-  .plotScatter(xVar = xVar, yVar = yVar, options, xBreaks = xBreaks, yBreaks = yBreaks, xName = xName, yName = yName, 
+  .plotScatter(xVar = xVar, yVar = yVar, options, xBreaks = xBreaks, yBreaks = yBreaks, xName = xName, yName = yName,
                drawAxes = drawAxes)
 }
 
 .corrHeatmap <- function(jaspResults, options, corrResults, ready){
   if(isFALSE(options$plotHeatmap)) return()
-  
+
   hw <- 30 + 80*length(options$variables)
-  
+
   #TODO: The following looks rather familiar and all these defines should, I think, all be put together in one place instead of scattered throughout this file...
   tests <- c("pearson", "spearman", "kendall")
   if(length(options$conditioningVariables) == 0){
@@ -999,16 +1066,16 @@ Correlation <- function(jaspResults, dataset, options){
     names(tests) <- c(gettext("Partial Pearson's r"), gettext("Partial Spearman's rho"), gettext("Partial Kendall's tau B"))
   }
   tests <- tests[c(options$pearson, options$spearman, options$kendallsTauB)]
-  
+
   if(length(tests) == 0){
     return()
   } else if(length(tests) == 1){
     plot <- createJaspPlot(title = gettextf("%s heatmap", names(tests)), width = hw, height = hw)
-    plot$dependOn(c("variables", "conditioningVariables", "missingValues", "pearson", "spearman", "kendallsTauB", 
+    plot$dependOn(c("variables", "conditioningVariables", "missingValues", "pearson", "spearman", "kendallsTauB",
                     "flagSignificant", "plotHeatmap"))
     plot$position <- 4
     jaspResults[['heatmaps']] <- plot
-    
+
     if(ready) plot$plotObject <- .corrPlotHeatmap(tests, options, corrResults)
   } else{
     heatmaps <- createJaspContainer(title = gettext("Heatmaps"))
@@ -1016,11 +1083,11 @@ Correlation <- function(jaspResults, dataset, options){
                         "flagSignificant", "plotHeatmap"))
     heatmaps$position <- 4
     jaspResults[['heatmaps']] <- heatmaps
-    
+
     for(i in seq_along(tests)){
       plot <- createJaspPlot(title = names(tests[i]), width = hw, height = hw)
       heatmaps[[tests[[i]]]] <- plot
-      
+
       if(ready) plot$plotObject <- .corrPlotHeatmap(tests[[i]], options, corrResults)
     }
   }
@@ -1028,36 +1095,36 @@ Correlation <- function(jaspResults, dataset, options){
 
 .corrPlotHeatmap <- function(method, options, corrResults){
   data <- lapply(corrResults, function(x){
-    c(var1 = x[['vars']][1], var2 = x[['vars']][2], 
-      cor = x[['res']][[method]][['estimate']], 
+    c(var1 = x[['vars']][1], var2 = x[['vars']][2],
+      cor = x[['res']][[method]][['estimate']],
       p = x[['res']][[method]][['p.value']])
   })
-  
+
   data <- do.call(rbind, data)
   data <- rbind(data, data[, c(2, 1, 3, 4)])
   data <- data.frame(data, stringsAsFactors = FALSE)
   data <- rbind(data, data.frame(var1 = options$variables, var2 = options$variables, cor = NA, p = 1))
-  
+
   data$var1 <- factor(data$var1, levels = options$variables)
   data$var2 <- factor(data$var2, levels = rev(options$variables))
   data$cor <- as.numeric(data$cor)
   data$p <- as.numeric(data$p)
-  
+
   data$label <- round(data$cor, 3)
   if(options$flagSignificant){
     data$label <- ifelse(data$p < 0.05 & !is.na(data$cor), paste0(data$label, "*"), data$label)
     data$label <- ifelse(data$p < 0.01 & !is.na(data$cor), paste0(data$label, "*"), data$label)
     data$label <- ifelse(data$p < 0.001 & !is.na(data$cor), paste0(data$label, "*"), data$label)
   }
-  p <- ggplot2::ggplot(data, ggplot2::aes(x = var1, y = var2, fill = cor)) + 
+  p <- ggplot2::ggplot(data, ggplot2::aes(x = var1, y = var2, fill = cor)) +
     ggplot2::geom_tile() +
     ggplot2::geom_text(ggplot2::aes(x = var1, y = var2, label = label), size = 5) +
     ggplot2::scale_fill_gradient2(limits = c(-1, 1), na.value = "white") +
-    ggplot2::coord_equal() + 
+    ggplot2::coord_equal() +
     ggplot2::xlab(NULL) + ggplot2::ylab(NULL) +
     #ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 270, hjust = 0, vjust = 0.5))
     ggplot2::theme(axis.text.x = ggplot2::element_text(angle = 45, hjust = 1, vjust = 1))
-  
+
   jaspGraphs::themeJasp(p)
 }
 
@@ -1156,7 +1223,7 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 .plotScatter <- function(xVar, yVar, options = NULL, xBreaks = NULL, yBreaks = NULL, xName = NULL, yName = NULL, drawAxes = TRUE) {
-  
+
 	isNumericX <- !(is.factor(xVar) || (is.integer(xVar) && length(unique(xVar)) <= 10))
 	isNumericY <- !(is.factor(yVar) || (is.integer(yVar) && length(unique(yVar)) <= 10))
 	bothNumeric <- isNumericX && isNumericY
@@ -1173,7 +1240,7 @@ Correlation <- function(jaspResults, dataset, options){
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(d$x)
 
   fit <- NULL
-  
+
   if (bothNumeric) {
 
   	fit <- lm(y ~ poly(x, 1, raw = TRUE), d)
@@ -1197,19 +1264,19 @@ Correlation <- function(jaspResults, dataset, options){
   	xr <- range(xBreaks)
   	dfLine <- data.frame(x = xr, y = rangeLineObj)
     p <- p + ggplot2::geom_line(data = dfLine, ggplot2::aes(x = x, y = y), size = .7, inherit.aes = FALSE)
-    
+
     if (isTRUE(options$plotConfidenceIntervals)) {
       ci <- as.data.frame(stats::predict(fit, interval = "confidence", level = options$plotConfidenceIntervalsInterval))
       ci[["x"]] <- d$x
-      
+
       p <- p + ggplot2::geom_line(data = ci, ggplot2::aes(x = x, y = lwr), size = 1, color = "darkblue", linetype = "dashed") +
         ggplot2::geom_line(data = ci, ggplot2::aes(x = x, y = upr), size = 1, color = "darkblue", linetype = "dashed")
     }
-    
+
     if (isTRUE(options$plotPredictionIntervals)) {
       pi <- as.data.frame(stats::predict(fit, interval = "prediction", level = options$plotPredictionIntervalsInterval))
       pi[["x"]] <- d$x
-      
+
       p <- p + ggplot2::geom_line(data = pi, ggplot2::aes(x = x, y = lwr), size = 1, color = "darkgreen", linetype = "longdash") +
         ggplot2::geom_line(data = pi, ggplot2::aes(x = x, y = upr), size = 1, color = "darkgreen", linetype = "longdash")
     }
@@ -1351,7 +1418,7 @@ Correlation <- function(jaspResults, dataset, options){
 ### empty Plot with error message ###
 .displayError <- function(errorMessage=NULL, cexText=1.6, lwdAxis= 1.2, wrap = 20) {
   if(!is.null(wrap)) errorMessage <- paste(strwrap(errorMessage, wrap), collapse="\n")
-  
+
     p <- ggplot2::ggplot(data = data.frame(), ggplot2::aes(x = seq_along(data.frame()),y = summary(data.frame()))) +
         ggplot2::theme(
             panel.border = ggplot2::element_blank(),
@@ -1375,9 +1442,9 @@ Correlation <- function(jaspResults, dataset, options){
 .corrNormalApproxConfidenceIntervals <- function(obsCor, n, hypothesis="two.sided", confLevel=0.95){
   zCor <- atanh(obsCor)
   se   <- 1/sqrt(n-3)
-  
+
   alpha <- 1-confLevel
-  
+
   if(hypothesis == "two.sided"){
     z <- qnorm(p = alpha/2, lower.tail = FALSE)
     upper.ci <- tanh(zCor + z * se)
@@ -1391,7 +1458,7 @@ Correlation <- function(jaspResults, dataset, options){
     upper.ci <- 1
     lower.ci <- tanh(zCor - z * se)
   }
-  
+
   return(c(lower.ci,upper.ci))
 }
 
@@ -1402,8 +1469,8 @@ Correlation <- function(jaspResults, dataset, options){
   x <- x[!missingIndices] # remove those values
   y <- y[!missingIndices]
   n <- length(x)
-  
-  hypothesis <- switch(hypothesis, 
+
+  hypothesis <- switch(hypothesis,
                        "two.sided" = "correlated",
                        "greater" = "correlatedPositively",
                        "less" = "correlatedNegatively",

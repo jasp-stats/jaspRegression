@@ -50,6 +50,20 @@ Form
 		{
 			name: "confidenceIntervals";		label: qsTr("Confidence intervals")
 			CIField { name: "confidenceIntervalsInterval"; label: qsTr("Interval") }
+			CheckBox
+			{
+				name: "bootstrap"
+				label: qsTr("From")
+				childrenOnSameRow: true
+				IntegerField
+				{
+					name: "bootstrapReplicates"
+					defaultValue: 1000
+					fieldWidth: 50
+					min: 100
+					afterLabel: qsTr("bootstraps")
+				}
+			}
 		}
 		CheckBox { name: "VovkSellkeMPR";		label: qsTr("Vovk-Sellke maximum p-ratio")			}
 		CheckBox { name: "sampleSize";			label: qsTr("Sample size") }
