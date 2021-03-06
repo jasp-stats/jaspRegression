@@ -1042,3 +1042,13 @@ msgstr "Ergänze Grenzwert-Beschriftung"
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
 msgstr "PR-Diagramm"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "From"
+msgstr "Von"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "bootstraps"
+msgstr "Bootstraps"

@@ -91,6 +91,14 @@ msgid "Interval"
 msgstr ""
 
 msgctxt "Correlation|"
+msgid "From"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "bootstraps"
+msgstr ""
+
+msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr ""
 
@@ -1036,12 +1044,4 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
-msgstr ""
-
-msgctxt "Correlation|"
-msgid "From"
-msgstr ""
-
-msgctxt "Correlation|"
-msgid "bootstraps"
 msgstr ""
