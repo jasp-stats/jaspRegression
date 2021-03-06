@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-01-06 10:14\n"
+"POT-Creation-Date: 2021-03-06 15:52\n"
 "PO-Revision-Date: 2020-12-02 21:29+0000\n"
 "Last-Translator: JASP Stats <F.A.M.Meerhoff@uva.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jasp-engine/"
@@ -167,6 +167,20 @@ msgstr "p < .05, ** p < .01, *** p < .001%s"
 msgid "Conditioned on variables: %s"
 msgstr "Geconditioneerd op variabelen: %s"
 
+#, fuzzy
+msgid ""
+"Analytic confidence intervals for partial correlations are not yet "
+"available, but can be obtained using bootstrapping instead."
+msgstr ""
+"Betrouwbaarheidsintervallen voor partiële correlaties zijn nog niet "
+"beschikbaar."
+
+#, fuzzy
+msgid "Confidence intervals based on %i bootstrap replicates."
+msgstr ""
+"Sommige betrouwbaarheidsintervallen konden niet worden berekend. \n"
+"Er zijn mogelijk te weinig bootstrap replicaties."
+
 msgid "p"
 msgstr "p"
 
@@ -187,6 +201,10 @@ msgstr "p-waarde"
 
 msgid "Number of observations is < %s"
 msgstr "Aantal observaties < %s"
+
+#, fuzzy
+msgid "Bootstrapping"
+msgstr "Bootstrap Coëfficiënten"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
@@ -209,11 +227,6 @@ msgstr "Variabelen"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Shapiro-Wilk voor Bivariate Normaliteit"
-
-msgid "Confidence intervals for partial correlations not yet available."
-msgstr ""
-"Betrouwbaarheidsintervallen voor partiële correlaties zijn nog niet "
-"beschikbaar."
 
 msgid "Scatter plots"
 msgstr "Spreidingsdiagrammen"
@@ -365,6 +378,12 @@ msgstr ""
 "Stapsgewijze procedures worden niet ondersteund voor modellen die "
 "interactietermen bevatten"
 
+#, fuzzy
+msgid "Stepwise procedures are not supported for models containing factors"
+msgstr ""
+"Stapsgewijze procedures worden niet ondersteund voor modellen die "
+"interactietermen bevatten"
+
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
 "removal p-value"
@@ -482,6 +501,20 @@ msgstr "Tolerantie"
 msgid "VIF"
 msgstr "VIF"
 
+msgid ""
+"Standardized coefficients and collinearity statistics can only be computed "
+"for continuous predictors."
+msgstr ""
+
+msgid ""
+"Standardized coefficients can only be computed for continuous predictors."
+msgstr ""
+
+msgid ""
+"Missing coefficients are undefined because of singularities. Check the data "
+"for anything out of order!"
+msgstr ""
+
 msgid "Bootstrap Coefficients"
 msgstr "Bootstrap Coëfficiënten"
 
@@ -502,6 +535,13 @@ msgstr ""
 msgid "Bias corrected accelerated"
 msgstr "Onzuiverheid gecorrigeerd versneld"
 
+#, fuzzy
+msgid ""
+"Some bootstrap coefficients or confidence intervals could not be computed."
+msgstr ""
+"Parameterschattingen en/of geloofwaardigheidsintervallen kunnen niet "
+"berekend worden."
+
 msgid "expecting both arguments to be data.frames"
 msgstr "verwacht dat beide argumenten data.frames zijn"
 
@@ -513,6 +553,12 @@ msgstr "Partieel"
 
 msgid "Part"
 msgstr "Deel"
+
+#, fuzzy
+msgid "Factors are omitted, as no meaningful information can be shown."
+msgstr ""
+"Het interceptmodel is overgeslagen, aangezien er geen betekenisvolle "
+"informatie kan worden weergegeven."
 
 msgid "Coefficients Covariance Matrix"
 msgstr "Coëfficiënten-Covariantiematrix"
@@ -531,6 +577,11 @@ msgstr "Conditie Index"
 
 msgid "Variance Proportions"
 msgstr "Variantie Proporties"
+
+msgid ""
+"Some collinearity diagnostics could not be computed. This is expected if the "
+"model contains singularities."
+msgstr ""
 
 msgid "Casewise Diagnostics"
 msgstr "Gevalswijze Diagnostieken"
@@ -577,6 +628,9 @@ msgstr "Residuen vs. Covariaten"
 msgid "Residuals vs. %s"
 msgstr "Residuen vs. %s"
 
+msgid "Cannot plot residuals versus an interaction with a factor."
+msgstr ""
+
 msgid "Residuals vs. Predicted"
 msgstr "Residuen vs. Voorspeld"
 
@@ -599,6 +653,12 @@ msgstr ""
 
 msgid "%1$s vs. %2$s"
 msgstr "%1$s vs. %2$s"
+
+#, fuzzy
+msgid "Partial plots are not supported for factors"
+msgstr ""
+"Partiële grafieken worden niet ondersteund voor modellen die "
+"interactietermen bevatten"
 
 msgid "Residuals %s"
 msgstr "Residuen %s"

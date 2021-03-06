@@ -1042,3 +1042,13 @@ msgstr "Voeg cutoff-labels toe"
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
 msgstr "PR plot"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "From"
+msgstr "Van"
+
+#, fuzzy
+msgctxt "Correlation|"
+msgid "bootstraps"
+msgstr "bootstraps"

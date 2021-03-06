@@ -1,71 +1,91 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspRegression 0.15\n"
+"Project-Id-Version: R 3.6.1\n"
+"Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-06 15:52\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2020-12-02 21:29+0000\n"
+"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
+"jaspRegression/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Language: en_US\n"
+"X-Source-Language: American English\n"
+"X-Qt-Contexts: true\n"
 
-
-msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
+msgid ""
+"For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
 
-msgid "For all tests, the alternative hypothesis specifies that the %s is negative"
+msgid ""
+"For all tests, the alternative hypothesis specifies that the %s is negative"
 msgstr ""
 
+#, fuzzy
 msgid "Scatterplot"
-msgstr ""
+msgstr "Diagrama de barra"
 
+#, fuzzy
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "Posteriores marginal"
 
 msgid "Bayes Factor Robustness Check"
 msgstr ""
 
+#, fuzzy
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Removar esta análise"
 
+#, fuzzy
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "Covariâncias / correlações residual"
 
 msgid "Bayesian Kendall's Tau Correlations"
 msgstr ""
 
+#, fuzzy
 msgid "Bayesian Spearman Correlations"
-msgstr ""
+msgstr "Covariâncias / correlações residual"
 
 msgid "Bayesian Correlation Table"
 msgstr ""
 
+#, fuzzy
 msgid "Pearson Correlations"
-msgstr ""
+msgstr "rho de Pearson"
 
 msgid "Kendall's Tau Correlations"
 msgstr ""
 
+#, fuzzy
 msgid "Spearman Correlations"
-msgstr ""
+msgstr "Covariâncias / correlações ajustadas"
 
+#, fuzzy
 msgid "Correlation Table"
-msgstr ""
+msgstr "Correção"
 
+#, fuzzy
 msgid "Pearson's r"
-msgstr ""
+msgstr "r de Pearson"
 
+#, fuzzy
 msgid "Spearman's rho"
-msgstr ""
+msgstr "rho de Spearman"
 
 msgid "Kendall's tau B"
 msgstr ""
 
+#, fuzzy
 msgid "Pearson"
-msgstr ""
+msgstr "r de Pearson"
 
+#, fuzzy
 msgid "Spearman"
-msgstr ""
+msgstr "rho de Spearman"
 
 msgid "Kendall"
 msgstr ""
@@ -88,11 +108,13 @@ msgstr ""
 msgid "rho[s]"
 msgstr ""
 
+#, fuzzy
 msgid "Pearson's"
-msgstr ""
+msgstr "r de Pearson"
 
+#, fuzzy
 msgid "Spearman's"
-msgstr ""
+msgstr "rho de Spearman"
 
 msgid "Kendall's"
 msgstr ""
@@ -118,20 +140,27 @@ msgstr ""
 msgid "VS-MPR%s"
 msgstr ""
 
-msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n  the maximum possible odds in favor of H%1$s over H%2$s equals\n  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n  (Sellke, Bayarri, & Berger, 2001)."
+msgid ""
+"Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
+"  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
+"  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
+"  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 
 msgid "Kendall's Tau"
 msgstr ""
 
+#, fuzzy
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "Coeficiente de Correlação População"
 
+#, fuzzy
 msgid "%s Correlations"
-msgstr ""
+msgstr "Correção"
 
+#, fuzzy
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "Covariâncias / correlações observadas"
 
 msgid "All tests one-tailed, for positive correlation"
 msgstr ""
@@ -148,11 +177,14 @@ msgstr ""
 msgid "Conditioned on variables: %s"
 msgstr ""
 
-msgid "Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."
+msgid ""
+"Analytic confidence intervals for partial correlations are not yet "
+"available, but can be obtained using bootstrapping instead."
 msgstr ""
 
+#, fuzzy
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr ""
+msgstr "Ajuste do intervalo de confiança"
 
 msgid "p"
 msgstr ""
@@ -169,20 +201,25 @@ msgstr ""
 msgid "Kendall's Tau B"
 msgstr ""
 
+#, fuzzy
 msgid "p-value"
-msgstr ""
+msgstr "Valor"
 
 msgid "Number of observations is < %s"
 msgstr ""
 
+#, fuzzy
 msgid "Bootstrapping"
+msgstr "Bootstrap"
+
+msgid ""
+"Partial correlation cannot be computed: covariance matrix is computationally "
+"singular."
 msgstr ""
 
-msgid "Partial correlation cannot be computed: covariance matrix is computationally singular."
-msgstr ""
-
+#, fuzzy
 msgid "Assumption checks"
-msgstr ""
+msgstr "Verificar pressupostos"
 
 msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
@@ -190,17 +227,20 @@ msgstr ""
 msgid "Shapiro-Wilk"
 msgstr ""
 
+#, fuzzy
 msgid "Variables"
-msgstr ""
+msgstr "Variáveis"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr ""
 
+#, fuzzy
 msgid "Scatter plots"
-msgstr ""
+msgstr "Diagrama de barra"
 
+#, fuzzy
 msgid "Correlation plot"
-msgstr ""
+msgstr "Correção"
 
 msgid "Correlation undefined: %s"
 msgstr ""
@@ -208,20 +248,26 @@ msgstr ""
 msgid "%s%% CI: [%s, %s]"
 msgstr ""
 
-msgid "Plotting not possible:\n Number of observations is < 3"
+msgid ""
+"Plotting not possible:\n"
+" Number of observations is < 3"
 msgstr ""
 
-msgid "Plotting not possible:\n Number of observations is < 2"
+msgid ""
+"Plotting not possible:\n"
+" Number of observations is < 2"
 msgstr ""
 
 msgid "Plotting not possible: %s"
 msgstr ""
 
+#, fuzzy
 msgid "Partial Pearson's r"
-msgstr ""
+msgstr "r de Pearson"
 
+#, fuzzy
 msgid "Partial Spearman's rho"
-msgstr ""
+msgstr "rho de Spearman"
 
 msgid "Partial Kendall's tau B"
 msgstr ""
@@ -244,14 +290,21 @@ msgstr ""
 msgid "italic(tau)"
 msgstr ""
 
-msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgid ""
+"Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
+"maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
+"log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 
-msgid "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. 62-71."
+msgid ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
+"for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
+"62-71."
 msgstr ""
 
+#, fuzzy
 msgid "Variable"
-msgstr ""
+msgstr "Variáveis"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr ""
@@ -262,11 +315,13 @@ msgstr ""
 msgid "Could not compute the posteriors"
 msgstr ""
 
+#, fuzzy
 msgid "Prior"
-msgstr ""
+msgstr "Anterior"
 
+#, fuzzy
 msgid "Posterior"
-msgstr ""
+msgstr "RÂ² Posterior"
 
 msgid "%s%% CI:"
 msgstr ""
@@ -316,26 +371,33 @@ msgstr ""
 msgid "AIC undefined for REML fit"
 msgstr ""
 
-msgid "Stepwise procedures are not supported for models containing interaction terms"
+msgid ""
+"Stepwise procedures are not supported for models containing interaction terms"
 msgstr ""
 
 msgid "Stepwise procedures are not supported for models containing factors"
 msgstr ""
 
-msgid "Error in Stepping Method Criteria: Entry p-value needs to be smaller than removal p-value"
+msgid ""
+"Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
+"removal p-value"
 msgstr ""
 
-msgid "Error in Stepping Method Criteria: Entry F-value needs to be larger than removal F-value"
+msgid ""
+"Error in Stepping Method Criteria: Entry F-value needs to be larger than "
+"removal F-value"
 msgstr ""
 
+#, fuzzy
 msgid "Model Summary"
-msgstr ""
+msgstr "Nome do modelo"
 
 msgid "Model Summary - %s"
 msgstr ""
 
+#, fuzzy
 msgid "Model"
-msgstr ""
+msgstr "Modelo"
 
 msgid "R"
 msgstr ""
@@ -346,8 +408,9 @@ msgstr ""
 msgid "Adjusted R%s"
 msgstr ""
 
+#, fuzzy
 msgid "RMSE"
-msgstr ""
+msgstr "RMSEA"
 
 msgid "R%s Change"
 msgstr ""
@@ -355,20 +418,24 @@ msgstr ""
 msgid "F Change"
 msgstr ""
 
+#, fuzzy
 msgid "df1"
-msgstr ""
+msgstr "gl:"
 
+#, fuzzy
 msgid "df2"
-msgstr ""
+msgstr "gl:"
 
+#, fuzzy
 msgid "Autocorrelation"
-msgstr ""
+msgstr "Correção"
 
 msgid "Durbin-Watson"
 msgstr ""
 
+#, fuzzy
 msgid "Statistic"
-msgstr ""
+msgstr "Estatísticas"
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
@@ -379,11 +446,13 @@ msgstr ""
 msgid "ANOVA"
 msgstr ""
 
+#, fuzzy
 msgid "Sum of Squares"
-msgstr ""
+msgstr "Soma dos quadrados"
 
+#, fuzzy
 msgid "df"
-msgstr ""
+msgstr "gl:"
 
 msgid "Mean Square"
 msgstr ""
@@ -391,26 +460,32 @@ msgstr ""
 msgid "F"
 msgstr ""
 
+#, fuzzy
 msgid "Regression"
-msgstr ""
+msgstr "Regressão"
 
+#, fuzzy
 msgid "Residual"
-msgstr ""
+msgstr "Resíduos"
 
 msgid "Total"
 msgstr ""
 
+#, fuzzy
 msgid "Unstandardized"
-msgstr ""
+msgstr "Padrão"
 
+#, fuzzy
 msgid "Standard Error"
-msgstr ""
+msgstr "Erro padrão"
 
+#, fuzzy
 msgid "Standardized"
-msgstr ""
+msgstr "Padrão"
 
+#, fuzzy
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "%.0f%% CI"
 msgstr ""
@@ -421,8 +496,9 @@ msgstr ""
 msgid "Upper"
 msgstr ""
 
+#, fuzzy
 msgid "Collinearity Statistics"
-msgstr ""
+msgstr "Estatísticas descritivas"
 
 msgid "Tolerance"
 msgstr ""
@@ -430,17 +506,23 @@ msgstr ""
 msgid "VIF"
 msgstr ""
 
-msgid "Standardized coefficients and collinearity statistics can only be computed for continuous predictors."
+msgid ""
+"Standardized coefficients and collinearity statistics can only be computed "
+"for continuous predictors."
 msgstr ""
 
-msgid "Standardized coefficients can only be computed for continuous predictors."
+msgid ""
+"Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
 
-msgid "Missing coefficients are undefined because of singularities. Check the data for anything out of order!"
+msgid ""
+"Missing coefficients are undefined because of singularities. Check the data "
+"for anything out of order!"
 msgstr ""
 
+#, fuzzy
 msgid "Bootstrap Coefficients"
-msgstr ""
+msgstr "Coeficiente de Mardia"
 
 msgid "Bias"
 msgstr ""
@@ -451,20 +533,23 @@ msgstr ""
 msgid "Bootstrapping based on %i replicates."
 msgstr ""
 
-msgid "Coefficient estimate is based on the median of the bootstrap distribution."
+msgid ""
+"Coefficient estimate is based on the median of the bootstrap distribution."
 msgstr ""
 
 msgid "Bias corrected accelerated"
 msgstr ""
 
-msgid "Some bootstrap coefficients or confidence intervals could not be computed."
+msgid ""
+"Some bootstrap coefficients or confidence intervals could not be computed."
 msgstr ""
 
 msgid "expecting both arguments to be data.frames"
 msgstr ""
 
+#, fuzzy
 msgid "Part And Partial Correlations"
-msgstr ""
+msgstr "Covariâncias / correlações ajustadas"
 
 msgid "Partial"
 msgstr ""
@@ -475,8 +560,9 @@ msgstr ""
 msgid "Factors are omitted, as no meaningful information can be shown."
 msgstr ""
 
+#, fuzzy
 msgid "Coefficients Covariance Matrix"
-msgstr ""
+msgstr "Matriz de covariância implícita"
 
 msgid "Collinearity Diagnostics"
 msgstr ""
@@ -487,13 +573,17 @@ msgstr ""
 msgid "Eigenvalue"
 msgstr ""
 
+#, fuzzy
 msgid "Condition Index"
-msgstr ""
+msgstr "Índices de modificação"
 
+#, fuzzy
 msgid "Variance Proportions"
-msgstr ""
+msgstr "Opções de Tabela"
 
-msgid "Some collinearity diagnostics could not be computed. This is expected if the model contains singularities."
+msgid ""
+"Some collinearity diagnostics could not be computed. This is expected if the "
+"model contains singularities."
 msgstr ""
 
 msgid "Casewise Diagnostics"
@@ -502,8 +592,9 @@ msgstr ""
 msgid "Case Number"
 msgstr ""
 
+#, fuzzy
 msgid "Std. Residual"
-msgstr ""
+msgstr "Resíduos"
 
 msgid "Predicted Value"
 msgstr ""
@@ -511,8 +602,9 @@ msgstr ""
 msgid "Cook's Distance"
 msgstr ""
 
+#, fuzzy
 msgid "Residuals Statistics"
-msgstr ""
+msgstr "Variâncias residual"
 
 msgid "Minimum"
 msgstr ""
@@ -520,8 +612,9 @@ msgstr ""
 msgid "Maximum"
 msgstr ""
 
+#, fuzzy
 msgid "Mean"
-msgstr ""
+msgstr "Médias"
 
 msgid "SD"
 msgstr ""
@@ -532,32 +625,39 @@ msgstr ""
 msgid "Residuals vs. Dependent"
 msgstr ""
 
+#, fuzzy
 msgid "Residuals"
-msgstr ""
+msgstr "Resíduos"
 
+#, fuzzy
 msgid "Residuals vs. Covariates"
-msgstr ""
+msgstr "Covariâncias Residuais"
 
+#, fuzzy
 msgid "Residuals vs. %s"
-msgstr ""
+msgstr "Resíduos"
 
 msgid "Cannot plot residuals versus an interaction with a factor."
 msgstr ""
 
+#, fuzzy
 msgid "Residuals vs. Predicted"
-msgstr ""
+msgstr "Variâncias residual"
 
 msgid "Predicted Values"
 msgstr ""
 
+#, fuzzy
 msgid "Residuals Histogram"
-msgstr ""
+msgstr "Resíduos"
 
+#, fuzzy
 msgid "Standardized %s"
-msgstr ""
+msgstr "Tamanho de efeito padronizado"
 
+#, fuzzy
 msgid "Q-Q Plot Standardized Residuals"
-msgstr ""
+msgstr "Gráfico Q-Q dos resíduos"
 
 msgid "Partial plots are not supported for models containing interaction terms"
 msgstr ""
@@ -568,11 +668,13 @@ msgstr ""
 msgid "Partial plots are not supported for factors"
 msgstr ""
 
+#, fuzzy
 msgid "Residuals %s"
-msgstr ""
+msgstr "Resíduos"
 
+#, fuzzy
 msgid "Descriptives"
-msgstr ""
+msgstr "Descritivas"
 
 msgid "SE"
 msgstr ""
@@ -583,13 +685,15 @@ msgstr ""
 msgid "Std. Predicted Value"
 msgstr ""
 
+#, fuzzy
 msgid "Standardized Residuals"
-msgstr ""
+msgstr "Tamanho de efeito padronizado"
 
 msgid "Theoretical Quantiles"
 msgstr ""
 
-msgid "Unknown value provided for modelType, possible values: `alternative`, `null`"
+msgid ""
+"Unknown value provided for modelType, possible values: `alternative`, `null`"
 msgstr ""
 
 msgid "We need at least one predictor, or an intercept to make a formula"
@@ -598,13 +702,19 @@ msgstr ""
 msgid "Null model includes %s"
 msgstr ""
 
-msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum\n        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgid ""
+"Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
+"maximum\n"
+"        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
+"log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 
-msgid "The intercept model is omitted, as no meaningful information can be shown."
+msgid ""
+"The intercept model is omitted, as no meaningful information can be shown."
 msgstr ""
 
-msgid "There is only an intercept model, no meaningful information can be shown."
+msgid ""
+"There is only an intercept model, no meaningful information can be shown."
 msgstr ""
 
 msgid "Plotting is not possible: %s"
@@ -616,19 +726,31 @@ msgstr ""
 msgid "There are nonpositive weights"
 msgstr ""
 
+#, fuzzy
 msgid "Posterior Summary"
-msgstr ""
+msgstr "Amostras posteriores"
 
+#, fuzzy
 msgid "Model Comparison"
-msgstr ""
+msgstr "Opções de modelo"
 
+#, fuzzy
 msgid "Model Comparison - %s"
+msgstr "Opções de modelo"
+
+msgid ""
+"The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 "
+"and %2$s = p * %3$s and \n"
+"corresponds to an approximate penalization equal to log(%3$s + 1) in log-"
+"odds scale for each additional \n"
+"covariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
 msgstr ""
 
-msgid "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p * %3$s and \ncorresponds to an approximate penalization equal to log(%3$s + 1) in log-odds scale for each additional \ncovariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
-msgstr ""
-
-msgid "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p^u and is suitable \nfor sparse regression when there are more covariates than observations (Castillo et al., 2015)."
+msgid ""
+"The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 "
+"and %2$s = p^u and is suitable \n"
+"for sparse regression when there are more covariates than observations "
+"(Castillo et al., 2015)."
 msgstr ""
 
 msgid "BF<sub>10</sub>"
@@ -640,8 +762,9 @@ msgstr ""
 msgid "Log(BF<sub>10</sub>)"
 msgstr ""
 
+#, fuzzy
 msgid "Models"
-msgstr ""
+msgstr "Modelo"
 
 msgid "P(M)"
 msgstr ""
@@ -655,17 +778,21 @@ msgstr ""
 msgid "All models include %s."
 msgstr ""
 
-msgid "%sTable displays only a subset of models; to see all models, select \"No\" under \"Limit No. Models Shown\"."
+msgid ""
+"%sTable displays only a subset of models; to see all models, select \"No\" "
+"under \"Limit No. Models Shown\"."
 msgstr ""
 
+#, fuzzy
 msgid "Null model"
-msgstr ""
+msgstr "Controle nulo"
 
 msgid "Null model (incl. %s)"
 msgstr ""
 
+#, fuzzy
 msgid "Posterior Summaries of Coefficients"
-msgstr ""
+msgstr "Coeficiente de Correlação População"
 
 msgid "BF<sub>inclusion</sub>"
 msgstr ""
@@ -673,11 +800,13 @@ msgstr ""
 msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
+#, fuzzy
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "Intervalo de credibilidade"
 
+#, fuzzy
 msgid "Coefficient"
-msgstr ""
+msgstr "Coeficiente de Mardia"
 
 msgid "P(incl)"
 msgstr ""
@@ -697,20 +826,23 @@ msgstr ""
 msgid "Posterior Coefficients with %s%% Credible Interval"
 msgstr ""
 
+#, fuzzy
 msgid "Posterior Log Odds"
-msgstr ""
+msgstr "Amostras posteriores"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
 msgstr ""
 
+#, fuzzy
 msgid "Residuals vs Fitted"
-msgstr ""
+msgstr "Variâncias residual"
 
 msgid "Predictions under BMA"
 msgstr ""
 
+#, fuzzy
 msgid "Model Probabilities"
-msgstr ""
+msgstr "Opções de modelo"
 
 msgid "Cumulative Probability"
 msgstr ""
@@ -724,8 +856,9 @@ msgstr ""
 msgid "Log(P(data|M))"
 msgstr ""
 
+#, fuzzy
 msgid "Model Dimension"
-msgstr ""
+msgstr "Opções do modelo"
 
 msgid "Inclusion Probabilities"
 msgstr ""
@@ -733,14 +866,19 @@ msgstr ""
 msgid "Marginal Inclusion Probability"
 msgstr ""
 
-msgid "Prior\nInclusion\nProbabilities"
+msgid ""
+"Prior\n"
+"Inclusion\n"
+"Probabilities"
 msgstr ""
 
+#, fuzzy
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Diagramas"
 
+#, fuzzy
 msgid "Marginal Posterior Distributions"
-msgstr ""
+msgstr "Posteriores marginal"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
 msgstr ""
@@ -748,14 +886,17 @@ msgstr ""
 msgid "Performance Diagnostics"
 msgstr ""
 
+#, fuzzy
 msgid "Deviance"
-msgstr ""
+msgstr "Avançado"
 
+#, fuzzy
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
+#, fuzzy
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "McFadden R%s"
 msgstr ""
@@ -769,14 +910,17 @@ msgstr ""
 msgid "Cox & Snell R%s"
 msgstr ""
 
+#, fuzzy
 msgid "Coefficients"
-msgstr ""
+msgstr "Coeficiente de Mardia"
 
+#, fuzzy
 msgid "Estimate"
-msgstr ""
+msgstr "Estimativas"
 
+#, fuzzy
 msgid "Standardized%s"
-msgstr ""
+msgstr "Padrão"
 
 msgid "Odds Ratio"
 msgstr ""
@@ -784,22 +928,29 @@ msgstr ""
 msgid "z"
 msgstr ""
 
+#, fuzzy
 msgid "Wald Statistic"
-msgstr ""
+msgstr "Estatísticas"
 
+#, fuzzy
 msgid "Lower bound"
-msgstr ""
+msgstr "limite inferior:"
 
+#, fuzzy
 msgid "Upper bound"
-msgstr ""
+msgstr "limite superior:"
 
-msgid "Standardized estimates represent estimates where the continuous predictors are standardized (X-standardization)."
+msgid ""
+"Standardized estimates represent estimates where the continuous predictors "
+"are standardized (X-standardization)."
 msgstr ""
 
 msgid "Bias corrected accelerated."
 msgstr ""
 
-msgid "Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."
+msgid ""
+"Coefficient estimate and robust standard error are based on the median of "
+"the bootstrap distribution."
 msgstr ""
 
 msgid "Observed"
@@ -811,20 +962,24 @@ msgstr ""
 msgid "Studentized Residual"
 msgstr ""
 
+#, fuzzy
 msgid "Factor Descriptives"
-msgstr ""
+msgstr "Descritivas"
 
+#, fuzzy
 msgid "Factor"
-msgstr ""
+msgstr "Fatores"
 
 msgid "Confusion matrix"
 msgstr ""
 
+#, fuzzy
 msgid "Performance metrics"
-msgstr ""
+msgstr "Não paramétricos"
 
+#, fuzzy
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 msgid "Null model contains nuisance parameters: %s"
 msgstr ""
@@ -835,14 +990,18 @@ msgstr ""
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
 
-msgid "Some confidence intervals could not be computed.\nPossibly too few bootstrap replicates."
+msgid ""
+"Some confidence intervals could not be computed.\n"
+"Possibly too few bootstrap replicates."
 msgstr ""
 
+#, fuzzy
 msgid "Residual plots"
-msgstr ""
+msgstr "Resíduos"
 
+#, fuzzy
 msgid "Estimates plots"
-msgstr ""
+msgstr "Estimativas"
 
 msgid "Predicted - residuals plot"
 msgstr ""
@@ -856,11 +1015,13 @@ msgstr ""
 msgid "Performance plots"
 msgstr ""
 
+#, fuzzy
 msgid "ROC plot"
-msgstr ""
+msgstr "Diagrama de barra"
 
+#, fuzzy
 msgid "PR plot"
-msgstr ""
+msgstr "Diagrama de barra"
 
 msgid "Predicted Probability"
 msgstr ""
@@ -877,11 +1038,13 @@ msgstr ""
 msgid "Positive predictive value"
 msgstr ""
 
+#, fuzzy
 msgid "%1$s%% bca%2$s Confidence interval"
-msgstr ""
+msgstr "Intervalo de Confiança"
 
+#, fuzzy
 msgid "%s%% Confidence interval"
-msgstr ""
+msgstr "Intervalo de Confiança"
 
 msgid "%s <br> (odds ratio scale)"
 msgstr ""
@@ -889,20 +1052,23 @@ msgstr ""
 msgid "Robust <br> %s"
 msgstr ""
 
+#, fuzzy
 msgid "Parameter"
-msgstr ""
+msgstr "Parâmetros"
 
-msgid        "using the %d/%d row from a combined fit"
+msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"
-msgstr[0]    ""
-msgstr[1]    ""
+msgstr[0] ""
+msgstr[1] ""
 
-msgid        "The following covariate was considered but not included: %s."
+msgid "The following covariate was considered but not included: %s."
 msgid_plural "The following covariates were considered but not included: %s."
-msgstr[0]    ""
-msgstr[1]    ""
+msgstr[0] ""
+msgstr[1] ""
 
-msgid        "Partial Regression Plot"
+#, fuzzy
+msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
-msgstr[0]    ""
-msgstr[1]    ""
+msgstr[0] "Regressão"
+msgstr[1] "Regressão"
+
