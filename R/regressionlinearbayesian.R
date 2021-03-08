@@ -986,8 +986,13 @@ for sparse regression when there are more covariates than observations (Castillo
   if (!ready || basregContainer$getError())
     return()
 
-  if (!is.null(basregContainer[["basregModel"]]))
+  if (!is.null(basregContainer[["basregModel"]])) {
+    # see https://github.com/jasp-stats/INTERNAL-jasp/issues/1263
+    # when objects are loaded from the state, no BAS:: methods are called.
+    # as a consequence, fitted may not dispatch to BAS::fitted.bas (same for other S3 methods)
+    loadNamespace("BAS")
     return(basregContainer[["basregModel"]]$object)
+  }
 
   formula <- .basregCreateFormula(options$dependent, options$modelTerms)
   isNuisance <- .basregCreateNuisanceLookupVector(options$modelTerms)
