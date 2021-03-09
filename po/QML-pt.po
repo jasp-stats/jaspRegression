@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-03-10 19:02+0000\n"
+"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
+"Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/pt/>\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -33,19 +39,19 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr ""
+msgstr "Reportar significância"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
-msgstr ""
+msgstr "Sinalizar correlações significantes"
 
 msgctxt "Correlation|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Intervalos de confiança"
 
 msgctxt "Correlation|"
 msgid "Interval"
-msgstr ""
+msgstr "Intervalo"
 
 #, fuzzy
 msgctxt "Correlation|"
@@ -59,19 +65,19 @@ msgstr "Tamanho da amostra"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Hipótese alternativa"
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr ""
+msgstr "Correlacionado"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Positivamente correlacionado"
 
 msgctxt "Correlation|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Negativamente correlacionado"
 
 #, fuzzy
 msgctxt "Correlation|"
@@ -80,7 +86,7 @@ msgstr "Diagramas"
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
-msgstr ""
+msgstr "Gráficos de dispersão"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
@@ -101,7 +107,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr ""
+msgstr "Normalidade multivariada"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
@@ -130,15 +136,17 @@ msgstr "Opções"
 
 msgctxt "Correlation|"
 msgid "Means and standard deviations"
-msgstr ""
+msgstr "Médias e desvios-padrão"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances"
-msgstr ""
+msgstr "Desvios e covariâncias entre produtos"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Valores ausentes"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
@@ -171,23 +179,23 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
-msgstr ""
+msgstr "Intervalo"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Hipótese alternativa"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
-msgstr ""
+msgstr "Correlacionado"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Positivamente correlacionado"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Negativamente correlacionado"
 
 #, fuzzy
 msgctxt "CorrelationBayesian|"
@@ -196,7 +204,7 @@ msgstr "Diagramas"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Matriz de correlações"
 
 msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
@@ -217,7 +225,7 @@ msgstr "Opções"
 
 msgctxt "CorrelationBayesian|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Valores ausentes"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases pairwise"
@@ -272,7 +280,7 @@ msgstr "Estatísticas"
 
 msgctxt "RegressionLinear|"
 msgid "Regression Coefficients"
-msgstr ""
+msgstr "Coeficientes de regressão"
 
 #, fuzzy
 msgctxt "RegressionLinear|"
@@ -291,15 +299,15 @@ msgstr "bootstraps"
 
 msgctxt "RegressionLinear|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Intervalos de confiança"
 
 msgctxt "RegressionLinear|"
 msgid "Covariance matrix"
-msgstr ""
+msgstr "Matriz de covariância"
 
 msgctxt "RegressionLinear|"
 msgid "Model fit"
-msgstr ""
+msgstr "Ajuste do modelo"
 
 msgctxt "RegressionLinear|"
 msgid "R squared change"
