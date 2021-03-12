@@ -1,60 +1,58 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-03-13 16:02+0000\n"
+"Last-Translator: Paulina Elizabeth Robalino <paulina.e.robalino@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Regression"
 msgstr "Regresión"
 
-#, fuzzy
 msgctxt "Description|"
 msgid ""
 "This module offers the standard Frequentist and Bayesian Regression analyses."
 msgstr ""
-"Este módulo ofrece los análisis estándar de regresión frecuentista y "
-"bayesiana."
+"Este módulo ofrece los análisis estándar de regresión Frecuentista y "
+"Bayesiana."
 
 msgctxt "Description|"
 msgid "Classical"
 msgstr "Clásico"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Correlation"
 msgstr "Correlación"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr "Regresión lineal"
+msgstr "Regresión Lineal"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr "Regresión logística"
+msgstr "Regresión Logística"
 
 msgctxt "Description|"
 msgid "Bayesian"
 msgstr "Bayesiano"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr "Correlación bayesiana"
+msgstr "Correlación Bayesiana"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr "Regresión lineal bayesiana"
+msgstr "Regresión Lineal Bayesiana"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Variables"
 msgstr "Variables"
@@ -64,52 +62,42 @@ msgctxt "Correlation|"
 msgid "Condition on"
 msgstr "Condición en"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
-msgstr "Coeficiente de correlación muestral"
+msgstr "Coeficiente de Correlación Muestral"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr "R de Pearson"
+msgstr "r de Pearson"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Spearman's rho"
 msgstr "Rho de Spearman"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
 msgstr "Tau-b de Kendall"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr "Opciones adicionales"
+msgstr "Opciones Adicionales"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Display pairwise"
 msgstr "Mostrar por pares"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr "Informe de importancia"
+msgstr "Reportar significancia"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
 msgstr "Marcar correlaciones significativas"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Confidence intervals"
 msgstr "Intervalos de confianza"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Interval"
 msgstr "Intervalo"
@@ -119,62 +107,50 @@ msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr "Relación p máxima de Vovk-Sellke"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Sample size"
 msgstr "Tamaño de la muestra"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr "Alt. Hipótesis"
+msgstr "Hipótesis Alt."
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Correlated"
 msgstr "Correlacionado"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Correlated positively"
 msgstr "Correlacionado positivamente"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Correlated negatively"
 msgstr "Correlacionado negativamente"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Plots"
-msgstr "Parcelas"
+msgstr "Gráficos"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Scatter plots"
 msgstr "Gráfico de dispersión"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Densities for variables"
 msgstr "Densidades para variables"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Prediction intervals"
 msgstr "Intervalos de predicción"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Heatmap"
 msgstr "Mapa de calor"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Assumption Checks"
 msgstr "Verificaciones de supuestos"
