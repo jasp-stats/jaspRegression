@@ -672,9 +672,9 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   }
 
   if (purpose %in% c("matrix", "pairs"))
-    dataError <- pairStats[[1]][["error"]]
+    dataError <- pairStats[[1]][["dataRrror"]]
   else if (purpose=="sumStat")
-    dataError <- pairStats[["error"]]
+    dataError <- pairStats[["dataError"]]
 
   if (!is.null(dataError)) {
 

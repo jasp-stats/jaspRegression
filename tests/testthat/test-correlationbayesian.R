@@ -176,3 +176,25 @@ test_that("Scatterplot with ranks matches", {
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "scatterplot-with-ranks", dir="CorrelationBayesian")
 })
+
+test_that("Too peaked posterior is plotted with meaningfull error message", {
+  options <- jaspTools::analysisOptions("CorrelationBayesian")
+  options$variables <- c("x", "y")
+  options$pairs <- list(
+    c("x", "y")
+  )
+  options$alternative <- "greater"
+  options$plotPriorPosterior <- TRUE
+  options$plotPriorPosteriorAddEstimationInfo <- TRUE
+  options$plotPriorPosteriorAddTestingInfo <- TRUE
+  options$kappa <- "1"
+
+  set.seed(1)
+  data <- data.frame(x = rnorm(10))
+  data$y <- data$x + rnorm(10, sd = 0.01)
+
+  results <- jaspTools::runAnalysis("CorrelationBayesian", data, options)
+  error <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_x-y"]][["collection"]][["pairsPlotCollection_x-y_plotPriorPosterior"]][["error"]][["errorMessage"]]
+
+  testthat::expect_equal(error, "Posterior is too peaked")
+})
