@@ -99,6 +99,8 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         bfObject[["dataError"]] <- errorMsg
       } else {
         ci <- .computeCorCredibleInterval(bfObject, options[["ciValue"]], method)
+        if (!is.null(ci[["error"]]) && isTRUE(bfObject[[options[["alternative"]]]][["tooPeaked"]]))
+          ci[["error"]] <- gettext("Posterior is too peaked")
         bfObject <- modifyList(bfObject, ci)
       }
       result[[pairName]][[method]] <- bfObject
