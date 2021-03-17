@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2021-03-06 15:52\n"
-"PO-Revision-Date: 2021-03-06 09:51+0000\n"
+"PO-Revision-Date: 2021-03-18 05:18+0000\n"
 "Last-Translator: Paulina Elizabeth Robalino <paulina.e.robalino@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.5.1\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -76,7 +76,7 @@ msgid "Kendall"
 msgstr ""
 
 msgid "Density"
-msgstr ""
+msgstr "Densidad"
 
 msgid "Plotting not possible: Number of observations is < 3"
 msgstr ""
@@ -106,7 +106,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -201,7 +201,7 @@ msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "Shapiro-Wilk"
 
 msgid "Variables"
 msgstr ""
@@ -213,7 +213,7 @@ msgid "Scatter plots"
 msgstr ""
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "Gráfico de correlación"
 
 msgid "Correlation undefined: %s"
 msgstr ""
@@ -232,7 +232,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "Graficar no es posible: %s"
 
 msgid "Partial Pearson's r"
 msgstr ""
@@ -289,7 +289,7 @@ msgid "Prior"
 msgstr ""
 
 msgid "Posterior"
-msgstr ""
+msgstr "Posterior"
 
 msgid "%s%% CI:"
 msgstr ""
@@ -426,7 +426,7 @@ msgid "Residual"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgid "Unstandardized"
 msgstr ""
@@ -444,10 +444,10 @@ msgid "%.0f%% CI"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "Más bajo"
 
 msgid "Upper"
-msgstr ""
+msgstr "Superior"
 
 msgid "Collinearity Statistics"
 msgstr ""
@@ -552,16 +552,16 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "Mínimo"
 
 msgid "Maximum"
-msgstr ""
+msgstr "Máximo"
 
 msgid "Mean"
 msgstr "Media"
 
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgid "N"
 msgstr ""
@@ -624,7 +624,7 @@ msgid "Standardized Residuals"
 msgstr ""
 
 msgid "Theoretical Quantiles"
-msgstr ""
+msgstr "Cuantiles Teóricos"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -795,7 +795,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Gráfico Q-Q"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -954,7 +954,7 @@ msgid "Robust <br> %s"
 msgstr ""
 
 msgid "Parameter"
-msgstr ""
+msgstr "Parametro"
 
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"
