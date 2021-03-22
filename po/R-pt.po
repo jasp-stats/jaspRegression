@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-03-06 15:52\n"
-"PO-Revision-Date: 2021-03-19 18:18+0000\n"
-"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
+"PO-Revision-Date: 2021-03-23 23:29+0000\n"
+"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pt/>\n"
 "Language: pt\n"
@@ -261,7 +261,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "Não é possível efetuar a plotagem: %s"
 
 #, fuzzy
 msgid "Partial Pearson's r"
@@ -306,7 +306,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Variable"
-msgstr "Variáveis"
+msgstr "Variável"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr ""
@@ -397,7 +397,6 @@ msgstr "Nome do modelo"
 msgid "Model Summary - %s"
 msgstr ""
 
-#, fuzzy
 msgid "Model"
 msgstr "Modelo"
 
@@ -491,11 +490,9 @@ msgstr "t"
 msgid "%.0f%% CI"
 msgstr ""
 
-#, fuzzy
 msgid "Lower"
 msgstr "Inferior"
 
-#, fuzzy
 msgid "Upper"
 msgstr "Superior"
 
@@ -617,7 +614,7 @@ msgstr "Máximo"
 
 #, fuzzy
 msgid "Mean"
-msgstr "Médias"
+msgstr "Média"
 
 msgid "SD"
 msgstr ""
@@ -693,8 +690,9 @@ msgstr ""
 msgid "Standardized Residuals"
 msgstr "Tamanho de efeito padronizado"
 
+#, fuzzy
 msgid "Theoretical Quantiles"
-msgstr ""
+msgstr "Quantis teóricos"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -768,7 +766,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Models"
-msgstr "Modelo"
+msgstr "Modelos"
 
 msgid "P(M)"
 msgstr ""
@@ -898,7 +896,6 @@ msgstr "Avançado"
 msgid "AIC"
 msgstr "AIC"
 
-#, fuzzy
 msgid "BIC"
 msgstr "BIC"
 
@@ -918,7 +915,6 @@ msgstr ""
 msgid "Coefficients"
 msgstr "Coeficiente de Mardia"
 
-#, fuzzy
 msgid "Estimate"
 msgstr "Estimativas"
 
@@ -970,9 +966,8 @@ msgstr ""
 msgid "Factor Descriptives"
 msgstr "Descritivas"
 
-#, fuzzy
 msgid "Factor"
-msgstr "Fatores"
+msgstr "Fator"
 
 msgid "Confusion matrix"
 msgstr ""
@@ -981,7 +976,6 @@ msgstr ""
 msgid "Performance metrics"
 msgstr "Não paramétricos"
 
-#, fuzzy
 msgid "Value"
 msgstr "Valor"
 
