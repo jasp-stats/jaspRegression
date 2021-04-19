@@ -6,7 +6,7 @@ Date: 2020-04-29
 Author: JASP Team
 Website: jasp-stats.org
 Maintainer: JASP Team <info@jasp-stats.org>
-Description: This module offers the standard Frequentist and Bayesian Regression analyses.
+Description: Evaluate the association between variables
 License: GPL (>= 2)
 Encoding: UTF-8
 Imports:
