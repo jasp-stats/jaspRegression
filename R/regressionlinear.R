@@ -130,7 +130,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   if (options$wlsWeights != "") {
     .hasErrors(dataset, type = c("infinity", "limits", "observations"),
-               all.target = options$wlsWeights, limits.min = 1, observations.amount = "< 2",
+               all.target = options$wlsWeights, limits.min = 0, observations.amount = "< 2",
                exitAnalysisIfErrors = TRUE)
 
     covwt <- function(...) return(stats::cov.wt(..., wt = dataset[[.v(options[["wlsWeights"]])]])$cov)
