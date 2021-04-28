@@ -5,7 +5,7 @@ Description
 {
 	name		: "jaspRegression"
 	title		: qsTr("Regression")
-	description	: qsTr("This module offers the standard Frequentist and Bayesian Regression analyses.")
+	description	: qsTr("Evaluate the association between variables")
 	icon		: "analysis-classical-regression.svg"
 	version		: "0.13"
 	author		: "JASP Team"
