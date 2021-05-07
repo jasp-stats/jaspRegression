@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2021-03-06 15:52\n"
-"PO-Revision-Date: 2021-02-21 06:50+0000\n"
+"PO-Revision-Date: 2021-03-12 02:20+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.5\n"
+"X-Generator: Weblate 4.5.2-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -109,10 +109,10 @@ msgid "n"
 msgstr "n"
 
 msgid "Upper %s%% CI"
-msgstr ""
+msgstr "上側 %s%% CI"
 
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "下側 %s%% CI"
 
 msgid "Ranks of %s"
 msgstr ""
@@ -270,6 +270,9 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke 最大 <em>p</em> 比: "
+"<em>p</em>-値に基づいて、H%2$sよりもH%1$sを支持する最大の可能なオッズは、<em>p</em> %3$s .37に対して1/(-e "
+"<em>p</em> log(<em>p</em>))に等しくなります(Sellke, Bayarri, & Berger, 2001)。"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
@@ -613,7 +616,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "記述統計量"
 
 msgid "SE"
 msgstr "標準誤差"
@@ -668,7 +671,7 @@ msgid "Posterior Summary"
 msgstr ""
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "モデル比較"
 
 msgid "Model Comparison - %s"
 msgstr ""
@@ -689,25 +692,25 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
-msgstr ""
+msgstr "モデル"
 
 msgid "P(M)"
-msgstr ""
+msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|データ)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF <sub> M </sub>"
 
 msgid "All models include %s."
 msgstr ""
@@ -718,10 +721,10 @@ msgid ""
 msgstr ""
 
 msgid "Null model"
-msgstr ""
+msgstr "帰無モデル"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "帰無モデル (%s含む)"
 
 msgid "Posterior Summaries of Coefficients"
 msgstr ""
@@ -733,22 +736,22 @@ msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "%s%% 信用区間"
 
 msgid "Coefficient"
 msgstr "係数"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(効果を含む)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(効果を含まない)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P（効果を含む|データ）"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(効果を含まない|データ)"
 
 msgid "<em>Warning.</em>"
 msgstr ""
