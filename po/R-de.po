@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-03-06 15:52\n"
+"POT-Creation-Date: 2021-05-07 13:15\n"
 "PO-Revision-Date: 2021-03-31 13:26+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -296,14 +296,14 @@ msgstr ""
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
 "62-71."
 
+msgid "Posterior is too peaked"
+msgstr "Posterior ist zu spitz"
+
 msgid "Variable"
 msgstr "Variable"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "Bayessche Korrelationsmatrix Abbildung"
-
-msgid "Posterior is too peaked"
-msgstr "Posterior ist zu spitz"
 
 msgid "Could not compute the posteriors"
 msgstr "Konnte die Posterior nicht berechnen"

@@ -13,13 +13,6 @@ msgid "Regression"
 msgstr "Regressie"
 
 msgctxt "Description|"
-msgid ""
-"This module offers the standard Frequentist and Bayesian Regression analyses."
-msgstr ""
-"Deze module biedt de standaard Frequentistische en Bayesiaanse Regressie "
-"analyses."
-
-msgctxt "Description|"
 msgid "Classical"
 msgstr "Klassiek"
 
@@ -1052,3 +1045,7 @@ msgstr "Van"
 msgctxt "Correlation|"
 msgid "bootstraps"
 msgstr "bootstraps"
+
+msgctxt "Description|"
+msgid "Evaluate the association between variables"
+msgstr ""

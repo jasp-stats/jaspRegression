@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2021-03-06 15:52\n"
+"POT-Creation-Date: 2021-05-07 13:15\n"
 "PO-Revision-Date: 2021-03-12 02:20+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -270,9 +270,9 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
-"Vovk-Sellke 最大 <em>p</em> 比: "
-"<em>p</em>-値に基づいて、H%2$sよりもH%1$sを支持する最大の可能なオッズは、<em>p</em> %3$s .37に対して1/(-e "
-"<em>p</em> log(<em>p</em>))に等しくなります(Sellke, Bayarri, & Berger, 2001)。"
+"Vovk-Sellke 最大 <em>p</em> 比: <em>p</em>-値に基づいて、H%2$sよりもH%1$sを支"
+"持する最大の可能なオッズは、<em>p</em> %3$s .37に対して1/(-e <em>p</em> "
+"log(<em>p</em>))に等しくなります(Sellke, Bayarri, & Berger, 2001)。"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
@@ -280,13 +280,13 @@ msgid ""
 "62-71."
 msgstr ""
 
+msgid "Posterior is too peaked"
+msgstr ""
+
 msgid "Variable"
 msgstr "変数"
 
 msgid "Bayesian Correlation Matrix Plot"
-msgstr ""
-
-msgid "Posterior is too peaked"
 msgstr ""
 
 msgid "Could not compute the posteriors"

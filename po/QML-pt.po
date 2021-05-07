@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-04-25 14:32+0000\n"
-"Last-Translator: Pedro Afonso Cortez <cor.afonso@gmail.com>\n"
-"Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/pt/>\n"
-"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.7-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -379,9 +373,10 @@ msgctxt "RegressionLinear|"
 msgid "Method Specification"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Valores ausentes"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases listwise"
@@ -784,9 +779,10 @@ msgctxt "RegressionLogistic|"
 msgid "Proportions"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Regression Coefficients"
-msgstr ""
+msgstr "Coeficientes de regressão"
 
 #, fuzzy
 msgctxt "RegressionLogistic|"
@@ -811,9 +807,10 @@ msgctxt "RegressionLogistic|"
 msgid "Odds ratios"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Intervalos de confiança"
 
 msgctxt "RegressionLogistic|"
 msgid "Odds ratio scale"
@@ -993,9 +990,10 @@ msgctxt "CorrelationBayesian|"
 msgid "Sequential analysis"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Interval"
-msgstr ""
+msgstr "Intervalo"
 
 msgctxt "RegressionLinear|"
 msgid "Enter"
@@ -1037,11 +1035,6 @@ msgstr "rho de Pearson"
 msgctxt "Description|"
 msgid "Regression"
 msgstr "Regressão"
-
-msgctxt "Description|"
-msgid ""
-"This module offers the standard Frequentist and Bayesian Regression analyses."
-msgstr ""
 
 msgctxt "Description|"
 msgid "Classical"
@@ -1119,4 +1112,8 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Evaluate the association between variables"
 msgstr ""

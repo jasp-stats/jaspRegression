@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-03-06 15:52\n"
+"POT-Creation-Date: 2021-05-07 13:15\n"
 "PO-Revision-Date: 2020-12-02 21:29+0000\n"
 "Last-Translator: JASP Stats <F.A.M.Meerhoff@uva.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jasp-engine/"
@@ -303,14 +303,14 @@ msgstr ""
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
 "62-71."
 
+msgid "Posterior is too peaked"
+msgstr "Posterior is te gepiekt"
+
 msgid "Variable"
 msgstr "Variabele"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "Bayesiaanse Correlatie Matrix Grafiek"
-
-msgid "Posterior is too peaked"
-msgstr "Posterior is te gepiekt"
 
 msgid "Could not compute the posteriors"
 msgstr "Kon geen posteriors berekenen"

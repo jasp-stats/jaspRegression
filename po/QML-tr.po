@@ -10,11 +10,6 @@ msgid "Regression"
 msgstr ""
 
 msgctxt "Description|"
-msgid ""
-"This module offers the standard Frequentist and Bayesian Regression analyses."
-msgstr ""
-
-msgctxt "Description|"
 msgid "Classical"
 msgstr ""
 
@@ -1044,4 +1039,8 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Evaluate the association between variables"
 msgstr ""
