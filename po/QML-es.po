@@ -1,220 +1,186 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-03-30 00:26+0000\n"
+"Last-Translator: Paulina Elizabeth Robalino <paulina.e.robalino@gmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.6-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Regression"
 msgstr "Regresión"
 
-#, fuzzy
 msgctxt "Description|"
 msgid ""
 "This module offers the standard Frequentist and Bayesian Regression analyses."
 msgstr ""
-"Este módulo ofrece los análisis estándar de regresión frecuentista y "
-"bayesiana."
+"Este módulo ofrece los análisis estándar de regresión Frecuentista y "
+"Bayesiana."
 
 msgctxt "Description|"
 msgid "Classical"
 msgstr "Clásico"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Correlation"
 msgstr "Correlación"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr "Regresión lineal"
+msgstr "Regresión Lineal"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr "Regresión logística"
+msgstr "Regresión Logística"
 
 msgctxt "Description|"
 msgid "Bayesian"
 msgstr "Bayesiano"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr "Correlación bayesiana"
+msgstr "Correlación Bayesiana"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr "Regresión lineal bayesiana"
+msgstr "Regresión Lineal Bayesiana"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Variables"
 msgstr "Variables"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Condition on"
 msgstr "Condición en"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
-msgstr "Coeficiente de correlación muestral"
+msgstr "Coeficiente de Correlación Muestral"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr "R de Pearson"
+msgstr "r de Pearson"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Spearman's rho"
 msgstr "Rho de Spearman"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
 msgstr "Tau-b de Kendall"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr "Opciones adicionales"
+msgstr "Opciones Adicionales"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Display pairwise"
 msgstr "Mostrar por pares"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr "Informe de importancia"
+msgstr "Reportar significancia"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
 msgstr "Marcar correlaciones significativas"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Confidence intervals"
 msgstr "Intervalos de confianza"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Interval"
 msgstr "Intervalo"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr "Relación p máxima de Vovk-Sellke"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Sample size"
 msgstr "Tamaño de la muestra"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr "Alt. Hipótesis"
+msgstr "Hipótesis Alt."
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Correlated"
 msgstr "Correlacionado"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Correlated positively"
 msgstr "Correlacionado positivamente"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Correlated negatively"
 msgstr "Correlacionado negativamente"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Plots"
-msgstr "Parcelas"
+msgstr "Gráficos"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Scatter plots"
 msgstr "Gráfico de dispersión"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Densities for variables"
 msgstr "Densidades para variables"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Statistics"
 msgstr "Estadísticas"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Prediction intervals"
 msgstr "Intervalos de predicción"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Heatmap"
 msgstr "Mapa de calor"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Assumption Checks"
 msgstr "Verificaciones de supuestos"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
 msgstr "Normalidad multivariante"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Shapiro"
 msgstr "Shapiro"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Royston"
 msgstr "Royston"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Mardia"
 msgstr "Mardia"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Energy"
 msgstr "Energía"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
 msgstr "Normalidad por pares"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Options"
 msgstr "Opciones"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Means and standard deviations"
 msgstr "Medias y desviaciones estándar"
@@ -224,67 +190,54 @@ msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances"
 msgstr "Desviaciones y covarianzas entre productos"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr "Valores faltantes"
+msgstr "Valores perdidos"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
 msgstr "Excluir casos por pares"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
 msgstr "Excluir casos según la lista"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
 msgstr "Coeficiente de correlación poblacional"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
 msgstr "Rho de Pearson"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
 msgstr "Rho de Spearman"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
 msgstr "Tau-b de Kendall"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
 msgstr "Opciones adicionales"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr "Mostrar tabla por pares"
+msgstr "Visualizar tabla por pares"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr "Informe los factores de Bayes"
+msgstr "Reportar los factores de Bayes"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
 msgstr "Marcar correlaciones compatibles"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
 msgstr "Tamaño de la muestra"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
 msgstr "Mediana posterior"
@@ -294,52 +247,42 @@ msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
 msgstr "Intervalos creíbles"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
 msgstr "Intervalo"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
 msgstr "Alt. Hipótesis"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
 msgstr "Correlacionado"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
 msgstr "Correlacionado positivamente"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
 msgstr "Correlacionado negativamente"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Plots"
-msgstr "Parcelas"
+msgstr "Gráficos"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
 msgstr "Matriz de correlación"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
 msgstr "Densidades para variables"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
-msgstr "Posteriores debajo de H"
+msgstr "Posteriores debajo de H₁"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
 msgstr "Anterior"
@@ -349,72 +292,58 @@ msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
 msgstr "Ancho previo beta estirado"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Plot Individual Pairs"
-msgstr "Trazar pares individuales"
+msgstr "Graficar pares individuales"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Correlation coefficient to plot"
-msgstr "Coeficiente de correlación para trazar"
+msgstr "Coeficiente de correlación para graficar"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau"
 msgstr "Tau de Kendall"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
 msgstr "Gráfico de dispersión"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Robustness check"
 msgstr "Comprobación de robustez"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Prior and posterior"
-msgstr "Previo y posterior"
+msgstr "Anterior y posterior"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Estimation info"
 msgstr "Información de estimación"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Testing info"
 msgstr "Información de prueba"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Bayes factor robustness check"
 msgstr "Comprobación de la robustez del factor de Bayes"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Additional info"
-msgstr "información adicional"
+msgstr "Información adicional"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Sequential analysis"
 msgstr "Análisis secuencial"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Options"
 msgstr "Opciones"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Missing Values"
-msgstr "Valores faltantes"
+msgstr "Valores perdidos"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases pairwise"
 msgstr "Excluir casos por pares"
@@ -424,12 +353,10 @@ msgctxt "CorrelationBayesian|"
 msgid "Exclude cases listwise"
 msgstr "Excluir casos según la lista"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
 msgstr "Variable dependiente"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Method"
 msgstr "Método"
