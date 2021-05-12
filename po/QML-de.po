@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-05-10 18:32+0000\n"
-"Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
+"PO-Revision-Date: 2021-05-13 17:32+0000\n"
+"Last-Translator: Thomas Langkamp <thomas.lassdiesonnerein@gmx.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
 "Language: de\n"
@@ -104,7 +104,7 @@ msgstr "Stichprobenumfang"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr "Alt.-Hypothese"
+msgstr "Alternativhypothese (H1)"
 
 msgctxt "Correlation|"
 msgid "Correlated"
@@ -244,7 +244,7 @@ msgstr "Intervall"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr "Alt.-Hypothese"
+msgstr "Alternativhypothese (H1)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
