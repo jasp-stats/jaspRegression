@@ -16,6 +16,7 @@ Imports:
   car,
   ggplot2,
   ggrepel,
+  gridGraphics,
   hmeasure,
   jaspAnova,
   jaspBase,
