@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-05-07 13:15\n"
-"PO-Revision-Date: 2021-05-19 09:33+0000\n"
+"PO-Revision-Date: 2021-05-30 06:32+0000\n"
 "Last-Translator: Johannes Keyser <johanneskeyser@posteo.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/de/>\n"
@@ -112,10 +112,10 @@ msgid "n"
 msgstr "n"
 
 msgid "Upper %s%% CI"
-msgstr "Obere %s%% GI"
+msgstr "Obergrenze %s%%-KI"
 
 msgid "Lower %s%% CI"
-msgstr "Untere %s%% GI"
+msgstr "Untergrenze %s%%-KI"
 
 msgid "Ranks of %s"
 msgstr "Rang von %s"
@@ -832,7 +832,7 @@ msgid "Posterior Log Odds"
 msgstr "Posterior-Log-Odds"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
-msgstr "Kann Posterior-Log-Odds bei MCMC-Stichproben nicht anzeigen."
+msgstr "Kann Posterior-Log-Chancen bei MCMC-Stichproben nicht anzeigen."
 
 msgid "Residuals vs Fitted"
 msgstr "Residuen vs Anpassung"
@@ -918,7 +918,7 @@ msgid "Standardized%s"
 msgstr "Standardisiertes%s"
 
 msgid "Odds Ratio"
-msgstr "Quotenverhältnis"
+msgstr "Chancenverhältnis"
 
 msgid "z"
 msgstr "z"
@@ -1035,7 +1035,7 @@ msgid "%s%% Confidence interval"
 msgstr "%s%% Konfidenzintervall"
 
 msgid "%s <br> (odds ratio scale)"
-msgstr "%s <br> (odds ratio Skala)"
+msgstr "%s <br> (Chancenverhältnis-Skala)"
 
 msgid "Robust <br> %s"
 msgstr "Robust <br> %s"
