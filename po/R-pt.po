@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-05-07 13:15\n"
-"PO-Revision-Date: 2021-05-13 16:32+0000\n"
+"PO-Revision-Date: 2021-05-23 13:33+0000\n"
 "Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pt/>\n"
@@ -92,7 +92,6 @@ msgstr "rho de Spearman"
 msgid "Kendall"
 msgstr ""
 
-#, fuzzy
 msgid "Density"
 msgstr "Densidade"
 
@@ -140,7 +139,6 @@ msgstr ""
 msgid "Predicted"
 msgstr ""
 
-#, fuzzy
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
 
@@ -190,7 +188,6 @@ msgstr ""
 msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr "Ajuste do intervalo de confiança"
 
-#, fuzzy
 msgid "p"
 msgstr "p"
 
@@ -206,9 +203,8 @@ msgstr ""
 msgid "Kendall's Tau B"
 msgstr ""
 
-#, fuzzy
 msgid "p-value"
-msgstr "Valor"
+msgstr "p-valor"
 
 msgid "Number of observations is < %s"
 msgstr ""
@@ -299,6 +295,10 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke Máximo <em>p</em>-Ratio: Com base no valor <em>p</em>, a "
+"probabilidade máxima possível a favor de H%1$s sobre H%2$s é igual a 1/(-e "
+"<em>p</em> log(<em>p</em>)) para <em>p</em> %3$s .37 (Sellke, Bayarri, & "
+"Berger, 2001)."
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
@@ -309,7 +309,6 @@ msgstr ""
 msgid "Posterior is too peaked"
 msgstr ""
 
-#, fuzzy
 msgid "Variable"
 msgstr "Variável"
 
@@ -420,11 +419,9 @@ msgstr ""
 msgid "F Change"
 msgstr ""
 
-#, fuzzy
 msgid "df1"
 msgstr "gl1"
 
-#, fuzzy
 msgid "df2"
 msgstr "gl2"
 
@@ -435,7 +432,6 @@ msgstr "Correção"
 msgid "Durbin-Watson"
 msgstr ""
 
-#, fuzzy
 msgid "Statistic"
 msgstr "Estatísticas"
 
@@ -448,19 +444,15 @@ msgstr ""
 msgid "ANOVA"
 msgstr "ANOVA"
 
-#, fuzzy
 msgid "Sum of Squares"
 msgstr "Soma dos quadrados"
 
-#, fuzzy
 msgid "df"
 msgstr "gl"
 
-#, fuzzy
 msgid "Mean Square"
 msgstr "Média Quadrática"
 
-#, fuzzy
 msgid "F"
 msgstr "F"
 
@@ -487,18 +479,15 @@ msgstr "Erro padrão"
 msgid "Standardized"
 msgstr "Padrão"
 
-#, fuzzy
 msgid "t"
 msgstr "t"
 
 msgid "%.0f%% CI"
 msgstr ""
 
-#, fuzzy
 msgid "Lower"
 msgstr "Inferior"
 
-#, fuzzy
 msgid "Upper"
 msgstr "Superior"
 
@@ -620,15 +609,12 @@ msgstr "Mínimo"
 msgid "Maximum"
 msgstr "Máximo"
 
-#, fuzzy
 msgid "Mean"
 msgstr "Média"
 
-#, fuzzy
 msgid "SD"
 msgstr "DP"
 
-#, fuzzy
 msgid "N"
 msgstr "N"
 
@@ -682,11 +668,9 @@ msgstr ""
 msgid "Residuals %s"
 msgstr "Resíduos"
 
-#, fuzzy
 msgid "Descriptives"
 msgstr "Descritivas"
 
-#, fuzzy
 msgid "SE"
 msgstr "EP"
 
@@ -696,11 +680,9 @@ msgstr ""
 msgid "Std. Predicted Value"
 msgstr ""
 
-#, fuzzy
 msgid "Standardized Residuals"
-msgstr "Tamanho de efeito padronizado"
+msgstr "Resíduos padronizados"
 
-#, fuzzy
 msgid "Theoretical Quantiles"
 msgstr "Quantis teóricos"
 
@@ -742,7 +724,6 @@ msgstr ""
 msgid "Posterior Summary"
 msgstr "Amostras posteriores"
 
-#, fuzzy
 msgid "Model Comparison"
 msgstr "Comparação de Modelo"
 
@@ -765,31 +746,24 @@ msgid ""
 "(Castillo et al., 2015)."
 msgstr ""
 
-#, fuzzy
 msgid "BF<sub>10</sub>"
 msgstr "BF<sub>10</sub>"
 
-#, fuzzy
 msgid "BF<sub>01</sub>"
 msgstr "BF<sub>01</sub>"
 
-#, fuzzy
 msgid "Log(BF<sub>10</sub>)"
 msgstr "Log(BF<sub>10</sub>)"
 
-#, fuzzy
 msgid "Models"
 msgstr "Modelos"
 
-#, fuzzy
 msgid "P(M)"
 msgstr "P(M)"
 
-#, fuzzy
 msgid "P(M|data)"
 msgstr "P(M|dado)"
 
-#, fuzzy
 msgid "BF<sub>M</sub>"
 msgstr "BF<sub>M</sub>"
 
@@ -801,11 +775,9 @@ msgid ""
 "under \"Limit No. Models Shown\"."
 msgstr ""
 
-#, fuzzy
 msgid "Null model"
 msgstr "Modelo nulo"
 
-#, fuzzy
 msgid "Null model (incl. %s)"
 msgstr "Modelo nulo (incl. %s)"
 
@@ -819,7 +791,6 @@ msgstr ""
 msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
-#, fuzzy
 msgid "%s%% Credible Interval"
 msgstr "%s%% Intervalo de credibilidade"
 
@@ -827,19 +798,15 @@ msgstr "%s%% Intervalo de credibilidade"
 msgid "Coefficient"
 msgstr "Coeficiente de Mardia"
 
-#, fuzzy
 msgid "P(incl)"
 msgstr "P(incl)"
 
-#, fuzzy
 msgid "P(excl)"
 msgstr "P(excl)"
 
-#, fuzzy
 msgid "P(incl|data)"
 msgstr "P(incl|dados)"
 
-#, fuzzy
 msgid "P(excl|data)"
 msgstr "P(excl|dados)"
 
@@ -895,9 +862,8 @@ msgid ""
 "Probabilities"
 msgstr ""
 
-#, fuzzy
 msgid "Q-Q Plot"
-msgstr "Diagramas"
+msgstr "Diagrama Q-Q"
 
 #, fuzzy
 msgid "Marginal Posterior Distributions"
@@ -936,7 +902,6 @@ msgstr ""
 msgid "Coefficients"
 msgstr "Coeficiente de Mardia"
 
-#, fuzzy
 msgid "Estimate"
 msgstr "Estimativas"
 
@@ -968,9 +933,8 @@ msgid ""
 "are standardized (X-standardization)."
 msgstr ""
 
-#, fuzzy
 msgid "Bias corrected accelerated."
-msgstr "Bias corrigido acelerado."
+msgstr "Viés corrigido acelerado."
 
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
@@ -991,7 +955,6 @@ msgstr ""
 msgid "Factor Descriptives"
 msgstr "Descritivas"
 
-#, fuzzy
 msgid "Factor"
 msgstr "Fator"
 
@@ -1015,7 +978,6 @@ msgstr ""
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
 
-#, fuzzy
 msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
