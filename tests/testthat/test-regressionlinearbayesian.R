@@ -13,6 +13,7 @@ test_that("Main tables results match", {
     options$modelTerms <- list(
         list(components="contGamma", isNuisance=FALSE)
     )
+    options$postSummaryPlot <- TRUE
     options$postSummaryTable <- TRUE
     options$descriptives <- TRUE
     options$setSeed <- TRUE
@@ -45,6 +46,17 @@ test_that("Main tables results match", {
              100, 2.03296079621, 1.53241112621044),
         label = "descriptivesTable"
     )
+
+    plot <- results[["state"]][["figures"]][[1]][["obj"]]
+    jaspTools::expect_equal_plots(plot, "posteriorCoefficientsWithCRI", "RegressionLinearBayesian")
+
+    ybreaks <- jaspGraphs::getAxisBreaks(plot)[["y"]]
+    testthat::expect_true(
+      # to test if the ybreaks contain scientific notation, we print the ybreaks and check if there is any ... e-... in there
+      !any(grepl("e-", capture.output(print(ybreaks)), fixed = TRUE)),
+      label = "no scientific notation on the y-axis of the posterior coefficients plot"
+    )
+
 })
 
 options <- jaspTools::analysisOptions("RegressionLinearBayesian")

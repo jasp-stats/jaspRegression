@@ -431,7 +431,7 @@ for sparse regression when there are more covariates than observations (Castillo
   )
 
   p <- try({
-    yBreaks <- jaspGraphs::getPrettyAxisBreaks(range(c(confInt)), eps.correct = 2)
+    yBreaks <- jaspGraphs::getPrettyAxisBreaks(range(c(confInt)))
     g <- ggplot2::ggplot(data = df, mapping = ggplot2::aes(x = x, y = y, ymin = lower, ymax = upper)) +
       ggplot2::geom_point(size = 4) +
       ggplot2::geom_errorbar(, width = 0.2) +
@@ -668,7 +668,7 @@ for sparse regression when there are more covariates than observations (Castillo
   p <- try({
     # gonna assume here that dim (the number of parameters) is always an integer
     xBreaks <- unique(round(pretty(dim)))
-    yBreaks <- jaspGraphs::getPrettyAxisBreaks(range(logmarg), eps.correct = 2)
+    yBreaks <- jaspGraphs::getPrettyAxisBreaks(range(logmarg))
     g <- jaspGraphs::drawPoints(dat = dfPoints, size = 4) +
       ggplot2::scale_y_continuous(name = gettext("Log(P(data|M))"),  breaks = yBreaks, limits = range(yBreaks)) +
       ggplot2::scale_x_continuous(name = gettext("Model Dimension"), breaks = xBreaks)
