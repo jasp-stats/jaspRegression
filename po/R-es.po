@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2021-05-07 13:15\n"
-"PO-Revision-Date: 2021-04-23 20:31+0000\n"
-"Last-Translator: Pablo Augusto Vailati <pvailati@uade.edu.ar>\n"
+"PO-Revision-Date: 2021-06-01 17:32+0000\n"
+"Last-Translator: Paulina Elizabeth Robalino <paulina.e.robalino@gmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
 "Language: es\n"
@@ -16,109 +16,113 @@ msgstr ""
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
+"Para todas las pruebas, la hipótesis alternativa especifica que el %s es "
+"positivo."
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative"
 msgstr ""
+"Para todas las pruebas, la hipótesis alternativa especifica que el %s es "
+"negativo"
 
 msgid "Scatterplot"
-msgstr ""
+msgstr "Scatterplot"
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "Anterior y Posterior"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "Comprobación de robustez del factor de Bayes"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Análisis Secuencial"
 
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "Correlaciones de Pearson Bayesianas"
 
 msgid "Bayesian Kendall's Tau Correlations"
-msgstr ""
+msgstr "Correlaciones Tau de Kendall Bayesianas"
 
 msgid "Bayesian Spearman Correlations"
-msgstr ""
+msgstr "Correlaciones de Spearman Bayesianas"
 
 msgid "Bayesian Correlation Table"
-msgstr ""
+msgstr "Tabla de Correlación Bayesiana"
 
 msgid "Pearson Correlations"
-msgstr ""
+msgstr "Correlaciones de Pearson"
 
 msgid "Kendall's Tau Correlations"
-msgstr ""
+msgstr "Correlaciones Tau de Kendall"
 
 msgid "Spearman Correlations"
-msgstr ""
+msgstr "Correlaciones de Spearman"
 
 msgid "Correlation Table"
-msgstr ""
+msgstr "Tabla de Correlación"
 
 msgid "Pearson's r"
-msgstr ""
+msgstr "R de Pearson"
 
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Rho de Spearman"
 
 msgid "Kendall's tau B"
-msgstr ""
+msgstr "Tau B de Kendall"
 
 msgid "Pearson"
-msgstr ""
+msgstr "Pearson"
 
 msgid "Spearman"
-msgstr ""
+msgstr "Spearman"
 
 msgid "Kendall"
-msgstr ""
+msgstr "Kendall"
 
 msgid "Density"
 msgstr "Densidad"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr ""
+msgstr "No es posible graficar: El número de observaciones es < 3"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr ""
+msgstr "No es posible graficar: valor infinito(s)"
 
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 msgid "tau"
-msgstr ""
+msgstr "tau"
 
 msgid "rho[s]"
-msgstr ""
+msgstr "rho[s]"
 
 msgid "Pearson's"
-msgstr ""
+msgstr "De Pearson"
 
 msgid "Spearman's"
-msgstr ""
+msgstr "De Spearman"
 
 msgid "Kendall's"
-msgstr ""
+msgstr "De Kendall"
 
 msgid "Kendall's tau"
-msgstr ""
+msgstr "Tau de Kendall"
 
 msgid "n"
 msgstr "n"
 
 msgid "Upper %s%% CI"
-msgstr ""
+msgstr "IC superior %s%%"
 
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "IC inferior al %s%%"
 
 msgid "Ranks of %s"
-msgstr ""
+msgstr "Rangos de %s"
 
 msgid "Predicted"
-msgstr ""
+msgstr "Predijo"
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
@@ -131,16 +135,16 @@ msgid ""
 msgstr ""
 
 msgid "Kendall's Tau"
-msgstr ""
+msgstr "Tau de Kendall"
 
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "Tabla de Correlación Parcial"
 
 msgid "%s Correlations"
-msgstr ""
+msgstr "%s Correlaciones"
 
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "%s Correlaciones Parciales"
 
 msgid "All tests one-tailed, for positive correlation"
 msgstr ""
@@ -152,114 +156,122 @@ msgid "All tests one-tailed, for negative correlation"
 msgstr ""
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
-msgstr ""
+msgstr "p < .05, ** p < .01, *** p < .001%s"
 
 msgid "Conditioned on variables: %s"
-msgstr ""
+msgstr "Condicionado en variables: % s"
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
+"Los intervalos de confianza analíticos para las correlaciones parciales aún "
+"no están disponibles, pero pueden obtenerse utilizando el bootstrap."
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr ""
+msgstr "Intervalos de confianza basados en %i réplicas bootstrap."
 
 msgid "p"
 msgstr "p"
 
 msgid "VS-MPR"
-msgstr ""
+msgstr "VS-MPR"
 
 msgid "r"
-msgstr ""
+msgstr "r"
 
 msgid "tau B"
-msgstr ""
+msgstr "tau B"
 
 msgid "Kendall's Tau B"
-msgstr ""
+msgstr "Tau B de Kendall"
 
 msgid "p-value"
-msgstr ""
+msgstr "Valor p"
 
 msgid "Number of observations is < %s"
-msgstr ""
+msgstr "El número de observaciones es < %s"
 
 msgid "Bootstrapping"
-msgstr ""
+msgstr "Bootstrapping"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
 msgstr ""
+"No se puede calcular la correlación parcial: la matriz de covarianza es "
+"computacionalmente singular."
 
 msgid "Assumption checks"
-msgstr ""
+msgstr "Verificación de supuestos"
 
 msgid "Shapiro-Wilk Test for Multivariate Normality"
-msgstr ""
+msgstr "Prueba de Shapiro-Wilk para la Normalidad Multivariante"
 
 msgid "Shapiro-Wilk"
 msgstr "Shapiro-Wilk"
 
 msgid "Variables"
-msgstr ""
+msgstr "Variables"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
-msgstr ""
+msgstr "Prueba de Shapiro-Wilk para la Normalidad Bivariada"
 
 msgid "Scatter plots"
-msgstr ""
+msgstr "Gráficos de dispersión"
 
 msgid "Correlation plot"
 msgstr "Gráfico de correlación"
 
 msgid "Correlation undefined: %s"
-msgstr ""
+msgstr "Correlación indefinida: %s"
 
 msgid "%s%% CI: [%s, %s]"
-msgstr ""
+msgstr "%s%% CI: [%s, %s]"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 3"
 msgstr ""
+"No es posible graficar: \n"
+"El número de observaciones es < 3"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 2"
 msgstr ""
+"Graficar no es posible:\n"
+"El número de observaciones es <2"
 
 msgid "Plotting not possible: %s"
 msgstr "Graficar no es posible: %s"
 
 msgid "Partial Pearson's r"
-msgstr ""
+msgstr "R de Pearson Parcial"
 
 msgid "Partial Spearman's rho"
-msgstr ""
+msgstr "Rho de Spearman Parcial"
 
 msgid "Partial Kendall's tau B"
-msgstr ""
+msgstr "Tau B de Kendall Parcial"
 
 msgid "%s heatmap"
-msgstr ""
+msgstr "%s mapa de calor"
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "Mapas de calor"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
-msgstr ""
+msgstr "%1$d%% CI: [%2$d, %3$d]"
 
 msgid "italic(r)"
-msgstr ""
+msgstr "cursiva(r)"
 
 msgid "italic(rho)"
-msgstr ""
+msgstr "cursiva(rho)"
 
 msgid "italic(tau)"
-msgstr ""
+msgstr "cursiva(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -272,69 +284,73 @@ msgid ""
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
 "62-71."
 msgstr ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
+"for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
+"62-71."
 
 msgid "Posterior is too peaked"
-msgstr ""
+msgstr "La parte posterior es demasiado puntiaguda"
 
 msgid "Variable"
-msgstr ""
+msgstr "Variable"
 
 msgid "Bayesian Correlation Matrix Plot"
-msgstr ""
+msgstr "Gráfico de la Matriz de Correlación Bayesiana"
 
 msgid "Could not compute the posteriors"
-msgstr ""
+msgstr "No se han podido calcular los posteriores"
 
 msgid "Prior"
-msgstr ""
+msgstr "Anterior"
 
 msgid "Posterior"
 msgstr "Posterior"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "%s%% CI:"
 
 msgid "Bayesian Correlation Pairwise Plots"
-msgstr ""
+msgstr "Gráficos de Correlación Bayesiana por Pares"
 
 msgid "max %s"
-msgstr ""
+msgstr "max %s"
 
 msgid "%s at kappa==%s"
-msgstr ""
+msgstr "%s en kappa ==%s"
 
 msgid "user prior"
-msgstr ""
+msgstr "usuario anterior"
 
 msgid "Stretched beta prior width"
 msgstr ""
 
 msgid "no terms in scope"
-msgstr ""
+msgstr "sin términos en el alcance"
 
 msgid "no terms in scope for adding to object"
-msgstr ""
+msgstr "sin términos en el margen para agregar al objeto"
 
 msgid "trying + %s"
-msgstr ""
+msgstr "intentando + %s"
 
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
+msgstr "La prueba F asume una familia 'quasi% s'"
 
 msgid "'use.start' cannot be used with R's version of 'glm'"
-msgstr ""
+msgstr "'use.start' no puede utilizarse con la versión de R de 'glm'"
 
 msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
 msgstr ""
 
 msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
 msgstr ""
+"El AIC es -infinito para este modelo, por lo que 'stepAIC' no puede proceder"
 
 msgid "0 df terms are changing AIC"
-msgstr ""
+msgstr "0 términos df están cambiando AIC"
 
 msgid "number of rows in use has changed: remove missing values?"
-msgstr ""
+msgstr "ha cambiado el número de filas en uso: ¿eliminar los valores perdidos?"
 
 msgid "AIC undefined for REML fit"
 msgstr ""
@@ -369,7 +385,7 @@ msgid "R"
 msgstr ""
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
 msgstr ""
@@ -432,7 +448,7 @@ msgid "Unstandardized"
 msgstr ""
 
 msgid "Standard Error"
-msgstr ""
+msgstr "Error Estándar"
 
 msgid "Standardized"
 msgstr ""
@@ -520,7 +536,7 @@ msgid "Dimension"
 msgstr ""
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "Autovalor"
 
 msgid "Condition Index"
 msgstr ""
@@ -561,7 +577,7 @@ msgid "Mean"
 msgstr "Media"
 
 msgid "SD"
-msgstr "SD"
+msgstr "DE"
 
 msgid "N"
 msgstr "N"
@@ -609,7 +625,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "Descriptivos"
 
 msgid "SE"
 msgstr "SE"
@@ -664,7 +680,7 @@ msgid "Posterior Summary"
 msgstr ""
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "Comparación de modelos"
 
 msgid "Model Comparison - %s"
 msgstr ""
@@ -685,25 +701,25 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
-msgstr ""
+msgstr "Modelos"
 
 msgid "P(M)"
-msgstr ""
+msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|datos)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
 msgstr ""
@@ -714,10 +730,10 @@ msgid ""
 msgstr ""
 
 msgid "Null model"
-msgstr ""
+msgstr "Modelo nulo"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "Modelo nulo (incl. %s)"
 
 msgid "Posterior Summaries of Coefficients"
 msgstr ""
@@ -729,22 +745,22 @@ msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "%s%% Intervalo de Credibilidad"
 
 msgid "Coefficient"
 msgstr ""
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(incl)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(excl)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(incl|datos)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(excl|datos)"
 
 msgid "<em>Warning.</em>"
 msgstr ""
@@ -807,13 +823,13 @@ msgid "Performance Diagnostics"
 msgstr ""
 
 msgid "Deviance"
-msgstr ""
+msgstr "Desviación"
 
 msgid "AIC"
 msgstr ""
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "McFadden R%s"
 msgstr ""
@@ -828,7 +844,7 @@ msgid "Cox & Snell R%s"
 msgstr ""
 
 msgid "Coefficients"
-msgstr ""
+msgstr "Coeficientes"
 
 msgid "Estimate"
 msgstr "Estimar"
@@ -837,7 +853,7 @@ msgid "Standardized%s"
 msgstr ""
 
 msgid "Odds Ratio"
-msgstr ""
+msgstr "Razón de probabilidades"
 
 msgid "z"
 msgstr ""
@@ -865,7 +881,7 @@ msgid ""
 msgstr ""
 
 msgid "Observed"
-msgstr ""
+msgstr "Observado"
 
 msgid "Predicted Group"
 msgstr ""
@@ -956,7 +972,7 @@ msgid "Robust <br> %s"
 msgstr ""
 
 msgid "Parameter"
-msgstr "Parametro"
+msgstr "Parámetro"
 
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"
