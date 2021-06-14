@@ -96,7 +96,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (options$method %in% c("backward", "forward", "stepwise")) {
     stepwiseProcedureChecks <- list(
 
-      checkIfContainsInteractions <- function() {
+      checkIfContainsInteractions = function() {
         hasInteractions <- FALSE
 
         for (i in seq_along(options$modelTerms))
@@ -110,12 +110,12 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
           return(gettext("Stepwise procedures are not supported for models containing factors"))
       },
 
-      checkIfPEntryIsValid <- function() {
+      checkIfPEntryIsValid = function() {
         if (options$steppingMethodCriteriaType == "usePValue" && options$steppingMethodCriteriaPEntry > options$steppingMethodCriteriaPRemoval)
           return(gettext("Error in Stepping Method Criteria: Entry p-value needs to be smaller than removal p-value"))
       },
 
-      checkIfFEntryIsValid <- function() {
+      checkIfFEntryIsValid = function() {
         if (options$steppingMethodCriteriaType == "useFValue" && options$steppingMethodCriteriaFEntry < options$steppingMethodCriteriaFRemoval)
           return(gettext("Error in Stepping Method Criteria: Entry F-value needs to be larger than removal F-value"))
       }
@@ -123,9 +123,20 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     )
   }
 
+  defaultTarget <- c(options$dependent, unlist(options$covariates))
   .hasErrors(dataset, type = c("infinity", "variance", "observations", "modelInteractions", "varCovData"),
-             custom = stepwiseProcedureChecks, all.target = c(options$dependent, unlist(options$covariates)),
-             observations.amount = "< 2", modelInteractions.modelTerms = options$modelTerms, varCovData.corFun = stats::cov,
+             custom = stepwiseProcedureChecks,
+             custom.target = defaultTarget,
+
+             observations.amount = "< 2",
+             observations.target = defaultTarget,
+
+             modelInteractions.modelTerms = options$modelTerms,
+             modelInteractions.target = defaultTarget,
+
+             varCovData.target = unlist(options$covariates),
+             varCovData.corFun = stats::cov,
+
              exitAnalysisIfErrors = TRUE)
 
   if (options$wlsWeights != "") {
