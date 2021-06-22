@@ -145,7 +145,7 @@ test_that("Scatterplot matches", {
   jaspTools::expect_equal_plots(testPlot, "scatterplot")
 })
 
-options <- analysisOptions("CorrelationBayesian")
+options <- jaspTools::analysisOptions("CorrelationBayesian")
 options$variables <- list("facFive", "contBinom")
 options$pearson <- FALSE
 options$kendall <- TRUE
@@ -155,7 +155,7 @@ options$pairsMethod <- "kendall"
 options$pairs <- list(c("facFive", "contBinom"))
 options$kappa <- 1
 set.seed(1)
-results <- runAnalysis("CorrelationBayesian", "test.csv", options)
+results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
 
 
 test_that("Bayesian Kendall's Tau Correlations table results match", {

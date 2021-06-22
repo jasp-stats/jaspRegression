@@ -523,13 +523,13 @@ test_that("Fields Book - Chapter 3 results match", {
   set.seed(1)
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "SocialAnxietyRegression.csv", options)
   figure11a <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
-  expect_equal_plots(figure11a, "socialAnxiety-residuals-vs.-predicted") # This command needs to be updated
+  jaspTools::expect_equal_plots(figure11a, "socialAnxiety-residuals-vs.-predicted") # This command needs to be updated
   figure11b <- results[["state"]][["figures"]][[3]][["obj"]] # Partial Plot tosca
-  expect_equal_plots(figure11b, "socialAnxiety-partialplot-tosca") # This command needs to be updated
+  jaspTools::expect_equal_plots(figure11b, "socialAnxiety-partialplot-tosca") # This command needs to be updated
   figure11c <- results[["state"]][["figures"]][[4]][["obj"]] # Partial Plot obq
-  expect_equal_plots(figure11c, "socialAnxiety-partialplot-obq") # This command needs to be updated
+  jaspTools::expect_equal_plots(figure11c, "socialAnxiety-partialplot-obq") # This command needs to be updated
   figure11d <- results[["state"]][["figures"]][[2]][["obj"]] # Q-Q-Plot
-  expect_equal_plots(figure11d, "socialAnxiety-QQ-plot") # This command needs to be updated
+  jaspTools::expect_equal_plots(figure11d, "socialAnxiety-QQ-plot") # This command needs to be updated
 })
 
 
