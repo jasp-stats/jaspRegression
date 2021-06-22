@@ -40,25 +40,25 @@ test_that("Shapiro-Wilk Test for Bivariate Normality table results match", {
 test_that("Correlation plot matches", {
   plotName <- results[["results"]][["corrPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "correlation-plot", dir="Correlation")
+  jaspTools::expect_equal_plots(testPlot, "correlation-plot")
 })
 
 test_that("Kendall's tau B heatmap matches", {
   plotName <- results[["results"]][["heatmaps"]][["collection"]][["heatmaps_kendall"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "kendall-s-tau-b", dir="Correlation")
+  jaspTools::expect_equal_plots(testPlot, "kendall-s-tau-b")
 })
 
 test_that("Pearson's r heatmap matches", {
   plotName <- results[["results"]][["heatmaps"]][["collection"]][["heatmaps_pearson"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "pearson-s-r", dir="Correlation")
+  jaspTools::expect_equal_plots(testPlot, "pearson-s-r")
 })
 
 test_that("Spearman's rho heatmap matches", {
   plotName <- results[["results"]][["heatmaps"]][["collection"]][["heatmaps_spearman"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "spearman-s-rho", dir="Correlation")
+  jaspTools::expect_equal_plots(testPlot, "spearman-s-rho")
 })
 
 test_that("Correlation Table results match", {

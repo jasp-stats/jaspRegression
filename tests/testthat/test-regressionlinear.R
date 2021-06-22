@@ -87,7 +87,7 @@ test_that("Coefficients Covariance table results match", {
     list("TRUE", 0.00490486111017858, 0.00116294327838645, "H<unicode>",
          "contGamma", "FALSE", "", 0.0112500585702943, "H<unicode>",
          "contcor1")
-    
+
   )
 })
 
@@ -191,7 +191,7 @@ test_that("Residuals vs. Dependent plot matches", {
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "residuals-dependent", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(testPlot, "residuals-dependent")
 })
 
 test_that("Residuals vs. Covariates plot matches", {
@@ -204,7 +204,7 @@ test_that("Residuals vs. Covariates plot matches", {
   options$plotResidualsCovariates <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "residuals-covariates", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(testPlot, "residuals-covariates")
 })
 
 test_that("Residuals vs. Predicted plot matches", {
@@ -217,7 +217,7 @@ test_that("Residuals vs. Predicted plot matches", {
   options$plotResidualsPredicted <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "residuals-predicted", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(testPlot, "residuals-predicted")
 })
 
 test_that("Standardized Residuals Histogram matches", {
@@ -231,7 +231,7 @@ test_that("Standardized Residuals Histogram matches", {
   options$plotResidualsHistogramStandardized <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "residuals-histogram", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(testPlot, "residuals-histogram")
 })
 
 test_that("Q-Q Plot Standardized Residuals matches", {
@@ -244,7 +244,7 @@ test_that("Q-Q Plot Standardized Residuals matches", {
   options$plotResidualsQQ <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "residuals-q-q", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(testPlot, "residuals-q-q")
 })
 
 test_that("Analysis handles errors", {
@@ -307,7 +307,7 @@ test_that("Analysis handles errors", {
   options$modelTerms <- list(list(components="contNormal", isNuisance=FALSE))
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Too few obs wlsWeights check")
-  
+
   options <- jaspTools::analysisOptions("RegressionLinear")
   options$dependent <- "contNormal"
   options$covariates <- c("debCollin2", "debCollin3")
@@ -342,7 +342,7 @@ test_that("Fields Book - Chapter 1 results match", {
                            "Regression", 1, "H<unicode>", 2.94197985216586e-19, "FALSE",
                            4354.86953266536, 862264.167467742, "Residual", 198, "H<unicode>",
                            "FALSE", 1295952, "Total", 199, "H<unicode>")
-                      
+
   )
   output3 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
   jaspTools::expect_equal_tables(output3,
@@ -352,7 +352,7 @@ test_that("Fields Book - Chapter 1 results match", {
                            "FALSE", 0.00963236621523019, "H<unicode>", "adverts", 2.94197985216575e-19,
                            0.578487741981689, 9.97932219623151, 0.0961244859738772)
   )
-  
+
   options$covariates <- c("adverts", "airplay", "attract")
   options$modelTerms <- list(
     list(components="adverts", isNuisance=TRUE),
@@ -443,20 +443,20 @@ test_that("Fields Book - Chapter 3 results match", {
   options$regressionCoefficientsConfidenceIntervals <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   figure3 <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
-  jaspTools::expect_equal_plots(figure3, "field-residuals-predicted", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(figure3, "field-residuals-predicted")
   figure4a <- results[["state"]][["figures"]][[4]][["obj"]] # Partial Plot Adverts
-  jaspTools::expect_equal_plots(figure4a, "field-partial-adverts", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(figure4a, "field-partial-adverts")
   figure4b <- results[["state"]][["figures"]][[5]][["obj"]] # Partial Plot Airplay
-  jaspTools::expect_equal_plots(figure4b, "field-partial-airplay", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(figure4b, "field-partial-airplay")
   figure4c <- results[["state"]][["figures"]][[6]][["obj"]] # Partial Plot Image
-  jaspTools::expect_equal_plots(figure4c, "field-partial-attract", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(figure4c, "field-partial-attract")
   figure5a <- results[["state"]][["figures"]][[2]][["obj"]] # Standardized Residuals Histogram
-  jaspTools::expect_equal_plots(figure5a, "field-residuals-histogram", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(figure5a, "field-residuals-histogram")
   figure5b <- results[["state"]][["figures"]][[3]][["obj"]] # Q-Q-Plot
-  jaspTools::expect_equal_plots(figure5b, "field-qq", dir="RegressionLinear")
+  jaspTools::expect_equal_plots(figure5b, "field-qq")
   output1 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_casewiseTable"]][["data"]]
   jaspTools::expect_equal_tables(output1,
-                      list(1, 2.177404, 330, 229.9203, 100.0797, 0.05870388, 
+                      list(1, 2.177404, 330, 229.9203, 100.0797, 0.05870388,
                            2, -2.323083, 120, 228.949, -108.949, 0.01088943,
                            10, 2.130289, 300, 200.4662, 99.53375, 0.01775647,
                            47, -2.460996, 40, 154.9698, -114.9698, 0.02411519,
@@ -469,7 +469,7 @@ test_that("Fields Book - Chapter 3 results match", {
                            169, 3.093333, 360, 215.8675, 144.1325, 0.050867,
                            200, -2.088044, 110, 207.2061, -97.20606, 0.02513455)
   )
-  
+
   options <- jaspTools::analysisOptions("RegressionLinear")
   options$dependent <- "sales"
   options$covariates <- c("adverts", "airplay", "attract")
@@ -493,7 +493,7 @@ test_that("Fields Book - Chapter 3 results match", {
                    figure10[[17]]$cooksD, figure10[[18]]$cooksD, figure10[[19]]$cooksD, figure10[[20]]$cooksD,
                    figure10[[21]]$cooksD, figure10[[22]]$cooksD)
   jaspTools::expect_equal_tables(figure10,
-                      list(0.05870388, 0.01088943, 0.01140066, 7.166478e-05, 0.0001025423, 
+                      list(0.05870388, 0.01088943, 0.01140066, 7.166478e-05, 0.0001025423,
                            0.001377347, 0.00594368, 0.0007230228, 0.0009490373, 0.01775647,
                            0.000822629, 0.01657069, 0.0003049181, 0.0003904011, 0.004041096,
                            0.002207233, 0.0002713418, 0.0001776211, 0.0004687904, 0.008795957,
@@ -502,14 +502,14 @@ test_that("Fields Book - Chapter 3 results match", {
   # needs investigating
   # output2 <- results[["results"]][["bootstrap.regression"]][["data"]]
   # expect_equal_tables(output2,
-  #                     list(0, "(Intercept)", -0.08265759, 134.1399, 8.228444, 118.874, 151.0766, "TRUE", 
+  #                     list(0, "(Intercept)", -0.08265759, 134.1399, 8.228444, 118.874, 151.0766, "TRUE",
   #                          "", "adverts", 0.0002069432, 0.09612449, 0.008855503, 0.07704638, 0.1127528,
   #                          1, "(Intercept)", 1.258855, -26.61296, 15.91686, -54.69175, 8.180507, "TRUE",
   #                          "", "adverts", -6.543211e-05, 0.08488483, 0.007137828, 0.07036585, 0.09968162,
   #                          "", "airplay", 0.0128862, 3.367425, 0.3070985, 2.732326, 3.918479,
   #                          "", "attract", -0.2110928, 11.08634, 2.234141, 6.502079, 15.13605)
   # )
-  
+
   options <- jaspTools::analysisOptions("RegressionLinear")
   options$dependent <- "spai"
   options$covariates <- c("tosca", "obq")
@@ -523,13 +523,13 @@ test_that("Fields Book - Chapter 3 results match", {
   set.seed(1)
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "SocialAnxietyRegression.csv", options)
   figure11a <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
-  expect_equal_plots(figure11a, "socialAnxiety-residuals-vs.-predicted", dir="RegressionLinear") # This command needs to be updated
+  expect_equal_plots(figure11a, "socialAnxiety-residuals-vs.-predicted") # This command needs to be updated
   figure11b <- results[["state"]][["figures"]][[3]][["obj"]] # Partial Plot tosca
-  expect_equal_plots(figure11b, "socialAnxiety-partialplot-tosca", dir="RegressionLinear") # This command needs to be updated
+  expect_equal_plots(figure11b, "socialAnxiety-partialplot-tosca") # This command needs to be updated
   figure11c <- results[["state"]][["figures"]][[4]][["obj"]] # Partial Plot obq
-  expect_equal_plots(figure11c, "socialAnxiety-partialplot-obq", dir="RegressionLinear") # This command needs to be updated
+  expect_equal_plots(figure11c, "socialAnxiety-partialplot-obq") # This command needs to be updated
   figure11d <- results[["state"]][["figures"]][[2]][["obj"]] # Q-Q-Plot
-  expect_equal_plots(figure11d, "socialAnxiety-QQ-plot", dir="RegressionLinear") # This command needs to be updated
+  expect_equal_plots(figure11d, "socialAnxiety-QQ-plot") # This command needs to be updated
 })
 
 

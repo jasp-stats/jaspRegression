@@ -72,7 +72,7 @@ test_that("Bayesian Correlation Matrix Plot matches", {
   results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
   plotName <- results[["results"]][["matrixPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "bayesian-correlation-matrix-plot", dir="CorrelationBayesian")
+  jaspTools::expect_equal_plots(testPlot, "bayesian-correlation-matrix-plot")
 })
 
 test_that("Analysis handles errors", {
@@ -124,25 +124,25 @@ results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
 test_that("Bayes Factor Robustness Check plot matches", {
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contcor1-contcor2"]][["collection"]][["pairsPlotCollection_contcor1-contcor2_plotBfRobustness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "bayes-factor-robustness-check", dir="CorrelationBayesian")
+  jaspTools::expect_equal_plots(testPlot, "bayes-factor-robustness-check")
 })
 
 test_that("Sequential Analysis plot matches", {
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contcor1-contcor2"]][["collection"]][["pairsPlotCollection_contcor1-contcor2_plotBfSequential"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "sequential-analysis", dir="CorrelationBayesian")
+  jaspTools::expect_equal_plots(testPlot, "sequential-analysis")
 })
 
 test_that("Prior and Posterior plot matches", {
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contcor1-contcor2"]][["collection"]][["pairsPlotCollection_contcor1-contcor2_plotPriorPosterior"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "prior-and-posterior", dir="CorrelationBayesian")
+  jaspTools::expect_equal_plots(testPlot, "prior-and-posterior")
 })
 
 test_that("Scatterplot matches", {
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contcor1-contcor2"]][["collection"]][["pairsPlotCollection_contcor1-contcor2_plotScatter"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "scatterplot", dir="CorrelationBayesian")
+  jaspTools::expect_equal_plots(testPlot, "scatterplot")
 })
 
 options <- analysisOptions("CorrelationBayesian")
@@ -168,13 +168,13 @@ test_that("Bayesian Kendall's Tau Correlations table results match", {
 test_that("Bayesian Correlation Matrix Plot with ranks matches", {
 	plotName <- results[["results"]][["matrixPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "bayesian-correlation-matrix-plot-with-ranks", dir="CorrelationBayesian")
+	jaspTools::expect_equal_plots(testPlot, "bayesian-correlation-matrix-plot-with-ranks")
 })
 
 test_that("Scatterplot with ranks matches", {
 	plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contBinom-facFive"]][["collection"]][["pairsPlotCollection_contBinom-facFive_plotScatter"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-	jaspTools::expect_equal_plots(testPlot, "scatterplot-with-ranks", dir="CorrelationBayesian")
+	jaspTools::expect_equal_plots(testPlot, "scatterplot-with-ranks")
 })
 
 test_that("Too peaked posterior is plotted with meaningfull error message", {
