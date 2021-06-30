@@ -7,17 +7,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-05-07 13:15\n"
-"PO-Revision-Date: \n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: gl_ES\n"
+"PO-Revision-Date: 2021-07-01 19:32+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-r/gl/>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.8-dev\n"
 "X-Virgin-Header: remove this line if you change anything in the header.\n"
 "X-Language: gl_ES\n"
 "X-Source-Language: C\n"
-"X-Generator: Poedit 2.3\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -449,9 +451,8 @@ msgstr "Autocorrelación"
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
 
-#, fuzzy
 msgid "Statistic"
-msgstr "Estatísticos"
+msgstr "Estatístico"
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
@@ -638,7 +639,7 @@ msgid "Mean"
 msgstr "Media"
 
 msgid "SD"
-msgstr ""
+msgstr "DS"
 
 msgid "N"
 msgstr "N"
@@ -697,9 +698,8 @@ msgstr "Erros"
 msgid "Descriptives"
 msgstr "Descritivos"
 
-#, fuzzy
 msgid "SE"
-msgstr "M.E.S."
+msgstr "DT"
 
 msgid "H%s"
 msgstr ""
@@ -754,9 +754,8 @@ msgstr ""
 msgid "Posterior Summary"
 msgstr "Resumo posterior"
 
-#, fuzzy
 msgid "Model Comparison"
-msgstr "Opcións do modelo"
+msgstr "Cotexo de modelos"
 
 #, fuzzy
 msgid "Model Comparison - %s"
@@ -778,13 +777,13 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "FB<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "FB<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(FB<sub>10</sub>)"
 
 msgid "Models"
 msgstr "Modelos"
@@ -838,7 +837,7 @@ msgid "P(excl)"
 msgstr ""
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(incl|datos)"
 
 msgid "P(excl|data)"
 msgstr ""
@@ -940,9 +939,8 @@ msgstr ""
 msgid "Coefficients"
 msgstr "Coeficientes"
 
-#, fuzzy
 msgid "Estimate"
-msgstr "Estimado"
+msgstr "Estimar"
 
 #, fuzzy
 msgid "Standardized%s"
@@ -958,13 +956,11 @@ msgstr ""
 msgid "Wald Statistic"
 msgstr "Estatísticos de escala"
 
-#, fuzzy
 msgid "Lower bound"
-msgstr "Límite inferior:"
+msgstr "Límite inferior"
 
-#, fuzzy
 msgid "Upper bound"
-msgstr "Límite superior:"
+msgstr "Límite superior"
 
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
