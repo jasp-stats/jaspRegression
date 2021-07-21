@@ -191,11 +191,11 @@ Form
 		{
 			title: qsTr("Residuals Plots")
 			CheckBox { name: "plotResidualsDependent";	label: qsTr("Residuals vs. dependent")					}
-			CheckBox { name: "plotResidualsCovariates";	label: qsTr("Residuals vs. covariates")					}
+            CheckBox { name: "plotResidualsCovariates";	label: qsTr("Residuals vs. covariates")					}
 			CheckBox { name: "plotResidualsPredicted";	label: qsTr("Residuals vs. predicted")					}
 			CheckBox
 			{
-				name: "plotResidualsHistogram";	label: qsTr("Residuals vs. histogram")
+                name: "plotResidualsHistogram";	label: qsTr("Residuals histogram")
                 CheckBox { name: "plotResidualsHistogramStandardized";	label: qsTr("Standardized residuals"); checked: true	}
 			}
 			CheckBox { name: "plotResidualsQQ";			label: qsTr("Q-Q plot standardized residuals")			}
