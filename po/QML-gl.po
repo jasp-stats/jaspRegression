@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-07-20 19:07+0000\n"
+"PO-Revision-Date: 2021-07-22 19:33+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/gl/>\n"
@@ -220,7 +220,7 @@ msgstr "Distancia de Cook >"
 
 msgctxt "RegressionLogistic|"
 msgid "Sensitivity / Recall"
-msgstr "Sensibilidade/Especificidade"
+msgstr "Sensibilidade/Lembranza"
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
@@ -280,7 +280,7 @@ msgstr "Gráficas predición - erro"
 
 msgctxt "RegressionLogistic|"
 msgid "Display conditional estimates plots"
-msgstr "Presentar as gráficas de estimacións condicionais"
+msgstr "Presentar as gráficas de estimacións condicionadas"
 
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
