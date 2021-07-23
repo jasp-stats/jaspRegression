@@ -517,10 +517,6 @@ msgid "Residuals vs. predicted"
 msgstr "Residuen vs. voorspeld"
 
 msgctxt "RegressionLinear|"
-msgid "Residuals vs. histogram"
-msgstr "Residuen vs. histogram"
-
-msgctxt "RegressionLinear|"
 msgid "Standardized residuals"
 msgstr "Gestandaardiseerde residuen"
 
@@ -1048,4 +1044,8 @@ msgstr "bootstraps"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals histogram"
 msgstr ""

@@ -526,10 +526,6 @@ msgid "Residuals vs. predicted"
 msgstr ""
 
 msgctxt "RegressionLinear|"
-msgid "Residuals vs. histogram"
-msgstr ""
-
-msgctxt "RegressionLinear|"
 msgid "Standardized residuals"
 msgstr ""
 
@@ -1043,4 +1039,8 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals histogram"
 msgstr ""
