@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-07-19 17:58+0000\n"
+"PO-Revision-Date: 2021-07-26 10:32+0000\n"
 "Last-Translator: shun wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-qml/zh_Hans/>\n"
@@ -14,11 +14,11 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr ""
+msgstr "回归分析"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
-msgstr ""
+msgstr "评估变量之间的关联性"
 
 msgctxt "Description|"
 msgid "Classical"
@@ -26,15 +26,15 @@ msgstr "经典"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "相关性"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "线性回归"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "逻辑回归"
 
 msgctxt "Description|"
 msgid "Bayesian"
@@ -42,255 +42,255 @@ msgstr "贝叶斯方法"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr ""
+msgstr "贝叶斯相关"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "贝叶斯线性回归"
 
 msgctxt "Correlation|"
 msgid "Variables"
-msgstr ""
+msgstr "变量"
 
 msgctxt "Correlation|"
 msgid "Condition on"
-msgstr ""
+msgstr "条件"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
-msgstr ""
+msgstr "样本相关系数"
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr ""
+msgstr "皮尔逊系数( Pearson's r)"
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "斯皮尔曼系数( Spearman's rho)"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "肯德尔系数( Kendall's tau-b)"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr ""
+msgstr "附加选项"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
-msgstr ""
+msgstr "成对显示"
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr ""
+msgstr "报告显著性(significance)"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
-msgstr ""
+msgstr "标记显著的相关"
 
 msgctxt "Correlation|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "置信区间"
 
 msgctxt "Correlation|"
 msgid "Interval"
-msgstr ""
+msgstr "置信区间"
 
 msgctxt "Correlation|"
 msgid "From"
-msgstr ""
+msgstr "基于"
 
 msgctxt "Correlation|"
 msgid "bootstraps"
-msgstr ""
+msgstr "次的自助抽样(bootstrap)"
 
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr ""
+msgstr "Vovk-Sellke maximum p-ratio"
 
 msgctxt "Correlation|"
 msgid "Sample size"
-msgstr ""
+msgstr "样本量"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "备择假设"
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr ""
+msgstr "相关"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "呈正相关"
 
 msgctxt "Correlation|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "呈负相关"
 
 msgctxt "Correlation|"
 msgid "Plots"
-msgstr ""
+msgstr "绘图"
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
-msgstr ""
+msgstr "散点图"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "变量密度"
 
 msgctxt "Correlation|"
 msgid "Statistics"
-msgstr ""
+msgstr "统计量"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "预测区间"
 
 msgctxt "Correlation|"
 msgid "Heatmap"
-msgstr ""
+msgstr "热图"
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
-msgstr ""
+msgstr "假设检验"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr ""
+msgstr "多元正态性"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr ""
+msgstr "Shapiro 检验"
 
 msgctxt "Correlation|"
 msgid "Royston"
-msgstr ""
+msgstr "Royston 检验"
 
 msgctxt "Correlation|"
 msgid "Mardia"
-msgstr ""
+msgstr "Mardia 检验"
 
 msgctxt "Correlation|"
 msgid "Energy"
-msgstr ""
+msgstr "Energy"
 
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
-msgstr ""
+msgstr "成对正态性"
 
 msgctxt "Correlation|"
 msgid "Options"
-msgstr ""
+msgstr "选项"
 
 msgctxt "Correlation|"
 msgid "Means and standard deviations"
-msgstr ""
+msgstr "均值和标准差"
 
 msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances"
-msgstr ""
+msgstr "向量外(叉)积偏差和协方差"
 
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr ""
+msgstr "缺失值处理方式"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "成对排除个案"
 
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "按列表排除个案"
 
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
-msgstr ""
+msgstr "总体相关系数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
-msgstr ""
+msgstr "皮尔逊系数( Pearson's rho)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "斯皮尔曼系数( Spearman's rho)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "肯德尔系数( Kendall's tau-b)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "附加选项"
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr ""
+msgstr "显示配对表"
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr ""
+msgstr "报告贝叶斯因子"
 
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
-msgstr ""
+msgstr "标记支持的相关性"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
-msgstr ""
+msgstr "样本量"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
-msgstr ""
+msgstr "后验中位数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
-msgstr ""
+msgstr "可信区间"
 
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
-msgstr ""
+msgstr "区间"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "备择假设"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
-msgstr ""
+msgstr "相关"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "呈正相关"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "呈负相关"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "绘图"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "相关矩阵"
 
 msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "变量密度"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
-msgstr ""
+msgstr "H₁下的后验"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "先验"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "拉伸 beta 先验宽度"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plot Individual Pairs"
