@@ -166,7 +166,7 @@ Form
 			title: qsTr("Inferential Plots")
 			CheckBox
 			{
-							name: "estimatesPlotsOpt";	label: qsTr("Display conditional estimates plots")
+							name: "estimatesPlotsOpt";	label: qsTr("Conditional estimates plots")
 				CIField {	name: "estimatesPlotsCI";	label: qsTr("Confidence interval")					}
 				CheckBox {	name: "showPoints";			label: qsTr("Show data points")						}
 			}

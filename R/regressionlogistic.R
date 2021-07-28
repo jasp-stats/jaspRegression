@@ -1059,7 +1059,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   predLevel <- levels(mObj[["data"]][[predVar]])[2]
   
   # this will become the y-axis title
-  ytitle <- substitute(expr = "P("*italic(x)~italic("=")~italic(y)*")",
+  ytitle <- substitute(expr = "P("*x~"="~y*")",
                        env = list(x = .unv(predVar), y = predLevel))
   if (attr(ribdat, "factor")) {
     # the variable is a factor, plot points with errorbars
