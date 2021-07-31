@@ -883,10 +883,6 @@ msgctxt "RegressionLogistic|"
 msgid "Inferential Plots"
 msgstr ""
 
-msgctxt "RegressionLogistic|"
-msgid "Display conditional estimates plots"
-msgstr ""
-
 #, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Confidence interval"
@@ -1116,4 +1112,8 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Residuals histogram"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Conditional estimates plots"
 msgstr ""
