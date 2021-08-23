@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2021-08-25 18:32+0000\n"
-"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
+"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pt/>\n"
 "Language: pt\n"
@@ -20,7 +20,7 @@ msgstr "Variáveis"
 
 msgctxt "Correlation|"
 msgid "Condition on"
-msgstr ""
+msgstr "Condição em"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
@@ -30,10 +30,9 @@ msgctxt "Correlation|"
 msgid "Additional Options"
 msgstr "Opções Adicionais"
 
-#| msgid "Display pairwise table"
 msgctxt "Correlation|"
 msgid "Display pairwise"
-msgstr ""
+msgstr "Exibir em pares"
 
 msgctxt "Correlation|"
 msgid "Report significance"
@@ -51,12 +50,10 @@ msgctxt "Correlation|"
 msgid "Interval"
 msgstr "Intervalo"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr "Razão p máxima de Vovk-Sellke"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Sample size"
 msgstr "Tamanho da amostra"
@@ -77,7 +74,6 @@ msgctxt "Correlation|"
 msgid "Correlated negatively"
 msgstr "Negativamente correlacionado"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Plots"
 msgstr "Diagramas"
@@ -88,20 +84,19 @@ msgstr "Gráficos de dispersão"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "Densidades para as variáveis"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Statistics"
 msgstr "Estatísticas"
 
 msgctxt "Correlation|"
 msgid "Heatmap"
-msgstr ""
+msgstr "Mapa de calor"
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
-msgstr ""
+msgstr "Verificar pressupostos"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
@@ -109,25 +104,24 @@ msgstr "Normalidade multivariada"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr ""
+msgstr "Shapiro"
 
 msgctxt "Correlation|"
 msgid "Royston"
-msgstr ""
+msgstr "Royston"
 
 msgctxt "Correlation|"
 msgid "Mardia"
-msgstr ""
+msgstr "Mardia"
 
 msgctxt "Correlation|"
 msgid "Energy"
-msgstr ""
+msgstr "Energia"
 
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
-msgstr ""
+msgstr "Normalidade par a par"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Options"
 msgstr "Opções"
@@ -136,19 +130,17 @@ msgctxt "Correlation|"
 msgid "Means and standard deviations"
 msgstr "Médias e desvios-padrão"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances"
 msgstr "Desvios e covariâncias entre produtos"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Missing Values"
 msgstr "Valores ausentes"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Excluir casos em pares"
 
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
