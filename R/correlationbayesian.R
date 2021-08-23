@@ -912,7 +912,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
     for (i in seq_along(plotItems)) {
       item <- plotItems[i]
-      itemTitle <- .bfPlotTitles[[item]]
+      itemTitle <- .bfPlotTitles(item)
       itemPlot <- pairContainer[[item]]
 
       if (is.null(itemPlot)) {

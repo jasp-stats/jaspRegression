@@ -96,7 +96,9 @@ hypMinSided <- c("less", "minSided",
   return(message)
 }
 
-.bfPlotTitles <- list(plotScatter         = gettext("Scatterplot"), 
+.bfPlotTitles <- function(plotTitle)
+                  switch(plotTitle,
+                      plotScatter         = gettext("Scatterplot"), 
                       plotPriorPosterior  = gettext("Prior and Posterior"), 
                       plotBfRobustness    = gettext("Bayes Factor Robustness Check"), 
                       plotBfSequential    = gettext("Sequential Analysis"))
