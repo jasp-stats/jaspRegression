@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2021-08-26 11:30+0000\n"
-"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
+"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pt/>\n"
 "Language: pt\n"
@@ -328,7 +328,7 @@ msgstr "Todos"
 
 msgctxt "RegressionLinear|"
 msgid "Stepping Method Criteria"
-msgstr ""
+msgstr "Critérios do método passo a passo (stepping method)"
 
 msgctxt "RegressionLinear|"
 msgid "Use p value"
@@ -840,31 +840,31 @@ msgstr "Gráficos de resíduos"
 
 msgctxt "RegressionLogistic|"
 msgid "Predicted - residual plot"
-msgstr ""
+msgstr "Predito - gráfico residual"
 
 msgctxt "RegressionLogistic|"
 msgid "Predictor - residual plots"
-msgstr ""
+msgstr "Preditor - gráficos residuais"
 
 msgctxt "RegressionLogistic|"
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "Gráfico de resíduos de Pearson quadrado"
 
 msgctxt "RegressionLogistic|"
 msgid "Residual Type"
-msgstr ""
+msgstr "Tipo de resíduos"
 
 msgctxt "RegressionLogistic|"
 msgid "Deviance"
-msgstr ""
+msgstr "Desvio"
 
 msgctxt "RegressionLogistic|"
 msgid "Pearson"
-msgstr ""
+msgstr "Pearson"
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr ""
+msgstr "Exibir tabela de pares"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
@@ -872,11 +872,11 @@ msgstr "Tamanho da amostra"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
-msgstr ""
+msgstr "Mediana posterior"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plot Individual Pairs"
-msgstr ""
+msgstr "Traçar pares individuais"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation coefficient to plot"
@@ -888,39 +888,39 @@ msgstr "rho de Spearman"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau"
-msgstr ""
+msgstr "Tau de Kendall"
 
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
-msgstr ""
+msgstr "Gráfico de dispersão"
 
 msgctxt "CorrelationBayesian|"
 msgid "Robustness check"
-msgstr ""
+msgstr "Verificação de robustez"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior and posterior"
-msgstr ""
+msgstr "Anterior e posterior"
 
 msgctxt "CorrelationBayesian|"
 msgid "Estimation info"
-msgstr ""
+msgstr "Informação da estimativa"
 
 msgctxt "CorrelationBayesian|"
 msgid "Testing info"
-msgstr ""
+msgstr "Informação do teste"
 
 msgctxt "CorrelationBayesian|"
 msgid "Bayes factor robustness check"
-msgstr ""
+msgstr "Verificação de robustez do fator de Bayes"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional info"
-msgstr ""
+msgstr "Informações adicionais"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sequential analysis"
-msgstr ""
+msgstr "Análise sequencial"
 
 msgctxt "RegressionLogistic|"
 msgid "Interval"
@@ -928,19 +928,19 @@ msgstr "Intervalo"
 
 msgctxt "RegressionLinear|"
 msgid "Enter"
-msgstr ""
+msgstr "Inserir"
 
 msgctxt "RegressionLinear|"
 msgid "Backward"
-msgstr ""
+msgstr "Voltar"
 
 msgctxt "RegressionLinear|"
 msgid "Forward"
-msgstr ""
+msgstr "Avançar"
 
 msgctxt "RegressionLinear|"
 msgid "Stepwise"
-msgstr ""
+msgstr "Passo a passo"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
@@ -972,15 +972,15 @@ msgstr "Clássico"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "Correlação"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "Regressão linear"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "Regressão logística"
 
 msgctxt "Description|"
 msgid "Bayesian"
@@ -988,11 +988,11 @@ msgstr "Bayesiano"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr ""
+msgstr "Correlação bayesiana"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "Regressão linear bayesiana"
 
 msgctxt "Correlation|"
 msgid "From"
@@ -1004,52 +1004,52 @@ msgstr "bootstraps"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "Intervalos de predição"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
-msgstr ""
+msgstr "Posteriores sob H₁"
 
 msgctxt "RegressionLinear|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "Intervalos de predição"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "λ"
-msgstr ""
+msgstr "lambda (λ)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Distribuição de Bernoulli"
 
 msgctxt "RegressionLogistic|"
 msgid "Performance Plots"
-msgstr ""
+msgstr "Gráficos de performance"
 
 msgctxt "RegressionLogistic|"
 msgid "ROC plot"
-msgstr ""
+msgstr "Gráfico ROC"
 
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
-msgstr ""
+msgstr "Etapa de corte"
 
 msgctxt "RegressionLogistic|"
 msgid "Add cutoff labels"
-msgstr ""
+msgstr "Adicionar rótulos de corte"
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
-msgstr ""
+msgstr "Gráfico PR"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
-msgstr ""
+msgstr "Avaliar a associação entre as variáveis"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals histogram"
-msgstr ""
+msgstr "Histograma de resíduos"
 
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
-msgstr ""
+msgstr "Gráficos de estimativas condicionais"
