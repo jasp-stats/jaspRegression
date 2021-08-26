@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-05-07 13:15\n"
-"PO-Revision-Date: 2021-07-10 23:34+0000\n"
-"Last-Translator: Luanna dos Santos Silva <luannasilva91@gmail.com>\n"
+"PO-Revision-Date: 2021-08-26 12:24+0000\n"
+"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pt/>\n"
 "Language: pt\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.8-dev\n"
+"X-Generator: Weblate 4.8.1-dev\n"
 "X-Language: en_US\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -123,7 +123,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -146,6 +146,10 @@ msgid ""
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke Maximum <em>p</em>-Razão: Baseada no <em>p</em>-valor,\n"
+"  a probabilidade máxima possível a favor de H%1$s sobre H%2$s é igual\n"
+"  1/(-e <em>p</em> log(<em>p</em>)) para <em>p</em> %3$s .37\n"
+"  (Sellke, Bayarri, & Berger, 2001)."
 
 msgid "Kendall's Tau"
 msgstr ""
@@ -207,9 +211,8 @@ msgstr "p-valor"
 msgid "Number of observations is < %s"
 msgstr ""
 
-#, fuzzy
 msgid "Bootstrapping"
-msgstr "Bootstrap"
+msgstr "Bootstrapping"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
@@ -305,7 +308,7 @@ msgid ""
 msgstr ""
 
 msgid "Posterior is too peaked"
-msgstr ""
+msgstr "Posterior é muito pontiagudo"
 
 msgid "Variable"
 msgstr "Variável"
@@ -335,10 +338,10 @@ msgid "%s at kappa==%s"
 msgstr ""
 
 msgid "user prior"
-msgstr ""
+msgstr "usuário anterior"
 
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "Largura beta pré-estendida"
 
 msgid "no terms in scope"
 msgstr ""
@@ -362,7 +365,7 @@ msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
 msgstr ""
 
 msgid "0 df terms are changing AIC"
-msgstr ""
+msgstr "0 gl estão mudando AIC"
 
 msgid "number of rows in use has changed: remove missing values?"
 msgstr ""
@@ -381,39 +384,42 @@ msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
 "removal p-value"
 msgstr ""
+"Erro nos critérios do método de escalonamento: o valor p de entrada precisa "
+"ser menor do que o valor p de remoção"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry F-value needs to be larger than "
 "removal F-value"
 msgstr ""
+"Erro nos critérios do método de escalonamento: o valor F de entrada precisa "
+"ser maior do que o valor F de remoção"
 
-#, fuzzy
 msgid "Model Summary"
-msgstr "Nome do modelo"
+msgstr "Resumo do modelo"
 
 msgid "Model Summary - %s"
-msgstr ""
+msgstr "Resumo do modelo - %s"
 
 msgid "Model"
 msgstr "Modelo"
 
 msgid "R"
-msgstr ""
+msgstr "R"
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
-msgstr ""
+msgstr "R%s ajustado"
 
 msgid "RMSE"
 msgstr "RMSEA"
 
 msgid "R%s Change"
-msgstr ""
+msgstr "R% de mudança"
 
 msgid "F Change"
-msgstr ""
+msgstr "Mudança F"
 
 msgid "df1"
 msgstr "gl1"
@@ -421,9 +427,8 @@ msgstr "gl1"
 msgid "df2"
 msgstr "gl2"
 
-#, fuzzy
 msgid "Autocorrelation"
-msgstr "Correção"
+msgstr "Autocorrelação"
 
 msgid "Durbin-Watson"
 msgstr ""
@@ -452,33 +457,29 @@ msgstr "Média Quadrática"
 msgid "F"
 msgstr "F"
 
-#, fuzzy
 msgid "Regression"
 msgstr "Regressão"
 
-#, fuzzy
 msgid "Residual"
 msgstr "Resíduos"
 
 msgid "Total"
 msgstr "Total"
 
-#, fuzzy
 msgid "Unstandardized"
-msgstr "Padrão"
+msgstr "Não padronizado"
 
 msgid "Standard Error"
 msgstr "Erro padrão"
 
-#, fuzzy
 msgid "Standardized"
-msgstr "Padrão"
+msgstr "Padronizado"
 
 msgid "t"
 msgstr "t"
 
 msgid "%.0f%% CI"
-msgstr ""
+msgstr "%.de%% IC"
 
 msgid "Lower"
 msgstr "Inferior"
@@ -486,15 +487,14 @@ msgstr "Inferior"
 msgid "Upper"
 msgstr "Superior"
 
-#, fuzzy
 msgid "Collinearity Statistics"
-msgstr "Estatísticas descritivas"
+msgstr "Estatísticas de colinearidade"
 
 msgid "Tolerance"
 msgstr ""
 
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
 msgid ""
 "Standardized coefficients and collinearity statistics can only be computed "
@@ -510,9 +510,8 @@ msgid ""
 "for anything out of order!"
 msgstr ""
 
-#, fuzzy
 msgid "Bootstrap Coefficients"
-msgstr "Coeficiente de Mardia"
+msgstr "Coeficientes de Bootstrap"
 
 msgid "Bias"
 msgstr ""
@@ -537,9 +536,8 @@ msgstr ""
 msgid "expecting both arguments to be data.frames"
 msgstr ""
 
-#, fuzzy
 msgid "Part And Partial Correlations"
-msgstr "Covariâncias / correlações ajustadas"
+msgstr ""
 
 msgid "Partial"
 msgstr ""
@@ -550,9 +548,8 @@ msgstr ""
 msgid "Factors are omitted, as no meaningful information can be shown."
 msgstr ""
 
-#, fuzzy
 msgid "Coefficients Covariance Matrix"
-msgstr "Matriz de covariância implícita"
+msgstr "Matriz de Coeficientes de Covariância"
 
 msgid "Collinearity Diagnostics"
 msgstr ""
@@ -563,13 +560,11 @@ msgstr ""
 msgid "Eigenvalue"
 msgstr "Autovalor"
 
-#, fuzzy
 msgid "Condition Index"
 msgstr "Índices de modificação"
 
-#, fuzzy
 msgid "Variance Proportions"
-msgstr "Opções de Tabela"
+msgstr "Proporções de variância"
 
 msgid ""
 "Some collinearity diagnostics could not be computed. This is expected if the "
@@ -582,9 +577,8 @@ msgstr ""
 msgid "Case Number"
 msgstr ""
 
-#, fuzzy
 msgid "Std. Residual"
-msgstr "Resíduos"
+msgstr "Resíduos padrão"
 
 msgid "Predicted Value"
 msgstr ""
@@ -592,9 +586,8 @@ msgstr ""
 msgid "Cook's Distance"
 msgstr ""
 
-#, fuzzy
 msgid "Residuals Statistics"
-msgstr "Variâncias residual"
+msgstr "Estatísticas de Resíduos"
 
 msgid "Minimum"
 msgstr "Mínimo"
@@ -614,17 +607,14 @@ msgstr "N"
 msgid "Residuals vs. Dependent"
 msgstr ""
 
-#, fuzzy
 msgid "Residuals"
 msgstr "Resíduos"
 
-#, fuzzy
 msgid "Residuals vs. Covariates"
-msgstr "Covariâncias Residuais"
+msgstr "Resíduos vs. Covariáveis"
 
-#, fuzzy
 msgid "Residuals vs. %s"
-msgstr "Resíduos"
+msgstr "Residuais vs. %s"
 
 msgid "Cannot plot residuals versus an interaction with a factor."
 msgstr ""
@@ -871,11 +861,9 @@ msgstr ""
 msgid "Deviance"
 msgstr "Desvio"
 
-#, fuzzy
 msgid "AIC"
 msgstr "AIC"
 
-#, fuzzy
 msgid "BIC"
 msgstr "BIC"
 
