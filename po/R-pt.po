@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-05-07 13:15\n"
-"PO-Revision-Date: 2021-08-26 12:24+0000\n"
-"Last-Translator: Alex França <alex.tonante@gmail.com>\n"
+"PO-Revision-Date: 2021-08-27 20:21+0000\n"
+"Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pt/>\n"
 "Language: pt\n"
@@ -543,7 +543,7 @@ msgid "expecting both arguments to be data.frames"
 msgstr "esperando que ambos os argumentos sejam data.frames"
 
 msgid "Part And Partial Correlations"
-msgstr ""
+msgstr "Correlações parciais"
 
 msgid "Partial"
 msgstr "Parcial"
@@ -639,11 +639,9 @@ msgstr "Valores preditos"
 msgid "Residuals Histogram"
 msgstr "Resíduos"
 
-#, fuzzy
 msgid "Standardized %s"
 msgstr "Tamanho de efeito padronizado"
 
-#, fuzzy
 msgid "Q-Q Plot Standardized Residuals"
 msgstr "Gráfico Q-Q dos resíduos"
 
@@ -658,9 +656,8 @@ msgstr "%1$s vs. %2$s"
 msgid "Partial plots are not supported for factors"
 msgstr "Gráficos parciais não são suportados para fatores"
 
-#, fuzzy
 msgid "Residuals %s"
-msgstr "Resíduos"
+msgstr "Resíduos %s"
 
 msgid "Descriptives"
 msgstr "Descritivas"
@@ -691,7 +688,7 @@ msgstr ""
 "Precisamos de pelo menos um preditor ou um intercepto para fazer uma fórmula"
 
 msgid "Null model includes %s"
-msgstr ""
+msgstr "O modelo nulo inclui %s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -715,23 +712,20 @@ msgstr ""
 msgid "Plotting is not possible: %s"
 msgstr "Não é possível realizar a plotagem: %s"
 
-#, fuzzy
 msgid "All effects are specified as nuisance"
 msgstr "Todos os efeitos são especificados como incômodos"
 
 msgid "There are nonpositive weights"
-msgstr ""
+msgstr "Existem pesos não positivos"
 
-#, fuzzy
 msgid "Posterior Summary"
-msgstr "Amostras posteriores"
+msgstr "Resumo posterior"
 
 msgid "Model Comparison"
 msgstr "Comparação de Modelo"
 
-#, fuzzy
 msgid "Model Comparison - %s"
-msgstr "Opções de modelo"
+msgstr "Comparação de modelo - %s"
 
 msgid ""
 "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 "
@@ -776,6 +770,8 @@ msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
 "under \"Limit No. Models Shown\"."
 msgstr ""
+"A tabela %s exibe apenas um subconjunto de modelos; para ver todos os "
+"modelos, selecione \"Não\" em \"Limitar Número de Modelos Exibidos\"."
 
 msgid "Null model"
 msgstr "Modelo nulo"
@@ -783,9 +779,8 @@ msgstr "Modelo nulo"
 msgid "Null model (incl. %s)"
 msgstr "Modelo nulo (incl. %s)"
 
-#, fuzzy
 msgid "Posterior Summaries of Coefficients"
-msgstr "Coeficiente de Correlação População"
+msgstr "Resumos posteriores de coeficientes"
 
 msgid "BF<sub>inclusion</sub>"
 msgstr ""
@@ -796,9 +791,8 @@ msgstr ""
 msgid "%s%% Credible Interval"
 msgstr "%s%% Intervalo de credibilidade"
 
-#, fuzzy
 msgid "Coefficient"
-msgstr "Coeficiente de Mardia"
+msgstr "Coeficiente"
 
 msgid "P(incl)"
 msgstr "P(incl)"
@@ -813,34 +807,33 @@ msgid "P(excl|data)"
 msgstr "P(excl|dados)"
 
 msgid "<em>Warning.</em>"
-msgstr ""
+msgstr "<em>Aviso.</em>"
 
 msgid "Posterior Coefficients with %s%% Credible Interval"
-msgstr ""
+msgstr "Coeficientes posteriores com intervalo de confiança %s%%"
 
-#, fuzzy
 msgid "Posterior Log Odds"
 msgstr "Amostras posteriores"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
 msgstr ""
+"Não é possível exibir Amostras posteriores quando o método de amostragem é "
+"MCMC."
 
-#, fuzzy
 msgid "Residuals vs Fitted"
-msgstr "Variâncias residual"
+msgstr "Resíduos vs Ajustados"
 
 msgid "Predictions under BMA"
 msgstr ""
 
-#, fuzzy
 msgid "Model Probabilities"
-msgstr "Opções de modelo"
+msgstr "Probabilidades do modelo"
 
 msgid "Cumulative Probability"
 msgstr "Probabilidade cumulativa"
 
 msgid "Model Search Order"
-msgstr ""
+msgstr "Ordem de pesquisa de modelo"
 
 msgid "Log(P(data|M)) vs. Model Size"
 msgstr ""
@@ -848,9 +841,8 @@ msgstr ""
 msgid "Log(P(data|M))"
 msgstr ""
 
-#, fuzzy
 msgid "Model Dimension"
-msgstr "Opções do modelo"
+msgstr "Dimensão do modelo"
 
 msgid "Inclusion Probabilities"
 msgstr "Probabilidades de inclusão"
@@ -870,9 +862,8 @@ msgstr ""
 msgid "Q-Q Plot"
 msgstr "Diagrama Q-Q"
 
-#, fuzzy
 msgid "Marginal Posterior Distributions"
-msgstr "Posteriores marginal"
+msgstr "Distribuições Marginais Posteriores"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
 msgstr ""
@@ -909,9 +900,8 @@ msgstr "Coeficientes"
 msgid "Estimate"
 msgstr "Estimativa"
 
-#, fuzzy
 msgid "Standardized%s"
-msgstr "Padrão"
+msgstr "%s padronizado"
 
 msgid "Odds Ratio"
 msgstr "Razão de probabilidade"
@@ -919,17 +909,14 @@ msgstr "Razão de probabilidade"
 msgid "z"
 msgstr "z"
 
-#, fuzzy
 msgid "Wald Statistic"
-msgstr "Estatísticas"
+msgstr "Estatística de Wald"
 
-#, fuzzy
 msgid "Lower bound"
-msgstr "limite inferior:"
+msgstr "Limite inferior"
 
-#, fuzzy
 msgid "Upper bound"
-msgstr "limite superior:"
+msgstr "Limite superior"
 
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
@@ -955,11 +942,10 @@ msgid "Predicted Group"
 msgstr "Grupo predito"
 
 msgid "Studentized Residual"
-msgstr ""
+msgstr "Resíduo estudantilizado (studentized residual)"
 
-#, fuzzy
 msgid "Factor Descriptives"
-msgstr "Descritivas"
+msgstr "Descritivas do fator"
 
 msgid "Factor"
 msgstr "Fator"
@@ -967,9 +953,8 @@ msgstr "Fator"
 msgid "Confusion matrix"
 msgstr "Matriz de confusão"
 
-#, fuzzy
 msgid "Performance metrics"
-msgstr "Não paramétricos"
+msgstr "Métricas de performance"
 
 msgid "Value"
 msgstr "Valor"
@@ -978,7 +963,7 @@ msgid "Null model contains nuisance parameters: %s"
 msgstr "O modelo nulo contém parâmetros incômodos: %s"
 
 msgid "%1$s level '%2$s' coded as class 1."
-msgstr ""
+msgstr "%1$s nível '%2$s' codificado como classe 1."
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrapping baseado em %i replicações bem-sucedidas."
@@ -990,11 +975,9 @@ msgstr ""
 "Alguns intervalos de confiança não puderam ser calculados.\n"
 "Possivelmente, poucas réplicas de bootstrap."
 
-#, fuzzy
 msgid "Residual plots"
-msgstr "Resíduos"
+msgstr "Gráficos de resíduos"
 
-#, fuzzy
 msgid "Estimates plots"
 msgstr "Estimativas"
 
@@ -1010,13 +993,11 @@ msgstr "Gráfico de resíduos de Pearson quadrado"
 msgid "Performance plots"
 msgstr "Gráficos de performance"
 
-#, fuzzy
 msgid "ROC plot"
-msgstr "Diagrama de barra"
+msgstr "Gráfico ROC"
 
-#, fuzzy
 msgid "PR plot"
-msgstr "Diagrama de barra"
+msgstr "Gráfico PR"
 
 msgid "Predicted Probability"
 msgstr "Probabilidade predita"
@@ -1033,22 +1014,20 @@ msgstr "Taxa de positivos verdadeiros"
 msgid "Positive predictive value"
 msgstr "Valor preditivo positivo"
 
-#, fuzzy
 msgid "%1$s%% bca%2$s Confidence interval"
-msgstr "Intervalo de Confiança"
+msgstr "%1$s%% bca%2$s Intervalo de Confiança"
 
-#, fuzzy
 msgid "%s%% Confidence interval"
-msgstr "Intervalo de Confiança"
+msgstr "%s%% Intervalo de Confiança"
 
 msgid "%s <br> (odds ratio scale)"
-msgstr ""
+msgstr "%s <br> (escala de razão de probabilidades)"
 
 msgid "Robust <br> %s"
-msgstr ""
+msgstr "Robusto <br> %s"
 
 msgid "Parameter"
-msgstr "Parâmetros"
+msgstr "Parâmetro"
 
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"
@@ -1060,8 +1039,7 @@ msgid_plural "The following covariates were considered but not included: %s."
 msgstr[0] "A seguinte covariável foi considerada, mas não incluída: %s."
 msgstr[1] "As seguintes covariáveis foram consideradas, mas não incluídas: %s."
 
-#, fuzzy
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
-msgstr[0] "Regressão"
-msgstr[1] "Regressão"
+msgstr[0] "Gráfico de regressão parcial"
+msgstr[1] "Gráficos de regressão parcial"
