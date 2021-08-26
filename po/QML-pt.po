@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-08-25 18:32+0000\n"
+"PO-Revision-Date: 2021-08-26 11:30+0000\n"
 "Last-Translator: Alex França <alex.tonante@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pt/>\n"
@@ -204,7 +204,7 @@ msgstr "Anterior"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "Largura beta pré-estendida"
 
 msgctxt "CorrelationBayesian|"
 msgid "Options"
@@ -866,7 +866,6 @@ msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
 msgstr ""
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
 msgstr "Tamanho da amostra"
@@ -881,9 +880,8 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation coefficient to plot"
-msgstr ""
+msgstr "Coeficiente de correlação para plotagem"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
 msgstr "rho de Spearman"
@@ -924,7 +922,6 @@ msgctxt "CorrelationBayesian|"
 msgid "Sequential analysis"
 msgstr ""
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Interval"
 msgstr "Intervalo"
@@ -965,7 +962,6 @@ msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
 msgstr "rho de Pearson"
 
-#, fuzzy
 msgctxt "Description|"
 msgid "Regression"
 msgstr "Regressão"
@@ -998,12 +994,10 @@ msgctxt "Description|"
 msgid "Bayesian Linear Regression"
 msgstr ""
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "From"
 msgstr "A partir de"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "bootstraps"
 msgstr "bootstraps"
