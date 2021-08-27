@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-08-25 18:32+0000\n"
+"PO-Revision-Date: 2021-08-27 20:21+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/gl/>\n"
@@ -212,7 +212,7 @@ msgstr "Escala da proporción de posibilidades"
 
 msgctxt "RegressionLogistic|"
 msgid "Brier score"
-msgstr "puntuación Brier"
+msgstr "Puntuación Brier"
 
 msgctxt "RegressionLinear|"
 msgid "Cook's distance >"
