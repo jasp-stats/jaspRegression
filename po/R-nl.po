@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2021-05-07 13:15\n"
-"PO-Revision-Date: 2021-08-26 12:24+0000\n"
+"PO-Revision-Date: 2021-09-11 02:44+0000\n"
 "Last-Translator: D.J. Dekker <dj_dekker@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/nl/>\n"
@@ -12,18 +12,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 4.8.1-dev\n"
+"X-Generator: Weblate 4.9-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
-"Voor alle toetsen specificeert de alternatieve hypothese dat de %s positief "
-"is."
+"Voor alle toetsen luidt de alternatieve hypothese dat de %s positief is."
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative"
-msgstr ""
-"Voor alle toetsen specificeert de alternatieve hypothese dat %s negatief is"
+msgstr "Voor alle toetsen luidt de alternatieve hypothese dat de %s negatief is"
 
 msgid "Scatterplot"
 msgstr "Spreidingsdiagram"
@@ -118,9 +116,8 @@ msgstr "Boven %s%% BI"
 msgid "Lower %s%% CI"
 msgstr "Onder %s%% BI"
 
-#, fuzzy
 msgid "Ranks of %s"
-msgstr "Rang toets"
+msgstr "Rangen van %s"
 
 msgid "Predicted"
 msgstr "Voorspeld"
@@ -141,7 +138,7 @@ msgstr ""
 "  (Sellke, Bayarri, & Berger, 2001)."
 
 msgid "Kendall's Tau"
-msgstr "Kendall's Tau"
+msgstr "Kendall's tau"
 
 msgid "Partial Correlation Table"
 msgstr "Partiële Correlatietabel"
@@ -167,13 +164,12 @@ msgstr "p < .05, ** p < .01, *** p < .001%s"
 msgid "Conditioned on variables: %s"
 msgstr "Geconditioneerd op variabelen: %s"
 
-#, fuzzy
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
-"Betrouwbaarheidsintervallen voor partiële correlaties zijn nog niet "
-"beschikbaar."
+"Analytische betrouwbaarheidsintervallen voor partiële correlaties zijn nog "
+"niet beschikbaar, maar kunnen door bootstrapping verkregen worden."
 
 msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr "Betrouwbaarheidsintervallen gebaseerd op %i bootstrapherhalingen."
@@ -191,7 +187,7 @@ msgid "tau B"
 msgstr "tau B"
 
 msgid "Kendall's Tau B"
-msgstr "Kendall's Tau B"
+msgstr "Kendall's tau B"
 
 msgid "p-value"
 msgstr "p-waarde"
@@ -199,9 +195,8 @@ msgstr "p-waarde"
 msgid "Number of observations is < %s"
 msgstr "Aantal observaties < %s"
 
-#, fuzzy
 msgid "Bootstrapping"
-msgstr "Bootstrap Coëfficiënten"
+msgstr "Bootstrapping"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
@@ -298,7 +293,7 @@ msgid ""
 msgstr ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
-"62-71."
+"62–71."
 
 msgid "Posterior is too peaked"
 msgstr "Posterior is te gepiekt"
@@ -375,11 +370,9 @@ msgstr ""
 "Stapsgewijze procedures worden niet ondersteund voor modellen die "
 "interactietermen bevatten"
 
-#, fuzzy
 msgid "Stepwise procedures are not supported for models containing factors"
 msgstr ""
-"Stapsgewijze procedures worden niet ondersteund voor modellen die "
-"interactietermen bevatten"
+"Stapsgewijze procedures worden niet ondersteund voor modellen met factoren"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
@@ -538,11 +531,10 @@ msgstr ""
 msgid "Bias corrected accelerated"
 msgstr "Onzuiverheid gecorrigeerd versneld"
 
-#, fuzzy
 msgid ""
 "Some bootstrap coefficients or confidence intervals could not be computed."
 msgstr ""
-"Parameterschattingen en/of geloofwaardigheidsintervallen kunnen niet "
+"Sommige bootstrapcoëfficiënten of geloofwaardigheidsintervallen konden niet "
 "berekend worden."
 
 msgid "expecting both arguments to be data.frames"
@@ -557,17 +549,16 @@ msgstr "Partieel"
 msgid "Part"
 msgstr "Deel"
 
-#, fuzzy
 msgid "Factors are omitted, as no meaningful information can be shown."
 msgstr ""
-"Het interceptmodel is overgeslagen, aangezien er geen betekenisvolle "
-"informatie kan worden weergegeven."
+"Factoren worden weggelaten, omdat er geen zinvolle informatie kan worden "
+"weergegeven."
 
 msgid "Coefficients Covariance Matrix"
 msgstr "Coëfficiënten-Covariantiematrix"
 
 msgid "Collinearity Diagnostics"
-msgstr "Collineariteits Diagnostieken"
+msgstr "Collineariteitsdiagnostieken"
 
 msgid "Dimension"
 msgstr "Dimensie"
@@ -622,7 +613,7 @@ msgid "N"
 msgstr "N"
 
 msgid "Residuals vs. Dependent"
-msgstr "Residuen vs. Onafhankelijk"
+msgstr "Residuen vs. Afhankelijk"
 
 msgid "Residuals"
 msgstr "Residuen"
@@ -659,11 +650,8 @@ msgstr ""
 msgid "%1$s vs. %2$s"
 msgstr "%1$s vs. %2$s"
 
-#, fuzzy
 msgid "Partial plots are not supported for factors"
-msgstr ""
-"Partiële grafieken worden niet ondersteund voor modellen die "
-"interactietermen bevatten"
+msgstr "Partiële grafieken worden niet ondersteund voor factoren"
 
 msgid "Residuals %s"
 msgstr "Residuen %s"
@@ -694,7 +682,7 @@ msgstr ""
 
 msgid "We need at least one predictor, or an intercept to make a formula"
 msgstr ""
-"We hebben minstens één predictor, of een intercept nodig om een formule te "
+"We hebben minstens één predictor of een intercept nodig om een formule te "
 "maken"
 
 msgid "Null model includes %s"
@@ -715,8 +703,8 @@ msgstr ""
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
 msgstr ""
-"Het interceptmodel is overgeslagen, aangezien er geen betekenisvolle "
-"informatie kan worden weergegeven."
+"Het interceptmodel is weggelaten omdat er geen betekenisvolle informatie kan "
+"worden weergegeven."
 
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
@@ -728,7 +716,7 @@ msgid "Plotting is not possible: %s"
 msgstr "Grafeken maken niet mogelijk: %s"
 
 msgid "All effects are specified as nuisance"
-msgstr "Alle effecten zijn gespecificeerd als nuisance"
+msgstr "Alle effecten zijn gespecificeerd als ruis"
 
 msgid "There are nonpositive weights"
 msgstr "Er zijn niet-positieve gewichten"
@@ -982,7 +970,7 @@ msgid "Value"
 msgstr "Waarde"
 
 msgid "Null model contains nuisance parameters: %s"
-msgstr "Nulmodel bevat nuisance parameters: %s"
+msgstr "Nulmodel bevat ruisparameters: %s"
 
 msgid "%1$s level '%2$s' coded as class 1."
 msgstr "%1$s niveau '%2$s' gecodeerd als klasse 1."
@@ -1028,13 +1016,13 @@ msgid "Squared Pearson Residual"
 msgstr "Gekwadrateerd Pearson residu"
 
 msgid "False positive rate"
-msgstr "Fout-positieven"
+msgstr "Fout positieven"
 
 msgid "True positive rate"
 msgstr "Terecht-positieven"
 
 msgid "Positive predictive value"
-msgstr "Positieve voorspellende waarde"
+msgstr "Positief voorspellende waarde"
 
 msgid "%1$s%% bca%2$s Confidence interval"
 msgstr "%1$s%% bca%2$s Betrouwbaarheidsinterval"
