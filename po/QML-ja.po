@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "PO-Revision-Date: 2021-09-24 01:34+0000\n"
-"Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
+"Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/ja/>\n"
 "Language: ja\n"
@@ -19,7 +19,7 @@ msgstr "回帰"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr "古典的"
+msgstr "伝統的"
 
 msgctxt "Description|"
 msgid "Correlation"
@@ -511,7 +511,7 @@ msgstr "残差プロット"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. dependent"
-msgstr "残差と従属"
+msgstr "残差と従属変数"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. covariates"
