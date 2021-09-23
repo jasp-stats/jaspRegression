@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-09-24 01:34+0000\n"
+"Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
 
@@ -213,7 +219,7 @@ msgstr "ペアワイズテーブルの表示"
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr "ベイズ因子を報告"
+msgstr "ベイズファクターを報告"
 
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
@@ -229,7 +235,7 @@ msgstr "事後中央値"
 
 msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
-msgstr "確信区間"
+msgstr "信用区間"
 
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
