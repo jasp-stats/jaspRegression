@@ -262,7 +262,7 @@ test_that("Marginal effects plot matches", {
 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "marginalPlot")
+  jaspTools::expect_equal_plots(testPlot, "marginal-plot")
 })
 
 
