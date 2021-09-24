@@ -1,0 +1,10 @@
+Ordinal Logistic Regression
+===
+ 
+Ordinal Logistic regression allows the user to model a linear relationship between one or more explanatory variable(s) (predictors) and an *ordered* categorical dependent (response) variable. An ordered categorical variable has three or more categories with a natural ordering to them, without the intervals between adjacent categories being the same.  
+ 
+### Assumptions
+- The dependent variable is measured on an ordinal scale (i.e. categorical with at least 3 levels and a natural ordering to the levels).
+- Independent observations.
+- No multi-collinearity (i.e. when two or more independent variables are highly correlated with each other).
+- Proportional odds (or called parallel slopes): each independent variable has an identical effect at each cumulative split of the ordinal dependent variable.
