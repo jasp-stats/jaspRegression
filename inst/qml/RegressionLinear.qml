@@ -216,5 +216,24 @@ Form
                 }
             }
 		}
+        Group
+        {
+            title: qsTr("Other Plots")
+            CheckBox {
+                name: "plotsMarginal"; label: qsTr("Marginal effects plots")
+                CheckBox
+                {
+                    name: "plotsMarginalConfidenceIntervals"; label: qsTr("Confidence intervals")
+                    childrenOnSameRow: true
+                    CIField { name: "plotsMarginalConfidenceLevel"; }
+                }
+                CheckBox
+                {
+                    name: "plotsMarginalPredictionIntervals"; label: qsTr("Prediction intervals")
+                    childrenOnSameRow: true
+                    CIField { name: "plotsMarginalPredictionLevel"; }
+                }
+            }
+        }
 	}
 }
