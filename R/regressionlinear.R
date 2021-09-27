@@ -2118,8 +2118,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       ggplot2::geom_rug(data = d,
                         mapping = ggplot2::aes(x = x, y = y),
                         sides = "b",
-                        alpha = 1,
-                        position = "jitter")
+                        alpha = 0.5,
+                        #position = "jitter"
+                        )
   }
 
 
