@@ -2070,8 +2070,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
                           newdata = dd_sim,
                           interval = "prediction",
                           level = options[["plotsMarginalPredictionLevel"]])
-    pred_min = matrix_pred[, 2]
-    pred_max = matrix_pred[, 3]
+    pred_min = matrix_pred[, 'lwr']
+    pred_max = matrix_pred[, 'upr']
   }
   else {
     pred_min = NULL
