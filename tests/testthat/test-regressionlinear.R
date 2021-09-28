@@ -247,6 +247,24 @@ test_that("Q-Q Plot Standardized Residuals matches", {
   jaspTools::expect_equal_plots(testPlot, "residuals-q-q")
 })
 
+test_that("Marginal effects plot matches", {
+  options <- jaspTools::analysisOptions("RegressionLinear")
+  options$dependent <- "contNormal"
+  options$covariates <- "contcor1"
+  options$modelTerms <- list(
+    list(components="contcor1", isNuisance=FALSE)
+  )
+  options$plotsMarginal <- TRUE
+  options$plotsMarginalConfidenceIntervals <- TRUE
+  options$plotsMarginalConfidenceLevel <- 0.95
+  options$plotsMarginalPredictionIntervals <- TRUE
+  options$plotsMarginalPredictionLevel <- 0.95
+
+  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "marginal-plot")
+})
+
 test_that("Analysis handles errors", {
   options <- jaspTools::analysisOptions("RegressionLinear")
 
