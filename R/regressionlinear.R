@@ -2009,11 +2009,11 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(marginalPlotsContainer,
-                                   index = .unvf(predictor),
-                                   title = gettextf("Marginal effect of %s on %s", .unvf(predictor), options$dependent))
+                                   index = predictor,
+                                   title = gettextf("Marginal effect of %1s on %2s", predictor, options$dependent))
 
     for (predictor in predictors) {
-      .linregFillMarginalPlots(marginalPlotsContainer[[.unvf(predictor)]], predictor, finalModel$fit, dataset, options)
+      .linregFillMarginalPlots(marginalPlotsContainer[[predictor]], predictor, finalModel$fit, dataset, options)
     }
   }
 }
@@ -2057,8 +2057,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
                           newdata = dd_sim,
                           interval = "confidence",
                           level = options[["plotsMarginalConfidenceLevel"]])
-    conf_min = matrix_conf[, 2]
-    conf_max = matrix_conf[, 3]
+    conf_min = matrix_conf[, 'lwr']
+    conf_max = matrix_conf[, 'upr']
   }
   else {
     conf_min = NULL
@@ -2081,7 +2081,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   .linregInsertPlot(marginalPlot,
                     .linregMarginalPlot,
                     xVar = xVar,
-                    xlab = .unvf(predictor),
+                    xlab = predictor,
                     yVar = fitted,
                     ylab = options$dependent,
                     conf_min = conf_min,
@@ -2102,25 +2102,29 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     d_factor <- cbind(d_factor, group = 1)
 
     basicMarginalPlot <- ggplot2::ggplot() +
-      ggplot2::geom_point(data = d_factor,
-                          mapping = ggplot2::aes(x = x, y = y)) +
       ggplot2::geom_line(data = d_factor,
-                         mapping = ggplot2::aes(x = x, y = y, group = group)) +
+                         mapping = ggplot2::aes(x = x, y = y, group = group),
+                         size = 1) +
       ggplot2::xlab(xlab) +
       ggplot2::ylab(ylab)
+
+    factorPoints <- jaspGraphs::geom_point(data = d_factor,
+                                           mapping = ggplot2::aes(x = x, y = y))
+
+
 
   } else {
     basicMarginalPlot <- ggplot2::ggplot() +
       ggplot2::geom_line(data = d,
-                         mapping = ggplot2::aes(x = x, y = y)) +
+                         mapping = ggplot2::aes(x = x, y = y),
+                         size = 1) +
       ggplot2::xlab(xlab) +
       ggplot2::ylab(ylab) +
       ggplot2::geom_rug(data = d,
                         mapping = ggplot2::aes(x = x, y = y),
                         sides = "b",
-                        alpha = 0.5,
-                        #position = "jitter"
-      )
+                        alpha = 0.5)
+    factorPoints <- NULL
   }
 
 
@@ -2131,11 +2135,13 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       confidenceBounds <- ggplot2::geom_errorbar(data = d_factor,
                                                  ggplot2::aes(x = x, y = y, ymin = conf_lower, ymax = conf_upper),
                                                  linetype = "solid",
-                                                 width = 0.1)
+                                                 width = 0.1,
+                                                 size = 1)
     } else {
       confidenceBounds <- ggplot2::geom_ribbon(mapping = ggplot2::aes(x = x, ymin = conf_lower, ymax = conf_upper),
                                                alpha = .1,
-                                               data = d)
+                                               data = d,
+                                               size = 1)
     }
 
   } else {
@@ -2149,7 +2155,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       predictionBound1 <- ggplot2::geom_errorbar(data = d_factor,
                                                  ggplot2::aes(x = x, y = y, ymin = pred_lower, ymax = pred_upper),
                                                  linetype = "dashed",
-                                                 width = 0.1)
+                                                 width = 0.1,
+                                                 size = 1)
       predictionBound2 <- NULL
 
     } else {
@@ -2157,14 +2164,16 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
         mapping = ggplot2::aes(x = x, y = pred_lower),
         #color = "red",
         linetype = "dashed",
-        data = d)
+        data = d,
+        size = 1)
 
       predictionBound2 <-
         ggplot2::geom_line(
           mapping = ggplot2::aes(x = x, y = pred_upper),
           #color = "red",
           linetype = "dashed",
-          data = d)
+          data = d,
+          size = 1)
     }
   } else {
     predictionBounds <- predictionBound1 <- predictionBound2 <- NULL
@@ -2174,9 +2183,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     confidenceBounds +
     predictionBound1 +
     predictionBound2 +
+    factorPoints +
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
 
   return(finalMarginalPlot)
 }
-
