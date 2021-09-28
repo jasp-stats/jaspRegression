@@ -72,6 +72,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   if (options$plotResidualsQQ && is.null(modelContainer[["residualsQQPlot"]]))
     .linregCreateResidualsQQPlot(modelContainer, finalModel, options, position = 15)
 
+  if (options$plotsMarginal && is.null(modelContainer[["marginalPlotsContainer"]]))
+    .linregCreateMarginalPlots(modelContainer, finalModel, dataset, options, position = 17)
+
   # these output elements do not use statistics of a pre-calculated lm fit
   if (options$plotsPartialRegression && is.null(modelContainer[["partialPlotContainer"]]))
     .linregCreatePartialPlots(modelContainer, dataset, options, position = 16)
@@ -1991,3 +1994,189 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(any(dataClasses[consistsOf] == "factor"))
 
 }
+
+
+
+.linregCreateMarginalPlots <- function(modelContainer, finalModel, dataset, options, position = 17) {
+  marginalPlotsContainer <- createJaspContainer(gettext("Marginal Effects Plots"))
+  marginalPlotsContainer$dependOn(c("plotsMarginal", "plotsMarginalConfidenceIntervals", "plotsMarginalConfidenceLevel",
+                                    "plotsMarginalPredictionIntervals", "plotsMarginalPredictionLevel"))
+  marginalPlotsContainer$position <- position
+  modelContainer[["marginalPlotsContainer"]] <- marginalPlotsContainer
+
+  if (!is.null(finalModel)) {
+    predictors <- finalModel$predictors
+
+    for (predictor in predictors)
+      .linregCreatePlotPlaceholder(marginalPlotsContainer,
+                                   index = .unvf(predictor),
+                                   title = gettextf("Marginal effect of %s on %s", .unvf(predictor), options$dependent))
+
+    for (predictor in predictors) {
+      .linregFillMarginalPlots(marginalPlotsContainer[[.unvf(predictor)]], predictor, finalModel$fit, dataset, options)
+    }
+  }
+}
+
+
+.linregFillMarginalPlots <- function(marginalPlot, predictor, fit, dataset, options) {
+  xVar <- dataset[[predictor]]
+  xVar <- stats::na.omit(xVar)
+
+
+  means_ls = list()
+  if (length(options[["factors"]]) > 0) {
+    for (var in options[["factors"]]) {
+      column_value = dataset[[var]]
+      column_levels = levels(column_value)
+      means_ls[[var]] = column_levels[1]
+    }
+  }
+
+  if (length(options[['covariates']]) > 0) {
+    for (var in options[['covariates']]) {
+      column_value = dataset[[var]]
+      column_mean = mean(column_value, na.rm = TRUE)
+      means_ls[[var]] = column_mean
+    }
+  }
+
+  means_ls[[predictor]] = NULL
+
+  dd_sim = data.frame(predictor = xVar)
+  colnames(dd_sim) = predictor
+
+  if (length(means_ls) > 0) {
+    dd_sim = cbind(dd_sim, means_ls)
+  }
+
+  fitted = predict(fit, newdata = dd_sim, interval = "none")
+
+  if (options$plotsMarginalConfidenceIntervals == TRUE) {
+    matrix_conf = predict(fit,
+                          newdata = dd_sim,
+                          interval = "confidence",
+                          level = options[["plotsMarginalConfidenceLevel"]])
+    conf_min = matrix_conf[, 2]
+    conf_max = matrix_conf[, 3]
+  }
+  else {
+    conf_min = NULL
+    conf_max = NULL
+  }
+
+  if (options$plotsMarginalPredictionIntervals == TRUE) {
+    matrix_pred = predict(fit,
+                          newdata = dd_sim,
+                          interval = "prediction",
+                          level = options[["plotsMarginalPredictionLevel"]])
+    pred_min = matrix_pred[, 2]
+    pred_max = matrix_pred[, 3]
+  }
+  else {
+    pred_min = NULL
+    pred_max = NULL
+  }
+
+  .linregInsertPlot(marginalPlot,
+                    .linregMarginalPlot,
+                    xVar = xVar,
+                    xlab = .unvf(predictor),
+                    yVar = fitted,
+                    ylab = options$dependent,
+                    conf_min = conf_min,
+                    conf_max = conf_max,
+                    pred_min = pred_min,
+                    pred_max = pred_max)
+}
+
+
+.linregMarginalPlot <- function(xVar, xlab, yVar, ylab,
+                                conf_min, conf_max, pred_min, pred_max, options) {
+
+  d <- data.frame(x = xVar,
+                  y = yVar)
+
+  if (is.factor(xVar)) {
+    d_factor <- unique(d)
+    d_factor <- cbind(d_factor, group = 1)
+
+    basicMarginalPlot <- ggplot2::ggplot() +
+      ggplot2::geom_point(data = d_factor,
+                          mapping = ggplot2::aes(x = x, y = y)) +
+      ggplot2::geom_line(data = d_factor,
+                         mapping = ggplot2::aes(x = x, y = y, group = group)) +
+      ggplot2::xlab(xlab) +
+      ggplot2::ylab(ylab)
+
+  } else {
+    basicMarginalPlot <- ggplot2::ggplot() +
+      ggplot2::geom_line(data = d,
+                         mapping = ggplot2::aes(x = x, y = y)) +
+      ggplot2::xlab(xlab) +
+      ggplot2::ylab(ylab) +
+      ggplot2::geom_rug(data = d,
+                        mapping = ggplot2::aes(x = x, y = y),
+                        sides = "b",
+                        alpha = 0.5,
+                        #position = "jitter"
+      )
+  }
+
+
+  if (!is.null(conf_min)) {
+    d <- cbind(d, conf_lower = conf_min, conf_upper = conf_max)
+    if (is.factor(xVar)) {
+      d_factor <- unique(d)
+      confidenceBounds <- ggplot2::geom_errorbar(data = d_factor,
+                                                 ggplot2::aes(x = x, y = y, ymin = conf_lower, ymax = conf_upper),
+                                                 linetype = "solid",
+                                                 width = 0.1)
+    } else {
+      confidenceBounds <- ggplot2::geom_ribbon(mapping = ggplot2::aes(x = x, ymin = conf_lower, ymax = conf_upper),
+                                               alpha = .1,
+                                               data = d)
+    }
+
+  } else {
+    confidenceBounds = NULL
+  }
+
+  if (!is.null(pred_min)) {
+    d <- cbind(d, pred_lower = pred_min, pred_upper = pred_max)
+    if (is.factor(xVar)) {
+      d_factor <- unique(d)
+      predictionBound1 <- ggplot2::geom_errorbar(data = d_factor,
+                                                 ggplot2::aes(x = x, y = y, ymin = pred_lower, ymax = pred_upper),
+                                                 linetype = "dashed",
+                                                 width = 0.1)
+      predictionBound2 <- NULL
+
+    } else {
+      predictionBound1 <- ggplot2::geom_line(
+        mapping = ggplot2::aes(x = x, y = pred_lower),
+        #color = "red",
+        linetype = "dashed",
+        data = d)
+
+      predictionBound2 <-
+        ggplot2::geom_line(
+          mapping = ggplot2::aes(x = x, y = pred_upper),
+          #color = "red",
+          linetype = "dashed",
+          data = d)
+    }
+  } else {
+    predictionBounds <- predictionBound1 <- predictionBound2 <- NULL
+  }
+
+  finalMarginalPlot <- basicMarginalPlot +
+    confidenceBounds +
+    predictionBound1 +
+    predictionBound2 +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
+
+  return(finalMarginalPlot)
+}
+
