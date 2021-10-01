@@ -1,114 +1,120 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-10-01 10:39+0000\n"
+"Last-Translator: Sunu Bagaskara <sunu.bagaskara@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/id/>\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr ""
+msgstr "Regresi"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr ""
+msgstr "Klasikal"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "Korelasi"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "Regresi Linier"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "Regresi Logistik"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr ""
+msgstr "Bayesian"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr ""
+msgstr "Korelasi Bayesian"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "Regresi Linier Bayesian"
 
 msgctxt "Correlation|"
 msgid "Variables"
-msgstr ""
+msgstr "Variabel"
 
 msgctxt "Correlation|"
 msgid "Condition on"
-msgstr ""
+msgstr "Pada kondisi"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
-msgstr ""
+msgstr "Koefisien Korelasi Sampel"
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr ""
+msgstr "r Pearson"
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "rho Spearman"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "tau-b Kendall"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Opsi Tambahan"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
-msgstr ""
+msgstr "Tampilkan berpasangan"
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr ""
+msgstr "Laporkan signifikansi"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
-msgstr ""
+msgstr "Tandai korelasi yang signifikan"
 
 msgctxt "Correlation|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Interval kepercayaan"
 
 msgctxt "Correlation|"
 msgid "Interval"
-msgstr ""
+msgstr "Interval"
 
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr ""
+msgstr "Rasio-p maksimum Vovk-Sellke"
 
 msgctxt "Correlation|"
 msgid "Sample size"
-msgstr ""
+msgstr "Ukuran sampel"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Hipotesis Alt."
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr ""
+msgstr "Berkorelasi"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Berkorelasi positif"
 
 msgctxt "Correlation|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Berkorelasi negatif"
 
 msgctxt "Correlation|"
 msgid "Plots"
@@ -116,59 +122,59 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
-msgstr ""
+msgstr "Plot pencar"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "Densitas variabel"
 
 msgctxt "Correlation|"
 msgid "Statistics"
-msgstr ""
+msgstr "Statistik"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "Interval prediksi"
 
 msgctxt "Correlation|"
 msgid "Heatmap"
-msgstr ""
+msgstr "Peta panas"
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
-msgstr ""
+msgstr "Pemeriksaan Asumsi"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr ""
+msgstr "Normalitas Multivariat"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr ""
+msgstr "Shapiro"
 
 msgctxt "Correlation|"
 msgid "Royston"
-msgstr ""
+msgstr "Royston"
 
 msgctxt "Correlation|"
 msgid "Mardia"
-msgstr ""
+msgstr "Mardia"
 
 msgctxt "Correlation|"
 msgid "Energy"
-msgstr ""
+msgstr "Energi"
 
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
-msgstr ""
+msgstr "Normalitas Berpasangan"
 
 msgctxt "Correlation|"
 msgid "Options"
-msgstr ""
+msgstr "Opsi"
 
 msgctxt "Correlation|"
 msgid "Means and standard deviations"
-msgstr ""
+msgstr "Rerata dan simpangan baku"
 
 msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances"
@@ -176,7 +182,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Data Hilang"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
@@ -188,87 +194,87 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
-msgstr ""
+msgstr "Koefisien Korelasi Populasi"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
-msgstr ""
+msgstr "rho Pearson"
 
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "rho Spearman"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "tau-b Kendall"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Opsi Tambahan"
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr ""
+msgstr "Tampilkan tabel berpasangan"
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr ""
+msgstr "Laporkan faktor Bayes"
 
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
-msgstr ""
+msgstr "Tandai korelasi yang didukung"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
-msgstr ""
+msgstr "Ukuran sampel"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
-msgstr ""
+msgstr "Median posterior"
 
 msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
-msgstr ""
+msgstr "Interval kredibel"
 
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
-msgstr ""
+msgstr "Interval"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Hipotesis Alt."
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
-msgstr ""
+msgstr "Berkorelasi"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Berkorelasi positif"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Berkorelasi negatif"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "Plot"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Matrix korelasi"
 
 msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "Densitas variabel"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
-msgstr ""
+msgstr "Posterior pada H₁"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "Prior"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
