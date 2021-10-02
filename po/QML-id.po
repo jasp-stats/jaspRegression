@@ -1,0 +1,1053 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2021-10-01 10:39+0000\n"
+"Last-Translator: Sunu Bagaskara <sunu.bagaskara@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/id/>\n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.9-dev\n"
+"X-Qt-Contexts: true\n"
+
+msgctxt "Description|"
+msgid "Regression"
+msgstr "Regresi"
+
+msgctxt "Description|"
+msgid "Classical"
+msgstr "Klasikal"
+
+msgctxt "Description|"
+msgid "Correlation"
+msgstr "Korelasi"
+
+msgctxt "Description|"
+msgid "Linear Regression"
+msgstr "Regresi Linier"
+
+msgctxt "Description|"
+msgid "Logistic Regression"
+msgstr "Regresi Logistik"
+
+msgctxt "Description|"
+msgid "Bayesian"
+msgstr "Bayesian"
+
+msgctxt "Description|"
+msgid "Bayesian Correlation"
+msgstr "Korelasi Bayesian"
+
+msgctxt "Description|"
+msgid "Bayesian Linear Regression"
+msgstr "Regresi Linier Bayesian"
+
+msgctxt "Correlation|"
+msgid "Variables"
+msgstr "Variabel"
+
+msgctxt "Correlation|"
+msgid "Condition on"
+msgstr "Pada kondisi"
+
+msgctxt "Correlation|"
+msgid "Sample Correlation Coefficient"
+msgstr "Koefisien Korelasi Sampel"
+
+msgctxt "Correlation|"
+msgid "Pearson's r"
+msgstr "r Pearson"
+
+msgctxt "Correlation|"
+msgid "Spearman's rho"
+msgstr "rho Spearman"
+
+msgctxt "Correlation|"
+msgid "Kendall's tau-b"
+msgstr "tau-b Kendall"
+
+msgctxt "Correlation|"
+msgid "Additional Options"
+msgstr "Opsi Tambahan"
+
+msgctxt "Correlation|"
+msgid "Display pairwise"
+msgstr "Tampilkan berpasangan"
+
+msgctxt "Correlation|"
+msgid "Report significance"
+msgstr "Laporkan signifikansi"
+
+msgctxt "Correlation|"
+msgid "Flag significant correlations"
+msgstr "Tandai korelasi yang signifikan"
+
+msgctxt "Correlation|"
+msgid "Confidence intervals"
+msgstr "Interval kepercayaan"
+
+msgctxt "Correlation|"
+msgid "Interval"
+msgstr "Interval"
+
+msgctxt "Correlation|"
+msgid "Vovk-Sellke maximum p-ratio"
+msgstr "Rasio-p maksimum Vovk-Sellke"
+
+msgctxt "Correlation|"
+msgid "Sample size"
+msgstr "Ukuran sampel"
+
+msgctxt "Correlation|"
+msgid "Alt. Hypothesis"
+msgstr "Hipotesis Alt."
+
+msgctxt "Correlation|"
+msgid "Correlated"
+msgstr "Berkorelasi"
+
+msgctxt "Correlation|"
+msgid "Correlated positively"
+msgstr "Berkorelasi positif"
+
+msgctxt "Correlation|"
+msgid "Correlated negatively"
+msgstr "Berkorelasi negatif"
+
+msgctxt "Correlation|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Scatter plots"
+msgstr "Plot pencar"
+
+msgctxt "Correlation|"
+msgid "Densities for variables"
+msgstr "Densitas variabel"
+
+msgctxt "Correlation|"
+msgid "Statistics"
+msgstr "Statistik"
+
+msgctxt "Correlation|"
+msgid "Prediction intervals"
+msgstr "Interval prediksi"
+
+msgctxt "Correlation|"
+msgid "Heatmap"
+msgstr "Peta panas"
+
+msgctxt "Correlation|"
+msgid "Assumption Checks"
+msgstr "Pemeriksaan Asumsi"
+
+msgctxt "Correlation|"
+msgid "Multivariate Normality"
+msgstr "Normalitas Multivariat"
+
+msgctxt "Correlation|"
+msgid "Shapiro"
+msgstr "Shapiro"
+
+msgctxt "Correlation|"
+msgid "Royston"
+msgstr "Royston"
+
+msgctxt "Correlation|"
+msgid "Mardia"
+msgstr "Mardia"
+
+msgctxt "Correlation|"
+msgid "Energy"
+msgstr "Energi"
+
+msgctxt "Correlation|"
+msgid "Pairwise Normality"
+msgstr "Normalitas Berpasangan"
+
+msgctxt "Correlation|"
+msgid "Options"
+msgstr "Opsi"
+
+msgctxt "Correlation|"
+msgid "Means and standard deviations"
+msgstr "Rerata dan simpangan baku"
+
+msgctxt "Correlation|"
+msgid "Cross-product deviations and covariances"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Missing Values"
+msgstr "Data Hilang"
+
+msgctxt "Correlation|"
+msgid "Exclude cases pairwise"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Exclude cases listwise"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Population Correlation Coefficient"
+msgstr "Koefisien Korelasi Populasi"
+
+msgctxt "CorrelationBayesian|"
+msgid "Pearson's rho"
+msgstr "rho Pearson"
+
+msgctxt "CorrelationBayesian|"
+msgid "Spearman's rho"
+msgstr "rho Spearman"
+
+msgctxt "CorrelationBayesian|"
+msgid "Kendall's tau-b"
+msgstr "tau-b Kendall"
+
+msgctxt "CorrelationBayesian|"
+msgid "Additional Options"
+msgstr "Opsi Tambahan"
+
+msgctxt "CorrelationBayesian|"
+msgid "Display pairwise table"
+msgstr "Tampilkan tabel berpasangan"
+
+msgctxt "CorrelationBayesian|"
+msgid "Report Bayes factors"
+msgstr "Laporkan faktor Bayes"
+
+msgctxt "CorrelationBayesian|"
+msgid "Flag supported correlations"
+msgstr "Tandai korelasi yang didukung"
+
+msgctxt "CorrelationBayesian|"
+msgid "Sample size"
+msgstr "Ukuran sampel"
+
+msgctxt "CorrelationBayesian|"
+msgid "Posterior median"
+msgstr "Median posterior"
+
+msgctxt "CorrelationBayesian|"
+msgid "Credible intervals"
+msgstr "Interval kredibel"
+
+msgctxt "CorrelationBayesian|"
+msgid "Interval"
+msgstr "Interval"
+
+msgctxt "CorrelationBayesian|"
+msgid "Alt. Hypothesis"
+msgstr "Hipotesis Alt."
+
+msgctxt "CorrelationBayesian|"
+msgid "Correlated"
+msgstr "Berkorelasi"
+
+msgctxt "CorrelationBayesian|"
+msgid "Correlated positively"
+msgstr "Berkorelasi positif"
+
+msgctxt "CorrelationBayesian|"
+msgid "Correlated negatively"
+msgstr "Berkorelasi negatif"
+
+msgctxt "CorrelationBayesian|"
+msgid "Plots"
+msgstr "Plot"
+
+msgctxt "CorrelationBayesian|"
+msgid "Correlation matrix"
+msgstr "Matrix korelasi"
+
+msgctxt "CorrelationBayesian|"
+msgid "Densities for variables"
+msgstr "Densitas variabel"
+
+msgctxt "CorrelationBayesian|"
+msgid "Posteriors under H₁"
+msgstr "Posterior pada H₁"
+
+msgctxt "CorrelationBayesian|"
+msgid "Prior"
+msgstr "Prior"
+
+msgctxt "CorrelationBayesian|"
+msgid "Stretched beta prior width"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Plot Individual Pairs"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Correlation coefficient to plot"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Kendall's tau"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Scatterplot"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Robustness check"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Prior and posterior"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Estimation info"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Testing info"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Bayes factor robustness check"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Additional info"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Sequential analysis"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Options"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Missing Values"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Exclude cases pairwise"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Exclude cases listwise"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Dependent Variable"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Method"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Enter"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Backward"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Forward"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Stepwise"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Covariates"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Factors"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "WLS Weights (optional)"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Model"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Components"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Include intercept"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Statistics"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Regression Coefficients"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Estimates"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "From"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "bootstraps"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Confidence intervals"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Covariance matrix"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Vovk-Sellke maximum p-ratio"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Model fit"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "R squared change"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Descriptives"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Part and partial correlations"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Collinearity diagnostics"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Durbin-Watson"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Casewise diagnostics"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Standard residual >"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Cook's distance >"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "All"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Method Specification"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Stepping Method Criteria"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Use p value"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Entry"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Removal"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Use F value"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Missing Values"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Exclude cases listwise"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Exclude cases pairwise"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals vs. dependent"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals vs. covariates"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals vs. predicted"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Standardized residuals"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Q-Q plot standardized residuals"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Partial plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Prediction intervals"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Dependent Variable"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Covariates"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "WLS Weights (optional)"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Output"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Posterior summary"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Across all models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Across matched models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Plot of coefficients"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Omit intercept"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Best model"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Most complex model"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Median model"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Model averaged"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Credible interval"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Order"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Compare to best model"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Compare to null model"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Limit No. Models Shown"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "No"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Yes, show best"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Data"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Descriptives"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Model"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Components"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Coefficients"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Inclusion probabilities"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Marginal posterior distributions"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Log posterior odds"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Log(P(data|M)) vs. model size"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Model probabilities"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals vs. fitted"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Q-Q plot of model averaged residuals"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Advanced Options"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Prior"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "AIC"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "BIC"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "EB-global"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "EB-local"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g-prior"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Hyper-g"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Hyper-g-Laplace"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Hyper-g-n"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "alpha"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "JZS"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "r scale"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Model Prior"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Beta binomial"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "a"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "b"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Wilson"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "λ"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Castillo"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "u"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Bernoulli"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "p"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Sampling Method"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "BAS"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "No. models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "MCMC"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "No. samples"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Numerical Accuracy"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "No. samples for credible interval"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Dependent Variable"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Method"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Enter"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Backward"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Forward"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Stepwise"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Covariates"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Factors"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "WLS Weights (optional)"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Model"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Components"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include intercept"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Statistics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Descriptives"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Factor descriptives"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Performance Diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Confusion matrix"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Proportions"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Regression Coefficients"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Estimates"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "From"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "bootstraps"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Standardized coefficients"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Odds ratios"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Confidence intervals"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Interval"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Odds ratio scale"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Robust standard errors"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Vovk-Sellke maximum p-ratio"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Performance Metrics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "AUC"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Sensitivity / Recall"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Specificity"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Precision"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "F-measure"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Brier score"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "H-measure"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Residuals"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Casewise diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Standard residual >"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Cook's distance >"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "All"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Inferential Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Confidence interval"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Show data points"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Residual Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Predicted - residual plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Predictor - residual plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Squared Pearson residuals plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Residual Type"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Deviance"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Pearson"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Performance Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "ROC plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Cutoff step"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Add cutoff labels"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "PR plot"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "From"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "bootstraps"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Evaluate the association between variables"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals histogram"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Conditional estimates plots"
+msgstr ""
