@@ -1044,3 +1044,11 @@ msgstr ""
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
 msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Marginal effects plots"
+msgstr ""

@@ -1047,3 +1047,11 @@ msgstr "Histograma de resíduos"
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
 msgstr "Gráficos de estimativas condicionais"
+
+msgctxt "RegressionLinear|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Marginal effects plots"
+msgstr ""

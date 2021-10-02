@@ -1047,3 +1047,11 @@ msgstr "Histograma dos erros"
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
 msgstr "Gráficas de estimacións condicionadas"
+
+msgctxt "RegressionLinear|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Marginal effects plots"
+msgstr ""

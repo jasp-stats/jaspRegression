@@ -1046,3 +1046,11 @@ msgstr "残差ヒストグラム"
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
 msgstr "条件付き推定値のプロット"
+
+msgctxt "RegressionLinear|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Marginal effects plots"
+msgstr ""

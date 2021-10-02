@@ -1047,3 +1047,11 @@ msgstr "Histogram van residuen"
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
 msgstr "Grafiek van conditionele schattingen"
+
+msgctxt "RegressionLinear|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Marginal effects plots"
+msgstr ""
