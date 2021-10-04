@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-03 14:07+0000\n"
+"PO-Revision-Date: 2021-10-05 12:03+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
@@ -640,7 +640,7 @@ msgstr "Abbildungen"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Coefficients"
-msgstr "Koeffzienten"
+msgstr "Koeffizienten"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Inclusion probabilities"
