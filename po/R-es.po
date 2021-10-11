@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2021-10-02 02:46\n"
-"PO-Revision-Date: 2021-09-11 02:44+0000\n"
-"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
+"PO-Revision-Date: 2021-10-11 20:05+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
 "Language: es\n"
@@ -301,19 +301,19 @@ msgid "Could not compute the posteriors"
 msgstr "No se han podido calcular los posteriores"
 
 msgid "Prior"
-msgstr "Anterior"
+msgstr "Previo"
 
 msgid "Posterior"
 msgstr "Posterior"
 
 msgid "%s%% CI:"
-msgstr "%s%% CI:"
+msgstr "IC del %s%%:"
 
 msgid "Bayesian Correlation Pairwise Plots"
-msgstr "Gráficos de Correlación Bayesiana por Pares"
+msgstr "Gráficos de Parejas de Correlación Bayesiana"
 
 msgid "max %s"
-msgstr "max %s"
+msgstr "máx %s"
 
 msgid "%s at kappa==%s"
 msgstr "%s en kappa ==%s"
@@ -322,13 +322,13 @@ msgid "user prior"
 msgstr "usuario anterior"
 
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "Ancho previo beta extendida"
 
 msgid "no terms in scope"
-msgstr "sin términos en el alcance"
+msgstr "sin elementos a mano"
 
 msgid "no terms in scope for adding to object"
-msgstr "sin términos en el margen para agregar al objeto"
+msgstr "sin elementos a mano para agregar al objeto"
 
 msgid "trying + %s"
 msgstr "intentando + %s"
@@ -412,7 +412,7 @@ msgid "Durbin-Watson"
 msgstr ""
 
 msgid "Statistic"
-msgstr "Estadística"
+msgstr "Estadístico"
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
@@ -457,7 +457,7 @@ msgid "t"
 msgstr "t"
 
 msgid "%.0f%% CI"
-msgstr ""
+msgstr "IC del %.0f%%"
 
 msgid "Lower"
 msgstr "Inferior"
@@ -637,7 +637,7 @@ msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
-msgstr "Residuos Estandarizados"
+msgstr "Residuos Tipificados"
 
 msgid "Theoretical Quantiles"
 msgstr "Cuantiles Teóricos"
@@ -686,7 +686,7 @@ msgid "Posterior Summary"
 msgstr ""
 
 msgid "Model Comparison"
-msgstr "Comparación de modelos"
+msgstr "Comparación de Modelos"
 
 msgid "Model Comparison - %s"
 msgstr ""
@@ -707,13 +707,13 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr "BF<sub>10</sub>"
+msgstr "FB<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr "BF<sub>01</sub>"
+msgstr "FB<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr "Log(BF<sub>10</sub>)"
+msgstr "Log(FB<sub>10</sub>)"
 
 msgid "Models"
 msgstr "Modelos"
@@ -754,7 +754,7 @@ msgid "%s%% Credible Interval"
 msgstr "Intervalo de Credibilidad del %s%%"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "Coeficiente"
 
 msgid "P(incl)"
 msgstr "P(incl)"
