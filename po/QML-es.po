@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-11 20:05+0000\n"
+"PO-Revision-Date: 2021-10-14 01:51+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/es/>\n"
@@ -132,7 +132,7 @@ msgstr "Densidades para variables"
 
 msgctxt "Correlation|"
 msgid "Statistics"
-msgstr "Estadísticas"
+msgstr "Estadísticos"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
@@ -184,7 +184,7 @@ msgstr "Desviaciones y covarianzas entre productos"
 
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr "Valores Perdidos"
+msgstr "Valores Ausentes"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
@@ -192,11 +192,11 @@ msgstr "Excluir casos por pares"
 
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
-msgstr "Excluir casos según la lista"
+msgstr "Excluir casos según lista"
 
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
-msgstr "Coeficiente de correlación poblacional"
+msgstr "Coeficiente de Correlación Poblacional"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
@@ -332,7 +332,7 @@ msgstr "Opciones"
 
 msgctxt "CorrelationBayesian|"
 msgid "Missing Values"
-msgstr "Valores Perdidos"
+msgstr "Valores Ausentes"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases pairwise"
@@ -340,11 +340,11 @@ msgstr "Excluir casos por pares"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases listwise"
-msgstr "Excluir casos según la lista"
+msgstr "Excluir casos según lista"
 
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
-msgstr "Variable dependiente"
+msgstr "Variable Dependiente"
 
 msgctxt "RegressionLinear|"
 msgid "Method"
@@ -388,7 +388,7 @@ msgstr "Componentes"
 
 msgctxt "RegressionLinear|"
 msgid "Include intercept"
-msgstr "Incluir intercepción"
+msgstr "Incluir constante"
 
 msgctxt "RegressionLinear|"
 msgid "Statistics"
@@ -492,11 +492,11 @@ msgstr "Usar valor F"
 
 msgctxt "RegressionLinear|"
 msgid "Missing Values"
-msgstr "Valores Perdidos"
+msgstr "Valores Ausentes"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases listwise"
-msgstr "Excluir casos según la lista"
+msgstr "Excluir casos según lista"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases pairwise"
@@ -524,11 +524,11 @@ msgstr "Residuos vs. predictores"
 
 msgctxt "RegressionLinear|"
 msgid "Standardized residuals"
-msgstr "Residuos estandarizados"
+msgstr "Residuos tipificados"
 
 msgctxt "RegressionLinear|"
 msgid "Q-Q plot standardized residuals"
-msgstr "Gráfico Q-Q de residuos estandarizados"
+msgstr "Gráfico Q-Q de residuos tipificados"
 
 msgctxt "RegressionLinear|"
 msgid "Partial plots"
@@ -540,7 +540,7 @@ msgstr "Intervalos de predicción"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr "Variable dependiente"
+msgstr "Variable Dependiente"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
@@ -804,7 +804,7 @@ msgstr "Número de muestras para un intervalo de credibilidad"
 
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
-msgstr "Variable dependiente"
+msgstr "Variable Dependiente"
 
 msgctxt "RegressionLogistic|"
 msgid "Method"
@@ -848,7 +848,7 @@ msgstr "Componentes"
 
 msgctxt "RegressionLogistic|"
 msgid "Include intercept"
-msgstr "Incluir intercepción"
+msgstr "Incluir constante"
 
 msgctxt "RegressionLogistic|"
 msgid "Statistics"
