@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-14 01:51+0000\n"
+"PO-Revision-Date: 2021-10-15 11:32+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/gl/>\n"
@@ -824,11 +824,11 @@ msgstr "Saída de resultados"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
-msgstr "En todos os modelos"
+msgstr "A través de todos os modelos"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across matched models"
-msgstr "Nos modelos emparellados"
+msgstr "A través de modelos emparellados"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Credible interval"
