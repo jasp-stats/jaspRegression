@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-14 01:51+0000\n"
+"PO-Revision-Date: 2021-10-15 11:32+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/es/>\n"
@@ -680,7 +680,7 @@ msgstr "Gráfico Q-Q de los residuos promediados del modelo"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Advanced Options"
-msgstr "Opciones avanzadas"
+msgstr "Opciones Avanzadas"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Prior"
@@ -796,11 +796,11 @@ msgstr "Número de muestras"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Numerical Accuracy"
-msgstr "Precisión numérica"
+msgstr "Precisión Numérica"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "No. samples for credible interval"
-msgstr "Número de muestras para un intervalo de credibilidad"
+msgstr "Número de muestras para intervalo de credibilidad"
 
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
