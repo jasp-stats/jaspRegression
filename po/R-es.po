@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2021-10-02 02:46\n"
-"PO-Revision-Date: 2021-10-20 15:41+0000\n"
+"PO-Revision-Date: 2021-10-21 11:48+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
@@ -803,37 +803,40 @@ msgid "Model Probabilities"
 msgstr ""
 
 msgid "Cumulative Probability"
-msgstr ""
+msgstr "Probabilidad Acumulada"
 
 msgid "Model Search Order"
-msgstr ""
+msgstr "Orden de Búsqueda de Modelos"
 
 msgid "Log(P(data|M)) vs. Model Size"
-msgstr ""
+msgstr "Log(p(datos|M)) vs. Dimensión del Modelo"
 
 msgid "Log(P(data|M))"
-msgstr ""
+msgstr "Log(p(datos|M))"
 
 msgid "Model Dimension"
-msgstr ""
+msgstr "Dimensión del Modelo"
 
 msgid "Inclusion Probabilities"
-msgstr ""
+msgstr "Probabilidades de Inclusión"
 
 msgid "Marginal Inclusion Probability"
-msgstr ""
+msgstr "Probabilidade de Inclusión Marxinal"
 
 msgid ""
 "Prior\n"
 "Inclusion\n"
 "Probabilities"
 msgstr ""
+"Probabilidades\n"
+"de Inclusión\n"
+"Previas"
 
 msgid "Q-Q Plot"
 msgstr "Gráfico Q-Q"
 
 msgid "Marginal Posterior Distributions"
-msgstr ""
+msgstr "Distribuciones Posteriores Marginales"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
 msgstr ""
