@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2021-10-02 02:46\n"
-"PO-Revision-Date: 2021-10-21 17:02+0000\n"
+"PO-Revision-Date: 2021-10-24 13:07+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
@@ -29,25 +29,25 @@ msgid "Scatterplot"
 msgstr "Gráfico de dispersión"
 
 msgid "Prior and Posterior"
-msgstr "Anterior y Posterior"
+msgstr "Previo y Posterior"
 
 msgid "Bayes Factor Robustness Check"
-msgstr "Comprobación de robustez del factor de Bayes"
+msgstr "Comprobación de Robustez del Factor de Bayes"
 
 msgid "Sequential Analysis"
 msgstr "Análisis Secuencial"
 
 msgid "Bayesian Pearson Correlations"
-msgstr "Correlaciones de Pearson Bayesianas"
+msgstr "Correlaciones bayesianas de Pearson"
 
 msgid "Bayesian Kendall's Tau Correlations"
-msgstr "Correlaciones Tau de Kendall Bayesianas"
+msgstr "Correlaciones bayesianas de la Tau de Kendall"
 
 msgid "Bayesian Spearman Correlations"
-msgstr "Correlaciones de Spearman Bayesianas"
+msgstr "Correlaciones bayesianas de Spearman"
 
 msgid "Bayesian Correlation Table"
-msgstr "Tabla de Correlación Bayesiana"
+msgstr "Tabla de Correlaciones bayesianas"
 
 msgid "Pearson Correlations"
 msgstr "Correlaciones de Pearson"
@@ -327,7 +327,7 @@ msgid "%s at kappa==%s"
 msgstr "%s en kappa ==%s"
 
 msgid "user prior"
-msgstr "usuario anterior"
+msgstr "previa del usuario"
 
 msgid "Stretched beta prior width"
 msgstr "Ancho previo beta extendida"
