@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2021-10-24 10:45+0000\n"
+"PO-Revision-Date: 2021-10-24 13:07+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/es/>\n"
@@ -44,7 +44,7 @@ msgstr "Correlación Bayesiana"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr "Regresión Lineal Bayesiana"
+msgstr "Regresión bayesiana Lineal"
 
 msgctxt "Correlation|"
 msgid "Variables"
@@ -312,7 +312,7 @@ msgstr "Información de estimación"
 
 msgctxt "CorrelationBayesian|"
 msgid "Testing info"
-msgstr "Información de prueba"
+msgstr "Información de contraste"
 
 msgctxt "CorrelationBayesian|"
 msgid "Bayes factor robustness check"
@@ -976,7 +976,7 @@ msgstr "Gráficos"
 
 msgctxt "RegressionLogistic|"
 msgid "Inferential Plots"
-msgstr "Gráficos inferenciales"
+msgstr "Gráficos de Inferencia"
 
 msgctxt "RegressionLogistic|"
 msgid "Confidence interval"
