@@ -1,90 +1,97 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2021-10-30 19:47+0000\n"
+"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"jasp/jaspregression-qml/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.9-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr ""
+msgstr "迴歸分析"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr ""
+msgstr "古典"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "相關"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "線性迴歸"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "邏輯斯迴歸"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr ""
+msgstr "貝氏"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr ""
+msgstr "貝氏相關"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "貝氏線性迴歸"
 
 msgctxt "Correlation|"
 msgid "Variables"
-msgstr ""
+msgstr "變項"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Condition on"
-msgstr ""
+msgstr "淨相關"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
-msgstr ""
+msgstr "樣本相關係數"
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr ""
+msgstr "皮爾森相關係數"
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Spearman's rho 相關係數"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "Kendall's tau-b 相關係數"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr ""
+msgstr "其他設定"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
-msgstr ""
+msgstr "成隊顯示"
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr ""
+msgstr "報告顯著性"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
-msgstr ""
+msgstr "標示顯著的相關係數"
 
 msgctxt "Correlation|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "信賴區間"
 
 msgctxt "Correlation|"
 msgid "Interval"
-msgstr ""
+msgstr "區間"
 
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
@@ -92,59 +99,59 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Sample size"
-msgstr ""
+msgstr "樣本數"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "對立假設"
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr ""
+msgstr "相關"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "正相關"
 
 msgctxt "Correlation|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "負相關"
 
 msgctxt "Correlation|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
-msgstr ""
+msgstr "散佈圖"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "變項密度"
 
 msgctxt "Correlation|"
 msgid "Statistics"
-msgstr ""
+msgstr "統計數"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "預測區間"
 
 msgctxt "Correlation|"
 msgid "Heatmap"
-msgstr ""
+msgstr "熱圖"
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
-msgstr ""
+msgstr "假設檢驗"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr ""
+msgstr "多元常態"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr ""
+msgstr "Shapiro 檢驗"
 
 msgctxt "Correlation|"
 msgid "Royston"
@@ -152,7 +159,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Mardia"
-msgstr ""
+msgstr "Mardia 係數"
 
 msgctxt "Correlation|"
 msgid "Energy"
@@ -160,67 +167,68 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
-msgstr ""
+msgstr "成對常態性"
 
 msgctxt "Correlation|"
 msgid "Options"
-msgstr ""
+msgstr "設定"
 
 msgctxt "Correlation|"
 msgid "Means and standard deviations"
-msgstr ""
+msgstr "平均數與標準差"
 
 msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances"
-msgstr ""
+msgstr "外積差與共變數"
 
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr ""
+msgstr "遺漏值"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "成對排除法"
 
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "完全排除法"
 
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
-msgstr ""
+msgstr "母群相關係數"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
-msgstr ""
+msgstr "Pearson's rho 相關係數"
 
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Spearman's rho 相關係數"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "Kendall's tau-b 相關係數"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "其他設定"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr ""
+msgstr "顯示成對係數表"
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr ""
+msgstr "報告貝氏因素"
 
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
-msgstr ""
+msgstr "標示獲得支持的相關係數"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
-msgstr ""
+msgstr "樣本數"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
@@ -228,39 +236,39 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
-msgstr ""
+msgstr "可信區間"
 
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
-msgstr ""
+msgstr "區間"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "對立假設"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
-msgstr ""
+msgstr "相關"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "正相關"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "負相關"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "相關矩陣"
 
 msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "變項密度"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
@@ -268,7 +276,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "事前"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
@@ -288,7 +296,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
-msgstr ""
+msgstr "散佈圖"
 
 msgctxt "CorrelationBayesian|"
 msgid "Robustness check"
@@ -312,7 +320,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional info"
-msgstr ""
+msgstr "其他資訊"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sequential analysis"
@@ -320,51 +328,51 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Options"
-msgstr ""
+msgstr "設定"
 
 msgctxt "CorrelationBayesian|"
 msgid "Missing Values"
-msgstr ""
+msgstr "遺漏值"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "成對排除法"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "完全排除法"
 
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "依變項"
 
 msgctxt "RegressionLinear|"
 msgid "Method"
-msgstr ""
+msgstr "方法"
 
 msgctxt "RegressionLinear|"
 msgid "Enter"
-msgstr ""
+msgstr "納入"
 
 msgctxt "RegressionLinear|"
 msgid "Backward"
-msgstr ""
+msgstr "向後"
 
 msgctxt "RegressionLinear|"
 msgid "Forward"
-msgstr ""
+msgstr "向前"
 
 msgctxt "RegressionLinear|"
 msgid "Stepwise"
-msgstr ""
+msgstr "逐步"
 
 msgctxt "RegressionLinear|"
 msgid "Covariates"
-msgstr ""
+msgstr "共變數"
 
 msgctxt "RegressionLinear|"
 msgid "Factors"
-msgstr ""
+msgstr "因素"
 
 msgctxt "RegressionLinear|"
 msgid "WLS Weights (optional)"
@@ -372,43 +380,43 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Model"
-msgstr ""
+msgstr "模式"
 
 msgctxt "RegressionLinear|"
 msgid "Components"
-msgstr ""
+msgstr "成分"
 
 msgctxt "RegressionLinear|"
 msgid "Include intercept"
-msgstr ""
+msgstr "納入截距"
 
 msgctxt "RegressionLinear|"
 msgid "Statistics"
-msgstr ""
+msgstr "統計數"
 
 msgctxt "RegressionLinear|"
 msgid "Regression Coefficients"
-msgstr ""
+msgstr "迴歸係數"
 
 msgctxt "RegressionLinear|"
 msgid "Estimates"
-msgstr ""
+msgstr "估計值"
 
 msgctxt "RegressionLinear|"
 msgid "From"
-msgstr ""
+msgstr "來自"
 
 msgctxt "RegressionLinear|"
 msgid "bootstraps"
-msgstr ""
+msgstr "拔靴法"
 
 msgctxt "RegressionLinear|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "信賴區間"
 
 msgctxt "RegressionLinear|"
 msgid "Covariance matrix"
-msgstr ""
+msgstr "共變數矩陣"
 
 msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
@@ -416,27 +424,27 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Model fit"
-msgstr ""
+msgstr "模式配適"
 
 msgctxt "RegressionLinear|"
 msgid "R squared change"
-msgstr ""
+msgstr "R平方改變量"
 
 msgctxt "RegressionLinear|"
 msgid "Descriptives"
-msgstr ""
+msgstr "描述統計"
 
 msgctxt "RegressionLinear|"
 msgid "Part and partial correlations"
-msgstr ""
+msgstr "偏相關與淨相關"
 
 msgctxt "RegressionLinear|"
 msgid "Collinearity diagnostics"
-msgstr ""
+msgstr "共線性診斷"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals"
-msgstr ""
+msgstr "殘差"
 
 msgctxt "RegressionLinear|"
 msgid "Durbin-Watson"
@@ -456,15 +464,15 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "All"
-msgstr ""
+msgstr "所有"
 
 msgctxt "RegressionLinear|"
 msgid "Method Specification"
-msgstr ""
+msgstr "模式設定"
 
 msgctxt "RegressionLinear|"
 msgid "Stepping Method Criteria"
-msgstr ""
+msgstr "逐步迴歸方法條件"
 
 msgctxt "RegressionLinear|"
 msgid "Use p value"
@@ -472,39 +480,40 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Entry"
-msgstr ""
+msgstr "納入"
 
 msgctxt "RegressionLinear|"
 msgid "Removal"
-msgstr ""
+msgstr "移除"
 
 msgctxt "RegressionLinear|"
 msgid "Use F value"
-msgstr ""
+msgstr "使用F值"
 
 msgctxt "RegressionLinear|"
 msgid "Missing Values"
-msgstr ""
+msgstr "遺漏值"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "完全排除法"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "成對排除法"
 
 msgctxt "RegressionLinear|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals Plots"
-msgstr ""
+msgstr "殘差圖"
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. dependent"
-msgstr ""
+msgstr "殘差與依變項"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. covariates"
@@ -532,11 +541,11 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "依變項"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
-msgstr ""
+msgstr "共變數"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "WLS Weights (optional)"
@@ -544,7 +553,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Output"
-msgstr ""
+msgstr "報表"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Posterior summary"
@@ -592,7 +601,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to best model"
-msgstr ""
+msgstr "與最佳模式比較"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to null model"
@@ -612,27 +621,27 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Data"
-msgstr ""
+msgstr "資料"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Descriptives"
-msgstr ""
+msgstr "描述統計"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model"
-msgstr ""
+msgstr "模式"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Components"
-msgstr ""
+msgstr "成分"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "係數"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Inclusion probabilities"
@@ -644,7 +653,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Models"
-msgstr ""
+msgstr "模式"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Log posterior odds"
@@ -960,11 +969,11 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "All"
-msgstr ""
+msgstr "全選"
 
 msgctxt "RegressionLogistic|"
 msgid "Plots"
-msgstr ""
+msgstr "圖"
 
 msgctxt "RegressionLogistic|"
 msgid "Inferential Plots"
@@ -976,15 +985,15 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
-msgstr ""
+msgstr "顯示資料點"
 
 msgctxt "RegressionLogistic|"
 msgid "Residual Plots"
-msgstr ""
+msgstr "殘差圖"
 
 msgctxt "RegressionLogistic|"
 msgid "Predicted - residual plot"
-msgstr ""
+msgstr "預測值-殘差圖"
 
 msgctxt "RegressionLogistic|"
 msgid "Predictor - residual plots"
@@ -1012,7 +1021,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "ROC plot"
-msgstr ""
+msgstr "POC 圖"
 
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
@@ -1032,7 +1041,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "bootstraps"
-msgstr ""
+msgstr "拔靴"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
