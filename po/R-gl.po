@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2021-10-02 02:46\n"
-"PO-Revision-Date: 2021-11-07 21:22+0000\n"
+"PO-Revision-Date: 2021-11-07 21:48+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/gl/>\n"
@@ -729,7 +729,7 @@ msgid "There are nonpositive weights"
 msgstr "Hai ponderacións que non son positivas"
 
 msgid "Posterior Summary"
-msgstr "Resumo posterior"
+msgstr "Resumo Posterior"
 
 msgid "Model Comparison"
 msgstr "Cotexo de Modelos"
@@ -833,7 +833,7 @@ msgid "Posterior Coefficients with %s%% Credible Interval"
 msgstr "Coeficientes Posteriores co Intervalo co %s%% de Credibilidade"
 
 msgid "Posterior Log Odds"
-msgstr "Logaritmo de probabilidades posteriores"
+msgstr "Logaritmo de Probabilidades Posteriores"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
 msgstr ""
@@ -962,7 +962,7 @@ msgid "Predicted Group"
 msgstr "Grupo Predito"
 
 msgid "Studentized Residual"
-msgstr "Erro tipificado"
+msgstr "Erro Tipificado"
 
 msgid "Factor Descriptives"
 msgstr "Descritivos dos Factores"
@@ -1002,10 +1002,10 @@ msgid "Estimates plots"
 msgstr "Gráficas das estimacións"
 
 msgid "Predicted - residuals plot"
-msgstr "Gráfica preditos - erros"
+msgstr "Gráfica predito - erros"
 
 msgid "Predictor - residuals plots"
-msgstr "Gráficas preditores - erros"
+msgstr "Gráficas preditor - erros"
 
 msgid "Squared Pearson residuals plot"
 msgstr "Gráfica dos erros de Pearson cadrados"
