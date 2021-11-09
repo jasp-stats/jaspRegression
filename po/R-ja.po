@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2021-10-02 02:46\n"
-"PO-Revision-Date: 2021-11-08 13:05+0000\n"
+"PO-Revision-Date: 2021-11-10 04:46+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -409,13 +409,13 @@ msgid "df2"
 msgstr "df2"
 
 msgid "Autocorrelation"
-msgstr "自己 相関"
+msgstr "自己相関"
 
 msgid "Durbin-Watson"
 msgstr "ダービン・ワトソン"
 
 msgid "Statistic"
-msgstr "統計"
+msgstr "統計量"
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr "ダービン-ワトソン検定のp値は重み付け回帰では使用できません。"
@@ -433,7 +433,7 @@ msgid "df"
 msgstr "df"
 
 msgid "Mean Square"
-msgstr "平均二乗"
+msgstr "平均平方"
 
 msgid "F"
 msgstr "F"
@@ -684,10 +684,10 @@ msgid "Plotting is not possible: %s"
 msgstr "プロットができません: %s"
 
 msgid "Marginal Effects Plots"
-msgstr ""
+msgstr "周辺効果量プロット"
 
 msgid "Marginal effect of %1s on %2s"
-msgstr ""
+msgstr "%2sに対する%1sの周辺効果"
 
 msgid "All effects are specified as nuisance"
 msgstr "すべての効果は妨害要因として指定されています"
