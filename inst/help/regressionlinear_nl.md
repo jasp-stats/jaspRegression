@@ -22,8 +22,8 @@ Met een lineaire regressie kan een lineaire relatie tussen een of meer verklaren
 	- Achterwaarts: Alle predictoren worden tegelijk toegevoegd, en daarna sequentieel verwijderd gebaseerd op het criterium in "criterium stapsgewijze methode".
 	- Voorwaarts: Predictoren worden sequentieel toegevoegd op basis van het criterium gespecificeerd in "criterium stapsgewijze methode". 
 	- Stapsgewijs: Predictoren worden sequentieel toegevoegd op basis van het criterium gespecificeerd in "criterium stapsgewijze methode"; na elke stap wordt de minst nuttige predictor verwijderd. 
-- Covariaten: Continue predictor variabele(n). Indien ordinale variabelen worden ingevoerd, wordt verondersteld dat de afstand tussen opeenvolgende niveaus gelijk is.
-- Factoren: Categorische predictor variabele(n). Indien ordinale variabelen worden ingevoerd, worden deze behandeld als categorische variabelen.
+- Covariaten: Continue predictor variabele(n). Indien ordinale variabelen worden ingevoerd, wordt verondersteld dat de afstand tussen opeenvolgende niveaus gelijk is. Ordinale variabelen worden dan behandeld als continue variabelen.
+- Factoren: Categorische predictor variabele(n). Ordinale variabelen worden hier behandeld als categorische variabelen en de ordinale informatie wordt genegeerd.
 - WLS gewichten: De gewichten die worden gebruikt voor de laagste-kwadratenregressie.
 
 ### Model
