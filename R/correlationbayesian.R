@@ -834,7 +834,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   jaspResults[[indexName]] <- createJaspState(results)
 
   if (is.null(pair)) # sumStats
-    qmlInputElements <- c("hypothesis", "priorWidth", "setSeed", "seed")
+    qmlInputElements <- c("alternative", "priorWidth", "setSeed", "seed")
   else # pairs
     qmlInputElements <- c("missingValues", "alternative", "kappa", "setSeed", "seed")
 
