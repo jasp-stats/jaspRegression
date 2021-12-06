@@ -1288,14 +1288,24 @@ Correlation <- function(jaspResults, dataset, options){
     } else {
     	p <- p + ggplot2::scale_x_discrete(name = xName)
     }
+
     if (isNumericY) {
     	p <- p + ggplot2::scale_y_continuous(name = yName, breaks = yBreaks, limits = range(yBreaks))
     } else {
     	p <- p + ggplot2::scale_y_discrete(name = yName)
     }
   } else{
-    p <- p + ggplot2::scale_x_continuous(name = NULL, breaks = xBreaks, labels = NULL, limits = range(xBreaks))
-    p <- p + ggplot2::scale_y_continuous(name = NULL, breaks = yBreaks, labels = NULL, limits = range(yBreaks))
+    if (isNumericX) {
+      p <- p + ggplot2::scale_x_continuous(name = NULL, breaks = xBreaks, labels = NULL, limits = range(xBreaks))
+    } else {
+      p <- p + ggplot2::scale_x_discrete(name = NULL)
+    }
+
+    if (isNumericY) {
+      p <- p + ggplot2::scale_y_continuous(name = NULL, breaks = yBreaks, labels = NULL, limits = range(yBreaks))
+    } else {
+      p <- p + ggplot2::scale_y_discrete(name = NULL)
+    }
   }
 
   return(jaspGraphs::themeJasp(p))
