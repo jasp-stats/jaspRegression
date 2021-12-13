@@ -338,7 +338,29 @@ test_that("Analysis handles errors", {
   expect_identical(results[["status"]], "validationError", label="Perfect correlation check")
 })
 
-# Below are the unit tests for Andy Field's book
+test_that("Analysis handles categorical predictors in model summary table", {
+  options <- jaspTools::analysisOptions("RegressionLinear")
+  options$dependent <- "contNormal"
+  options$covariates <- "contcor1"
+  options$factors <- "facFive"
+  options$modelTerms <- list(
+    list(components="contcor1", isNuisance=TRUE),
+    list(components="facFive", isNuisance=FALSE)
+  )
+  options$rSquaredChange <- TRUE
+  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
+  expect_equal_tables(table,
+                      list(2.60891821036142, 0.161031927910319, 0.0259312818065142, 0.0259312818065142,
+                           1.04991652929926, 0.0159918050902543, 1, 98, "H<unicode>", 0.109479317429059,
+                           1.1726522384496, 0.26875124434343, 0.0722272313361422, 0.046295949529628,
+                           1.04623657078777, 0.0228776159816817, 4, 94, "H<unicode>", 0.327916402792662
+                      )
+                      )
+})
+
+# Below are the unit tests for Andy Field's book ----
 
 # Chapter 1
 test_that("Fields Book - Chapter 1 results match", {

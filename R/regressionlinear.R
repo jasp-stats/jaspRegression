@@ -796,7 +796,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     model[[i]][["title"]]         <- .linregGetModelTitle(singleModel$predictors, predictorsInNull, options$method, i)
     model[[i]][["summary"]]       <- .linregGetSummary(singleModel$fit)
     model[[i]][["durbinWatson"]]  <- .linregGetDurBinWatsonTestResults(singleModel$fit, options$wlsWeights)
-    model[[i]][["rSquareChange"]] <- .linregGetrSquaredChange(singleModel$fit, singleModel$predictors, i, model[1:i], dataset[[dependent]])
+    model[[i]][["rSquareChange"]] <- .linregGetrSquaredChange(singleModel$fit, i, model[1:i], options)
   }
 
   modelContainer[["model"]] <- createJaspState(model)
@@ -1045,16 +1045,22 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   return(durbinWatson)
 }
 
-.linregGetrSquaredChange <- function(fit, predictors, currentIndex, processedModels, depVals) {
+.linregGetrSquaredChange <- function(fit, currentIndex, processedModels, options) {
   #R^2_change in Field (2013), Eqn. 8.15:
   #F.change = (n-p_new - 1)R^2_change / p_change ( 1- R^2_new)
   #df1 = p_change = abs( p_new - p_old )
-  #df2 = n-p_new - 1
+  #df2 = n-p_new
+  # the above works only for continuous predictors, for categorical, we have (k-1) coefficients
+  # where k=number of the levels in the categorical variable
 
-  numPrevModelPredictors <- prevRSquared <- 0
-  if (currentIndex > 1) {
-    numPrevModelPredictors  <- length(processedModels[[currentIndex - 1]]$predictors)
-    prevRSquared            <- summary(processedModels[[currentIndex - 1]]$fit)$r.squared
+  if (currentIndex == 1) {
+    # if we include the intercept, the number of coefficients to compare the null model to is 1
+    # otherwise there are no coefficients
+    prevCoefs    <- if(options[["includeConstant"]]) numeric(1) else numeric(0)
+    prevRSquared <- 0
+  } else {
+    prevCoefs    <- stats::coefficients(processedModels[[currentIndex - 1]]$fit)
+    prevRSquared <- summary(processedModels[[currentIndex - 1]]$fit)$r.squared
   }
 
   rSquaredChange <- fChange <- df1 <- df2 <- p <- NaN
@@ -1062,10 +1068,12 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     rSquared        <- summary(fit)$r.squared
     rSquaredChange  <- rSquared - prevRSquared
 
-    df1 <- abs(length(predictors) - numPrevModelPredictors)
-    df2 <- length(depVals) - length(predictors) - 1
+    coefs <- stats::coefficients(fit)
 
-    if (length(predictors) > 0) {
+    df1 <- abs(length(coefs) - length(prevCoefs)) # df1 = p_change = abs( p_new - p_old )
+    df2 <- stats::df.residual(fit) # df2 = n-p_new but should take factors into account
+
+    if (df1 > 0L) {
       fChange <- (df2 * rSquaredChange) / (df1 * (1 - rSquared))
       p       <- pf(q = fChange, df1 = df1, df2 = df2, lower.tail = FALSE)
     } else {
