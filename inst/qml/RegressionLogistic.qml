@@ -81,7 +81,6 @@ Form
 			CheckBox
 			{
 				name: "confusionMatrixOpt";	label: qsTr("Confusion matrix")
-				CheckBox { name: "confusionMatrixProportions";	label: qsTr("Proportions") }
 			}
 		}
 
@@ -116,11 +115,14 @@ Form
 				CheckBox { name: "robustSEOpt";		label: qsTr("Robust standard errors")	}
 				CheckBox { name: "VovkSellkeMPR";	label: qsTr("Vovk-Sellke maximum p-ratio")	}
 			}
-		}
+
+            CheckBox { name: "multicolli"; label: qsTr("Multicollinearity Diagnostics") }
+		}        
 
         Group
         {
 			title: qsTr("Performance Metrics")
+            CheckBox { name: "Accu";	    label: qsTr("Accuracy")			}
             CheckBox { name: "AUC";			label: qsTr("AUC")					}
             CheckBox { name: "Sens";		label: qsTr("Sensitivity / Recall")	}
             CheckBox { name: "Spec";		label: qsTr("Specificity")			}

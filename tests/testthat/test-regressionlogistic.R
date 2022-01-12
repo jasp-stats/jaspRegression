@@ -209,32 +209,20 @@ test_that("Method=stepwise model summary table results match", {
 
 test_that("Confusion Matrix Table Matches", {
   options <- jaspTools::analysisOptions("RegressionLogistic")
-  options$covariates <- list("contNormal")
-  options$dependent  <- "contBinom"
+  options$covariates <- c("contNormal", "contOutlier")
+  options$dependent  <- "facGender"
   options$modelTerms <- list(
-    list(components="contNormal", isNuisance=FALSE)
+    list(components="contNormal",    isNuisance=FALSE),
+    list(components="contOutlier", isNuisance=FALSE)
   )
+  
   options$confusionMatrixOpt <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_confusionMatrix"]][["data"]]
-  jaspTools::expect_equal_tables(table, list(0,       58, 0, 58,
-                                             1,       41, 1, 42,
-                                             "Total", 99, 1, 100))
+  jaspTools::expect_equal_tables(table, list("f",                 34, 16, 68.00,
+                                             "m",                 21, 29, 58.00,
+                                             "Overall % Correct", "", "", 63.00))
 
-  options$confusionMatrixProportions <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
-  table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_confusionMatrix"]][["data"]]
-  jaspTools::expect_equal_tables(table, list(0,       "count",           58,        0,        58,
-                                             "",      "% within row",    100,       0,        100,
-                                             "",      "% within column", 58/99*100, 0,        58,
-                                             "",      "% of total",      58,        0,        58,
-                                             1,       "count",           41,        1,        42,
-                                             "",      "% within row",    41/42*100, 1/42*100, 100,
-                                             "",      "% within column", 41/99*100, 100,      42,
-                                             "",      "% of total",      41,        1,        42,
-                                             "Total", "count",           99,        1,        100,
-                                             "",      "% within row",    99,        50,       100,
-                                             "",      "% within column", 100,       100,      100))
 })
 
 test_that("Performance Metrics Table Matches", {
@@ -244,6 +232,7 @@ test_that("Performance Metrics Table Matches", {
   options$modelTerms <- list(
     list(components="contNormal", isNuisance=FALSE)
   )
+  options$Accu  <- TRUE
   options$AUC  <- TRUE
   options$Sens <- TRUE
   options$Spec <- TRUE
@@ -254,29 +243,46 @@ test_that("Performance Metrics Table Matches", {
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_performanceMetrics"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list("AUC", 0.529556650246305, "Sensitivity", 0.0238095238095238, "Specificity",
+                      list("Accuracy", 0.590, "AUC", 0.529556650246305, "Sensitivity", 0.0238095238095238, "Specificity",
                            1, "Precision", 1, "F-measure", 0.0465116279069767, "Brier score",
                            0.242217791647847, "H-measure", 0.0686265172331011)
   )
+})
 
+test_that("Confusion Matrix Table Matches", {
   options <- jaspTools::analysisOptions("RegressionLogistic")
-  options$covariates <- list("contNormal")
-  options$dependent  <- "contBinom"
+  options$covariates <- c("contNormal", "contOutlier")
+  options$factors <- c("facFive")
+  options$dependent <- "facGender"
+  
   options$modelTerms <- list(
-    list(components="contNormal", isNuisance=FALSE)
+    list(components="contNormal",    isNuisance=FALSE),
+    list(components="contOutlier",   isNuisance=FALSE),
+    list(components="facFive", isNuisance=FALSE)
   )
-  options$AUC  <- TRUE
-  options$Sens <- TRUE
-  options$Prec <- TRUE
-  options$Fmsr <- TRUE
-  options$Hmsr <- TRUE
+  
+  options$multicolli <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
-  table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_performanceMetrics"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                      list("AUC", 0.529556650246305, "Sensitivity", 0.0238095238095238, "Precision",
-                           1, "F-measure", 0.0465116279069767, "H-measure", 0.0686265172331011
-                      )
+  table <- results[["results"]][["multicolliTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list("contNormal",   0.9536754, 1.048575,
+                                             "contOutlier",  0.9742628, 1.026417, 
+                                             "facFive",      0.9377347, 1.0664))
+  
+  options <- jaspTools::analysisOptions("RegressionLogistic")
+  options$covariates <- c("contNormal", "contOutlier")
+  options$dependent <- "facGender"
+  
+  options$modelTerms <- list(
+    list(components="contNormal",    isNuisance=FALSE),
+    list(components="contOutlier",   isNuisance=FALSE)
   )
+  
+  options$multicolli <- TRUE
+  results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
+  table <- results[["results"]][["multicolliTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list("contNormal",   0.9958289, 1.004189,
+                                             "contOutlier",  0.9958289, 1.004189))
+  
 })
 
 test_that("Error Handling", {

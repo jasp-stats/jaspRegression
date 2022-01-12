@@ -25,6 +25,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   .reglogisticModelSummaryTable(       jaspResults, dataset, options, ready)
   .reglogisticEstimatesTable(          jaspResults, dataset, options, ready)
   .reglogisticEstimatesTableBootstrap( jaspResults, dataset, options, ready)
+  .reglogisticMulticolliTable(         jaspResults, dataset, options, ready)
   .reglogisticFactorDescriptivesTable( jaspResults, dataset, options)
   .reglogisticCasewiseDiagnosticsTable(jaspResults, dataset, options, ready)
   .reglogisticConfusionMatrixTable(    jaspResults, dataset, options, ready)
@@ -228,6 +229,34 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     estimatesTableBootstrap$addFootnote(gettext("Coefficient estimate is based on the median of the bootstrap distribution."))
 }
 
+.reglogisticMulticolliTable <- function(jaspResults, dataset, options, ready) {
+  if(!options$multicolli || !is.null(jaspResults[["multicolliTable"]]))
+    return()
+  
+  multicolliTable <- createJaspTable(gettext("Multicollinearity Diagnostics"))
+  multicolliTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
+                           options             = "multicolli")
+  multicolliTable$position <- 4
+  multicolliTable$showSpecifiedColumnsOnly <- TRUE
+  
+  multicolliTable$addColumnInfo(name = "var", title = gettext(""), type = "string")
+  
+  if (ready) {
+    glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+  } else {
+    glmObj <- NULL
+  }
+  
+  multicolliTable$addColumnInfo(name = "tolerance", title = gettext("Tolerance"), type = "number")
+  multicolliTable$addColumnInfo(name = "VIF", title = gettext("VIF"), type = "number")
+  
+  jaspResults[["multicolliTable"]] <- multicolliTable
+  
+  res <- try(.reglogisticMulticolliTableFill(jaspResults, dataset, options, glmObj, ready))
+  
+  .reglogisticSetError(res, multicolliTable)
+}
+
 .reglogisticCasewiseDiagnosticsTable <- function(jaspResults, dataset, options, ready){
   if(!options$casewiseDiagnostics || !is.null(jaspResults[["casewiseDiagnosticsTable"]]))
     return()
@@ -238,7 +267,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                                            "casewiseDiagnosticsResidualZ",
                                            "casewiseDiagnosticsCooksDistance",
                                            "casewiseDiagnosticsType"))
-  casDiag$position <- 4
+  casDiag$position <- 5
   casDiag$showSpecifiedColumnsOnly <- TRUE
 
   casDiag$addColumnInfo(name = "caseNumber", title = gettext("Case Number"),          type = "integer")
@@ -265,7 +294,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     dataset <- .reglogisticReadData(dataset, options)
   factorDescriptives <- createJaspTable(gettext("Factor Descriptives"))
   factorDescriptives$dependOn(c("factorDescriptivesOpt", "factors"))
-  factorDescriptives$position <- 5
+  factorDescriptives$position <- 6
   factorDescriptives$showSpecifiedColumnsOnly <- TRUE
   if (length(options$factors) == 0)
     factorDescriptives$addColumnInfo(name = "Factor", title = gettext("Factor"),
@@ -294,8 +323,8 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     return()
   confusionMatrix <- createJaspTable(gettext("Confusion matrix"))
   confusionMatrix$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                           options           = c("confusionMatrixOpt", "confusionMatrixProportions"))
-  confusionMatrix$position <- 6
+                           options           = c("confusionMatrixOpt"))
+  confusionMatrix$position <- 7
   confusionMatrix$showSpecifiedColumnsOnly <- TRUE
 
   confusionMatrix$addColumnInfo(name = "obs", title = gettext("Observed"), type = "string")
@@ -312,14 +341,9 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     levs   <- c(0,1)
     glmObj <- NULL
   }
-  if(options$confusionMatrixProportions) {
-    confusionMatrix$addColumnInfo(name = "type", title = "", type = "string")
-    .confusionMatAddColInfo(confusionMatrix, levs, "number")
-    confusionMatrix$addColumnInfo(name = "total", title = gettext("Total"), type = "number")}
 
-  else {
-    .confusionMatAddColInfo(confusionMatrix, levs, "integer")
-    confusionMatrix$addColumnInfo(name = "total", title = gettext("Total"), type = "integer")}
+  .confusionMatAddColInfo(confusionMatrix, levs, "integer")
+  confusionMatrix$addColumnInfo(name = "perCorrect", title = gettext("% Correct"), type = "number")
 
   container[["confusionMatrix"]] <- confusionMatrix
 
@@ -333,13 +357,13 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   container <- jaspResults[["perfDiag"]]
   if(!is.null(container[["performanceMetrics"]]))
     return()
-  performList <- c("AUC", "Sens", "Spec", "Prec", "Fmsr", "BrierScr", "Hmsr")
+  performList <- c("Accu", "AUC", "Sens", "Spec", "Prec", "Fmsr", "BrierScr", "Hmsr")
   if(!any(unlist(options[performList])))
     return()
   performanceMetrics <- createJaspTable(gettext("Performance metrics"))
   performanceMetrics$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                               options           = performList)
-  performanceMetrics$position <- 7
+  performanceMetrics$position <- 8
   performanceMetrics$showSpecifiedColumnsOnly <- TRUE
 
   performanceMetrics$addColumnInfo(name = "met", title = "", type = "string")
@@ -802,35 +826,53 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     n = sum(m)
     rowTotal1 <- rowSums(m)[[1]]
     rowTotal2 <- rowSums(m)[[2]]
-    colTotal1 <- colSums(m)[[1]]
-    colTotal2 <- colSums(m)[[2]]
+    rowPerCorrect1 <- m[1,1]/rowTotal1*100
+    rowPerCorrect2 <- m[2,2]/rowTotal2*100
+    accuracy <- (m[1,1]+m[2,2])/n*100
 
-    if (options$confusionMatrixProportions)
-      container[["confusionMatrix"]]$addRows(list(
-        list(obs = levs[1], type = "count", pred0 = m[1,1], pred1 = m[1,2], total = rowTotal1),
-        list(obs = "", type = "% within row", pred0 = m[1,1]/rowTotal1*100, pred1 = m[1,2]/rowTotal1*100, total = 100),
-        list(obs = "", type = "% within column", pred0 = m[1,1]/colTotal1*100, pred1 = m[1,2]/colTotal2*100, total = rowTotal1/n*100),
-        list(obs = "", type = "% of total", pred0 = m[1,1]/n*100, pred1 = m[1,2]/n*100, total = rowTotal1/n*100),
-        list(obs = levs[2], type = "count", pred0 = m[2,1], pred1 = m[2,2], total = rowTotal2),
-        list(obs = "", type = "% within row", pred0 = m[2,1]/rowTotal2*100, pred1 = m[2,2]/rowTotal2*100, total = 100),
-        list(obs = "", type = "% within column", pred0 = m[2,1]/colTotal1*100, pred1 = m[2,2]/colTotal2*100, total = rowTotal2/n*100),
-        list(obs = "", type = "% of total", pred0 = m[2,1]/n*100, pred1 = m[2,2]/n*100, total = rowTotal2/n*100),
-        list(obs = "Total", type = "count", pred0 = colTotal1, pred1 = colTotal2, total = n),
-        list(obs = "", type = "% within row", pred0 = colTotal1/n*100, pred1 = colTotal2/2*100, total = 100),
-        list(obs = "", type = "% within column", pred0 = 100, pred1 = 100, total = 100)
-      ))
-    else
-      container[["confusionMatrix"]]$addRows(list(
-        list(obs = levs[1], pred0 = m[1,1], pred1 = m[1,2], total = rowTotal1),
-        list(obs = levs[2], pred0 = m[2,1], pred1 = m[2,2], total = rowTotal2),
-        list(obs = "Total", pred0 = colTotal1, pred1 = colTotal2, total = n)
-      ))
+    container[["confusionMatrix"]]$addRows(list(
+      list(obs = levs[1], pred0 = m[1,1], pred1 = m[1,2], perCorrect = rowPerCorrect1),
+      list(obs = levs[2], pred0 = m[2,1], pred1 = m[2,2], perCorrect = rowPerCorrect2),
+      list(obs = "Overall % Correct", pred0 = "", pred1 = "", perCorrect = accuracy)
+    ))
+    
+    message <- "The cut-off value is set to 0.5"
+    container[["confusionMatrix"]]$addFootnote(message)
   } else
     container[["confusionMatrix"]]$addRows(list(
       list(obs = "0", pred0 = ".", pred1 = ".", total = "."),
       list(obs = "1", pred0 = ".", pred1 = ".", total = "."),
-      list(obs = "Total", pred0 = ".", pred1 = ".", total = ".")
+      list(obs = "Overall % Correct", pred0 = ".", pred1 = ".", total = ".")
     ))
+}
+
+.reglogisticMulticolliTableFill <- function(jaspResults, dataset, options, glmObj, ready) {
+  if (ready && !is.null(glmObj)) {
+    mObj          <- glmObj[[length(glmObj)]]
+    vif_obj       <- car::vif(mObj)
+    
+    if (is.matrix(vif_obj)) {
+      var_names     <- rownames(vif_obj)
+      n_var         <- length(var_names)
+      vif_vec       <- vif_obj[,1]
+      tolerance_vec <- 1/vif_vec
+    }
+    else {
+      var_names     <- names(vif_obj)
+      n_var         <- length(var_names)
+      vif_vec       <- vif_obj
+      tolerance_vec <- 1/vif_vec
+    }
+    
+    for (i in 1:n_var) {
+      jaspResults[["multicolliTable"]]$addRows(list(var       = var_names[[i]],
+                                                    tolerance = tolerance_vec[[i]],
+                                                    VIF       = vif_vec[[i]]))
+    }
+    
+  } else
+    jaspResults[["multicolliTable"]]$addRows(
+      list(var = ".", tolerance = ".", VIF = "."))
 }
 
 .reglogisticPerformanceMetricsFill <- function(jaspResults, container, dataset, options, ready){
@@ -838,18 +880,24 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     # Compute/Get Model
     glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
     mObj   <- glmObj[[length(glmObj)]]
-    m <- .confusionMatrix(mObj, cutoff = 0.5)[["metrics"]]
+    m <- .confusionMatrix(mObj, cutoff = 0.5)[["matrix"]]
+    n = sum(m)
+    accuracy <- (m[1,1]+m[2,2])/n
+    
+    metrics <- .confusionMatrix(mObj, cutoff = 0.5)[["metrics"]]
     rows <- list(
-      list(met = "AUC",         val = m[["AUC"]]),
-      list(met = "Sensitivity", val = m[["Sens"]]),
-      list(met = "Specificity", val = m[["Spec"]]),
-      list(met = "Precision",   val = m[["Precision"]]),
-      list(met = "F-measure",   val = m[["F"]]),
-      list(met = "Brier score", val = m[["Brier"]]),
-      list(met = "H-measure",   val = m[["H"]])
+      list(met = "Accuracy",    val = accuracy),
+      list(met = "AUC",         val = metrics[["AUC"]]),
+      list(met = "Sensitivity", val = metrics[["Sens"]]),
+      list(met = "Specificity", val = metrics[["Spec"]]),
+      list(met = "Precision",   val = metrics[["Precision"]]),
+      list(met = "F-measure",   val = metrics[["F"]]),
+      list(met = "Brier score", val = metrics[["Brier"]]),
+      list(met = "H-measure",   val = metrics[["H"]])
     )
   } else
     rows <- list(
+      list(met = "Accuracy",    val = "."),
       list(met = "AUC",         val = "."),
       list(met = "Sensitivity", val = "."),
       list(met = "Specificity", val = "."),
@@ -860,7 +908,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     )
 
   # determine which scores we need
-  scrNeed  <- with(options, c(AUC, Sens, Spec, Prec, Fmsr, BrierScr, Hmsr))
+  scrNeed  <- with(options, c(Accu, AUC, Sens, Spec, Prec, Fmsr, BrierScr, Hmsr))
   rows     <- rows[scrNeed]
   container[["performanceMetrics"]]$addRows(rows)
 }
