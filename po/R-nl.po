@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2021-10-02 02:46\n"
+"POT-Creation-Date: 2022-01-15 02:52\n"
 "PO-Revision-Date: 2021-10-30 02:45+0000\n"
 "Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -952,6 +952,10 @@ msgstr ""
 "Coëfficiëntschatting en robuuste standaardfout zijn gebaseerd op de mediaan "
 "van de bootstrapverdeling."
 
+#, fuzzy
+msgid "Multicollinearity Diagnostics"
+msgstr "Collineariteitsdiagnostieken"
+
 msgid "Observed"
 msgstr "Geobserveerd"
 
@@ -969,6 +973,10 @@ msgstr "Factor"
 
 msgid "Confusion matrix"
 msgstr "Verwarringsmatrix"
+
+#, fuzzy
+msgid "% Correct"
+msgstr "%s Correlaties"
 
 msgid "Performance metrics"
 msgstr "Prestatiestatistieken"

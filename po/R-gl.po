@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2021-10-02 02:46\n"
+"POT-Creation-Date: 2022-01-15 02:52\n"
 "PO-Revision-Date: 2022-01-08 23:25+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -955,6 +955,10 @@ msgstr ""
 "A estimación do coeficiente e o erro padrón robusto baséanse na mediana da "
 "distribución con bootstrap."
 
+#, fuzzy
+msgid "Multicollinearity Diagnostics"
+msgstr "Diagnósticos de Multicolinearidade"
+
 msgid "Observed"
 msgstr "Observado"
 
@@ -972,6 +976,10 @@ msgstr "Factor"
 
 msgid "Confusion matrix"
 msgstr "Matriz de desarranxo"
+
+#, fuzzy
+msgid "% Correct"
+msgstr "Correlacións %s"
 
 msgid "Performance metrics"
 msgstr "Métricas de comportamento"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2021-10-02 02:46\n"
+"POT-Creation-Date: 2022-01-15 02:52\n"
 "PO-Revision-Date: 2021-11-21 19:40+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -511,8 +511,8 @@ msgid ""
 "Missing coefficients are undefined because of singularities. Check the data "
 "for anything out of order!"
 msgstr ""
-"Los coeficientes ausentes no están definidos a causa de singularidades. ¡"
-"Comprueba que los datos no tienen nada fuera de lugar!"
+"Los coeficientes ausentes no están definidos a causa de singularidades. "
+"¡Comprueba que los datos no tienen nada fuera de lugar!"
 
 msgid "Bootstrap Coefficients"
 msgstr "Coeficientes de Bootstrap"
@@ -761,8 +761,8 @@ msgid ""
 msgstr ""
 "El previo del modelo de Castillo se corresponde con un previo Beta Binomial "
 "con %1$s = 1 y %2$s = p^u, y resulta adecuado \n"
-"para la regresión exigua cuando hay más covariables que observaciones ("
-"Castillo et al., 2015)."
+"para la regresión exigua cuando hay más covariables que observaciones "
+"(Castillo et al., 2015)."
 
 msgid "BF<sub>10</sub>"
 msgstr "FB<sub>10</sub>"
@@ -957,6 +957,10 @@ msgstr ""
 "La estimación del coeficiente y del error típico robusto se basan en la "
 "mediana de la distribución con bootstrap."
 
+#, fuzzy
+msgid "Multicollinearity Diagnostics"
+msgstr "Diagnósticos de Multicolinealidad"
+
 msgid "Observed"
 msgstr "Observado"
 
@@ -974,6 +978,10 @@ msgstr "Factor"
 
 msgid "Confusion matrix"
 msgstr "Matriz de desorden"
+
+#, fuzzy
+msgid "% Correct"
+msgstr "%s Correlaciones"
 
 msgid "Performance metrics"
 msgstr "Métricas de comportamiento"
@@ -1059,7 +1067,8 @@ msgstr[1] "utilizando las %d/%d filas de un ajuste combinado"
 msgid "The following covariate was considered but not included: %s."
 msgid_plural "The following covariates were considered but not included: %s."
 msgstr[0] "Se consideró la siguiente covariable pero no se incluyó: %s."
-msgstr[1] "Se consideraron las siguientes covariables pero no se incluyeron: %s."
+msgstr[1] ""
+"Se consideraron las siguientes covariables pero no se incluyeron: %s."
 
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"

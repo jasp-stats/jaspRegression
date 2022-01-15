@@ -864,10 +864,6 @@ msgid "Confusion matrix"
 msgstr "混同行列"
 
 msgctxt "RegressionLogistic|"
-msgid "Proportions"
-msgstr "比率"
-
-msgctxt "RegressionLogistic|"
 msgid "Regression Coefficients"
 msgstr "回帰係数"
 
@@ -1054,3 +1050,11 @@ msgstr "その他のプロット"
 msgctxt "RegressionLinear|"
 msgid "Marginal effects plots"
 msgstr "周辺効果量プロット"
+
+msgctxt "RegressionLogistic|"
+msgid "Multicollinearity Diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Accuracy"
+msgstr ""

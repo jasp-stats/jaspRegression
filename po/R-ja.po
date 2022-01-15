@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2021-10-02 02:46\n"
+"POT-Creation-Date: 2022-01-15 02:52\n"
 "PO-Revision-Date: 2021-11-10 04:46+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -917,6 +917,10 @@ msgstr ""
 "係数推定値とロバスト標準誤差は、ブートストラップ分布の中央値に基づいていま"
 "す。"
 
+#, fuzzy
+msgid "Multicollinearity Diagnostics"
+msgstr "共線性の診断"
+
 msgid "Observed"
 msgstr "観測された"
 
@@ -934,6 +938,10 @@ msgstr "要因"
 
 msgid "Confusion matrix"
 msgstr "混同行列"
+
+#, fuzzy
+msgid "% Correct"
+msgstr "%s 相関"
 
 msgid "Performance metrics"
 msgstr "パフォーマンス・メトリクス"

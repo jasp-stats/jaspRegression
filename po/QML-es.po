@@ -865,10 +865,6 @@ msgid "Confusion matrix"
 msgstr "Matriz de desorden"
 
 msgctxt "RegressionLogistic|"
-msgid "Proportions"
-msgstr "Proporciones"
-
-msgctxt "RegressionLogistic|"
 msgid "Regression Coefficients"
 msgstr "Coeficientes de Regresión"
 
@@ -1055,3 +1051,11 @@ msgstr "Otros Gráficos"
 msgctxt "RegressionLinear|"
 msgid "Marginal effects plots"
 msgstr "Gráficos de los efectos marginales"
+
+msgctxt "RegressionLogistic|"
+msgid "Multicollinearity Diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Accuracy"
+msgstr ""
