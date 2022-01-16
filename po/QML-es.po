@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-16 17:32+0000\n"
+"PO-Revision-Date: 2022-01-16 20:34+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/es/>\n"
@@ -1060,8 +1060,8 @@ msgstr "Gráficos de los efectos marginales"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity Diagnostics"
-msgstr ""
+msgstr "Diagnósticos de Multicolinealidad"
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
-msgstr ""
+msgstr "Precisión"
