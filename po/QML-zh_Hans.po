@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-01-16 17:32+0000\n"
+"PO-Revision-Date: 2022-01-17 12:28+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-qml/zh_Hans/>\n"
@@ -1063,4 +1063,4 @@ msgstr "多重共线性诊断"
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
-msgstr ""
+msgstr "准确度"
