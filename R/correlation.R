@@ -408,9 +408,10 @@ Correlation <- function(jaspResults, dataset, options){
       xy <- data[, results[[name]][["vars"]]]
 
       for(test in tests){
-        bootstraps[i, name, test] <- tryCatch({
-          .corrFastParCor(xy = xy, z = z, method = test)
-        }, error = function() NaN)
+        bootstraps[i, name, test] <- tryCatch(
+          .corrFastParCor(xy = xy, z = z, method = test),
+          error = function(e) NaN
+          )
       }
     }
 
@@ -421,6 +422,7 @@ Correlation <- function(jaspResults, dataset, options){
   for(name in names(results)) {
     for(test in tests){
       ci <- quantile(bootstraps[,name,test], probs = ciLevel, na.rm = TRUE)
+      ci[is.na(ci)] <- NaN
       results[[name]][["res"]][[test]][c("lower.ci", "upper.ci")] <- ci
     }
   }
