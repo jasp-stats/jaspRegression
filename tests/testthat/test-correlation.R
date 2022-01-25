@@ -257,3 +257,22 @@ test_that("Bootstrapping results match", {
                                       0.121736428310888, "contcor1", "debMiss30")
                                  )
 })
+
+test_that("Bootstrapping fails gracefully", {
+  options <- jaspTools::analysisOptions("Correlation")
+  options$variables <- c("contNormal", "debMiss99")
+  options$conditioningVariables <- c("facFive")
+  options$bootstrap <- TRUE
+  options$bootstrapReplicates <- 100
+  options$confidenceIntervals <- TRUE
+
+  set.seed(1)
+  results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
+
+  table <- results[["results"]][["mainTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, "<unicode>", "<unicode>",
+                                      "<unicode>", "<unicode>", "NaN", "NaN", "NaN", "NaN", "contNormal",
+                                      "", "", "", "", "<unicode>", "<unicode>", "<unicode>", "<unicode>",
+                                      "debMiss99"))
+})
