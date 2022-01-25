@@ -141,7 +141,7 @@ Correlation <- function(jaspResults, dataset, options){
                                                                            additionToFlagSignificant), symbol = "*")
 
   if(length(options$conditioningVariables) > 0){
-    message <- gettextf("Conditioned on variables: %s", paste(options$conditioningVariables, collapse = ", "))
+    message <- gettextf("Conditioned on variables: %s.", paste(options$conditioningVariables, collapse = ", "))
     mainTable$addFootnote(message = message)
   }
 
@@ -325,7 +325,7 @@ Correlation <- function(jaspResults, dataset, options){
 
       # shorten the message for observations.amount (do not list variables which is apparent in the output)
       if(is.list(errors) && !is.null(errors$observations)){
-        errors$message <- gettextf("Number of observations is < %s", 3+length(options$conditioningVariables))
+        errors$message <- gettextf("Number of observations is < %s.", 3+length(options$conditioningVariables))
       }
 
       currentResults <- list()
