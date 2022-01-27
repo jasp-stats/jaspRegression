@@ -1,19 +1,19 @@
 # TODO(Alexander): Make a generic matchAlternative function
-# 
+#
 hypTwoSided <- c("two.sided", "twoSided", "two-sided", "equal", #General R
                  "notEqualToTestValue", "groupsNotEqual", #t-tests/binomial
-                 "correlated") 
+                 "correlated")
 hypPlusSided <- c("greater", "plusSided",
-                  "greaterThanTestValue", "groupOneGreater", 
+                  "greaterThanTestValue", "groupOneGreater",
                   "correlatedPositively", "right", "positive")
 hypMinSided <- c("less", "minSided",
-                 "lessThanTestValue", "groupTwoGreater", 
+                 "lessThanTestValue", "groupTwoGreater",
                  "correlatedNegatively", "left", "negative")
 
 .getBfTitle <- function(bfType = c("BF10", "BF01", "LogBF10"),
                                      alternative) {
   bfType <- match.arg(bfType)
-  
+
   if (bfType == "BF10") {
     if (alternative %in% hypTwoSided) {
       bfTitle <- "BF\u2081\u2080"
@@ -45,29 +45,29 @@ hypMinSided <- c("less", "minSided",
 
 .bSelectItems <- function(options) {
   itemNames <- c("n", "stat", "bf", "upperCi", "lowerCi")
-  
-  if (!options[["reportN"]]) 
+
+  if (!options[["reportN"]])
     itemNames <- setdiff(itemNames, "n")
-  
-  if (!options[["reportBayesFactors"]]) 
+
+  if (!options[["reportBayesFactors"]])
     itemNames <- setdiff(itemNames, "bf")
-  
+
   if (!options[["ci"]])
     itemNames <- setdiff(itemNames, c("lowerCi", "upperCi"))
-  
+
   return(itemNames)
 }
 
 .bfFlagKey <- function(options) {
   bfTitle <- .getBfTitle("bfType"=options[["bayesFactorType"]], "alternative"=options[["alternative"]])
-  bfKey <- list("LogBF10"=list("*"=paste0(bfTitle, " > log(10)"), 
-                               "**"=paste0(bfTitle, " > log(30)"), 
+  bfKey <- list("LogBF10"=list("*"=paste0(bfTitle, " > log(10)"),
+                               "**"=paste0(bfTitle, " > log(30)"),
                                "***"=paste0(bfTitle, " > log(100)")),
-                "BF01"=list("*"=paste(bfTitle, " < 0.1"), 
-                            "**"=paste(bfTitle, " < 0.03"), 
+                "BF01"=list("*"=paste(bfTitle, " < 0.1"),
+                            "**"=paste(bfTitle, " < 0.03"),
                             "***"=paste(bfTitle, " < 0.01")),
-                "BF10"=list("*"=paste(bfTitle, " > 10"), 
-                            "**"=paste(bfTitle, " > 30"), 
+                "BF10"=list("*"=paste(bfTitle, " > 10"),
+                            "**"=paste(bfTitle, " > 30"),
                             "***"=paste(bfTitle, " > 100"))
   )
   return(bfKey[[options[["bayesFactorType"]]]])
@@ -81,32 +81,32 @@ hypMinSided <- c("less", "minSided",
 
 .getBfTableSidedFootnote <- function(alternative, analysis) {
   # Note(Alexander): Add footnote can't add NULL messages
-  # 
+  #
   # message <- NULL
-  
+
   if (analysis=="correlation") {
     effectSize <- "correlation"
     if (alternative=="greater") {
       message <- gettextf("For all tests, the alternative hypothesis specifies that the %s is positive.", effectSize)
     } else if (alternative=="less") {
-      message <- gettextf("For all tests, the alternative hypothesis specifies that the %s is negative", effectSize)
+      message <- gettextf("For all tests, the alternative hypothesis specifies that the %s is negative.", effectSize)
     }
   }
-  
+
   return(message)
 }
 
 .bfPlotTitles <- function(plotTitle)
                   switch(plotTitle,
-                      plotScatter         = gettext("Scatterplot"), 
-                      plotPriorPosterior  = gettext("Prior and Posterior"), 
-                      plotBfRobustness    = gettext("Bayes Factor Robustness Check"), 
+                      plotScatter         = gettext("Scatterplot"),
+                      plotPriorPosterior  = gettext("Prior and Posterior"),
+                      plotBfRobustness    = gettext("Bayes Factor Robustness Check"),
                       plotBfSequential    = gettext("Sequential Analysis"))
 
-# if (options[["alternative"]]=="greater") 
+# if (options[["alternative"]]=="greater")
 #   corBayesTable$addFootnote(message="For all tests, the alternative hypothesis specifies that the correlation is positive.",
 #                             symbol="<i>Note</i>.")
-# 
-# if (options[["alternative"]]=="less") 
-#   corBayesTable$addFootnote(message="For all tests, the alternative hypothesis specifies that the correlation is negative.", 
+#
+# if (options[["alternative"]]=="less")
+#   corBayesTable$addFootnote(message="For all tests, the alternative hypothesis specifies that the correlation is negative.",
 #                             symbol="<i>Note</i>.")

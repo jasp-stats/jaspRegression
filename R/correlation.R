@@ -129,10 +129,10 @@ Correlation <- function(jaspResults, dataset, options){
   }
 
   if(options[['hypothesis']] == "correlatedPositively"){
-    mainTable$addFootnote(message = gettext("All tests one-tailed, for positive correlation"))
+    mainTable$addFootnote(message = gettext("All tests one-tailed, for positive correlation."))
     additionToFlagSignificant <- gettext(", one-tailed")
   } else if(options[['hypothesis']] == "correlatedNegatively"){
-    mainTable$addFootnote(message = gettext("All tests one-tailed, for negative correlation"))
+    mainTable$addFootnote(message = gettext("All tests one-tailed, for negative correlation."))
     additionToFlagSignificant <- gettext(", one-tailed")
   } else{
     additionToFlagSignificant <- ""
@@ -141,7 +141,7 @@ Correlation <- function(jaspResults, dataset, options){
                                                                            additionToFlagSignificant), symbol = "*")
 
   if(length(options$conditioningVariables) > 0){
-    message <- gettextf("Conditioned on variables: %s", paste(options$conditioningVariables, collapse = ", "))
+    message <- gettextf("Conditioned on variables: %s.", paste(options$conditioningVariables, collapse = ", "))
     mainTable$addFootnote(message = message)
   }
 
@@ -325,7 +325,7 @@ Correlation <- function(jaspResults, dataset, options){
 
       # shorten the message for observations.amount (do not list variables which is apparent in the output)
       if(is.list(errors) && !is.null(errors$observations)){
-        errors$message <- gettextf("Number of observations is < %s", 3+length(options$conditioningVariables))
+        errors$message <- gettextf("Number of observations is < %s.", 3+length(options$conditioningVariables))
       }
 
       currentResults <- list()
@@ -408,9 +408,10 @@ Correlation <- function(jaspResults, dataset, options){
       xy <- data[, results[[name]][["vars"]]]
 
       for(test in tests){
-        bootstraps[i, name, test] <- tryCatch({
-          .corrFastParCor(xy = xy, z = z, method = test)
-        }, error = function() NaN)
+        bootstraps[i, name, test] <- tryCatch(
+          .corrFastParCor(xy = xy, z = z, method = test),
+          error = function(e) NaN
+          )
       }
     }
 
@@ -421,6 +422,7 @@ Correlation <- function(jaspResults, dataset, options){
   for(name in names(results)) {
     for(test in tests){
       ci <- quantile(bootstraps[,name,test], probs = ciLevel, na.rm = TRUE)
+      ci[is.na(ci)] <- NaN
       results[[name]][["res"]][[test]][c("lower.ci", "upper.ci")] <- ci
     }
   }
