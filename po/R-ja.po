@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-01-15 02:52\n"
+"POT-Creation-Date: 2022-01-29 02:45\n"
 "PO-Revision-Date: 2021-11-10 04:46+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -17,8 +17,9 @@ msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr "すべての検定について、対立仮説は%sが正であることを示す."
 
+#, fuzzy
 msgid ""
-"For all tests, the alternative hypothesis specifies that the %s is negative"
+"For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr "すべての検定について、対立仮説は%sが負であることを示す"
 
 msgid "Scatterplot"
@@ -147,19 +148,22 @@ msgstr "%s 相関"
 msgid "%s Partial Correlations"
 msgstr "%s 偏相関"
 
-msgid "All tests one-tailed, for positive correlation"
+#, fuzzy
+msgid "All tests one-tailed, for positive correlation."
 msgstr "すべての検定は正の相関についての片側検定です"
 
 msgid ", one-tailed"
 msgstr ",片側"
 
-msgid "All tests one-tailed, for negative correlation"
+#, fuzzy
+msgid "All tests one-tailed, for negative correlation."
 msgstr "すべてのテストは負の相関についての片側検定です"
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < 0.05, ** p < 0.01, *** p < 0.001%s"
 
-msgid "Conditioned on variables: %s"
+#, fuzzy
+msgid "Conditioned on variables: %s."
 msgstr "変数に対する条件: %s"
 
 msgid ""
@@ -190,7 +194,8 @@ msgstr "ケンドールのタウB"
 msgid "p-value"
 msgstr "p値"
 
-msgid "Number of observations is < %s"
+#, fuzzy
+msgid "Number of observations is < %s."
 msgstr "オブザベーションの数は %s 未満です"
 
 msgid "Bootstrapping"

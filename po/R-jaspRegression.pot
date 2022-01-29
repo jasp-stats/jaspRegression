@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-01-15 02:52\n"
+"POT-Creation-Date: 2022-01-29 02:45\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
 
-msgid "For all tests, the alternative hypothesis specifies that the %s is negative"
+msgid "For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
 
 msgid "Scatterplot"
@@ -133,19 +133,19 @@ msgstr ""
 msgid "%s Partial Correlations"
 msgstr ""
 
-msgid "All tests one-tailed, for positive correlation"
+msgid "All tests one-tailed, for positive correlation."
 msgstr ""
 
 msgid ", one-tailed"
 msgstr ""
 
-msgid "All tests one-tailed, for negative correlation"
+msgid "All tests one-tailed, for negative correlation."
 msgstr ""
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr ""
 
-msgid "Conditioned on variables: %s"
+msgid "Conditioned on variables: %s."
 msgstr ""
 
 msgid "Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."
@@ -172,7 +172,7 @@ msgstr ""
 msgid "p-value"
 msgstr ""
 
-msgid "Number of observations is < %s"
+msgid "Number of observations is < %s."
 msgstr ""
 
 msgid "Bootstrapping"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-01-15 02:52\n"
+"POT-Creation-Date: 2022-01-29 02:45\n"
 "PO-Revision-Date: 2021-10-30 02:45+0000\n"
 "Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -19,8 +19,9 @@ msgid ""
 msgstr ""
 "Voor alle toetsen luidt de alternatieve hypothese dat de %s positief is."
 
+#, fuzzy
 msgid ""
-"For all tests, the alternative hypothesis specifies that the %s is negative"
+"For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
 "Voor alle toetsen luidt de alternatieve hypothese dat de %s negatief is"
 
@@ -150,19 +151,22 @@ msgstr "%s Correlaties"
 msgid "%s Partial Correlations"
 msgstr "%s Partiële Correlaties"
 
-msgid "All tests one-tailed, for positive correlation"
+#, fuzzy
+msgid "All tests one-tailed, for positive correlation."
 msgstr "Alle toetsen eenzijdig, voor positieve correlatie"
 
 msgid ", one-tailed"
 msgstr ", eenzijdig"
 
-msgid "All tests one-tailed, for negative correlation"
+#, fuzzy
+msgid "All tests one-tailed, for negative correlation."
 msgstr "Alle toetsen eenzijdig, voor negatieve correlaties"
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < .05, ** p < .01, *** p < .001%s"
 
-msgid "Conditioned on variables: %s"
+#, fuzzy
+msgid "Conditioned on variables: %s."
 msgstr "Geconditioneerd op variabelen: %s"
 
 msgid ""
@@ -193,7 +197,8 @@ msgstr "Kendall's tau B"
 msgid "p-value"
 msgstr "p-waarde"
 
-msgid "Number of observations is < %s"
+#, fuzzy
+msgid "Number of observations is < %s."
 msgstr "Aantal observaties < %s"
 
 msgid "Bootstrapping"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-01-15 02:52\n"
+"POT-Creation-Date: 2022-01-29 02:45\n"
 "PO-Revision-Date: 2022-01-16 17:32+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -26,8 +26,9 @@ msgid ""
 msgstr ""
 "Para tódalas probas, a hipótese alternativa indica que o %s é positivo."
 
+#, fuzzy
 msgid ""
-"For all tests, the alternative hypothesis specifies that the %s is negative"
+"For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr "Para tódalas probas, a hipótese alternativa indica que o %s é negativo"
 
 msgid "Scatterplot"
@@ -155,19 +156,22 @@ msgstr "Correlacións %s"
 msgid "%s Partial Correlations"
 msgstr "Correlacións Parciais %s"
 
-msgid "All tests one-tailed, for positive correlation"
+#, fuzzy
+msgid "All tests one-tailed, for positive correlation."
 msgstr "Tódalas probas de unha cola, para correlación positiva"
 
 msgid ", one-tailed"
 msgstr ", de unha cola"
 
-msgid "All tests one-tailed, for negative correlation"
+#, fuzzy
+msgid "All tests one-tailed, for negative correlation."
 msgstr "Tódalas probas de unha cola, para correlación negativa"
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < .05, ** p < .01, *** p < .001%s"
 
-msgid "Conditioned on variables: %s"
+#, fuzzy
+msgid "Conditioned on variables: %s."
 msgstr "Condicionado a variables: %s"
 
 msgid ""
@@ -198,7 +202,8 @@ msgstr "Tau B de Kendall"
 msgid "p-value"
 msgstr "Valor p"
 
-msgid "Number of observations is < %s"
+#, fuzzy
+msgid "Number of observations is < %s."
 msgstr "O número de observacións é < %s"
 
 msgid "Bootstrapping"
