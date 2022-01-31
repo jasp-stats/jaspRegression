@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2022-01-29 02:45\n"
-"PO-Revision-Date: 2022-01-16 20:34+0000\n"
+"PO-Revision-Date: 2022-01-31 00:18+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.10.1\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -19,12 +19,11 @@ msgstr ""
 "Para todas las pruebas, la hipótesis alternativa especifica que el %s es "
 "positivo."
 
-#, fuzzy
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
-"Para todas las pruebas, la hipótesis alternativa especifica que el %s es "
-"negativo"
+"Para todos los contrastes, la hipótesis alternativa especifica que la %s es "
+"negativa."
 
 msgid "Scatterplot"
 msgstr "Gráfico de dispersión"
@@ -151,23 +150,20 @@ msgstr "%s Correlaciones"
 msgid "%s Partial Correlations"
 msgstr "%s Correlaciones Parciales"
 
-#, fuzzy
 msgid "All tests one-tailed, for positive correlation."
-msgstr "Todos los contrastes de una cola, para correlación positiva"
+msgstr "Todos los contrastes de una cola, para correlación positiva."
 
 msgid ", one-tailed"
 msgstr ", de una cola"
 
-#, fuzzy
 msgid "All tests one-tailed, for negative correlation."
-msgstr "Todos los contrastes una cola, para correlación negativa"
+msgstr "Todos los contrastes una cola, para correlación negativa."
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < .05, ** p < .01, *** p < .001%s"
 
-#, fuzzy
 msgid "Conditioned on variables: %s."
-msgstr "Condicionado en variables: %s"
+msgstr "Condicionado a las variables: %s."
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
@@ -197,9 +193,8 @@ msgstr "Tau B de Kendall"
 msgid "p-value"
 msgstr "Valor p"
 
-#, fuzzy
 msgid "Number of observations is < %s."
-msgstr "El número de observaciones es < %s"
+msgstr "El número de observaciones es < %s."
 
 msgid "Bootstrapping"
 msgstr "Bootstrapping"
