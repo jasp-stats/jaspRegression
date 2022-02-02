@@ -163,6 +163,41 @@ Form {
 	{
 		title: qsTr("Advanced Options")
 
+		Group
+		{
+			CheckBox
+			{
+				id:							addResiduals
+				name:						"addResiduals"
+				text:						qsTr("Add residuals to data")
+
+				ComputedColumnField
+				{
+					name:					"residualsColumn"
+					text:					qsTr("Column name")
+					placeholderText:		qsTr("e.g., residuals")
+					fieldWidth:				120
+					enabled:				addResiduals.checked
+				}
+			}
+			CheckBox
+			{
+				id:							addResidualSds
+				name:						"addResidualSds"
+				text:						qsTr("Add residual std. deviations to data")
+
+				ComputedColumnField
+				{
+					name:					"residualSdsColumn"
+					text:					qsTr("Column name")
+					placeholderText:		qsTr("e.g., residual sd")
+					fieldWidth:				120
+					enabled:				addResidualSds.checked
+				}
+			}
+		}
+
+
 		RadioButtonGroup
 		{
 			name: "priorRegressionCoefficients"

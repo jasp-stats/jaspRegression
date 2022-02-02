@@ -64,6 +64,8 @@ RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
 
   if (options$descriptives && is.null(jaspResults[["descriptivesTable"]]))
     .basregTableDescriptives(jaspResults, dataset, options, ready, position = 2)
+
+  .basregExportResiduals(basregContainer, basregModel, dataset, options, ready)
 }
 
 .basregReadData <- function(dataset, options) {
@@ -1007,7 +1009,7 @@ for sparse regression when there are more covariates than observations (Castillo
   wlsWeights <- NULL
   if (options$wlsWeights != "") {
     weightsVar <- options$wlsWeights
-    wlsWeights <- dataset[[ .v(weightsVar) ]]
+    wlsWeights <- dataset[[weightsVar]]
   }
 
   # select the type of model prior
@@ -1314,4 +1316,72 @@ for sparse regression when there are more covariates than observations (Castillo
 .basregReplaceInteractionUnicodeSymbol <- function(name) {
   # ggplot can't show the interaction symbol
   gsub("\u2009\u273b\u2009", " x ", name, fixed = TRUE)
+}
+
+.basregExportResiduals <- function(basregContainer, basregModel, dataset, options, ready) {
+
+  if (!ready)
+    return()
+
+  userWantsResiduals   <- options[["addResiduals"]]   && options[["residualsColumn"]]   != "" && is.null(basregContainer[["residualsColumn"]])
+  userWantsResidualSds <- options[["addResidualSds"]] && options[["residualSdsColumn"]] != "" && is.null(basregContainer[["residualSdsColumn"]])
+
+  if (!userWantsResiduals || !userWantsResidualSds)
+    return()
+
+  if (options[["summaryType"]] == "complex") {
+
+    # find the most complex model
+    mostComplexIdx <- which.max(lengths(basregModel[["which"]]))
+
+    # we copy the bas object and pretend that the most complex model is the best model,
+    # so that estimator "HPM" does exactly what we want
+    basregModelTemp <- basregModel
+    basregModelTemp[["postprobs"]][-mostComplexIdx] <- 0
+    basregModelTemp[["postprobs"]][ mostComplexIdx] <- 1
+    predictions <- predict(basregModelTemp, se.fit = userWantsResidualSds, estimator = "HPM")
+
+  } else if (options[["summaryType"]] == "median") {
+
+    # We do this for the same reason we need .basregOverwritecoefBas some weird lazy evaluation issues in R.
+    # See also https://github.com/merliseclyde/BAS/issues/56, once that is fixed we can probably remove this
+    wlsWeights <- NULL
+    if (options$wlsWeights != "") {
+      weightsVar <- options$wlsWeights
+      wlsWeights <- dataset[[weightsVar]]
+    }
+
+    basregModelTemp <- basregModel
+    basregModelTemp$call$formula <- formula(basregModel$terms)
+    basregModelTemp$call$data    <- dataset
+    basregModelTemp$call$weights <- wlsWeights
+
+    predictions <- predict(basregModelTemp, se.fit = userWantsResidualSds, estimator = "MPM")
+
+  } else {
+
+    estimator <- switch(options[["summaryType"]], best = "HPM", median = "MPM", "BMA")
+    predictions <- predict(basregModel, se.fit = userWantsResidualSds, estimator = estimator)
+
+  }
+
+  if (userWantsResiduals) {
+
+    residuals <- c(basregModel[["Y"]] - predictions[["fit"]]) # c to drop attributes
+
+    basregContainer[["residualsColumn"]] <- createJaspColumn(columnName = options[["residualsColumn"]])
+    basregContainer[["residualsColumn"]]$dependOn(options = c("residualsColumn", "addResiduals", "summaryType"))
+    basregContainer[["residualsColumn"]]$setScale(residuals)
+
+  }
+
+  if (userWantsResidualSds) {
+
+    residualsSds <- predictions[[if (options[["summaryType"]] == "averaged") "se.bma.pred" else "se.pred"]]
+
+    basregContainer[["residualSdsColumn"]] <- createJaspColumn(columnName = options[["residualSdsColumn"]])
+    basregContainer[["residualSdsColumn"]]$dependOn(options = c("residualSdsColumn", "addResidualSds", "summaryType"))
+    basregContainer[["residualSdsColumn"]]$setScale(residualsSds)
+
+  }
 }
