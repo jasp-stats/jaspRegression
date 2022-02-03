@@ -13,7 +13,6 @@ Imports:
   BAS,
   boot,
   bstats,
-  car,
   ggplot2,
   ggrepel,
   hmeasure,

@@ -1032,7 +1032,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   durbinWatson <- list(r = NaN, dw = NaN, p = NaN)
 
   if (!is.null(fit)) {
-    durbinWatson <- car::durbinWatsonTest(fit, alternative = c("two.sided"))
+    durbinWatson <- .durbinWatsonTest.lm(fit, alternative = c("two.sided"))
 
     if (weights == "") # if regression is not weighted, calculate p-value with lmtest (car method is unstable)
       # TODO: this can fail when there are many interactions between factors. Do we want to show a footnote about that?
