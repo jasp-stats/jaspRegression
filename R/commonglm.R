@@ -448,10 +448,6 @@
 
 ## functions in package car 3.0-12
 # Durbin-Watson
-.durbinWatsonTest <- function(model, ...){
-  UseMethod("durbinWatsonTest")
-}
-
 .durbinWatsonTest.lm <- function(model, max.lag=1, simulate=TRUE, reps=1000, 
                                 method=c("resample","normal"), 
                                 alternative=c("two.sided", "positive", "negative"), ...){
@@ -480,7 +476,7 @@
       matrix(sample(residuals, n*reps, replace=TRUE), n, reps) + matrix(mu, n, reps)
     else matrix(rnorm(n*reps, 0, S), n, reps) + matrix(mu, n, reps)
     E <- residuals(lm(Y ~ X - 1))
-    DW <- apply(E, 2, durbinWatsonTest, max.lag=max.lag)
+    DW <- apply(E, 2, .durbinWatsonTest.default, max.lag=max.lag)
     if (max.lag == 1) DW <- rbind(DW)
     p <- rep(0, max.lag)
     if (alternative == 'two.sided'){
@@ -518,7 +514,7 @@
   dw
 }
 
-# function for multicollineary statistics, taken from the source code of car::vif (version 3.0-12)
+# multicollineary statistics, also from package car 3.0-12
 .vif.default <- function(mod, ...) {
   if (any(is.na(coef(mod))))
     stop ("there are aliased coefficients in the model")
