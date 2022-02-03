@@ -446,7 +446,7 @@
 }
 
 
-## functions in package car
+## functions in package car 3.0-12
 # Durbin-Watson
 .durbinWatsonTest <- function(model, ...){
   UseMethod("durbinWatsonTest")
@@ -518,7 +518,7 @@
   dw
 }
 
-# function for multicollineary statistics, taken from the source code of car::vif
+# function for multicollineary statistics, taken from the source code of car::vif (version 3.0-12)
 .vif.default <- function(mod, ...) {
   if (any(is.na(coef(mod))))
     stop ("there are aliased coefficients in the model")
