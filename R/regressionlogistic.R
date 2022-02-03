@@ -849,7 +849,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 .reglogisticMulticolliTableFill <- function(jaspResults, dataset, options, glmObj, ready) {
   if (ready && !is.null(glmObj)) {
     mObj          <- glmObj[[length(glmObj)]]
-    vif_obj       <- car::vif(mObj)
+    vif_obj       <- .vif.default(mObj)
     
     if (is.matrix(vif_obj)) {
       var_names     <- rownames(vif_obj)
