@@ -1326,7 +1326,7 @@ for sparse regression when there are more covariates than observations (Castillo
   userWantsResiduals   <- options[["addResiduals"]]   && options[["residualsColumn"]]   != "" && is.null(basregContainer[["residualsColumn"]])
   userWantsResidualSds <- options[["addResidualSds"]] && options[["residualSdsColumn"]] != "" && is.null(basregContainer[["residualSdsColumn"]])
 
-  if (!userWantsResiduals || !userWantsResidualSds)
+  if (!userWantsResiduals && !userWantsResidualSds)
     return()
 
   if (options[["summaryType"]] == "complex") {
