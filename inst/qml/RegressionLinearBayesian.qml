@@ -68,6 +68,7 @@ Form {
 				{ label: qsTr("Median model"),			value: "median"		},
 				{ label: qsTr("Model averaged"),		value: "averaged"	}
 			]
+			id: summaryType
 		}
 
 
@@ -165,11 +166,13 @@ Form {
 
 		Group
 		{
+			title: qsTr("Append columns to data")
+			Layout.columnSpan: 2
 			CheckBox
 			{
 				id:							addResiduals
 				name:						"addResiduals"
-				text:						qsTr("Add residuals to data")
+				text:						qsTr("Residuals (%1)").arg(summaryType.currentLabel)
 
 				ComputedColumnField
 				{
@@ -184,7 +187,7 @@ Form {
 			{
 				id:							addResidualSds
 				name:						"addResidualSds"
-				text:						qsTr("Add residual std. deviations to data")
+				text:						qsTr("Residuals std. deviations (%1)").arg(summaryType.currentLabel)
 
 				ComputedColumnField
 				{
