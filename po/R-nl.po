@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2022-01-29 02:45\n"
-"PO-Revision-Date: 2021-10-30 02:45+0000\n"
-"Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
+"PO-Revision-Date: 2022-02-05 02:40+0000\n"
+"Last-Translator: DanaJohanna <dana__@live.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/nl/>\n"
 "Language: nl\n"
@@ -12,18 +12,17 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 4.9-dev\n"
+"X-Generator: Weblate 4.11-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
 "Voor alle toetsen luidt de alternatieve hypothese dat de %s positief is."
 
-#, fuzzy
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
-"Voor alle toetsen luidt de alternatieve hypothese dat de %s negatief is"
+"Voor alle toetsen luidt de alternatieve hypothese dat de %s negatief is."
 
 msgid "Scatterplot"
 msgstr "Spreidingsdiagram"
@@ -151,23 +150,20 @@ msgstr "%s Correlaties"
 msgid "%s Partial Correlations"
 msgstr "%s Partiële Correlaties"
 
-#, fuzzy
 msgid "All tests one-tailed, for positive correlation."
-msgstr "Alle toetsen eenzijdig, voor positieve correlatie"
+msgstr "Alle toetsen eenzijdig, voor positieve correlatie."
 
 msgid ", one-tailed"
 msgstr ", eenzijdig"
 
-#, fuzzy
 msgid "All tests one-tailed, for negative correlation."
-msgstr "Alle toetsen eenzijdig, voor negatieve correlaties"
+msgstr "Alle toetsen eenzijdig, voor negatieve correlaties."
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < .05, ** p < .01, *** p < .001%s"
 
-#, fuzzy
 msgid "Conditioned on variables: %s."
-msgstr "Geconditioneerd op variabelen: %s"
+msgstr "Geconditioneerd op variabelen: %s."
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
@@ -197,9 +193,8 @@ msgstr "Kendall's tau B"
 msgid "p-value"
 msgstr "p-waarde"
 
-#, fuzzy
 msgid "Number of observations is < %s."
-msgstr "Aantal observaties < %s"
+msgstr "Aantal observaties is < %s."
 
 msgid "Bootstrapping"
 msgstr "Bootstrapping"
@@ -957,7 +952,6 @@ msgstr ""
 "Coëfficiëntschatting en robuuste standaardfout zijn gebaseerd op de mediaan "
 "van de bootstrapverdeling."
 
-#, fuzzy
 msgid "Multicollinearity Diagnostics"
 msgstr "Collineariteitsdiagnostieken"
 
@@ -979,9 +973,8 @@ msgstr "Factor"
 msgid "Confusion matrix"
 msgstr "Verwarringsmatrix"
 
-#, fuzzy
 msgid "% Correct"
-msgstr "%s Correlaties"
+msgstr "%s Correct"
 
 msgid "Performance metrics"
 msgstr "Prestatiestatistieken"
