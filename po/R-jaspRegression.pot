@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-01-29 02:45\n"
+"POT-Creation-Date: 2022-02-05 02:42\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -119,6 +119,21 @@ msgid "VS-MPR%s"
 msgstr ""
 
 msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n  the maximum possible odds in favor of H%1$s over H%2$s equals\n  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n  (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+
+msgid "residuals include missing values"
+msgstr ""
+
+msgid "requires vector of residuals"
+msgstr ""
+
+msgid "there are aliased coefficients in the model"
+msgstr ""
+
+msgid "No intercept: vifs may not be sensible."
+msgstr ""
+
+msgid "model contains fewer than 2 terms"
 msgstr ""
 
 msgid "Kendall's Tau"

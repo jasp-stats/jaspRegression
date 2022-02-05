@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2022-01-29 02:45\n"
+"POT-Creation-Date: 2022-02-05 02:42\n"
 "PO-Revision-Date: 2022-01-31 00:18+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -137,6 +137,23 @@ msgstr ""
 "  la máxima probabilidad posible favorable a H%1$s sobre H%2$s igual\n"
 "  1/(-e <em>p</em> log(<em>p</em>)) para <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri & Berger, 2001)."
+
+msgid "residuals include missing values"
+msgstr ""
+
+#, fuzzy
+msgid "requires vector of residuals"
+msgstr "Gráficos predictor - errores"
+
+#, fuzzy
+msgid "there are aliased coefficients in the model"
+msgstr "No se puede introducir ninguna covariable en el modelo"
+
+msgid "No intercept: vifs may not be sensible."
+msgstr ""
+
+msgid "model contains fewer than 2 terms"
+msgstr ""
 
 msgid "Kendall's Tau"
 msgstr "Tau de Kendall"

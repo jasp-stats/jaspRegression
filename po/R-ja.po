@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-01-29 02:45\n"
+"POT-Creation-Date: 2022-02-05 02:42\n"
 "PO-Revision-Date: 2021-11-10 04:46+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -135,6 +135,23 @@ msgstr ""
 "<em>p</em> %3$s .37に対して1/(-e <em>p</em> log(<em>p</em>))に等しくなりま"
 "す\n"
 "(Sellke, Bayarri, & Berger, 2001)。"
+
+msgid "residuals include missing values"
+msgstr ""
+
+#, fuzzy
+msgid "requires vector of residuals"
+msgstr "予測変数 - 残差プロット"
+
+#, fuzzy
+msgid "there are aliased coefficients in the model"
+msgstr "モデルに共変量を組み込むことができませんでした"
+
+msgid "No intercept: vifs may not be sensible."
+msgstr ""
+
+msgid "model contains fewer than 2 terms"
+msgstr ""
 
 msgid "Kendall's Tau"
 msgstr "ケンドールのタウ"
