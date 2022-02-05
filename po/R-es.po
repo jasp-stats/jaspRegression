@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2022-02-05 02:42\n"
-"PO-Revision-Date: 2022-01-31 00:18+0000\n"
+"PO-Revision-Date: 2022-02-05 21:17+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
@@ -139,21 +139,19 @@ msgstr ""
 "  (Sellke, Bayarri & Berger, 2001)."
 
 msgid "residuals include missing values"
-msgstr ""
+msgstr "Los errores incluyen valores ausentes"
 
-#, fuzzy
 msgid "requires vector of residuals"
-msgstr "Gráficos predictor - errores"
+msgstr "Requiere el vector de errores"
 
-#, fuzzy
 msgid "there are aliased coefficients in the model"
-msgstr "No se puede introducir ninguna covariable en el modelo"
+msgstr "Hay coeficientes con alias en el modelo"
 
 msgid "No intercept: vifs may not be sensible."
-msgstr ""
+msgstr "Non hay ordenada en el origen: los FIV pueden no ser sensibles."
 
 msgid "model contains fewer than 2 terms"
-msgstr ""
+msgstr "El modelo incluye menos de 2 elementos"
 
 msgid "Kendall's Tau"
 msgstr "Tau de Kendall"
