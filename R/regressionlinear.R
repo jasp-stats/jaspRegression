@@ -466,8 +466,6 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(model)) {
     .linregAddInterceptNotShownFootnote(partPartialTable, model, options)
-    if (length(options[["factors"]]) > 0L)
-      partPartialTable$addFootnote(gettext("Factors are omitted, as no meaningful information can be shown."))
     .linregFillPartialCorrelationsTable(partPartialTable, model, dataset, options)
   }
 
@@ -1305,39 +1303,31 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetPartAndPartialCorrelation <- function(fit, predictors, dataset, options) {
-  predictors <- .linregRemoveFactors(fit, predictors)
+  formula <- formula(fit)
+  R2      <- summary(fit)[["r.squared"]]
+
   cors <- vector("list", length(predictors))
-  for (i in seq_along(predictors)) {
+  names(cors) <- predictors
 
-    predictor <- predictors[i]
-    if (.linregIsInteraction(predictor)) {
-      newVar                <- .linregMakeCombinedVariableFromInteraction(predictor, dataset)
-      newVarName            <- gsub(":", ".", predictor, fixed = TRUE)
-      dataset[[newVarName]] <- newVar
-    } else {
-      newVarName            <- predictor
-    }
+  for(predictor in predictors) {
 
-    dataset <- na.omit(dataset)
-    predictorsToControlFor <- setdiff(predictors, predictor)
-    if (length(predictorsToControlFor) > 0) {
-      formula1 <- .linregGetFormula(newVarName, predictorsToControlFor, includeConstant = TRUE)
-      formula2 <- .linregGetFormula(options$dependent, predictorsToControlFor, includeConstant = TRUE)
+    # drop the term from the formula and refit the model
+    newFormula <- update(formula, as.formula(sprintf(". ~ . - %s", predictor)))
+    newFit     <- update(fit, formula = newFormula)
+    newR2      <- summary(newFit)[["r.squared"]]
 
-      cleanedPredictor <- residuals(lm(formula1, data = dataset))
-      cleanedDependent <- residuals(lm(formula2, data = dataset))
+    sr2 <- R2 - newR2      # squared semi-partial (part) correlation
+    pr2 <- sr2 / (1-newR2) # squared partial correlation
 
-      partCor     <- cor(cleanedPredictor, dataset[[options$dependent]])
-      partialCor  <- cor(cleanedPredictor, cleanedDependent)
-    } else { # if there are no variables to control for, return regular correlation
-      partCor <- partialCor <- cor(dataset[[options$dependent]], dataset[[newVarName]])
-    }
+    # determine the sign of the coefficient
+    sign <- sign(coefficients(fit)[predictor])
+    if(is.na(sign)) sign <- 1 # for categorical predictors
 
-    cors[[i]] <- list(
-      name    = .unvf(predictor),
-      part    = partCor,
-      partial = partialCor)
-
+    cors[[predictor]] <- list(
+      name    = predictor,
+      part    = sign * sqrt(sr2),
+      partial = sign * sqrt(pr2)
+    )
   }
 
   return(cors)
