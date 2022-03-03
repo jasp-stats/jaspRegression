@@ -360,6 +360,32 @@ test_that("Analysis handles categorical predictors in model summary table", {
                       )
 })
 
+test_that("Part And Partial Correlations table results match", {
+  # Part and partial correlations, including categorical predictors, verified with SPSS,
+  # see pdf doc in https://github.com/jasp-stats/jasp-issues/issues/1638
+  options <- analysisOptions("RegressionLinear")
+  options$.meta <- list(covariates = list(shouldEncode = TRUE), dependent = list(
+    shouldEncode = TRUE), factors = list(shouldEncode = TRUE),
+    modelTerms = list(shouldEncode = TRUE), wlsWeights = list(
+      shouldEncode = TRUE))
+  options$covariates <- c("education", "prestige")
+  options$dependent <- "income"
+  options$factors <- "occup_type"
+  options$modelTerms <- list(list(components = "education", isNuisance = FALSE), list(
+    components = "prestige", isNuisance = FALSE), list(components = "occup_type",
+                                                       isNuisance = FALSE))
+  options$partAndPartialCorrelations <- TRUE
+  set.seed(1)
+  results <- runAnalysis("RegressionLinear", "Duncan.csv", options)
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("TRUE", "H<unicode>", "education", -0.107546637580272, -0.218295377900754,
+                                      "FALSE", "H<unicode>", "prestige", 0.363479641784283, 0.603066145085564,
+                                      "FALSE", "H<unicode>", "occup_type", 0.236073658532065, 0.440752114010841
+                                 ))
+})
+
 # Below are the unit tests for Andy Field's book ----
 
 # Chapter 1
