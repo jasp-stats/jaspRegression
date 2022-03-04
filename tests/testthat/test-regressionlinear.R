@@ -364,10 +364,6 @@ test_that("Part And Partial Correlations table results match", {
   # Part and partial correlations, including categorical predictors, verified with SPSS,
   # see pdf doc in https://github.com/jasp-stats/jasp-issues/issues/1638
   options <- analysisOptions("RegressionLinear")
-  options$.meta <- list(covariates = list(shouldEncode = TRUE), dependent = list(
-    shouldEncode = TRUE), factors = list(shouldEncode = TRUE),
-    modelTerms = list(shouldEncode = TRUE), wlsWeights = list(
-      shouldEncode = TRUE))
   options$covariates <- c("education", "prestige")
   options$dependent <- "income"
   options$factors <- "occup_type"
