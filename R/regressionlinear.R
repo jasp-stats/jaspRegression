@@ -1324,7 +1324,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     if(is.na(sign)) sign <- 1 # for categorical predictors
 
     cors[[predictor]] <- list(
-      name    = predictor,
+      name    = jaspBase::gsubInteractionSymbol(predictor),
       part    = sign * sqrt(sr2),
       partial = sign * sqrt(pr2)
     )
