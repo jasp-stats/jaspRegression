@@ -378,16 +378,22 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   bootstrapCoeffTable$addColumnInfo(name = "unstandCoeff", title = gettext("Unstandardized"), type = "number")
   bootstrapCoeffTable$addColumnInfo(name = "bias",         title = gettext("Bias"),           type = "number")
   bootstrapCoeffTable$addColumnInfo(name = "SE",           title = gettext("Standard Error"), type = "number")
+  bootstrapCoeffTable$addColumnInfo(name = "pvalue",       title = gettext("p"),              type = "pvalue")
 
   if (options$regressionCoefficientsConfidenceIntervals) {
-    overtitle <- gettextf("%s%% bca\u002A CI", 100 * options$regressionCoefficientsConfidenceIntervalsInterval)
+    overtitle <- gettextf("%s%% CI\u002A", 100 * options$regressionCoefficientsConfidenceIntervalsInterval)
     bootstrapCoeffTable$addColumnInfo(name = "lower", title = gettext("Lower"), type = "number", overtitle = overtitle)
     bootstrapCoeffTable$addColumnInfo(name = "upper", title = gettext("Upper"), type = "number", overtitle = overtitle)
   }
 
   bootstrapCoeffTable$addFootnote(gettextf("Bootstrapping based on %i replicates.", options[['regressionCoefficientsBootstrappingReplicates']]))
   bootstrapCoeffTable$addFootnote(gettext("Coefficient estimate is based on the median of the bootstrap distribution."))
-  bootstrapCoeffTable$addFootnote(gettext("Bias corrected accelerated"), symbol = "\u002A")
+  bootstrapCoeffTable$addFootnote(gettext("Bias corrected accelerated."), colNames = "pvalue", symbol = "\u002A")
+
+  bootstrapCoeffTable$addCitation(
+    c("Efron, B., & Tibshirani, R. J. (1994). An introduction to the bootstrap. CRC press.",
+      "Hall, P. (1992). The bootstrap and Edgeworth expansion. Springer Science & Business Media.")
+  )
 
   modelContainer[["bootstrapCoeffTable"]] <- bootstrapCoeffTable
   if (!is.null(model))
@@ -414,7 +420,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     }
 
     if (anyMissingValues)
-      bootstrapCoeffTable$addFootnote(gettext("Some bootstrap coefficients or confidence intervals could not be computed."))
+      bootstrapCoeffTable$addFootnote(gettext("Some bootstrap results could not be computed."))
 
     modelContainer[["bootstrapCoefficients"]] <- createJaspState(coefficients)
     modelContainer[["bootstrapCoefficients"]]$dependOn(c("regressionCoefficientsBootstrappingReplicates", "regressionCoefficientsConfidenceIntervalsInterval"))
@@ -1221,7 +1227,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     return(coef(fit))
   }
 
-  data <- data.frame(unstandCoeff = numeric(0), bias = numeric(0), SE = numeric(0), lower = numeric(0), upper = numeric(0))
+  data <- data.frame(unstandCoeff = numeric(0), bias = numeric(0), SE = numeric(0), pvalue = numeric(0), lower = numeric(0), upper = numeric(0))
 
   if (!is.null(fit)) {
 
@@ -1251,7 +1257,11 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       if (jaspBase::isTryError(ci))
         ci <- list(bca = rep(NaN, 5L))
 
-      data[i, ] <- c(coefficients[i], bias[i], stdErrors[i], ci$bca[4], ci$bca[5])
+      p <- try(.boot.pval(summary, type = "bca", index = i))
+      if (isTryError(p))
+        p <- NaN
+
+      data[i, ] <- c(coefficients[i], bias[i], stdErrors[i], p, ci$bca[4], ci$bca[5])
     }
 
     data[["name"]] <- .linregMakePrettyNames(fit)
@@ -2186,4 +2196,41 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
 
   return(finalMarginalPlot)
+}
+
+# function taken from {boot.pval} version 0.4
+# adjusted precision bug (alpha close to 1 causes some boot.ci type to crash)
+.boot.pval <- function(boot_res,
+                      type = "perc",
+                      theta_null = 0,
+                      pval_precision = NULL,
+                      ...)
+{
+  if(is.null(pval_precision)) { pval_precision = 1/boot_res$R }
+
+  # Create a sequence of alphas:
+  # EDITED:
+  alpha_seq <- seq(1e-10, 1-1e-10, pval_precision)
+  # END EDITED
+
+  # Compute the 1-alpha confidence intervals, and extract
+  # their bounds:
+  ci <- suppressWarnings(boot::boot.ci(boot_res,
+                                       conf = 1- alpha_seq,
+                                       type = type,
+                                       ...))
+
+  bounds <- switch(type,
+                   norm = ci$normal[,2:3],
+                   basic = ci$basic[,4:5],
+                   stud = ci$student[,4:5],
+                   perc = ci$percent[,4:5],
+                   bca = ci$bca[,4:5])
+
+  # Find the smallest alpha such that theta_null is not contained in the 1-alpha
+  # confidence interval:
+  alpha <- alpha_seq[which.min(theta_null >= bounds[,1] & theta_null <= bounds[,2])]
+
+  # Return the p-value:
+  return(alpha)
 }
