@@ -68,6 +68,7 @@ Form {
 				{ label: qsTr("Median model"),			value: "median"		},
 				{ label: qsTr("Model averaged"),		value: "averaged"	}
 			]
+			id: summaryType
 		}
 
 
@@ -162,6 +163,43 @@ Form {
 	Section
 	{
 		title: qsTr("Advanced Options")
+
+		Group
+		{
+			title: qsTr("Append columns to data")
+			Layout.columnSpan: 2
+			CheckBox
+			{
+				id:							addResiduals
+				name:						"addResiduals"
+				text:						qsTr("Residuals (%1)").arg(summaryType.currentLabel)
+
+				ComputedColumnField
+				{
+					name:					"residualsColumn"
+					text:					qsTr("Column name")
+					placeholderText:		qsTr("e.g., residuals")
+					fieldWidth:				120
+					enabled:				addResiduals.checked
+				}
+			}
+			CheckBox
+			{
+				id:							addResidualSds
+				name:						"addResidualSds"
+				text:						qsTr("Residuals std. deviations (%1)").arg(summaryType.currentLabel)
+
+				ComputedColumnField
+				{
+					name:					"residualSdsColumn"
+					text:					qsTr("Column name")
+					placeholderText:		qsTr("e.g., residual sd")
+					fieldWidth:				120
+					enabled:				addResidualSds.checked
+				}
+			}
+		}
+
 
 		RadioButtonGroup
 		{

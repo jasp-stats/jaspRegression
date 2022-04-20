@@ -288,3 +288,41 @@ test_that("Model priors match", {
         )
     }
 })
+
+test_that("Exporting residuals works", {
+
+  data("Hald", package = "BAS")
+  options <- analysisOptions("RegressionLinearBayesian")
+  options$dependent <- "Y"
+  options$covariates <- paste0("X", 1:4)
+  options$modelTerms <- lapply(options$covariates, function(x) list(components = x, isNuisance = FALSE))
+  options$modelPrior <- "beta.binomial"
+  options$priorRegressionCoefficients <- "g-prior"
+  options$alpha <- 13
+  options$addResiduals   <- TRUE
+  options$addResidualSds <- TRUE
+
+  summaryTypes <- c("best", "complex", "median", "averaged")
+
+  for (summaryType in summaryTypes) {
+    options$summaryType <- summaryType
+
+    options$residualsColumn   <- paste("residuals",   "-", summaryType)
+    options$residualSdsColumn <- paste("residualSds", "-", summaryType)
+
+    results <- runAnalysis("RegressionLinearBayesian", Hald, options)
+
+    # ideally we'd check the actual data here but the jaspTools output unfortunately does not contain the data
+    testthat::expect_identical(
+      results[["results"]][["basreg"]][["collection"]][["basreg_residualsColumn"]][c("columnName", "columnType")],
+      list(columnName = options$residualsColumn, columnType = "scale")
+    )
+
+    testthat::expect_identical(
+      results[["results"]][["basreg"]][["collection"]][["basreg_residualSdsColumn"]][c("columnName", "columnType")],
+      list(columnName = options$residualSdsColumn, columnType = "scale")
+    )
+
+}
+
+})
