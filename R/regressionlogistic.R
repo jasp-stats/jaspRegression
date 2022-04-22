@@ -762,7 +762,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   else {
     casewiseDiag <- .casewiseDiagnosticsLogisticRegression(dataset, glmObj, options)
     caseNumbers  <- casewiseDiag$index
-    if (is.na(caseNumbers))
+    if (length(caseNumbers) == 1L && is.na(caseNumbers)) # .casewiseDiagnosticsLogisticRegression returns NA if there are no cases.
       return()
     else {
       for (case in seq_along(caseNumbers))
