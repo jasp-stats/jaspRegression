@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-02-05 02:42\n"
+"POT-Creation-Date: 2022-04-23 03:00\n"
 "PO-Revision-Date: 2022-02-12 21:37+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -521,8 +521,9 @@ msgstr "ブートストラップ係数"
 msgid "Bias"
 msgstr "バイアス"
 
-msgid "%s%% bca* CI"
-msgstr "%s%% bca* CI"
+#, fuzzy
+msgid "%s%% CI*"
+msgstr "%s%% CI:"
 
 msgid "Bootstrapping based on %i replicates."
 msgstr "%i の再現に基づくブートストラップ。"
@@ -531,11 +532,11 @@ msgid ""
 "Coefficient estimate is based on the median of the bootstrap distribution."
 msgstr "係数の推定値は、ブートストラップ分布の中央値に基づいています。"
 
-msgid "Bias corrected accelerated"
-msgstr "バイアス補正を実施しました"
+msgid "Bias corrected accelerated."
+msgstr "バイアス補正を実施した。"
 
-msgid ""
-"Some bootstrap coefficients or confidence intervals could not be computed."
+#, fuzzy
+msgid "Some bootstrap results could not be computed."
 msgstr "ブートストラップ係数や信頼区間が計算できないものがありました。"
 
 msgid "expecting both arguments to be data.frames"
@@ -549,9 +550,6 @@ msgstr "部分的"
 
 msgid "Part"
 msgstr "部分"
-
-msgid "Factors are omitted, as no meaningful information can be shown."
-msgstr "意味のある情報を表示できないため、要因は省略されています。"
 
 msgid "Coefficients Covariance Matrix"
 msgstr "係数共分散行列"
@@ -929,9 +927,6 @@ msgid ""
 msgstr ""
 "標準化された推定値は、連続予測変数が標準化された（X-標準化）推定値を表す."
 
-msgid "Bias corrected accelerated."
-msgstr "バイアス補正を実施した。"
-
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
@@ -1052,3 +1047,12 @@ msgstr[0] "次の共変量が考慮されましたが、含まれていません
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏回帰プロット"
+
+#~ msgid "%s%% bca* CI"
+#~ msgstr "%s%% bca* CI"
+
+#~ msgid "Bias corrected accelerated"
+#~ msgstr "バイアス補正を実施しました"
+
+#~ msgid "Factors are omitted, as no meaningful information can be shown."
+#~ msgstr "意味のある情報を表示できないため、要因は省略されています。"

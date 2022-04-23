@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-02-05 02:42\n"
+"POT-Creation-Date: 2022-04-23 03:00\n"
 "PO-Revision-Date: 2022-02-05 02:40+0000\n"
 "Last-Translator: DanaJohanna <dana__@live.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -535,8 +535,9 @@ msgstr "Bootstrap Coëfficiënten"
 msgid "Bias"
 msgstr "Onzuiverheid"
 
-msgid "%s%% bca* CI"
-msgstr "%s%% bca* CI"
+#, fuzzy
+msgid "%s%% CI*"
+msgstr "%s%% BI:"
 
 msgid "Bootstrapping based on %i replicates."
 msgstr "Bootstrappen gebaseerd op %i replicaties."
@@ -546,11 +547,11 @@ msgid ""
 msgstr ""
 "Coëfficiëntschatting is gebaseerd op de mediaan van de bootstrapverdeling."
 
-msgid "Bias corrected accelerated"
-msgstr "Onzuiverheid gecorrigeerd versneld"
+msgid "Bias corrected accelerated."
+msgstr "Onzuiverheid gecorrigeerd versneld."
 
-msgid ""
-"Some bootstrap coefficients or confidence intervals could not be computed."
+#, fuzzy
+msgid "Some bootstrap results could not be computed."
 msgstr ""
 "Sommige bootstrapcoëfficiënten of geloofwaardigheidsintervallen konden niet "
 "berekend worden."
@@ -566,11 +567,6 @@ msgstr "Partieel"
 
 msgid "Part"
 msgstr "Deel"
-
-msgid "Factors are omitted, as no meaningful information can be shown."
-msgstr ""
-"Factoren worden weggelaten, omdat er geen zinvolle informatie kan worden "
-"weergegeven."
 
 msgid "Coefficients Covariance Matrix"
 msgstr "Coëfficiënten-Covariantiematrix"
@@ -959,9 +955,6 @@ msgstr ""
 "Gestandaardiseerde schattingen zijn schattingen waar de continue predictoren "
 "zijn gestandaardiseerd (X-standaardisatie)."
 
-msgid "Bias corrected accelerated."
-msgstr "Onzuiverheid gecorrigeerd versneld."
-
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
@@ -1083,3 +1076,14 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Partiële Regressiegrafiek"
 msgstr[1] "Partiële Regressiegrafieken"
+
+#~ msgid "%s%% bca* CI"
+#~ msgstr "%s%% bca* CI"
+
+#~ msgid "Bias corrected accelerated"
+#~ msgstr "Onzuiverheid gecorrigeerd versneld"
+
+#~ msgid "Factors are omitted, as no meaningful information can be shown."
+#~ msgstr ""
+#~ "Factoren worden weggelaten, omdat er geen zinvolle informatie kan worden "
+#~ "weergegeven."

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-02-05 02:42\n"
+"POT-Creation-Date: 2022-04-23 03:00\n"
 "PO-Revision-Date: 2022-02-05 21:17+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -537,8 +537,9 @@ msgstr "Coeficientes de Bootstrap"
 msgid "Bias"
 msgstr "Nesgo"
 
-msgid "%s%% bca* CI"
-msgstr "IC do %s%% bca*"
+#, fuzzy
+msgid "%s%% CI*"
+msgstr "IC do %s%%:"
 
 msgid "Bootstrapping based on %i replicates."
 msgstr "Bootstrapping baseado en %i repeticións."
@@ -548,11 +549,11 @@ msgid ""
 msgstr ""
 "A estimación do coeficiente baséase na mediana da distribución de bootstrap."
 
-msgid "Bias corrected accelerated"
-msgstr "Nesgo corrixido acelerado"
+msgid "Bias corrected accelerated."
+msgstr "Nesgo corrixido acelerado."
 
-msgid ""
-"Some bootstrap coefficients or confidence intervals could not be computed."
+#, fuzzy
+msgid "Some bootstrap results could not be computed."
 msgstr ""
 "Algún dos coeficientes do bootstrap ou dos intervalos de confianza non se "
 "poden calcular."
@@ -568,9 +569,6 @@ msgstr "Parcial"
 
 msgid "Part"
 msgstr "Parte"
-
-msgid "Factors are omitted, as no meaningful information can be shown."
-msgstr "Omítense os factores, xa que non pode amosarse información importante."
 
 msgid "Coefficients Covariance Matrix"
 msgstr "Matriz de Covarianza dos Coeficientes"
@@ -961,9 +959,6 @@ msgstr ""
 "As estimacións tipificadas representan as estimacións nas que os preditores "
 "continuos se tipifican (tipificación X)."
 
-msgid "Bias corrected accelerated."
-msgstr "Nesgo corrixido acelerado."
-
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
@@ -1085,3 +1080,13 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Gráfica de Regresión Parcial"
 msgstr[1] "Gráficas de Regresión Parcial"
+
+#~ msgid "%s%% bca* CI"
+#~ msgstr "IC do %s%% bca*"
+
+#~ msgid "Bias corrected accelerated"
+#~ msgstr "Nesgo corrixido acelerado"
+
+#~ msgid "Factors are omitted, as no meaningful information can be shown."
+#~ msgstr ""
+#~ "Omítense os factores, xa que non pode amosarse información importante."

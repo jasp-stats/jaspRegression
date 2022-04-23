@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-02-05 02:42\n"
+"POT-Creation-Date: 2022-04-23 03:00\n"
 "PO-Revision-Date: 2022-02-05 16:58+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -536,8 +536,9 @@ msgstr "Bootstrap-Koeffizienten"
 msgid "Bias"
 msgstr "Bias"
 
-msgid "%s%% bca* CI"
-msgstr "%s%% bca* CI"
+#, fuzzy
+msgid "%s%% CI*"
+msgstr "%s%% GI:"
 
 msgid "Bootstrapping based on %i replicates."
 msgstr "Bootstrap basiert auf %i Wiederholungen."
@@ -546,11 +547,11 @@ msgid ""
 "Coefficient estimate is based on the median of the bootstrap distribution."
 msgstr "Koeffizientenschätung basiert auf dem Median der Bootstrapverteilung."
 
-msgid "Bias corrected accelerated"
-msgstr "beschleunigte Verzerrungskorrektur"
+msgid "Bias corrected accelerated."
+msgstr "beschleunigte Bias-/Verzerrungs-Korrektur."
 
-msgid ""
-"Some bootstrap coefficients or confidence intervals could not be computed."
+#, fuzzy
+msgid "Some bootstrap results could not be computed."
 msgstr ""
 "Manche Bootstrap-Koeffizienten oder Konfidenzintervalle konnten nicht "
 "berechnet werden."
@@ -566,11 +567,6 @@ msgstr "Partiell"
 
 msgid "Part"
 msgstr "Teil"
-
-msgid "Factors are omitted, as no meaningful information can be shown."
-msgstr ""
-"Faktoren werden weggelassen, da keine aussagekräftigen Informationen gezeigt "
-"werden können."
 
 msgid "Coefficients Covariance Matrix"
 msgstr "Koeffizienten-Kovarianzmatrix"
@@ -960,9 +956,6 @@ msgstr ""
 "Standardisierte Schätzungen sind Schätzungen, bei denen die kontinuierlichen "
 "Prädiktoren standardisiert sind (X-Standardisierung)."
 
-msgid "Bias corrected accelerated."
-msgstr "beschleunigte Bias-/Verzerrungs-Korrektur."
-
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
@@ -1084,3 +1077,14 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Partielles Regressionsdiagramm"
 msgstr[1] "Partielle Regressionsdiagramme"
+
+#~ msgid "%s%% bca* CI"
+#~ msgstr "%s%% bca* CI"
+
+#~ msgid "Bias corrected accelerated"
+#~ msgstr "beschleunigte Verzerrungskorrektur"
+
+#~ msgid "Factors are omitted, as no meaningful information can be shown."
+#~ msgstr ""
+#~ "Faktoren werden weggelassen, da keine aussagekräftigen Informationen "
+#~ "gezeigt werden können."
