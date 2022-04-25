@@ -19,6 +19,10 @@ De Correlatie Matrix maakt het mogelijk de populatiecorrelatie te schatten en de
 ### Invoer
 ---
 
+#### Invoerveld
+- Variabelen: Variabelen waarvoor de correlatiecoëfficiënt moet worden berekend.
+- Partieel uit: Variabelen om partieel uit te delen om partiële correlaties te berekenen.
+
 #### Steekproef Correlatiecoëfficiënt
 - Pearson's r: Pearson's productmoment correlatiecoëfficiënt.
 - Spearman: Spearman's rangorde correlatiecoëfficiënt om de monotone associatie tussen twee variabelen te kwantificeren.
