@@ -183,7 +183,7 @@ test_that("Pearson's partial correlation correct", {
   options <- jaspTools::analysisOptions("Correlation")
   options$displayPairwise <- TRUE
   options$variables <- list("Exam", "Anxiety")
-  options$conditioningVariables <- list("Revise")
+  options$partialOutVariables <- list("Revise")
 
   results <- jaspTools::runAnalysis("Correlation", "Exam Anxiety.csv", options)
   table <- results[["results"]][["mainTable"]][["data"]]
@@ -236,7 +236,7 @@ test_that("Bootstrapping results match", {
   options$bootstrapReplicates <- 100
   options$displayPairwise <- TRUE
   options$variables <- list("contNormal", "contcor1", "debMiss30")
-  options$conditioningVariables <- list("contcor2", "contGamma")
+  options$partialOutVariables <- list("contcor2", "contGamma")
 
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
@@ -261,7 +261,7 @@ test_that("Bootstrapping results match", {
 test_that("Bootstrapping fails gracefully", {
   options <- jaspTools::analysisOptions("Correlation")
   options$variables <- c("contNormal", "debMiss99")
-  options$conditioningVariables <- c("facFive")
+  options$partialOutVariables <- c("facFive")
   options$bootstrap <- TRUE
   options$bootstrapReplicates <- 100
   options$confidenceIntervals <- TRUE

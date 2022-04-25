@@ -29,14 +29,14 @@ Form
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 		AvailableVariablesList{  name: "allVariablesList" }
 		AssignedVariablesList {  name: "variables";				title: qsTr("Variables");	 suggestedColumns: ["ordinal", "scale"] }
-		AssignedVariablesList {  name: "conditioningVariables"; title: qsTr("Condition on"); suggestedColumns: ["ordinal", "scale"] }
+		AssignedVariablesList {  name: "partialOutVariables"; title: qsTr("Partial out"); suggestedColumns: ["ordinal", "scale"] }
 	}
 
 	Group
 	{
-        title: qsTr("Sample Correlation Coefficient")
-        CheckBox { name: "pearson";			label: qsTr("Pearson's r"); checked: true	}
-        CheckBox { name: "spearman";		label: qsTr("Spearman's rho")					}
+		title: qsTr("Sample Correlation Coefficient")
+		CheckBox { name: "pearson";			label: qsTr("Pearson's r"); checked: true	}
+		CheckBox { name: "spearman";		label: qsTr("Spearman's rho")					}
 		CheckBox { name: "kendallsTauB";	label: qsTr("Kendall's tau-b")			}
 	}
 
@@ -86,7 +86,7 @@ Form
 			name: "plotCorrelationMatrix";			label: qsTr("Scatter plots")
 			CheckBox { name: "plotDensities";		label: qsTr("Densities for variables")	}
 			CheckBox { name: "plotStatistics";		label: qsTr("Statistics")				}
-            CheckBox 
+            CheckBox
             {
                 name: "plotConfidenceIntervals"; label: qsTr("Confidence intervals"); childrenOnSameRow: true
                 CIField { name: "plotConfidenceIntervalsInterval" }
