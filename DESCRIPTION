@@ -13,6 +13,7 @@ Imports:
   BAS,
   boot,
   bstats,
+  emmeans,
   ggplot2,
   ggrepel,
   hmeasure,
@@ -27,7 +28,8 @@ Imports:
   mdscore,
   ppcor,
   purrr,
-  Rcpp
+  Rcpp,
+  statmod
 Remotes:
   AlexanderLyNL/bstats,
   jasp-stats/jaspAnova,
