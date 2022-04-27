@@ -351,7 +351,7 @@ test_that("Analysis handles categorical predictors in model summary table", {
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
-  expect_equal_tables(table,
+  jaspTools::expect_equal_tables(table,
                       list(2.60891821036142, 0.161031927910319, 0.0259312818065142, 0.0259312818065142,
                            1.04991652929926, 0.0159918050902543, 1, 98, "H<unicode>", 0.109479317429059,
                            1.1726522384496, 0.26875124434343, 0.0722272313361422, 0.046295949529628,
@@ -363,7 +363,7 @@ test_that("Analysis handles categorical predictors in model summary table", {
 test_that("Part And Partial Correlations table results match", {
   # Part and partial correlations, including categorical predictors, verified with SPSS,
   # see pdf doc in https://github.com/jasp-stats/jasp-issues/issues/1638
-  options <- analysisOptions("RegressionLinear")
+  options <- jaspTools::analysisOptions("RegressionLinear")
   options$covariates <- c("education", "prestige")
   options$dependent <- "income"
   options$factors <- "occup_type"
@@ -372,7 +372,7 @@ test_that("Part And Partial Correlations table results match", {
                                                        isNuisance = FALSE))
   options$partAndPartialCorrelations <- TRUE
   set.seed(1)
-  results <- runAnalysis("RegressionLinear", "Duncan.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", "Duncan.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -399,7 +399,7 @@ test_that("Bootstrapping runs", {
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_bootstrapCoeffTable"]][["data"]]
-  expect_equal_tables(table,
+  jaspTools::expect_equal_tables(table,
                       list("FALSE", 0.0892161465190037, -0.00287484365577048, -0.371812442950162,
                            "H<unicode>", "(Intercept)", 0.0300000001, -0.199113406958839,
                            -0.0176184639554442, "FALSE", 0.117569404369009, -0.00805589019986405,
