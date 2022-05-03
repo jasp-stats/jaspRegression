@@ -19,6 +19,10 @@ The Correlation analysis allows estimation of the population correlation, as wel
 ### Input
 ---
 
+#### Assignment Box
+- Variables: Variables for which to compute the correlation coefficient.
+- Partial out: Variables to partial out in order to compute partial correlations.
+
 #### Sample Correlation Coefficient
 - Pearson's r: Pearson's product moment correlation coefficient.
 - Spearman: Spearman's rank-order correlation coefficient to quantify the monotonic association between two variables.

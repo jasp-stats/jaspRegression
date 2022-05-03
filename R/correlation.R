@@ -49,19 +49,19 @@ Correlation <- function(jaspResults, dataset, options){
 
 # Preprocessing functions ----
 .corrReadData <- function(dataset, options){
-  if(length(options$conditioningVariables) == 0){
+  if(length(options$partialOutVariables) == 0){
     cond <- FALSE
     vars <- options$variables
   } else{
     cond <- TRUE
-    vars <- c(options$variables, options$conditioningVariables)
+    vars <- c(options$variables, options$partialOutVariables)
   }
 
   if(!is.null(dataset)){
     return(dataset)
   } else if(options$missingValues == "excludePairwise"){
     data <- .readDataSetToEnd(columns.as.numeric = vars)
-    if(cond) data <- data[complete.cases(data[,.v(options$conditioningVariables)]),,drop=FALSE]
+    if(cond) data <- data[complete.cases(data[,.v(options$partialOutVariables)]),,drop=FALSE]
     return(data)
   } else if(options$missingValues == "excludeListwise"){
     return(.readDataSetToEnd(columns.as.numeric = vars, exclude.na.listwise = vars))
@@ -98,13 +98,13 @@ Correlation <- function(jaspResults, dataset, options){
   tests <- c(gettext("Pearson's"), gettext("Spearman's"), gettext("Kendall's Tau"))[c(options$pearson, options$spearman, options$kendallsTauB)]
 
   if(length(tests) != 1){
-    if(length(options$conditioningVariables) == 0){
+    if(length(options$partialOutVariables) == 0){
       title <- gettext("Correlation Table")
     } else{
       title <- gettext("Partial Correlation Table")
     }
   } else{
-    if(length(options$conditioningVariables) == 0){
+    if(length(options$partialOutVariables) == 0){
       title <- gettextf("%s Correlations", tests)
     } else{
       title <- gettextf("%s Partial Correlations", tests)
@@ -112,7 +112,7 @@ Correlation <- function(jaspResults, dataset, options){
   }
 
   mainTable <- createJaspTable(title = title)
-  mainTable$dependOn(c("variables", "conditioningVariables",
+  mainTable$dependOn(c("variables", "partialOutVariables",
                        "pearson", "spearman", "kendallsTauB", "displayPairwise", "reportSignificance",
                        "flagSignificant", "sampleSize",
                        "confidenceIntervals", "confidenceIntervalsInterval",
@@ -140,12 +140,12 @@ Correlation <- function(jaspResults, dataset, options){
   if(options[['flagSignificant']]) mainTable$addFootnote(message = gettextf("p < .05, ** p < .01, *** p < .001%s",
                                                                            additionToFlagSignificant), symbol = "*")
 
-  if(length(options$conditioningVariables) > 0){
-    message <- gettextf("Conditioned on variables: %s.", paste(options$conditioningVariables, collapse = ", "))
+  if(length(options$partialOutVariables) > 0){
+    message <- gettextf("Conditioned on variables: %s.", paste(options$partialOutVariables, collapse = ", "))
     mainTable$addFootnote(message = message)
   }
 
-  if(length(options[["conditioningVariables"]]) != 0 && isTRUE(options[["confidenceIntervals"]]) && isFALSE(options[["bootstrap"]]))
+  if(length(options[["partialOutVariables"]]) != 0 && isTRUE(options[["confidenceIntervals"]]) && isFALSE(options[["bootstrap"]]))
     mainTable$addFootnote(message = gettext("Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."))
 
   if(isTRUE(options[["confidenceIntervals"]] && isTRUE(options[["bootstrap"]])))
@@ -294,7 +294,7 @@ Correlation <- function(jaspResults, dataset, options){
            correlatedNegatively = "less",
            correlatedPositively = "greater")[options$hypothesis]
 
-  pcor <- !length(options$conditioningVariables) == 0
+  pcor <- !length(options$partialOutVariables) == 0
 
   results <- list()
   #startProgressbar(length(vpair))
@@ -308,7 +308,7 @@ Correlation <- function(jaspResults, dataset, options){
       data <- data[whichComplete,,drop=FALSE]
 
       if(pcor) {
-        condData <- dataset[,.v(options$conditioningVariables), drop=FALSE]
+        condData <- dataset[,.v(options$partialOutVariables), drop=FALSE]
         condData <- condData[whichComplete,,drop=FALSE]
       } else{
         condData <- NULL
@@ -317,7 +317,7 @@ Correlation <- function(jaspResults, dataset, options){
       errors <-.hasErrors(data, message = 'short',
                           type = c('variance', 'infinity', 'observations'),
                           all.target = .unv(vcomb[[i]]),
-                          observations.amount = sprintf("< %s", 3+length(options$conditioningVariables)),
+                          observations.amount = sprintf("< %s", 3+length(options$partialOutVariables)),
                           exitAnalysisIfErrors = FALSE)
 
       # for some reason .hasErrors does not flag this case
@@ -325,7 +325,7 @@ Correlation <- function(jaspResults, dataset, options){
 
       # shorten the message for observations.amount (do not list variables which is apparent in the output)
       if(is.list(errors) && !is.null(errors$observations)){
-        errors$message <- gettextf("Number of observations is < %s.", 3+length(options$conditioningVariables))
+        errors$message <- gettextf("Number of observations is < %s.", 3+length(options$partialOutVariables))
       }
 
       currentResults <- list()
@@ -358,7 +358,7 @@ Correlation <- function(jaspResults, dataset, options){
 
       # store state for pair
       state <- createJaspState(object = results[[vpair[i]]])
-      state$dependOn(options = c("conditioningVariables", "hypothesis",
+      state$dependOn(options = c("partialOutVariables", "hypothesis",
                                  "confidenceIntervals", "confidenceIntervalsInterval",
                                  "missingValues"),
                      optionContainsValue = list(variables = .unv(vcomb[[i]])))
@@ -373,7 +373,7 @@ Correlation <- function(jaspResults, dataset, options){
     results <- .corrCalculateBootstrapCI(results, dataset, options)
 
   jaspResults[['results']] <- createJaspState(object = results)
-  jaspResults[['results']]$dependOn(options = c("variables", "conditioningVariables",  "hypothesis",
+  jaspResults[['results']]$dependOn(options = c("variables", "partialOutVariables",  "hypothesis",
                                                 "confidenceIntervalsInterval", "missingValues",
                                                 "pearson", "spearman", "kendallsTauB",
                                                 "bootstrap", "bootstrapReplicates"))
@@ -398,8 +398,8 @@ Correlation <- function(jaspResults, dataset, options){
     idx  <- sample(x = nrow(dataset), replace = TRUE)
     data <- dataset[idx,]
 
-    if(length(options[["conditioningVariables"]]) > 0) {
-      z <- data[,options[["conditioningVariables"]], drop=FALSE]
+    if(length(options[["partialOutVariables"]]) > 0) {
+      z <- data[,options[["partialOutVariables"]], drop=FALSE]
     } else {
       z <- NULL
     }
@@ -522,7 +522,7 @@ Correlation <- function(jaspResults, dataset, options){
 
   if(is.null(jaspResults[['assumptionsContainer']])){
     assumptionsContainer <- createJaspContainer(title = gettext("Assumption checks"))
-    assumptionsContainer$dependOn(c("variables", "conditioningVariables"))
+    assumptionsContainer$dependOn(c("variables", "partialOutVariables"))
     assumptionsContainer$position <- 2
 
     jaspResults[['assumptionsContainer']] <- assumptionsContainer
@@ -544,7 +544,7 @@ Correlation <- function(jaspResults, dataset, options){
   shapiroTable$position <- 1
   shapiroTable$showSpecifiedColumnsOnly <- TRUE
 
-  if(length(options$conditioningVariables) == 0){
+  if(length(options$partialOutVariables) == 0){
 
     shapiroTable$addColumnInfo(name = "W", title = gettext("Shapiro-Wilk"), type = "number")
     shapiroTable$addColumnInfo(name = "p", title = gettext("p"), type = "pvalue")
@@ -571,13 +571,13 @@ Correlation <- function(jaspResults, dataset, options){
       dataset <- dataset[complete.cases(dataset),,drop=FALSE]
       shapiroResult <- list()
       shapiroResult[['All']]          <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = c(options$variables,
-                                                                                                     options$conditioningVariables)))
+                                                                                                     options$partialOutVariables)))
       shapiroResult[['Conditioned']]  <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = options$variables))
-      shapiroResult[['Conditioning']] <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = options$conditioningVariables))
+      shapiroResult[['Conditioning']] <- jaspAnova::.multivariateShapiroComputation(dataset, list(dependent = options$partialOutVariables))
 
       form <- sprintf("cbind(%s) ~ %s",
                       paste(.v(options$variables), collapse = ", "),
-                      paste(.v(options$conditioningVariables), collapse = " + "))
+                      paste(.v(options$partialOutVariables), collapse = " + "))
       resids <- try(expr = {residuals(lm(formula = form, data = dataset))}, silent = TRUE)
 
       if(isTryError(resids)){
@@ -793,7 +793,7 @@ Correlation <- function(jaspResults, dataset, options){
   if(!is.null(jaspResults[['corrPlot']])) return()
 
   plotContainer <- createJaspContainer(title = gettext("Scatter plots"))
-  plotContainer$dependOn(options = c("variables", "conditioningVariables", "pearson", "spearman", "kendallsTauB",
+  plotContainer$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
                                      "displayPairwise", "confidenceIntervals", "confidenceIntervalsInterval", "hypothesis",
                                      "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals",
                                      "plotConfidenceIntervalsInterval", "plotPredictionIntervalsInterval",
@@ -883,7 +883,7 @@ Correlation <- function(jaspResults, dataset, options){
 
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
-  plot$dependOn(options = c("variables", "conditioningVariables", "pearson", "spearman", "kendallsTauB",
+  plot$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
                             "displayPairwise", "confidenceIntervals", "confidenceIntervalsInterval", "hypothesis",
                             "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals",
                             "plotConfidenceIntervalsInterval", "plotPredictionIntervalsInterval",
@@ -1062,7 +1062,7 @@ Correlation <- function(jaspResults, dataset, options){
 
   #TODO: The following looks rather familiar and all these defines should, I think, all be put together in one place instead of scattered throughout this file...
   tests <- c("pearson", "spearman", "kendall")
-  if(length(options$conditioningVariables) == 0){
+  if(length(options$partialOutVariables) == 0){
     names(tests) <- c(gettext("Pearson's r"), gettext("Spearman's rho"), gettext("Kendall's tau B"))
   } else{
     names(tests) <- c(gettext("Partial Pearson's r"), gettext("Partial Spearman's rho"), gettext("Partial Kendall's tau B"))
@@ -1073,7 +1073,7 @@ Correlation <- function(jaspResults, dataset, options){
     return()
   } else if(length(tests) == 1){
     plot <- createJaspPlot(title = gettextf("%s heatmap", names(tests)), width = hw, height = hw)
-    plot$dependOn(c("variables", "conditioningVariables", "missingValues", "pearson", "spearman", "kendallsTauB",
+    plot$dependOn(c("variables", "partialOutVariables", "missingValues", "pearson", "spearman", "kendallsTauB",
                     "flagSignificant", "plotHeatmap"))
     plot$position <- 4
     jaspResults[['heatmaps']] <- plot
@@ -1081,7 +1081,7 @@ Correlation <- function(jaspResults, dataset, options){
     if(ready) plot$plotObject <- .corrPlotHeatmap(tests, options, corrResults)
   } else{
     heatmaps <- createJaspContainer(title = gettext("Heatmaps"))
-    heatmaps$dependOn(c("variables", "conditioningVariables", "missingValues", "pearson", "spearman", "kendallsTauB",
+    heatmaps$dependOn(c("variables", "partialOutVariables", "missingValues", "pearson", "spearman", "kendallsTauB",
                         "flagSignificant", "plotHeatmap"))
     heatmaps$position <- 4
     jaspResults[['heatmaps']] <- heatmaps
