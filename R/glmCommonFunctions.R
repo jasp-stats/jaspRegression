@@ -153,6 +153,7 @@
 }
 
 # function for multicollineary statistics, taken from the source code of car::vif
+# car version: 3.0-13 see https://rdrr.io/cran/car/src/R/vif.R
 .vif.default <- function(mod, ...) {
   if (any(is.na(coef(mod))))
     stop ("there are aliased coefficients in the model")
@@ -202,5 +203,5 @@
                        "dunnettx"   = gettext("Dunnett"),
                        "bonferroni" = gettext("Bonferroni")
   )
-  return(gettextf("P-values are adjusted using %s adjustment.",adjustment))
+  return(gettextf("P-values are adjusted using %s adjustment.", adjustment))
 }

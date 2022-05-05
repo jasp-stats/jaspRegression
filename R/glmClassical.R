@@ -18,11 +18,11 @@
 #still to do: multinomial, ordinal, negative binomial, quasi
 
 GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
-  if (options$family == "binomial") {
-    ready <- (options$dependent != "" && options$weights != "")
+  if (options[["family"]] == "binomial") {
+    ready <- (options[["dependent"]] != "" && options[["weights"]] != "")
 
   } else {
-    ready <- options$dependent != ""
+    ready <- options[["dependent"]] != ""
   }
 
 
@@ -37,30 +37,10 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   .glmEstimatesTable(   jaspResults, dataset, options, ready, position = 3)
 
   #diagnostic tables and plots
-  .glmPlotResVsFitted(jaspResults, dataset, options, ready, position = 4)
+  .glmDiagnostics(jaspResults, dataset, options, ready, position = 4)
 
-  .glmPlotResVsPredictor(jaspResults, dataset, options, ready, residType = "deviance", position = 5)
-  .glmPlotResVsPredictor(jaspResults, dataset, options, ready, residType = "Pearson", position = 6)
-  .glmPlotResVsPredictor(jaspResults, dataset, options, ready, residType = "quantile", position = 7)
-
-  .glmPlotResQQ(jaspResults, dataset, options, ready, position = 8)
-
-  .glmPlotResPartial(jaspResults, dataset, options, ready, position = 9)
-
-  .glmPlotZVsEta(jaspResults, dataset, options, ready, position = 10)
-
-  .glmOutlierTable(jaspResults, dataset, options, ready, position = 11, residType = "quantile")
-  .glmOutlierTable(jaspResults, dataset, options, ready, position = 11, residType = "standardized deviance")
-  .glmOutlierTable(jaspResults, dataset, options, ready, position = 11, residType = "studentized deviance")
-
-  .glmInfluenceTable(jaspResults, dataset, options, ready, position = 12)
-  .glmMulticolliTable(jaspResults, dataset, options, ready, position = 13)
-
-  #estimated marginal means table
-  .glmMarginalMeansTable(jaspResults, dataset, options, ready, position = 14)
-
-  #contrast analysis
-  .glmContrastsTable(jaspResults, dataset, options, ready, position = 15)
+  #estimated marginal means table and contrast analysis
+  .glmEmm(jaspResults, dataset, options, ready, position = 5)
 
   return()
 }
@@ -71,14 +51,14 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     return(dataset)
   }
   else {
-    numericVars  <- c(options$covariates, options$weights)
+    numericVars  <- c(options[["covariates"]], options[["weights"]])
     numericVars  <- numericVars[numericVars != ""]
-    factorVars   <- c(options$factors)
+    factorVars   <- c(options[["factors"]])
     factorVars   <- factorVars[factorVars != ""]
-    dependentVar <- c(options$dependent)
+    dependentVar <- c(options[["dependent"]])
     dependentVar <- dependentVar[dependentVar != ""]
 
-    if (options$family == "bernoulli") {
+    if (options[["family"]] == "bernoulli") {
       return(.readDataSetToEnd(columns.as.numeric  = numericVars,
                                columns.as.factor   = c(factorVars, dependentVar),
                                exclude.na.listwise = c(numericVars, factorVars, dependentVar)))
@@ -94,52 +74,44 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 # Function to check errors when reading data
 .glmCheckDataErrors <- function(dataset, options){
 
-  if (nrow(dataset) < length(c(options$covariates, options$factors)))
+  if (nrow(dataset) < length(c(options[["covariates"]], options[["factors"]])))
     .quitAnalysis("The dataset contains fewer observations than predictors (after excluding NAs/NaN/Inf).")
 
-  if (options$weights != "")
+  if (options[["weights"]] != "")
     .hasErrors(dataset,
                type = "limits",
-               limits.target = options$weights,
+               limits.target = options[["weights"]],
                limits.min = 0,
                limits.max = Inf,
                exitAnalysisIfErrors = TRUE)
 
-#  if (length(options$covariates) != 0)
-#    .hasErrors(dataset,
-#               type = c("observations", "infinity", "variance", "varCovData"),
-#               all.target = options$covariates,
-#               observations.amount  = "< 2",
-#               exitAnalysisIfErrors = TRUE)
+  if (options[["family"]] == "bernoulli") {
 
-  # check family-specific dependent variable errors
-  if (options$family == "bernoulli") {
+    if (length(levels(dataset[, options[["dependent"]]])) != 2)
+      .quitAnalysis(gettextf("The %s family requires the dependent variable to be a factor with 2 levels.", options[["family"]]))
 
-    if (length(levels(dataset[, options$dependent])) != 2)
-      .quitAnalysis(gettextf("The %s family requires the dependent variable to be a factor with 2 levels.", options$family))
+  } else if (options[["family"]] == "binomial") {
 
-  } else if (options$family == "binomial") {
+    if (any(dataset[, options[["dependent"]]] < 0) || any(dataset[, options[["dependent"]]] > 1))
+      .quitAnalysis(gettextf("The %s family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive).", options[["family"]]))
 
-    if (any(dataset[, options$dependent] < 0) || any(dataset[, options$dependent] > 1))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive).", options$family))
+    if (any(dataset[, options[["weights"]]] < 0) || any(!.is.wholenumber(dataset[, options[["weights"]]])))
+      .quitAnalysis(gettextf("The %s family requires the weights variable (i.e. total number of trials) to be an integer.", options[["family"]]))
 
-    if (any(dataset[, options$weights] < 0) || any(!.is.wholenumber(dataset[, options$weights])))
-      .quitAnalysis(gettextf("The %s family requires the weights variable (i.e. total number of trials) to be an integer.", options$family))
+  } else if (options[["family"]] %in% c("Gamma", "inverse.gaussian")) {
 
-  } else if (options$family %in% c("Gamma", "inverse.gaussian")) {
+    if (any(dataset[, options[["dependent"]]] <= 0))
+      .quitAnalysis(gettextf("The %s family requires the dependent variable to be positive.", options[["family"]]))
 
-    if (any(dataset[, options$dependent] <= 0))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable to be positive.", options$family))
+  } else if (options[["family"]] == "poisson") {
 
-  } else if (options$family == "poisson") {
+    if (any(dataset[, options[["dependent"]]] < 0 | any(!.is.wholenumber(dataset[, options[["dependent"]]]))))
+      .quitAnalysis(gettextf("The %s family requires the dependent variable to be an integer.", options[["family"]]))
 
-    if (any(dataset[, options$dependent] < 0 | any(!.is.wholenumber(dataset[, options$dependent]))))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable to be an integer.", options$family))
+  } else if (options[["family"]] == "gaussian") {
 
-  } else if (options$family == "gaussian") {
-
-    if (!is.numeric(dataset[, options$dependent]))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable tp be a numerical variable.", options$family))
+    if (!is.numeric(dataset[, options[["dependent"]]]))
+      .quitAnalysis(gettextf("The %s family requires the dependent variable to be a numerical variable.", options[["family"]]))
 
   }
 
@@ -184,13 +156,13 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     hasNuisance <- .hasNuisance(options)
     if (hasNuisance) {
       terms <- rownames(summary(glmModels[["nullModel"]])[["coefficients"]])
-      terms <- sapply(terms[terms!="(Intercept)"], jaspBase::gsubInteractionSymbol)
+      terms <- jaspBase::gsubInteractionSymbol(terms[terms!="(Intercept)"])
       message <- gettextf("Null model contains nuisance parameters: %s",
                           paste(terms, collapse = ", "))
       jaspResults[["modelSummary"]]$addFootnote(message)
     }
     #log-likelihood ratio test to compare nested models (null vs full)
-    if (options$family %in% c("bernoulli", "binomial", "poisson")) {
+    if (options[["family"]] %in% c("bernoulli", "binomial", "poisson")) {
       testType <- "Chisq"
       pvalName <- "Pr(>Chi)"
     }
@@ -230,7 +202,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
 # Model fit table
 .glmModelFitTable <- function(jaspResults, dataset, options, ready, position) {
-  if (!is.null(jaspResults[["modelFit"]]) || (!options$gofDeviance & !options$gofPearson)) {
+  if (!is.null(jaspResults[["modelFit"]]) || (!options[["gofDeviance"]] & !options[["gofPearson"]])) {
     return()
   }
 
@@ -262,7 +234,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   glmModels <- .glmComputeModel(jaspResults, dataset, options)
   modelObj  <- glmModels[["fullModel"]]
 
-  if (options$gofDeviance) {
+  if (options[["gofDeviance"]]) {
     jaspResults[["modelFitTable"]]$addRows(
       list(gofType = "Deviance",
            gof     = modelObj$deviance,
@@ -273,7 +245,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     )
   }
 
-  if (options$gofPearson) {
+  if (options[["gofPearson"]]) {
     pearson  <- sum(modelObj$weights * modelObj$residuals^2)
     jaspResults[["modelFitTable"]]$addRows(
       list(gofType = "Pearson",
@@ -288,7 +260,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
 # GLM estimates table
 .glmEstimatesTable <- function(jaspResults, dataset, options, ready, position) {
-  if (!options$coefEstimates || !is.null(jaspResults[["estimatesTable"]]))
+  if (!options[["coefEstimates"]] || !is.null(jaspResults[["estimatesTable"]]))
     return()
 
   estimatesTable <- createJaspTable(gettext("Coefficients"))
@@ -297,7 +269,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTable$position <- position
   estimatesTable$showSpecifiedColumnsOnly <- TRUE
 
-  if (options$family %in% c("bernoulli", "binomial", "poisson"))
+  if (options[["family"]] %in% c("bernoulli", "binomial", "poisson"))
     testStat <- "z"
   else
     testStat <- "t"
@@ -308,8 +280,8 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTable$addColumnInfo(name = "testStat", title = gettext(testStat), type = "number")
   estimatesTable$addColumnInfo(name = "pval",     title = gettext("p"), type = "pvalue")
 
-  if (options$coefCi) {
-    ciPercentage <- options$coefCiInterval * 100
+  if (options[["coefCi"]]) {
+    ciPercentage <- options[["coefCiInterval"]] * 100
     if (floor(ciPercentage) == ciPercentage)
       ciPercentage <- as.integer(ciPercentage)
     ciTitle <- paste(ciPercentage, " % ", "Confidence Interval",sep = "")
@@ -329,27 +301,33 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   modelSummary <- summary(glmModels[["fullModel"]])[["coefficients"]]
   rowNames <- rownames(modelSummary)
 
-  if (options$coefCi) {
-    coefCiSummary <- confint(glmModels[["fullModel"]], level = options$coefCiInterval)
+  if (options[["coefCi"]]) {
+    coefCiSummary <- confint(glmModels[["fullModel"]], level = options[["coefCiInterval"]])
   } else {
     coefCiSummary <- matrix(nrow = length(rowNames),
                             ncol = 2,
                             data = rep(0, length(rowNames)*2))
   }
 
-  for (i in seq_along(rowNames)) {
-    jaspResults[["estimatesTable"]]$addRows(
-      list(param     = jaspBase::gsubInteractionSymbol(rowNames[i]),
-           est       = modelSummary[i, "Estimate"],
-           se        = modelSummary[i, "Std. Error"],
-           testStat  = modelSummary[i, 3],
-           pval      = modelSummary[i, 4],
-           ciLow     = coefCiSummary[i, 1],
-           ciUpp     = coefCiSummary[i, 2])
-    )
-  }
+  paramDf <- data.frame(param = sapply(rowNames, jaspBase::gsubInteractionSymbol))
+  colnames(modelSummary) <- c('est', 'se', 'testStat', 'pval')
+  colnames(coefCiSummary) <- c('ciLow', 'ciUpp')
+  estimatesTableData <- cbind(paramDf, modelSummary, coefCiSummary)
+  jaspResults[["estimatesTable"]]$setData(estimatesTableData)
 
-  if (options$family == "bernoulli") {
+#  for (i in seq_along(rowNames)) {
+#    jaspResults[["estimatesTable"]]$addRows(
+#      list(param     = jaspBase::gsubInteractionSymbol(rowNames[i]),
+#           est       = modelSummary[i, "Estimate"],
+#           se        = modelSummary[i, "Std. Error"],
+#           testStat  = modelSummary[i, 3],
+#           pval      = modelSummary[i, 4],
+#           ciLow     = coefCiSummary[i, 1],
+#           ciUpp     = coefCiSummary[i, 2])
+#    )
+#  }
+
+  if (options[["family"]] == "bernoulli") {
     dv      <- as.character(glmModels[["nullModel"]][["terms"]])[2]
     dvLevel <- levels(glmModels[["nullModel"]][["data"]][[dv]])[2]
 
@@ -357,6 +335,36 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   }
 }
 
+# Diagnostics container
+.glmDiagnostics <- function(jaspResults, dataset, options, ready, position) {
+
+  if (!ready) return()
+
+  diagnosticsContainer <- createJaspContainer(title = gettext("Diagnostics"))
+  diagnosticsContainer$position <- position
+  jaspResults[["diagnosticsContainer"]] <- diagnosticsContainer
+
+  .glmPlotResVsFitted(jaspResults, dataset, options, ready, position = 1)
+
+  .glmPlotResVsPredictor(jaspResults, dataset, options, ready, residType = "deviance", position = 2)
+  .glmPlotResVsPredictor(jaspResults, dataset, options, ready, residType = "Pearson", position = 3)
+  .glmPlotResVsPredictor(jaspResults, dataset, options, ready, residType = "quantile", position = 4)
+
+  .glmPlotResQQ(jaspResults, dataset, options, ready, position = 5)
+
+  .glmPlotResPartial(jaspResults, dataset, options, ready, position = 6)
+
+  .glmPlotZVsEta(jaspResults, dataset, options, ready, position = 7)
+
+  .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "quantile")
+  .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "standardized deviance")
+  .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "studentized deviance")
+
+  .glmInfluenceTable(jaspResults, dataset, options, ready, position = 9)
+  .glmMulticolliTable(jaspResults, dataset, options, ready, position = 10)
+
+  return()
+}
 
 # Plots: Residuals vs. fitted
 .glmPlotResVsFitted <- function(jaspResults, dataset, options, ready, position = 4) {
@@ -371,7 +379,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   glmPlotResVsFittedContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                                        options           = plotNames)
   glmPlotResVsFittedContainer$position <- position
-  jaspResults[["glmPlotResVsFitted"]] <- glmPlotResVsFittedContainer
+  jaspResults[["diagnosticsContainer"]][["glmPlotResVsFitted"]] <- glmPlotResVsFittedContainer
 
 
   if (!is.null(jaspResults[["glmModels"]])) {
@@ -386,7 +394,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
                        .glmFillPlotResVsFitted,
                        residType = residNames[[i]],
                        model = glmFullModel,
-                       family = options$family)
+                       family = options[["family"]])
       }
     }
   }
@@ -444,28 +452,28 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (!options[[plotType]])
     return()
 
-  predictors <- c(options$covariates, options$factors)
+  predictors <- c(options[["covariates"]], options[["factors"]])
 
   glmPlotResVsPredictorContainer <- createJaspContainer(gettextf("%1s Residuals vs. Predictor Plots", .capitalize(residType)))
   glmPlotResVsPredictorContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                                           options           = plotType)
   glmPlotResVsPredictorContainer$position <- position
-  jaspResults[[plotType]] <- glmPlotResVsPredictorContainer
+  jaspResults[["diagnosticsContainer"]][[plotType]] <- glmPlotResVsPredictorContainer
 
 
   if (!is.null(jaspResults[["glmModels"]])) {
     glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
     for (predictor in predictors) {
-        .glmCreatePlotPlaceholder(glmPlotResVsPredictorContainer,
-                                  index = predictor,
-                                  title = gettextf("Standardized %1s residuals vs. %2s", residType, predictor))
+      .glmCreatePlotPlaceholder(glmPlotResVsPredictorContainer,
+                                index = predictor,
+                                title = gettextf("Standardized %1s residuals vs. %2s", residType, predictor))
 
-        .glmInsertPlot(glmPlotResVsPredictorContainer[[predictor]],
-                       .glmFillPlotResVsPredictor,
-                       residType = residType,
-                       predictor = predictor,
-                       model = glmFullModel,
-                       options = options)
+      .glmInsertPlot(glmPlotResVsPredictorContainer[[predictor]],
+                     .glmFillPlotResVsPredictor,
+                     residType = residType,
+                     predictor = predictor,
+                     model = glmFullModel,
+                     options = options)
     }
   }
   return()
@@ -476,7 +484,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   # compute residuals
   stdResid <- .glmStdResidCompute(model = model, residType = residType)
   # get predictor values
-  if (predictor %in% options$factors) {
+  if (predictor %in% options[["factors"]]) {
     predictorVec <- factor(model$data[[predictor]])
   } else {
     predictorVec <- model$data[[predictor]]
@@ -534,7 +542,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   glmPlotResQQContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                                  options           = plotNames)
   glmPlotResQQContainer$position <- position
-  jaspResults[["glmPlotResQQ"]] <- glmPlotResQQContainer
+  jaspResults[["diagnosticsContainer"]][["glmPlotResQQ"]] <- glmPlotResQQContainer
 
 
   if (!is.null(jaspResults[["glmModels"]])) {
@@ -549,7 +557,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
                        .glmFillPlotResQQ,
                        residType = residNames[[i]],
                        model = glmFullModel,
-                       family = options$family)
+                       family = options[["family"]])
       }
     }
   }
@@ -588,13 +596,13 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (!options[["partialPlot"]])
     return()
 
-  predictors <- c(options$covariates, options$factors)
+  predictors <- c(options[["covariates"]], options[["factors"]])
 
   glmPlotResPartialContainer <- createJaspContainer(gettext("Partial Residual Plots"))
   glmPlotResPartialContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                                       options           = "partialPlot")
   glmPlotResPartialContainer$position <- position
-  jaspResults[["partialPlot"]] <- glmPlotResPartialContainer
+  jaspResults[["diagnosticsContainer"]][["partialPlot"]] <- glmPlotResPartialContainer
 
 
   if (!is.null(jaspResults[["glmModels"]])) {
@@ -624,7 +632,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   yLimits <- range(yBreaks)
 
   # get original predictor values
-  if (predictor %in% options$factors) {
+  if (predictor %in% options[["factors"]]) {
     predictorVec <- factor(model$data[[predictor]])
   } else {
     predictorVec <- model$data[[predictor]]
@@ -677,7 +685,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   glmPlotZVsEtaContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                                   options           = "zVsEtaPlot")
   glmPlotZVsEtaContainer$position <- position
-  jaspResults[["glmPlotZVsEta"]] <- glmPlotZVsEtaContainer
+  jaspResults[["diagnosticsContainer"]][["glmPlotZVsEta"]] <- glmPlotZVsEtaContainer
 
   if (!is.null(jaspResults[["glmModels"]])) {
     glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
@@ -742,11 +750,11 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (!options[[optionName]] || !ready)
     return()
 
-  if (is.null(jaspResults[["outlierTables"]])) {
+  if (is.null(jaspResults[["diagnosticsContainer"]][["outlierTables"]])) {
     glmOutlierTablesContainer <- createJaspContainer(gettext("Outliers Tables"))
     glmOutlierTablesContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]])
     glmOutlierTablesContainer$position <- position
-    jaspResults[["outlierTables"]]     <- glmOutlierTablesContainer
+    jaspResults[["diagnosticsContainer"]][["outlierTables"]]     <- glmOutlierTablesContainer
   }
 
   outlierTable <- createJaspTable(gettextf("Table: Top n outliers based on %1s residuals", residType))
@@ -757,7 +765,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   outlierTable$addColumnInfo(name = "caseN",      title = gettext("Case Number"), type = "integer")
   outlierTable$addColumnInfo(name = "residScore", title = gettext("Residual"),    type = "number")
 
-  jaspResults[["outlierTables"]][[optionName]] <- outlierTable
+  jaspResults[["diagnosticsContainer"]][["outlierTables"]][[optionName]] <- outlierTable
   topN <- options[[optionTopN]]
   .glmOutlierTableFill(jaspResults, dataset, options, ready, residType, optionName, topN)
 }
@@ -778,7 +786,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     residRankedDf <- residDf[order(abs(residVec), decreasing = TRUE), ]
 
     for (i in 1:topN) {
-      jaspResults[["outlierTables"]][[optionName]]$addRows(
+      jaspResults[["diagnosticsContainer"]][["outlierTables"]][[optionName]]$addRows(
         list(caseN = residRankedDf[i, "caseN"],
              residScore = residRankedDf[i, "residScore"])
       )
@@ -804,13 +812,13 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   tableOptions <- c("dfbetas", "dffits", "covRatio", "cooksD", "leverage")
   tableOptionsClicked <- tableOptions[tableOptionsOn]
 
-  if (is.null(jaspResults[["influenceTable"]])) {
+  if (is.null(jaspResults[["diagnosticsContainer"]][["influenceTable"]])) {
     influenceTable <- createJaspTable(gettext("Table: Influential Cases"))
     influenceTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
                             options             = tableOptions)
     influenceTable$position <- position
     influenceTable$showSpecifiedColumnsOnly <- TRUE
-    jaspResults[["influenceTable"]] <- influenceTable
+    jaspResults[["diagnosticsContainer"]][["influenceTable"]] <- influenceTable
   }
 
   tableOptionToColName <- function(x) {
@@ -824,13 +832,13 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   if (is.null(jaspResults[["glmModels"]])) {
     for (option in tableOptionsClicked) {
-        colTitle    <- tableOptionToColName(option)
-        jaspResults[["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
+      colTitle    <- tableOptionToColName(option)
+      jaspResults[["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
     }
   } else {
     glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
     colNameList  <- c()
-    jaspResults[["influenceTable"]]$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
+    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
     for (option in tableOptionsClicked) {
       if (option == "dfbetas") {
         predictors <- names(glmFullModel$coefficients)
@@ -841,12 +849,12 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
             dfbetasTitle <- gettext("DFBETAS:Intercept")
           else
             dfbetasTitle <- gettextf("DFBETAS:%1s", gsub(":", "*", predictor))
-          jaspResults[["influenceTable"]]$addColumnInfo(name = dfbetasName, title = dfbetasTitle, type = "number")
+          jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = dfbetasName, title = dfbetasTitle, type = "number")
         }
       } else {
         colNameList <- c(colNameList, option)
         colTitle    <- tableOptionToColName(option)
-        jaspResults[["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
+        jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
       }
     }
     .glmInfluenceTableFill(jaspResults, dataset, options, ready, model = glmFullModel, influenceMeasures = tableOptionsClicked, colNames = colNameList)
@@ -886,9 +894,9 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   nRowInfluential <- nrow(influenceResDataFinal)
 
   if (nRowInfluential == 0)
-    jaspResults[["influenceTable"]]$addFootnote(gettext("No influential cases found."))
+    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addFootnote(gettext("No influential cases found."))
   else {
-    jaspResults[["influenceTable"]]$setData(influenceResDataFinal)
+    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$setData(influenceResDataFinal)
   }
 }
 
@@ -901,29 +909,29 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (!ready | !any(tableOptionsOn))
     return()
 
-  if (length(c(options$covariates, options$factors)) == 1)
+  if (length(c(options[["covariates"]], options[["factors"]])) == 1)
     .quitAnalysis("Multicollinearity analysis requires at least two predictors.")
 
-  if (is.null(jaspResults[["multicolliTable"]])) {
+  if (is.null(jaspResults[["diagnosticsContainer"]][["multicolliTable"]])) {
     multicolliTable <- createJaspTable(gettext("Multicollinearity Diagnostics"))
     multicolliTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
                              options             = c("tolerance", "vif"))
     multicolliTable$position <- position
     multicolliTable$showSpecifiedColumnsOnly <- TRUE
-    jaspResults[["multicolliTable"]] <- multicolliTable
+    jaspResults[["diagnosticsContainer"]][["multicolliTable"]] <- multicolliTable
   }
 
 
-  jaspResults[["multicolliTable"]]$addColumnInfo(name = "var", title = gettext(""), type = "string")
+  jaspResults[["diagnosticsContainer"]][["multicolliTable"]]$addColumnInfo(name = "var", title = gettext(""), type = "string")
 
   if (is.null(jaspResults[["glmModels"]]))
     return()
 
   if (options[["tolerance"]])
-    jaspResults[["multicolliTable"]]$addColumnInfo(name = "tolerance", title = gettext("Tolerance"), type = "number")
+    jaspResults[["diagnosticsContainer"]][["multicolliTable"]]$addColumnInfo(name = "tolerance", title = gettext("Tolerance"), type = "number")
 
   if (options[["vif"]])
-    jaspResults[["multicolliTable"]]$addColumnInfo(name = "VIF", title = gettext("VIF"), type = "number")
+    jaspResults[["diagnosticsContainer"]][["multicolliTable"]]$addColumnInfo(name = "VIF", title = gettext("VIF"), type = "number")
 
   glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
   .glmMulticolliTableFill(jaspResults, dataset, options, ready, glmObj = glmFullModel)
@@ -947,20 +955,37 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   }
 
   for (i in 1:n_var) {
-    jaspResults[["multicolliTable"]]$addRows(list(var       = var_names[[i]],
-                                                  tolerance = tolerance_vec[[i]],
-                                                  VIF       = vif_vec[[i]]))
+    jaspResults[["diagnosticsContainer"]][["multicolliTable"]]$addRows(list(var       = var_names[[i]],
+                                                                            tolerance = tolerance_vec[[i]],
+                                                                            VIF       = vif_vec[[i]]))
   }
+}
+
+
+
+
+.glmEmm <- function(jaspResults, dataset, options, ready, position) {
+
+  if (!ready) return()
+
+  emmContainer <- createJaspContainer(title = gettext("Estimated Marginal Means and Contrast Analysis"))
+  emmContainer$position <- position
+  jaspResults[["emmContainer"]] <- emmContainer
+
+  .glmMarginalMeansTable(jaspResults, dataset, options, ready, position = 1)
+  .glmContrastsTable(jaspResults, dataset, options, ready, position = 2)
+
+  return()
 }
 
 
 # Estimated marginal means
 .glmMarginalMeansTable <- function(jaspResults, dataset, options, ready, position) {
 
-  if (!ready | (length(options$marginalMeansVars) == 0))
+  if (!ready | (length(options[["marginalMeansVars"]]) == 0))
     return()
 
-  if (!is.null(jaspResults[["EMMresults"]]))
+  if (!is.null(jaspResults[["emmContainer"]][["EMMresults"]]))
     return()
 
   if (is.null(jaspResults[["glmModels"]]))
@@ -970,24 +995,24 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   # deal with continuous predictors
   at <- NULL
-  for (var in unlist(options$marginalMeansVars)) {
-    if (var %in% options$covariates) {
-      at[[var]] <- c(mean(dataset[, var], na.rm = TRUE) + c(-1, 0, 1) * options$marginalMeansSd * sd(dataset[, var], na.rm = TRUE))
+  for (var in unlist(options[["marginalMeansVars"]])) {
+    if (var %in% options[["covariates"]]) {
+      at[[var]] <- c(mean(dataset[, var], na.rm = TRUE) + c(-1, 0, 1) * options[["marginalMeansSd"]] * sd(dataset[, var], na.rm = TRUE))
     }
   }
 
   # compute the results
   emm <- emmeans::emmeans(
     object  = glmFullModel,
-    specs   = unlist(options$marginalMeansVars),
+    specs   = unlist(options[["marginalMeansVars"]]),
     at      = at,
-    options = list(level  = options$marginalMeansCiWidth),
-    type    = if (options$marginalMeansResponse) "response"
+    options = list(level  = options[["marginalMeansCiWidth"]]),
+    type    = if (options[["marginalMeansResponse"]]) "response"
   )
 
   emmTable  <- as.data.frame(emm)
-  if (options$marginalMeansComparison)
-    emmTest <- as.data.frame(emmeans::test(emm, null = options$marginalMeansComparisonWith))
+  if (options[["marginalMeansComparison"]])
+    emmTest <- as.data.frame(emmeans::test(emm, null = options[["marginalMeansComparisonWith"]]))
 
   EMMsummary <- createJaspTable(title = gettext("Estimated Marginal Means"))
   EMMresults <- createJaspState()
@@ -1008,8 +1033,8 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
                       options           = EMMdependencies)
 
 
-  for (variable in unlist(options$marginalMeansVars)) {
-    if (variable %in% options$covariates)
+  for (variable in unlist(options[["marginalMeansVars"]])) {
+    if (variable %in% options[["covariates"]])
       EMMsummary$addColumnInfo(name = variable, title = variable, type = "number")
     else
       EMMsummary$addColumnInfo(name = variable, title = variable, type = "string")
@@ -1019,29 +1044,29 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   EMMsummary$addColumnInfo(name = "estimate", title = gettext("Estimate"), type = "number")
   EMMsummary$addColumnInfo(name = "se",       title = gettext("SE"),       type = "number")
 
-  if (options$marginalMeansCi) {
-    EMMsummary$addColumnInfo(name = "lowerCI",  title = gettext("Lower"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options$marginalMeansCiWidth))
-    EMMsummary$addColumnInfo(name = "upperCI",  title = gettext("Upper"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options$marginalMeansCiWidth))
+  if (options[["marginalMeansCi"]]) {
+    EMMsummary$addColumnInfo(name = "lowerCI",  title = gettext("Lower"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options[["marginalMeansCiWidth"]]))
+    EMMsummary$addColumnInfo(name = "upperCI",  title = gettext("Upper"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options[["marginalMeansCiWidth"]]))
   }
 
-  if (options$marginalMeansComparison) {
+  if (options[["marginalMeansComparison"]]) {
     EMMsummary$addColumnInfo(name = "stat",   title = ifelse(colnames(emmTest)[ncol(emmTest) - 1] == "t.ratio", gettext("t"), gettext("z")), type = "number")
     EMMsummary$addColumnInfo(name = "pval",   title = gettext("p"),         type = "pvalue")
-    EMMsummary$addFootnote(.EMMmessageTestNull(options$marginalMeansComparisonWith), colNames = "pval")
+    EMMsummary$addFootnote(.EMMmessageTestNull(options[["marginalMeansComparisonWith"]]), colNames = "pval")
   }
 
-  jaspResults[["EMMsummary"]] <- EMMsummary
+  jaspResults[["emmContainer"]][["EMMsummary"]] <- EMMsummary
 
   for (i in 1:nrow(emmTable)) {
     tempRow <- list()
 
-    if (options$marginalMeansContrast)
+    if (options[["marginalMeansContrast"]])
       tempRow$Level <- i
 
 
-    for (variable in unlist(options$marginalMeansVars)) {
+    for (variable in unlist(options[["marginalMeansVars"]])) {
 
-      if (variable %in% options$covariates)
+      if (variable %in% options[["covariates"]])
         tempRow[variable] <- emmTable[i, variable]
       else
         tempRow[variable] <- as.character(emmTable[i, variable])
@@ -1052,12 +1077,12 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     tempRow$estimate <- emmTable[i, grep("SE", colnames(emmTable)) - 1]
     tempRow$se       <- emmTable[i, "SE"]
 
-    if (options$marginalMeansComparison) {
+    if (options[["marginalMeansComparison"]]) {
       tempRow$stat <- emmTest[i, grep("ratio", colnames(emmTest))]
       tempRow$pval <- emmTest[i, "p.value"]
     }
 
-    if (options$marginalMeansCi) {
+    if (options[["marginalMeansCi"]]) {
       tempRow$lowerCI  <- emmTable[i, ncol(emmTable) - 1]
       tempRow$upperCI  <- emmTable[i, ncol(emmTable)]
     }
@@ -1071,7 +1096,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     EMMsummary$addFootnote(.EMMmessageAveragedOver(emm@misc$avgd.over))
 
   # add warning message
-  EMMsummary$addFootnote(ifelse(options$marginalMeansResponse,
+  EMMsummary$addFootnote(ifelse(options[["marginalMeansResponse"]],
                                 gettext("Results are on the response scale."),
                                 gettext("Results are not on the response scale and might be misleading.")))
 
@@ -1081,7 +1106,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   )
 
   EMMresults$object <- object
-  jaspResults[["EMMresults"]] <- EMMresults
+  jaspResults[["emmContainer"]][["EMMresults"]] <- EMMresults
 
   return()
 }
@@ -1090,24 +1115,24 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 .glmContrastsTable <- function(jaspResults, dataset, options, ready, position) {
 
 
-  if (!ready | (length(options$marginalMeansVars) == 0) | !options$marginalMeansContrast)
+  if (!ready | (length(options[["marginalMeansVars"]]) == 0) | !options[["marginalMeansContrast"]])
     return()
 
-  if (!is.null(jaspResults[["contrastsTable"]]))
+  if (!is.null(jaspResults[["emmContainer"]][["contrastsTable"]]))
     return()
 
-  if (is.null(jaspResults[["EMMresults"]]))
+  if (is.null(jaspResults[["emmContainer"]][["EMMresults"]]))
     return()
 
-  emm       <- jaspResults[["EMMresults"]]$object$emm
-  emmTable  <- jaspResults[["EMMresults"]]$object$emmTable
+  emm       <- jaspResults[["emmContainer"]][["EMMresults"]]$object$emm
+  emmTable  <- jaspResults[["emmContainer"]][["EMMresults"]]$object$emmTable
 
 
   EMMCsummary <- createJaspTable(title = gettext("Contrasts"))
 
   EMMCsummary$position <- position
 
-  EMMCsummary$dependOn(optionsFromObject = jaspResults[["EMMresults"]],
+  EMMCsummary$dependOn(optionsFromObject = jaspResults[["emmContainer"]][["EMMresults"]],
                        options           = c("contrasts", "emmPAdjustment", "marginalMeansContrast"))
 
 
@@ -1119,12 +1144,12 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   EMMCsummary$addColumnInfo(name = "pval",     title = gettext("p"),        type = "pvalue")
 
   # Columns have been specified, show to user
-  jaspResults[["contrastsTable"]] <- EMMCsummary
+  jaspResults[["emmContainer"]][["contrastsTable"]] <- EMMCsummary
 
-  selectedContrasts        <- options$contrasts
-  selectedPvalueAdjustment <- options$emmPAdjustment
+  selectedContrasts        <- options[["contrasts"]]
+  selectedPvalueAdjustment <- options[["emmPAdjustment"]]
 
-  selectedResponse         <- options$marginalMeansResponse
+  selectedResponse         <- options[["marginalMeansResponse"]]
 
 
   contrs <- list()
@@ -1189,7 +1214,6 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
       EMMCsummary$addFootnote(gettext("Results are on the response scale."))
     else
       EMMCsummary$addFootnote(gettext("Results are not on the response scale and might be misleading."))
-
 
     EMMCsummary$addRows(tempRow)
   }
