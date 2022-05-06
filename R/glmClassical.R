@@ -394,14 +394,15 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
                        .glmFillPlotResVsFitted,
                        residType = residNames[[i]],
                        model = glmFullModel,
-                       family = options[["family"]])
+                       family = options[["family"]],
+                       options = options)
       }
     }
   }
   return()
 }
 
-.glmFillPlotResVsFitted <- function(residType, model, family) {
+.glmFillPlotResVsFitted <- function(residType, model, family, options) {
 
   # compute residuals and fitted values
   stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
