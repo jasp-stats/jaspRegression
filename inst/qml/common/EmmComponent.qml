@@ -25,101 +25,103 @@ import JASP				1.0
 // All Analysis forms must be built with the From QML item
 Section
 {
-    title:		qsTr("Estimated Marginal Means and Contrast Analysis")
-    expanded:	false
+	title:		qsTr("Estimated Marginal Means and Contrast Analysis")
+	expanded:	false
 
-    VariablesForm
-    {
-        preferredHeight:	jaspTheme.smallDefaultVariablesFormHeight
+	VariablesForm
+	{
+		preferredHeight:	jaspTheme.smallDefaultVariablesFormHeight
 
-        AvailableVariablesList
-        {
-            name:	"availableModelComponentsMeans"
-            title:	qsTr("Model variables")
-            source: [{ name: "covariates", use: "noInteraction" }, { name: "factors", use: "noInteraction" }]
-        }
+		AvailableVariablesList
+		{
+			name:	"availableModelComponentsMeans"
+			title:	qsTr("Model variables")
+			source: [{ name: "covariates", use: "noInteraction" }, { name: "factors", use: "noInteraction" }]
+		}
 
-        AssignedVariablesList
-        {
-            id:		marginalMeansVars
-            name:	"marginalMeansVars"
-            title:	qsTr("Selected variables")
-        }
-    }
+		AssignedVariablesList
+		{
+			id:		marginalMeansVars
+			name:	"marginalMeansVars"
+			title:	qsTr("Selected variables")
+		}
+	}
 
 
-    CheckBox {
-        name: "marginalMeansCi"; label: qsTr("Confidence interval")
-        childrenOnSameRow: true
-        CIField { name: "marginalMeansCiWidth"; }
-    }
+	CheckBox
+	{
+		name: "marginalMeansCi"
+		label: qsTr("Confidence interval")
+		childrenOnSameRow: true
+		CIField { name: "marginalMeansCiWidth" }
+	}
 
-    DoubleField
-    {
-        id:				marginalMeansSD
-        name:			"marginalMeansSd"
-        label:			qsTr("Levels of covariates at mean +/- ")
-        defaultValue: 	1
-        min:			0
-        enabled:		marginalMeansVars.columnsTypes.includes("scale")
-        afterLabel:     "SD"
-    }
+	DoubleField
+	{
+		id:				marginalMeansSD
+		name:			"marginalMeansSd"
+		label:			qsTr("Levels of covariates at mean +/- ")
+		defaultValue: 	1
+		min:			0
+		enabled:		marginalMeansVars.columnsTypes.includes("scale")
+		afterLabel:     "SD"
+	}
 
-    Group
-    {
-        columns: 2
+	Group
+	{
+		columns: 2
 
-        CheckBox
-        {
-            name:	"marginalMeansComparison"
-            id:		marginalMeansCompare
-            label:	qsTr("Compare marginal means to:")
-        }
+		CheckBox
+		{
+			name:	"marginalMeansComparison"
+			id:		marginalMeansCompare
+			label:	qsTr("Compare marginal means to:")
+		}
 
-        DoubleField
-        {
-            enabled:	marginalMeansCompare.checked
-            name:		"marginalMeansComparisonWith"
-        }
-    }
+		DoubleField
+		{
+			enabled:	marginalMeansCompare.checked
+			name:		"marginalMeansComparisonWith"
+		}
+	}
 
-    CheckBox
-    {
-        name: "marginalMeansResponse"
-        label: qsTr("Use response scale")
-        checked: true
-    }
+	CheckBox
+	{
+		name:		"marginalMeansResponse"
+		label:		qsTr("Use response scale")
+		checked:	true
+	}
 
-    CheckBox
-    {
-        name:	"marginalMeansContrast"
-        id:		marginalMeansContrast
-        label:	qsTr("Specify contrasts")
-    }
+	CheckBox
+	{
+		name:	"marginalMeansContrast"
+		id:		marginalMeansContrast
+		label:	qsTr("Specify contrasts")
+	}
 
-    DropDown
-    {
-        name:	"emmPAdjustment"
-        label:	qsTr("P-value adjustment")
-        values:
-            [
-            { label: "Holm",					value: "holm"},
-            { label: qsTr("Multivariate-t"),	value: "mvt"},
-            { label: "Scheffé",					value: "scheffe"},
-            { label: "Tukey",					value: "tukey"},
-            { label: qsTr("None"),				value: "none"},
-            { label: "Bonferroni",				value: "bonferroni"},
-            { label: "Hommel",					value: "hommel"}
-        ]
-        enabled:			marginalMeansContrast.checked
-    }
+	DropDown
+	{
+		name:	"marginalMeansPAdjustment"
+		label:	qsTr("P-value adjustment")
+		values:
+			[
+			{ label: "Holm",					value: "holm"},
+			{ label: qsTr("Multivariate-t"),	value: "mvt"},
+			{ label: "Scheffé",					value: "scheffe"},
+			{ label: "Tukey",					value: "tukey"},
+			{ label: qsTr("None"),				value: "none"},
+			{ label: "Bonferroni",				value: "bonferroni"},
+			{ label: "Hommel",					value: "hommel"}
+		]
+		enabled:			marginalMeansContrast.checked
+	}
 
-    CustomContrastsTableView
-    {
-        Layout.columnSpan:	2
-        visible:			marginalMeansContrast.checked
-        name:				"contrasts"
-        source:				"marginalMeansVars"
-        scaleFactor:		marginalMeansSD.value
-    }
+	CustomContrastsTableView
+	{
+		Layout.columnSpan:	2
+		visible:			marginalMeansContrast.checked
+		name:				"contrasts"
+		source:				"marginalMeansVars"
+		scaleFactor:		marginalMeansSD.value
+	}
 }

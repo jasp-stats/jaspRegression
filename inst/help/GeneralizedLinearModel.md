@@ -106,6 +106,9 @@ The following table summarized the available distributions (also called families
   - Bonferroni
   - Hommel
 
+#### Advanced Options
+- Set seed: This gives you the possibility of setting a random seed for the plots and tables based on quantile residuals in the Diagnostics Section. Concretely, every time you generate a plot or a table based on quantile residuals, you get a slightly different plot or table because one step in the calculation of the quantile residuals involves drawing random values from a distribution. By setting a random seed of your choice here (the default is 1), you make sure that you can get exactly the same plots and tables based on quantile residuals. 
+
 
 ### Referneces
 ---

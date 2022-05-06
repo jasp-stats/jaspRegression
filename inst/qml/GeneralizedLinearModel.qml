@@ -38,15 +38,20 @@ Form {
 
 			AvailableVariablesList
 			{
-				name: "availableTerms"
-				title: qsTr("Components")
+				name: 	"availableTerms"
+				title: 	qsTr("Components")
 				source: ['covariates', 'factors']
-				width: parent.width / 4
+				width: 	parent.width / 4
 			}
 			ModelTermsList { width: parent.width * 5 / 9 }
 		}
 
-		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }
+		CheckBox
+		{
+			name:		"interceptTerm"
+			label:		qsTr("Include intercept")
+			checked:	true
+		}
 	}
 
 	Section
@@ -56,26 +61,26 @@ Form {
 		Group
 		{
 			title: qsTr("Model Fit")
-			CheckBox {
-				name: "gofDeviance"; label: qsTr("Deviance goodness-of-fit test")
-			}
-			CheckBox {
-				name: "gofPearson"; label: qsTr("Pearson goodness-of-fit test")
-			}
+			CheckBox { name: "gofDeviance";	label: qsTr("Deviance goodness-of-fit test")}
+			CheckBox { name: "gofPearson";	label: qsTr("Pearson goodness-of-fit test")	}
 		}
 
 		Group
 		{
 			title: qsTr("Parameter Estimates")
-			CheckBox { name: "coefEstimates"; label: qsTr("Estimates"); checked: true }
+			CheckBox
+			{
+				name:		"coefEstimates"
+				label:		qsTr("Estimates")
+				checked:	true
+			}
 			CheckBox {
-				name: "coefCi"; label: qsTr("Confidence intervals")
-				childrenOnSameRow: true
-				CIField { name: "coefCiInterval"; }
+				name:				"coefCi"
+				label:				qsTr("Confidence intervals")
+				childrenOnSameRow:	true
+				CIField { name: "coefCiInterval" }
 			}
 		}
-
-
 	}
 
 	Section
@@ -84,51 +89,56 @@ Form {
 
 		GLM.GlmResidualAnalysisPlotsComponent {}
 
-		Group {
+		Group
+		{
 			title: qsTr("Show Outliers")
-			CheckBox {
-				name: "outlierQuanTable"; label: qsTr("Standardized quantile residuals: top")
-				childrenOnSameRow: true
-				IntegerField { name: "outlierQuanTableTopN"; defaultValue: 3}
+			CheckBox
+			{
+				name:				"outlierQuanTable"
+				label:				qsTr("Standardized quantile residuals: top")
+				childrenOnSameRow:	true
+				IntegerField { name: "outlierQuanTableTopN"; defaultValue: 3	}
 			}
-			CheckBox {
-				name: "outlierStdTable"; label: qsTr("Standardized deviance residuals: top")
-				childrenOnSameRow: true
-				IntegerField { name: "outlierStdTableTopN"; defaultValue: 3}
+			CheckBox
+			{
+				name:				"outlierStdTable"
+				label:				qsTr("Standardized deviance residuals: top")
+				childrenOnSameRow:	true
+				IntegerField { name: "outlierStdTableTopN"; defaultValue: 3		}
 			}
-			CheckBox {
-				name: "outlierStuTable"; label: qsTr("Studentized deviance residuals: top")
-				childrenOnSameRow: true
-				IntegerField { name: "outlierStuTableTopN"; defaultValue: 3}
+			CheckBox
+			{
+				name:				"outlierStuTable"
+				label:				qsTr("Studentized deviance residuals: top")
+				childrenOnSameRow:	true
+				IntegerField { name: "outlierStuTableTopN"; defaultValue: 3		}
 			}
 		}
 
-		Group {
+		Group
+		{
 			title: qsTr("Show Influential Cases")
-			CheckBox {
-				name: "dfbetas"; label: qsTr("DFBETAS")
-			}
-			CheckBox {
-				name: "dffits"; label: qsTr("DFFITS")
-			}
-			CheckBox {
-				name: "covRatio"; label: qsTr("Covariance ratio")
-			}
-			CheckBox {
-				name: "cooksD"; label: qsTr("Cook's distance")
-			}
-			CheckBox {
-				name: "leverage"; label: qsTr("Leverages")
-			}
+			CheckBox { name: "dfbetas";  label: qsTr("DFBETAS")				}
+			CheckBox { name: "dffits";   label: qsTr("DFFITS")				}
+			CheckBox { name: "covRatio"; label: qsTr("Covariance ratio")	}
+			CheckBox { name: "cooksD";   label: qsTr("Cook's distance")		}
+			CheckBox { name: "leverage"; label: qsTr("Leverages")			}
 		}
 
-		Group {
+		Group
+		{
 			title: qsTr("Multicollinearity")
-			CheckBox { name: "tolerance"; label: qsTr("Tolerance") }
-			CheckBox { name: "vif"; label: qsTr("VIF") }
+			CheckBox { name: "tolerance";	label: qsTr("Tolerance")	}
+			CheckBox { name: "vif";			label: qsTr("VIF")			}
 		}
 	}
 
 	GLM.EmmComponent {}
+
+	Section
+	{
+		title: qsTr("Advanced Options")
+		SetSeed {}
+	}
 }
 

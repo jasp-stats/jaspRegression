@@ -99,6 +99,9 @@ options$covRatio <- TRUE
 options$cooksD   <- TRUE
 options$leverage <- TRUE
 
+options$setSeed  <- TRUE
+options$seed     <- 123
+
 results <- jaspTools::runAnalysis("GeneralizedLinearModel", "turbines.csv", options)
 
 # model summary table
@@ -107,7 +110,6 @@ test_that("Model summary table results match", {
   jaspTools::expect_equal_tables(table,
                                  list("H\u2080", 112.67, 150.147, 150.545,  10, "", "",
                                       "H\u2081", 10.33,  49.808,  50.604,   9,  102.339, 0.000))})
-
 
 
 # model fit table
@@ -279,8 +281,8 @@ test_that("Estimated marginal means table matches", {
 
   results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
 
-  EMMtable <- results[["results"]][["emmContainer"]][["collection"]][["emmContainer_EMMsummary"]][["data"]]
-  jaspTools::expect_equal_tables(EMMtable,
+  emmTable <- results[["results"]][["emmContainer"]][["collection"]][["emmContainer_emmSummary"]][["data"]]
+  jaspTools::expect_equal_tables(emmTable,
                                  list(-1.247,  0.3772, 0.0723, 0.2489, 0.5254, -1.630, 0.1031, 1,
                                       -0.1887, 0.5023, 0.052,  0.4017, 0.6026, 0.0436, 0.9652, 2,
                                       0.8697,  0.6271, 0.0752, 0.4723, 0.7596, 1.615,  0.1063, 3))

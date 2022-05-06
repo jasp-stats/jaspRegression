@@ -67,7 +67,7 @@ Group {
 		AssignedVariablesList
 		{
 			name:              "weights"
-			title:             updateWeightsTitle();
+			title:             updateWeightsTitle()
 			allowedColumns:    ["ordinal", "scale"]
 			singleVariable:    true
 		}

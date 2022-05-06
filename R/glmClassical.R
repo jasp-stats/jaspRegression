@@ -377,7 +377,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   glmPlotResVsFittedContainer <- createJaspContainer(gettext("Residuals vs. Fitted Plots"))
   glmPlotResVsFittedContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                                       options           = plotNames)
+                                       options           = c(plotNames, "seed", "setSeed"))
   glmPlotResVsFittedContainer$position <- position
   jaspResults[["diagnosticsContainer"]][["glmPlotResVsFitted"]] <- glmPlotResVsFittedContainer
 
@@ -404,7 +404,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 .glmFillPlotResVsFitted <- function(residType, model, family) {
 
   # compute residuals and fitted values
-  stdResid <- .glmStdResidCompute(model = model, residType = residType)
+  stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
   fittedY  <- fitted(model)
 
   # decide on constant-information scale transformations of fitted values
@@ -456,7 +456,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   glmPlotResVsPredictorContainer <- createJaspContainer(gettextf("%1s Residuals vs. Predictor Plots", .capitalize(residType)))
   glmPlotResVsPredictorContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                                          options           = plotType)
+                                          options           = c(plotType, "seed", "setSeed"))
   glmPlotResVsPredictorContainer$position <- position
   jaspResults[["diagnosticsContainer"]][[plotType]] <- glmPlotResVsPredictorContainer
 
@@ -482,7 +482,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 .glmFillPlotResVsPredictor <- function(residType, predictor, model, options) {
 
   # compute residuals
-  stdResid <- .glmStdResidCompute(model = model, residType = residType)
+  stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
   # get predictor values
   if (predictor %in% options[["factors"]]) {
     predictorVec <- factor(model$data[[predictor]])
@@ -540,7 +540,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   glmPlotResQQContainer <- createJaspContainer(gettext("Normal Q-Q Plots: Standardized Residuals"))
   glmPlotResQQContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                                 options           = plotNames)
+                                 options           = c(plotNames, "seed", "setSeed"))
   glmPlotResQQContainer$position <- position
   jaspResults[["diagnosticsContainer"]][["glmPlotResQQ"]] <- glmPlotResQQContainer
 
@@ -567,22 +567,9 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 .glmFillPlotResQQ <- function(residType, model, family) {
 
   # compute residuals
-  stdResid <- .glmStdResidCompute(model = model, residType = residType)
+  stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
 
-  # make plot
-  breaks <- pretty(stdResid)
-  limits <- range(breaks) #note that the breaks and limits work for both x and y axis
-  thePlot <- ggplot2::ggplot(mapping = ggplot2::aes(sample = y),
-                             data = data.frame(y = stdResid)) +
-    ggplot2::stat_qq() +
-    ggplot2::xlab(gettext("Theoretical Quantiles")) +
-    ggplot2::ylab(gettext("Sample Quantiles")) +
-    ggplot2::scale_x_continuous(breaks = breaks) +
-    ggplot2::scale_y_continuous(breaks = breaks) +
-    ggplot2::coord_cartesian(xlim = limits, ylim = limits) +
-    ggplot2::stat_qq_line() +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw()
+  thePlot <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "blue")
 
   return(thePlot)
 }
@@ -752,14 +739,15 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   if (is.null(jaspResults[["diagnosticsContainer"]][["outlierTables"]])) {
     glmOutlierTablesContainer <- createJaspContainer(gettext("Outliers Tables"))
-    glmOutlierTablesContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]])
+    glmOutlierTablesContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
+                                       options           = c("seed", "setSeed"))
     glmOutlierTablesContainer$position <- position
     jaspResults[["diagnosticsContainer"]][["outlierTables"]]     <- glmOutlierTablesContainer
   }
 
   outlierTable <- createJaspTable(gettextf("Table: Top n outliers based on %1s residuals", residType))
   outlierTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                        options             = c(optionName, optionTopN))
+                        options             = c(optionName, optionTopN, "seed", "setSeed"))
   outlierTable$showSpecifiedColumnsOnly <- TRUE
 
   outlierTable$addColumnInfo(name = "caseN",      title = gettext("Case Number"), type = "integer")
@@ -776,7 +764,8 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   if (!is.null(jaspResults[["glmModels"]])) {
     glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
-    set.seed(123)
+    if (residType == "quantile")
+      jaspBase::.setSeedJASP(options)
     residVec       <- switch(residType,
                              "quantile" =  statmod::qresid(glmFullModel),
                              "standardized deviance" = rstandard(glmFullModel),
@@ -985,7 +974,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (!ready | (length(options[["marginalMeansVars"]]) == 0))
     return()
 
-  if (!is.null(jaspResults[["emmContainer"]][["EMMresults"]]))
+  if (!is.null(jaspResults[["emmContainer"]][["emmResults"]]))
     return()
 
   if (is.null(jaspResults[["glmModels"]]))
@@ -1014,12 +1003,12 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (options[["marginalMeansComparison"]])
     emmTest <- as.data.frame(emmeans::test(emm, null = options[["marginalMeansComparisonWith"]]))
 
-  EMMsummary <- createJaspTable(title = gettext("Estimated Marginal Means"))
-  EMMresults <- createJaspState()
+  emmSummary <- createJaspTable(title = gettext("Estimated Marginal Means"))
+  emmResults <- createJaspState()
 
-  EMMsummary$position <- position
+  emmSummary$position <- position
 
-  EMMdependencies <- c("marginalMeansVars",
+  emmDependencies <- c("marginalMeansVars",
                        "marginalMeansCi",
                        "marginalMeansCiWidth",
                        "marginalMeansSd",
@@ -1027,35 +1016,35 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
                        "marginalMeansComparisonWith",
                        "marginalMeansResponse")
 
-  EMMsummary$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                      options           = EMMdependencies)
-  EMMresults$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                      options           = EMMdependencies)
+  emmSummary$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
+                      options           = emmDependencies)
+  emmResults$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
+                      options           = emmDependencies)
 
 
   for (variable in unlist(options[["marginalMeansVars"]])) {
     if (variable %in% options[["covariates"]])
-      EMMsummary$addColumnInfo(name = variable, title = variable, type = "number")
+      emmSummary$addColumnInfo(name = variable, title = variable, type = "number")
     else
-      EMMsummary$addColumnInfo(name = variable, title = variable, type = "string")
+      emmSummary$addColumnInfo(name = variable, title = variable, type = "string")
 
   }
 
-  EMMsummary$addColumnInfo(name = "estimate", title = gettext("Estimate"), type = "number")
-  EMMsummary$addColumnInfo(name = "se",       title = gettext("SE"),       type = "number")
+  emmSummary$addColumnInfo(name = "estimate", title = gettext("Estimate"), type = "number")
+  emmSummary$addColumnInfo(name = "se",       title = gettext("SE"),       type = "number")
 
   if (options[["marginalMeansCi"]]) {
-    EMMsummary$addColumnInfo(name = "lowerCI",  title = gettext("Lower"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options[["marginalMeansCiWidth"]]))
-    EMMsummary$addColumnInfo(name = "upperCI",  title = gettext("Upper"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options[["marginalMeansCiWidth"]]))
+    emmSummary$addColumnInfo(name = "lowerCI",  title = gettext("Lower"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options[["marginalMeansCiWidth"]]))
+    emmSummary$addColumnInfo(name = "upperCI",  title = gettext("Upper"),    type = "number", overtitle = gettextf("%s%% CI", 100 * options[["marginalMeansCiWidth"]]))
   }
 
   if (options[["marginalMeansComparison"]]) {
-    EMMsummary$addColumnInfo(name = "stat",   title = ifelse(colnames(emmTest)[ncol(emmTest) - 1] == "t.ratio", gettext("t"), gettext("z")), type = "number")
-    EMMsummary$addColumnInfo(name = "pval",   title = gettext("p"),         type = "pvalue")
-    EMMsummary$addFootnote(.EMMmessageTestNull(options[["marginalMeansComparisonWith"]]), colNames = "pval")
+    emmSummary$addColumnInfo(name = "stat",   title = ifelse(colnames(emmTest)[ncol(emmTest) - 1] == "t.ratio", gettext("t"), gettext("z")), type = "number")
+    emmSummary$addColumnInfo(name = "pval",   title = gettext("p"),         type = "pvalue")
+    emmSummary$addFootnote(.emmMessageTestNull(options[["marginalMeansComparisonWith"]]), colNames = "pval")
   }
 
-  jaspResults[["emmContainer"]][["EMMsummary"]] <- EMMsummary
+  jaspResults[["emmContainer"]][["emmSummary"]] <- emmSummary
 
   for (i in 1:nrow(emmTable)) {
     tempRow <- list()
@@ -1089,14 +1078,14 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
 
 
-    EMMsummary$addRows(tempRow)
+    emmSummary$addRows(tempRow)
   }
 
   if (length(emm@misc$avgd.over) != 0)
-    EMMsummary$addFootnote(.EMMmessageAveragedOver(emm@misc$avgd.over))
+    emmSummary$addFootnote(.emmMessageAveragedOver(emm@misc$avgd.over))
 
   # add warning message
-  EMMsummary$addFootnote(ifelse(options[["marginalMeansResponse"]],
+  emmSummary$addFootnote(ifelse(options[["marginalMeansResponse"]],
                                 gettext("Results are on the response scale."),
                                 gettext("Results are not on the response scale and might be misleading.")))
 
@@ -1105,8 +1094,8 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     emmTable   = emmTable
   )
 
-  EMMresults$object <- object
-  jaspResults[["emmContainer"]][["EMMresults"]] <- EMMresults
+  emmResults$object <- object
+  jaspResults[["emmContainer"]][["emmResults"]] <- emmResults
 
   return()
 }
@@ -1121,33 +1110,33 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (!is.null(jaspResults[["emmContainer"]][["contrastsTable"]]))
     return()
 
-  if (is.null(jaspResults[["emmContainer"]][["EMMresults"]]))
+  if (is.null(jaspResults[["emmContainer"]][["emmResults"]]))
     return()
 
-  emm       <- jaspResults[["emmContainer"]][["EMMresults"]]$object$emm
-  emmTable  <- jaspResults[["emmContainer"]][["EMMresults"]]$object$emmTable
+  emm       <- jaspResults[["emmContainer"]][["emmResults"]]$object$emm
+  emmTable  <- jaspResults[["emmContainer"]][["emmResults"]]$object$emmTable
 
 
-  EMMCsummary <- createJaspTable(title = gettext("Contrasts"))
+  emmContrastSummary <- createJaspTable(title = gettext("Contrasts"))
 
-  EMMCsummary$position <- position
+  emmContrastSummary$position <- position
 
-  EMMCsummary$dependOn(optionsFromObject = jaspResults[["emmContainer"]][["EMMresults"]],
-                       options           = c("contrasts", "emmPAdjustment", "marginalMeansContrast"))
+  emmContrastSummary$dependOn(optionsFromObject = jaspResults[["emmContainer"]][["emmResults"]],
+                              options           = c("contrasts", "marginalMeansPAdjustment", "marginalMeansContrast"))
 
 
-  EMMCsummary$addColumnInfo(name = "contrast", title = "",                  type = "string")
-  EMMCsummary$addColumnInfo(name = "estimate", title = gettext("Estimate"), type = "number")
-  EMMCsummary$addColumnInfo(name = "se",       title = gettext("SE"),       type = "number")
-  EMMCsummary$addColumnInfo(name = "df",       title = gettext("df"),       type = "number")
-  EMMCsummary$addColumnInfo(name = "stat",     title = gettext("z"),        type = "number")
-  EMMCsummary$addColumnInfo(name = "pval",     title = gettext("p"),        type = "pvalue")
+  emmContrastSummary$addColumnInfo(name = "contrast", title = "",                  type = "string")
+  emmContrastSummary$addColumnInfo(name = "estimate", title = gettext("Estimate"), type = "number")
+  emmContrastSummary$addColumnInfo(name = "se",       title = gettext("SE"),       type = "number")
+  emmContrastSummary$addColumnInfo(name = "df",       title = gettext("df"),       type = "number")
+  emmContrastSummary$addColumnInfo(name = "stat",     title = gettext("z"),        type = "number")
+  emmContrastSummary$addColumnInfo(name = "pval",     title = gettext("p"),        type = "pvalue")
 
   # Columns have been specified, show to user
-  jaspResults[["emmContainer"]][["contrastsTable"]] <- EMMCsummary
+  jaspResults[["emmContainer"]][["contrastsTable"]] <- emmContrastSummary
 
   selectedContrasts        <- options[["contrasts"]]
-  selectedPvalueAdjustment <- options[["emmPAdjustment"]]
+  selectedPvalueAdjustment <- options[["marginalMeansPAdjustment"]]
 
   selectedResponse         <- options[["marginalMeansResponse"]]
 
@@ -1177,24 +1166,24 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
       )) }
 
   if (jaspBase::isTryError(emmContrast)) {
-    EMMCsummary$setError(emmContrast)
+    emmContrastSummary$setError(emmContrast)
     return()
   }
 
   # fix the title name if there is a t-stats
   if (colnames(emmContrast)[5] == "t.ratio")
-    EMMCsummary$setColumnTitle("stat", gettext("t"))
+    emmContrastSummary$setColumnTitle("stat", gettext("t"))
 
   tempEstName <- colnames(emmContrast)[ncol(emmContrast) - 4]
 
   if (tempEstName == "odds.ratio")
-    EMMCsummary$setColumnTitle("estimate", gettext("Odds Ratio"))
+    emmContrastSummary$setColumnTitle("estimate", gettext("Odds Ratio"))
   else if (tempEstName == "ratio")
-    EMMCsummary$setColumnTitle("estimate", gettext("Ratio"))
+    emmContrastSummary$setColumnTitle("estimate", gettext("Ratio"))
   else if (tempEstName == "estimate")
-    EMMCsummary$setColumnTitle("estimate", gettext("Estimate"))
+    emmContrastSummary$setColumnTitle("estimate", gettext("Estimate"))
   else
-    EMMCsummary$setColumnTitle("estimate", tempEstName)
+    emmContrastSummary$setColumnTitle("estimate", tempEstName)
 
 
   for (i in 1:nrow(emmContrast)) {
@@ -1208,14 +1197,14 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
       pval     =  emmContrast[i, "p.value"]
     )
 
-    EMMCsummary$addFootnote(.messagePvalAdjustment(selectedPvalueAdjustment), colNames = "pval")
+    emmContrastSummary$addFootnote(.messagePvalAdjustment(selectedPvalueAdjustment), colNames = "pval")
 
     if (!selectedResponse)
-      EMMCsummary$addFootnote(gettext("Results are on the response scale."))
+      emmContrastSummary$addFootnote(gettext("Results are on the response scale."))
     else
-      EMMCsummary$addFootnote(gettext("Results are not on the response scale and might be misleading."))
+      emmContrastSummary$addFootnote(gettext("Results are not on the response scale and might be misleading."))
 
-    EMMCsummary$addRows(tempRow)
+    emmContrastSummary$addRows(tempRow)
   }
 
   return()

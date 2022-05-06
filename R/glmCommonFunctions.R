@@ -95,7 +95,7 @@
 }
 
 
-.glmStdResidCompute <- function(model, residType) {
+.glmStdResidCompute <- function(model, residType, options) {
   if (residType == "deviance") {
     stdResid <- rstandard(model)
   }
@@ -105,7 +105,7 @@
     stdResid <- resid / sqrt(phiEst * (1 - hatvalues(model)))
   }
   else if (residType == "quantile") {
-    set.seed(123)
+    jaspBase::.setSeedJASP(options)
     resid <- statmod::qresid(model)
     stdResid <- resid / sqrt(1 - hatvalues(model))
   } else {
@@ -184,8 +184,8 @@
 }
 
 # message for estimated marginal means table
-.EMMmessageTestNull     <- function(value)  gettextf("P-values correspond to test of null hypothesis against %s.", value)
-.EMMmessageAveragedOver <- function(terms)  gettextf("Results are averaged over the levels of: %s.",paste(terms, collapse = ", "))
+.emmMessageTestNull     <- function(value)  gettextf("P-values correspond to test of null hypothesis against %s.", value)
+.emmMessageAveragedOver <- function(terms)  gettextf("Results are averaged over the levels of: %s.",paste(terms, collapse = ", "))
 .messagePvalAdjustment  <- function(adjustment) {
   if (adjustment == "none") {
     return(gettext("P-values are not adjusted."))
