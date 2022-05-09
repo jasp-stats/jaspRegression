@@ -26,7 +26,7 @@ import JASP				1.0
 Group {
 
 	function updateWeightsTitle() {
-		if (family.currentText == "Binomial")
+		if (family.currentText === "Binomial")
 		{title = qsTr("Total Number of Trials")}
 		else
 		{title = qsTr("Weights")}
@@ -61,7 +61,7 @@ Group {
 		{
 			name:				"factors"
 			title:				qsTr("Factors")
-			allowedColumns:		["scale", "ordinal", "nominal", "nominalText"]
+			allowedColumns:		["ordinal", "nominal", "nominalText"]
 		}
 
 		AssignedVariablesList
@@ -138,7 +138,7 @@ Group {
 				label:		qsTr("Logit")
 				value:		"logit"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "logit"
+				checked:	family.familyDefault[family.currentValue] === "logit"
 			}
 
 			RadioButton
@@ -146,7 +146,7 @@ Group {
 				label:		qsTr("Probit")
 				value:		"probit"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "probit"
+				checked:	family.familyDefault[family.currentValue] === "probit"
 			}
 
 			RadioButton
@@ -154,7 +154,7 @@ Group {
 				label:		qsTr("Cauchit")
 				value:		"cauchit"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "cauchit"
+				checked:	family.familyDefault[family.currentValue] === "cauchit"
 			}
 
 			RadioButton
@@ -162,7 +162,7 @@ Group {
 				label:		qsTr("Complementary LogLog")
 				value:		"cloglog"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "cloglog"
+				checked:	family.familyDefault[family.currentValue] === "cloglog"
 			}
 
 			RadioButton
@@ -170,7 +170,7 @@ Group {
 				label:		qsTr("Identity")
 				value:		"identity"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "identity"
+				checked:	family.familyDefault[family.currentValue] === "identity"
 			}
 
 			RadioButton
@@ -178,7 +178,7 @@ Group {
 				label:		qsTr("Log")
 				value:		"log"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "log"
+				checked:	family.familyDefault[family.currentValue] === "log"
 			}
 
 			RadioButton
@@ -186,7 +186,7 @@ Group {
 				label:		qsTr("Sqrt")
 				value:		"sqrt"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "sqrt"
+				checked:	family.familyDefault[family.currentValue] === "sqrt"
 			}
 
 			RadioButton
@@ -194,7 +194,7 @@ Group {
 				label:		qsTr("Inverse")
 				value:		"inverse"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "inverse"
+				checked:	family.familyDefault[family.currentValue] === "inverse"
 			}
 
 			RadioButton
@@ -202,7 +202,7 @@ Group {
 				label:		qsTr("1/mu^2")
 				value:		"1/mu^2"
 				visible:	family.familyMap[family.currentValue].includes(value)
-				checked:	family.familyDefault[family.currentValue] == "1/mu^2"
+				checked:	family.familyDefault[family.currentValue] === "1/mu^2"
 			}
 		}
 	}

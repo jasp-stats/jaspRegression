@@ -154,6 +154,9 @@
 
 # function for multicollineary statistics, taken from the source code of car::vif
 # car version: 3.0-13 see https://rdrr.io/cran/car/src/R/vif.R
+# the reason is to remove the dependency on the car package. When importing the entire car package,
+# JASP crashes when loading the regression module (at least on Windows 10).
+
 .vif.default <- function(mod, ...) {
   if (any(is.na(coef(mod))))
     stop ("there are aliased coefficients in the model")

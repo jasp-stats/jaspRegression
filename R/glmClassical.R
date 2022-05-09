@@ -51,11 +51,11 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     return(dataset)
   }
   else {
-    numericVars  <- c(options[["covariates"]], options[["weights"]])
+    numericVars  <- unlist(c(options[["covariates"]], options[["weights"]]))
     numericVars  <- numericVars[numericVars != ""]
-    factorVars   <- c(options[["factors"]])
+    factorVars   <- options[["factors"]]
     factorVars   <- factorVars[factorVars != ""]
-    dependentVar <- c(options[["dependent"]])
+    dependentVar <- options[["dependent"]]
     dependentVar <- dependentVar[dependentVar != ""]
 
     if (options[["family"]] == "bernoulli") {
@@ -74,8 +74,26 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 # Function to check errors when reading data
 .glmCheckDataErrors <- function(dataset, options){
 
-  if (nrow(dataset) < length(c(options[["covariates"]], options[["factors"]])))
-    .quitAnalysis("The dataset contains fewer observations than predictors (after excluding NAs/NaN/Inf).")
+  if (length(options[["factors"]]) == 0)
+    nFactorParameters <- 0
+  else
+    nFactorParameters <- sum(apply(dataset[options[["factors"]]], 2, function(x) length(unique(x)))) - length(options[["factors"]])
+
+  if (length(options[["covariates"]]) == 0) {
+    nCovariateParameters <- 0
+  }
+  else {
+    nCovariateParameters <- length(options[["covariates"]])
+    .hasErrors(dataset,
+               type = c("observations", "infinity", "variance", "varCovData"),
+               all.target = options[["covariates"]],
+               observations.amount  = "< 2",
+               exitAnalysisIfErrors = TRUE)
+  }
+
+  nParameters <- options[["interceptTerm"]] + nFactorParameters + nCovariateParameters
+  if (nrow(dataset) < nParameters)
+    .quitAnalysis("The dataset contains fewer observations than the number of parameters (after excluding NAs/NaN/Inf).")
 
   if (options[["weights"]] != "")
     .hasErrors(dataset,
@@ -88,33 +106,34 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (options[["family"]] == "bernoulli") {
 
     if (length(levels(dataset[, options[["dependent"]]])) != 2)
-      .quitAnalysis(gettextf("The %s family requires the dependent variable to be a factor with 2 levels.", options[["family"]]))
+      .quitAnalysis(gettext("The Bernoulli family requires the dependent variable to be a factor with 2 levels."))
 
   } else if (options[["family"]] == "binomial") {
 
     if (any(dataset[, options[["dependent"]]] < 0) || any(dataset[, options[["dependent"]]] > 1))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive).", options[["family"]]))
+      .quitAnalysis(gettext("The Binomial family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive)."))
 
     if (any(dataset[, options[["weights"]]] < 0) || any(!.is.wholenumber(dataset[, options[["weights"]]])))
-      .quitAnalysis(gettextf("The %s family requires the weights variable (i.e. total number of trials) to be an integer.", options[["family"]]))
+      .quitAnalysis(gettext("The Binomial family requires the weights variable (i.e. total number of trials) to be an integer."))
 
   } else if (options[["family"]] %in% c("Gamma", "inverse.gaussian")) {
 
     if (any(dataset[, options[["dependent"]]] <= 0))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable to be positive.", options[["family"]]))
+      .quitAnalysis(gettext("The Gamma family and the Inverse Gaussian family require the dependent variable to be positive."))
 
   } else if (options[["family"]] == "poisson") {
 
     if (any(dataset[, options[["dependent"]]] < 0 | any(!.is.wholenumber(dataset[, options[["dependent"]]]))))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable to be an integer.", options[["family"]]))
+      .quitAnalysis(gettext("The Poisson family requires the dependent variable to be an integer."))
 
   } else if (options[["family"]] == "gaussian") {
 
+    if (options[["link"]] == "log" & any(dataset[[options[["dependent"]]]] <= 0))
+      .quitAnalysis(gettextf("The Gaussian family with the log link requires the dependent variable to be positive."))
+
     if (!is.numeric(dataset[, options[["dependent"]]]))
-      .quitAnalysis(gettextf("The %s family requires the dependent variable to be a numerical variable.", options[["family"]]))
-
+      .quitAnalysis(gettextf("The Gaussian family requires the dependent variable to be a numerical variable."))
   }
-
 }
 
 # Model Summary Table
