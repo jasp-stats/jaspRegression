@@ -33,6 +33,11 @@ Description
 		title:	qsTr("Logistic Regression")
 		func:	"RegressionLogistic"
 	}
+	Analysis
+	{
+		title: qsTr("Generalized Linear Model")
+		func: "GeneralizedLinearModel"
+	}
 
 	Separator{}
 	GroupTitle
