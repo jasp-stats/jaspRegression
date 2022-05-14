@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-04-23 03:00\n"
+"POT-Creation-Date: 2022-05-14 03:29\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -10,10 +10,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
+msgid ""
+"For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
 
-msgid "For all tests, the alternative hypothesis specifies that the %s is negative."
+msgid ""
+"For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
 
 msgid "Scatterplot"
@@ -118,7 +120,11 @@ msgstr ""
 msgid "VS-MPR%s"
 msgstr ""
 
-msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n  the maximum possible odds in favor of H%1$s over H%2$s equals\n  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n  (Sellke, Bayarri, & Berger, 2001)."
+msgid ""
+"Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
+"  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
+"  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
+"  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 
 msgid "residuals include missing values"
@@ -163,7 +169,9 @@ msgstr ""
 msgid "Conditioned on variables: %s."
 msgstr ""
 
-msgid "Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."
+msgid ""
+"Analytic confidence intervals for partial correlations are not yet "
+"available, but can be obtained using bootstrapping instead."
 msgstr ""
 
 msgid "Confidence intervals based on %i bootstrap replicates."
@@ -193,7 +201,9 @@ msgstr ""
 msgid "Bootstrapping"
 msgstr ""
 
-msgid "Partial correlation cannot be computed: covariance matrix is computationally singular."
+msgid ""
+"Partial correlation cannot be computed: covariance matrix is computationally "
+"singular."
 msgstr ""
 
 msgid "Assumption checks"
@@ -223,10 +233,14 @@ msgstr ""
 msgid "%s%% CI: [%s, %s]"
 msgstr ""
 
-msgid "Plotting not possible:\n Number of observations is < 3"
+msgid ""
+"Plotting not possible:\n"
+" Number of observations is < 3"
 msgstr ""
 
-msgid "Plotting not possible:\n Number of observations is < 2"
+msgid ""
+"Plotting not possible:\n"
+" Number of observations is < 2"
 msgstr ""
 
 msgid "Plotting not possible: %s"
@@ -259,10 +273,16 @@ msgstr ""
 msgid "italic(tau)"
 msgstr ""
 
-msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgid ""
+"Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
+"maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
+"log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 
-msgid "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. 62-71."
+msgid ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
+"for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
+"62-71."
 msgstr ""
 
 msgid "Posterior is too peaked"
@@ -301,6 +321,249 @@ msgstr ""
 msgid "Stretched beta prior width"
 msgstr ""
 
+msgid ""
+"The Bernoulli family requires the dependent variable to be a factor with 2 "
+"levels."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the dependent variable (i.e. proportion of "
+"successes) to be between 0 and 1 (inclusive)."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be an integer."
+msgstr ""
+
+msgid ""
+"The Gamma family and the Inverse Gaussian family require the dependent "
+"variable to be positive."
+msgstr ""
+
+msgid "The Poisson family requires the dependent variable to be an integer."
+msgstr ""
+
+msgid ""
+"The Gaussian family with the log link requires the dependent variable to be "
+"positive."
+msgstr ""
+
+msgid ""
+"The Gaussian family requires the dependent variable to be a numerical "
+"variable."
+msgstr ""
+
+msgid "Model Summary"
+msgstr ""
+
+msgid "Model Summary - %s"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "Deviance"
+msgstr ""
+
+msgid "AIC"
+msgstr ""
+
+msgid "BIC"
+msgstr ""
+
+msgid "df"
+msgstr ""
+
+msgid "Null model contains nuisance parameters: %s"
+msgstr ""
+
+msgid "Model Fit"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid "Coefficients"
+msgstr ""
+
+msgid "Estimate"
+msgstr ""
+
+msgid "Standard Error"
+msgstr ""
+
+msgid "Lower Bound"
+msgstr ""
+
+msgid "Upper Bound"
+msgstr ""
+
+msgid "%1$s level '%2$s' coded as class 1."
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "Residuals vs. Fitted Plots"
+msgstr ""
+
+msgid "Standardized %1s residuals vs. fitted values"
+msgstr ""
+
+msgid "Standardized %1s residual"
+msgstr ""
+
+msgid "%1s Residuals vs. Predictor Plots"
+msgstr ""
+
+msgid "Standardized %1s residuals vs. %2s"
+msgstr ""
+
+msgid "Normal Q-Q Plots: Standardized Residuals"
+msgstr ""
+
+msgid "Normal Q-Q plot: Standardized %1s residuals"
+msgstr ""
+
+msgid "Partial Residual Plots"
+msgstr ""
+
+msgid "Partial residual plot for %1s"
+msgstr ""
+
+msgid "Partial residual for %1s"
+msgstr ""
+
+msgid "Plot: Working responses vs. linear predictor"
+msgstr ""
+
+msgid "Working responses, z"
+msgstr ""
+
+msgid "Outliers Tables"
+msgstr ""
+
+msgid "Table: Top n outliers based on %1s residuals"
+msgstr ""
+
+msgid "Case Number"
+msgstr ""
+
+msgid "Residual"
+msgstr ""
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+msgid "Multicollinearity Diagnostics"
+msgstr ""
+
+msgid "Tolerance"
+msgstr ""
+
+msgid "VIF"
+msgstr ""
+
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgid "Estimated Marginal Means"
+msgstr ""
+
+msgid "SE"
+msgstr ""
+
+msgid "Lower"
+msgstr ""
+
+msgid "%s%% CI"
+msgstr ""
+
+msgid "Upper"
+msgstr ""
+
+msgid "t"
+msgstr ""
+
+msgid "z"
+msgstr ""
+
+msgid "Results are on the response scale."
+msgstr ""
+
+msgid "Results are not on the response scale and might be misleading."
+msgstr ""
+
+msgid "Contrasts"
+msgstr ""
+
+msgid "Odds Ratio"
+msgstr ""
+
+msgid "Ratio"
+msgstr ""
+
+msgid "Plotting is not possible: %s"
+msgstr ""
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr ""
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr ""
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr ""
+
+msgid "Bonferroni"
+msgstr ""
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "no terms in scope"
 msgstr ""
 
@@ -331,25 +594,21 @@ msgstr ""
 msgid "AIC undefined for REML fit"
 msgstr ""
 
-msgid "Stepwise procedures are not supported for models containing interaction terms"
+msgid ""
+"Stepwise procedures are not supported for models containing interaction terms"
 msgstr ""
 
 msgid "Stepwise procedures are not supported for models containing factors"
 msgstr ""
 
-msgid "Error in Stepping Method Criteria: Entry p-value needs to be smaller than removal p-value"
+msgid ""
+"Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
+"removal p-value"
 msgstr ""
 
-msgid "Error in Stepping Method Criteria: Entry F-value needs to be larger than removal F-value"
-msgstr ""
-
-msgid "Model Summary"
-msgstr ""
-
-msgid "Model Summary - %s"
-msgstr ""
-
-msgid "Model"
+msgid ""
+"Error in Stepping Method Criteria: Entry F-value needs to be larger than "
+"removal F-value"
 msgstr ""
 
 msgid "R"
@@ -382,9 +641,6 @@ msgstr ""
 msgid "Durbin-Watson"
 msgstr ""
 
-msgid "Statistic"
-msgstr ""
-
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
 
@@ -397,9 +653,6 @@ msgstr ""
 msgid "Sum of Squares"
 msgstr ""
 
-msgid "df"
-msgstr ""
-
 msgid "Mean Square"
 msgstr ""
 
@@ -409,49 +662,33 @@ msgstr ""
 msgid "Regression"
 msgstr ""
 
-msgid "Residual"
-msgstr ""
-
 msgid "Total"
 msgstr ""
 
 msgid "Unstandardized"
 msgstr ""
 
-msgid "Standard Error"
-msgstr ""
-
 msgid "Standardized"
-msgstr ""
-
-msgid "t"
 msgstr ""
 
 msgid "%.0f%% CI"
 msgstr ""
 
-msgid "Lower"
-msgstr ""
-
-msgid "Upper"
-msgstr ""
-
 msgid "Collinearity Statistics"
 msgstr ""
 
-msgid "Tolerance"
+msgid ""
+"Standardized coefficients and collinearity statistics can only be computed "
+"for continuous predictors."
 msgstr ""
 
-msgid "VIF"
+msgid ""
+"Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
 
-msgid "Standardized coefficients and collinearity statistics can only be computed for continuous predictors."
-msgstr ""
-
-msgid "Standardized coefficients can only be computed for continuous predictors."
-msgstr ""
-
-msgid "Missing coefficients are undefined because of singularities. Check the data for anything out of order!"
+msgid ""
+"Missing coefficients are undefined because of singularities. Check the data "
+"for anything out of order!"
 msgstr ""
 
 msgid "Bootstrap Coefficients"
@@ -466,7 +703,8 @@ msgstr ""
 msgid "Bootstrapping based on %i replicates."
 msgstr ""
 
-msgid "Coefficient estimate is based on the median of the bootstrap distribution."
+msgid ""
+"Coefficient estimate is based on the median of the bootstrap distribution."
 msgstr ""
 
 msgid "Bias corrected accelerated."
@@ -505,13 +743,12 @@ msgstr ""
 msgid "Variance Proportions"
 msgstr ""
 
-msgid "Some collinearity diagnostics could not be computed. This is expected if the model contains singularities."
+msgid ""
+"Some collinearity diagnostics could not be computed. This is expected if the "
+"model contains singularities."
 msgstr ""
 
 msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Case Number"
 msgstr ""
 
 msgid "Std. Residual"
@@ -586,9 +823,6 @@ msgstr ""
 msgid "Descriptives"
 msgstr ""
 
-msgid "SE"
-msgstr ""
-
 msgid "H%s"
 msgstr ""
 
@@ -601,7 +835,8 @@ msgstr ""
 msgid "Theoretical Quantiles"
 msgstr ""
 
-msgid "Unknown value provided for modelType, possible values: `alternative`, `null`"
+msgid ""
+"Unknown value provided for modelType, possible values: `alternative`, `null`"
 msgstr ""
 
 msgid "We need at least one predictor, or an intercept to make a formula"
@@ -610,16 +845,19 @@ msgstr ""
 msgid "Null model includes %s"
 msgstr ""
 
-msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum\n        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgid ""
+"Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
+"maximum\n"
+"        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
+"log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 
-msgid "The intercept model is omitted, as no meaningful information can be shown."
+msgid ""
+"The intercept model is omitted, as no meaningful information can be shown."
 msgstr ""
 
-msgid "There is only an intercept model, no meaningful information can be shown."
-msgstr ""
-
-msgid "Plotting is not possible: %s"
+msgid ""
+"There is only an intercept model, no meaningful information can be shown."
 msgstr ""
 
 msgid "Marginal Effects Plots"
@@ -643,10 +881,19 @@ msgstr ""
 msgid "Model Comparison - %s"
 msgstr ""
 
-msgid "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p * %3$s and \ncorresponds to an approximate penalization equal to log(%3$s + 1) in log-odds scale for each additional \ncovariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
+msgid ""
+"The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 "
+"and %2$s = p * %3$s and \n"
+"corresponds to an approximate penalization equal to log(%3$s + 1) in log-"
+"odds scale for each additional \n"
+"covariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
 msgstr ""
 
-msgid "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p^u and is suitable \nfor sparse regression when there are more covariates than observations (Castillo et al., 2015)."
+msgid ""
+"The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 "
+"and %2$s = p^u and is suitable \n"
+"for sparse regression when there are more covariates than observations "
+"(Castillo et al., 2015)."
 msgstr ""
 
 msgid "BF<sub>10</sub>"
@@ -673,7 +920,9 @@ msgstr ""
 msgid "All models include %s."
 msgstr ""
 
-msgid "%sTable displays only a subset of models; to see all models, select \"No\" under \"Limit No. Models Shown\"."
+msgid ""
+"%sTable displays only a subset of models; to see all models, select \"No\" "
+"under \"Limit No. Models Shown\"."
 msgstr ""
 
 msgid "Null model"
@@ -751,7 +1000,10 @@ msgstr ""
 msgid "Marginal Inclusion Probability"
 msgstr ""
 
-msgid "Prior\nInclusion\nProbabilities"
+msgid ""
+"Prior\n"
+"Inclusion\n"
+"Probabilities"
 msgstr ""
 
 msgid "Q-Q Plot"
@@ -766,15 +1018,6 @@ msgstr ""
 msgid "Performance Diagnostics"
 msgstr ""
 
-msgid "Deviance"
-msgstr ""
-
-msgid "AIC"
-msgstr ""
-
-msgid "BIC"
-msgstr ""
-
 msgid "McFadden R%s"
 msgstr ""
 
@@ -787,19 +1030,7 @@ msgstr ""
 msgid "Cox & Snell R%s"
 msgstr ""
 
-msgid "Coefficients"
-msgstr ""
-
-msgid "Estimate"
-msgstr ""
-
 msgid "Standardized%s"
-msgstr ""
-
-msgid "Odds Ratio"
-msgstr ""
-
-msgid "z"
 msgstr ""
 
 msgid "Wald Statistic"
@@ -811,13 +1042,14 @@ msgstr ""
 msgid "Upper bound"
 msgstr ""
 
-msgid "Standardized estimates represent estimates where the continuous predictors are standardized (X-standardization)."
+msgid ""
+"Standardized estimates represent estimates where the continuous predictors "
+"are standardized (X-standardization)."
 msgstr ""
 
-msgid "Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."
-msgstr ""
-
-msgid "Multicollinearity Diagnostics"
+msgid ""
+"Coefficient estimate and robust standard error are based on the median of "
+"the bootstrap distribution."
 msgstr ""
 
 msgid "Observed"
@@ -847,16 +1079,12 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-msgid "Null model contains nuisance parameters: %s"
-msgstr ""
-
-msgid "%1$s level '%2$s' coded as class 1."
-msgstr ""
-
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
 
-msgid "Some confidence intervals could not be computed.\nPossibly too few bootstrap replicates."
+msgid ""
+"Some confidence intervals could not be computed.\n"
+"Possibly too few bootstrap replicates."
 msgstr ""
 
 msgid "Residual plots"

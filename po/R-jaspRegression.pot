@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-04-23 03:00\n"
+"POT-Creation-Date: 2022-05-14 03:29\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -301,6 +301,237 @@ msgstr ""
 msgid "Stretched beta prior width"
 msgstr ""
 
+msgid "The Bernoulli family requires the dependent variable to be a factor with 2 levels."
+msgstr ""
+
+msgid "The Binomial family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive)."
+msgstr ""
+
+msgid "The Binomial family requires the weights variable (i.e. total number of trials) to be an integer."
+msgstr ""
+
+msgid "The Gamma family and the Inverse Gaussian family require the dependent variable to be positive."
+msgstr ""
+
+msgid "The Poisson family requires the dependent variable to be an integer."
+msgstr ""
+
+msgid "The Gaussian family with the log link requires the dependent variable to be positive."
+msgstr ""
+
+msgid "The Gaussian family requires the dependent variable to be a numerical variable."
+msgstr ""
+
+msgid "Model Summary"
+msgstr ""
+
+msgid "Model Summary - %s"
+msgstr ""
+
+msgid "Model"
+msgstr ""
+
+msgid "Deviance"
+msgstr ""
+
+msgid "AIC"
+msgstr ""
+
+msgid "BIC"
+msgstr ""
+
+msgid "df"
+msgstr ""
+
+msgid "Null model contains nuisance parameters: %s"
+msgstr ""
+
+msgid "Model Fit"
+msgstr ""
+
+msgid "Statistic"
+msgstr ""
+
+msgid "Coefficients"
+msgstr ""
+
+msgid "Estimate"
+msgstr ""
+
+msgid "Standard Error"
+msgstr ""
+
+msgid "Lower Bound"
+msgstr ""
+
+msgid "Upper Bound"
+msgstr ""
+
+msgid "%1$s level '%2$s' coded as class 1."
+msgstr ""
+
+msgid "Diagnostics"
+msgstr ""
+
+msgid "Residuals vs. Fitted Plots"
+msgstr ""
+
+msgid "Standardized %1s residuals vs. fitted values"
+msgstr ""
+
+msgid "Standardized %1s residual"
+msgstr ""
+
+msgid "%1s Residuals vs. Predictor Plots"
+msgstr ""
+
+msgid "Standardized %1s residuals vs. %2s"
+msgstr ""
+
+msgid "Normal Q-Q Plots: Standardized Residuals"
+msgstr ""
+
+msgid "Normal Q-Q plot: Standardized %1s residuals"
+msgstr ""
+
+msgid "Partial Residual Plots"
+msgstr ""
+
+msgid "Partial residual plot for %1s"
+msgstr ""
+
+msgid "Partial residual for %1s"
+msgstr ""
+
+msgid "Plot: Working responses vs. linear predictor"
+msgstr ""
+
+msgid "Working responses, z"
+msgstr ""
+
+msgid "Outliers Tables"
+msgstr ""
+
+msgid "Table: Top n outliers based on %1s residuals"
+msgstr ""
+
+msgid "Case Number"
+msgstr ""
+
+msgid "Residual"
+msgstr ""
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+msgid "Multicollinearity Diagnostics"
+msgstr ""
+
+msgid "Tolerance"
+msgstr ""
+
+msgid "VIF"
+msgstr ""
+
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgid "Estimated Marginal Means"
+msgstr ""
+
+msgid "SE"
+msgstr ""
+
+msgid "Lower"
+msgstr ""
+
+msgid "%s%% CI"
+msgstr ""
+
+msgid "Upper"
+msgstr ""
+
+msgid "t"
+msgstr ""
+
+msgid "z"
+msgstr ""
+
+msgid "Results are on the response scale."
+msgstr ""
+
+msgid "Results are not on the response scale and might be misleading."
+msgstr ""
+
+msgid "Contrasts"
+msgstr ""
+
+msgid "Odds Ratio"
+msgstr ""
+
+msgid "Ratio"
+msgstr ""
+
+msgid "Plotting is not possible: %s"
+msgstr ""
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr ""
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr ""
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr ""
+
+msgid "Bonferroni"
+msgstr ""
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "no terms in scope"
 msgstr ""
 
@@ -343,15 +574,6 @@ msgstr ""
 msgid "Error in Stepping Method Criteria: Entry F-value needs to be larger than removal F-value"
 msgstr ""
 
-msgid "Model Summary"
-msgstr ""
-
-msgid "Model Summary - %s"
-msgstr ""
-
-msgid "Model"
-msgstr ""
-
 msgid "R"
 msgstr ""
 
@@ -382,9 +604,6 @@ msgstr ""
 msgid "Durbin-Watson"
 msgstr ""
 
-msgid "Statistic"
-msgstr ""
-
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
 
@@ -397,9 +616,6 @@ msgstr ""
 msgid "Sum of Squares"
 msgstr ""
 
-msgid "df"
-msgstr ""
-
 msgid "Mean Square"
 msgstr ""
 
@@ -409,40 +625,19 @@ msgstr ""
 msgid "Regression"
 msgstr ""
 
-msgid "Residual"
-msgstr ""
-
 msgid "Total"
 msgstr ""
 
 msgid "Unstandardized"
 msgstr ""
 
-msgid "Standard Error"
-msgstr ""
-
 msgid "Standardized"
-msgstr ""
-
-msgid "t"
 msgstr ""
 
 msgid "%.0f%% CI"
 msgstr ""
 
-msgid "Lower"
-msgstr ""
-
-msgid "Upper"
-msgstr ""
-
 msgid "Collinearity Statistics"
-msgstr ""
-
-msgid "Tolerance"
-msgstr ""
-
-msgid "VIF"
 msgstr ""
 
 msgid "Standardized coefficients and collinearity statistics can only be computed for continuous predictors."
@@ -509,9 +704,6 @@ msgid "Some collinearity diagnostics could not be computed. This is expected if 
 msgstr ""
 
 msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Case Number"
 msgstr ""
 
 msgid "Std. Residual"
@@ -586,9 +778,6 @@ msgstr ""
 msgid "Descriptives"
 msgstr ""
 
-msgid "SE"
-msgstr ""
-
 msgid "H%s"
 msgstr ""
 
@@ -617,9 +806,6 @@ msgid "The intercept model is omitted, as no meaningful information can be shown
 msgstr ""
 
 msgid "There is only an intercept model, no meaningful information can be shown."
-msgstr ""
-
-msgid "Plotting is not possible: %s"
 msgstr ""
 
 msgid "Marginal Effects Plots"
@@ -766,15 +952,6 @@ msgstr ""
 msgid "Performance Diagnostics"
 msgstr ""
 
-msgid "Deviance"
-msgstr ""
-
-msgid "AIC"
-msgstr ""
-
-msgid "BIC"
-msgstr ""
-
 msgid "McFadden R%s"
 msgstr ""
 
@@ -787,19 +964,7 @@ msgstr ""
 msgid "Cox & Snell R%s"
 msgstr ""
 
-msgid "Coefficients"
-msgstr ""
-
-msgid "Estimate"
-msgstr ""
-
 msgid "Standardized%s"
-msgstr ""
-
-msgid "Odds Ratio"
-msgstr ""
-
-msgid "z"
 msgstr ""
 
 msgid "Wald Statistic"
@@ -815,9 +980,6 @@ msgid "Standardized estimates represent estimates where the continuous predictor
 msgstr ""
 
 msgid "Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."
-msgstr ""
-
-msgid "Multicollinearity Diagnostics"
 msgstr ""
 
 msgid "Observed"
@@ -845,12 +1007,6 @@ msgid "Performance metrics"
 msgstr ""
 
 msgid "Value"
-msgstr ""
-
-msgid "Null model contains nuisance parameters: %s"
-msgstr ""
-
-msgid "%1$s level '%2$s' coded as class 1."
 msgstr ""
 
 msgid "Bootstrapping based on %i successful replicates."

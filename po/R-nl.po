@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-04-23 03:00\n"
+"POT-Creation-Date: 2022-05-14 03:29\n"
 "PO-Revision-Date: 2022-02-05 02:40+0000\n"
 "Last-Translator: DanaJohanna <dana__@live.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -349,6 +349,264 @@ msgstr "gebruikersprior"
 msgid "Stretched beta prior width"
 msgstr "Gerekte beta prior breedte"
 
+msgid ""
+"The Bernoulli family requires the dependent variable to be a factor with 2 "
+"levels."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the dependent variable (i.e. proportion of "
+"successes) to be between 0 and 1 (inclusive)."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be an integer."
+msgstr ""
+
+msgid ""
+"The Gamma family and the Inverse Gaussian family require the dependent "
+"variable to be positive."
+msgstr ""
+
+msgid "The Poisson family requires the dependent variable to be an integer."
+msgstr ""
+
+msgid ""
+"The Gaussian family with the log link requires the dependent variable to be "
+"positive."
+msgstr ""
+
+msgid ""
+"The Gaussian family requires the dependent variable to be a numerical "
+"variable."
+msgstr ""
+
+msgid "Model Summary"
+msgstr "Model Samenvatting"
+
+msgid "Model Summary - %s"
+msgstr "Model Samenvatting - %s"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "Deviance"
+msgstr "Afwijking"
+
+msgid "AIC"
+msgstr "AIC"
+
+msgid "BIC"
+msgstr "BIC"
+
+msgid "df"
+msgstr "vg"
+
+msgid "Null model contains nuisance parameters: %s"
+msgstr "Nulmodel bevat ruisparameters: %s"
+
+#, fuzzy
+msgid "Model Fit"
+msgstr "Model"
+
+msgid "Statistic"
+msgstr "Statistiek"
+
+msgid "Coefficients"
+msgstr "Coëfficiënten"
+
+msgid "Estimate"
+msgstr "Schatting"
+
+msgid "Standard Error"
+msgstr "Standaardfout"
+
+#, fuzzy
+msgid "Lower Bound"
+msgstr "Ondergrens"
+
+#, fuzzy
+msgid "Upper Bound"
+msgstr "Bovengrens"
+
+msgid "%1$s level '%2$s' coded as class 1."
+msgstr "%1$s niveau '%2$s' gecodeerd als klasse 1."
+
+#, fuzzy
+msgid "Diagnostics"
+msgstr "Gevalswijze Diagnostieken"
+
+#, fuzzy
+msgid "Residuals vs. Fitted Plots"
+msgstr "Residuen vs Gefit"
+
+#, fuzzy
+msgid "Standardized %1s residuals vs. fitted values"
+msgstr "Gestandaardiseerde Residuen"
+
+#, fuzzy
+msgid "Standardized %1s residual"
+msgstr "Gestandaardiseerde Residuen"
+
+#, fuzzy
+msgid "%1s Residuals vs. Predictor Plots"
+msgstr "Residuen vs. Voorspeld"
+
+#, fuzzy
+msgid "Standardized %1s residuals vs. %2s"
+msgstr "Gestandaardiseerde Residuen"
+
+#, fuzzy
+msgid "Normal Q-Q Plots: Standardized Residuals"
+msgstr "Q-Q Plot Gestandaardiseerde Residuen"
+
+#, fuzzy
+msgid "Normal Q-Q plot: Standardized %1s residuals"
+msgstr "Q-Q Plot Gestandaardiseerde Residuen"
+
+#, fuzzy
+msgid "Partial Residual Plots"
+msgstr "Partiële Regressiegrafiek"
+
+#, fuzzy
+msgid "Partial residual plot for %1s"
+msgstr "Voorspeller - residuengrafieken"
+
+msgid "Partial residual for %1s"
+msgstr ""
+
+msgid "Plot: Working responses vs. linear predictor"
+msgstr ""
+
+msgid "Working responses, z"
+msgstr ""
+
+msgid "Outliers Tables"
+msgstr ""
+
+msgid "Table: Top n outliers based on %1s residuals"
+msgstr ""
+
+msgid "Case Number"
+msgstr "Gevalsnummer"
+
+msgid "Residual"
+msgstr "Residu"
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+msgid "Multicollinearity Diagnostics"
+msgstr "Collineariteitsdiagnostieken"
+
+msgid "Tolerance"
+msgstr "Tolerantie"
+
+msgid "VIF"
+msgstr "VIF"
+
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgid "Estimated Marginal Means"
+msgstr ""
+
+msgid "SE"
+msgstr "Std. Fout"
+
+msgid "Lower"
+msgstr "Onder"
+
+#, fuzzy
+msgid "%s%% CI"
+msgstr "%s%% BI:"
+
+msgid "Upper"
+msgstr "Boven"
+
+msgid "t"
+msgstr "t"
+
+msgid "z"
+msgstr "z"
+
+msgid "Results are on the response scale."
+msgstr ""
+
+msgid "Results are not on the response scale and might be misleading."
+msgstr ""
+
+msgid "Contrasts"
+msgstr ""
+
+msgid "Odds Ratio"
+msgstr "Odds ratio"
+
+#, fuzzy
+msgid "Ratio"
+msgstr "Odds ratio"
+
+msgid "Plotting is not possible: %s"
+msgstr "Grafeken maken niet mogelijk: %s"
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr ""
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr ""
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr ""
+
+msgid "Bonferroni"
+msgstr ""
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "no terms in scope"
 msgstr "geen termen in scope"
 
@@ -406,15 +664,6 @@ msgstr ""
 "Fout in Methode Specificatie: Entry F-waarde moet groter zijn dan "
 "uitsluiting F-waarde"
 
-msgid "Model Summary"
-msgstr "Model Samenvatting"
-
-msgid "Model Summary - %s"
-msgstr "Model Samenvatting - %s"
-
-msgid "Model"
-msgstr "Model"
-
 msgid "R"
 msgstr "R"
 
@@ -445,9 +694,6 @@ msgstr "Autocorrelatie"
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
 
-msgid "Statistic"
-msgstr "Statistiek"
-
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
 "p-waarde voor Durbin-Watson toets is niet beschikbaar voor gewogen regressie."
@@ -461,9 +707,6 @@ msgstr "ANOVA"
 msgid "Sum of Squares"
 msgstr "Kwadratensom"
 
-msgid "df"
-msgstr "vg"
-
 msgid "Mean Square"
 msgstr "Gemiddelde kwadratensom"
 
@@ -473,41 +716,20 @@ msgstr "F"
 msgid "Regression"
 msgstr "Regressie"
 
-msgid "Residual"
-msgstr "Residu"
-
 msgid "Total"
 msgstr "Totaal"
 
 msgid "Unstandardized"
 msgstr "Ongestandaardiseerd"
 
-msgid "Standard Error"
-msgstr "Standaardfout"
-
 msgid "Standardized"
 msgstr "Gestandaardiseerd"
-
-msgid "t"
-msgstr "t"
 
 msgid "%.0f%% CI"
 msgstr "%.0f%% CI"
 
-msgid "Lower"
-msgstr "Onder"
-
-msgid "Upper"
-msgstr "Boven"
-
 msgid "Collinearity Statistics"
 msgstr "Collineaire Statistiek"
-
-msgid "Tolerance"
-msgstr "Tolerantie"
-
-msgid "VIF"
-msgstr "VIF"
 
 msgid ""
 "Standardized coefficients and collinearity statistics can only be computed "
@@ -596,9 +818,6 @@ msgstr ""
 msgid "Casewise Diagnostics"
 msgstr "Gevalswijze Diagnostieken"
 
-msgid "Case Number"
-msgstr "Gevalsnummer"
-
 msgid "Std. Residual"
 msgstr "Std. Residu"
 
@@ -673,9 +892,6 @@ msgstr "Residuen %s"
 msgid "Descriptives"
 msgstr "Beschrijvende statistiek"
 
-msgid "SE"
-msgstr "Std. Fout"
-
 msgid "H%s"
 msgstr "H%s"
 
@@ -725,9 +941,6 @@ msgid ""
 msgstr ""
 "Er is alleen een intercept model, kan geen betekenisvolle informatie "
 "weergeven."
-
-msgid "Plotting is not possible: %s"
-msgstr "Grafeken maken niet mogelijk: %s"
 
 msgid "Marginal Effects Plots"
 msgstr "Marginale Effecten Grafieken"
@@ -903,15 +1116,6 @@ msgstr ""
 msgid "Performance Diagnostics"
 msgstr "Prestatie Diagnostieken"
 
-msgid "Deviance"
-msgstr "Afwijking"
-
-msgid "AIC"
-msgstr "AIC"
-
-msgid "BIC"
-msgstr "BIC"
-
 msgid "McFadden R%s"
 msgstr "McFadden R%s"
 
@@ -924,20 +1128,8 @@ msgstr "Tjur R%s"
 msgid "Cox & Snell R%s"
 msgstr "Cox & Snell R%s"
 
-msgid "Coefficients"
-msgstr "Coëfficiënten"
-
-msgid "Estimate"
-msgstr "Schatting"
-
 msgid "Standardized%s"
 msgstr "Gestandaardiseerd%s"
-
-msgid "Odds Ratio"
-msgstr "Odds ratio"
-
-msgid "z"
-msgstr "z"
 
 msgid "Wald Statistic"
 msgstr "Wald statistiek"
@@ -961,9 +1153,6 @@ msgid ""
 msgstr ""
 "Coëfficiëntschatting en robuuste standaardfout zijn gebaseerd op de mediaan "
 "van de bootstrapverdeling."
-
-msgid "Multicollinearity Diagnostics"
-msgstr "Collineariteitsdiagnostieken"
 
 msgid "Observed"
 msgstr "Geobserveerd"
@@ -991,12 +1180,6 @@ msgstr "Prestatiestatistieken"
 
 msgid "Value"
 msgstr "Waarde"
-
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Nulmodel bevat ruisparameters: %s"
-
-msgid "%1$s level '%2$s' coded as class 1."
-msgstr "%1$s niveau '%2$s' gecodeerd als klasse 1."
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrapping gebaseerd op %i succesvolle replicaties."

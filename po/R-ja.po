@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-04-23 03:00\n"
+"POT-Creation-Date: 2022-05-14 03:29\n"
 "PO-Revision-Date: 2022-02-12 21:37+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -347,6 +347,265 @@ msgstr "ユーザー事前分布"
 msgid "Stretched beta prior width"
 msgstr "拡張ベータ事前分布の幅"
 
+msgid ""
+"The Bernoulli family requires the dependent variable to be a factor with 2 "
+"levels."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the dependent variable (i.e. proportion of "
+"successes) to be between 0 and 1 (inclusive)."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be an integer."
+msgstr ""
+
+msgid ""
+"The Gamma family and the Inverse Gaussian family require the dependent "
+"variable to be positive."
+msgstr ""
+
+msgid "The Poisson family requires the dependent variable to be an integer."
+msgstr ""
+
+msgid ""
+"The Gaussian family with the log link requires the dependent variable to be "
+"positive."
+msgstr ""
+
+msgid ""
+"The Gaussian family requires the dependent variable to be a numerical "
+"variable."
+msgstr ""
+
+msgid "Model Summary"
+msgstr "モデルの概要"
+
+msgid "Model Summary - %s"
+msgstr "モデルの概要 - %s"
+
+msgid "Model"
+msgstr "モデル"
+
+msgid "Deviance"
+msgstr "デビアンス"
+
+msgid "AIC"
+msgstr "AIC"
+
+msgid "BIC"
+msgstr "BIC"
+
+msgid "df"
+msgstr "df"
+
+msgid "Null model contains nuisance parameters: %s"
+msgstr "Nullモデルには妨害パラメータが含まれています: %s"
+
+#, fuzzy
+msgid "Model Fit"
+msgstr "モデル"
+
+msgid "Statistic"
+msgstr "統計量"
+
+msgid "Coefficients"
+msgstr "係数"
+
+msgid "Estimate"
+msgstr "推定"
+
+msgid "Standard Error"
+msgstr "標準誤差"
+
+#, fuzzy
+msgid "Lower Bound"
+msgstr "下限"
+
+#, fuzzy
+msgid "Upper Bound"
+msgstr "上限"
+
+msgid "%1$s level '%2$s' coded as class 1."
+msgstr "%1$s水準の「%2$s」がクラス1としてコード化されています。"
+
+#, fuzzy
+msgid "Diagnostics"
+msgstr "ケースワイズ診断"
+
+#, fuzzy
+msgid "Residuals vs. Fitted Plots"
+msgstr "残差対適合"
+
+#, fuzzy
+msgid "Standardized %1s residuals vs. fitted values"
+msgstr "標準化された残差"
+
+#, fuzzy
+msgid "Standardized %1s residual"
+msgstr "標準化された残差"
+
+#, fuzzy
+msgid "%1s Residuals vs. Predictor Plots"
+msgstr "残差と予測値の比較"
+
+#, fuzzy
+msgid "Standardized %1s residuals vs. %2s"
+msgstr "標準化された残差"
+
+#, fuzzy
+msgid "Normal Q-Q Plots: Standardized Residuals"
+msgstr "Q-Qプロット 標準化された残差"
+
+#, fuzzy
+msgid "Normal Q-Q plot: Standardized %1s residuals"
+msgstr "Q-Qプロット 標準化された残差"
+
+#, fuzzy
+msgid "Partial Residual Plots"
+msgstr "偏回帰プロット"
+
+#, fuzzy
+msgid "Partial residual plot for %1s"
+msgstr "予測変数 - 残差プロット"
+
+msgid "Partial residual for %1s"
+msgstr ""
+
+msgid "Plot: Working responses vs. linear predictor"
+msgstr ""
+
+msgid "Working responses, z"
+msgstr ""
+
+msgid "Outliers Tables"
+msgstr ""
+
+msgid "Table: Top n outliers based on %1s residuals"
+msgstr ""
+
+msgid "Case Number"
+msgstr "ケース番号"
+
+msgid "Residual"
+msgstr "残差"
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+#, fuzzy
+msgid "Multicollinearity Diagnostics"
+msgstr "共線性の診断"
+
+msgid "Tolerance"
+msgstr "許容度"
+
+msgid "VIF"
+msgstr "VIF"
+
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgid "Estimated Marginal Means"
+msgstr ""
+
+msgid "SE"
+msgstr "標準誤差"
+
+msgid "Lower"
+msgstr "下"
+
+#, fuzzy
+msgid "%s%% CI"
+msgstr "%s%% CI:"
+
+msgid "Upper"
+msgstr "上"
+
+msgid "t"
+msgstr "t"
+
+msgid "z"
+msgstr "z"
+
+msgid "Results are on the response scale."
+msgstr ""
+
+msgid "Results are not on the response scale and might be misleading."
+msgstr ""
+
+msgid "Contrasts"
+msgstr ""
+
+msgid "Odds Ratio"
+msgstr "オッズ比"
+
+#, fuzzy
+msgid "Ratio"
+msgstr "オッズ比"
+
+msgid "Plotting is not possible: %s"
+msgstr "プロットができません: %s"
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr ""
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr ""
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr ""
+
+msgid "Bonferroni"
+msgstr ""
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "no terms in scope"
 msgstr "範囲内の用語なし"
 
@@ -397,15 +656,6 @@ msgid ""
 msgstr ""
 "ステップ法の基準のエラーです。入力したF値は削除のF値より大きい必要があります"
 
-msgid "Model Summary"
-msgstr "モデルの概要"
-
-msgid "Model Summary - %s"
-msgstr "モデルの概要 - %s"
-
-msgid "Model"
-msgstr "モデル"
-
 msgid "R"
 msgstr "R"
 
@@ -436,9 +686,6 @@ msgstr "自己相関"
 msgid "Durbin-Watson"
 msgstr "ダービン・ワトソン"
 
-msgid "Statistic"
-msgstr "統計量"
-
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr "ダービン-ワトソン検定のp値は重み付け回帰では使用できません。"
 
@@ -451,9 +698,6 @@ msgstr "分散分析"
 msgid "Sum of Squares"
 msgstr "平方和"
 
-msgid "df"
-msgstr "df"
-
 msgid "Mean Square"
 msgstr "平均平方"
 
@@ -463,41 +707,20 @@ msgstr "F"
 msgid "Regression"
 msgstr "回帰"
 
-msgid "Residual"
-msgstr "残差"
-
 msgid "Total"
 msgstr "合計"
 
 msgid "Unstandardized"
 msgstr "非標準化"
 
-msgid "Standard Error"
-msgstr "標準誤差"
-
 msgid "Standardized"
 msgstr "標準化"
-
-msgid "t"
-msgstr "t"
 
 msgid "%.0f%% CI"
 msgstr "%.0f%% CI"
 
-msgid "Lower"
-msgstr "下"
-
-msgid "Upper"
-msgstr "上"
-
 msgid "Collinearity Statistics"
 msgstr "共線性統計"
-
-msgid "Tolerance"
-msgstr "許容度"
-
-msgid "VIF"
-msgstr "VIF"
 
 msgid ""
 "Standardized coefficients and collinearity statistics can only be computed "
@@ -579,9 +802,6 @@ msgstr ""
 msgid "Casewise Diagnostics"
 msgstr "ケースワイズ診断"
 
-msgid "Case Number"
-msgstr "ケース番号"
-
 msgid "Std. Residual"
 msgstr "標準的な残差"
 
@@ -654,9 +874,6 @@ msgstr "残差 %s"
 msgid "Descriptives"
 msgstr "記述統計量"
 
-msgid "SE"
-msgstr "標準誤差"
-
 msgid "H%s"
 msgstr "H%s"
 
@@ -699,9 +916,6 @@ msgstr "意味のある情報を表示できないため、切片モデルは省
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
 msgstr "切片モデルのみで、意味のある情報を表示することはできません。"
-
-msgid "Plotting is not possible: %s"
-msgstr "プロットができません: %s"
 
 msgid "Marginal Effects Plots"
 msgstr "周辺効果量プロット"
@@ -876,15 +1090,6 @@ msgstr ""
 msgid "Performance Diagnostics"
 msgstr "パフォーマンス診断"
 
-msgid "Deviance"
-msgstr "デビアンス"
-
-msgid "AIC"
-msgstr "AIC"
-
-msgid "BIC"
-msgstr "BIC"
-
 msgid "McFadden R%s"
 msgstr "McFadden R%s"
 
@@ -897,20 +1102,8 @@ msgstr "Tjur R%s"
 msgid "Cox & Snell R%s"
 msgstr "コックス＆スネルR %s"
 
-msgid "Coefficients"
-msgstr "係数"
-
-msgid "Estimate"
-msgstr "推定"
-
 msgid "Standardized%s"
 msgstr "標準化された %s"
-
-msgid "Odds Ratio"
-msgstr "オッズ比"
-
-msgid "z"
-msgstr "z"
 
 msgid "Wald Statistic"
 msgstr "Wald統計"
@@ -933,10 +1126,6 @@ msgid ""
 msgstr ""
 "係数推定値とロバスト標準誤差は、ブートストラップ分布の中央値に基づいていま"
 "す。"
-
-#, fuzzy
-msgid "Multicollinearity Diagnostics"
-msgstr "共線性の診断"
 
 msgid "Observed"
 msgstr "観測された"
@@ -965,12 +1154,6 @@ msgstr "パフォーマンス・メトリクス"
 
 msgid "Value"
 msgstr "値"
-
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Nullモデルには妨害パラメータが含まれています: %s"
-
-msgid "%1$s level '%2$s' coded as class 1."
-msgstr "%1$s水準の「%2$s」がクラス1としてコード化されています。"
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "%i 回の成功した再現に基づいてブートストラップを実行する."

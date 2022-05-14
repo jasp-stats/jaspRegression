@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-04-23 03:00\n"
+"POT-Creation-Date: 2022-05-14 03:29\n"
 "PO-Revision-Date: 2022-04-24 21:10+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -347,6 +347,264 @@ msgstr "benutzerdefinierter Prior"
 msgid "Stretched beta prior width"
 msgstr "Breite des gestreckten Beta-Priors"
 
+msgid ""
+"The Bernoulli family requires the dependent variable to be a factor with 2 "
+"levels."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the dependent variable (i.e. proportion of "
+"successes) to be between 0 and 1 (inclusive)."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be an integer."
+msgstr ""
+
+msgid ""
+"The Gamma family and the Inverse Gaussian family require the dependent "
+"variable to be positive."
+msgstr ""
+
+msgid "The Poisson family requires the dependent variable to be an integer."
+msgstr ""
+
+msgid ""
+"The Gaussian family with the log link requires the dependent variable to be "
+"positive."
+msgstr ""
+
+msgid ""
+"The Gaussian family requires the dependent variable to be a numerical "
+"variable."
+msgstr ""
+
+msgid "Model Summary"
+msgstr "Modellzusammenfassung"
+
+msgid "Model Summary - %s"
+msgstr "Modell-Zusammenfassung - %s"
+
+msgid "Model"
+msgstr "Modell"
+
+msgid "Deviance"
+msgstr "Devianz"
+
+msgid "AIC"
+msgstr "AIC"
+
+msgid "BIC"
+msgstr "BIC"
+
+msgid "df"
+msgstr "df"
+
+msgid "Null model contains nuisance parameters: %s"
+msgstr "Nullmodell enthält Störfaktoren: %s"
+
+#, fuzzy
+msgid "Model Fit"
+msgstr "Modell"
+
+msgid "Statistic"
+msgstr "Statistik"
+
+msgid "Coefficients"
+msgstr "Koeffizienten"
+
+msgid "Estimate"
+msgstr "Schätzung"
+
+msgid "Standard Error"
+msgstr "Standardfehler"
+
+#, fuzzy
+msgid "Lower Bound"
+msgstr "Untere Grenze"
+
+#, fuzzy
+msgid "Upper Bound"
+msgstr "Obere Grenze"
+
+msgid "%1$s level '%2$s' coded as class 1."
+msgstr "%1$s Stufe '%2$s' kodiert als Klasse 1."
+
+#, fuzzy
+msgid "Diagnostics"
+msgstr "Fallweise Diagnostiken"
+
+#, fuzzy
+msgid "Residuals vs. Fitted Plots"
+msgstr "Residuen vs Anpassung"
+
+#, fuzzy
+msgid "Standardized %1s residuals vs. fitted values"
+msgstr "Standardisierte Residuen"
+
+#, fuzzy
+msgid "Standardized %1s residual"
+msgstr "Standardisierte Residuen"
+
+#, fuzzy
+msgid "%1s Residuals vs. Predictor Plots"
+msgstr "Residuen vs. Vorhersage"
+
+#, fuzzy
+msgid "Standardized %1s residuals vs. %2s"
+msgstr "Standardisierte Residuen"
+
+#, fuzzy
+msgid "Normal Q-Q Plots: Standardized Residuals"
+msgstr "Q-Q-Diagramm der standardisierten Residuen"
+
+#, fuzzy
+msgid "Normal Q-Q plot: Standardized %1s residuals"
+msgstr "Q-Q-Diagramm der standardisierten Residuen"
+
+#, fuzzy
+msgid "Partial Residual Plots"
+msgstr "Partielles Regressionsdiagramm"
+
+#, fuzzy
+msgid "Partial residual plot for %1s"
+msgstr "Prädiktor - Residuen-Abbildungen"
+
+msgid "Partial residual for %1s"
+msgstr ""
+
+msgid "Plot: Working responses vs. linear predictor"
+msgstr ""
+
+msgid "Working responses, z"
+msgstr ""
+
+msgid "Outliers Tables"
+msgstr ""
+
+msgid "Table: Top n outliers based on %1s residuals"
+msgstr ""
+
+msgid "Case Number"
+msgstr "Fallnummer"
+
+msgid "Residual"
+msgstr "Residuum"
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+msgid "Multicollinearity Diagnostics"
+msgstr "Multikollinearitätsdiagnostiken"
+
+msgid "Tolerance"
+msgstr "Toleranz"
+
+msgid "VIF"
+msgstr "VIF"
+
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgid "Estimated Marginal Means"
+msgstr ""
+
+msgid "SE"
+msgstr "Standardfehler"
+
+msgid "Lower"
+msgstr "Untere"
+
+#, fuzzy
+msgid "%s%% CI"
+msgstr "%s%% GI:"
+
+msgid "Upper"
+msgstr "Obere"
+
+msgid "t"
+msgstr "t"
+
+msgid "z"
+msgstr "z"
+
+msgid "Results are on the response scale."
+msgstr ""
+
+msgid "Results are not on the response scale and might be misleading."
+msgstr ""
+
+msgid "Contrasts"
+msgstr ""
+
+msgid "Odds Ratio"
+msgstr "Chancenverhältnis"
+
+#, fuzzy
+msgid "Ratio"
+msgstr "Chancenverhältnis"
+
+msgid "Plotting is not possible: %s"
+msgstr "Abbilden ist nicht möglich: %s"
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr ""
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr ""
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr ""
+
+msgid "Bonferroni"
+msgstr ""
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "no terms in scope"
 msgstr "keine Terme im Geltungsbereich"
 
@@ -406,15 +664,6 @@ msgstr ""
 "Fehler bei den Kriterien der schrittweisen Methode: Der Aufnahme F-Wert muss "
 "kleiner als der Entfernungs-F-Wert sein"
 
-msgid "Model Summary"
-msgstr "Modellzusammenfassung"
-
-msgid "Model Summary - %s"
-msgstr "Modell-Zusammenfassung - %s"
-
-msgid "Model"
-msgstr "Modell"
-
 msgid "R"
 msgstr "R"
 
@@ -445,9 +694,6 @@ msgstr "Autokorrelation"
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
 
-msgid "Statistic"
-msgstr "Statistik"
-
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
 "Ein p-Wert für den Durbin-Watson-Test ist für die gewichtete Regression "
@@ -462,9 +708,6 @@ msgstr "ANOVA"
 msgid "Sum of Squares"
 msgstr "Quadratsumme"
 
-msgid "df"
-msgstr "df"
-
 msgid "Mean Square"
 msgstr "Mittlere Quadratsumme"
 
@@ -474,41 +717,20 @@ msgstr "F"
 msgid "Regression"
 msgstr "Regression"
 
-msgid "Residual"
-msgstr "Residuum"
-
 msgid "Total"
 msgstr "Gesamt"
 
 msgid "Unstandardized"
 msgstr "Unstandardisiert"
 
-msgid "Standard Error"
-msgstr "Standardfehler"
-
 msgid "Standardized"
 msgstr "Standardisiert"
-
-msgid "t"
-msgstr "t"
 
 msgid "%.0f%% CI"
 msgstr "%.0f%% KI"
 
-msgid "Lower"
-msgstr "Untere"
-
-msgid "Upper"
-msgstr "Obere"
-
 msgid "Collinearity Statistics"
 msgstr "Kollineare Statistik"
-
-msgid "Tolerance"
-msgstr "Toleranz"
-
-msgid "VIF"
-msgstr "VIF"
 
 msgid ""
 "Standardized coefficients and collinearity statistics can only be computed "
@@ -592,9 +814,6 @@ msgstr ""
 msgid "Casewise Diagnostics"
 msgstr "Fallweise Diagnostiken"
 
-msgid "Case Number"
-msgstr "Fallnummer"
-
 msgid "Std. Residual"
 msgstr "Std. Residuum"
 
@@ -671,9 +890,6 @@ msgstr "Residuen %s"
 msgid "Descriptives"
 msgstr "Deskriptive Statistiken"
 
-msgid "SE"
-msgstr "Standardfehler"
-
 msgid "H%s"
 msgstr "H%s"
 
@@ -721,9 +937,6 @@ msgid ""
 msgstr ""
 "Es gibt nur ein konstantes Modell, es kann keine bedeutsame Information "
 "gezeigt werden."
-
-msgid "Plotting is not possible: %s"
-msgstr "Abbilden ist nicht möglich: %s"
 
 msgid "Marginal Effects Plots"
 msgstr "Diagramme Marginaler Effekte"
@@ -900,15 +1113,6 @@ msgstr ""
 msgid "Performance Diagnostics"
 msgstr "Performanz-Diagnostiken"
 
-msgid "Deviance"
-msgstr "Devianz"
-
-msgid "AIC"
-msgstr "AIC"
-
-msgid "BIC"
-msgstr "BIC"
-
 msgid "McFadden R%s"
 msgstr "McFadden R%s"
 
@@ -921,20 +1125,8 @@ msgstr "Tjur R%s"
 msgid "Cox & Snell R%s"
 msgstr "Cox & Snell R%s"
 
-msgid "Coefficients"
-msgstr "Koeffizienten"
-
-msgid "Estimate"
-msgstr "Schätzung"
-
 msgid "Standardized%s"
 msgstr "Standardisiertes%s"
-
-msgid "Odds Ratio"
-msgstr "Chancenverhältnis"
-
-msgid "z"
-msgstr "z"
 
 msgid "Wald Statistic"
 msgstr "Wald-Statistik"
@@ -958,9 +1150,6 @@ msgid ""
 msgstr ""
 "Die Koeffizientenschätzung und der robuste Standardfehler basieren auf dem "
 "Median der Bootstrap-Verteilung."
-
-msgid "Multicollinearity Diagnostics"
-msgstr "Multikollinearitätsdiagnostiken"
 
 msgid "Observed"
 msgstr "Beobachtet"
@@ -988,12 +1177,6 @@ msgstr "Performanz-Metriken"
 
 msgid "Value"
 msgstr "Wert"
-
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Nullmodell enthält Störfaktoren: %s"
-
-msgid "%1$s level '%2$s' coded as class 1."
-msgstr "%1$s Stufe '%2$s' kodiert als Klasse 1."
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrap basiert auf %i erfolgreichen Wiederholungen."
