@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2022-05-14 03:29\n"
-"PO-Revision-Date: 2022-04-24 21:10+0000\n"
+"PO-Revision-Date: 2022-05-15 09:14+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/de/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 4.12.1-dev\n"
+"X-Generator: Weblate 4.13-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -351,34 +351,47 @@ msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "
 "levels."
 msgstr ""
+"Bei der Bernoulli-Familie muss die abhängige Variable ein Faktor mit 2 "
+"Stufen sein."
 
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "
 "successes) to be between 0 and 1 (inclusive)."
 msgstr ""
+"Bei der Binomial-Familie muss die abhängige Variable (d. h. der Anteil der "
+"Erfolge) zwischen 0 und 1 (einschließlich) liegen."
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be an integer."
 msgstr ""
+"Bei der Binomial-Familie muss die Gewichtungsvariable (d. h. die Gesamtzahl "
+"der Versuche) eine ganze Zahl sein."
 
 msgid ""
 "The Gamma family and the Inverse Gaussian family require the dependent "
 "variable to be positive."
 msgstr ""
+"Bei der Gamma-Familie und der inversen Gauß-Familie muss die abhängige "
+"Variable positiv sein."
 
 msgid "The Poisson family requires the dependent variable to be an integer."
 msgstr ""
+"Bei der Poisson-Familie muss die abhängige Variable eine ganze Zahl sein."
 
 msgid ""
 "The Gaussian family with the log link requires the dependent variable to be "
 "positive."
 msgstr ""
+"Bei der Gauß-Familie mit Log-Link-Funktion muss die abhängige Variable "
+"positiv sein."
 
 msgid ""
 "The Gaussian family requires the dependent variable to be a numerical "
 "variable."
 msgstr ""
+"Bei der Gauß-Familie muss die abhängige Variable eine numerische Variable "
+"sein."
 
 msgid "Model Summary"
 msgstr "Modellzusammenfassung"
@@ -404,9 +417,8 @@ msgstr "df"
 msgid "Null model contains nuisance parameters: %s"
 msgstr "Nullmodell enthält Störfaktoren: %s"
 
-#, fuzzy
 msgid "Model Fit"
-msgstr "Modell"
+msgstr "Modellanpassung"
 
 msgid "Statistic"
 msgstr "Statistik"
@@ -420,59 +432,47 @@ msgstr "Schätzung"
 msgid "Standard Error"
 msgstr "Standardfehler"
 
-#, fuzzy
 msgid "Lower Bound"
 msgstr "Untere Grenze"
 
-#, fuzzy
 msgid "Upper Bound"
 msgstr "Obere Grenze"
 
 msgid "%1$s level '%2$s' coded as class 1."
 msgstr "%1$s Stufe '%2$s' kodiert als Klasse 1."
 
-#, fuzzy
 msgid "Diagnostics"
-msgstr "Fallweise Diagnostiken"
+msgstr "Diagnostiken"
 
-#, fuzzy
 msgid "Residuals vs. Fitted Plots"
-msgstr "Residuen vs Anpassung"
+msgstr "Residuen vs. Anpassung Diagramme"
 
-#, fuzzy
 msgid "Standardized %1s residuals vs. fitted values"
-msgstr "Standardisierte Residuen"
+msgstr "Standardisierte %1s-Residuen vs. angepasste Werte"
 
-#, fuzzy
 msgid "Standardized %1s residual"
-msgstr "Standardisierte Residuen"
+msgstr "Standardisierte %1s Residuen"
 
-#, fuzzy
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr "Residuen vs. Vorhersage"
+msgstr "%1s Residuen vs. Prädiktor Diagramme"
 
-#, fuzzy
 msgid "Standardized %1s residuals vs. %2s"
-msgstr "Standardisierte Residuen"
+msgstr "Standardisierte %1s Residuen vs. %2s"
 
-#, fuzzy
 msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr "Q-Q-Diagramm der standardisierten Residuen"
+msgstr "Normal-Q-Q-Diagramme: Standardisierte Residuen"
 
-#, fuzzy
 msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr "Q-Q-Diagramm der standardisierten Residuen"
+msgstr "Normal-Q-Q-Diagramm: Standardisierte %1s Residuen"
 
-#, fuzzy
 msgid "Partial Residual Plots"
-msgstr "Partielles Regressionsdiagramm"
+msgstr "Partielle Residuen Diagramm"
 
-#, fuzzy
 msgid "Partial residual plot for %1s"
-msgstr "Prädiktor - Residuen-Abbildungen"
+msgstr "Partielle Residuen Diagramm für %1s"
 
 msgid "Partial residual for %1s"
-msgstr ""
+msgstr "Partielle Residuen für %1s"
 
 msgid "Plot: Working responses vs. linear predictor"
 msgstr ""
@@ -481,10 +481,10 @@ msgid "Working responses, z"
 msgstr ""
 
 msgid "Outliers Tables"
-msgstr ""
+msgstr "Ausreißer-Tabellen"
 
 msgid "Table: Top n outliers based on %1s residuals"
-msgstr ""
+msgstr "Tabelle: Top-n Ausreißer basierend auf %1s Residuen"
 
 msgid "Case Number"
 msgstr "Fallnummer"
@@ -493,19 +493,19 @@ msgid "Residual"
 msgstr "Residuum"
 
 msgid "Table: Influential Cases"
-msgstr ""
+msgstr "Tabelle: Einflussreiche Fälle"
 
 msgid "DFBETAS_%1s"
-msgstr ""
+msgstr "DFBETAS_%1s"
 
 msgid "DFBETAS:Intercept"
-msgstr ""
+msgstr "DFBETAS:Konstante"
 
 msgid "DFBETAS:%1s"
-msgstr ""
+msgstr "DFBETAS:%1s"
 
 msgid "No influential cases found."
-msgstr ""
+msgstr "Keine einflussreichen Fälle gefunden."
 
 msgid "Multicollinearity Diagnostics"
 msgstr "Multikollinearitätsdiagnostiken"
@@ -517,10 +517,10 @@ msgid "VIF"
 msgstr "VIF"
 
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Geschätzte Randmittelwerte und Kontrastanalyse"
 
 msgid "Estimated Marginal Means"
-msgstr ""
+msgstr "Geschätzte Randmittelwerte"
 
 msgid "SE"
 msgstr "Standardfehler"
@@ -528,9 +528,8 @@ msgstr "Standardfehler"
 msgid "Lower"
 msgstr "Untere"
 
-#, fuzzy
 msgid "%s%% CI"
-msgstr "%s%% GI:"
+msgstr "%s%% KI"
 
 msgid "Upper"
 msgstr "Obere"
@@ -542,68 +541,68 @@ msgid "z"
 msgstr "z"
 
 msgid "Results are on the response scale."
-msgstr ""
+msgstr "Ergebnisse sind auf der Antwortskala."
 
 msgid "Results are not on the response scale and might be misleading."
 msgstr ""
+"Ergebnisse sind nicht auf der Antwortskala und könnten irreführend sein."
 
 msgid "Contrasts"
-msgstr ""
+msgstr "Kontraste"
 
 msgid "Odds Ratio"
 msgstr "Chancenverhältnis"
 
-#, fuzzy
 msgid "Ratio"
-msgstr "Chancenverhältnis"
+msgstr "Verhältnis"
 
 msgid "Plotting is not possible: %s"
 msgstr "Abbilden ist nicht möglich: %s"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
+msgstr "P-Werte entsprechen dem Test der Nullhypothese gegen %s."
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "Ergebnisse sind gemittelt über die Stufen von: %s."
 
 msgid "P-values are not adjusted."
-msgstr ""
+msgstr "P-Werte sind nicht korrigiert."
 
 msgid "Holm"
-msgstr ""
+msgstr "Holm"
 
 msgid "Homel"
-msgstr ""
+msgstr "Homel"
 
 msgid "Hochberg"
-msgstr ""
+msgstr "Hochberg"
 
 msgid "Multivariate-t"
-msgstr ""
+msgstr "Multivariat-t"
 
 msgid "Tukey"
-msgstr ""
+msgstr "Tukey"
 
 msgid "Benjamini-Hochberg"
-msgstr ""
+msgstr "Benjamini-Hochberg"
 
 msgid "Benjamini-Yekutieli"
-msgstr ""
+msgstr "Benjamini-Yekutieli"
 
 msgid "Scheffé"
-msgstr ""
+msgstr "Scheffé"
 
 msgid "Sidak"
-msgstr ""
+msgstr "Sidak"
 
 msgid "Dunnett"
-msgstr ""
+msgstr "Dunnett"
 
 msgid "Bonferroni"
-msgstr ""
+msgstr "Bonferroni"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr ""
+msgstr "P-Werte sind korrigiert mit %s-Korrektur."
 
 msgid "no terms in scope"
 msgstr "keine Terme im Geltungsbereich"
