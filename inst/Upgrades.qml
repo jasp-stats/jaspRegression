@@ -63,7 +63,7 @@ Upgrades
 
 		ChangeJS
 		{
-			name:		"missingValues"
+			name:		"naAction"
 			jsFunction:	function(options)
 			{
 				switch(options["missingValues"])
