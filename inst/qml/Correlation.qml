@@ -43,21 +43,21 @@ Form
 	Group
 	{
 		title: qsTr("Additional Options")
-		CheckBox { name: "displayPairwise";		label: qsTr("Display pairwise")									}
-		CheckBox { name: "reportSignificance";	label: qsTr("Report significance");				checked: true	}
-		CheckBox { name: "flagSignificant";		label: qsTr("Flag significant correlations")					}
+		CheckBox { name: "pairwiseDisplay";		label: qsTr("Display pairwise")									}
+		CheckBox { name: "significanceReport";	label: qsTr("Report significance");				checked: true	}
+		CheckBox { name: "significanceFlagged";	label: qsTr("Flag significant correlations")					}
 		CheckBox
 		{
-			name: "confidenceIntervals";		label: qsTr("Confidence intervals")
-			CIField { name: "confidenceIntervalsInterval"; label: qsTr("Interval") }
+			name: "ci";		label: qsTr("Confidence intervals")
+			CIField { name: "ciLevel"; label: qsTr("Interval") }
 			CheckBox
 			{
-				name: "bootstrap"
+				name: "ciBootstrap"
 				label: qsTr("From")
 				childrenOnSameRow: true
 				IntegerField
 				{
-					name: "bootstrapReplicates"
+					name: "ciBootstrapSamples"
 					defaultValue: 1000
 					fieldWidth: 50
 					min: 100
@@ -65,14 +65,14 @@ Form
 				}
 			}
 		}
-		CheckBox { name: "VovkSellkeMPR";		label: qsTr("Vovk-Sellke maximum p-ratio")			}
-		CheckBox { name: "sampleSize";			label: qsTr("Sample size") }
+		CheckBox { name: "vovkSellke";		label: qsTr("Vovk-Sellke maximum p-ratio")			}
+		CheckBox { name: "sampleSize";		label: qsTr("Sample size") }
 	}
 
 	RadioButtonGroup
 	{
 		title: qsTr("Alt. Hypothesis")
-		name: "hypothesis"
+		name: "alternative"
 		RadioButton { value: "correlated";				label: qsTr("Correlated"); checked: true	}
 		RadioButton { value: "correlatedPositively";	label: qsTr("Correlated positively")		}
 		RadioButton { value: "correlatedNegatively";	label: qsTr("Correlated negatively")		}
@@ -83,18 +83,18 @@ Form
 		title: qsTr("Plots")
 		CheckBox
 		{
-			name: "plotCorrelationMatrix";			label: qsTr("Scatter plots")
-			CheckBox { name: "plotDensities";		label: qsTr("Densities for variables")	}
-			CheckBox { name: "plotStatistics";		label: qsTr("Statistics")				}
+			name: "scatterPlot";			label: qsTr("Scatter plots")
+			CheckBox { name: "scatterPlotDensity";		label: qsTr("Densities for variables")	}
+			CheckBox { name: "scatterPlotStatistic";	label: qsTr("Statistics")				}
             CheckBox
             {
-                name: "plotConfidenceIntervals"; label: qsTr("Confidence intervals"); childrenOnSameRow: true
-                CIField { name: "plotConfidenceIntervalsInterval" }
+				name: "scatterPlotCi"; label: qsTr("Confidence intervals"); childrenOnSameRow: true
+				CIField { name: "scatterPlotCiLevel" }
             }
             CheckBox {
-                name: "plotPredictionIntervals"; label: qsTr("Prediction intervals")
+				name: "scatterPlotPredictionInterval"; label: qsTr("Prediction intervals")
                 childrenOnSameRow: true
-                CIField { name: "plotPredictionIntervalsInterval"; }
+				CIField { name: "scatterPlotPredictionIntervalLevel"; }
             }
 		}
 		CheckBox{ name: "plotHeatmap"; label: qsTr("Heatmap") }
@@ -108,19 +108,19 @@ Form
 		Group
 		{
 			title: qsTr("Multivariate Normality")
-			CheckBox { name: "multivariateShapiro"; label: qsTr("Shapiro")			   }
-			CheckBox { name: "multivariateRoyston"; label: qsTr("Royston"); debug: true  }
-			CheckBox { name: "multivariateMardia" ; label: qsTr("Mardia");  debug: true  }
-			CheckBox { name: "multivariateEnergy" ; label: qsTr("Energy");  debug: true  }
+			CheckBox { name: "assumptionCheckMultivariateShapiro"; label: qsTr("Shapiro")			   }
+			CheckBox { name: "assumptionCheckMultivariateRoyston"; label: qsTr("Royston"); debug: true  }
+			CheckBox { name: "assumptionCheckMultivariateMardia" ; label: qsTr("Mardia");  debug: true  }
+			CheckBox { name: "assumptionCheckMultivariateEnergy" ; label: qsTr("Energy");  debug: true  }
 		}
 
 		Group
 		{
 			title: qsTr("Pairwise Normality")
-			CheckBox { name: "pairwiseShapiro"; label: qsTr("Shapiro")			   }
-			CheckBox { name: "pairwiseRoyston"; label: qsTr("Royston"); debug: true  }
-			CheckBox { name: "pairwiseMardia" ; label: qsTr("Mardia");  debug: true  }
-			CheckBox { name: "pairwiseEnergy" ; label: qsTr("Energy");  debug: true  }
+			CheckBox { name: "assumptionCheckPairwiseShapiro"; label: qsTr("Shapiro")			   }
+			CheckBox { name: "assumptionCheckPairwiseRoyston"; label: qsTr("Royston"); debug: true  }
+			CheckBox { name: "assumptionCheckPairwiseMardia" ; label: qsTr("Mardia");  debug: true  }
+			CheckBox { name: "assumptionCheckPairwiseEnergy" ; label: qsTr("Energy");  debug: true  }
 		}
 	}
 
@@ -132,7 +132,7 @@ Form
 		{
 			title: qsTr("Statistics")
 			debug: true
-			CheckBox { name: "meansAndStdDev";	label: qsTr("Means and standard deviations")				}
+			CheckBox { name: "meansAndSd";	label: qsTr("Means and standard deviations")				}
 			CheckBox { name: "crossProducts";	label: qsTr("Cross-product deviations and covariances")		}
 		}
 
@@ -140,8 +140,8 @@ Form
 		{
 			name: "missingValues"
 			title: qsTr("Missing Values")
-			RadioButton { value: "excludePairwise"; label: qsTr("Exclude cases pairwise"); checked: true	}
-			RadioButton { value: "excludeListwise"; label: qsTr("Exclude cases listwise")					}
+			RadioButton { value: "pairwise"; label: qsTr("Exclude cases pairwise"); checked: true	}
+			RadioButton { value: "listwise"; label: qsTr("Exclude cases listwise")					}
 		}
 	}
 }
