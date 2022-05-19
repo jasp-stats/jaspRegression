@@ -2,16 +2,16 @@ context("Correlation")
 
 # test general results ----
 options <- jaspTools::analysisOptions("Correlation")
-options$VovkSellkeMPR <- TRUE
-options$confidenceIntervals <- TRUE
-options$flagSignificant <- TRUE
+options$vovkSellke <- TRUE
+options$ci <- TRUE
+options$significanceFlagged <- TRUE
 options$kendallsTauB <- TRUE
-options$multivariateShapiro <- TRUE
-options$pairwiseShapiro <- TRUE
-options$plotCorrelationMatrix <- TRUE
-options$plotDensities <- TRUE
-options$plotHeatmap <- TRUE
-options$plotStatistics <- TRUE
+options$assumptionCheckMultivariateShapiro <- TRUE
+options$assumptionCheckPairwiseShapiro <- TRUE
+options$scatterPlot <- TRUE
+options$scatterPlotDensity <- TRUE
+options$heatmapPlot <- TRUE
+options$scatterPlotStatistic <- TRUE
 options$sampleSize <- TRUE
 options$spearman <- TRUE
 options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
@@ -113,9 +113,9 @@ test_that("Correlation Table results match", {
 
 test_that("Correlation Table hypothesis correlated positively match", {
   options <- jaspTools::analysisOptions("Correlation")
-  options$confidenceIntervals <- TRUE
-  options$displayPairwise <- TRUE
-  options$hypothesis <- "correlatedPositively"
+  options$ci <- TRUE
+  options$pairwiseDisplay <- TRUE
+  options$alternative <- "correlatedPositively"
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE
   options$variables <- list("contNormal", "contGamma", "contExpon")
@@ -138,9 +138,9 @@ test_that("Correlation Table hypothesis correlated positively match", {
 
 test_that("Correlation Table hypothesis correlated negatively match", {
   options <- jaspTools::analysisOptions("Correlation")
-  options$confidenceIntervals <- TRUE
-  options$displayPairwise <- TRUE
-  options$hypothesis <- "correlatedNegatively"
+  options$ci <- TRUE
+  options$pairwiseDisplay <- TRUE
+  options$alternative <- "correlatedNegatively"
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE
   options$variables <- list("contNormal", "contGamma", "contExpon")
@@ -164,7 +164,7 @@ test_that("Correlation Table hypothesis correlated negatively match", {
 # test error handling
 test_that("Analysis handles errors", {
   options <- jaspTools::analysisOptions("Correlation")
-  options$displayPairwise <- TRUE
+  options$pairwiseDisplay <- TRUE
   options$variables <- list("contNormal", "debMiss99", "debSame")
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
@@ -181,7 +181,7 @@ test_that("Analysis handles errors", {
 test_that("Pearson's partial correlation correct", {
   # Validated against Field, A. Discovering Statistics (5th edition). Chapter 8.5
   options <- jaspTools::analysisOptions("Correlation")
-  options$displayPairwise <- TRUE
+  options$pairwiseDisplay <- TRUE
   options$variables <- list("Exam", "Anxiety")
   options$partialOutVariables <- list("Revise")
 
@@ -230,11 +230,11 @@ test_that("Concordance function works", {
 test_that("Bootstrapping results match", {
   options <- jaspTools::analysisOptions("Correlation")
   options$pearson <- options$spearman <- options$kendallsTauB <- TRUE
-  options$confidenceIntervals <- TRUE
-  options$confidenceIntervalsInterval <- 0.9
-  options$bootstrap <- TRUE
-  options$bootstrapReplicates <- 100
-  options$displayPairwise <- TRUE
+  options$ci <- TRUE
+  options$ciLevel <- 0.9
+  options$ciBootstrap <- TRUE
+  options$ciBootstrapSamples <- 100
+  options$pairwiseDisplay <- TRUE
   options$variables <- list("contNormal", "contcor1", "debMiss30")
   options$partialOutVariables <- list("contcor2", "contGamma")
 
@@ -262,9 +262,9 @@ test_that("Bootstrapping fails gracefully", {
   options <- jaspTools::analysisOptions("Correlation")
   options$variables <- c("contNormal", "debMiss99")
   options$partialOutVariables <- c("facFive")
-  options$bootstrap <- TRUE
-  options$bootstrapReplicates <- 100
-  options$confidenceIntervals <- TRUE
+  options$ciBootstrap <- TRUE
+  options$ciBootstrapSamples <- 100
+  options$ci <- TRUE
 
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
