@@ -25,14 +25,6 @@ import JASP				1.0
 // All Analysis forms must be built with the From QML item
 Group {
 
-	function updateWeightsTitle() {
-		if (family.currentText === "Binomial")
-		{title = qsTr("Total Number of Trials")}
-		else
-		{title = qsTr("Weights")}
-		return title
-	}
-
 	VariablesForm
 	{
 		preferredHeight: 350
@@ -67,7 +59,7 @@ Group {
 		AssignedVariablesList
 		{
 			name:              "weights"
-			title:             updateWeightsTitle()
+			title:             family.currentText === "Binomial" ? qsTr("Total Number of Trials") : qsTr("Weights")
 			allowedColumns:    ["ordinal", "scale"]
 			singleVariable:    true
 		}
