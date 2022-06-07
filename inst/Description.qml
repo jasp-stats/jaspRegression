@@ -7,7 +7,7 @@ Description
 	title		: qsTr("Regression")
 	description	: qsTr("Evaluate the association between variables")
 	icon		: "analysis-classical-regression.svg"
-	version		: "0.15"
+	version		: "0.16.3"
 	author		: "JASP Team"
 	maintainer	: "JASP Team <info@jasp-stats.org>"
 	website		: "jasp-stats.org"

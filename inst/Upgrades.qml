@@ -7,7 +7,7 @@ Upgrades
 	Upgrade
 	{
 		functionName:		"Correlation"
-		fromVersion:		"0.16.2"
+		fromVersion:		"0.15"
 		toVersion:			"0.16.3"
 
 		ChangeRename { from: "conditioningVariables";	to: "partialOutVariables" }
