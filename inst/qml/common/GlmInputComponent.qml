@@ -59,7 +59,7 @@ Group {
 		AssignedVariablesList
 		{
 			name:              "weights"
-			title:             family.currentText === "Binomial" ? qsTr("Total Number of Trials") : qsTr("Weights")
+			title:             family.currentValue === "binomial" ? qsTr("Total Number of Trials") : qsTr("Weights")
 			allowedColumns:    ["ordinal", "scale"]
 			singleVariable:    true
 		}
