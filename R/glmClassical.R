@@ -1182,8 +1182,20 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
           emmeans::regrid(emm),
           contrs,
           adjust = selectedPvalueAdjustment
+          )
         )
-      )) }
+      )
+    } else {
+    emmContrast <- try(
+      as.data.frame(
+        emmeans::contrast(
+          emm,
+          contrs,
+          adjust = selectedPvalueAdjustment
+          )
+        )
+      )
+  }
 
   if (jaspBase::isTryError(emmContrast)) {
     emmContrastSummary$setError(emmContrast)
