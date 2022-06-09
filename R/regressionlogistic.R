@@ -343,7 +343,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   }
 
   .confusionMatAddColInfo(confusionMatrix, levs, "integer")
-  confusionMatrix$addColumnInfo(name = "perCorrect", title = gettext("% Correct"), type = "number")
+  confusionMatrix$addColumnInfo(name = "perCorrect", title = gettextf("%% Correct"), type = "number")
 
   container[["confusionMatrix"]] <- confusionMatrix
 

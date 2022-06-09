@@ -1070,7 +1070,7 @@ msgstr ""
 msgid "Confusion matrix"
 msgstr ""
 
-msgid "% Correct"
+msgid "%% Correct"
 msgstr ""
 
 msgid "Performance metrics"

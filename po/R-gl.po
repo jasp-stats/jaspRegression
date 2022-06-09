@@ -1170,8 +1170,8 @@ msgstr "Factor"
 msgid "Confusion matrix"
 msgstr "Matriz de desarranxo"
 
-msgid "% Correct"
-msgstr "% Correcto"
+msgid "%% Correct"
+msgstr "%% Correcto"
 
 msgid "Performance metrics"
 msgstr "Métricas de comportamento"

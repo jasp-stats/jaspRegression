@@ -1146,8 +1146,8 @@ msgid "Confusion matrix"
 msgstr "混同行列"
 
 #, fuzzy
-msgid "% Correct"
-msgstr "%s 相関"
+msgid "%% Correct"
+msgstr "%% 相関"
 
 msgid "Performance metrics"
 msgstr "パフォーマンス・メトリクス"

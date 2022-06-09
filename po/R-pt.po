@@ -1181,8 +1181,8 @@ msgid "Confusion matrix"
 msgstr "Matriz de confusão"
 
 #, fuzzy
-msgid "% Correct"
-msgstr "%s Correlações"
+msgid "%% Correct"
+msgstr "%% Correlações"
 
 msgid "Performance metrics"
 msgstr "Métricas de performance"
