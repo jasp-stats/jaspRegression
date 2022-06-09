@@ -1171,8 +1171,8 @@ msgstr "Factor"
 msgid "Confusion matrix"
 msgstr "Verwarringsmatrix"
 
-msgid "% Correct"
-msgstr "%s Correct"
+msgid "%% Correct"
+msgstr "%% Correct"
 
 msgid "Performance metrics"
 msgstr "Prestatiestatistieken"
