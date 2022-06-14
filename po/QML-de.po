@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-06-14 21:04+0000\n"
+"PO-Revision-Date: 2022-06-14 22:21+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
@@ -456,7 +456,7 @@ msgstr "Standard-Residuum >"
 
 msgctxt "RegressionLinear|"
 msgid "Cook's distance >"
-msgstr "Cooks Distanz >"
+msgstr "Cook-Abstand >"
 
 msgctxt "RegressionLinear|"
 msgid "All"
@@ -956,7 +956,7 @@ msgstr "Standardresiduum >"
 
 msgctxt "RegressionLogistic|"
 msgid "Cook's distance >"
-msgstr "Cooks Distanz >"
+msgstr "Cook-Abstand >"
 
 msgctxt "RegressionLogistic|"
 msgid "All"
@@ -1224,7 +1224,7 @@ msgstr "Pearson-Residuen"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Quantile Residuals"
-msgstr ""
+msgstr "Quantil-Residuen"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Other Plots"
@@ -1322,23 +1322,23 @@ msgstr "Kovarianz-Verhältnis"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Cook's distance"
-msgstr ""
+msgstr "Cook-Abstand"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Leverages"
-msgstr ""
+msgstr "Hebelwerte"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "Multikollinearität"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Toleranz"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
 #, fuzzy
 msgctxt "GeneralizedLinearModel|"
@@ -1347,26 +1347,26 @@ msgstr "Weitere Optionen"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Append columns to data"
-msgstr ""
+msgstr "Spalten zu Daten hinzufügen"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "Residuen (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "Spaltenname"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residuals"
-msgstr ""
+msgstr "z.B. Residuen"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals std. deviations (%1)"
-msgstr ""
+msgstr "Residuen Std.-Abweichungen (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
-msgstr ""
+msgstr "z.B. Residuen-SD"
