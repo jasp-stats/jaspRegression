@@ -44,10 +44,6 @@ msgid "Variables"
 msgstr "変数"
 
 msgctxt "Correlation|"
-msgid "Condition on"
-msgstr "条件"
-
-msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
 msgstr "標本相関係数"
 
@@ -1057,4 +1053,323 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Generalized Linear Model"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Model variables"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Selected variables"
+msgstr ""
+
+#, fuzzy
+msgctxt "EmmComponent|"
+msgid "Confidence interval"
+msgstr "信頼区間"
+
+msgctxt "EmmComponent|"
+msgid "Levels of covariates at mean +/- "
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Compare marginal means to:"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Use response scale"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Specify contrasts"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "P-value adjustment"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Multivariate-t"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "None"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Dependent variable"
+msgstr ""
+
+#, fuzzy
+msgctxt "GlmInputComponent|"
+msgid "Covariates"
+msgstr "共変量"
+
+#, fuzzy
+msgctxt "GlmInputComponent|"
+msgid "Factors"
+msgstr "要因"
+
+msgctxt "GlmInputComponent|"
+msgid "Total Number of Trials"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Weights"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Family"
+msgstr ""
+
+#, fuzzy
+msgctxt "GlmInputComponent|"
+msgid "Bernoulli"
+msgstr "ベルヌーイ"
+
+msgctxt "GlmInputComponent|"
+msgid "Binomial"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Gaussian"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Gamma"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Inverse Gaussian"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Poisson"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Link"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Logit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Probit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Cauchit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Complementary LogLog"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Identity"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Log"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Sqrt"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Inverse"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "1/mu^2"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Analysis of Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Deviance Residuals"
+msgstr ""
+
+#, fuzzy
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Residuals vs. fitted"
+msgstr "残差と適合"
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Residuals vs. predictor"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Q-Q plot"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Pearson Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Quantile Residuals"
+msgstr ""
+
+#, fuzzy
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Other Plots"
+msgstr "その他のプロット"
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Partial residual plots"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Working responses vs. linear predictor"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Partial out"
+msgstr ""
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Model"
+msgstr "モデル"
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Components"
+msgstr "コンポーネント"
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Include intercept"
+msgstr "切片を含む"
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Statistics"
+msgstr "統計量"
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Model Fit"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Deviance goodness-of-fit test"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Pearson goodness-of-fit test"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Parameter Estimates"
+msgstr ""
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Estimates"
+msgstr "推定値"
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Confidence intervals"
+msgstr "信頼区間"
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Diagnostics"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Show Outliers"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized quantile residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized deviance residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Studentized deviance residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Show Influential Cases"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "DFBETAS"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "DFFITS"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Covariance ratio"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Cook's distance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Leverages"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Multicollinearity"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Tolerance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "VIF"
+msgstr ""
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Advanced Options"
+msgstr "詳細オプション"
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Append columns to data"
+msgstr ""
+
+#, qt-format
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals (%1)"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Column name"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "e.g., residuals"
+msgstr ""
+
+#, qt-format
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "e.g., residual sd"
 msgstr ""

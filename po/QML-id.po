@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-05-08 12:15+0000\n"
-"Last-Translator: Kukuh Pambuka Putra <kukuh.pambuka@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/id/>\n"
-"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.12.1\n"
 "X-Language: id\n"
 "X-Qt-Contexts: true\n"
 
@@ -48,10 +42,6 @@ msgstr "Regresi Linier Bayesian"
 msgctxt "Correlation|"
 msgid "Variables"
 msgstr "Variabel"
-
-msgctxt "Correlation|"
-msgid "Condition on"
-msgstr "Pada kondisi"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
@@ -1080,4 +1070,312 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Generalized Linear Model"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Model variables"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Selected variables"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Confidence interval"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Levels of covariates at mean +/- "
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Compare marginal means to:"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Use response scale"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Specify contrasts"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "P-value adjustment"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Multivariate-t"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "None"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Dependent variable"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Covariates"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Factors"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Total Number of Trials"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Weights"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Family"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Bernoulli"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Binomial"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Gaussian"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Gamma"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Inverse Gaussian"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Poisson"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Link"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Logit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Probit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Cauchit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Complementary LogLog"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Identity"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Log"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Sqrt"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Inverse"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "1/mu^2"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Analysis of Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Deviance Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Residuals vs. fitted"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Residuals vs. predictor"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Q-Q plot"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Pearson Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Quantile Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Partial residual plots"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Working responses vs. linear predictor"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Partial out"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Model"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Components"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Include intercept"
+msgstr ""
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Statistics"
+msgstr "Statistik"
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Model Fit"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Deviance goodness-of-fit test"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Pearson goodness-of-fit test"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Parameter Estimates"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Estimates"
+msgstr ""
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Confidence intervals"
+msgstr "Interval kepercayaan"
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Diagnostics"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Show Outliers"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized quantile residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized deviance residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Studentized deviance residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Show Influential Cases"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "DFBETAS"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "DFFITS"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Covariance ratio"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Cook's distance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Leverages"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Multicollinearity"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Tolerance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "VIF"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Advanced Options"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Append columns to data"
+msgstr ""
+
+#, qt-format
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals (%1)"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Column name"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "e.g., residuals"
+msgstr ""
+
+#, qt-format
+msgctxt "RegressionLinearBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "e.g., residual sd"
 msgstr ""
