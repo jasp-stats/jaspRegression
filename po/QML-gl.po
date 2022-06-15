@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-06-14 22:21+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/gl/>\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.13-dev\n"
 "X-Language: gl_ES\n"
 "X-Source-Language: C\n"
 "X-Qt-Contexts: true\n"
@@ -1058,319 +1064,306 @@ msgstr "Precisión"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "Modelo Linear Xeneralizado"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Medias Marxinais Estimadas e Análise de Contraste"
 
 msgctxt "EmmComponent|"
 msgid "Model variables"
-msgstr ""
+msgstr "Variables do modelo"
 
 msgctxt "EmmComponent|"
 msgid "Selected variables"
-msgstr ""
+msgstr "Variables escollidas"
 
-#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
 msgstr "Intervalo de confianza"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "Niveis das covariantes na media +/- "
 
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
-msgstr ""
+msgstr "Comparar as medias marxinais con:"
 
 msgctxt "EmmComponent|"
 msgid "Use response scale"
-msgstr ""
+msgstr "Utilizar a escala de resposta"
 
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "Especificar os contrastes"
 
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
-msgstr ""
+msgstr "Axuste do valor p"
 
 msgctxt "EmmComponent|"
 msgid "Multivariate-t"
-msgstr ""
+msgstr "T multivariante"
 
 msgctxt "EmmComponent|"
 msgid "None"
-msgstr ""
+msgstr "Ningún"
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "Variable dependente"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
 msgstr "Covariantes"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Factors"
 msgstr "Factores"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
-msgstr ""
+msgstr "Número Total de Ensaios"
 
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "Ponderacións"
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr ""
+msgstr "Familia"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
 msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
-msgstr ""
+msgstr "Binomial"
 
 msgctxt "GlmInputComponent|"
 msgid "Gaussian"
-msgstr ""
+msgstr "Normal"
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
-msgstr ""
+msgstr "Normal Inversa"
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "Poisson"
 
 msgctxt "GlmInputComponent|"
 msgid "Link"
-msgstr ""
+msgstr "Enlace"
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
-msgstr ""
+msgstr "Logit"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
-msgstr ""
+msgstr "Probit"
 
 msgctxt "GlmInputComponent|"
 msgid "Cauchit"
-msgstr ""
+msgstr "Cauchit"
 
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
-msgstr ""
+msgstr "LogLog complementario"
 
 msgctxt "GlmInputComponent|"
 msgid "Identity"
-msgstr ""
+msgstr "Identidade"
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "Logaritmo"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr ""
+msgstr "Raíz"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
-msgstr ""
+msgstr "Inversa"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/mu^2"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
-msgstr ""
+msgstr "Análise dos Erros"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Deviance Residuals"
-msgstr ""
+msgstr "Erros Desvío"
 
-#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. fitted"
 msgstr "Erros vs. Axustes"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. predictor"
-msgstr ""
+msgstr "Erros vs. Preditor"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "Gráfica Q-Q"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
-msgstr ""
+msgstr "Erros Pearson"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Quantile Residuals"
-msgstr ""
+msgstr "Erros Cuantís"
 
-#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Other Plots"
 msgstr "Outras Gráficas"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Partial residual plots"
-msgstr ""
+msgstr "Gráficas do erro parcial"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Working responses vs. linear predictor"
-msgstr ""
+msgstr "Respostas en activo vs. Preditor linear"
 
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr ""
+msgstr "Fóra parcial"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
 msgstr "Modelo"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
 msgstr "Compoñentes"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
 msgstr "Incluír a constante"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
 msgstr "Estatísticos"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr ""
+msgstr "Axuste do Modelo"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
-msgstr ""
+msgstr "Proba do desvío para a bondade do axuste"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
-msgstr ""
+msgstr "Proba de Pearson para a bondade do axuste"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Parameter Estimates"
-msgstr ""
+msgstr "Estimacións de Parámetros"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
 msgstr "Estimacións"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
 msgstr "Intervalos de confianza"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnósticos"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "Amosar os Valores Atípicos"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals: top"
-msgstr ""
+msgstr "Erros con cuantís tipificados: maior"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
-msgstr ""
+msgstr "Erros con desviación tipificada: maior"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
-msgstr ""
+msgstr "Erros con desviación \"studentizada\": maior"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Influential Cases"
-msgstr ""
+msgstr "Amosar os Casos Influentes"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFBETAS"
-msgstr ""
+msgstr "GLBETAS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFFITS"
-msgstr ""
+msgstr "GLFITS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Covariance ratio"
-msgstr ""
+msgstr "Razón das covarianzas"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Cook's distance"
-msgstr ""
+msgstr "Distancia de Cook"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Leverages"
-msgstr ""
+msgstr "Pancamentos"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "Multicolinearidade"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Tolerancia"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "FIV"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
 msgstr "Opcións Avanzadas"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Append columns to data"
-msgstr ""
+msgstr "Engadir columnas aos datos"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "Erros (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "Nome de columna"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residuals"
-msgstr ""
+msgstr "p.e. erros"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals std. deviations (%1)"
-msgstr ""
+msgstr "Desvíos padrón dos erros (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
-msgstr ""
+msgstr "p.e. dp dos erros"
