@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-06-14 21:04+0000\n"
+"PO-Revision-Date: 2022-06-16 12:41+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-qml/zh_Hans/>\n"
@@ -1095,7 +1095,7 @@ msgstr ""
 
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "指定对比"
 
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
