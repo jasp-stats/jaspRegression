@@ -128,10 +128,10 @@ Correlation <- function(jaspResults, dataset, options){
     .corrInitCorrelationTable(mainTable, options, variables)
   }
 
-  if(options[['alternative']] == "correlatedPositively"){
+  if(options[['alternative']] == "greater"){
     mainTable$addFootnote(message = gettext("All tests one-tailed, for positive correlation."))
     additionToFlagSignificant <- gettext(", one-tailed")
-  } else if(options[['alternative']] == "correlatedNegatively"){
+  } else if(options[['alternative']] == "less"){
     mainTable$addFootnote(message = gettext("All tests one-tailed, for negative correlation."))
     additionToFlagSignificant <- gettext(", one-tailed")
   } else{
@@ -289,11 +289,6 @@ Correlation <- function(jaspResults, dataset, options){
   vcomb <- combn(vvars, 2, simplify = FALSE)
   vpair <- sapply(vcomb, paste, collapse = "_")
 
-
-  alt <- c(correlated = "two.sided",
-           correlatedNegatively = "less",
-           correlatedPositively = "greater")[options$alternative]
-
   pcor <- !length(options$partialOutVariables) == 0
 
   results <- list()
@@ -339,7 +334,7 @@ Correlation <- function(jaspResults, dataset, options){
         compute <- isFALSE(errors) && .corrTestChecked(test, options)
 
         r <- .corr.test(x = data[,1], y = data[,2], z = condData,
-                        method = test, alternative = alt,
+                        method = test, alternative = options[["alternative"]],
                         conf.interval = options$ci,
                         conf.level = options$ciLevel,
                         compute = compute, sample.size = currentResults[['sample.size']])
@@ -444,17 +439,20 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 # helper that unifies output of cor.test and ppcor::pcor.test
-.corr.test <- function(x, y, z = NULL, alternative, method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
+.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
   stats <- c("estimate", "p.value", "conf.int", "vsmpr")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr")
+  alternative <- match.arg(alternative)
 
   if(isFALSE(compute)){
     result <- rep(NaN, length(statsNames))
     names(result) <- statsNames
     errors <- FALSE
   } else if(is.null(z)){
+    # base methods do not follow our style :(
+    alt <- if(alternative == "twoSided") "two.sided" else alternative
     result <- try(expr = {
-      cor.test(x = x, y = y, alternative = alternative, method = method, exact = exact,
+      cor.test(x = x, y = y, alternative = alt, method = method, exact = exact,
                conf.level = conf.level, continuity = continuity, ... = ...)}, silent = TRUE)
 
     if(isTryError(result)) {
@@ -466,7 +464,7 @@ Correlation <- function(jaspResults, dataset, options){
 
       if(method != "pearson" && conf.interval){
         result$conf.int <- .createNonparametricConfidenceIntervals(x = x, y = y, obsCor = result$estimate,
-                                                                   hypothesis = alternative, confLevel = conf.level,
+                                                                   alternative = alternative, confLevel = conf.level,
                                                                    method = method)
       } else if(is.null(result$conf.int)){
         result$conf.int <- c(NA, NA)
@@ -1314,7 +1312,7 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 #### display correlation value ####
-.plotCorValue <- function(xVar, yVar, cexText= 2.5, cexCI= 1.7, hypothesis = "correlated", pearson=options$pearson,
+.plotCorValue <- function(xVar, yVar, cexText= 2.5, cexCI= 1.7, hypothesis = "twoSided", pearson=options$pearson,
                           kendallsTauB=options$kendallsTauB, spearman=options$spearman, confidenceInterval=0.95) {
 
     CIPossible <- TRUE
@@ -1400,15 +1398,15 @@ Correlation <- function(jaspResults, dataset, options){
     }
 
 
-    if (hypothesis == "correlated" & length(tests) == 1 & any(tests == "pearson")) {
+    if (hypothesis == "twoSided" & length(tests) == 1 & any(tests == "pearson")) {
         alternative <- "two.sided"
         ctest <- cor.test(xVar, yVar, method= tests, conf.level=confidenceInterval)
     }
 
-    if (hypothesis != "correlated" & length(tests) == 1 & any(tests == "pearson")) {
-        if (hypothesis == "correlatedPositively") {
+    if (hypothesis != "twoSided" & length(tests) == 1 & any(tests == "pearson")) {
+        if (hypothesis == "greater") {
             ctest <- cor.test(xVar, yVar, method=tests, alternative="greater", conf.level=confidenceInterval)
-        } else if (hypothesis == "correlatedNegatively") {
+        } else if (hypothesis == "less") {
             ctest <- cor.test(xVar, yVar, method=tests, alternative="less", conf.level=confidenceInterval)
         }
     }
@@ -1474,7 +1472,7 @@ Correlation <- function(jaspResults, dataset, options){
   return(c(lower.ci,upper.ci))
 }
 
-.createNonparametricConfidenceIntervals <- function(x, y, obsCor, hypothesis = "two-sided", confLevel = 0.95, method = "kendall"){
+.createNonparametricConfidenceIntervals <- function(x, y, obsCor, alternative = c("twoSided", "greater", "less"), confLevel = 0.95, method = "kendall"){
   # Based on sections 8.3 and 8.4 of Hollander, Wolfe & Chicken, Nonparametric Statistical Methods, 3e.
   alpha <- 1 - confLevel
   missingIndices <- as.logical(is.na(x) + is.na(y)) # index those values that are missing
@@ -1482,43 +1480,40 @@ Correlation <- function(jaspResults, dataset, options){
   y <- y[!missingIndices]
   n <- length(x)
 
-  hypothesis <- switch(hypothesis,
-                       "two.sided" = "correlated",
-                       "greater" = "correlatedPositively",
-                       "less" = "correlatedNegatively",
-                       hypothesis)
+  alternative <- match.arg(alternative)
+
   if (method == "kendall") {
     concordanceSumsVector <- concordanceVector_cpp(x, y)
     sigmaHatSq <- 2 * (n-2) * var(concordanceSumsVector) / (n*(n-1))
     sigmaHatSq <- sigmaHatSq + 1 - (obsCor)^2
     sigmaHatSq <- sigmaHatSq * 2 / (n*(n-1))
 
-    if (hypothesis=="correlated"){
+    if (alternative == "twoSided"){
       z <- qnorm(alpha/2, lower.tail = FALSE)
-    } else if (hypothesis!="correlated") {
+    } else if (alternative != "twoSided") {
       z <- qnorm(alpha, lower.tail = FALSE)
     }
     ciLow <- obsCor - z * sqrt(sigmaHatSq)
     ciUp <- obsCor + z * sqrt(sigmaHatSq)
-    if (hypothesis=="correlatedPositively") {
+    if (alternative == "greater") {
       ciUp <- 1
-    } else if (hypothesis=="correlatedNegatively") {
+    } else if (alternative == "less") {
       ciLow <- -1
     }
   } else if (method == "spearman") {
     stdErr = 1/sqrt(n-3)
-    if (hypothesis=="correlated") {
+    if (alternative == "twoSided") {
       z <- qnorm(alpha/2, lower.tail = FALSE)
-    } else if (hypothesis!="correlated") {
+    } else if (alternative != "twoSided") {
       z <- qnorm(alpha, lower.tail = FALSE)
     }
 
     ciLow = tanh(atanh(obsCor) - z * stdErr)
     ciUp = tanh(atanh(obsCor) + z * stdErr)
 
-    if (hypothesis=="correlatedPositively") {
+    if (alternative == "greater") {
       ciUp <- 1
-    } else if (hypothesis=="correlatedNegatively") {
+    } else if (alternative == "less") {
       ciLow <- -1
     }
   }

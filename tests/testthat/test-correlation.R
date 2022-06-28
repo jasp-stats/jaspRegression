@@ -115,7 +115,7 @@ test_that("Correlation Table hypothesis correlated positively match", {
   options <- jaspTools::analysisOptions("Correlation")
   options$ci <- TRUE
   options$pairwiseDisplay <- TRUE
-  options$alternative <- "correlatedPositively"
+  options$alternative <- "greater"
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE
   options$variables <- list("contNormal", "contGamma", "contExpon")
@@ -140,7 +140,7 @@ test_that("Correlation Table hypothesis correlated negatively match", {
   options <- jaspTools::analysisOptions("Correlation")
   options$ci <- TRUE
   options$pairwiseDisplay <- TRUE
-  options$alternative <- "correlatedNegatively"
+  options$alternative <- "less"
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE
   options$variables <- list("contNormal", "contGamma", "contExpon")
