@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-06-27 09:15+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jaspregression-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.13.1-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -1277,87 +1283,86 @@ msgstr "置信区间"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
-msgstr ""
+msgstr "诊断"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "显示异常值"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals: top"
-msgstr ""
+msgstr "标准化分位数残差：前"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
-msgstr ""
+msgstr "标准化偏差残差：前"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
-msgstr ""
+msgstr "学生化偏差残差：前"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Influential Cases"
-msgstr ""
+msgstr "显示强影响个案"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFBETAS"
-msgstr ""
+msgstr "DFBETAS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFFITS"
-msgstr ""
+msgstr "DFFITS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Covariance ratio"
-msgstr ""
+msgstr "协方差比率"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Cook's distance"
-msgstr ""
+msgstr "Cook's 距离"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Leverages"
-msgstr ""
+msgstr "Leverages"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "多重共线性"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "容忍度"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
 msgstr "高级选项"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Append columns to data"
-msgstr ""
+msgstr "向数据中追加列"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "残差 (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "列名"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residuals"
-msgstr ""
+msgstr "例如：残差"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals std. deviations (%1)"
-msgstr ""
+msgstr "残差的标准偏差（%1）"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
-msgstr ""
+msgstr "例如：残差标准差"
