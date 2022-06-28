@@ -16,9 +16,9 @@ Upgrades
 	// option renaming for syntax
 	Upgrade
 	{
-		functionName:	"Correlation"
-		fromVersion:	"0.16.3"
-		toVersion:		"0.16.4"
+		functionName:		"Correlation"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
 
 		// Main section
 		ChangeRename { from: "displayPairwise";						to: "pairwiseDisplay"						}
@@ -34,6 +34,19 @@ Upgrades
 		ChangeRename { from: "VovkSellkeMPR";						to: "vovkSellke"							}
 
 		ChangeRename { from: "hypothesis";							to: "alternative"							}
+		ChangeJS
+		{
+			name:		"alternative"
+			jsFunction:	function(options)
+			{
+				switch(options["alternative"])
+				{
+					case "correlated":				return "twoSided"	;
+					case "correlatedPositively":	return "greater"	;
+					case "correlatedNegatively":	return "less"		;
+				}
+			}
+		}
 
 		// Plots
 		ChangeRename { from: "plotCorrelationMatrix";				to: "scatterPlot"							}
