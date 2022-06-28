@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-05-14 03:29\n"
+"POT-Creation-Date: 2022-06-28 15:04\n"
 "PO-Revision-Date: 2022-02-12 21:37+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -920,8 +920,8 @@ msgstr "切片モデルのみで、意味のある情報を表示することは
 msgid "Marginal Effects Plots"
 msgstr "周辺効果量プロット"
 
-msgid "Marginal effect of %1s on %2s"
-msgstr "%2sに対する%1sの周辺効果"
+msgid "Marginal effect of %s on %s"
+msgstr "%2$sに対する%1$sの周辺効果"
 
 msgid "All effects are specified as nuisance"
 msgstr "すべての効果は妨害要因として指定されています"
