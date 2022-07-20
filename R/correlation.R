@@ -59,11 +59,11 @@ Correlation <- function(jaspResults, dataset, options){
 
   if(!is.null(dataset)){
     return(dataset)
-  } else if(options$missingValues == "excludePairwise"){
+  } else if(options$naAction == "pairwise"){
     data <- .readDataSetToEnd(columns.as.numeric = vars)
     if(cond) data <- data[complete.cases(data[,.v(options$partialOutVariables)]),,drop=FALSE]
     return(data)
-  } else if(options$missingValues == "excludeListwise"){
+  } else if(options$naAction == "listwise"){
     return(.readDataSetToEnd(columns.as.numeric = vars, exclude.na.listwise = vars))
   }
 }
@@ -113,31 +113,31 @@ Correlation <- function(jaspResults, dataset, options){
 
   mainTable <- createJaspTable(title = title)
   mainTable$dependOn(c("variables", "partialOutVariables",
-                       "pearson", "spearman", "kendallsTauB", "displayPairwise", "reportSignificance",
-                       "flagSignificant", "sampleSize",
-                       "confidenceIntervals", "confidenceIntervalsInterval",
-                       "VovkSellkeMPR", "hypothesis", "missingValues",
-                       "bootstrap", "bootstrapReplicates"))
+                       "pearson", "spearman", "kendallsTauB", "pairwiseDisplay", "significanceReport",
+                       "significanceFlagged", "sampleSize",
+                       "ci", "ciLevel",
+                       "vovkSellke", "alternative", "naAction",
+                       "ciBootstrap", "ciBootstrapSamples"))
   mainTable$position <- 1
 
   mainTable$showSpecifiedColumnsOnly <- TRUE
 
-  if(options[['displayPairwise']]){
+  if(options[['pairwiseDisplay']]){
     .corrInitPairwiseTable(mainTable, options, variables)
   } else{
     .corrInitCorrelationTable(mainTable, options, variables)
   }
 
-  if(options[['hypothesis']] == "correlatedPositively"){
+  if(options[['alternative']] == "greater"){
     mainTable$addFootnote(message = gettext("All tests one-tailed, for positive correlation."))
     additionToFlagSignificant <- gettext(", one-tailed")
-  } else if(options[['hypothesis']] == "correlatedNegatively"){
+  } else if(options[['alternative']] == "less"){
     mainTable$addFootnote(message = gettext("All tests one-tailed, for negative correlation."))
     additionToFlagSignificant <- gettext(", one-tailed")
   } else{
     additionToFlagSignificant <- ""
   }
-  if(options[['flagSignificant']]) mainTable$addFootnote(message = gettextf("p < .05, ** p < .01, *** p < .001%s",
+  if(options[['significanceFlagged']]) mainTable$addFootnote(message = gettextf("p < .05, ** p < .01, *** p < .001%s",
                                                                            additionToFlagSignificant), symbol = "*")
 
   if(length(options$partialOutVariables) > 0){
@@ -145,11 +145,11 @@ Correlation <- function(jaspResults, dataset, options){
     mainTable$addFootnote(message = message)
   }
 
-  if(length(options[["partialOutVariables"]]) != 0 && isTRUE(options[["confidenceIntervals"]]) && isFALSE(options[["bootstrap"]]))
+  if(length(options[["partialOutVariables"]]) != 0 && isTRUE(options[["ci"]]) && isFALSE(options[["ciBootstrap"]]))
     mainTable$addFootnote(message = gettext("Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."))
 
-  if(isTRUE(options[["confidenceIntervals"]] && isTRUE(options[["bootstrap"]])))
-    mainTable$addFootnote(message = gettextf("Confidence intervals based on %i bootstrap replicates.", options[["bootstrapReplicates"]]))
+  if(isTRUE(options[["ci"]] && isTRUE(options[["ciBootstrap"]])))
+    mainTable$addFootnote(message = gettextf("Confidence intervals based on %i bootstrap replicates.", options[["ciBootstrapSamples"]]))
 
   # show
   jaspResults[['mainTable']] <- mainTable
@@ -196,19 +196,19 @@ Correlation <- function(jaspResults, dataset, options){
       mainTable$addColumnInfo(name = paste0(test, "_estimate"), title = .corrTitlerer(test, nTests),
                               type = "number", overtitle = overtitle)
 
-      if(options$reportSignificance)
+      if(options$significanceReport)
         mainTable$addColumnInfo(name = paste0(test, "_p.value"), title = gettext("p"), type = "pvalue", overtitle = overtitle)
 
-      if(options$confidenceIntervals){
+      if(options$ci){
         mainTable$addColumnInfo(name = paste0(test, "_lower.ci"),
-                                title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval), type = "number",
+                                title = gettextf("Lower %s%% CI", 100*options$ciLevel), type = "number",
                                 overtitle = overtitle)
         mainTable$addColumnInfo(name = paste0(test, "_upper.ci"),
-                                title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval), type = "number",
+                                title = gettextf("Upper %s%% CI", 100*options$ciLevel), type = "number",
                                 overtitle = overtitle)
       }
 
-      if(options$VovkSellkeMPR){
+      if(options$vovkSellke){
         mainTable$addColumnInfo(name = paste0(test, "_vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
         mainTable$addFootnote(message = .corrGetTexts()$footnotes$VSMPR, symbol = "\u2020", colNames = paste0(test, "_vsmpr"))
         mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
@@ -260,22 +260,22 @@ Correlation <- function(jaspResults, dataset, options){
 
   mainTable$addColumnInfo(name = sprintf(name, "estimate"), title = coeff, type = "number", overtitle = overtitle)
 
-  if(options$reportSignificance)
+  if(options$significanceReport)
     mainTable$addColumnInfo(name = sprintf(name, "p.value"), title = gettext("p-value"), type = "pvalue", overtitle = overtitle)
 
-  if(options$VovkSellkeMPR){
+  if(options$vovkSellke){
     mainTable$addColumnInfo(name = sprintf(name, "vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
     mainTable$addFootnote(colNames = sprintf(name, "vsmpr"), symbol = "\u2020",
                           message = .corrGetTexts()$footnotes$VSMPR)
     mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
   }
 
-  if(options$confidenceIntervals){
+  if(options$ci){
     mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),
-                            title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval),
+                            title = gettextf("Upper %s%% CI", 100*options$ciLevel),
                             type = "number", overtitle = overtitle)
     mainTable$addColumnInfo(name = sprintf(name, "lower.ci"),
-                            title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval),
+                            title = gettextf("Lower %s%% CI", 100*options$ciLevel),
                             type = "number", overtitle = overtitle)
   }
 }
@@ -288,11 +288,6 @@ Correlation <- function(jaspResults, dataset, options){
   vvars <- .v(options[['variables']])
   vcomb <- combn(vvars, 2, simplify = FALSE)
   vpair <- sapply(vcomb, paste, collapse = "_")
-
-
-  alt <- c(correlated = "two.sided",
-           correlatedNegatively = "less",
-           correlatedPositively = "greater")[options$hypothesis]
 
   pcor <- !length(options$partialOutVariables) == 0
 
@@ -339,9 +334,9 @@ Correlation <- function(jaspResults, dataset, options){
         compute <- isFALSE(errors) && .corrTestChecked(test, options)
 
         r <- .corr.test(x = data[,1], y = data[,2], z = condData,
-                        method = test, alternative = alt,
-                        conf.interval = options$confidenceIntervals,
-                        conf.level = options$confidenceIntervalsInterval,
+                        method = test, alternative = options[["alternative"]],
+                        conf.interval = options$ci,
+                        conf.level = options$ciLevel,
                         compute = compute, sample.size = currentResults[['sample.size']])
         testErrors[[test]] <- r[['errors']]
         currentResults[[test]] <- r[['result']]
@@ -358,9 +353,9 @@ Correlation <- function(jaspResults, dataset, options){
 
       # store state for pair
       state <- createJaspState(object = results[[vpair[i]]])
-      state$dependOn(options = c("partialOutVariables", "hypothesis",
-                                 "confidenceIntervals", "confidenceIntervalsInterval",
-                                 "missingValues"),
+      state$dependOn(options = c("partialOutVariables", "alternative",
+                                 "ci", "ciLevel",
+                                 "naAction"),
                      optionContainsValue = list(variables = .unv(vcomb[[i]])))
 
       jaspResults[[vpair[i]]] <- state
@@ -369,32 +364,32 @@ Correlation <- function(jaspResults, dataset, options){
     #progressbarTick()
   }
 
-  if(options[["bootstrap"]])
+  if(options[["ciBootstrap"]])
     results <- .corrCalculateBootstrapCI(results, dataset, options)
 
   jaspResults[['results']] <- createJaspState(object = results)
-  jaspResults[['results']]$dependOn(options = c("variables", "partialOutVariables",  "hypothesis",
-                                                "confidenceIntervalsInterval", "missingValues",
+  jaspResults[['results']]$dependOn(options = c("variables", "partialOutVariables",  "alternative",
+                                                "ciLevel", "naAction",
                                                 "pearson", "spearman", "kendallsTauB",
-                                                "bootstrap", "bootstrapReplicates"))
+                                                "ciBootstrap", "ciBootstrapSamples"))
 
 
   return(results)
 }
 
 .corrCalculateBootstrapCI <- function(results, dataset, options) {
-  alpha <- 1-options[["confidenceIntervalsInterval"]]
+  alpha <- 1-options[["ciLevel"]]
   ciLevel <- c(alpha/2, 1-alpha/2)
 
   tests <- .corrGetTests(options)[["usedTests"]]
 
   # run bootstraps
   bootstraps <- array(NaN,
-                      dim = c(options[["bootstrapReplicates"]], length(results), length(tests)),
+                      dim = c(options[["ciBootstrapSamples"]], length(results), length(tests)),
                       dimnames = list(NULL, names(results), tests))
 
-  startProgressbar(expectedTicks = options[["bootstrapReplicates"]], label = gettext("Bootstrapping"))
-  for(i in seq_len(options[["bootstrapReplicates"]])) {
+  startProgressbar(expectedTicks = options[["ciBootstrapSamples"]], label = gettext("Bootstrapping"))
+  for(i in seq_len(options[["ciBootstrapSamples"]])) {
     idx  <- sample(x = nrow(dataset), replace = TRUE)
     data <- dataset[idx,]
 
@@ -444,17 +439,20 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 # helper that unifies output of cor.test and ppcor::pcor.test
-.corr.test <- function(x, y, z = NULL, alternative, method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
+.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
   stats <- c("estimate", "p.value", "conf.int", "vsmpr")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr")
+  alternative <- match.arg(alternative)
 
   if(isFALSE(compute)){
     result <- rep(NaN, length(statsNames))
     names(result) <- statsNames
     errors <- FALSE
   } else if(is.null(z)){
+    # base methods do not follow our style :(
+    alt <- if(alternative == "twoSided") "two.sided" else alternative
     result <- try(expr = {
-      cor.test(x = x, y = y, alternative = alternative, method = method, exact = exact,
+      cor.test(x = x, y = y, alternative = alt, method = method, exact = exact,
                conf.level = conf.level, continuity = continuity, ... = ...)}, silent = TRUE)
 
     if(isTryError(result)) {
@@ -466,7 +464,7 @@ Correlation <- function(jaspResults, dataset, options){
 
       if(method != "pearson" && conf.interval){
         result$conf.int <- .createNonparametricConfidenceIntervals(x = x, y = y, obsCor = result$estimate,
-                                                                   hypothesis = alternative, confLevel = conf.level,
+                                                                   alternative = alternative, confLevel = conf.level,
                                                                    method = method)
       } else if(is.null(result$conf.int)){
         result$conf.int <- c(NA, NA)
@@ -518,7 +516,7 @@ Correlation <- function(jaspResults, dataset, options){
 
 .corrAssumptions <- function(jaspResults, dataset, options, ready, corrResults){
   # uses .multivariateShapiroComputation from manova.R
-  if(isFALSE(options$multivariateShapiro) && isFALSE(options$pairwiseShapiro)) return()
+  if(isFALSE(options$assumptionCheckMultivariateShapiro) && isFALSE(options$assumptionCheckPairwiseShapiro)) return()
 
   if(is.null(jaspResults[['assumptionsContainer']])){
     assumptionsContainer <- createJaspContainer(title = gettext("Assumption checks"))
@@ -530,17 +528,17 @@ Correlation <- function(jaspResults, dataset, options){
     assumptionsContainer <- jaspResults[['assumptionsContainer']]
   }
 
-  if(isTRUE(options$multivariateShapiro) && is.null(assumptionsContainer[['multivariateShapiro']]))
+  if(isTRUE(options$assumptionCheckMultivariateShapiro) && is.null(assumptionsContainer[['assumptionCheckMultivariateShapiro']]))
     .corrMultivariateShapiro(assumptionsContainer, dataset, options, ready, corrResults)
 
-  if(isTRUE(options$pairwiseShapiro) && is.null(assumptionsContainer[['pairwiseShapiro']]))
+  if(isTRUE(options$assumptionCheckPairwiseShapiro) && is.null(assumptionsContainer[['pairwiseShapiro']]))
     .corrPairwiseShapiro(assumptionsContainer, dataset, options, ready, corrResults)
 
 }
 
 .corrMultivariateShapiro <- function(assumptionsContainer, dataset, options, ready, corrResults){
   shapiroTable <- createJaspTable(title = gettext("Shapiro-Wilk Test for Multivariate Normality"))
-  shapiroTable$dependOn("multivariateShapiro")
+  shapiroTable$dependOn("assumptionCheckMultivariateShapiro")
   shapiroTable$position <- 1
   shapiroTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -601,7 +599,7 @@ Correlation <- function(jaspResults, dataset, options){
 
 .corrPairwiseShapiro <- function(assumptionsContainer, dataset, options, ready, corrResults){
   shapiroTable <- createJaspTable(title = gettext("Shapiro-Wilk Test for Bivariate Normality"))
-  shapiroTable$dependOn(c("pairwiseShapiro", "missingValues"))
+  shapiroTable$dependOn(c("assumptionCheckPairwiseShapiro", "naAction"))
   shapiroTable$position <- 2
   shapiroTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -637,7 +635,7 @@ Correlation <- function(jaspResults, dataset, options){
 .corrFillTableMain <- function(mainTable, corrResults, options, ready){
   if(!ready) return()
 
-  if(options$displayPairwise){
+  if(options$pairwiseDisplay){
     .corrFillPairwiseTable(mainTable, corrResults, options)
   } else{
     .corrFillCorrelationMatrix(mainTable, corrResults, options)
@@ -660,7 +658,7 @@ Correlation <- function(jaspResults, dataset, options){
 
     for(col in colnames(res)) mainTable[[paste(test, col, sep = "_")]] <- res[[col]]
 
-    if(options[['flagSignificant']]) .corrFlagSignificant(mainTable, res[['p.value']],
+    if(options[['significanceFlagged']]) .corrFlagSignificant(mainTable, res[['p.value']],
                                                           paste(test, "estimate", sep="_"), pairs)
 
     colNames <- c(colNames, paste(test, colnames(res), sep="_"))
@@ -745,7 +743,7 @@ Correlation <- function(jaspResults, dataset, options){
   mainTable$setData(resultList)
 
   # Flag significant
-  if(options[['flagSignificant']]){
+  if(options[['significanceFlagged']]){
     p.valueColumns <- names(resultList)[endsWith(names(resultList), "p.value")]
 
     for(columnName in p.valueColumns){
@@ -780,9 +778,9 @@ Correlation <- function(jaspResults, dataset, options){
 ### Plots ----
 .corrPlot <- function(jaspResults, dataset, options, ready, corrResults){
   if(!ready) return()
-  if(isFALSE(options$plotCorrelationMatrix)) return()
+  if(isFALSE(options$scatterPlot)) return()
 
-  if(isTRUE(options[["displayPairwise"]])){
+  if(isTRUE(options[["pairwiseDisplay"]])){
     .corrPairwisePlot(jaspResults, dataset, options, ready, corrResults)
   } else{
     .corrMatrixPlot(jaspResults, dataset, options, ready, corrResults)
@@ -794,10 +792,10 @@ Correlation <- function(jaspResults, dataset, options){
 
   plotContainer <- createJaspContainer(title = gettext("Scatter plots"))
   plotContainer$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
-                                     "displayPairwise", "confidenceIntervals", "confidenceIntervalsInterval", "hypothesis",
-                                     "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals",
-                                     "plotConfidenceIntervalsInterval", "plotPredictionIntervalsInterval",
-                                     "plotPredictionIntervals", "missingValues"))
+                                     "pairwiseDisplay", "ci", "ciLevel", "alternative",
+                                     "scatterPlot", "scatterPlotDensity", "scatterPlotStatistic", "scatterPlotCi",
+                                     "scatterPlotCiLevel", "scatterPlotPredictionIntervalLevel",
+                                     "scatterPlotPredictionInterval", "naAction"))
   plotContainer$position <- 3
   jaspResults[['corrPlot']] <- plotContainer
 
@@ -809,7 +807,7 @@ Correlation <- function(jaspResults, dataset, options){
   vcomb <- combn(vvars, 2, simplify = FALSE)
   vpairs <- sapply(vcomb, paste, collapse = "_")
 
-  if(options[['plotDensities']]){
+  if(options[['scatterPlotDensity']]){
     for(i in seq_along(vcomb)){
       plot <- createJaspPlot(title = pairs[i], width = 550, height = 550)
       plotContainer[[vpairs[i]]] <- plot
@@ -843,7 +841,7 @@ Correlation <- function(jaspResults, dataset, options){
                                                   bottomLabels = c(comb[[i]][1],       gettext("Density")),
                                                   leftLabels   = c(gettext("Density"), comb[[i]][2]))
     }
-  } else if(options[['plotStatistics']]){
+  } else if(options[['scatterPlotStatistic']]){
     for(i in seq_along(vcomb)){
       plot <- createJaspPlot(title = pairs[i], width = 600, height = 300)
       plotContainer[[vpairs[i]]] <- plot
@@ -884,13 +882,13 @@ Correlation <- function(jaspResults, dataset, options){
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
   plot$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
-                            "displayPairwise", "confidenceIntervals", "confidenceIntervalsInterval", "hypothesis",
-                            "plotCorrelationMatrix", "plotDensities", "plotStatistics", "plotConfidenceIntervals",
-                            "plotConfidenceIntervalsInterval", "plotPredictionIntervalsInterval",
-                            "plotPredictionIntervals", "missingValues"))
+                            "pairwiseDisplay", "ci", "ciLevel", "alternative",
+                            "scatterPlot", "scatterPlotDensity", "scatterPlotStatistic", "scatterPlotCi",
+                            "scatterPlotCiLevel", "scatterPlotPredictionIntervalLevel",
+                            "scatterPlotPredictionInterval", "naAction"))
   plot$position <- 3
 
-  if (len <= 2 && (options$plotDensities || options$plotStatistics)) {
+  if (len <= 2 && (options$scatterPlotDensity || options$scatterPlotStatistic)) {
     plot$width <- 580
     plot$height <- 580
   } else if (len <= 2) {
@@ -932,7 +930,7 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 .corrValuePlot <- function(results, cexText= 2.5, cexCI= 1.7, options = options) {
-  if(isFALSE(options$plotStatistics)) return(.displayError(errorMessage = ""))
+  if(isFALSE(options$scatterPlotStatistic)) return(.displayError(errorMessage = ""))
   if(!isFALSE(results$errors)){
     return(.displayError(errorMessage = gettextf("Correlation undefined: %s", results$errors$message)))
   }
@@ -1000,7 +998,7 @@ Correlation <- function(jaspResults, dataset, options){
       upper.ci <- res[[tests[i]]][['upper.ci']]
       upper.ci <- formatC(upper.ci, format = "f", digits = 3)
 
-      cilab[i] <- gettextf("%s%% CI: [%s, %s]", 100*options$confidenceIntervalsInterval, lower.ci, upper.ci)
+      cilab[i] <- gettextf("%s%% CI: [%s, %s]", 100*options$ciLevel, lower.ci, upper.ci)
     } else{
       cilab[i] <- ""
     }
@@ -1010,7 +1008,7 @@ Correlation <- function(jaspResults, dataset, options){
                               mapping = ggplot2::aes(x = x, y = y, label =lab),
                               size = 7, parse = TRUE)
 
-  if(options$confidenceIntervals){
+  if(options$ci){
     p <- p + ggplot2::geom_text(data = data.frame(x = rep(1, length(ypos)), y = ypos - 0.25),
                                 mapping = ggplot2::aes(x = x, y = y, label = cilab),
                                 size = 5)
@@ -1020,7 +1018,7 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 .corrMarginalDistribution <- function(variable, varName, options, xName = NULL, yName = "Density", errors, coord_flip = FALSE){
-  if(isFALSE(options$plotDensities))  return(.displayError(errorMessage = "")) # return empty plot
+  if(isFALSE(options$scatterPlotDensity))  return(.displayError(errorMessage = "")) # return empty plot
   if(length(variable) < 3)            return(.displayError(errorMessage = gettext("Plotting not possible:\n Number of observations is < 3")))
   if(any(is.infinite(variable)))      return(.displayError(errorMessage = gettext("Plotting not possible: Infinite value(s)")))
 
@@ -1056,7 +1054,7 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 .corrHeatmap <- function(jaspResults, options, corrResults, ready){
-  if(isFALSE(options$plotHeatmap)) return()
+  if(isFALSE(options$heatmapPlot)) return()
 
   hw <- 30 + 80*length(options$variables)
 
@@ -1073,16 +1071,16 @@ Correlation <- function(jaspResults, dataset, options){
     return()
   } else if(length(tests) == 1){
     plot <- createJaspPlot(title = gettextf("%s heatmap", names(tests)), width = hw, height = hw)
-    plot$dependOn(c("variables", "partialOutVariables", "missingValues", "pearson", "spearman", "kendallsTauB",
-                    "flagSignificant", "plotHeatmap"))
+    plot$dependOn(c("variables", "partialOutVariables", "naAction", "pearson", "spearman", "kendallsTauB",
+                    "significanceFlagged", "heatmapPlot"))
     plot$position <- 4
     jaspResults[['heatmaps']] <- plot
 
     if(ready) plot$plotObject <- .corrPlotHeatmap(tests, options, corrResults)
   } else{
     heatmaps <- createJaspContainer(title = gettext("Heatmaps"))
-    heatmaps$dependOn(c("variables", "partialOutVariables", "missingValues", "pearson", "spearman", "kendallsTauB",
-                        "flagSignificant", "plotHeatmap"))
+    heatmaps$dependOn(c("variables", "partialOutVariables", "naAction", "pearson", "spearman", "kendallsTauB",
+                        "significanceFlagged", "heatmapPlot"))
     heatmaps$position <- 4
     jaspResults[['heatmaps']] <- heatmaps
 
@@ -1113,7 +1111,7 @@ Correlation <- function(jaspResults, dataset, options){
   data$p <- as.numeric(data$p)
 
   data$label <- round(data$cor, 3)
-  if(options$flagSignificant){
+  if(options$significanceFlagged){
     data$label <- ifelse(data$p < 0.05 & !is.na(data$cor), paste0(data$label, "*"), data$label)
     data$label <- ifelse(data$p < 0.01 & !is.na(data$cor), paste0(data$label, "*"), data$label)
     data$label <- ifelse(data$p < 0.001 & !is.na(data$cor), paste0(data$label, "*"), data$label)
@@ -1267,16 +1265,16 @@ Correlation <- function(jaspResults, dataset, options){
   	dfLine <- data.frame(x = xr, y = rangeLineObj)
     p <- p + ggplot2::geom_line(data = dfLine, ggplot2::aes(x = x, y = y), size = .7, inherit.aes = FALSE)
 
-    if (isTRUE(options$plotConfidenceIntervals)) {
-      ci <- as.data.frame(stats::predict(fit, interval = "confidence", level = options$plotConfidenceIntervalsInterval))
+    if (isTRUE(options$scatterPlotCi)) {
+      ci <- as.data.frame(stats::predict(fit, interval = "confidence", level = options$scatterPlotCiLevel))
       ci[["x"]] <- d$x
 
       p <- p + ggplot2::geom_line(data = ci, ggplot2::aes(x = x, y = lwr), size = 1, color = "darkblue", linetype = "dashed") +
         ggplot2::geom_line(data = ci, ggplot2::aes(x = x, y = upr), size = 1, color = "darkblue", linetype = "dashed")
     }
 
-    if (isTRUE(options$plotPredictionIntervals)) {
-      pi <- as.data.frame(stats::predict(fit, interval = "prediction", level = options$plotPredictionIntervalsInterval))
+    if (isTRUE(options$scatterPlotPredictionInterval)) {
+      pi <- as.data.frame(stats::predict(fit, interval = "prediction", level = options$scatterPlotPredictionIntervalLevel))
       pi[["x"]] <- d$x
 
       p <- p + ggplot2::geom_line(data = pi, ggplot2::aes(x = x, y = lwr), size = 1, color = "darkgreen", linetype = "longdash") +
@@ -1314,7 +1312,7 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 #### display correlation value ####
-.plotCorValue <- function(xVar, yVar, cexText= 2.5, cexCI= 1.7, hypothesis = "correlated", pearson=options$pearson,
+.plotCorValue <- function(xVar, yVar, cexText= 2.5, cexCI= 1.7, hypothesis = "twoSided", pearson=options$pearson,
                           kendallsTauB=options$kendallsTauB, spearman=options$spearman, confidenceInterval=0.95) {
 
     CIPossible <- TRUE
@@ -1400,15 +1398,15 @@ Correlation <- function(jaspResults, dataset, options){
     }
 
 
-    if (hypothesis == "correlated" & length(tests) == 1 & any(tests == "pearson")) {
+    if (hypothesis == "twoSided" & length(tests) == 1 & any(tests == "pearson")) {
         alternative <- "two.sided"
         ctest <- cor.test(xVar, yVar, method= tests, conf.level=confidenceInterval)
     }
 
-    if (hypothesis != "correlated" & length(tests) == 1 & any(tests == "pearson")) {
-        if (hypothesis == "correlatedPositively") {
+    if (hypothesis != "twoSided" & length(tests) == 1 & any(tests == "pearson")) {
+        if (hypothesis == "greater") {
             ctest <- cor.test(xVar, yVar, method=tests, alternative="greater", conf.level=confidenceInterval)
-        } else if (hypothesis == "correlatedNegatively") {
+        } else if (hypothesis == "less") {
             ctest <- cor.test(xVar, yVar, method=tests, alternative="less", conf.level=confidenceInterval)
         }
     }
@@ -1474,7 +1472,7 @@ Correlation <- function(jaspResults, dataset, options){
   return(c(lower.ci,upper.ci))
 }
 
-.createNonparametricConfidenceIntervals <- function(x, y, obsCor, hypothesis = "two-sided", confLevel = 0.95, method = "kendall"){
+.createNonparametricConfidenceIntervals <- function(x, y, obsCor, alternative = c("twoSided", "greater", "less"), confLevel = 0.95, method = "kendall"){
   # Based on sections 8.3 and 8.4 of Hollander, Wolfe & Chicken, Nonparametric Statistical Methods, 3e.
   alpha <- 1 - confLevel
   missingIndices <- as.logical(is.na(x) + is.na(y)) # index those values that are missing
@@ -1482,43 +1480,40 @@ Correlation <- function(jaspResults, dataset, options){
   y <- y[!missingIndices]
   n <- length(x)
 
-  hypothesis <- switch(hypothesis,
-                       "two.sided" = "correlated",
-                       "greater" = "correlatedPositively",
-                       "less" = "correlatedNegatively",
-                       hypothesis)
+  alternative <- match.arg(alternative)
+
   if (method == "kendall") {
     concordanceSumsVector <- concordanceVector_cpp(x, y)
     sigmaHatSq <- 2 * (n-2) * var(concordanceSumsVector) / (n*(n-1))
     sigmaHatSq <- sigmaHatSq + 1 - (obsCor)^2
     sigmaHatSq <- sigmaHatSq * 2 / (n*(n-1))
 
-    if (hypothesis=="correlated"){
+    if (alternative == "twoSided"){
       z <- qnorm(alpha/2, lower.tail = FALSE)
-    } else if (hypothesis!="correlated") {
+    } else if (alternative != "twoSided") {
       z <- qnorm(alpha, lower.tail = FALSE)
     }
     ciLow <- obsCor - z * sqrt(sigmaHatSq)
     ciUp <- obsCor + z * sqrt(sigmaHatSq)
-    if (hypothesis=="correlatedPositively") {
+    if (alternative == "greater") {
       ciUp <- 1
-    } else if (hypothesis=="correlatedNegatively") {
+    } else if (alternative == "less") {
       ciLow <- -1
     }
   } else if (method == "spearman") {
     stdErr = 1/sqrt(n-3)
-    if (hypothesis=="correlated") {
+    if (alternative == "twoSided") {
       z <- qnorm(alpha/2, lower.tail = FALSE)
-    } else if (hypothesis!="correlated") {
+    } else if (alternative != "twoSided") {
       z <- qnorm(alpha, lower.tail = FALSE)
     }
 
     ciLow = tanh(atanh(obsCor) - z * stdErr)
     ciUp = tanh(atanh(obsCor) + z * stdErr)
 
-    if (hypothesis=="correlatedPositively") {
+    if (alternative == "greater") {
       ciUp <- 1
-    } else if (hypothesis=="correlatedNegatively") {
+    } else if (alternative == "less") {
       ciLow <- -1
     }
   }

@@ -7,11 +7,11 @@ test_that("Correlation Table results match R, SPSS, SAS and MiniTab", {
   options$pearson <- TRUE
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE
-  options$confidenceIntervals <- TRUE
-  options$flagSignificant <- FALSE
-  
+  options$ci <- TRUE
+  options$significanceFlagged <- FALSE
+
   results <- jaspTools::runAnalysis("Correlation", "Correlation.csv", options)
-  
+
   # Main table
   resultTable <- results$results$mainTable$data
 
