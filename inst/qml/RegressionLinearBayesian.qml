@@ -29,7 +29,7 @@ Form {
 		AvailableVariablesList	{ name: "allVariablesList" }
 		AssignedVariablesList	{ name: "dependent";	title: qsTr("Dependent Variable");		suggestedColumns: ["scale"];	singleVariable: true	}
 		AssignedVariablesList	{ name: "covariates";	title: qsTr("Covariates");				suggestedColumns: ["scale"];	allowedColumns: ["scale"]}
-		AssignedVariablesList	{ name: "wlsWeights";	title: qsTr("WLS Weights (optional)");	suggestedColumns: ["scale"];	singleVariable: true	}
+		AssignedVariablesList	{ name: "weights";		title: qsTr("WLS Weights (optional)");	suggestedColumns: ["scale"];	singleVariable: true	}
 	}
 
 	BayesFactorType {}
@@ -39,7 +39,7 @@ Form {
 		title: qsTr("Output")
 		columns: 1
 
-		CheckBox{ name: "postSummaryTable"; label: qsTr("Posterior summary"); id: postSummaryTable
+		CheckBox{ name: "posteriorSummaryTable"; label: qsTr("Posterior summary"); id: posteriorSummaryTable
 			RadioButtonGroup
 			{
 				name: "effectsType"
@@ -50,17 +50,17 @@ Form {
 
 		CheckBox
 		{
-			name: "postSummaryPlot"
+			name: "posteriorSummaryPlot"
 			label: qsTr("Plot of coefficients")
-			id: postSummaryPlot
-			CheckBox { name: "omitIntercept"; label: qsTr("Omit intercept") }
+			id: posteriorSummaryPlot
+			CheckBox { name: "interceptOmitted"; label: qsTr("Omit intercept") }
 
 		}
 
 		DropDown
 		{
 			name: "summaryType"
-			enabled: postSummaryTable.checked || postSummaryPlot.checked
+			enabled: posteriorSummaryTable.checked || posteriorSummaryPlot.checked
 			indexDefaultValue: 3
 			values: [
 				{ label: qsTr("Best model"),			value: "best"		},
@@ -75,9 +75,9 @@ Form {
 
 		CIField
 		{
-			name: "posteriorSummaryPlotCredibleIntervalValue"
+			name: "posteriorSummaryPlotCiLevel"
 			label: qsTr("Credible interval")
-			enabled: postSummaryTable.checked || postSummaryPlot.checked
+			enabled: posteriorSummaryTable.checked || posteriorSummaryPlot.checked
 		}
 
 	}
@@ -92,7 +92,7 @@ Form {
 
 	RadioButtonGroup
 	{
-		name: "shownModels"
+		name: "modelsShown"
 		title: qsTr("Limit No. Models Shown")
 		RadioButton { value: "unlimited"; label: qsTr("No") }
 		RadioButton { 
@@ -100,7 +100,7 @@ Form {
 			label: qsTr("Yes, show best")
 			checked: true
 			childrenOnSameRow: true
-			IntegerField { name: "numShownModels"; defaultValue: 10; min: 1}
+			IntegerField { name: "numModelsShown"; defaultValue: 10; min: 1}
 		}
 
 	}
@@ -140,23 +140,23 @@ Form {
 		Group
 		{
 			title: qsTr("Coefficients")
-			CheckBox { name: "plotInclusionProbabilities";	label: qsTr("Inclusion probabilities")			}
-			CheckBox { name: "plotCoefficientsPosterior";	label: qsTr("Marginal posterior distributions")	}
+			CheckBox { name: "inclusionProbabilitiesPlot";	label: qsTr("Inclusion probabilities")			}
+			CheckBox { name: "coefficientsPosteriorPlot";	label: qsTr("Marginal posterior distributions")	}
 		}
 
 		Group
 		{
 			title: qsTr("Models")
-			CheckBox { name: "plotLogPosteriorOdds";	label: qsTr("Log posterior odds")				}
-			CheckBox { name: "plotModelComplexity";		label: qsTr("Log(P(data|M)) vs. model size")	}
-			CheckBox { name: "plotModelProbabilities";	label: qsTr("Model probabilities")				}
+			CheckBox { name: "logPosteriorOddsPlot";	label: qsTr("Log posterior odds")				}
+			CheckBox { name: "modelComplexityPlot";		label: qsTr("Log(P(data|M)) vs. model size")	}
+			CheckBox { name: "modelProbabilitiesPlot";	label: qsTr("Model probabilities")				}
 		}
 
 		Group
 		{
 			title: qsTr("Residuals")
-			CheckBox { name: "plotResidualsVsFitted";	label: qsTr("Residuals vs. fitted")					}
-			CheckBox { name: "plotQQplot";				label: qsTr("Q-Q plot of model averaged residuals")	}
+			CheckBox { name: "residualsVsFittedPlot";	label: qsTr("Residuals vs. fitted")					}
+			CheckBox { name: "qqPlot";				label: qsTr("Q-Q plot of model averaged residuals")	}
 		}
 	}
 	
@@ -170,8 +170,8 @@ Form {
 			Layout.columnSpan: 2
 			CheckBox
 			{
-				id:							addResiduals
-				name:						"addResiduals"
+				id:							residuals
+				name:						"residuals"
 				text:						qsTr("Residuals (%1)").arg(summaryType.currentLabel)
 
 				ComputedColumnField
@@ -180,13 +180,13 @@ Form {
 					text:					qsTr("Column name")
 					placeholderText:		qsTr("e.g., residuals")
 					fieldWidth:				120
-					enabled:				addResiduals.checked
+					enabled:				residuals.checked
 				}
 			}
 			CheckBox
 			{
-				id:							addResidualSds
-				name:						"addResidualSds"
+				id:							residualSds
+				name:						"residualSds"
 				text:						qsTr("Residuals std. deviations (%1)").arg(summaryType.currentLabel)
 
 				ComputedColumnField
@@ -195,7 +195,7 @@ Form {
 					text:					qsTr("Column name")
 					placeholderText:		qsTr("e.g., residual sd")
 					fieldWidth:				120
-					enabled:				addResidualSds.checked
+					enabled:				residualSds.checked
 				}
 			}
 		}
@@ -254,7 +254,7 @@ Form {
 				RadioButton
 				{
 					checked: true
-					value: "beta.binomial"; label: qsTr("Beta binomial")
+					value: "betaBinomial"; label: qsTr("Beta binomial")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
 					DoubleField { name: "betaBinomialParamA"; label: qsTr("a"); defaultValue: 1; inclusive: JASP.MaxOnly}
@@ -263,7 +263,7 @@ Form {
 				RadioButton { value: "uniform"; label: qsTr("Uniform")}
 				RadioButton
 				{
-					value: "Wilson"
+					value: "wilson"
 					label: qsTr("Wilson")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
@@ -271,7 +271,7 @@ Form {
 				}
 				RadioButton
 				{
-					value: "Castillo"
+					value: "castillo"
 					label: qsTr("Castillo")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
@@ -279,7 +279,7 @@ Form {
 				}
 				RadioButton
 				{
-					value: "Bernoulli"; label: qsTr("Bernoulli")
+					value: "bernoulli"; label: qsTr("Bernoulli")
 					childrenOnSameRow: true
 					DoubleField { name: "bernoulliParam"; label: qsTr("p"); defaultValue: 0.5; max: 1; inclusive: JASP.None; decimals: 3 }
 				}
@@ -287,19 +287,19 @@ Form {
 
 			RadioButtonGroup
 			{
-				name: "samplingMethod"
+				name: "sampling"
 				title: qsTr("Sampling Method")
 				RadioButton
 				{
-					value: "BAS"; label: qsTr("BAS"); checked: true
+					value: "bas"; label: qsTr("BAS"); checked: true
 					childrenOnSameRow: true
 					IntegerField { name: "numberOfModels"; label: qsTr("No. models"); defaultValue: 0; max: 100000000 }
 				}
 				RadioButton
 				{
-					value: "MCMC"; label: qsTr("MCMC")
+					value: "mcmc"; label: qsTr("MCMC")
 					childrenOnSameRow: true
-					IntegerField { name: "iterationsMCMC"; label: qsTr("No. samples"); defaultValue: 0; max: 100000000 }
+					IntegerField { name: "samples"; label: qsTr("No. samples"); defaultValue: 0; max: 100000000 }
 				}
 			}
 
@@ -308,7 +308,7 @@ Form {
 				title: qsTr("Numerical Accuracy")
 				IntegerField
 				{
-					name: "nSimForCRI"
+					name: "numericalAccuracy"
 					label: qsTr("No. samples for credible interval")
 					defaultValue: 1000
 					fieldWidth: 50

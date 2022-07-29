@@ -88,4 +88,66 @@ Upgrades
 			}
 		}
 	}
+
+	Upgrade
+	{
+		functionName:		"RegressionLinearBayesian"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
+
+		ChangeRename { from: "wlsWeights";									to: "weights"									}
+		ChangeRename { from: "postSummaryTable";							to: "posteriorSummaryTable"						}
+		ChangeRename { from: "postSummaryPlot";								to: "posteriorSummaryPlot"						}
+		ChangeRename { from: "omitIntercept";								to: "interceptOmitted"							}
+		ChangeRename { from: "posteriorSummaryPlotCredibleIntervalValue";	to: "posteriorSummaryPlotCiLevel"				}
+		ChangeRename { from: "shownModels";									to: "modelsShown"								}
+		ChangeRename { from: "numShownModels";								to: "numModelsShown"							}
+
+		ChangeRename { from: "plotInclusionProbabilities";					to:	"inclusionProbabilitiesPlot"				}
+		ChangeRename { from: "plotCoefficientsPosterior";					to:	"coefficientsPosteriorPlot"					}
+		ChangeRename { from: "plotLogPosteriorOdds";						to:	"logPosteriorOddsPlot"						}
+		ChangeRename { from: "plotModelComplexity";							to:	"modelComplexityPlot"						}
+		ChangeRename { from: "plotModelProbabilities";						to:	"modelProbabilitiesPlot"					}
+		ChangeRename { from: "plotResidualsVsFitted";						to:	"residualsVsFittedPlot"						}
+		ChangeRename { from: "plotQQplot";									to:	"qqPlot"									}
+
+		ChangeRename { from: "addResiduals";								to:	"residuals"									}
+		ChangeRename { from: "addResidualSds";								to:	"residualSds"								}
+
+		ChangeJS
+		{
+			name:		"modelPrior"
+			jsFunction:	function(options)
+			{
+				switch(options["modelPrior"])
+				{
+					case "beta.binomial":				return "betaBinomial";
+					case "Wilson":						return "wilson";
+					case "Castillo":					return "castillo";
+					case "Bernoulli":					return "bernoulli";
+					return options["modelPrior"]
+				}
+			}
+		}
+
+		ChangeRename { from: "samplingMethod";								to:	"sampling"									}
+
+		ChangeJS
+		{
+			name:		"sampling"
+			jsFunction:	function(options)
+			{
+				switch(options["sampling"])
+				{
+					case "BAS":					return "bas";
+					case "MCMC":				return "mcmc";
+				}
+			}
+		}
+
+		ChangeRename { from: "iterationsMCMC";								to:	"samples"									}
+		ChangeRename { from: "nSimForCRI";									to:	"numericalAccuracy"							}
+		
+
+	}
 }
