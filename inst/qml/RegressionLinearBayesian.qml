@@ -53,7 +53,7 @@ Form {
 			name: "posteriorSummaryPlot"
 			label: qsTr("Plot of coefficients")
 			id: posteriorSummaryPlot
-			CheckBox { name: "interceptOmitted"; label: qsTr("Omit intercept") }
+			CheckBox { name: "posteriorSummaryPlotWithoutIntercept"; label: qsTr("Omit intercept") }
 
 		}
 
@@ -141,7 +141,7 @@ Form {
 		{
 			title: qsTr("Coefficients")
 			CheckBox { name: "inclusionProbabilitiesPlot";	label: qsTr("Inclusion probabilities")			}
-			CheckBox { name: "coefficientsPosteriorPlot";	label: qsTr("Marginal posterior distributions")	}
+			CheckBox { name: "marginalPosteriorPlot";	label: qsTr("Marginal posterior distributions")	}
 		}
 
 		Group
@@ -170,32 +170,32 @@ Form {
 			Layout.columnSpan: 2
 			CheckBox
 			{
-				id:							residuals
-				name:						"residuals"
+				id:							residualsSavedToData
+				name:						"residualsSavedToData"
 				text:						qsTr("Residuals (%1)").arg(summaryType.currentLabel)
 
 				ComputedColumnField
 				{
-					name:					"residualsColumn"
+					name:					"residualsSavedToDataColumn"
 					text:					qsTr("Column name")
 					placeholderText:		qsTr("e.g., residuals")
 					fieldWidth:				120
-					enabled:				residuals.checked
+					enabled:				residualsSavedToData.checked
 				}
 			}
 			CheckBox
 			{
-				id:							residualSds
-				name:						"residualSds"
+				id:							residualSdsSavedToData
+				name:						"residualSdsSavedToData"
 				text:						qsTr("Residuals std. deviations (%1)").arg(summaryType.currentLabel)
 
 				ComputedColumnField
 				{
-					name:					"residualSdsColumn"
+					name:					"residualSdsSavedToDataColumn"
 					text:					qsTr("Column name")
 					placeholderText:		qsTr("e.g., residual sd")
 					fieldWidth:				120
-					enabled:				residualSds.checked
+					enabled:				residualSdsSavedToData.checked
 				}
 			}
 		}

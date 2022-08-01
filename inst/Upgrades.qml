@@ -98,21 +98,24 @@ Upgrades
 		ChangeRename { from: "wlsWeights";									to: "weights"									}
 		ChangeRename { from: "postSummaryTable";							to: "posteriorSummaryTable"						}
 		ChangeRename { from: "postSummaryPlot";								to: "posteriorSummaryPlot"						}
-		ChangeRename { from: "omitIntercept";								to: "interceptOmitted"							}
+		ChangeRename { from: "omitIntercept";								to: "posteriorSummaryPlotWithoutIntercept"		}
 		ChangeRename { from: "posteriorSummaryPlotCredibleIntervalValue";	to: "posteriorSummaryPlotCiLevel"				}
 		ChangeRename { from: "shownModels";									to: "modelsShown"								}
 		ChangeRename { from: "numShownModels";								to: "numModelsShown"							}
 
 		ChangeRename { from: "plotInclusionProbabilities";					to:	"inclusionProbabilitiesPlot"				}
-		ChangeRename { from: "plotCoefficientsPosterior";					to:	"coefficientsPosteriorPlot"					}
+		ChangeRename { from: "plotCoefficientsPosterior";					to:	"marginalPosteriorPlot"						}
 		ChangeRename { from: "plotLogPosteriorOdds";						to:	"logPosteriorOddsPlot"						}
 		ChangeRename { from: "plotModelComplexity";							to:	"modelComplexityPlot"						}
 		ChangeRename { from: "plotModelProbabilities";						to:	"modelProbabilitiesPlot"					}
 		ChangeRename { from: "plotResidualsVsFitted";						to:	"residualsVsFittedPlot"						}
 		ChangeRename { from: "plotQQplot";									to:	"qqPlot"									}
 
-		ChangeRename { from: "addResiduals";								to:	"residuals"									}
-		ChangeRename { from: "addResidualSds";								to:	"residualSds"								}
+		ChangeRename { from: "addResiduals";								to:	"residualsSavedToData"						}
+		ChangeRename { from: "addResidualSds";								to:	"residualSdsSavedToData"					}
+
+		ChangeRename { from: "residualsColumn";								to:	"residualsSavedToDataColumn"				}
+		ChangeRename { from: "residualSdsColumn";							to:	"residualSdsSavedToDataColumn"				}
 
 		ChangeJS
 		{
@@ -130,14 +133,12 @@ Upgrades
 			}
 		}
 
-		ChangeRename { from: "samplingMethod";								to:	"sampling"									}
-
 		ChangeJS
 		{
-			name:		"sampling"
+			name:		"samplingMethod"
 			jsFunction:	function(options)
 			{
-				switch(options["sampling"])
+				switch(options["samplingMethod"])
 				{
 					case "BAS":					return "bas";
 					case "MCMC":				return "mcmc";

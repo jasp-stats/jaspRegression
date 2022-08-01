@@ -32,7 +32,7 @@ RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
   if (options$posteriorSummaryTable || options$posteriorSummaryPlot)
     postSumContainer <- .basregGetPosteriorSummaryContainer(basregContainer, position = 12)
 
-  if (options$posteriorSummaryTable || options$posteriorSummaryPlot || options$coefficientsPosteriorPlot)
+  if (options$posteriorSummaryTable || options$posteriorSummaryPlot || options$marginalPosteriorPlot)
     postSumModel <- .basregGetPosteriorSummary(basregContainer, basregModel, dataset, options, ready)
 
   if (options$posteriorSummaryTable && is.null(basregContainer[["postSumContainer"]][["postSumTable"]]))
@@ -59,7 +59,7 @@ RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
   if (options$qqPlot && is.null(basregContainer[["qqPlot"]]))
     .basregPlotQQ(basregContainer, basregModel, position = 18)
 
-  if (options$coefficientsPosteriorPlot && is.null(basregContainer[["postDistContainer"]]))
+  if (options$marginalPosteriorPlot && is.null(basregContainer[["postDistContainer"]]))
     .basregPlotsPosteriorDistribution(basregContainer, postSumModel, basregModel, options, position = 19)
 
   if (options$descriptives && is.null(jaspResults[["descriptivesTable"]]))
@@ -405,7 +405,7 @@ for sparse regression when there are more covariates than observations (Castillo
                    format(100 * options$posteriorSummaryPlotCiLevel, digits = 3))
   postSumPlot <- createJaspPlot(title = title, width = 530, height = 400)
   postSumPlot$position <- position
-  postSumPlot$dependOn(c("posteriorSummaryPlot", "interceptOmitted"))
+  postSumPlot$dependOn(c("posteriorSummaryPlot", "posteriorSummaryPlotWithoutIntercept"))
 
   postSumContainer[["postSumPlot"]] <- postSumPlot
 
@@ -421,7 +421,7 @@ for sparse regression when there are more covariates than observations (Castillo
   coefficients <- .basregReplaceInteractionUnicodeSymbol(coefficients)
 
   # exlude intercept if it's not the only predictor?
-  if (options[["interceptOmitted"]] && length(loopIdx) > 1)
+  if (options[["posteriorSummaryPlotWithoutIntercept"]] && length(loopIdx) > 1)
     loopIdx <- loopIdx[-1, drop = FALSE]
 
   confInt <- confInt[loopIdx, , drop = FALSE] # only plot parameters present in table
@@ -777,7 +777,7 @@ for sparse regression when there are more covariates than observations (Castillo
   postDistContainer <- createJaspContainer(gettext("Marginal Posterior Distributions")) #TODO: check if this name is ok
   postDistContainer$position <- position
   postDistContainer$dependOn(c(
-    "coefficientsPosteriorPlot", "summaryType",
+    "marginalPosteriorPlot", "summaryType",
     "posteriorSummaryPlotCiLevel", "numericalAccuracy", "seed", "setSeed"
   )) #TODO: check if dependencies are correct for this item: was probably wrong in release
 
@@ -1323,8 +1323,8 @@ for sparse regression when there are more covariates than observations (Castillo
   if (!ready)
     return()
 
-  userWantsResiduals   <- options[["residuals"]]   && options[["residualsColumn"]]   != "" && is.null(basregContainer[["residualsColumn"]])
-  userWantsResidualSds <- options[["residualSds"]] && options[["residualSdsColumn"]] != "" && is.null(basregContainer[["residualSdsColumn"]])
+  userWantsResiduals   <- options[["residualsSavedToData"]]   && options[["residualsSavedToDataColumn"]]   != "" && is.null(basregContainer[["residualsSavedToDataColumn"]])
+  userWantsResidualSds <- options[["residualSdsSavedToData"]] && options[["residualSdsSavedToDataColumn"]] != "" && is.null(basregContainer[["residualSdsSavedToDataColumn"]])
 
   if (!userWantsResiduals && !userWantsResidualSds)
     return()
@@ -1369,9 +1369,9 @@ for sparse regression when there are more covariates than observations (Castillo
 
     residuals <- c(basregModel[["Y"]] - predictions[["fit"]]) # c to drop attributes
 
-    basregContainer[["residualsColumn"]] <- createJaspColumn(columnName = options[["residualsColumn"]])
-    basregContainer[["residualsColumn"]]$dependOn(options = c("residualsColumn", "residuals", "summaryType"))
-    basregContainer[["residualsColumn"]]$setScale(residuals)
+    basregContainer[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
+    basregContainer[["residualsSavedToDataColumn"]]$dependOn(options = c("residualsSavedToDataColumn", "residualsSavedToData", "summaryType"))
+    basregContainer[["residualsSavedToDataColumn"]]$setScale(residuals)
 
   }
 
@@ -1379,9 +1379,9 @@ for sparse regression when there are more covariates than observations (Castillo
 
     residualsSds <- predictions[[if (options[["summaryType"]] == "averaged") "se.bma.pred" else "se.pred"]]
 
-    basregContainer[["residualSdsColumn"]] <- createJaspColumn(columnName = options[["residualSdsColumn"]])
-    basregContainer[["residualSdsColumn"]]$dependOn(options = c("residualSdsColumn", "residualSds", "summaryType"))
-    basregContainer[["residualSdsColumn"]]$setScale(residualsSds)
+    basregContainer[["residualSdsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualSdsSavedToDataColumn"]])
+    basregContainer[["residualSdsSavedToDataColumn"]]$dependOn(options = c("residualSdsSavedToDataColumn", "residualSdsSavedToData", "summaryType"))
+    basregContainer[["residualSdsSavedToDataColumn"]]$setScale(residualsSds)
 
   }
 }

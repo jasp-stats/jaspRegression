@@ -132,7 +132,7 @@ test_that("Coefficient plots match", {
         list(components="contcor2", isNuisance=FALSE)
     )
     options$inclusionProbabilitiesPlot <- TRUE
-    options$coefficientsPosteriorPlot <- TRUE
+    options$marginalPosteriorPlot <- TRUE
 
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
 
@@ -299,28 +299,28 @@ test_that("Exporting residuals works", {
   options$modelPrior <- "betaBinomial"
   options$priorRegressionCoefficients <- "g-prior"
   options$alpha <- 13
-  options$residuals   <- TRUE
-  options$residualSds <- TRUE
+  options$residualsSavedToData   <- TRUE
+  options$residualSdsSavedToData <- TRUE
 
   summaryTypes <- c("best", "complex", "median", "averaged")
 
   for (summaryType in summaryTypes) {
     options$summaryType <- summaryType
 
-    options$residualsColumn   <- paste("residuals",   "-", summaryType)
-    options$residualSdsColumn <- paste("residualSds", "-", summaryType)
+    options$residualsSavedToDataColumn   <- paste("residualsSavedToData",   "-", summaryType)
+    options$residualSdsSavedToDataColumn <- paste("residualSdsSavedToData", "-", summaryType)
 
     results <- runAnalysis("RegressionLinearBayesian", Hald, options)
 
     # ideally we'd check the actual data here but the jaspTools output unfortunately does not contain the data
     testthat::expect_identical(
-      results[["results"]][["basreg"]][["collection"]][["basreg_residualsColumn"]][c("columnName", "columnType")],
-      list(columnName = options$residualsColumn, columnType = "scale")
+      results[["results"]][["basreg"]][["collection"]][["basreg_residualsSavedToDataColumn"]][c("columnName", "columnType")],
+      list(columnName = options$residualsSavedToDataColumn, columnType = "scale")
     )
 
     testthat::expect_identical(
-      results[["results"]][["basreg"]][["collection"]][["basreg_residualSdsColumn"]][c("columnName", "columnType")],
-      list(columnName = options$residualSdsColumn, columnType = "scale")
+      results[["results"]][["basreg"]][["collection"]][["basreg_residualSdsSavedToDataColumn"]][c("columnName", "columnType")],
+      list(columnName = options$residualSdsSavedToDataColumn, columnType = "scale")
     )
 
 }
