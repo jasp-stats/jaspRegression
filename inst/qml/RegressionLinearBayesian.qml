@@ -206,24 +206,24 @@ Form {
 			name: "priorRegressionCoefficients"
 			title: qsTr("Prior")
 
-			RadioButton { value: "AIC";			label: qsTr("AIC")		}
-			RadioButton { value: "BIC";			label: qsTr("BIC")		}
-			RadioButton { value: "EB-global";	label: qsTr("EB-global")}
-			RadioButton { value: "EB-local";	label: qsTr("EB-local")	}
+			RadioButton { value: "aic";			label: qsTr("AIC")		}
+			RadioButton { value: "bic";			label: qsTr("BIC")		}
+			RadioButton { value: "ebGlobal";	label: qsTr("EB-global")}
+			RadioButton { value: "ebLocal";		label: qsTr("EB-local")	}
 			GridLayout
 			{
 				rowSpacing: jaspTheme.rowGroupSpacing
 				columnSpacing: 0
 				Group
 				{
-					RadioButton { value: "g-prior";			label: qsTr("g-prior");				id: gprior			}
-					RadioButton { value: "hyper-g";			label: qsTr("Hyper-g");				id: hyperg			}
-					RadioButton { value: "hyper-g-laplace";	label: qsTr("Hyper-g-Laplace");		id: hyperglaplace	}
-					RadioButton { value: "hyper-g-n";		label: qsTr("Hyper-g-n");			id: hypergn			}
+					RadioButton { value: "gPrior";			label: qsTr("g-prior");				id: gprior			}
+					RadioButton { value: "hyperG";			label: qsTr("Hyper-g");				id: hyperg			}
+					RadioButton { value: "hyperGLaplace";	label: qsTr("Hyper-g-Laplace");		id: hyperglaplace	}
+					RadioButton { value: "hyperGN";			label: qsTr("Hyper-g-n");			id: hypergn			}
 				}
 				DoubleField
 				{
-					name: "alpha"
+					name: "gPriorAlpha"
 					label: qsTr("alpha")
 					enabled: gprior.checked || hyperg.checked || hyperglaplace.checked || hypergn.checked
 					defaultValue: 3.0
@@ -231,10 +231,10 @@ Form {
 					max: 4
 					inclusive: JASP.None
 				}
-				RadioButton { value: "JZS"; label: qsTr("JZS"); checked: true; id: jzs }
+				RadioButton { value: "jzs"; label: qsTr("JZS"); checked: true; id: jzs }
 				DoubleField
 				{
-					name: "rScale"
+					name: "jzsRScale"
 					label: qsTr("r scale")
 					enabled: jzs.checked
 					fieldWidth: 50

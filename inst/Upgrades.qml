@@ -119,6 +119,29 @@ Upgrades
 
 		ChangeJS
 		{
+			name:		"priorRegressionCoefficients"
+			jsFunction:	function(options)
+			{
+				switch(options["priorRegressionCoefficients"])
+				{
+					case "AIC":									return "aic";
+					case "BIC":									return "bic";
+					case "EB-global":							return "ebGlobal";
+					case "EB-local":							return "ebLocal";
+					case "g-prior":								return "gPrior";
+					case "hyper-g":								return "hyperG";
+					case "hyper-g-laplace""":					return "hyperGLaplace";
+					case "hyper-g-n":							return "hyperGN";
+					case "JZS":									return "jzs";
+				}
+			}
+		}
+
+		ChangeRename { from: "alpha";							to:	"gPriorAlpha"				}
+		ChangeRename { from: "rScale";							to:	"jzsRScale"				}
+
+		ChangeJS
+		{
 			name:		"modelPrior"
 			jsFunction:	function(options)
 			{

@@ -297,8 +297,8 @@ test_that("Exporting residuals works", {
   options$covariates <- paste0("X", 1:4)
   options$modelTerms <- lapply(options$covariates, function(x) list(components = x, isNuisance = FALSE))
   options$modelPrior <- "betaBinomial"
-  options$priorRegressionCoefficients <- "g-prior"
-  options$alpha <- 13
+  options$priorRegressionCoefficients <- "gPrior"
+  options$gPriorAlpha <- 13
   options$residualsSavedToData   <- TRUE
   options$residualSdsSavedToData <- TRUE
 

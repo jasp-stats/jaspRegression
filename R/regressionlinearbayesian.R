@@ -115,7 +115,7 @@ RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
     basregContainer$position <- position
     basregContainer$dependOn(c(
       "dependent", "covariates", "weights", "modelTerms",
-      "priorRegressionCoefficients", "alpha", "rScale",
+      "priorRegressionCoefficients", "gPriorAlpha", "jzsRScale",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
       "sampling", "samples", "numberOfModels", "seed", "setSeed"
@@ -1034,14 +1034,28 @@ for sparse regression when there are more covariates than observations (Castillo
   if (options$sampling == "mcmc" && options$samples > 0)
     MCMC.iterations <- options$samples
 
+  # convert QML input to prior value that bas.lm expects
+  prior <- switch(
+    options$priorRegressionCoefficients,
+    "aic"           = "AIC",
+    "bic"           = "BIC",
+    "ebGlobal"      = "EB-global",
+    "ebLocal"       = "EB-local",
+    "gPrior"        = "g-prior",
+    "hyperG"        = "hyper-g",
+    "hyperGLaplace" = "hyper-g-laplace",
+    "hyperGN"       = "hyper-g-n",
+    "jzs"           = "JZS"
+  )
+
   # parameter for hyper-g's or jzs (all use same alpha param in bas.lm)
   alpha <- switch(
-    options$priorRegressionCoefficients,
-    "g-prior" = options$alpha,
-    "hyper-g" = options$alpha,
-    "hyper-g-laplace" = options$alpha,
-    "hyper-g-n" = options$alpha,
-    "JZS" = options$rScale^2,
+    prior,
+    "g-prior"         = options$gPriorAlpha,
+    "hyper-g"         = options$gPriorAlpha,
+    "hyper-g-laplace" = options$gPriorAlpha,
+    "hyper-g-n"       = options$gPriorAlpha,
+    "JZS"             = options$jzsRScale^2,
     NULL
   )
 
@@ -1050,7 +1064,7 @@ for sparse regression when there are more covariates than observations (Castillo
   bas_lm <- try(BAS::bas.lm(
     formula         = formula,
     data            = dataset,
-    prior           = options$priorRegressionCoefficients,
+    prior           = prior,
     alpha           = alpha,
     modelprior      = modelPrior,
     n.models        = n.models,
