@@ -130,7 +130,7 @@ Upgrades
 					case "EB-local":							return "ebLocal";
 					case "g-prior":								return "gPrior";
 					case "hyper-g":								return "hyperG";
-					case "hyper-g-laplace""":					return "hyperGLaplace";
+					case "hyper-g-laplace":						return "hyperGLaplace";
 					case "hyper-g-n":							return "hyperGN";
 					case "JZS":									return "jzs";
 				}
