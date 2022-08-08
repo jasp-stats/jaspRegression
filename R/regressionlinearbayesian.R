@@ -118,7 +118,7 @@ RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
       "priorRegressionCoefficients", "gPriorAlpha", "jzsRScale",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
-      "sampling", "samples", "numberOfModels", "seed", "setSeed"
+      "samplingMethod", "samples", "numberOfModels", "seed", "setSeed"
     ))
     jaspResults[["basreg"]] <- basregContainer
   }
@@ -460,7 +460,7 @@ for sparse regression when there are more covariates than observations (Castillo
 
   basregContainer[["logPosteriorOddsPlot"]] <- postLogOddsPlot
 
-  if (options$sampling == "mcmc") {
+  if (options$samplingMethod == "mcmc") {
     postLogOddsPlot$setError(gettext("Cannot display Posterior Log Odds when sampling method is MCMC."))
     return(postLogOddsPlot)
   }
@@ -1026,12 +1026,12 @@ for sparse regression when there are more covariates than observations (Castillo
 
   # number of models
   n.models <- NULL
-  if (options$sampling == "bas" && options$numberOfModels > 0)
+  if (options$samplingMethod == "bas" && options$numberOfModels > 0)
     n.models <- options$numberOfModels
 
   # iterations for MCMC
   MCMC.iterations <- NULL
-  if (options$sampling == "mcmc" && options$samples > 0)
+  if (options$samplingMethod == "mcmc" && options$samples > 0)
     MCMC.iterations <- options$samples
 
   # convert QML input to prior value that bas.lm expects
@@ -1068,7 +1068,7 @@ for sparse regression when there are more covariates than observations (Castillo
     alpha           = alpha,
     modelprior      = modelPrior,
     n.models        = n.models,
-    method          = toupper(options$sampling),
+    method          = toupper(options$samplingMethod),
     MCMC.iterations = MCMC.iterations,
     initprobs       = initProbs,
     weights         = weights,

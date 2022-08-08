@@ -287,7 +287,7 @@ Form {
 
 			RadioButtonGroup
 			{
-				name: "sampling"
+				name: "samplingMethod"
 				title: qsTr("Sampling Method")
 				RadioButton
 				{
