@@ -6,15 +6,15 @@ context("Bayesian Linear Regression")
 test_that("Main tables results match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
-    options$modelPrior <- "beta.binomial"
+    options$modelPrior <- "betaBinomial"
     options$dependent <- "contNormal"
     options$covariates <- "contGamma"
-    options$wlsWeights <- "facFifty"
+    options$weights <- "facFifty"
     options$modelTerms <- list(
         list(components="contGamma", isNuisance=FALSE)
     )
-    options$postSummaryPlot <- TRUE
-    options$postSummaryTable <- TRUE
+    options$posteriorSummaryPlot <- TRUE
+    options$posteriorSummaryTable <- TRUE
     options$descriptives <- TRUE
     options$setSeed <- TRUE
 
@@ -62,11 +62,11 @@ test_that("Main tables results match", {
 options <- jaspTools::analysisOptions("RegressionLinearBayesian")
 options$covariates <- c("adverts", "airplay", "attract")
 options$dependent <- "sales"
-options$modelPrior <- "beta.binomial"
+options$modelPrior <- "betaBinomial"
 options$modelTerms <- list(list(components = "adverts", isNuisance = FALSE),
                            list(components = "airplay", isNuisance = FALSE),
                            list(components = c("adverts", "airplay"), isNuisance = FALSE))
-options$postSummaryTable <- TRUE
+options$posteriorSummaryTable <- TRUE
 options$setSeed <- TRUE
 set.seed(1)
 results <- jaspTools::runAnalysis("RegressionLinearBayesian", "Album Sales.csv", options)
@@ -123,7 +123,7 @@ test_that("Posterior Summaries of Coefficients table (matched models) results ma
 test_that("Coefficient plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
-    options$modelPrior <- "beta.binomial"
+    options$modelPrior <- "betaBinomial"
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma", "debCollin1", "contcor2")
     options$modelTerms <- list(
@@ -131,8 +131,8 @@ test_that("Coefficient plots match", {
         list(components="debCollin1", isNuisance=FALSE),
         list(components="contcor2", isNuisance=FALSE)
     )
-    options$plotInclusionProbabilities <- TRUE
-    options$plotCoefficientsPosterior <- TRUE
+    options$inclusionProbabilitiesPlot <- TRUE
+    options$marginalPosteriorPlot <- TRUE
 
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
 
@@ -146,14 +146,14 @@ test_that("Coefficient plots match", {
 test_that("Residuals plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
-    options$modelPrior <- "beta.binomial"
+    options$modelPrior <- "betaBinomial"
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma")
     options$modelTerms <- list(
         list(components="contGamma", isNuisance=FALSE)
     )
-    options$plotResidualsVsFitted <- TRUE
-    options$plotQQplot <- TRUE
+    options$residualsVsFittedPlot <- TRUE
+    options$qqPlot <- TRUE
 
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
 
@@ -167,7 +167,7 @@ test_that("Residuals plots match", {
 test_that("Models plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
-    options$modelPrior <- "beta.binomial"
+    options$modelPrior <- "betaBinomial"
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma", "contExpon", "contcor1")
     options$modelTerms <- list(
@@ -175,9 +175,9 @@ test_that("Models plots match", {
         list(components="contExpon", isNuisance=FALSE),
         list(components="contcor1", isNuisance=FALSE)
     )
-    options$plotLogPosteriorOdds <- TRUE
-    options$plotModelComplexity <- TRUE
-    options$plotModelProbabilities <- TRUE
+    options$logPosteriorOddsPlot <- TRUE
+    options$modelComplexityPlot <- TRUE
+    options$modelProbabilitiesPlot <- TRUE
 
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
 
@@ -203,10 +203,10 @@ test_that("Model priors match", {
 
     modelPriors <- list(
         uniform      = list(modelPrior = "uniform"),
-        betabinomial = list(modelPrior = "beta.binomial", betaBinomialParamA = 2, betaBinomialParamB = 3),
-        Wilson       = list(modelPrior = "Wilson", wilsonParamLambda = 2),
-        bernoulli    = list(modelPrior = "Bernoulli", bernoulliParam = 0.75),
-        castillo     = list(modelPrior = "Castillo", castilloParamU = 2)
+        betabinomial = list(modelPrior = "betaBinomial", betaBinomialParamA = 2, betaBinomialParamB = 3),
+        wilson       = list(modelPrior = "wilson", wilsonParamLambda = 2),
+        bernoulli    = list(modelPrior = "bernoulli", bernoulliParam = 0.75),
+        castillo     = list(modelPrior = "castillo", castilloParamU = 2)
     )
 
     tables <- list(
@@ -236,7 +236,7 @@ test_that("Model priors match", {
                           0.0320272344954695, 0.0220205049131922, 0.114285714285714, 0.0916338337573983,
                           0.179211605034763, "contGamma + contExpon", 0.00794701370052642,
                           0.01652347560477, 0.0857142857142857),
-      Wilson    = list(1, 3.00723842615036, "Null model", 0, 0.857437693351001, 0.666666666666667,
+      wilson    = list(1, 3.00723842615036, "Null model", 0, 0.857437693351001, 0.666666666666667,
                        0.667063040584368, 0.847009328691918, "contcor1", 0.0259312818065142,
                        0.0714956243547957, 0.0833333333333333, 0.250266509028401, 0.303191058063168,
                        "contExpon", 0.00394490646287682, 0.02682349227804, 0.0833333333333333,
@@ -296,31 +296,31 @@ test_that("Exporting residuals works", {
   options$dependent <- "Y"
   options$covariates <- paste0("X", 1:4)
   options$modelTerms <- lapply(options$covariates, function(x) list(components = x, isNuisance = FALSE))
-  options$modelPrior <- "beta.binomial"
-  options$priorRegressionCoefficients <- "g-prior"
-  options$alpha <- 13
-  options$addResiduals   <- TRUE
-  options$addResidualSds <- TRUE
+  options$modelPrior <- "betaBinomial"
+  options$priorRegressionCoefficients <- "gPrior"
+  options$gPriorAlpha <- 13
+  options$residualsSavedToData   <- TRUE
+  options$residualSdsSavedToData <- TRUE
 
   summaryTypes <- c("best", "complex", "median", "averaged")
 
   for (summaryType in summaryTypes) {
     options$summaryType <- summaryType
 
-    options$residualsColumn   <- paste("residuals",   "-", summaryType)
-    options$residualSdsColumn <- paste("residualSds", "-", summaryType)
+    options$residualsSavedToDataColumn   <- paste("residualsSavedToData",   "-", summaryType)
+    options$residualSdsSavedToDataColumn <- paste("residualSdsSavedToData", "-", summaryType)
 
     results <- runAnalysis("RegressionLinearBayesian", Hald, options)
 
     # ideally we'd check the actual data here but the jaspTools output unfortunately does not contain the data
     testthat::expect_identical(
-      results[["results"]][["basreg"]][["collection"]][["basreg_residualsColumn"]][c("columnName", "columnType")],
-      list(columnName = options$residualsColumn, columnType = "scale")
+      results[["results"]][["basreg"]][["collection"]][["basreg_residualsSavedToDataColumn"]][c("columnName", "columnType")],
+      list(columnName = options$residualsSavedToDataColumn, columnType = "scale")
     )
 
     testthat::expect_identical(
-      results[["results"]][["basreg"]][["collection"]][["basreg_residualSdsColumn"]][c("columnName", "columnType")],
-      list(columnName = options$residualSdsColumn, columnType = "scale")
+      results[["results"]][["basreg"]][["collection"]][["basreg_residualSdsSavedToDataColumn"]][c("columnName", "columnType")],
+      list(columnName = options$residualSdsSavedToDataColumn, columnType = "scale")
     )
 
 }

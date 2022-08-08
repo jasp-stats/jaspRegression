@@ -88,4 +88,90 @@ Upgrades
 			}
 		}
 	}
+
+	Upgrade
+	{
+		functionName:		"RegressionLinearBayesian"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
+
+		ChangeRename { from: "wlsWeights";									to: "weights"									}
+		ChangeRename { from: "postSummaryTable";							to: "posteriorSummaryTable"						}
+		ChangeRename { from: "postSummaryPlot";								to: "posteriorSummaryPlot"						}
+		ChangeRename { from: "omitIntercept";								to: "posteriorSummaryPlotWithoutIntercept"		}
+		ChangeRename { from: "posteriorSummaryPlotCredibleIntervalValue";	to: "posteriorSummaryPlotCiLevel"				}
+		ChangeRename { from: "shownModels";									to: "modelsShown"								}
+		ChangeRename { from: "numShownModels";								to: "numModelsShown"							}
+
+		ChangeRename { from: "plotInclusionProbabilities";					to:	"inclusionProbabilitiesPlot"				}
+		ChangeRename { from: "plotCoefficientsPosterior";					to:	"marginalPosteriorPlot"						}
+		ChangeRename { from: "plotLogPosteriorOdds";						to:	"logPosteriorOddsPlot"						}
+		ChangeRename { from: "plotModelComplexity";							to:	"modelComplexityPlot"						}
+		ChangeRename { from: "plotModelProbabilities";						to:	"modelProbabilitiesPlot"					}
+		ChangeRename { from: "plotResidualsVsFitted";						to:	"residualsVsFittedPlot"						}
+		ChangeRename { from: "plotQQplot";									to:	"qqPlot"									}
+
+		ChangeRename { from: "addResiduals";								to:	"residualsSavedToData"						}
+		ChangeRename { from: "addResidualSds";								to:	"residualSdsSavedToData"					}
+
+		ChangeRename { from: "residualsColumn";								to:	"residualsSavedToDataColumn"				}
+		ChangeRename { from: "residualSdsColumn";							to:	"residualSdsSavedToDataColumn"				}
+
+		ChangeJS
+		{
+			name:		"priorRegressionCoefficients"
+			jsFunction:	function(options)
+			{
+				switch(options["priorRegressionCoefficients"])
+				{
+					case "AIC":									return "aic";
+					case "BIC":									return "bic";
+					case "EB-global":							return "ebGlobal";
+					case "EB-local":							return "ebLocal";
+					case "g-prior":								return "gPrior";
+					case "hyper-g":								return "hyperG";
+					case "hyper-g-laplace":						return "hyperGLaplace";
+					case "hyper-g-n":							return "hyperGN";
+					case "JZS":									return "jzs";
+				}
+			}
+		}
+
+		ChangeRename { from: "alpha";							to:	"gPriorAlpha"				}
+		ChangeRename { from: "rScale";							to:	"jzsRScale"				}
+
+		ChangeJS
+		{
+			name:		"modelPrior"
+			jsFunction:	function(options)
+			{
+				switch(options["modelPrior"])
+				{
+					case "beta.binomial":				return "betaBinomial";
+					case "Wilson":						return "wilson";
+					case "Castillo":					return "castillo";
+					case "Bernoulli":					return "bernoulli";
+					return options["modelPrior"]
+				}
+			}
+		}
+
+		ChangeJS
+		{
+			name:		"samplingMethod"
+			jsFunction:	function(options)
+			{
+				switch(options["samplingMethod"])
+				{
+					case "BAS":					return "bas";
+					case "MCMC":				return "mcmc";
+				}
+			}
+		}
+
+		ChangeRename { from: "iterationsMCMC";								to:	"samples"									}
+		ChangeRename { from: "nSimForCRI";									to:	"numericalAccuracy"							}
+		
+
+	}
 }
