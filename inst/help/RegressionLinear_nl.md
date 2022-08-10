@@ -115,7 +115,7 @@ Coëfficiënten
   - Boven: De bovengrens van het betrouwbaarheidsinterval.
 - Collineariteit statistieken:
   - Tolerantie: Omgekeerde van de Variantie Inflatie Factor (VIF).
-  - VIF: Variantie Inflatie Factor; grote waarden wijzen op multicollineariteit. 
+  - VIF: Variantie Inflatie Factor; grote waarden wijzen op multicollineariteit. Berekend als VIF = det(R11) * det(R22) / det(R), waarbij R de covariantiematrix is van de regressiecoëfficiënten (exclusief intercept), R11 een submatrix is van R van de voorspeller waarvoor VIF wordt berekend, en V22 een submatrix is van R van de andere voorspellers (Fox & Monette, 1992).
   
 Ge-bootstrapte Coëfficiënten.
 - Model: Regressiemodel (één voor elke stap in achterwaartse, voorwaartse en stapsgewijze regressie).
@@ -171,6 +171,7 @@ Residu statistieken:
 ### Referenties
 -------
 - Field, A.P., Miles, J., & Field, Z. (2012). *Discovering statistics using R*. London: Sage.
+- Fox, J. & Monette, G. (1992). Generalized Collinearity Diagnostics. *Journal of the American Statistical Association, 87*(417), 178-183.
 - Moore, D.S., McCabe, G.P., & Craig, B.A. (2012). *Introduction to the practice of statistics (7th ed.)*. New York, NY: W.H. Freeman and Company.
 - Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of *p* values for testing precise null hypotheses. *The American Statistician, 55*(1), 62-71.
 - Stevens, J.P. (2009). *Applied multivariate statistics for the social sciences (5th ed.)*. New York, NY: Routledge.

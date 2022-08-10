@@ -117,7 +117,7 @@ Coefficients:
   - Upper: The upper bound of the confidence interval.
 - Collinearity Statistics:
   - Tolerance: Inverse of the Variance Inflation Factor (VIF).
-  - VIF: Variance Inflation Factor; large values indicate multicollinearity.
+  - VIF: Variance Inflation Factor; large values indicate multicollinearity. Calculated as VIF = det(R11) * det(R22) / det(R), where R is the covariance matrix of the regression coefficients (excluding intercept), R11 is a submatrix of R of the predictor for which VIF is calculated, and V22 is a submatrix of R of the other predictors (Fox & Monette, 1992).
   
 Bootstrapped Coefficients:
 - Model: Regression model (one for each step in Backward, Forward, and Stepwise regression).
@@ -172,6 +172,7 @@ Residual Statistics:
 ### References
 -------
 - Field, A.P., Miles, J., & Field, Z. (2012). *Discovering statistics using R*. London: Sage.
+- Fox, J. & Monette, G. (1992). Generalized Collinearity Diagnostics. *Journal of the American Statistical Association, 87*(417), 178-183.
 - Moore, D.S., McCabe, G.P., & Craig, B.A. (2012). *Introduction to the practice of statistics (7th ed.)*. New York, NY: W.H. Freeman and Company.
 - Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of *p* values for testing precise null hypotheses. *The American Statistician, 55*(1), 62-71.
 - Stevens, J.P. (2009). *Applied multivariate statistics for the social sciences (5th ed.)*. New York, NY: Routledge.

@@ -46,6 +46,7 @@ Met logistische regressie kan men een lineaire relatie tussen een of meer verkla
 	- Odds ratio schaal: Proportionele verandering in odds door het delen van de odds na een verandering in de predictor door de odds voor die verandering (Field).
   - Robuuste standaardfouten: Deze optie controleert voor fouten die niet onafhankelijk en gelijk zijn verdeeld. Het gebruik van robuuste standaardfouten zal de schattingen van coëfficiënten niet aantasten. Als deze optie niet wordt geselecteerd wordt de normale standaardfout berekend.
   - Vovk-Selke maximum p-ratio: De grens 1/(-e p log(p)) wordt afgeleid van de vorm van de verdeling van de p-waarden. Onder de nulhypothese (H<sub>0</sub>) is het uniform (0,1) en onder de alternatieve hypothese (H<sub>1</sub>) neemt hij af in p, bijv. een beta (α, 1) verdeling waar 0 < α < 1. De Vovk-Selke MPR wordt verkregen door het vorm van α onder de alternative hypothese te kiezen zodat de p-waarde maximaal diagnostisch is. De waarde is dan de ratio van de dichtheid op punt p onder H<sub>0</sub> en H<sub>1</sub>. Als de tweezijdige p-waarde bijvoorbeeld .05 is is de Vovk-Sellke MPR 2.46. Dit geeft aan dat deze p-waarde maximaal 2.46 zo waarschijnlijk is onder H1 dan onder H<sub>0</sub>. Meer informatie via href="https://jasp-stats.org/2017/06/12/mysterious-vs-mpr/">blogpost</a>.
+  - Multicollineariteitsdiagnostiek: Collineariteitsstatistieken (Tolerantie en VIF).
 
 - Residuen: 
   - Diagnostieken per observatie: Gevalsgewijze en samengevatte diagnostieken voor de residuen.
@@ -119,6 +120,12 @@ Bootstrap Coëfficiënten.
 - Bias: Schatting van de bias.
 - Standaardfout: Standaardfout van de ge-bootstrapte regressiecoëfficiënten.
 
+Multicollineariteitsdiagnostiek:
+- Tolerantie: Inverse van de Variantie-inflatiefactor (VIF).
+- VIF: Variance Inflation Factor; grote waarden wijzen op multicollineariteit. Berekend als VIF = det(R11) * det(R22) / det(R), waarbij R de covariantiematrix is van de regressiecoëfficiënten (exclusief intercept), R11 een submatrix is van R van de voorspeller waarvoor VIF wordt berekend, en V22 een submatrix is van R van de overige voorspellers (Fox & Monette, 1992; Fox, 2016).
+
+Vertaald met www.DeepL.com/Translator (gratis versie)
+
 Stapsgewijze Diagnostieken: 
   - Gevalsnummer: Identificatie van het geval.
   - Geobserveerd: De geobserveerde waarde van de uitkomst.
@@ -157,6 +164,8 @@ Gekwadrateerde Pearson residuen grafiek.
 ### Referenties
 -------
 - Field, A.P., Miles, J., & Field, Z. (2012). *Discovering statistics using R*. London: Sage.
+- Fox, J. (2016). *Applied Regression Analysis and Generalized Linear Models (3rd ed.)*. Thousand Oaks, CA: Sage Publishing. 
+- Fox, J. & Monette, G. (1992). Generalized Collinearity Diagnostics. *Journal of the American Statistical Association, 87*(417), 178-183.
 - Moore, D.S., McCabe, G.P., & Craig, B.A. (2012). *Introduction to the practice of statistics (7th ed.)*. New York, NY: W.H. Freeman and Company.
 - Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of *p* values for testing precise null hypotheses. *The American Statistician, 55*(1), 62-71.
 - Stevens, J.P. (2009). *Applied multivariate statistics for the social sciences (5th ed.)*. New York, NY: Routledge.
