@@ -115,7 +115,7 @@ Coëfficiënten
   - Boven: De bovengrens van het betrouwbaarheidsinterval.
 - Collineariteit statistieken:
   - Tolerantie: Omgekeerde van de Variantie Inflatie Factor (VIF).
-  - VIF: Variantie Inflatie Factor; grote waarden wijzen op multicollineariteit. Berekend als VIF = det(R11) * det(R22) / det(R), waarbij R de covariantiematrix is van de regressiecoëfficiënten (exclusief intercept), R11 een submatrix is van R van de voorspeller waarvoor VIF wordt berekend, en V22 een submatrix is van R van de andere voorspellers (Fox & Monette, 1992).
+  - VIF: Variantie Inflatie Factor; grote waarden wijzen op multicollineariteit. Berekend als VIF = det(R<sub>11</sub>) * det(R<sub>22</sub>) / det(R), waarbij R de covariantiematrix is van de regressiecoëfficiënten (exclusief intercept), R<sub>11</sub> een submatrix is van R van de voorspeller waarvoor VIF wordt berekend, en R<sub>22</sub> een submatrix is van R van de andere voorspellers (Fox & Monette, 1992).
   
 Ge-bootstrapte Coëfficiënten.
 - Model: Regressiemodel (één voor elke stap in achterwaartse, voorwaartse en stapsgewijze regressie).

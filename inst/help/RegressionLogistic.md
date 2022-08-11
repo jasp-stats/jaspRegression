@@ -120,7 +120,7 @@ Bootstrap Coefficients:
 
 Multicollinearity diagnostics:
 - Tolerance: Inverse of the Variance Inflation Factor (VIF).
-- VIF: Variance Inflation Factor; large values indicate multicollinearity. Calculated as VIF = det(R11) * det(R22) / det(R), where R is the covariance matrix of the regression coefficients (excluding intercept), R11 is a submatrix of R of the predictor for which VIF is calculated, and V22 is a submatrix of R of the other predictors (Fox & Monette, 1992; Fox, 2016).
+- VIF: Variance Inflation Factor; large values indicate multicollinearity. Calculated as VIF = det(R<sub>11</sub>) * det(R<sub>22</sub>) / det(R), where R is the covariance matrix of the regression coefficients (excluding intercept), R<sub>11</sub> is a submatrix of R of the predictor for which VIF is calculated, and R<sub>22</sub> is a submatrix of R of the other predictors (Fox & Monette, 1992; Fox, 2016).
 
 
 Casewise Diagnostics:

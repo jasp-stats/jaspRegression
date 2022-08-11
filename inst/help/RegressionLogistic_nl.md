@@ -122,7 +122,7 @@ Bootstrap Coëfficiënten.
 
 Multicollineariteitsdiagnostiek:
 - Tolerantie: Inverse van de Variantie-inflatiefactor (VIF).
-- VIF: Variance Inflation Factor; grote waarden wijzen op multicollineariteit. Berekend als VIF = det(R11) * det(R22) / det(R), waarbij R de covariantiematrix is van de regressiecoëfficiënten (exclusief intercept), R11 een submatrix is van R van de voorspeller waarvoor VIF wordt berekend, en V22 een submatrix is van R van de overige voorspellers (Fox & Monette, 1992; Fox, 2016).
+- VIF: Variance Inflation Factor; grote waarden wijzen op multicollineariteit. Berekend als VIF = det(R<sub>11</sub>) * det(R<sub>22</sub>) / det(R), waarbij R de covariantiematrix is van de regressiecoëfficiënten (exclusief intercept), R<sub>11</sub> een submatrix is van R van de voorspeller waarvoor VIF wordt berekend, en R<sub>22</sub> een submatrix is van R van de overige voorspellers (Fox & Monette, 1992; Fox, 2016).
 
 Vertaald met www.DeepL.com/Translator (gratis versie)
 
