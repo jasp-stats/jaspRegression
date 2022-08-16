@@ -5,7 +5,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 }
 
 .getPairsIndeces <- function(options) {
-  pairs <- options[["pairs"]]
+  pairs <- options[["variablePairs"]]
   nPairs <- length(pairs)
   
   allIndeces <- seq_len(nPairs)
@@ -48,7 +48,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 .corBayesReadData <- function(dataset, options) {
   allVariables <- unlist(options[["variables"]])
   
-  if (options[["missingValues"]] == "excludeListwise") {
+  if (options[["naAction"]] == "listwise") {
     dataset <- .readDataSetToEnd(columns.as.numeric=allVariables, exclude.na.listwise=allVariables)
   } else {
     dataset <- .readDataSetToEnd(columns.as.numeric=allVariables)
@@ -61,21 +61,21 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 .getCorPlotItems <- function(options, bayes=TRUE, sumStat=FALSE) {
   
   if (isTRUE(sumStat)) {
-    plotItems <- c("plotPriorPosterior", "plotBfRobustness")
+    plotItems <- c("priorPosteriorPlot", "bfRobustnessPlot")
   } else {
-    plotItems <- c("plotScatter", "plotPriorPosterior", "plotBfSequential", "plotBfRobustness")
+    plotItems <- c("scatterPlot", "priorPosteriorPlot", "bfSequentialPlot", "bfRobustnessPlot")
     
-    if (!options[["plotScatter"]])
-      plotItems <- setdiff(plotItems, "plotScatter")
+    if (!options[["scatterPlot"]])
+      plotItems <- setdiff(plotItems, "scatterPlot")
     
-    if (!options[["plotBfSequential"]])
-      plotItems <- setdiff(plotItems, "plotBfSequential")
+    if (!options[["bfSequentialPlot"]])
+      plotItems <- setdiff(plotItems, "bfSequentialPlot")
   }
   
-  if (!options[["plotPriorPosterior"]]) 
-    plotItems <- setdiff(plotItems, "plotPriorPosterior")
-  if (!options[["plotBfRobustness"]])
-    plotItems <- setdiff(plotItems, "plotBfRobustness")
+  if (!options[["priorPosteriorPlot"]]) 
+    plotItems <- setdiff(plotItems, "priorPosteriorPlot")
+  if (!options[["bfRobustnessPlot"]])
+    plotItems <- setdiff(plotItems, "bfRobustnessPlot")
   
   return(plotItems)
 }
@@ -97,7 +97,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
                                        "Ly, A., Marsman, M., Wagenmakers, E.-J. (2018). Analytic Posteriors for Pearson's Correlation Coefficient. Statistica Neerlandica, 72(1), 4-13."),
                            "kendall"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2018). Bayesian Inference for Kendall's Rank Correlation Coefficient. The American Statistician, 72(4), 303-308.", 
                                        "van Doorn, J.B., Ly, A., Marsman, M., & Wagenmakers, E.-J. (2019). Bayesian Estimation of Kendall's tau Using a Latent Normal Approach. Statistics and Probability Letters, 145, 268-272."),
-                           "spearman"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (in press). Bayesian Rank-Based Hypothesis Testing for the Rank Sum Test, the Signed Rank Test, and Spearman's rho. Manuscript submitted for publication")
+                           "spearman"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2020). Bayesian Rank-Based Hypothesis Testing for the Rank Sum Test, the Signed Rank Test, and Spearman's rho. Journal of Applied Statistics, 47(16), 2984-3006.")
 )
 
 .getCorCitations <- function(methodItems, bayes=TRUE) {
