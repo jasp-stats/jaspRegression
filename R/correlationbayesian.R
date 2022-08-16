@@ -93,7 +93,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
       .setSeedJASP(options)
       bfObject <- bstats::bcor.test("x"=v1, "y"=v2, "kappa"=options[["priorWidth"]],
                                     "method"=method, "ciValue"=options[["ciValue"]])
-
+      
       if (!is.null(errorMsg)) {
         bfObject[["error"]] <- errorMsg
         bfObject[["dataError"]] <- errorMsg
@@ -153,10 +153,10 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
   corBayesTable$addCitation(.getCorCitations(methodItems, bayes=TRUE))
 
-  if (alternative=="greater")
+  if (alternativeLocal=="greater")
     corBayesTable$addFootnote(.getBfTableSidedFootnote(alternative="greater", analysis="correlation"))
 
-  if (alternative=="less")
+  if (alternativeLocal=="less")
     corBayesTable$addFootnote(.getBfTableSidedFootnote(alternative="less", analysis="correlation"))
 
   # Add legend footnote of BFs
@@ -1014,7 +1014,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
           plot <- try(.bCorScatter(x=subData[[jaspBase::encodeColNames(var1)]], y=subData[[jaspBase::encodeColNames(var2)]], xName=var1, yName=var2,
                                    useRanks = options[["pairsMethod"]] != "pearson"))
         } else if (item == "priorPosteriorPlot") {
-          plot <- .drawPosteriorPlotCorBayes(jaspResults, corModel, options, thisMethod, purpose="pairs", pairName)
+          plot <- .drawPosteriorPlotCorBayes(jaspResults, corModel, options, thisMethod, purpose="pairs", "pairName"=pairName)
         } else if (item == "bfRobustnessPlot") {
           plot <- .drawBfRobustnessPlotCorBayes(pairStats[[thisMethod]], options, thisMethod)
         } else if (item == "bfSequentialPlot") {

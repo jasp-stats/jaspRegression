@@ -98,10 +98,10 @@ hypMinSided <- c("less", "minSided",
 
 .bfPlotTitles <- function(plotTitle)
                   switch(plotTitle,
-                      plotScatter         = gettext("Scatterplot"),
-                      plotPriorPosterior  = gettext("Prior and Posterior"),
-                      plotBfRobustness    = gettext("Bayes Factor Robustness Check"),
-                      plotBfSequential    = gettext("Sequential Analysis"))
+                      scatterPlot         = gettext("Scatterplot"),
+                      priorPosteriorPlot  = gettext("Prior and Posterior"),
+                      bfRobustnessPlot    = gettext("Bayes Factor Robustness Check"),
+                      bfSequentialPlot    = gettext("Sequential Analysis"))
 
 # if (options[["alternative"]]=="greater")
 #   corBayesTable$addFootnote(message="For all tests, the alternative hypothesis specifies that the correlation is positive.",
