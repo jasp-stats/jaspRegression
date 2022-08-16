@@ -86,8 +86,8 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         v1 <- NA
         v2 <- NA
       } else {
-        v1 <- dataset[[jaspResults::encodeColNames(var1)]]
-        v2 <- dataset[[jaspResults::encodeColNames(var2)]]
+        v1 <- dataset[[jaspBase::encodeColNames(var1)]]
+        v2 <- dataset[[jaspBase::encodeColNames(var2)]]
       }
 
       .setSeedJASP(options)
@@ -605,9 +605,9 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
           # TODO(Alexander): This is probably not run here anyways, but try avoid  displayerror
           scatterPlot <- .displayError(errorMessage=dataError)
         } else {
-          subData <- dataset[, jaspResults::encodeColNames(c(var1, var2)), drop=FALSE]
+          subData <- dataset[, jaspBase::encodeColNames(c(var1, var2)), drop=FALSE]
           subData <- subData[complete.cases(subData), , drop=FALSE]
-          scatterPlot <- .bCorScatter(x=subData[[jaspResults::encodeColNames(var2)]], y=subData[[jaspResults::encodeColNames(var1)]],
+          scatterPlot <- .bCorScatter(x=subData[[jaspBase::encodeColNames(var2)]], y=subData[[jaspBase::encodeColNames(var1)]],
                                       useRanks = useRanks)
         }
 
@@ -618,7 +618,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         if (!options[["matrixPlotDensity"]]) {
           densityPlot <- list()
         } else {
-          densityPlot <-try(.bCorMarginalDistribution(variable = dataset[, jaspResults::encodeColNames(vars[row]), drop=TRUE],
+          densityPlot <-try(.bCorMarginalDistribution(variable = dataset[, jaspBase::encodeColNames(vars[row]), drop=TRUE],
                                                       varName = vars[row], options = options)
           )
 
@@ -633,7 +633,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   }
 
   if (options[["matrixPlotDensity"]]) {
-    densityPlot <- try(.bCorMarginalDistribution(variable = dataset[, jaspResults::encodeColNames(vars[nVariables]), drop=TRUE],
+    densityPlot <- try(.bCorMarginalDistribution(variable = dataset[, jaspBase::encodeColNames(vars[nVariables]), drop=TRUE],
                                                  varName = vars[nVariables], options = options)
     )
 
@@ -1009,16 +1009,16 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
         plot <- NULL
         if (item == "scatterPlot") {
-          subData <- dataset[, jaspResults::encodeColNames(c(var1, var2)), drop=FALSE]
+          subData <- dataset[, jaspBase::encodeColNames(c(var1, var2)), drop=FALSE]
           subData <- subData[complete.cases(subData), , drop=FALSE]
-          plot <- try(.bCorScatter(x=subData[[jaspResults::encodeColNames(var1)]], y=subData[[jaspResults::encodeColNames(var2)]], xName=var1, yName=var2,
+          plot <- try(.bCorScatter(x=subData[[jaspBase::encodeColNames(var1)]], y=subData[[jaspBase::encodeColNames(var2)]], xName=var1, yName=var2,
                                    useRanks = options[["pairsMethod"]] != "pearson"))
         } else if (item == "priorPosteriorPlot") {
           plot <- .drawPosteriorPlotCorBayes(jaspResults, corModel, options, thisMethod, purpose="pairs", pairName)
         } else if (item == "bfRobustnessPlot") {
           plot <- .drawBfRobustnessPlotCorBayes(pairStats[[thisMethod]], options, thisMethod)
         } else if (item == "bfSequentialPlot") {
-          plot <- .drawBfSequentialPlotCorBayes(dataset[[jaspResults::encodeColNames(var1)]], dataset[[jaspResults::encodeColNames(var2)]], pairStats[[thisMethod]],
+          plot <- .drawBfSequentialPlotCorBayes(dataset[[jaspBase::encodeColNames(var1)]], dataset[[jaspBase::encodeColNames(var2)]], pairStats[[thisMethod]],
                                                 options)
         }
         .checkAndSetPlotCorBayes(plot, jaspPlotResult)
