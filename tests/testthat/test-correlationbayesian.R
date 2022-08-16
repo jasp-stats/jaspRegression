@@ -9,9 +9,9 @@ test_that("Bayesian Correlation Table results match", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
   options$variables <- c("contcor1", "contcor2")
   options$kendall <- TRUE
-  options$flagSupported <- TRUE
+  options$supportCorrelationFlagged <- TRUE
   options$ci <- TRUE
-  options$kappa <- 1.5
+  options$priorWidth <- 1.5
   set.seed(1)
   results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
   table <- results[["results"]][["corBayesTable"]][["data"]]
@@ -40,7 +40,7 @@ test_that("Bayesian Correlation Table results match", {
 #   options$variables <- c("contcor1", "contcor2")
 #   options$kendallsTauB <- TRUE
 #   options$reportBayesFactors <- TRUE
-#   options$flagSupported <- TRUE
+#   options$supportCorrelationFlagged <- TRUE
 #   options$credibleInterval <- TRUE
 #   options$priorWidth <- 1.5
 #   results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
@@ -64,10 +64,10 @@ test_that("Bayesian Correlation Table results match", {
 test_that("Bayesian Correlation Matrix Plot matches", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
   options$variables <- c("contcor1", "contcor2")
-  options$plotMatrix <- TRUE
-  options$plotMatrixDensities <- TRUE
-  options$plotMatrixPosteriors <- TRUE
-  options$kappa <- 1.0
+  options$matrixPlot <- TRUE
+  options$matrixPlotDensity <- TRUE
+  options$matrixPlotPosterior <- TRUE
+  options$priorWidth <- 1.0
   set.seed(1)
   results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
   plotName <- results[["results"]][["matrixPlot"]][["data"]]
@@ -99,9 +99,9 @@ test_that("Analysis handles errors", {
 test_that("Bayesian Pearson Correlation PAIRWISE table results match", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
   options$variables <- list("contcor1", "contcor2")
-  options$displayPairwise <- TRUE
+  options$pairwiseDisplay <- TRUE
   options$ci <- TRUE
-  options$kappa <- 2
+  options$priorWidth <- 2
   set.seed(1)
   results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
   table <- results[["results"]][["corBayesTable"]][["data"]]
@@ -113,11 +113,11 @@ test_that("Bayesian Pearson Correlation PAIRWISE table results match", {
 # Pairs plot
 options <- jaspTools::analysisOptions("CorrelationBayesian")
 options$variables <- list("contcor1", "contcor2")
-options$pairs <- list(c("contcor1", "contcor2"))
-options$plotPriorPosterior <- TRUE
-options$plotBfRobustness <- TRUE
-options$plotBfSequential <- TRUE
-options$kappa <- 1.0
+options$variablePairs <- list(c("contcor1", "contcor2"))
+options$priorPosteriorPlot <- TRUE
+options$bfRobustnessPlot <- TRUE
+options$bfSequentialPlot <- TRUE
+options$priorWidth <- 1.0
 set.seed(1)
 results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
 
@@ -149,11 +149,11 @@ options <- jaspTools::analysisOptions("CorrelationBayesian")
 options$variables <- list("facFive", "contBinom")
 options$pearson <- FALSE
 options$kendall <- TRUE
-options$displayPairwise <- TRUE
-options$plotMatrix <- TRUE
+options$pairwiseDisplay <- TRUE
+options$matrixPlot <- TRUE
 options$pairsMethod <- "kendall"
 options$pairs <- list(c("facFive", "contBinom"))
-options$kappa <- 1
+options$priorWidth <- 1
 set.seed(1)
 results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
 
@@ -184,10 +184,10 @@ test_that("Too peaked posterior is plotted with meaningfull error message", {
     c("x", "y")
   )
   options$alternative <- "greater"
-  options$plotPriorPosterior <- TRUE
-  options$plotPriorPosteriorAddEstimationInfo <- TRUE
-  options$plotPriorPosteriorAddTestingInfo <- TRUE
-  options$kappa <- "1"
+  options$priorPosteriorPlot <- TRUE
+  options$priorPosteriorPlotAddEstimationInfo <- TRUE
+  options$priorPosteriorPlotAddTestingInfo <- TRUE
+  options$priorWidth <- "1"
 
   set.seed(1)
   data <- data.frame(x = rnorm(10))
