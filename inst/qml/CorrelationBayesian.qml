@@ -45,7 +45,7 @@ Form
         CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table")					}
         CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors"); checked: true		}
         CheckBox {	name: "supportCorrelationFlagged";		label: qsTr("Flag supported correlations")				}
-        CheckBox {	name: "sampleSizeReport";               label: qsTr("Sample size")								}
+        CheckBox {	name: "sampleSize";                     label: qsTr("Sample size")								}
         CheckBox {	name: "posteriorMedian";                label: qsTr("Posterior median"); debug: true			}
 		CheckBox
 		{

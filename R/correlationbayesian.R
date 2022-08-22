@@ -86,25 +86,25 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         v1 <- NA
         v2 <- NA
       } else {
-        v1 <- dataset[[jaspBase::encodeColNames(var1)]]
-        v2 <- dataset[[jaspBase::encodeColNames(var2)]]
+        v1 <- dataset[[var1]]
+        v2 <- dataset[[var2]]
       }
 
       .setSeedJASP(options)
       bfObject <- bstats::bcor.test("x"=v1, "y"=v2, "kappa"=options[["priorWidth"]],
                                     "method"=method, "ciValue"=options[["ciValue"]])
-      
+
       if (!is.null(errorMsg)) {
         bfObject[["error"]] <- errorMsg
         bfObject[["dataError"]] <- errorMsg
       } else {
-        
+
         # TODO(Alexander): This can be removed once bstats is adapted
         alternativeLocal <- switch(options[["alternative"]],
                                    twoSided  = "two.sided",
                                    greater  = "greater",
                                    less = "less")
-        
+
         ci <- .computeCorCredibleInterval(bfObject, options[["ciValue"]], method)
         if (!is.null(ci[["error"]]) && isTRUE(bfObject[[alternativeLocal]][["tooPeaked"]]))
           ci[["error"]] <- gettext("Posterior is too peaked")
@@ -135,7 +135,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   methodItems <- .getCorMethods(options)
   corBayesTable <- createJaspTable(title=.getCorTableTitle(methodItems, bayes=TRUE))
   corBayesTable$position <- 1
-  
+
   # TODO(Alexander): This can be removed once bstats is adapted
   alternativeLocal <- switch(options[["alternative"]],
                              twoSided  = "two.sided",
@@ -145,7 +145,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   corBayesTable$dependOn(c("pearson", "kendall", "spearman", "alternative", "priorWidth", "variables",
                            "pairwiseDisplay","bayesFactorReport", "naAction",
                            "supportCorrelationFlagged", "ci", "ciValue",
-                           "sampleSizeReport", "posteriorMedian", "bayesFactorType",
+                           "sampleSize", "posteriorMedian", "bayesFactorType",
                            "setSeed", "seed"))
 
   corBayesTable$showSpecifiedColumnsOnly <- TRUE
@@ -186,7 +186,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   table$addColumnInfo(name="separator", title="", type="separator")
   table$addColumnInfo(name="variable2", title="", type="string")
 
-  if (options[["sampleSizeReport"]])
+  if (options[["sampleSize"]])
     table$addColumnInfo(name="n", title="n", type="integer")
 
   for (m in seq_along(methodItems)) {
@@ -238,7 +238,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   if (is.null(methodItems) ||  length(methodItems)==0) {
     numberOfColumns <- 3
   } else {
-    numberOfColumns <- 3 + options[["sampleSizeReport"]] + length(methodItems) * sum(options[["bayesFactorReport"]],
+    numberOfColumns <- 3 + options[["sampleSize"]] + length(methodItems) * sum(options[["bayesFactorReport"]],
                                                                             2*options[["ci"]])
   }
 
@@ -268,7 +268,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   }
 
   if (length(methodItems)==0) {
-    nItems <- sum(options[["bayesFactorReport"]], 2*options[["ci"]], options[["sampleSizeReport"]])
+    nItems <- sum(options[["bayesFactorReport"]], 2*options[["ci"]], options[["sampleSize"]])
 
     if (nItems <= 1) {
       numberOfColumns <- nVariables
@@ -286,7 +286,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     } else {
       numberOfColumns <- 2 + nVariablesEffective
       numberOfRows <- nVariablesEffective * length(methodItems) *
-        (itemsPerMethod + 1) + options[["sampleSizeReport"]] * nVariablesEffective
+        (itemsPerMethod + 1) + options[["sampleSize"]] * nVariablesEffective
     }
   }
 
@@ -340,7 +340,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     statColumnPerVar <- c(statColumnPerVar, statsToReport)
   }
 
-  if (options[["sampleSizeReport"]])
+  if (options[["sampleSize"]])
     statColumnPerVar <- c(gettext("n"), statColumnPerVar)
 
   emptyCells <- matrix(c("\u2014", "", ".", "\u2014"), nrow=2, byrow=TRUE)
@@ -367,7 +367,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     tempRow <- list("variable1"=var1, "separator"="-", "variable2"=var2)
 
     itemNames <- .bSelectItems(options)
-    
+
     # TODO(Alexander): This can be removed once bstats is adapted
     alternativeLocal <- switch(options[["alternative"]],
                                twoSided  = "two.sided",
@@ -437,7 +437,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
       # Note(Alexander): RETRIEVE info from state here
       #
-      
+
       # TODO(Alexander): This can be removed once bstats is adapted
       alternativeLocal <- switch(options[["alternative"]],
                                  twoSided  = "two.sided",
@@ -490,7 +490,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
       #
       # To be used for the column "itemName"
       #
-      if (m > 1 && options[["sampleSizeReport"]]) {
+      if (m > 1 && options[["sampleSize"]]) {
         allItemInfo[["n"]] <- NULL
 
         # Note(Alexander): After the first time we added "n", remove it from the other
@@ -605,9 +605,9 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
           # TODO(Alexander): This is probably not run here anyways, but try avoid  displayerror
           scatterPlot <- .displayError(errorMessage=dataError)
         } else {
-          subData <- dataset[, jaspBase::encodeColNames(c(var1, var2)), drop=FALSE]
+          subData <- dataset[, c(var1, var2), drop=FALSE]
           subData <- subData[complete.cases(subData), , drop=FALSE]
-          scatterPlot <- .bCorScatter(x=subData[[jaspBase::encodeColNames(var2)]], y=subData[[jaspBase::encodeColNames(var1)]],
+          scatterPlot <- .bCorScatter(x=subData[[var2]], y=subData[[var1]],
                                       useRanks = useRanks)
         }
 
@@ -618,7 +618,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         if (!options[["matrixPlotDensity"]]) {
           densityPlot <- list()
         } else {
-          densityPlot <-try(.bCorMarginalDistribution(variable = dataset[, jaspBase::encodeColNames(vars[row]), drop=TRUE],
+          densityPlot <-try(.bCorMarginalDistribution(variable = dataset[, vars[row], drop=TRUE],
                                                       varName = vars[row], options = options)
           )
 
@@ -633,7 +633,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   }
 
   if (options[["matrixPlotDensity"]]) {
-    densityPlot <- try(.bCorMarginalDistribution(variable = dataset[, jaspBase::encodeColNames(vars[nVariables]), drop=TRUE],
+    densityPlot <- try(.bCorMarginalDistribution(variable = dataset[, vars[nVariables], drop=TRUE],
                                                  varName = vars[nVariables], options = options)
     )
 
@@ -792,7 +792,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
       y = c(postPlotValues[["priorLine"]], postPlotValues[["posteriorLine"]]),
       g = rep(gLegend, each=domainLength)
     )
-    
+
     # TODO(Alexander): This can be removed once bstats is adapted
     alternativeLocal <- switch(options[["alternative"]],
                                twoSided  = "two.sided",
@@ -853,7 +853,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     return(jaspResults[[indexName]]$object)
 
   results <- list()
-  
+
   # TODO(Alexander): This can be removed once bstats is adapted
   alternativeLocal <- switch(options[["alternative"]],
                              twoSided  = "two.sided",
@@ -974,13 +974,13 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
   # TODO(Alexander): Get indeces for useable pairs instead
   pairsIndeces <- .getPairsIndeces(options)
-  
+
   # TODO(Alexander): This can be removed once bstats is adapted
   alternativeLocal <- switch(options[["alternative"]],
                              twoSided  = "two.sided",
                              greater  = "greater",
                              less = "less")
-  
+
   thisMethod <- options[["pairsMethod"]]
 
   for (i in pairsIndeces) {
@@ -1009,16 +1009,16 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
         plot <- NULL
         if (item == "scatterPlot") {
-          subData <- dataset[, jaspBase::encodeColNames(c(var1, var2)), drop=FALSE]
+          subData <- dataset[, c(var1, var2), drop=FALSE]
           subData <- subData[complete.cases(subData), , drop=FALSE]
-          plot <- try(.bCorScatter(x=subData[[jaspBase::encodeColNames(var1)]], y=subData[[jaspBase::encodeColNames(var2)]], xName=var1, yName=var2,
+          plot <- try(.bCorScatter(x=subData[[var1]], y=subData[[var2]], xName=var1, yName=var2,
                                    useRanks = options[["pairsMethod"]] != "pearson"))
         } else if (item == "priorPosteriorPlot") {
           plot <- .drawPosteriorPlotCorBayes(jaspResults, corModel, options, thisMethod, purpose="pairs", "pairName"=pairName)
         } else if (item == "bfRobustnessPlot") {
           plot <- .drawBfRobustnessPlotCorBayes(pairStats[[thisMethod]], options, thisMethod)
         } else if (item == "bfSequentialPlot") {
-          plot <- .drawBfSequentialPlotCorBayes(dataset[[jaspBase::encodeColNames(var1)]], dataset[[jaspBase::encodeColNames(var2)]], pairStats[[thisMethod]],
+          plot <- .drawBfSequentialPlotCorBayes(dataset[[var1]], dataset[[var2]], pairStats[[thisMethod]],
                                                 options)
         }
         .checkAndSetPlotCorBayes(plot, jaspPlotResult)
@@ -1031,13 +1031,13 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 .drawBfRobustnessPlotCorBayes <- function(bfObject, options, method) {
   .setSeedJASP(options)
   robustnessValuesPerHypothesis <- bstats::computeCorRobustnessLine(bfObject)
-  
+
   # TODO(Alexander): This can be removed once bstats is adapted
   alternativeLocal <- switch(options[["alternative"]],
                              twoSided  = "two.sided",
                              greater  = "greater",
                              less = "less")
-  
+
   robustnessValues <- bstats::getSidedObject(robustnessValuesPerHypothesis, alternative=alternativeLocal,
                                              itemNames=c("kappaDomain", "kappa"))
   robustnessLine <- robustnessValues[["robustnessLine"]]
@@ -1049,7 +1049,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     yLine <- robustnessLine
     xPoint <- NULL
     yPoint <- NULL
-    
+
     # TODO(Alexander): This can be removed once bstats is adapted
     alternativeLocal <- switch(options[["alternative"]],
                                twoSided  = "two.sided",
@@ -1162,13 +1162,13 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
 .drawBfSequentialPlotCorBayes <- function(v1, v2, bfObject, options) {
   .setSeedJASP(options)
-  
+
   # TODO(Alexander): This can be removed once bstats is adapted
   alternativeLocal <- switch(options[["alternative"]],
                              twoSided  = "two.sided",
                              greater  = "greater",
                              less = "less")
-  
+
   sequentialValuesPerHyp <- bstats::computeCorSequentialLine(x=v1, y=v2, bfObject=bfObject)
   sequentialValues <- bstats::getSidedObject(sequentialValuesPerHyp, alternative=alternativeLocal,
                                              itemNames="nDomain")
@@ -1200,7 +1200,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
                      "BF10"="BF10",
                      "BF01"="BF01"
     )
-    
+
     # TODO(Alexander): This can be removed once bstats is adapted
     alternativeLocal <- switch(options[["alternative"]],
                                twoSided  = "two.sided",

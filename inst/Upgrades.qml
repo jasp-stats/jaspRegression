@@ -185,7 +185,7 @@ Upgrades
         ChangeRename { from: "displayPairwise";						to: "pairwiseDisplay"						}
         ChangeRename { from: "reportBayesFactors";					to: "bayesFactorReport"						}
         ChangeRename { from: "flagSupported";						to: "supportCorrelationFlagged"				}
-        ChangeRename { from: "reportN";								to: "sampleSizeReport"						}
+        ChangeRename { from: "reportN";								to: "sampleSize"                            }
 
         ChangeJS
         {
@@ -195,6 +195,7 @@ Upgrades
                 switch(options["alternative"])
                 {
                     case "two.sided":				return "twoSided"	;
+                    default:                        return options["alternative"];
                 }
             }
         }
@@ -219,7 +220,6 @@ Upgrades
         ChangeRename { from: "plotPriorPosterior";						to: "priorPosteriorPlot"					}
         ChangeRename { from: "plotPriorPosteriorAddEstimationInfo";		to: "priorPosteriorPlotAddEstimationInfo"	}
         ChangeRename { from: "plotPriorPosteriorAddTestingInfo";		to: "priorPosteriorPlotAddTestingInfo"		}
-
 
         // Pairs Plots - Robustness plots
         ChangeRename { from: "plotBfRobustness";						to: "bfRobustnessPlot"						}
