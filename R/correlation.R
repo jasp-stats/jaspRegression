@@ -736,6 +736,16 @@ Correlation <- function(jaspResults, dataset, options){
         }
         resList[[vvars[rowVar]]] <- r
       }
+
+      print(currentColumnName)
+      print(currentPairName)
+      print(statName)
+
+      if (statName=="pearson_estimate" && currentColumnName=="contGamma_pearson_estimate" && currentPairName=="contGamma_contGamma") {
+        print(reslist)
+        # browser()
+      }
+
       resultList[[currentColumnName]] <- resList
     }
   }

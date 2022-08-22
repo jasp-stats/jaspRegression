@@ -17,6 +17,7 @@ options$spearman <- TRUE
 options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
 set.seed(1)
 results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
+results$results$mainTable
 
 
 test_that("Shapiro-Wilk Test for Multivariate Normality table results match", {
