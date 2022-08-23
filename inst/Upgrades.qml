@@ -186,6 +186,7 @@ Upgrades
         ChangeRename { from: "reportBayesFactors";					to: "bayesFactorReport"						}
         ChangeRename { from: "flagSupported";						to: "supportCorrelationFlagged"				}
         ChangeRename { from: "reportN";								to: "sampleSize"                            }
+        ChangeRename { from: "ciValue";								to: "ciLevel"                               }
 
         ChangeJS
         {

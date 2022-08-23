@@ -92,7 +92,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
       .setSeedJASP(options)
       bfObject <- bstats::bcor.test("x"=v1, "y"=v2, "kappa"=options[["priorWidth"]],
-                                    "method"=method, "ciValue"=options[["ciValue"]])
+                                    "method"=method, "ciValue"=options[["ciLevel"]])
 
       if (!is.null(errorMsg)) {
         bfObject[["error"]] <- errorMsg
@@ -105,7 +105,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
                                    greater  = "greater",
                                    less = "less")
 
-        ci <- .computeCorCredibleInterval(bfObject, options[["ciValue"]], method)
+        ci <- .computeCorCredibleInterval(bfObject, ciLevel=options[["ciLevel"]], method)
         if (!is.null(ci[["error"]]) && isTRUE(bfObject[[alternativeLocal]][["tooPeaked"]]))
           ci[["error"]] <- gettext("Posterior is too peaked")
         bfObject <- modifyList(bfObject, ci)
@@ -115,7 +115,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   }
 
   jaspResults[["corModel"]] <- createJaspState(result)
-  jaspResults[["corModel"]]$dependOn(c("naAction", "variables", "priorWidth", "ciValue", "setSeed", "seed"))
+  jaspResults[["corModel"]]$dependOn(c("naAction", "variables", "priorWidth", "ciLevel", "setSeed", "seed"))
 
   return(result)
 }
@@ -144,7 +144,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
   corBayesTable$dependOn(c("pearson", "kendall", "spearman", "alternative", "priorWidth", "variables",
                            "pairwiseDisplay","bayesFactorReport", "naAction",
-                           "supportCorrelationFlagged", "ci", "ciValue",
+                           "supportCorrelationFlagged", "ci", "ciLevel",
                            "sampleSize", "posteriorMedian", "bayesFactorType",
                            "setSeed", "seed"))
 
@@ -168,6 +168,8 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   .addTableColumnMarkupCorBayes(corBayesTable, methodItems, options)
 
   .fillTableCorBayes(corBayesTable, options, corModel)
+
+  browser()
 
   jaspResults[["corBayesTable"]] <- corBayesTable
 }
@@ -219,10 +221,10 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
     #
     if (options[["ci"]]) {
       table$addColumnInfo(name=paste0(methodName, "lowerCi"), overtitle=overTitle, type="number",
-                          title=gettextf("Lower %s%% CI", options[["ciValue"]] * 100))
+                          title=gettextf("Lower %s%% CI", options[["ciLevel"]] * 100))
 
       table$addColumnInfo(name=paste0(methodName, "upperCi"), overtitle=overTitle, type="number",
-                          title=gettextf("Upper %s%% CI", options[["ciValue"]] * 100))
+                          title=gettextf("Upper %s%% CI", options[["ciLevel"]] * 100))
     }
   }
 
@@ -800,7 +802,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
                                less = "less")
 
     if (isTRUE(options[["priorPosteriorPlotAddEstimationInfo"]])) {
-      if (postPlotValues[["ciValue"]] != options[["ciValue"]]) {
+      if (postPlotValues[["ciValue"]] != options[["ciLevel"]]) {
         if (purpose=="pairs") {
           methodName <- options[["pairsMethod"]]
           sidedBfWithoutPost <- corModel[[pairName]][[methodName]][[alternativeLocal]]
@@ -819,9 +821,9 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
         medianPoint <- postPlotValues[["posteriorMedian"]]
       }
 
-      ciValue <- options[["ciValue"]]
+      ciLevel <- options[["ciLevel"]]
       CRI <- c(lowerCi, upperCi)
-      CRItxt <- gettextf("%s%% CI:", ciValue * 100)
+      CRItxt <- gettextf("%s%% CI:", ciLevel * 100)
     }
 
     if (isTRUE(options[["priorPosteriorPlotAddTestingInfo"]])) {
@@ -914,7 +916,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   bfPlotDependencies <- c(bfPlotPriorPosteriorDependencies, "bayesFactorType")
 
   if (options[["priorPosteriorPlot"]] && options[["priorPosteriorPlotAddEstimationInfo"]])
-    bfPlotPriorPosteriorDependencies <- c(bfPlotPriorPosteriorDependencies, "ciValue")
+    bfPlotPriorPosteriorDependencies <- c(bfPlotPriorPosteriorDependencies, "ciLevel")
 
   plotItemDependencies <- list(
     "scatterPlot"=c("scatterPlot", "scatterPlotAddInfo", "pairsMethod"),
@@ -1233,18 +1235,18 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   }
 }
 
-.computeCorCredibleInterval <- function(bfObject, ciValue, method) {
+.computeCorCredibleInterval <- function(bfObject, ciLevel, method) {
   if (method == "pearson") {
     return(bstats::computePearsonCredibleInterval("betaA"=bfObject[["betaA"]], "betaB"=bfObject[["betaB"]],
-                                                  "ciValue"=ciValue))
+                                                  "ciValue"=ciLevel))
   } else if (method == "kendall") {
     return(bstats::computeKendallCredibleInterval("n"=bfObject[["two.sided"]][["n"]], "tauObs"=bfObject[["two.sided"]][["stat"]],
-                                                  "kappa"=bfObject[["kappa"]], "var"=1, "ciValue"=ciValue,
+                                                  "kappa"=bfObject[["kappa"]], "var"=1, "ciValue"=ciLevel,
                                                   "h0"=bfObject[["h0"]]))
   } else if (method == "spearman") {
     # TODO(Johnny):
     print("NO THIS IS NOT IT, STILL NEED TO MAKE THIS, THIS IS JUST A PLACEHOLDER")
     return(bstats::computePearsonCredibleInterval("betaA"=bfObject[["betaA"]], "betaB"=bfObject[["betaB"]],
-                                                  "ciValue"=ciValue))
+                                                  "ciValue"=ciLevel))
   }
 }

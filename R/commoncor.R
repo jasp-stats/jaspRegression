@@ -7,16 +7,16 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 .getPairsIndeces <- function(options) {
   pairs <- options[["variablePairs"]]
   nPairs <- length(pairs)
-  
+
   allIndeces <- seq_len(nPairs)
-  
+
   for (i in seq_along(pairs)) {
     pair <- pairs[[i]]
     if ((pair[1] == "" || pair[2] == "") || pair[1] == pair[2]) {
       allIndeces <- setdiff(allIndeces, i)
     }
   }
-  
+
   return(allIndeces)
 }
 
@@ -47,64 +47,64 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 
 .corBayesReadData <- function(dataset, options) {
   allVariables <- unlist(options[["variables"]])
-  
+
   if (options[["naAction"]] == "listwise") {
     dataset <- .readDataSetToEnd(columns.as.numeric=allVariables, exclude.na.listwise=allVariables)
   } else {
     dataset <- .readDataSetToEnd(columns.as.numeric=allVariables)
   }
-  
+
   return(dataset)
 }
 
 # This can be made general for t-tests as well
 .getCorPlotItems <- function(options, bayes=TRUE, sumStat=FALSE) {
-  
+
   if (isTRUE(sumStat)) {
     plotItems <- c("priorPosteriorPlot", "bfRobustnessPlot")
   } else {
     plotItems <- c("scatterPlot", "priorPosteriorPlot", "bfSequentialPlot", "bfRobustnessPlot")
-    
+
     if (!options[["scatterPlot"]])
       plotItems <- setdiff(plotItems, "scatterPlot")
-    
+
     if (!options[["bfSequentialPlot"]])
       plotItems <- setdiff(plotItems, "bfSequentialPlot")
   }
-  
-  if (!options[["priorPosteriorPlot"]]) 
+
+  if (!options[["priorPosteriorPlot"]])
     plotItems <- setdiff(plotItems, "priorPosteriorPlot")
   if (!options[["bfRobustnessPlot"]])
     plotItems <- setdiff(plotItems, "bfRobustnessPlot")
-  
+
   return(plotItems)
 }
 
 .getCorMethods <- function(options) {
   methodItems <- c("pearson", "kendall", "spearman")
-  
-  if (!options[["pearson"]]) 
+
+  if (!options[["pearson"]])
     methodItems <- setdiff(methodItems, "pearson")
   if (!options[["kendall"]])
     methodItems <- setdiff(methodItems, "kendall")
   if (!options[["spearman"]])
     methodItems <- setdiff(methodItems, "spearman")
-  
+
   return(methodItems)
 }
 
 .bCorCitationsList <- list("pearson"=c("Ly, A., Verhagen, A. J. & Wagenmakers, E.-J. (2016). Harold Jeffreys's Default Bayes Factor Hypothesis Tests: Explanation, Extension, and Application in Psychology. Journal of Mathematical Psychology, 72, 19-32.",
                                        "Ly, A., Marsman, M., Wagenmakers, E.-J. (2018). Analytic Posteriors for Pearson's Correlation Coefficient. Statistica Neerlandica, 72(1), 4-13."),
-                           "kendall"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2018). Bayesian Inference for Kendall's Rank Correlation Coefficient. The American Statistician, 72(4), 303-308.", 
+                           "kendall"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2018). Bayesian Inference for Kendall's Rank Correlation Coefficient. The American Statistician, 72(4), 303-308.",
                                        "van Doorn, J.B., Ly, A., Marsman, M., & Wagenmakers, E.-J. (2019). Bayesian Estimation of Kendall's tau Using a Latent Normal Approach. Statistics and Probability Letters, 145, 268-272."),
                            "spearman"=c("van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2020). Bayesian Rank-Based Hypothesis Testing for the Rank Sum Test, the Signed Rank Test, and Spearman's rho. Journal of Applied Statistics, 47(16), 2984-3006.")
 )
 
 .getCorCitations <- function(methodItems, bayes=TRUE) {
   citations <- NULL
-  if (bayes==TRUE) 
+  if (bayes==TRUE)
     citations <- unlist(.bCorCitationsList[methodItems], use.names=FALSE)
-  
+
   if (is.null(citations)){
     citations <- ""
   }
@@ -117,26 +117,26 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 
 
 # TODO(Alexander):  ADAPTED from Simon
-# 
-.bCorMarginalDistribution <- function(variable, varName, options, xName = NULL, yName = gettext("Density"), 
+#
+.bCorMarginalDistribution <- function(variable, varName, options, xName = NULL, yName = gettext("Density"),
                                       coord_flip = FALSE, plotRanks=FALSE) {
-  if (length(variable) < 3) 
+  if (length(variable) < 3)
     return(.displayError(errorMessage = gettext("Plotting not possible: Number of observations is < 3")))
-  
-  if (any(is.infinite(variable))) 
+
+  if (any(is.infinite(variable)))
     return(.displayError(errorMessage = gettext("Plotting not possible: Infinite value(s)")))
-  
+
   if (!options[["pearson"]])
     variable <- rank(variable)
-  
+
   p <- .plotMarginalCor(variable = variable, xName = xName, yName = yName)
-  
+
   if(coord_flip){
     p <- p + ggplot2::coord_flip() +
-      ggplot2::theme(axis.ticks.y = ggplot2::element_line(), axis.ticks.x = ggplot2::element_blank(), 
+      ggplot2::theme(axis.ticks.y = ggplot2::element_line(), axis.ticks.x = ggplot2::element_blank(),
                      axis.text.x = ggplot2::element_blank())
   }
-  
+
   return(p)
 }
 
@@ -157,14 +157,14 @@ gettextf <- function(fmt, ..., domain = NULL)  {
   .plotScatter(xVar = x, yVar = y, xBreaks = xBreaks, yBreaks = yBreaks, xName = xName, yName = yName)
 }
 
-# Stolen from Simon's correlation.R: 
-# 
+# Stolen from Simon's correlation.R:
+#
 #     - .plotScatter
 #       .displayError
 #       .plotMarginalCor
 
 .corGLegendList <- list(pearson  = gettext("rho"),
-                        kendall  = gettext("tau"), 
+                        kendall  = gettext("tau"),
                         spearman = gettext("rho[s]")
 )
 
@@ -175,13 +175,13 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 
 .bCorRowNames <- function(options, itemNames, method=c("pearson", "kendall", "spearman")) {
   rowStatName <- list(pearson = gettext("Pearson's r"), kendall = gettext("Kendall's tau"), spearman = gettext("Spearman's rho"))
-  
+
   bfTitle <- .getBfTitle("bfType"=options[["bayesFactorType"]], "alternative"=options[["alternative"]])
 
-  allRowNames <- list(n = gettext("n"), bf = bfTitle, 
-                      upperCi = gettextf("Upper %s%% CI", options[["ciValue"]] * 100),
-                      lowerCi = gettextf("Lower %s%% CI", options[["ciValue"]] * 100))
-  
+  allRowNames <- list(n = gettext("n"), bf = bfTitle,
+                      upperCi = gettextf("Upper %s%% CI", options[["ciLevel"]] * 100),
+                      lowerCi = gettextf("Lower %s%% CI", options[["ciLevel"]] * 100))
+
   if (!is.null(method))
     allRowNames[["stat"]] <- rowStatName[[method[1]]]
 
