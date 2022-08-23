@@ -46,7 +46,7 @@ hypMinSided <- c("less", "minSided",
 .bSelectItems <- function(options) {
   itemNames <- c("n", "stat", "bf", "upperCi", "lowerCi")
 
-  if (!options[["sampleSizeReport"]])
+  if (!options[["sampleSize"]])
     itemNames <- setdiff(itemNames, "n")
 
   if (!options[["bayesFactorReport"]])

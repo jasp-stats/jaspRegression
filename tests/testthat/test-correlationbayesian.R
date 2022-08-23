@@ -177,11 +177,11 @@ test_that("Scatterplot with ranks matches", {
 	jaspTools::expect_equal_plots(testPlot, "scatterplot-with-ranks")
 })
 
-# TODO(Alexander): Solve in  and perhaps in 
+# TODO(Alexander): Solve in  and perhaps in
 #   1. .drawPosteriorPlotCorBayes
 #   2. .getPosteriorPlotValuesCorBayes
 #   3. bstats::computeCorPosteriorLine
-# 
+#
 # test_that("Too peaked posterior is plotted with meaningfull error message", {
 #   options <- jaspTools::analysisOptions("CorrelationBayesian")
 #   options$variables <- c("x", "y")
@@ -193,13 +193,13 @@ test_that("Scatterplot with ranks matches", {
 #   options$priorPosteriorPlotAddEstimationInfo <- TRUE
 #   options$priorPosteriorPlotAddTestingInfo <- TRUE
 #   options$priorWidth <- "1"
-# 
+#
 #   set.seed(1)
 #   data <- data.frame(x = rnorm(10))
 #   data$y <- data$x + rnorm(10, sd = 0.01)
-# 
+#
 #   results <- jaspTools::runAnalysis("CorrelationBayesian", data, options)
 #   error <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_x-y"]][["collection"]][["pairsPlotCollection_x-y_priorPosteriorPlot"]][["error"]][["errorMessage"]]
-# 
+#
 #   testthat::expect_equal(error, "Posterior is too peaked")
 # })
