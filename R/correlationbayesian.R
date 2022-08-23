@@ -169,8 +169,6 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
   .fillTableCorBayes(corBayesTable, options, corModel)
 
-  browser()
-
   jaspResults[["corBayesTable"]] <- corBayesTable
 }
 
