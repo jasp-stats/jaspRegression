@@ -79,11 +79,11 @@ Upgrades
 			name:		"naAction"
 			jsFunction:	function(options)
 			{
-				switch(options["missingValues"])
+                switch(options["naAction"])
 				{
 					case "excludePairwise":		return "pairwise";
 					case "excludeListwise":		return "listwise";
-					default:					return options["missingValues"];
+                    default:					return options["naAction"];
 				}
 			}
 		}
@@ -174,4 +174,78 @@ Upgrades
 		
 
 	}
+
+    Upgrade
+    {
+        functionName:		"CorrelationBayesian"
+        fromVersion:		"0.16.3"
+        toVersion:			"0.16.4"
+
+        // MAIN SECTION - Additional options --------------
+        ChangeRename { from: "displayPairwise";						to: "pairwiseDisplay"						}
+        ChangeRename { from: "reportBayesFactors";					to: "bayesFactorReport"						}
+        ChangeRename { from: "flagSupported";						to: "supportCorrelationFlagged"				}
+        ChangeRename { from: "reportN";								to: "sampleSize"                            }
+        ChangeRename { from: "ciValue";								to: "ciLevel"                               }
+
+        ChangeJS
+        {
+            name:		"alternative"
+            jsFunction:	function(options)
+            {
+                switch(options["alternative"])
+                {
+                    case "two.sided":				return "twoSided"	;
+                    default:                        return options["alternative"];
+                }
+            }
+        }
+
+        // Main Plots
+        ChangeRename { from: "plotMatrix";								to: "matrixPlot"							}
+        ChangeRename { from: "plotMatrixDensities";						to: "matrixPlotDensity"						}
+        ChangeRename { from: "plotMatrixPosteriors";					to: "matrixPlotPosterior"					}
+
+        // Main section - Prior
+        ChangeRename { from: "kappa";									to: "priorWidth"							}
+
+        // PAIRS SECTION --------------
+        ChangeRename { from: "pairs";									to: "variablePairs" 						}
+
+
+        // Pairs Plots - Scatter plots
+        ChangeRename { from: "plotScatter";								to: "scatterPlot"							}
+        ChangeRename { from: "plotScatterAddInfo";						to: "scatterPlotAddInfo"					}
+
+        // Pairs Plots - Prior posterior plots
+        ChangeRename { from: "plotPriorPosterior";						to: "priorPosteriorPlot"					}
+        ChangeRename { from: "plotPriorPosteriorAddEstimationInfo";		to: "priorPosteriorPlotAddEstimationInfo"	}
+        ChangeRename { from: "plotPriorPosteriorAddTestingInfo";		to: "priorPosteriorPlotAddTestingInfo"		}
+
+        // Pairs Plots - Robustness plots
+        ChangeRename { from: "plotBfRobustness";						to: "bfRobustnessPlot"						}
+        ChangeRename { from: "plotBfRobustnessAddInfo";					to: "bfRobustnessPlotAddInfo"				}
+
+        // Pairs Plots - Sequential plots
+        ChangeRename { from: "plotBfSequential";						to: "bfSequentialPlot"						}
+        ChangeRename { from: "plotBfSequentialAddInfo";					to: "bfSequentialPlotAddInfo"				}
+
+
+        // OPTIONS SECTION --------------
+        ChangeRename { from: "missingValues";							to: "naAction"								}
+
+        ChangeJS
+        {
+            name:		"naAction"
+            jsFunction:	function(options)
+            {
+                switch(options["naAction"])
+                {
+                    case "excludePairwise":		return "pairwise";
+                    case "excludeListwise":		return "listwise";
+                    default:					return options["naAction"];
+                }
+            }
+        }
+    }
 }

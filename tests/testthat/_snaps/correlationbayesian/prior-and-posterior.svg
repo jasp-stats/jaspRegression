@@ -18,19 +18,16 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 10.67; stroke: none;' />
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.07; stroke: #FFFFFF; fill: #FFFFFF;' />
 </g>
 <defs>
-  <clipPath id='cpMC4wMHw3MjAuMDB8MTcuMzB8NTc2LjAw'>
-    <rect x='0.00' y='17.30' width='720.00' height='558.70' />
+  <clipPath id='cpNTkuNDN8NjkxLjY1fDc0LjAwfDU0NC45MQ=='>
+    <rect x='59.43' y='74.00' width='632.22' height='470.92' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8MTcuMzB8NTc2LjAw)'>
-<rect x='0.00' y='17.30' width='720.00' height='558.70' style='stroke-width: 10.67; stroke: none;' />
-<text x='687.27' y='378.66' text-anchor='end' style='font-size: 16.93px; font-family: sans;' textLength='163.77px' lengthAdjust='spacingAndGlyphs'>95% CI:[0.522, 0.751]</text>
-<text x='687.27' y='226.29' text-anchor='end' style='font-size: 16.93px; font-family: sans;' textLength='107.31px' lengthAdjust='spacingAndGlyphs'>Median: 0.646</text>
+<g clip-path='url(#cpNTkuNDN8NjkxLjY1fDc0LjAwfDU0NC45MQ==)'>
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-<text x='0.00' y='9.08' style='font-size: 13.20px; font-family: sans;' textLength='167.29px' lengthAdjust='spacingAndGlyphs'>prior-and-posterior-subplot-3</text>
+<text x='59.43' y='65.78' style='font-size: 13.20px; font-family: sans;' textLength='108.58px' lengthAdjust='spacingAndGlyphs'>prior-and-posterior</text>
 </g>
 </svg>

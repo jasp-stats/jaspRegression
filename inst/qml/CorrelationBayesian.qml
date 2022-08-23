@@ -42,15 +42,15 @@ Form
 	Group
 	{
 		title: qsTr("Additional Options")
-		CheckBox {	name: "displayPairwise";		label: qsTr("Display pairwise table")					}
-		CheckBox {	name: "reportBayesFactors";		label: qsTr("Report Bayes factors"); checked: true		}
-		CheckBox {	name: "flagSupported";			label: qsTr("Flag supported correlations")				}
-		CheckBox {	name: "reportN";				label: qsTr("Sample size")								}
-		CheckBox {	name: "posteriorMedian";		label: qsTr("Posterior median"); debug: true			}
+        CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table")					}
+        CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors"); checked: true		}
+        CheckBox {	name: "supportCorrelationFlagged";		label: qsTr("Flag supported correlations")				}
+        CheckBox {	name: "sampleSize";                     label: qsTr("Sample size")								}
+        CheckBox {	name: "posteriorMedian";                label: qsTr("Posterior median"); debug: true			}
 		CheckBox
 		{
 			name: "ci"; label: qsTr("Credible intervals")
-			CIField { name: "ciValue";	label: qsTr("Interval") }
+            CIField { name: "ciLevel";	label: qsTr("Interval") }
 		}
 	}
 
@@ -58,7 +58,7 @@ Form
 	{
 		name: "alternative"
 		title: qsTr("Alt. Hypothesis")
-		RadioButton {	value: "two.sided";		label: qsTr("Correlated"); checked: true	}
+        RadioButton {	value: "twoSided";		label: qsTr("Correlated"); checked: true	}
 		RadioButton {	value: "greater";		label: qsTr("Correlated positively")		}
 		RadioButton {	value: "less";			label: qsTr("Correlated negatively")		}
 	}
@@ -68,9 +68,9 @@ Form
 		title: qsTr("Plots")
 		CheckBox
 		{
-						name: "plotMatrix";				label: qsTr("Correlation matrix")
-			CheckBox {	name: "plotMatrixDensities";	label: qsTr("Densities for variables")	}
-			CheckBox {	name: "plotMatrixPosteriors";	label: qsTr("Posteriors under H\u2081")	}
+                        name: "matrixPlot";				label: qsTr("Correlation matrix")
+            CheckBox {	name: "matrixPlotDensity";      label: qsTr("Densities for variables")	}
+            CheckBox {	name: "matrixPlotPosterior";	label: qsTr("Posteriors under H\u2081")	}
 		}
 	}
 
@@ -79,7 +79,7 @@ Form
 	Group
 	{
 		title: qsTr("Prior")
-		FormulaField { name: "kappa"; label: qsTr("Stretched beta prior width"); defaultValue: "1.0"; min: 0.003; max: 2}
+        FormulaField { name: "priorWidth"; label: qsTr("Stretched beta prior width"); defaultValue: "1.0"; min: 0.003; max: 2}
 	}
 
 	Section
@@ -89,7 +89,7 @@ Form
 		{
 			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 			AvailableVariablesList		{	name: "allVariablesList2";	source:"variables" }
-			AssignedPairsVariablesList	{	name:  "pairs";				suggestedColumns: ["ordinal", "scale"] }
+            AssignedPairsVariablesList	{	name:  "variablePairs";		suggestedColumns: ["ordinal", "scale"] }
 		}
 
 		RadioButtonGroup
@@ -103,25 +103,25 @@ Form
 
 		CheckBox
 		{
-						name: "plotScatter";		label: qsTr("Scatterplot");			checked: true
-			CheckBox {	name: "plotScatterAddInfo";	label: qsTr("Robustness check");	debug: true }
+                        name: "scatterPlot";		label: qsTr("Scatterplot");			checked: true
+            CheckBox {	name: "scatterPlotAddInfo";	label: qsTr("Robustness check");	debug: true }
 
 		}
 		CheckBox
 		{
-						name: "plotPriorPosterior";						label: qsTr("Prior and posterior")
-			CheckBox {	name: "plotPriorPosteriorAddEstimationInfo";	label: qsTr("Estimation info");		checked: true }
-			CheckBox {	name: "plotPriorPosteriorAddTestingInfo";		label: qsTr("Testing info");		checked: true }
+                        name: "priorPosteriorPlot";						label: qsTr("Prior and posterior")
+            CheckBox {	name: "priorPosteriorPlotAddEstimationInfo";	label: qsTr("Estimation info");		checked: true }
+            CheckBox {	name: "priorPosteriorPlotAddTestingInfo";		label: qsTr("Testing info");		checked: true }
 		}
 		CheckBox
 		{
-						name: "plotBfRobustness";			label: qsTr("Bayes factor robustness check")
-			CheckBox {	name: "plotBfRobustnessAddInfo";	label: qsTr("Additional info");					checked: true }
+                        name: "bfRobustnessPlot";			label: qsTr("Bayes factor robustness check")
+            CheckBox {	name: "bfRobustnessPlotAddInfo";	label: qsTr("Additional info");					checked: true }
 		}
 		CheckBox
 		{
-						name: "plotBfSequential";			label: qsTr("Sequential analysis")
-			CheckBox {	name: "plotBfSequentialAddInfo";	label: qsTr("Additional info");		checked: true}
+                        name: "bfSequentialPlot";			label: qsTr("Sequential analysis")
+            CheckBox {	name: "bfSequentialPlotAddInfo";	label: qsTr("Additional info");		checked: true}
 		}
 	}
 
@@ -131,10 +131,10 @@ Form
 
 		RadioButtonGroup
 		{
-			name: "missingValues"
+            name: "naAction"
 			title: qsTr("Missing Values")
-			RadioButton {	value: "excludePairwise";	label: qsTr("Exclude cases pairwise");	checked: true	}
-			RadioButton {	value: "excludeListwise";	label: qsTr("Exclude cases listwise")					}
+            RadioButton {	value: "pairwise";	label: qsTr("Exclude cases pairwise");	checked: true	}
+            RadioButton {	value: "listwise";	label: qsTr("Exclude cases listwise")					}
 		}
 
 		SetSeed{}
