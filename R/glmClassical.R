@@ -221,7 +221,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
 # Model fit table
 .glmModelFitTable <- function(jaspResults, dataset, options, ready, position) {
-  if (!is.null(jaspResults[["modelFit"]]) || (!options[["gofDeviance"]] & !options[["gofPearson"]])) {
+  if (!is.null(jaspResults[["modelFit"]]) || (!options[["devianceGoodnessOfFit"]] & !options[["pearsonGoodnessOfFit"]])) {
     return()
   }
 
@@ -229,7 +229,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
 
   modelFitTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                         options             = c("gofDeviance", "gofPearson"))
+                         options             = c("devianceGoodnessOfFit", "pearsonGoodnessOfFit"))
 
   modelFitTable$position <- position
   modelFitTable$showSpecifiedColumnsOnly <- TRUE
@@ -253,7 +253,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   glmModels <- .glmComputeModel(jaspResults, dataset, options)
   modelObj  <- glmModels[["fullModel"]]
 
-  if (options[["gofDeviance"]]) {
+  if (options[["devianceGoodnessOfFit"]]) {
     jaspResults[["modelFitTable"]]$addRows(
       list(gofType = "Deviance",
            gof     = modelObj$deviance,
@@ -264,7 +264,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     )
   }
 
-  if (options[["gofPearson"]]) {
+  if (options[["pearsonGoodnessOfFit"]]) {
     pearson  <- sum(modelObj$weights * modelObj$residuals^2)
     jaspResults[["modelFitTable"]]$addRows(
       list(gofType = "Pearson",
@@ -279,12 +279,12 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
 # GLM estimates table
 .glmEstimatesTable <- function(jaspResults, dataset, options, ready, position) {
-  if (!options[["coefEstimates"]] || !is.null(jaspResults[["estimatesTable"]]))
+  if (!options[["coefficientEstimate"]] || !is.null(jaspResults[["estimatesTable"]]))
     return()
 
   estimatesTable <- createJaspTable(gettext("Coefficients"))
   estimatesTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                          options             = c("coefEstimates", "coefCi", "coefCiInterval"))
+                          options             = c("coefficientEstimate", "coefficientCi", "coefficientCiLevel"))
   estimatesTable$position <- position
   estimatesTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -299,8 +299,8 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTable$addColumnInfo(name = "testStat", title = gettext(testStat), type = "number")
   estimatesTable$addColumnInfo(name = "pval",     title = gettext("p"), type = "pvalue")
 
-  if (options[["coefCi"]]) {
-    ciPercentage <- options[["coefCiInterval"]] * 100
+  if (options[["coefficientCi"]]) {
+    ciPercentage <- options[["coefficientCiLevel"]] * 100
     if (floor(ciPercentage) == ciPercentage)
       ciPercentage <- as.integer(ciPercentage)
     ciTitle <- paste(ciPercentage, " % ", "Confidence Interval",sep = "")
@@ -320,8 +320,8 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   modelSummary <- summary(glmModels[["fullModel"]])[["coefficients"]]
   rowNames <- rownames(modelSummary)
 
-  if (options[["coefCi"]]) {
-    coefCiSummary <- confint(glmModels[["fullModel"]], level = options[["coefCiInterval"]])
+  if (options[["coefficientCi"]]) {
+    coefCiSummary <- confint(glmModels[["fullModel"]], level = options[["coefficientCiLevel"]])
   } else {
     coefCiSummary <- matrix(nrow = length(rowNames),
                             ncol = 2,
@@ -388,7 +388,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 # Plots: Residuals vs. fitted
 .glmPlotResVsFitted <- function(jaspResults, dataset, options, ready, position = 4) {
 
-  plotNames <- c("devResVsYPlot", "prsResVsYPlot", "quanResVsYPlot")
+  plotNames <- c("devianceResidualVsFittedYPlot", "pearsonResidualVsFittedYPlot", "quantileResidualVsFittedYPlot")
   if (!ready || !any(unlist(options[plotNames])))
     return()
 
@@ -465,9 +465,9 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     return()
 
   plotType <- switch(residType,
-                     "deviance" = "devResVsXPlot",
-                     "Pearson"  = "prsResVsXPlot",
-                     "quantile" = "quanResVsXPlot")
+                     "deviance" = "devianceResidualVsXPlot",
+                     "Pearson"  = "pearsonResidualVsXPlot",
+                     "quantile" = "quantileResidualVsFittedYPlot")
 
   if (!options[[plotType]])
     return()
@@ -552,7 +552,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 # Plots: Residuals Q-Q
 .glmPlotResQQ <- function(jaspResults, dataset, options, ready, position) {
 
-  plotNames <- c("devResQqPlot", "prsResQqPlot", "quanResQqPlot")
+  plotNames <- c("devianceResidualQqPlot", "pearsonResidualQqPlot", "quantileResidualQqPlot")
   if (!ready || !any(unlist(options[plotNames])))
     return()
 
@@ -600,16 +600,16 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (!ready)
     return()
 
-  if (!options[["partialPlot"]])
+  if (!options[["partialResidualPlot"]])
     return()
 
   predictors <- c(options[["covariates"]], options[["factors"]])
 
   glmPlotResPartialContainer <- createJaspContainer(gettext("Partial Residual Plots"))
   glmPlotResPartialContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                                      options           = "partialPlot")
+                                      options           = "partialResidualPlot")
   glmPlotResPartialContainer$position <- position
-  jaspResults[["diagnosticsContainer"]][["partialPlot"]] <- glmPlotResPartialContainer
+  jaspResults[["diagnosticsContainer"]][["partialResidualPlot"]] <- glmPlotResPartialContainer
 
 
   if (!is.null(jaspResults[["glmModels"]])) {
@@ -745,14 +745,14 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 .glmOutlierTable <- function(jaspResults, dataset, options, ready, position, residType) {
 
   optionName <- switch(residType,
-                       "quantile"              = "outlierQuanTable",
-                       "standardized deviance" = "outlierStdTable",
-                       "studentized deviance"  = "outlierStuTable")
+                       "quantile"              = "quantileResidualOutlierTable",
+                       "standardized deviance" = "standardizedResidualOutlierTable",
+                       "studentized deviance"  = "studentizedResidualOutlierTable")
 
   optionTopN <- switch(residType,
-                       "quantile"              = "outlierQuanTableTopN",
-                       "standardized deviance" = "outlierStdTableTopN",
-                       "studentized deviance"  = "outlierStuTableTopN")
+                       "quantile"              = "quantileResidualOutlierTableTopN",
+                       "standardized deviance" = "standardizedResidualOutlierTableTopN",
+                       "studentized deviance"  = "studentizedResidualOutlierTableTopN")
 
   if (!options[[optionName]] || !ready)
     return()
@@ -809,7 +809,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   tableOptionsOn <- c(options[["dfbetas"]],
                       options[["dffits"]],
-                      options[["covRatio"]],
+                      options[["covarianceRatio"]],
                       options[["cooksD"]],
                       options[["leverage"]])
 
@@ -818,7 +818,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     return()
 
 
-  tableOptions <- c("dfbetas", "dffits", "covRatio", "cooksD", "leverage")
+  tableOptions <- c("dfbetas", "dffits", "covarianceRatio", "cooksD", "leverage")
   tableOptionsClicked <- tableOptions[tableOptionsOn]
 
   if (is.null(jaspResults[["diagnosticsContainer"]][["influenceTable"]])) {
@@ -834,7 +834,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     switch(x,
            "dfbetas"  = "DFBETAS",
            "dffits"   = "DFFITS",
-           "covRatio" = "Covariance Ratio",
+           "covarianceRatio" = "Covariance Ratio",
            "cooksD"   = "Cook's Distance",
            "leverage" = "Leverage")
   }
@@ -878,7 +878,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     switch(x,
            "dfbetas"  = 1:nDFBETAS,
            "dffits"   = (nDFBETAS+1),
-           "covRatio" = (nDFBETAS+2),
+           "covarianceRatio" = (nDFBETAS+2),
            "cooksD"   = (nDFBETAS+3),
            "leverage" = (nDFBETAS+4))}
 

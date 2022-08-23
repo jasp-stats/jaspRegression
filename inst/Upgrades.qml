@@ -248,4 +248,35 @@ Upgrades
             }
         }
     }
+
+
+	Upgrade
+	{
+		functionName:		"GeneralizedLinearModel"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
+
+		ChangeRename { from: "gofDeviance";					to: "devianceGoodnessOfFit"							}
+		ChangeRename { from: "gofPearson";					to: "pearsonGoodnessOfFit"							}
+		ChangeRename { from: "coefEstimates";				to: "coefficientEstimate"							}
+		ChangeRename { from: "coefCi";						to: "coefficientCi"									}
+		ChangeRename { from: "coefCiInterval";				to: "coefficientCiLevel"							}
+		ChangeRename { from: "outlierQuanTable";			to: "quantileResidualOutlierTable"					}
+		ChangeRename { from: "outlierQuanTableTopN";		to: "quantileResidualOutlierTableTopN"				}
+		ChangeRename { from: "outlierStdTable";				to: "standardizedResidualOutlierTable"				}
+		ChangeRename { from: "outlierStdTableTopN";			to: "standardizedResidualOutlierTableTopN"			}
+		ChangeRename { from: "outlierStuTable";				to: "studentizedResidualOutlierTable"				}
+		ChangeRename { from: "outlierStuTableTopN";			to: "studentizedResidualOutlierTableTopN"			}
+		ChangeRename { from: "covRatio";					to: "covarianceRatio"								}
+		ChangeRename { from: "devResVsYPlot";				to: "devianceResidualVsFittedYPlot"					}
+		ChangeRename { from: "devResVsXPlot";				to: "devianceResidualVsXPlot"						}
+		ChangeRename { from: "devResQqPlot";				to: "devianceResidualQqPlot"						}
+		ChangeRename { from: "prsResVsYPlot";				to: "pearsonResidualVsFittedYPlot"					}
+		ChangeRename { from: "prsResVsXPlot";				to: "pearsonResidualVsXPlot"						}
+		ChangeRename { from: "prsResQqPlot";				to: "pearsonResidualQqPlot"							}
+		ChangeRename { from: "quanResVsYPlot";				to: "quantileResidualVsFittedYPlot"					}
+		ChangeRename { from: "quanResVsXPlot";				to: "quantileResidualVsXPlot"						}
+		ChangeRename { from: "quanResQqPlot";				to: "quantileResidualQqPlot"						}
+		ChangeRename { from: "partialPlot";					to: "partialResidualPlot"							}
+	}
 }

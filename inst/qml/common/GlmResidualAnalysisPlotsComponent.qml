@@ -31,32 +31,32 @@ Group
 	Group
 	{
 		title: qsTr("Deviance Residuals")
-		CheckBox { name: "devResVsYPlot";	label: qsTr("Residuals vs. fitted")		}
-		CheckBox { name: "devResVsXPlot";	label: qsTr("Residuals vs. predictor")	}
-		CheckBox { name: "devResQqPlot";	label: qsTr("Q-Q plot")					}
+		CheckBox { name: "devianceResidualVsFittedYPlot";	label: qsTr("Residuals vs. fitted")		}
+		CheckBox { name: "devianceResidualVsXPlot";	label: qsTr("Residuals vs. predictor")	}
+		CheckBox { name: "devianceResidualQqPlot";	label: qsTr("Q-Q plot")					}
 	}
 
 	Group
 	{
 		title: qsTr("Pearson Residuals")
-		CheckBox { name: "prsResVsYPlot";	label: qsTr("Residuals vs. fitted") 	}
-		CheckBox { name: "prsResVsXPlot";	label: qsTr("Residuals vs. predictor")	}
-		CheckBox { name: "prsResQqPlot";	label: qsTr("Q-Q plot")					}
+		CheckBox { name: "pearsonResidualVsFittedYPlot";	label: qsTr("Residuals vs. fitted") 	}
+		CheckBox { name: "pearsonResidualVsXPlot";	label: qsTr("Residuals vs. predictor")	}
+		CheckBox { name: "pearsonResidualQqPlot";	label: qsTr("Q-Q plot")					}
 
 	}
 
 	Group
 	{
 		title: qsTr("Quantile Residuals")
-		CheckBox { name: "quanResVsYPlot";	label: qsTr("Residuals vs. fitted")		}
-		CheckBox { name: "quanResVsXPlot";	label: qsTr("Residuals vs. predictor")	}
-		CheckBox { name: "quanResQqPlot";	label: qsTr("Q-Q plot")					}
+		CheckBox { name: "quantileResidualVsFittedYPlot";	label: qsTr("Residuals vs. fitted")		}
+		CheckBox { name: "quantileResidualVsFittedYPlot";	label: qsTr("Residuals vs. predictor")	}
+		CheckBox { name: "quantileResidualQqPlot";	label: qsTr("Q-Q plot")					}
 	}
 
 	Group
 	{
 		title: qsTr("Other Plots")
-		CheckBox { name: "partialPlot";	label: qsTr("Partial residual plots")					}
+		CheckBox { name: "partialResidualPlot";	label: qsTr("Partial residual plots")					}
 		CheckBox { name: "zVsEtaPlot";	label: qsTr("Working responses vs. linear predictor")	}
 	}
 }
