@@ -97,7 +97,7 @@ Form
 				CIField { name: "scatterPlotPredictionIntervalLevel"; }
             }
 		}
-		CheckBox{ name: "plotHeatmap"; label: qsTr("Heatmap") }
+		CheckBox{ name: "heatmapPlot"; label: qsTr("Heatmap") }
 
 	}
 
