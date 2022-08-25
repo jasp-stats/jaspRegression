@@ -113,19 +113,12 @@ Correlation <- function(jaspResults, dataset, options){
 
   mainTable <- createJaspTable(title = title)
   mainTable$dependOn(c("variables", "partialOutVariables",
-<<<<<<< Updated upstream
                        "pearson", "spearman", "kendallsTauB", "pairwiseDisplay", "significanceReport",
                        "significanceFlagged", "sampleSize",
                        "ci", "ciLevel",
                        "vovkSellke", "alternative", "naAction",
-                       "ciBootstrap", "ciBootstrapSamples"))
-=======
-                       "pearson", "spearman", "kendallsTauB", "displayPairwise", "reportSignificance",
-                       "flagSignificant", "sampleSize",
-                       "confidenceIntervals", "confidenceIntervalsInterval",
-                       "VovkSellkeMPR", "hypothesis", "missingValues",
-                       "bootstrap", "bootstrapReplicates", "effectSize"))
->>>>>>> Stashed changes
+                       "ciBootstrap", "ciBootstrapSamples", "effectSize"))
+
   mainTable$position <- 1
 
   mainTable$showSpecifiedColumnsOnly <- TRUE
@@ -203,7 +196,6 @@ Correlation <- function(jaspResults, dataset, options){
 
       mainTable$addColumnInfo(  name = paste0(test, "_estimate"),       title = .corrTitlerer(test, nTests),                                        type = "number", overtitle = overtitle)
 
-<<<<<<< Updated upstream
       if(options$significanceReport)
         mainTable$addColumnInfo(name = paste0(test, "_p.value"), title = gettext("p"), type = "pvalue", overtitle = overtitle)
 
@@ -218,18 +210,7 @@ Correlation <- function(jaspResults, dataset, options){
 
       if(options$vovkSellke){
         mainTable$addColumnInfo(name = paste0(test, "_vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
-=======
-      if(options$reportSignificance)
-        mainTable$addColumnInfo(name = paste0(test, "_p.value"),        title = gettext("p"),                                                       type = "pvalue", overtitle = overtitle)
 
-      if(options$confidenceIntervals){
-        mainTable$addColumnInfo(name = paste0(test, "_lower.ci"),       title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
-        mainTable$addColumnInfo(name = paste0(test, "_upper.ci"),       title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
-      }
-
-      if(options$VovkSellkeMPR){
-        mainTable$addColumnInfo(name = paste0(test, "_vsmpr"),          title = gettext("VS-MPR"),                                                  type = "number", overtitle = overtitle)
->>>>>>> Stashed changes
         mainTable$addFootnote(message = .corrGetTexts()$footnotes$VSMPR, symbol = "\u2020", colNames = paste0(test, "_vsmpr"))
         mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
       }
@@ -285,25 +266,19 @@ Correlation <- function(jaspResults, dataset, options){
 
   mainTable$addColumnInfo(name = sprintf(name, "estimate"),        title = coeff,                                                               type = "number", overtitle = overtitle)
 
-<<<<<<< Updated upstream
+
   if(options$significanceReport)
     mainTable$addColumnInfo(name = sprintf(name, "p.value"), title = gettext("p-value"), type = "pvalue", overtitle = overtitle)
 
   if(options$vovkSellke){
     mainTable$addColumnInfo(name = sprintf(name, "vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
-=======
-  if(options$reportSignificance)
-    mainTable$addColumnInfo(name = sprintf(name, "p.value"),       title = gettext("p-value"),                                                  type = "pvalue", overtitle = overtitle)
 
-  if(options$VovkSellkeMPR){
-    mainTable$addColumnInfo(name = sprintf(name, "vsmpr"),         title = gettext("VS-MPR"),                                                   type = "number", overtitle = overtitle)
->>>>>>> Stashed changes
     mainTable$addFootnote(colNames = sprintf(name, "vsmpr"), symbol = "\u2020",
                           message = .corrGetTexts()$footnotes$VSMPR)
     mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
   }
 
-<<<<<<< Updated upstream
+
   if(options$ci){
     mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),
                             title = gettextf("Upper %s%% CI", 100*options$ciLevel),
@@ -311,16 +286,12 @@ Correlation <- function(jaspResults, dataset, options){
     mainTable$addColumnInfo(name = sprintf(name, "lower.ci"),
                             title = gettextf("Lower %s%% CI", 100*options$ciLevel),
                             type = "number", overtitle = overtitle)
-=======
-  if(options$confidenceIntervals){
-    mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),       title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
-    mainTable$addColumnInfo(name = sprintf(name, "lower.ci"),       title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
   }
+
   if(options$effectSize){
-    mainTable$addColumnInfo(name = sprintf(name, "effect.size"),    title = gettextf("Effect size (Fisher's z)"),                               type = "number", overtitle = overtitle)
-    mainTable$addColumnInfo(name = sprintf(name, "se.effect.size"), title = gettext("SE Effect size"),                                          type = "number", overtitle = overtitle)
->>>>>>> Stashed changes
-  }
+    mainTable$addColumnInfo(name = sprintf(name, "effect.size"),    title = gettextf("Effect size (Fisher's z)"), type = "number", overtitle = overtitle)
+    mainTable$addColumnInfo(name = sprintf(name, "se.effect.size"), title = gettext("SE Effect size"),            type = "number", overtitle = overtitle)
+    }
 }
 
 ### Compute results ----
@@ -377,20 +348,13 @@ Correlation <- function(jaspResults, dataset, options){
         compute <- isFALSE(errors) && .corrTestChecked(test, options)
 
         r <- .corr.test(x = data[,1], y = data[,2], z = condData,
-<<<<<<< Updated upstream
                         method = test, alternative = options[["alternative"]],
                         conf.interval = options$ci,
                         conf.level = options$ciLevel,
-                        compute = compute, sample.size = currentResults[['sample.size']])
-=======
-                        method = test, alternative = alt,
-                        conf.interval = options$confidenceIntervals,
-                        conf.level = options$confidenceIntervalsInterval,
-                        compute = compute,
-                        sample.size = currentResults[['sample.size']],
+                        compute = compute, sample.size = currentResults[['sample.size']],
                         effect.size = options$effectSize,
                         se.effect.size = options$effectSize)
->>>>>>> Stashed changes
+
         testErrors[[test]] <- r[['errors']]
         currentResults[[test]] <- r[['result']]
       }
@@ -492,17 +456,12 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 # helper that unifies output of cor.test and ppcor::pcor.test
-<<<<<<< Updated upstream
-.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
-  stats <- c("estimate", "p.value", "conf.int", "vsmpr")
-  statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr")
-  alternative <- match.arg(alternative)
-=======
-.corr.test <- function(x, y, z = NULL, alternative, method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE,
-                       compute = TRUE, sample.size, effect.size = TRUE, se.effect.size = TRUE, ...){
-  stats <- c("estimate", "p.value", "conf.int", "vsmpr", "effect.size", "se.effect.size")
+
+.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, effect.size = TRUE, se.effect.size = TRUE, ...){
+  stats <- c("estimate", "p.value", "conf.int", "vsmpr",  "effect.size", "se.effect.size")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr", "effect.size", "se.effect.size")
->>>>>>> Stashed changes
+  alternative <- match.arg(alternative)
+
 
   if(isFALSE(compute)){
     result <- rep(NaN, length(statsNames))
