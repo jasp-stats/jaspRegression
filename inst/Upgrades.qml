@@ -248,4 +248,51 @@ Upgrades
             }
         }
     }
+
+
+	Upgrade
+	{
+		functionName:		"GeneralizedLinearModel"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
+
+		ChangeRename { from: "gofDeviance";					to: "devianceGoodnessOfFit"							}
+		ChangeRename { from: "gofPearson";					to: "pearsonGoodnessOfFit"							}
+		ChangeRename { from: "coefEstimates";				to: "coefficientEstimate"							}
+		ChangeRename { from: "coefCi";						to: "coefficientCi"									}
+		ChangeRename { from: "coefCiInterval";				to: "coefficientCiLevel"							}
+		ChangeRename { from: "outlierQuanTable";			to: "quantileResidualOutlierTable"					}
+		ChangeRename { from: "outlierQuanTableTopN";		to: "quantileResidualOutlierTableTopN"				}
+		ChangeRename { from: "outlierStdTable";				to: "standardizedResidualOutlierTable"				}
+		ChangeRename { from: "outlierStdTableTopN";			to: "standardizedResidualOutlierTableTopN"			}
+		ChangeRename { from: "outlierStuTable";				to: "studentizedResidualOutlierTable"				}
+		ChangeRename { from: "outlierStuTableTopN";			to: "studentizedResidualOutlierTableTopN"			}
+		ChangeRename { from: "covRatio";					to: "covarianceRatio"								}
+		ChangeRename { from: "cooksD";					    to: "cooksDistance"								    }
+		ChangeRename { from: "devResVsYPlot";				to: "devianceResidualVsFittedPlot"					}
+		ChangeRename { from: "devResVsXPlot";				to: "devianceResidualVsPredictorPlot"				}
+		ChangeRename { from: "devResQqPlot";				to: "devianceResidualQqPlot"						}
+		ChangeRename { from: "prsResVsYPlot";				to: "pearsonResidualVsFittedPlot"					}
+		ChangeRename { from: "prsResVsXPlot";				to: "pearsonResidualVsPredictorPlot"				}
+		ChangeRename { from: "prsResQqPlot";				to: "pearsonResidualQqPlot"							}
+		ChangeRename { from: "quanResVsYPlot";				to: "quantileResidualVsFittedPlot"					}
+		ChangeRename { from: "quanResVsXPlot";				to: "quantileResidualVsPredictorPlot"				}
+		ChangeRename { from: "quanResQqPlot";				to: "quantileResidualQqPlot"						}
+		ChangeRename { from: "partialPlot";					to: "partialResidualPlot"							}
+		ChangeRename { from: "zVsEtaPlot";					to: "workingResponseVsLinearPredictorPlot"			}
+
+		ChangeJS
+		{
+			name:		"family"
+			jsFunction:	function(options)
+			{
+				switch(options["family"])
+				{
+				case "Gamma":		            return "gamma";
+				case "inverse.gaussian":		return "inverseGaussian";
+				default:					    return options["family"];
+				}
+			}
+		}
+	}
 }

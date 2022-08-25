@@ -8,7 +8,8 @@ getOptions <- function(analysisName) {
 
 addCommonQmlOptions <- function(options) {
   # jaspTools doesn't recognize common QML elements so this function adds the defaults manually
-  root <- testthat::test_path(file.path("..", "..", "inst", "qml", "common"))
+  #root <- testthat::test_path(file.path("..", "..", "inst", "qml", "common"))
+  root <- file.path("..", "..", "inst", "qml", "common")
   c(
     options,
     jaspTools:::readQML(file.path(root, "GlmInputComponent.qml")),
@@ -28,8 +29,8 @@ test_that("Binomial regression results match", {
     list(components="Hours", isNuisance=FALSE)
   )
   options$family     <- "binomial"
-  options$coefCi <- TRUE
-  options$coefCiInterval <- 0.95
+  options$coefficientCi <- TRUE
+  options$coefficientCiLevel <- 0.95
 
   #test logit link
   options$link       <- "logit"
@@ -65,38 +66,38 @@ options$modelTerms <- list(
 options$family     <- "binomial"
 options$link       <- "logit"
 
-options$gofDeviance <- TRUE
-options$gofPearson  <- TRUE
+options$devianceGoodnessOfFit <- TRUE
+options$pearsonGoodnessOfFit  <- TRUE
 
-options$devResVsYPlot  <- TRUE
-options$prsResVsYPlot  <- TRUE
-options$quanResVsYPlot <- TRUE
+options$devianceResidualVsFittedPlot  <- TRUE
+options$pearsonResidualVsFittedPlot  <- TRUE
+options$quantileResidualVsFittedPlot <- TRUE
 
-options$devResVsXPlot  <- TRUE
-options$prsResVsXPlot  <- TRUE
-options$quanResVsXPlot <- TRUE
+options$devianceResidualVsPredictorPlot  <- TRUE
+options$pearsonResidualVsPredictorPlot  <- TRUE
+options$quantileResidualVsPredictorPlot <- TRUE
 
-options$devResQqPlot   <- TRUE
-options$prsResQqPlot   <- TRUE
-options$quanResQqPlot  <- TRUE
+options$devianceResidualQqPlot   <- TRUE
+options$pearsonResidualQqPlot   <- TRUE
+options$quantileResidualQqPlot  <- TRUE
 
-options$partialPlot    <- TRUE
+options$partialResidualPlot    <- TRUE
 
-options$zVsEtaPlot     <- TRUE
+options$workingResponseVsLinearPredictorPlot     <- TRUE
 
-options$outlierQuanTable     <- TRUE
-options$outlierQuanTableTopN <- 3
+options$quantileResidualOutlierTable     <- TRUE
+options$quantileResidualOutlierTableTopN <- 3
 
-options$outlierStdTable      <- TRUE
-options$outlierStdTableTopN  <- 3
+options$standardizedResidualOutlierTable      <- TRUE
+options$standardizedResidualOutlierTableTopN  <- 3
 
-options$outlierStuTable      <- TRUE
-options$outlierStuTableTopN  <- 3
+options$studentizedResidualOutlierTable      <- TRUE
+options$studentizedResidualOutlierTableTopN  <- 3
 
 options$dfbetas  <- TRUE
 options$dffits   <- TRUE
-options$covRatio <- TRUE
-options$cooksD   <- TRUE
+options$covarianceRatio <- TRUE
+options$cooksDistance   <- TRUE
 options$leverage <- TRUE
 
 options$setSeed  <- TRUE
@@ -121,70 +122,70 @@ test_that("Model fit table results match", {
 
 # residual plots
 test_that("The deviance residual vs. fitted plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted_devResVsYPlot"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted_devianceResidualVsFittedPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "devResVsYPlot")
 })
 
 test_that("The Pearson residual vs. fitted plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted_prsResVsYPlot"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted_pearsonResidualVsFittedPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "prsResVsYPlot")
 })
 
 test_that("The quantile residual vs. fitted plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted_quanResVsYPlot"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted"]][["collection"]][["diagnosticsContainer_glmPlotResVsFitted_quantileResidualVsFittedPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "quanResVsYPlot")
 })
 
 test_that("The deviance residual vs. predictor plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_devResVsXPlot"]][["collection"]][["diagnosticsContainer_devResVsXPlot_Hours"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_devianceResidualVsPredictorPlot"]][["collection"]][["diagnosticsContainer_devianceResidualVsPredictorPlot_Hours"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "devResVsXPlot")
 })
 
 test_that("The Pearson residual vs. predictor plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_prsResVsXPlot"]][["collection"]][["diagnosticsContainer_prsResVsXPlot_Hours"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_pearsonResidualVsPredictorPlot"]][["collection"]][["diagnosticsContainer_pearsonResidualVsPredictorPlot_Hours"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "prsResVsXPlot")
 })
 
 test_that("The quantile residual vs. predictor plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_quanResVsXPlot"]][["collection"]][["diagnosticsContainer_quanResVsXPlot_Hours"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_quantileResidualVsPredictorPlot"]][["collection"]][["diagnosticsContainer_quantileResidualVsPredictorPlot_Hours"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "quanResVsXPlot")
 })
 
 test_that("The deviance residual Q-Q plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResQQ"]][["collection"]][["diagnosticsContainer_glmPlotResQQ_devResQqPlot"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResQQ"]][["collection"]][["diagnosticsContainer_glmPlotResQQ_devianceResidualQqPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "devResQqPlot")
 })
 
 test_that("The Pearson residual Q-Q plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResQQ"]][["collection"]][["diagnosticsContainer_glmPlotResQQ_prsResQqPlot"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResQQ"]][["collection"]][["diagnosticsContainer_glmPlotResQQ_pearsonResidualQqPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "prsResQqPlot")
 })
 
 test_that("The quantile residual Q-Q plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResQQ"]][["collection"]][["diagnosticsContainer_glmPlotResQQ_quanResQqPlot"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResQQ"]][["collection"]][["diagnosticsContainer_glmPlotResQQ_quantileResidualQqPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "quanResQqPlot")
 })
 
 test_that("The partial residual plot matches", {
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_partialPlot"]][["collection"]][["diagnosticsContainer_partialPlot_Hours"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_partialResidualPlot"]][["collection"]][["diagnosticsContainer_partialResidualPlot_Hours"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 
   jaspTools::expect_equal_plots(testPlot, "partialPlot")
@@ -199,21 +200,21 @@ test_that("The working response vs eta plot matches", {
 
 # outliers table
 test_that("Outlier table based on quantile residuals matches", {
-  table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_outlierTables"]][["collection"]][["diagnosticsContainer_outlierTables_outlierQuanTable"]][["data"]]
+  table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_outlierTables"]][["collection"]][["diagnosticsContainer_outlierTables_quantileResidualOutlierTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(9, 2.079,
                                       1, -1.325,
                                       2, 0.9768))})
 
 test_that("Outlier table based on standardized deviance residuals matches", {
-  table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_outlierTables"]][["collection"]][["diagnosticsContainer_outlierTables_outlierStdTable"]][["data"]]
+  table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_outlierTables"]][["collection"]][["diagnosticsContainer_outlierTables_standardizedResidualOutlierTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(9,  2.327,
                                       1,  -1.607,
                                       11, -1.233))})
 
 test_that("Outlier table based on studentized deviance residuals matches", {
-  table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_outlierTables"]][["collection"]][["diagnosticsContainer_outlierTables_outlierStuTable"]][["data"]]
+  table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_outlierTables"]][["collection"]][["diagnosticsContainer_outlierTables_studentizedResidualOutlierTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list(9,  2.326,
                                       1,  -1.558,

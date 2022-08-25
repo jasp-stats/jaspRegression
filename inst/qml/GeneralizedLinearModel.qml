@@ -61,24 +61,24 @@ Form {
 		Group
 		{
 			title: qsTr("Model Fit")
-			CheckBox { name: "gofDeviance";	label: qsTr("Deviance goodness-of-fit test")}
-			CheckBox { name: "gofPearson";	label: qsTr("Pearson goodness-of-fit test")	}
+			CheckBox { name: "devianceGoodnessOfFit";	label: qsTr("Deviance goodness-of-fit test")}
+			CheckBox { name: "pearsonGoodnessOfFit";	label: qsTr("Pearson goodness-of-fit test")	}
 		}
 
 		Group
 		{
-			title: qsTr("Parameter Estimates")
+			title: qsTr("Coefficients")
 			CheckBox
 			{
-				name:		"coefEstimates"
+				name:		"coefficientEstimate"
 				label:		qsTr("Estimates")
 				checked:	true
 			}
 			CheckBox {
-				name:				"coefCi"
+				name:				"coefficientCi"
 				label:				qsTr("Confidence intervals")
 				childrenOnSameRow:	true
-				CIField { name: "coefCiInterval" }
+				CIField { name: "coefficientCiLevel" }
 			}
 		}
 	}
@@ -94,24 +94,24 @@ Form {
 			title: qsTr("Show Outliers")
 			CheckBox
 			{
-				name:				"outlierQuanTable"
+				name:				"quantileResidualOutlierTable"
 				label:				qsTr("Standardized quantile residuals: top")
 				childrenOnSameRow:	true
-				IntegerField { name: "outlierQuanTableTopN"; defaultValue: 3	}
+				IntegerField { name: "quantileResidualOutlierTableTopN"; defaultValue: 3	}
 			}
 			CheckBox
 			{
-				name:				"outlierStdTable"
+				name:				"standardizedResidualOutlierTable"
 				label:				qsTr("Standardized deviance residuals: top")
 				childrenOnSameRow:	true
-				IntegerField { name: "outlierStdTableTopN"; defaultValue: 3		}
+				IntegerField { name: "standardizedResidualOutlierTableTopN"; defaultValue: 3		}
 			}
 			CheckBox
 			{
-				name:				"outlierStuTable"
+				name:				"studentizedResidualOutlierTable"
 				label:				qsTr("Studentized deviance residuals: top")
 				childrenOnSameRow:	true
-				IntegerField { name: "outlierStuTableTopN"; defaultValue: 3		}
+				IntegerField { name: "studentizedResidualOutlierTableTopN"; defaultValue: 3		}
 			}
 		}
 
@@ -120,8 +120,8 @@ Form {
 			title: qsTr("Show Influential Cases")
 			CheckBox { name: "dfbetas";  label: qsTr("DFBETAS")				}
 			CheckBox { name: "dffits";   label: qsTr("DFFITS")				}
-			CheckBox { name: "covRatio"; label: qsTr("Covariance ratio")	}
-			CheckBox { name: "cooksD";   label: qsTr("Cook's distance")		}
+			CheckBox { name: "covarianceRatio"; label: qsTr("Covariance ratio")	}
+			CheckBox { name: "cooksDistance";   label: qsTr("Cook's distance")		}
 			CheckBox { name: "leverage"; label: qsTr("Leverages")			}
 		}
 
