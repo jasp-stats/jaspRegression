@@ -268,15 +268,31 @@ Upgrades
 		ChangeRename { from: "outlierStuTable";				to: "studentizedResidualOutlierTable"				}
 		ChangeRename { from: "outlierStuTableTopN";			to: "studentizedResidualOutlierTableTopN"			}
 		ChangeRename { from: "covRatio";					to: "covarianceRatio"								}
-		ChangeRename { from: "devResVsYPlot";				to: "devianceResidualVsFittedYPlot"					}
-		ChangeRename { from: "devResVsXPlot";				to: "devianceResidualVsXPlot"						}
+		ChangeRename { from: "cooksD";					    to: "cooksDistance"								    }
+		ChangeRename { from: "devResVsYPlot";				to: "devianceResidualVsFittedPlot"					}
+		ChangeRename { from: "devResVsXPlot";				to: "devianceResidualVsPredictorPlot"				}
 		ChangeRename { from: "devResQqPlot";				to: "devianceResidualQqPlot"						}
-		ChangeRename { from: "prsResVsYPlot";				to: "pearsonResidualVsFittedYPlot"					}
-		ChangeRename { from: "prsResVsXPlot";				to: "pearsonResidualVsXPlot"						}
+		ChangeRename { from: "prsResVsYPlot";				to: "pearsonResidualVsFittedPlot"					}
+		ChangeRename { from: "prsResVsXPlot";				to: "pearsonResidualVsPredictorPlot"				}
 		ChangeRename { from: "prsResQqPlot";				to: "pearsonResidualQqPlot"							}
-		ChangeRename { from: "quanResVsYPlot";				to: "quantileResidualVsFittedYPlot"					}
-		ChangeRename { from: "quanResVsXPlot";				to: "quantileResidualVsXPlot"						}
+		ChangeRename { from: "quanResVsYPlot";				to: "quantileResidualVsFittedPlot"					}
+		ChangeRename { from: "quanResVsXPlot";				to: "quantileResidualVsPredictorPlot"				}
 		ChangeRename { from: "quanResQqPlot";				to: "quantileResidualQqPlot"						}
 		ChangeRename { from: "partialPlot";					to: "partialResidualPlot"							}
+		ChangeRename { from: "zVsEtaPlot";					to: "workingResponseVsLinearPredictorPlot"			}
+
+		ChangeJS
+		{
+			name:		"family"
+			jsFunction:	function(options)
+			{
+				switch(options["family"])
+				{
+				case "Gamma":		            return "gamma";
+				case "inverse.gaussian":		return "inverseGaussian";
+				default:					    return options["family"];
+				}
+			}
+		}
 	}
 }

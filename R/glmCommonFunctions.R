@@ -52,10 +52,19 @@
   ff <- .createGLMFormula(options, nullModel = FALSE)
   nf <- .createGLMFormula(options, nullModel = TRUE)
   # specify family and link
-  if (options$family == "bernoulli")
+  if (options$family == "bernoulli") {
     family <- "binomial"
-  else
+  } 
+  else if (options$family == "gamma") {
+    family <- "Gamma"
+  }
+  else if (options$family == "inverseGaussian") {
+    family <- "inverse.gaussian"
+  }
+  else {
     family <- options$family
+  }
+    
   familyLink <- eval(call(family, link = options$link))
   # compute full and null models
   if (options$weights == "") {

@@ -79,8 +79,8 @@ Group {
 				{ label: qsTr("Bernoulli"),				value: "bernoulli"},
 				{ label: qsTr("Binomial"),	            value: "binomial"},
 				{ label: qsTr("Gaussian"),				value: "gaussian"},
-				{ label: qsTr("Gamma"),					value: "Gamma"},
-				{ label: qsTr("Inverse Gaussian"),		value: "inverse.gaussian"},
+				{ label: qsTr("Gamma"),					value: "gamma"},
+				{ label: qsTr("Inverse Gaussian"),		value: "inverseGaussian"},
 				{ label: qsTr("Poisson"),				value: "poisson"}
 			]
 
@@ -89,8 +89,8 @@ Group {
 				"bernoulli":		["logit", "probit", "cauchit", "log", "cloglog"],
 				"binomial":         ["logit", "probit", "cauchit", "log", "cloglog"],
 				"gaussian":			["identity", "log", "inverse"],
-				"Gamma":			["identity", "log", "inverse"],
-				"inverse.gaussian":	["identity", "log", "inverse", "1/mu^2"],
+				"gamma":			["identity", "log", "inverse"],
+				"inverseGaussian":	["identity", "log", "inverse", "1/mu^2"],
 				"poisson":			["identity", "log", "sqrt"]
 			}
 
@@ -99,8 +99,8 @@ Group {
 				"bernoulli":		"logit",
 				"binomial":		    "logit",
 				"gaussian":			"identity",
-				"Gamma":			"inverse",
-				"inverse.gaussian":	"1/mu^2",
+				"gamma":			"inverse",
+				"inverseGaussian":	"1/mu^2",
 				"poisson":			"log"
 			}
 

@@ -67,7 +67,7 @@ Form {
 
 		Group
 		{
-			title: qsTr("Parameter Estimates")
+			title: qsTr("Coefficients")
 			CheckBox
 			{
 				name:		"coefficientEstimate"
@@ -121,7 +121,7 @@ Form {
 			CheckBox { name: "dfbetas";  label: qsTr("DFBETAS")				}
 			CheckBox { name: "dffits";   label: qsTr("DFFITS")				}
 			CheckBox { name: "covarianceRatio"; label: qsTr("Covariance ratio")	}
-			CheckBox { name: "cooksD";   label: qsTr("Cook's distance")		}
+			CheckBox { name: "cooksDistance";   label: qsTr("Cook's distance")		}
 			CheckBox { name: "leverage"; label: qsTr("Leverages")			}
 		}
 
