@@ -113,11 +113,19 @@ Correlation <- function(jaspResults, dataset, options){
 
   mainTable <- createJaspTable(title = title)
   mainTable$dependOn(c("variables", "partialOutVariables",
+<<<<<<< Updated upstream
                        "pearson", "spearman", "kendallsTauB", "pairwiseDisplay", "significanceReport",
                        "significanceFlagged", "sampleSize",
                        "ci", "ciLevel",
                        "vovkSellke", "alternative", "naAction",
                        "ciBootstrap", "ciBootstrapSamples"))
+=======
+                       "pearson", "spearman", "kendallsTauB", "displayPairwise", "reportSignificance",
+                       "flagSignificant", "sampleSize",
+                       "confidenceIntervals", "confidenceIntervalsInterval",
+                       "VovkSellkeMPR", "hypothesis", "missingValues",
+                       "bootstrap", "bootstrapReplicates", "effectSize"))
+>>>>>>> Stashed changes
   mainTable$position <- 1
 
   mainTable$showSpecifiedColumnsOnly <- TRUE
@@ -193,9 +201,9 @@ Correlation <- function(jaspResults, dataset, options){
         overtitle <- NULL
       }
 
-      mainTable$addColumnInfo(name = paste0(test, "_estimate"), title = .corrTitlerer(test, nTests),
-                              type = "number", overtitle = overtitle)
+      mainTable$addColumnInfo(  name = paste0(test, "_estimate"),       title = .corrTitlerer(test, nTests),                                        type = "number", overtitle = overtitle)
 
+<<<<<<< Updated upstream
       if(options$significanceReport)
         mainTable$addColumnInfo(name = paste0(test, "_p.value"), title = gettext("p"), type = "pvalue", overtitle = overtitle)
 
@@ -210,8 +218,25 @@ Correlation <- function(jaspResults, dataset, options){
 
       if(options$vovkSellke){
         mainTable$addColumnInfo(name = paste0(test, "_vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
+=======
+      if(options$reportSignificance)
+        mainTable$addColumnInfo(name = paste0(test, "_p.value"),        title = gettext("p"),                                                       type = "pvalue", overtitle = overtitle)
+
+      if(options$confidenceIntervals){
+        mainTable$addColumnInfo(name = paste0(test, "_lower.ci"),       title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
+        mainTable$addColumnInfo(name = paste0(test, "_upper.ci"),       title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
+      }
+
+      if(options$VovkSellkeMPR){
+        mainTable$addColumnInfo(name = paste0(test, "_vsmpr"),          title = gettext("VS-MPR"),                                                  type = "number", overtitle = overtitle)
+>>>>>>> Stashed changes
         mainTable$addFootnote(message = .corrGetTexts()$footnotes$VSMPR, symbol = "\u2020", colNames = paste0(test, "_vsmpr"))
         mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
+      }
+
+      if(options$effectSize){
+        mainTable$addColumnInfo(name = paste0(test, "_effect.size"),    title = gettext("Effect size (Fisher's z)"),                                type = "number", overtitle = overtitle)
+        mainTable$addColumnInfo(name = paste0(test, "_se.effect.size"), title = gettext("SE Effect size"),                                          type = "number", overtitle = overtitle)
       }
     }
   }
@@ -258,18 +283,27 @@ Correlation <- function(jaspResults, dataset, options){
   vvar <- .v(var)
   name <- paste(vvar, test, "%s", sep = "_")
 
-  mainTable$addColumnInfo(name = sprintf(name, "estimate"), title = coeff, type = "number", overtitle = overtitle)
+  mainTable$addColumnInfo(name = sprintf(name, "estimate"),        title = coeff,                                                               type = "number", overtitle = overtitle)
 
+<<<<<<< Updated upstream
   if(options$significanceReport)
     mainTable$addColumnInfo(name = sprintf(name, "p.value"), title = gettext("p-value"), type = "pvalue", overtitle = overtitle)
 
   if(options$vovkSellke){
     mainTable$addColumnInfo(name = sprintf(name, "vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
+=======
+  if(options$reportSignificance)
+    mainTable$addColumnInfo(name = sprintf(name, "p.value"),       title = gettext("p-value"),                                                  type = "pvalue", overtitle = overtitle)
+
+  if(options$VovkSellkeMPR){
+    mainTable$addColumnInfo(name = sprintf(name, "vsmpr"),         title = gettext("VS-MPR"),                                                   type = "number", overtitle = overtitle)
+>>>>>>> Stashed changes
     mainTable$addFootnote(colNames = sprintf(name, "vsmpr"), symbol = "\u2020",
                           message = .corrGetTexts()$footnotes$VSMPR)
     mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
   }
 
+<<<<<<< Updated upstream
   if(options$ci){
     mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),
                             title = gettextf("Upper %s%% CI", 100*options$ciLevel),
@@ -277,6 +311,15 @@ Correlation <- function(jaspResults, dataset, options){
     mainTable$addColumnInfo(name = sprintf(name, "lower.ci"),
                             title = gettextf("Lower %s%% CI", 100*options$ciLevel),
                             type = "number", overtitle = overtitle)
+=======
+  if(options$confidenceIntervals){
+    mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),       title = gettextf("Upper %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
+    mainTable$addColumnInfo(name = sprintf(name, "lower.ci"),       title = gettextf("Lower %s%% CI", 100*options$confidenceIntervalsInterval), type = "number", overtitle = overtitle)
+  }
+  if(options$effectSize){
+    mainTable$addColumnInfo(name = sprintf(name, "effect.size"),    title = gettextf("Effect size (Fisher's z)"),                               type = "number", overtitle = overtitle)
+    mainTable$addColumnInfo(name = sprintf(name, "se.effect.size"), title = gettext("SE Effect size"),                                          type = "number", overtitle = overtitle)
+>>>>>>> Stashed changes
   }
 }
 
@@ -334,10 +377,20 @@ Correlation <- function(jaspResults, dataset, options){
         compute <- isFALSE(errors) && .corrTestChecked(test, options)
 
         r <- .corr.test(x = data[,1], y = data[,2], z = condData,
+<<<<<<< Updated upstream
                         method = test, alternative = options[["alternative"]],
                         conf.interval = options$ci,
                         conf.level = options$ciLevel,
                         compute = compute, sample.size = currentResults[['sample.size']])
+=======
+                        method = test, alternative = alt,
+                        conf.interval = options$confidenceIntervals,
+                        conf.level = options$confidenceIntervalsInterval,
+                        compute = compute,
+                        sample.size = currentResults[['sample.size']],
+                        effect.size = options$effectSize,
+                        se.effect.size = options$effectSize)
+>>>>>>> Stashed changes
         testErrors[[test]] <- r[['errors']]
         currentResults[[test]] <- r[['result']]
       }
@@ -439,10 +492,17 @@ Correlation <- function(jaspResults, dataset, options){
 }
 
 # helper that unifies output of cor.test and ppcor::pcor.test
+<<<<<<< Updated upstream
 .corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
   stats <- c("estimate", "p.value", "conf.int", "vsmpr")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr")
   alternative <- match.arg(alternative)
+=======
+.corr.test <- function(x, y, z = NULL, alternative, method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE,
+                       compute = TRUE, sample.size, effect.size = TRUE, se.effect.size = TRUE, ...){
+  stats <- c("estimate", "p.value", "conf.int", "vsmpr", "effect.size", "se.effect.size")
+  statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr", "effect.size", "se.effect.size")
+>>>>>>> Stashed changes
 
   if(isFALSE(compute)){
     result <- rep(NaN, length(statsNames))
@@ -472,6 +532,17 @@ Correlation <- function(jaspResults, dataset, options){
 
       result$vsmpr <- jaspBase:::VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
+
+      #effect size (fisher's z) and SE are computed following the recommendations of
+      #Fieller, E. C., Hartley, H. O., & Pearson, E. S. (1957). Tests for rank correlation coefficients: I. Biometrika, 44, 470–481.
+      result$effect.size <- atanh(result$estimate)
+      if(method == "pearson")
+        result$se.effect.size <- sqrt(1/(sample.size-3))
+      if(method == "spearman")
+        result$se.effect.size <- sqrt(1.06/(sample.size-3))
+      if(method == "kendall")
+        result$se.effect.size <- sqrt(0.437/(sample.size-4))
+
       result <- unlist(result[stats], use.names = FALSE)
       names(result) <- statsNames
     }
@@ -1536,7 +1607,8 @@ Correlation <- function(jaspResults, dataset, options){
 .corrGetTexts <- function() {
   list(
   footnotes = list(
-    VSMPR = gettextf("Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001).","\u2081","\u2080","\u2264")
+    VSMPR = gettextf("Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001).","\u2081","\u2080","\u2264"),
+    effectSize = gettext("Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and small sample sizes (< 10), approximation by Fisher's z transformation becomes less accurate")
   ),
   references = list(
     Sellke_etal_2001 = gettext("Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. 62-71.")
