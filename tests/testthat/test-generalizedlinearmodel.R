@@ -81,7 +81,7 @@ options$devianceResidualQqPlot   <- TRUE
 options$pearsonResidualQqPlot   <- TRUE
 options$quantileResidualQqPlot  <- TRUE
 
-options$partialResidualPlot    <- TRUE
+options$partialPlot    <- TRUE
 
 options$workingResponseVsLinearPredictorPlot     <- TRUE
 
