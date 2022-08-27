@@ -457,7 +457,7 @@ Correlation <- function(jaspResults, dataset, options){
 
 # helper that unifies output of cor.test and ppcor::pcor.test
 
-.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, effect.size = TRUE, se.effect.size = TRUE, ...){
+.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
   stats <- c("estimate", "p.value", "conf.int", "vsmpr",  "effect.size", "se.effect.size")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr", "effect.size", "se.effect.size")
   alternative <- match.arg(alternative)
@@ -502,6 +502,7 @@ Correlation <- function(jaspResults, dataset, options){
       if(method == "kendall")
         result$se.effect.size <- sqrt(0.437/(sample.size-4))
 
+
       result <- unlist(result[stats], use.names = FALSE)
       names(result) <- statsNames
     }
@@ -535,6 +536,17 @@ Correlation <- function(jaspResults, dataset, options){
       # TODO: CIs for partial correlations
       result$lower.ci <- NA
       result$upper.ci <- NA
+
+      #effect size (fisher's z) and SE are computed following the recommendations of
+      #Fieller, E. C., Hartley, H. O., & Pearson, E. S. (1957). Tests for rank correlation coefficients: I. Biometrika, 44, 470–481.
+      result$effect.size <- atanh(result$estimate)
+      if(method == "pearson")
+        result$se.effect.size <- sqrt(1/(sample.size-3))
+      if(method == "spearman")
+        result$se.effect.size <- sqrt(1.06/(sample.size-3))
+      if(method == "kendall")
+        result$se.effect.size <- sqrt(0.437/(sample.size-4))
+
       result <- unlist(result[statsNames], use.names = FALSE)
       names(result) <- statsNames
     }
