@@ -1264,10 +1264,6 @@ msgid "Pearson goodness-of-fit test"
 msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
-msgid "Parameter Estimates"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
 msgstr ""
 
@@ -1359,4 +1355,8 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Coefficients"
 msgstr ""

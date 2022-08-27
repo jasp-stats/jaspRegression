@@ -1264,10 +1264,6 @@ msgid "Pearson goodness-of-fit test"
 msgstr "Pearson 拟合优度检验"
 
 msgctxt "GeneralizedLinearModel|"
-msgid "Parameter Estimates"
-msgstr "参数估计"
-
-msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
 msgstr "估计"
 
@@ -1360,3 +1356,8 @@ msgstr "残差的标准偏差（%1）"
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
 msgstr "例如：残差标准差"
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Coefficients"
+msgstr "系数"

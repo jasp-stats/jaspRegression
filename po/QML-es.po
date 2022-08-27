@@ -1265,10 +1265,6 @@ msgid "Pearson goodness-of-fit test"
 msgstr "Contraste de Pearson para la bondad del ajuste"
 
 msgctxt "GeneralizedLinearModel|"
-msgid "Parameter Estimates"
-msgstr "Estimaciones de los Parámetros"
-
-msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
 msgstr "Estimaciones"
 
@@ -1361,3 +1357,8 @@ msgstr "Desviaciones típicas de los errores (%1)"
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
 msgstr "p.e. dt de los errores"
+
+#, fuzzy
+msgctxt "GeneralizedLinearModel|"
+msgid "Coefficients"
+msgstr "Coeficientes"
