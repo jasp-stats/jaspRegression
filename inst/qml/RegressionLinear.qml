@@ -133,13 +133,13 @@ Form
 					{
 						value: "outliersOutside"; label: qsTr("Standard residual >"); checked: true
 						childrenOnSameRow: true
-                        DoubleField { name: "residualCasewiseDiagnosticOutlierThreshold"; defaultValue: 3	}
+                        DoubleField { name: "residualCasewiseDiagnosticZThreshold"; defaultValue: 3	}
 					}
 					RadioButton
 					{
 						value: "cooksDistance";	label: qsTr("Cook's distance >")
 						childrenOnSameRow: true
-                        DoubleField { name: "residualCasewiseDiagnosticCooksDistance";	defaultValue: 1	}
+                        DoubleField { name: "residualCasewiseDiagnosticCooksDistanceThreshold";	defaultValue: 1	}
 					}
 					RadioButton { value: "allCases"; label: qsTr("All")										}
 				}

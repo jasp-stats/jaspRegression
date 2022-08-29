@@ -567,7 +567,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 .linregCreateCasewiseDiagnosticsTable <- function(modelContainer, finalModel, options, position) {
   caseDiagTable <- createJaspTable(gettext("Casewise Diagnostics"))
   caseDiagTable$dependOn(c("residualCasewiseDiagnostic", "residualCasewiseDiagnosticType",
-                           "residualCasewiseDiagnosticOutlierThreshold", "residualCasewiseDiagnosticCooksDistance"))
+                           "residualCasewiseDiagnosticZThreshold", "residualCasewiseDiagnosticCooksDistanceThreshold"))
   caseDiagTable$position <- position
 
   caseDiagTable$addColumnInfo(name = "caseNumber",  title = gettext("Case Number"),     type = "integer")
@@ -1432,9 +1432,9 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     cooksDAll             <- cooks.distance(fit)
 
     if (options$residualCasewiseDiagnosticType == "cooksDistance")
-      index <- which(abs(cooksDAll) > options$residualCasewiseDiagnosticCooksDistance)
+      index <- which(abs(cooksDAll) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
     else if (options$residualCasewiseDiagnosticType == "outliersOutside")
-      index <- which(abs(stdResidualsAll) > options$residualCasewiseDiagnosticOutlierThreshold)
+      index <- which(abs(stdResidualsAll) > options$residualCasewiseDiagnosticZThreshold)
     else # all
       index <- seq_along(predictedValuesAll)
 

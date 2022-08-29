@@ -170,7 +170,7 @@ test_that("Casewise Diagnostics table results match", {
   )
   options$residualCasewiseDiagnostic <- TRUE
   options$residualCasewiseDiagnosticType <- "outliersOutside"
-  options$residualCasewiseDiagnosticOutlierThreshold <- 3
+  options$residualCasewiseDiagnosticZThreshold <- 3
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_casewiseTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -541,7 +541,7 @@ test_that("Fields Book - Chapter 3 results match", {
   options$residualQqPlot <- TRUE
   options$residualCasewiseDiagnostic <- TRUE
   options$residualCasewiseDiagnosticType <- "outliersOutside"
-  options$residualCasewiseDiagnosticOutlierThreshold <- 2
+  options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   figure3 <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
