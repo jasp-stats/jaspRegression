@@ -16,7 +16,7 @@
 #
 
 RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
-  ready <- options$dependent != "" #&& options$wlsWeights != ""
+  ready <- options$dependent != "" #&& options$weights != ""
   if(ready) {
     dataset <- .reglogisticReadData(dataset, options)
     .reglogisticCheckErrors(dataset, options)
@@ -45,7 +45,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   if (!is.null(dataset))
     return(dataset)
   else {
-    numericVars <- unlist(c(options$covariates, options$wlsWeights))
+    numericVars <- unlist(c(options$covariates, options$weights))
     numericVars <- numericVars[numericVars != ""]
     factorVars  <- unlist(c(options$dependent, options$factors))
     factorVars  <- factorVars[factorVars != ""]
@@ -61,10 +61,10 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
              factorLevels.target  = options$dependent,
              factorLevels.amount  = '!= 2',
              exitAnalysisIfErrors = TRUE)
-  if (options$wlsWeights != "")
+  if (options$weights != "")
     .hasErrors(dataset,
                type = "limits",
-               limits.target = options$wlsWeights,
+               limits.target = options$weights,
                limits.min = 0,
                limits.max = Inf,
                exitAnalysisIfErrors = TRUE)
@@ -95,7 +95,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   else
     modelSummary <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
 
-  dependList <- c("dependent", "method", "modelTerms", "includeIntercept")
+  dependList <- c("dependent", "method", "modelTerms", "interceptTerm")
   modelSummary$dependOn(dependList)
   modelSummary$position <- 1
   modelSummary$showSpecifiedColumnsOnly <- TRUE
@@ -126,15 +126,15 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticEstimatesTable <- function(jaspResults, dataset, options, ready) {
-  if(!options$coeffEstimates || !is.null(jaspResults[["estimatesTable"]]))
+  if(!options$coefficientEstimate || !is.null(jaspResults[["estimatesTable"]]))
     return()
 
   estimatesTable <- createJaspTable(gettext("Coefficients"))
   estimatesTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                          options             = c("coeffEstimates", "stdCoeff",
-                                                  "oddsRatios", "coeffCI", "robustSEOpt",
-                                                  "coeffCIInterval", "coeffCIOR",
-                                                  "robustSEopt", "VovkSellkeMPR"))
+                          options             = c("coefficientEstimate", "coefficientStandardized",
+                                                  "oddsRatio", "coefficientCi", "robustStandardError",
+                                                  "coefficientCiLevel", "coefficientCiAsOddsRatio",
+                                                  "robustSEopt", "vovkSellke"))
   estimatesTable$position <- 2
   estimatesTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -149,24 +149,24 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTable$addColumnInfo(name = "param",   title = paramtitle, type = "string")
   estimatesTable$addColumnInfo(name = "est",     title = gettext("Estimate"), type = "number", format="dp:3")
   estimatesTable$addColumnInfo(name = "se",      title = seTitle, type = "number", format="dp:3")
-  if(options$stdCoeff)
+  if(options$coefficientStandardized)
     estimatesTable$addColumnInfo(name = "std",   title = gettextf("Standardized%s", "\u207A"), type = "number", format="dp:3")
-  if(options$oddsRatios)
+  if(options$oddsRatio)
     estimatesTable$addColumnInfo(name = "or",    title = gettext("Odds Ratio"), type = "number")
   estimatesTable$addColumnInfo(name = "zval",    title = gettext("z"), type = "number")
   estimatesTable$addColumnInfo(name = "waldsta", title = gettext("Wald Statistic"), type = "number", overtitle = "Wald Test")
   estimatesTable$addColumnInfo(name = "walddf",  title = gettext("df"), type = "integer", overtitle = "Wald Test")
   estimatesTable$addColumnInfo(name = "pval",    title = gettext("p"), type = "pvalue", overtitle = "Wald Test")
 
-  if(options$VovkSellkeMPR)
+  if(options$vovkSellke)
     .reglogisticVovkSellke(estimatesTable, options)
 
-  if(options$coeffCI) {
+  if(options$coefficientCi) {
     estimatesTable$addColumnInfo(name = "cilo", title = gettext("Lower bound"), type = "number", format="dp:3", overtitle = ciTitle)
     estimatesTable$addColumnInfo(name = "ciup", title = gettext("Upper bound"), type = "number", format="dp:3", overtitle = ciTitle)
   }
 
-  if (options$stdCoeff)
+  if (options$coefficientStandardized)
     estimatesTable$addFootnote(gettext("Standardized estimates represent estimates where the continuous predictors are standardized (X-standardization)."), symbol = "\u207A")
 
   jaspResults[["estimatesTable"]] <- estimatesTable
@@ -179,16 +179,16 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
 .reglogisticEstimatesTableBootstrap <- function(jaspResults, dataset,
                                                 options, ready) {
-  if(!options$coeffEstimatesBootstrapping ||
+  if(!options$coefficientBootstrap ||
      !is.null(jaspResults[["estimatesTableBootstrapping"]]))
     return()
 
   estimatesTableBootstrap <- createJaspTable(gettext("Bootstrap Coefficients"))
   estimatesTableBootstrap$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                                   options             = c("coeffEstimatesBootstrapping",
-                                                           "coeffEstimatesBootstrappingReplicates",
-                                                           "coeffCI", "coeffCIOR", "stdCoeff", "oddsRatios", "coeffCIInterval",
-                                                           "robustSEOpt"))
+                                   options             = c("coefficientBootstrap",
+                                                           "coefficientBootstrapReplicates",
+                                                           "coefficientCi", "coefficientCiAsOddsRatio", "coefficientStandardized", "oddsRatio", "coefficientCiLevel",
+                                                           "robustStandardError"))
   estimatesTableBootstrap$position <- 3
   estimatesTableBootstrap$showSpecifiedColumnsOnly <- TRUE
 
@@ -204,13 +204,13 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTableBootstrap$addColumnInfo(name = "est",     title = gettext("Estimate"),       type = "number", format="dp:3")
   estimatesTableBootstrap$addColumnInfo(name = "bias",    title = gettext("Bias"),           type = "number", format="dp:3")
   estimatesTableBootstrap$addColumnInfo(name = "se",      title = seTitle,                   type = "number", format="dp:3")
-  if(options$stdCoeff) {
+  if(options$coefficientStandardized) {
     estimatesTableBootstrap$addColumnInfo(name = "std",   title = gettextf("Standardized%s", "\u207A"), type = "number", format="dp:3")
     estimatesTableBootstrap$addFootnote(gettext("Standardized estimates represent estimates where the continuous predictors are standardized (X-standardization)."), symbol = "\u207A")
   }
-  if(options$oddsRatios)
+  if(options$oddsRatio)
     estimatesTableBootstrap$addColumnInfo(name = "or",    title = gettext("Odds Ratio"), type = "number")
-  if (options$coeffCI) {
+  if (options$coefficientCi) {
     estimatesTableBootstrap$addColumnInfo(name = "cilo",    title = gettext("Lower bound"),    type = "number", format="dp:3", overtitle = ciTitle)
     estimatesTableBootstrap$addColumnInfo(name = "ciup",    title = gettext("Upper bound"),    type = "number", format="dp:3", overtitle = ciTitle)
     estimatesTableBootstrap$addFootnote(gettext("Bias corrected accelerated."), symbol = "\u002A")
@@ -223,19 +223,19 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
   .reglogisticSetError(res, estimatesTableBootstrap)
 
-  if (options$robustSEOpt)
+  if (options$robustStandardError)
     estimatesTableBootstrap$addFootnote(gettext("Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."))
   else
     estimatesTableBootstrap$addFootnote(gettext("Coefficient estimate is based on the median of the bootstrap distribution."))
 }
 
 .reglogisticMulticolliTable <- function(jaspResults, dataset, options, ready) {
-  if(!options$multicolli || !is.null(jaspResults[["multicolliTable"]]))
+  if(!options$multicollinearity || !is.null(jaspResults[["multicolliTable"]]))
     return()
 
   multicolliTable <- createJaspTable(gettext("Multicollinearity Diagnostics"))
   multicolliTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                           options             = "multicolli")
+                           options             = "multicollinearity")
   multicolliTable$position <- 4
   multicolliTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -258,15 +258,15 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticCasewiseDiagnosticsTable <- function(jaspResults, dataset, options, ready){
-  if(!options$casewiseDiagnostics || !is.null(jaspResults[["casewiseDiagnosticsTable"]]))
+  if(!options$residualCasewiseDiagnostic || !is.null(jaspResults[["casewiseDiagnosticsTable"]]))
     return()
 
   casDiag <- createJaspTable(gettext("Casewise Diagnostics"))
   casDiag$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                               options = c("casewiseDiagnostics",
-                                           "casewiseDiagnosticsResidualZ",
-                                           "casewiseDiagnosticsCooksDistance",
-                                           "casewiseDiagnosticsType"))
+                               options = c("residualCasewiseDiagnostic",
+                                           "residualCasewiseDiagnosticZThreshold",
+                                           "residualCasewiseDiagnosticCooksDistanceThreshold",
+                                           "residualCasewiseDiagnosticType"))
   casDiag$position <- 5
   casDiag$showSpecifiedColumnsOnly <- TRUE
 
@@ -287,13 +287,13 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticFactorDescriptivesTable <- function(jaspResults, dataset, options){
-  if(!options$factorDescriptivesOpt ||
+  if(!options$descriptive ||
      !is.null(jaspResults[["factorDescriptives"]]))
     return()
   if(is.null(dataset))
     dataset <- .reglogisticReadData(dataset, options)
   factorDescriptives <- createJaspTable(gettext("Factor Descriptives"))
-  factorDescriptives$dependOn(c("factorDescriptivesOpt", "factors"))
+  factorDescriptives$dependOn(c("descriptive", "factors"))
   factorDescriptives$position <- 6
   factorDescriptives$showSpecifiedColumnsOnly <- TRUE
   if (length(options$factors) == 0)
@@ -318,12 +318,12 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 .reglogisticConfusionMatrixTable <- function(jaspResults, dataset, options, ready) {
   .reglogisticPerfDiagContainer(jaspResults)
   container <- jaspResults[["perfDiag"]]
-  if(!options$confusionMatrixOpt ||
+  if(!options$confusionMatrix ||
      !is.null(container[["confusionMatrix"]]))
     return()
   confusionMatrix <- createJaspTable(gettext("Confusion matrix"))
   confusionMatrix$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                           options           = c("confusionMatrixOpt"))
+                           options           = c("confusionMatrix"))
   confusionMatrix$position <- 7
   confusionMatrix$showSpecifiedColumnsOnly <- TRUE
 
@@ -357,7 +357,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   container <- jaspResults[["perfDiag"]]
   if(!is.null(container[["performanceMetrics"]]))
     return()
-  performList <- c("Accu", "AUC", "Sens", "Spec", "Prec", "Fmsr", "BrierScr", "Hmsr")
+  performList <- c("accuracy", "auc", "sensitivity", "specificity", "precision", "fMeasure", "brierScore", "hMeasure")
   if(!any(unlist(options[performList])))
     return()
   performanceMetrics <- createJaspTable(gettext("Performance metrics"))
@@ -485,7 +485,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 .reglogisticEstimatesFill <- function(jaspResults, dataset, options, multimod) {
   # Compute/Get Model
   glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
-  alpha  <- qnorm(1 - (1 - options$coeffCIInterval) / 2)
+  alpha  <- qnorm(1 - (1 - options$coefficientCiLevel) / 2)
 
   if (!multimod) {
     s  <- summary(glmObj[[2]])[["coefficients"]]
@@ -494,14 +494,14 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     beta  <- .stdEst(glmObj[[2]], type = "X") # stand. X continuous vars
 
     # Confidence intervals on the odds ratio scale
-    if (options$coeffCIOR)
+    if (options$coefficientCiAsOddsRatio)
       expon <- function(x) exp(x)
     else
       expon <- function(x) x
 
     if (length(rn) == 1) {
       s <- unname(s)
-      if (options$robustSEOpt) {
+      if (options$robustStandardError) {
         s[2] <- unname(.glmRobustSE(glmObj[[2]])) # new se
         s[3] <- s[1]/s[2] # new z
         s[4] <- 2*pnorm(-abs(s[3])) # new p
@@ -521,7 +521,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                         cilo    = expon(s[1] - alpha * s[2]),
                         ciup    = expon(s[1] + alpha * s[2])))
     } else {
-      if (options$robustSEOpt) {
+      if (options$robustStandardError) {
         s[,2] <- unname(.glmRobustSE(glmObj[[2]])) # new se
         s[,3] <- s[,1]/s[,2] # new z
         s[,4] <- 2*pnorm(-abs(s[,3])) # new p
@@ -554,7 +554,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
       beta <- .stdEst(mObj, type = "X") # stand. X continuous vars
 
       # Confidence intervals on the odds ratio scale
-      if (options$coeffCIOR)
+      if (options$coefficientCiAsOddsRatio)
         expon <- function(x) exp(x)
       else
         expon <- function(x) x
@@ -562,7 +562,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
       if (length(rn) == 1) {
         s <- unname(s)
-        if (options$robustSEOpt) {
+        if (options$robustStandardError) {
           s[2] <- unname(.glmRobustSE(mObj)) # new se
           s[3] <- s[1]/s[2] # new z
           s[4] <- 2*pnorm(-abs(s[3])) # new p
@@ -586,7 +586,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
           .isNewGroup = TRUE
         ))
       } else {
-        if (options$robustSEOpt) {
+        if (options$robustStandardError) {
           s[,2] <- unname(.glmRobustSE(mObj)) # new se
           s[,3] <- s[,1]/s[,2] # new z
           s[,4] <- 2*pnorm(-abs(s[,3])) # new p
@@ -633,9 +633,9 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   }
   if (!is.null(glmObj)) {
 
-    expon <- if (options$coeffCIOR) function(x) exp(x) else identity
+    expon <- if (options$coefficientCiAsOddsRatio) function(x) exp(x) else identity
 
-    startProgressbar(options$coeffEstimatesBootstrappingReplicates *
+    startProgressbar(options$coefficientBootstrapReplicates *
                      if (multimod) length(glmObj) else 1)
 
     for (i in 1:length(glmObj)) {
@@ -655,7 +655,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
           envir <- new.env()
           envir$idx <- envir$idx_rse <- 0L
           envir$stdEst <- envir$robustSE <-
-            matrix(NA, options$coeffEstimatesBootstrappingReplicates, length(coef(glmObj[[i]])))
+            matrix(NA, options$coefficientBootstrapReplicates, length(coef(glmObj[[i]])))
 
           .bootstrapping    <- function(data, indices, model.formula, options, envir) {
             progressbarTick()
@@ -685,7 +685,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
           bootstrap.summary <- try(boot::boot(data = dataset,
                                               statistic = .bootstrapping,
-                                              R = options$coeffEstimatesBootstrappingReplicates,
+                                              R = options$coefficientBootstrapReplicates,
                                               model.formula = formula(glmObj[[i]]),
                                               options = options,
                                               envir = envir),
@@ -704,7 +704,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
       bootstrap.std  <- matrixStats::colMedians(bootstrap.summary$stdEst, na.rm = TRUE)
       bootstrap.bias <- colMeans(bootstrap.summary$t, na.rm = TRUE) - bootstrap.summary$t0
       bootstrap.or   <- matrixStats::colMedians(exp(bootstrap.summary$t), na.rm = TRUE)
-      if (options$robustSEOpt)
+      if (options$robustStandardError)
         bootstrap.se <- matrixStats::colMedians(bootstrap.summary$robustSE, na.rm = TRUE)
       else
         bootstrap.se <- matrixStats::colSds(as.matrix(bootstrap.summary$t), na.rm = TRUE)
@@ -721,8 +721,8 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
           .isNewGroup = as.logical(j == 1)
         )
 
-        if (options$coeffCI) {
-          result.bootstrap.ci <- try(boot::boot.ci(bootstrap.summary, type = "bca", conf = options$coeffCIInterval, index=j))
+        if (options$coefficientCi) {
+          result.bootstrap.ci <- try(boot::boot.ci(bootstrap.summary, type = "bca", conf = options$coefficientCiLevel, index=j))
           if(!isTryError(result.bootstrap.ci))
             bootstrap.ci <- result.bootstrap.ci
           else if(identical(attr(result.bootstrap.ci, "condition")$message, "estimated adjustment 'a' is NA")){
@@ -747,7 +747,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     }
     bootstrapResultsState <- createJaspState(bootstrapResults)
     bootstrapResultsState$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                                   options             = c("coeffEstimatesBootstrapping", "coeffEstimatesBootstrappingReplicates"))
+                                   options             = c("coefficientBootstrap", "coefficientBootstrapReplicates"))
     jaspResults[["bootstrapResults"]] <- bootstrapResultsState
   } else {
     return()
@@ -908,15 +908,15 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     )
 
   # determine which scores we need
-  scrNeed  <- with(options, c(Accu, AUC, Sens, Spec, Prec, Fmsr, BrierScr, Hmsr))
+  scrNeed  <- with(options, c(accuracy, auc, sensitivity, specificity, precision, fMeasure, brierScore, hMeasure))
   rows     <- rows[scrNeed]
   container[["performanceMetrics"]]$addRows(rows)
 }
 
 # Plots
 .reglogisticResidualPlotContainer <- function(jaspResults, options){
-  if(!options$predictedPlotOpt && !options$predictorPlotsOpt &&
-     !options$squaredPearsonPlotOpt)
+  if(!options$residualVsFittedPlot && !options$residualVsPredictorPlot &&
+     !options$squaredPearsonResidualVsFittedPlot)
     return()
   if (is.null(jaspResults[["residualPlots"]])) {
     container <- createJaspContainer(gettext("Residual plots"))
@@ -927,14 +927,14 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticEstimatesPlot <- function(jaspResults, dataset, options, ready){
-  if(!options$estimatesPlotsOpt)
+  if(!options$conditionalEstimatePlot)
     return()
   jaspResults[["estimatesPlot"]] <- createJaspContainer(gettext("Estimates plots"))
   jaspResults[["estimatesPlot"]]$dependOn(optionsFromObject = jaspResults[["modelSummary"]])
   container <- jaspResults[["estimatesPlot"]]
 
   if(!ready){
-    container[["placeholder"]] <- createJaspPlot(width = 320, height = 320, dependencies = "estimatesPlotsOpt")
+    container[["placeholder"]] <- createJaspPlot(width = 320, height = 320, dependencies = "conditionalEstimatePlot")
     return()
   }
   # Compute/Get Model
@@ -953,7 +953,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                                                       "term.labels")]
     for(pred in predictors) {
       estimatesPlot <- createJaspPlot(title = pred, width = 480, height = 320)
-      estimatesPlot$dependOn(options = c("estimatesPlotsOpt", "estimatesPlotsCI", "showPoints"))
+      estimatesPlot$dependOn(options = c("conditionalEstimatePlot", "conditionalEstimatePlotCi", "conditionalEstimatePlotPoints"))
       p <- try(.reglogisticEstimatesPlotFill(options, mObj, pred))
       if(isTryError(p))
         estimatesPlot$setError(.extractErrorMessage(p))
@@ -966,14 +966,14 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticPredictedResidualsPlot <- function(jaspResults, dataset, options, ready){
-  if(!options$predictedPlotOpt)
+  if(!options$residualVsFittedPlot)
     return()
   .reglogisticResidualPlotContainer(jaspResults, options)
   container <- jaspResults[["residualPlots"]]
 
   title <- gettext("Predicted - residuals plot")
   predictedPlot <- createJaspPlot(title = title, width = 480, height = 320)
-  predictedPlot$dependOn("predictedPlotOpt")
+  predictedPlot$dependOn("residualVsFittedPlot")
 
   if(ready){
     # Compute/Get Model
@@ -990,14 +990,14 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticPredictorResidualsPlot <- function(jaspResults, dataset, options, ready){
-  if(!options$predictorPlotsOpt)
+  if(!options$residualVsPredictorPlot)
     return()
   .reglogisticResidualPlotContainer(jaspResults, options)
   container    <- jaspResults[["residualPlots"]]
   container[["subContainer"]] <- createJaspContainer(gettext("Predictor - residuals plots"))
    subcontainer <- container[["subContainer"]]
   if(!ready){
-    subcontainer[["placeholder"]] <- createJaspPlot(width = 320, height = 320, dependencies = "predictorPlotsOpt")
+    subcontainer[["placeholder"]] <- createJaspPlot(width = 320, height = 320, dependencies = "residualVsPredictorPlot")
     return()
   }
   # Compute/Get Model
@@ -1014,7 +1014,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                                                     "term.labels")]
   for(pred in predictors) {
     predictorPlot <- createJaspPlot(title = pred, width = 480, height = 320)
-    predictorPlot$dependOn("predictorPlotsOpt")
+    predictorPlot$dependOn("residualVsPredictorPlot")
 
     p <- try(.reglogisticResidPlotFill(options, mObj, pred))
     if(isTryError(p))
@@ -1027,14 +1027,14 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticSquaredPearsonResidualsPlot <- function(jaspResults, dataset, options, ready){
-  if(!options$squaredPearsonPlotOpt)
+  if(!options$squaredPearsonResidualVsFittedPlot)
     return()
   .reglogisticResidualPlotContainer(jaspResults, options)
   container <- jaspResults[["residualPlots"]]
 
   title <- gettext("Squared Pearson residuals plot")
   squaredPearsonPlot <- createJaspPlot(title = title, width = 480, height = 320)
-  squaredPearsonPlot$dependOn("squaredPearsonPlotOpt")
+  squaredPearsonPlot$dependOn("squaredPearsonResidualVsFittedPlot")
 
   if(ready){
     # Compute/Get Model
@@ -1051,28 +1051,28 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticPerformancePlot <- function(jaspResults, dataset, options, ready) {
-  if (!options$rocPlotOpt && !options$prPlotOpt)
+  if (!options$rocPlot && !options$precisionRecallPlot)
     return()
 
   jaspResults[["performancePlots"]] <- createJaspContainer(gettext("Performance plots"))
   container <- jaspResults[["performancePlots"]]
 
-  if (options$rocPlotOpt) {
+  if (options$rocPlot) {
 
     title <- gettext("ROC plot")
     rocPlot <- createJaspPlot(title = title, width = 480, height = 320)
-    rocPlot$dependOn(c("rocPlotOpt", "rocPlotStep"))
+    rocPlot$dependOn(c("rocPlot", "rocPlotCutoffStep"))
 
     if (ready) {
       glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
       mObj   <- glmObj[[length(glmObj)]]
 
-      cutoffInt <- seq(0, 1, by = options$rocPlotStep)
+      cutoffInt <- seq(0, 1, by = options$rocPlotCutoffStep)
 
       tprate <- numeric(length(cutoffInt))
       fprate <- numeric(length(cutoffInt))
 
-      p      <- try(.reglogisticPerformancePlotFill(mObj, options$rocPlotAddCutoffLabels, cutoffInt, type = "ROC"))
+      p      <- try(.reglogisticPerformancePlotFill(mObj, options$rocPlotCutoffLabel, cutoffInt, type = "ROC"))
 
       if (isTryError(p))
         rocPlot$setError(.extractErrorMessage(p))
@@ -1083,22 +1083,22 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     container[["rocPlot"]] <- rocPlot
   }
 
-  if (options$prPlotOpt) {
+  if (options$precisionRecallPlot) {
 
     title <- gettext("PR plot")
     prPlot <- createJaspPlot(title = title, width = 480, height = 320)
-    prPlot$dependOn(c("prPlotOpt", "prPlotStep"))
+    prPlot$dependOn(c("precisionRecallPlot", "precisionRecallPlotCutoffStep"))
 
     if (ready) {
       glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
       mObj   <- glmObj[[length(glmObj)]]
 
-      cutoffInt <- seq(0, 1, by = options$prPlotStep)
+      cutoffInt <- seq(0, 1, by = options$precisionRecallPlotCutoffStep)
 
       tprate <- numeric(length(cutoffInt))
       fprate <- numeric(length(cutoffInt))
 
-      p      <- try(.reglogisticPerformancePlotFill(mObj, options$prPlotAddCutoffLabels, cutoffInt, type = "PR"))
+      p      <- try(.reglogisticPerformancePlotFill(mObj, options$precisionRecallPlotCutoffLabel, cutoffInt, type = "PR"))
 
       if (isTryError(p))
         prPlot$setError(.extractErrorMessage(p))
@@ -1114,7 +1114,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 # Plot Filling
 .reglogisticEstimatesPlotFill <- function(options, mObj, pred){
   # If user wants raw data points, get them from data
-  points <- options$showPoints
+  points <- options$conditionalEstimatePlotPoints
   if (points) {
     mf <- model.frame(mObj)
     factors <- names(mObj[["xlevels"]])
@@ -1125,7 +1125,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     ggdat <- data.frame(x = vd, y = mObj$y)
   }
   # Calculate ribbon & main line
-  ribdat <- .glmLogRegRibbon(mObj, .v(pred), options$estimatesPlotsCI)
+  ribdat <- .glmLogRegRibbon(mObj, .v(pred), options$conditionalEstimatePlotCi)
   # Find predicted level
   predVar   <- as.character(mObj[["terms"]])[2]
   predLevel <- levels(mObj[["data"]][[predVar]])[2]
@@ -1362,15 +1362,15 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 .reglogisticEstimatesInfo <- function(options, addBCA = FALSE) {
   # so we only translate this once
   ciTitle <- if (addBCA)
-    gettextf("%1$s%% bca%2$s Confidence interval", 100 * options$coeffCIInterval, "\u002A")
+    gettextf("%1$s%% bca%2$s Confidence interval", 100 * options$coefficientCiLevel, "\u002A")
   else
-    gettextf("%s%% Confidence interval", 100 * options$coeffCIInterval)
+    gettextf("%s%% Confidence interval", 100 * options$coefficientCiLevel)
 
-  if(options$coeffCIOR)
+  if(options$coefficientCiAsOddsRatio)
     ciTitle <- gettextf("%s <br> (odds ratio scale)", ciTitle)
 
   seTitle <- gettext("Standard Error")
-  if (options$robustSEOpt)
+  if (options$robustStandardError)
     seTitle <- gettextf("Robust <br> %s", seTitle)
 
   if (options$method == "enter") {

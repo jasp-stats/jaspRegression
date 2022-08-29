@@ -16,7 +16,7 @@ options$modelTerms <- list(
 )
 
 options$method <- "enter"
-options$coeffEstimates <- TRUE
+options$coefficientEstimate <- TRUE
 results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "LogReg.csv", options)
 
 # https://jasp-stats.github.io/jasp-verification-project/regression.html#logistic-regression
