@@ -63,6 +63,14 @@ Group {
 			allowedColumns:    ["ordinal", "scale"]
 			singleVariable:    true
 		}
+
+		AssignedVariablesList
+		{
+			name:              "offset"
+			title:             qsTr("Offset")
+			allowedColumns:    ["ordinal", "scale"]
+			singleVariable:    true
+		}
 	}
 
 	Group

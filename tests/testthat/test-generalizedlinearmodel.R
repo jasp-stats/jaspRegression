@@ -324,3 +324,24 @@ test_that("Input error handling", {
   results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
   expect_identical(results$status, "validationError", "Weights non-negative check")
 })
+
+
+# test offset (in gamma regression)
+test_that("Gamma regression (with an offset term) results match", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$covariates <- c("logOfHeight")
+  options$dependent  <- "Volume"
+  options$modelTerms <- list(
+    list(components="logOfHeight", isNuisance=FALSE)
+  )
+  options$family     <- "gamma"
+  options$link       <- "log"
+  options$offset     <- "twoTimesLogOfGirth"
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "trees.csv", options)
+  table <- results[["results"]][["estimatesTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list("(Intercept)", -6.617, 0.7275, -9.096, .000,
+                                             "logOfHeight",       1.104,  0.1681, 6.570, .000))
+
+})
+
