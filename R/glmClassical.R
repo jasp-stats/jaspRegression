@@ -51,7 +51,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     return(dataset)
   }
   else {
-    numericVars  <- unlist(c(options[["covariates"]], options[["weights"]]))
+    numericVars  <- unlist(c(options[["covariates"]], options[["weights"]], options[["offset"]]))
     numericVars  <- numericVars[numericVars != ""]
     factorVars   <- options[["factors"]]
     factorVars   <- factorVars[factorVars != ""]
@@ -149,7 +149,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     modelSummary <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
   }
 
-  dependList <- c("dependent", "family", "link", "modelTerms", "interceptTerm", "weights")
+  dependList <- c("dependent", "family", "link", "modelTerms", "interceptTerm", "weights", "offset")
   modelSummary$dependOn(dependList)
   modelSummary$position <- position
   modelSummary$showSpecifiedColumnsOnly <- TRUE

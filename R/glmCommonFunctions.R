@@ -7,11 +7,15 @@
   leftTerm <- options$dependent
   modelTerms <- options$modelTerms
   includeIntercept <- options$interceptTerm
+  offsetTerm <- options$offset
 
   if (includeIntercept)
     rightTerms <- "1"
   else
     rightTerms <- "-1"
+
+  if (offsetTerm != "")
+    rightTerms <- c(rightTerms, paste("offset(", offsetTerm, ")", sep = ""))
 
   if (length(modelTerms) == 0) {
     f <- formula(paste(leftTerm, "~", rightTerms))
@@ -54,7 +58,7 @@
   # specify family and link
   if (options$family == "bernoulli") {
     family <- "binomial"
-  } 
+  }
   else if (options$family == "gamma") {
     family <- "Gamma"
   }
@@ -64,7 +68,7 @@
   else {
     family <- options$family
   }
-    
+
   familyLink <- eval(call(family, link = options$link))
   # compute full and null models
   if (options$weights == "") {
