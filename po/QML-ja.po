@@ -1374,3 +1374,7 @@ msgstr ""
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "係数"
+
+msgctxt "GlmInputComponent|"
+msgid "Offset"
+msgstr ""

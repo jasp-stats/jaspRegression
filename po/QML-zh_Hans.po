@@ -1361,3 +1361,7 @@ msgstr "例如：残差标准差"
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "系数"
+
+msgctxt "GlmInputComponent|"
+msgid "Offset"
+msgstr ""
