@@ -314,7 +314,7 @@ Upgrades
 		ChangeRename { from: "coeffCI";					                 to: "coefficientCi"							            }
 		ChangeRename { from: "coeffCIInterval";					         to: "coefficientCiLevel"							        }
 		ChangeRename { from: "coeffCIOR";					             to: "coefficientCiAsOddsRatio"							    }
-		ChangeRename { from: "robustSEOpt";					             to: "robustStandardError"							        }
+		ChangeRename { from: "robustSEOpt";					             to: "robustSe"							        }
 		ChangeRename { from: "VovkSellkeMPR";					         to: "vovkSellke"							                }
 		ChangeRename { from: "multicolli";					             to: "multicollinearity"							        }
 		ChangeRename { from: "Accu";					                 to: "accuracy"							                    }

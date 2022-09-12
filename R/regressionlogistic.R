@@ -132,7 +132,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTable <- createJaspTable(gettext("Coefficients"))
   estimatesTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
                           options             = c("coefficientEstimate", "coefficientStandardized",
-                                                  "oddsRatio", "coefficientCi", "robustStandardError",
+                                                  "oddsRatio", "coefficientCi", "robustSe",
                                                   "coefficientCiLevel", "coefficientCiAsOddsRatio",
                                                   "robustSEopt", "vovkSellke"))
   estimatesTable$position <- 2
@@ -188,7 +188,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                                    options             = c("coefficientBootstrap",
                                                            "coefficientBootstrapReplicates",
                                                            "coefficientCi", "coefficientCiAsOddsRatio", "coefficientStandardized", "oddsRatio", "coefficientCiLevel",
-                                                           "robustStandardError"))
+                                                           "robustSe"))
   estimatesTableBootstrap$position <- 3
   estimatesTableBootstrap$showSpecifiedColumnsOnly <- TRUE
 
@@ -223,7 +223,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
   .reglogisticSetError(res, estimatesTableBootstrap)
 
-  if (options$robustStandardError)
+  if (options$robustSe)
     estimatesTableBootstrap$addFootnote(gettext("Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."))
   else
     estimatesTableBootstrap$addFootnote(gettext("Coefficient estimate is based on the median of the bootstrap distribution."))
@@ -501,7 +501,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
     if (length(rn) == 1) {
       s <- unname(s)
-      if (options$robustStandardError) {
+      if (options$robustSe) {
         s[2] <- unname(.glmRobustSE(glmObj[[2]])) # new se
         s[3] <- s[1]/s[2] # new z
         s[4] <- 2*pnorm(-abs(s[3])) # new p
@@ -521,7 +521,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
                         cilo    = expon(s[1] - alpha * s[2]),
                         ciup    = expon(s[1] + alpha * s[2])))
     } else {
-      if (options$robustStandardError) {
+      if (options$robustSe) {
         s[,2] <- unname(.glmRobustSE(glmObj[[2]])) # new se
         s[,3] <- s[,1]/s[,2] # new z
         s[,4] <- 2*pnorm(-abs(s[,3])) # new p
@@ -562,7 +562,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
       if (length(rn) == 1) {
         s <- unname(s)
-        if (options$robustStandardError) {
+        if (options$robustSe) {
           s[2] <- unname(.glmRobustSE(mObj)) # new se
           s[3] <- s[1]/s[2] # new z
           s[4] <- 2*pnorm(-abs(s[3])) # new p
@@ -586,7 +586,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
           .isNewGroup = TRUE
         ))
       } else {
-        if (options$robustStandardError) {
+        if (options$robustSe) {
           s[,2] <- unname(.glmRobustSE(mObj)) # new se
           s[,3] <- s[,1]/s[,2] # new z
           s[,4] <- 2*pnorm(-abs(s[,3])) # new p
@@ -704,7 +704,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
       bootstrap.std  <- matrixStats::colMedians(bootstrap.summary$stdEst, na.rm = TRUE)
       bootstrap.bias <- colMeans(bootstrap.summary$t, na.rm = TRUE) - bootstrap.summary$t0
       bootstrap.or   <- matrixStats::colMedians(exp(bootstrap.summary$t), na.rm = TRUE)
-      if (options$robustStandardError)
+      if (options$robustSe)
         bootstrap.se <- matrixStats::colMedians(bootstrap.summary$robustSE, na.rm = TRUE)
       else
         bootstrap.se <- matrixStats::colSds(as.matrix(bootstrap.summary$t), na.rm = TRUE)
@@ -1370,7 +1370,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     ciTitle <- gettextf("%s <br> (odds ratio scale)", ciTitle)
 
   seTitle <- gettext("Standard Error")
-  if (options$robustStandardError)
+  if (options$robustSe)
     seTitle <- gettextf("Robust <br> %s", seTitle)
 
   if (options$method == "enter") {

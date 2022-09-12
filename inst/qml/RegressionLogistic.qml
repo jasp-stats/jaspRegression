@@ -112,7 +112,7 @@ Form
 					CIField {	name: "coefficientCiLevel";	label: qsTr("Interval")				}
 					CheckBox {	name: "coefficientCiAsOddsRatio";			label: qsTr("Odds ratio scale")		}
 				}
-				CheckBox { name: "robustStandardError";		label: qsTr("Robust standard errors")	}
+				CheckBox { name: "robustSe";		label: qsTr("Robust standard errors")	}
 				CheckBox { name: "vovkSellke";	label: qsTr("Vovk-Sellke maximum p-ratio")	}
 			}
 
