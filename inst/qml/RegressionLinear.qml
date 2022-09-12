@@ -112,7 +112,7 @@ Form
 			{
 				CheckBox { name: "modelFit";					label: qsTr("Model fit");  checked: true		}
 				CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")				}
-				CheckBox { name: "descriptive";				label: qsTr("Descriptives")					}
+				CheckBox { name: "descriptives";				label: qsTr("Descriptives")					}
 				CheckBox { name: "partAndPartialCorrelation";	label: qsTr("Part and partial correlations")	}
 				CheckBox { name: "collinearityDiagnostic";		label: qsTr("Collinearity diagnostics")		}
 			}
@@ -159,14 +159,14 @@ Form
 			title: qsTr("Stepping Method Criteria")
 			RadioButton
 			{
-				value: "usePValue"; label: qsTr("Use p value"); checked: true
+				value: "pValue"; label: qsTr("Use p value"); checked: true
 				columns: 2
 				DoubleField { name: "steppingMethodCriteriaPEntry";		label: qsTr("Entry");	fieldWidth: 60; defaultValue: 0.05; max: 1; decimals: 3 }
 				DoubleField { name: "steppingMethodCriteriaPRemoval";	label: qsTr("Removal");	fieldWidth: 60; defaultValue: 0.1; max: 1; decimals: 3	}
 			}
 			RadioButton
 			{
-				value: "useFValue"; label: qsTr("Use F value")
+				value: "fValue"; label: qsTr("Use F value")
 				columns: 2
 				DoubleField { name: "steppingMethodCriteriaFEntry";		label: qsTr("Entry");	fieldWidth: 60; defaultValue: 3.84; decimals: 3 }
 				DoubleField { name: "steppingMethodCriteriaFRemoval";	label: qsTr("Removal");	fieldWidth: 60; defaultValue: 2.71; decimals: 3 }
@@ -178,8 +178,8 @@ Form
 			name: "missingValues"
 			title: qsTr("Missing Values")
 			debug: true
-			RadioButton { value: "caseListwiseExclusion"; label: qsTr("Exclude cases listwise"); checked: true	}
-			RadioButton { value: "casesPairwiseExclusion"; label: qsTr("Exclude cases pairwise")					}
+			RadioButton { value: "listwise"; label: qsTr("Exclude cases listwise"); checked: true	}
+			RadioButton { value: "pairwise"; label: qsTr("Exclude cases pairwise")					}
 		}
 	}
 

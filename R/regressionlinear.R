@@ -78,7 +78,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   # these output elements do not use statistics of a pre-calculated lm fit
   if (options$partialResidualPlot && is.null(modelContainer[["partialPlotContainer"]]))
     .linregCreatePartialPlots(modelContainer, dataset, options, position = 16)
-  if (options$descriptive && is.null(modelContainer[["descriptivesTable"]]))
+  if (options$descriptives && is.null(modelContainer[["descriptivesTable"]]))
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
 }
 #TODO: capture crashes with many interactions between factors!
@@ -114,12 +114,12 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       },
 
       checkIfPEntryIsValid = function() {
-        if (options$steppingMethodCriteriaType == "usePValue" && options$steppingMethodCriteriaPEntry > options$steppingMethodCriteriaPRemoval)
+        if (options$steppingMethodCriteriaType == "pValue" && options$steppingMethodCriteriaPEntry > options$steppingMethodCriteriaPRemoval)
           return(gettext("Error in Stepping Method Criteria: Entry p-value needs to be smaller than removal p-value"))
       },
 
       checkIfFEntryIsValid = function() {
-        if (options$steppingMethodCriteriaType == "useFValue" && options$steppingMethodCriteriaFEntry < options$steppingMethodCriteriaFRemoval)
+        if (options$steppingMethodCriteriaType == "fValue" && options$steppingMethodCriteriaFEntry < options$steppingMethodCriteriaFRemoval)
           return(gettext("Error in Stepping Method Criteria: Entry F-value needs to be larger than removal F-value"))
       }
 
@@ -758,7 +758,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 
 .linregCreateDescriptivesTable <- function(modelContainer, dataset, options, position) {
   descriptivesTable <- createJaspTable(gettext("Descriptives"))
-  descriptivesTable$dependOn("descriptive")
+  descriptivesTable$dependOn("descriptives")
   descriptivesTable$position <- position
 
   descriptivesTable$addColumnInfo(name = "var",  title = "",              type = "string")
@@ -966,10 +966,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   }
 
   nextPredictors <- NULL
-  if (options$steppingMethodCriteriaType == "useFValue" && max(fValues) > options$steppingMethodCriteriaFEntry) {
+  if (options$steppingMethodCriteriaType == "fValue" && max(fValues) > options$steppingMethodCriteriaFEntry) {
       highestFvaluePredictor <- candidatePredictors[which.max(fValues)]
       nextPredictors <- c(prevModel$predictors, highestFvaluePredictor)
-  } else if (options$steppingMethodCriteriaType == "usePValue" && min(pValues) < options$steppingMethodCriteriaPEntry) {
+  } else if (options$steppingMethodCriteriaType == "pValue" && min(pValues) < options$steppingMethodCriteriaPEntry) {
       minimumPvalueVariable <- candidatePredictors[which.min(pValues)]
       nextPredictors <- c(prevModel$predictors, minimumPvalueVariable)
   }
@@ -998,10 +998,10 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   fValues <- tValues^2
 
   nextPredictors <- prevModel[["predictors"]]
-  if (options$steppingMethodCriteriaType == "useFValue" && min(fValues) < options$steppingMethodCriteriaFRemoval) {
+  if (options$steppingMethodCriteriaType == "fValue" && min(fValues) < options$steppingMethodCriteriaFRemoval) {
       lowestFvaluePredictor <- names(which.min(fValues))
       nextPredictors        <- prevModel$predictors[prevModel$predictors != lowestFvaluePredictor]
-  } else if (options$steppingMethodCriteriaType == "usePValue" && max(pValues) > options$steppingMethodCriteriaPRemoval) {
+  } else if (options$steppingMethodCriteriaType == "pValue" && max(pValues) > options$steppingMethodCriteriaPRemoval) {
       highestPvaluePredictor  <- names(which.max(pValues))
       nextPredictors          <- prevModel$predictors[prevModel$predictors != highestPvaluePredictor]
   }

@@ -16,7 +16,7 @@ options$covariates <- "MeanCenteredX"
 options$modelTerms <- list(
   list(components="MeanCenteredX", isNuisance=FALSE)
 )
-options$descriptive <- TRUE
+options$descriptives <- TRUE
 
 results <- jaspTools::runAnalysis("RegressionLinear", "Regression.csv", options)
 
