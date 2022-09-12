@@ -10,7 +10,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$modelTerms <- list(
     list(components="treat", isNuisance=FALSE)
   )
-  options$descriptive <- TRUE
+  options$descriptives <- TRUE
   options$oddsRatio <- TRUE
   options$coefficientCi <- TRUE
   options$coefficientCiAsOddsRatio <- TRUE

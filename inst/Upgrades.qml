@@ -304,7 +304,7 @@ Upgrades
 
 		ChangeRename { from: "wlsWeights";					             to: "weights"							                    }
 		ChangeRename { from: "includeIntercept";					     to: "interceptTerm"							            }
-		ChangeRename { from: "factorDescriptivesOpt";					 to: "descriptive"							                }
+		ChangeRename { from: "factorDescriptivesOpt";					 to: "descriptives"							                }
 		ChangeRename { from: "confusionMatrixOpt";					     to: "confusionMatrix"							            }
 		ChangeRename { from: "coeffEstimates";					         to: "coefficientEstimate"							        }
 		ChangeRename { from: "coeffEstimatesBootstrapping";				 to: "coefficientBootstrap"							        }

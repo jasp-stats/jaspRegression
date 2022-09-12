@@ -287,13 +287,13 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 }
 
 .reglogisticFactorDescriptivesTable <- function(jaspResults, dataset, options){
-  if(!options$descriptive ||
+  if(!options$descriptives ||
      !is.null(jaspResults[["factorDescriptives"]]))
     return()
   if(is.null(dataset))
     dataset <- .reglogisticReadData(dataset, options)
   factorDescriptives <- createJaspTable(gettext("Factor Descriptives"))
-  factorDescriptives$dependOn(c("descriptive", "factors"))
+  factorDescriptives$dependOn(c("descriptives", "factors"))
   factorDescriptives$position <- 6
   factorDescriptives$showSpecifiedColumnsOnly <- TRUE
   if (length(options$factors) == 0)

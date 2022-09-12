@@ -72,7 +72,7 @@ Form
 		Group
 		{
 			title: qsTr("Descriptives")
-			CheckBox { name: "descriptive"; label: qsTr("Factor descriptives") }
+			CheckBox { name: "descriptives"; label: qsTr("Factor descriptives") }
 		}
 
 		Group
