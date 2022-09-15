@@ -322,6 +322,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
 
   if (options[["coefficientCi"]]) {
     coefCiSummary <- confint(glmModels[["fullModel"]], level = options[["coefficientCiLevel"]])
+    if (length(rowNames) == 1) coefCiSummary <- matrix(coefCiSummary, ncol = 2)
   } else {
     coefCiSummary <- matrix(nrow = length(rowNames),
                             ncol = 2,
