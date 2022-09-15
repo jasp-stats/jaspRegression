@@ -345,3 +345,18 @@ test_that("Gamma regression (with an offset term) results match", {
 
 })
 
+# test intercept-only model for confidence intervals
+test_that("Intercept-only binomial regression results match", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$weights    <- "Turbines"
+  options$dependent  <- "DV"
+  options$family     <- "binomial"
+  options$coefficientCi <- TRUE
+  options$coefficientCiLevel <- 0.95
+
+  options$link       <- "logit"
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "turbines.csv", options)
+  table <- results[["results"]][["estimatesTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list("(Intercept)", -1.1235, 0.1118, -10.05, .000, -1.347, -0.9082))
+
+})
