@@ -675,14 +675,14 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
 
   if (purpose=="matrix") {
     if (!options[["matrixPlotPosterior"]]) {
-      # Note(Alexander): This should never happen as, this shouldn't be called with matrixPlotPosterior <- TRUE
+      # Note(Alexander): This should never happen as, this shouldn't be called with matrixPlotPosterior <- FALSE
       # TODO(Alexander) return empty list instead?
       plotResult <- .displayError(errorMessage="")
       return(plotResult)
     }
   } else if (purpose=="pairs" ||  purpose=="sumStat") {
-    if (!is.null(options[["priorPosteriorPlot"]])) {
-      # Note(Alexander): This should never happen as, this shouldn't be called with matrixPlotPosterior <- TRUE
+    if (!isTRUE(options[["priorPosteriorPlot"]])) {
+      # Note(Alexander): This should never happen as, this shouldn't be called with priorPosteriorPlot <- FALSE or NULL
       # TODO(Alexander) return empty list instead?
       plotResult <- .displayError(errorMessage="")
       return(plotResult)
