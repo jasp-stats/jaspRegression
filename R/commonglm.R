@@ -21,11 +21,11 @@
 .createGlmFormula <- function(options) {
   # this function outputs a formula name with base64 values as varnames
   f <- NULL
-  
+
   dependent <- options$dependent
   if (dependent == "")
     f <- 0~1 # mock formula, always works
-  
+
   modelTerms <- options$modelTerms
   includeIntercept <- options$includeIntercept
   if (length(modelTerms) == 0) {
@@ -56,10 +56,10 @@
   dependent <- options$dependent
   if (dependent == "")
     return(NULL)
-  
+
   modelTerms <- options$modelTerms
   includeIntercept <- options$includeIntercept
-  
+
   t <- character(0)
   for (i in seq_along(modelTerms)) {
     nui <- modelTerms[[i]][["isNuisance"]]
@@ -75,7 +75,7 @@
     t <- c(t, "0")
   else
     t <- c(t, "1")
-  
+
   return(formula(paste(.v(dependent), "~", paste(t, collapse = "+"))))
 }
 
@@ -88,18 +88,18 @@
   # OUTPUT: List of glm objects, where the nullModel is the first model
   # (method = enter, forward, stepwise) or the fullModel (method = backward)
   # The last model is the final model that was converged on.
-  
+
   # first, create temporary environment with dataset for stepAIC() calls
   tempenv <- new.env()
   datname <- as.character(as.list(getCall(fullModel))$data)
   assign(datname, dataset, envir = tempenv)
-  
+
   null <- nullModel$formula
   full <- fullModel$formula
-  
+
   assign("nf", null, envir = tempenv)
   assign("ff", full, envir = tempenv)
-  
+
   if (method == "enter") {
     modlist <- vector("list", 2)
     modlist[[1]] <- nullModel
@@ -119,7 +119,7 @@
                            keep = function(m, b) list(m))
     modlist <- as.list(stepOut$keep[,1:ncol(stepOut$keep)])
   }
-  
+
   return(modlist)
 }
 
@@ -138,10 +138,10 @@
     superModel <- glmModel1
     subModel <- glmModel2
   }
-  
+
   chisq <- max(0, subModel[["deviance"]] - superModel[["deviance"]])
   df <- subModel[["df.residual"]] - superModel[["df.residual"]]
-  
+
   if (chisq == 0 || df == 0)
     p <- NULL
   else
@@ -214,24 +214,24 @@
     b <- summary(glmModel)[["coefficients"]][-1,1]
   else
     b <- summary(glmModel)[["coefficients"]][,1]
-  
+
   factors <- names(glmModel[["xlevels"]])
   xmod <- glmModel[["model"]][!names(glmModel[["model"]]) %in% factors][,-1]
   xfac <- glmModel[["model"]][names(glmModel[["model"]]) %in% factors]
   ymod <- glmModel[["model"]][1]
-  
+
   if (type == "X")
     stdDat <- cbind(ymod, scale(xmod), xfac)
   else if (type == "Y")
     stdDat <- cbind(scale(ymod), xmod, xfac)
   else if (type == "XY")
     stdDat <- cbind(scale(ymod), scale(xmod), xfac)
-  
+
   names(stdDat) <- names(glmModel[["model"]])
-  
+
   stdMod <- stats::glm(formula = glmModel[["formula"]], data = stdDat,
                        family = glmModel[["family"]])
-  
+
   return(coef(stdMod))
 }
 
@@ -256,21 +256,21 @@
 .formatTerm <- function(term, glmModel) {
   # input: string of model term & glmObj
   vars <- names(glmModel[["model"]][-1])
-  
+
   if (attr(glmModel[["terms"]], "intercept"))
-    vars <- c(vars, .v("(Intercept)"))
-  
+    vars <- c(vars, gettext("(Intercept)"))
+
   # escape special regex characters
   vars <- gsub("(\\W)", "\\\\\\1", vars, perl=TRUE)
-  
+
   # regex patterns
   pat1 <- paste0("\\:","(?=(",paste(vars, collapse = ")|("),"))")
   pat2 <- paste0("(?<=(",paste(vars, collapse = ")|("),"))")
-  
+
   # split up string into components
   spl  <- strsplit(term, pat1, perl = TRUE)[[1]]
   spl2 <- lapply(spl, function(t) strsplit(t, pat2, perl = TRUE))
-  
+
   # format and add back together
   col <- lapply(spl2, function(s) {
     if (length(unlist(s)) > 1) {
@@ -281,7 +281,7 @@
       return(.unv(unlist(s)))
   })
   col2 <- paste(unlist(col), collapse = " * ")
-  
+
   return(col2)
 }
 
@@ -302,8 +302,8 @@
     names(cm) <- colnames(mf)[!(colnames(mf) %in% c(factors, outcome))]
   } else
     cm <- colMeans(cDat)
-  
-  
+
+
   if (length(factors) == 0 || !(var %in% factors)) {
     # Variable of interest is continuous
     # create 101-length data frame of repeated colmeans
@@ -327,7 +327,7 @@
     fac <- TRUE
     levs <- paste0(.unv(var), logRes[["xlevels"]][[var]])
     nlevs <- length(levs)
-    
+
     # create a new data frame of nlevs length
     newDat <- data.frame(matrix(rep(cm, nlevs), nrow=nlevs, byrow=TRUE))
     colnames(newDat) <- names(cm)
@@ -345,16 +345,16 @@
                  levels = logRes[["xlevels"]][[var]])
     newDat[[var]] <- xs
   }
-  
+
   pred <- predict(logRes, newdata = newDat, type = "link", se.fit = TRUE)
   ys   <- .invLogit(pred$fit)
   critValue <- qnorm(1 - (1 - ciInt) / 2)
   lo <- .invLogit(pred$fit - critValue * pred$se.fit)
   hi <- .invLogit(pred$fit + critValue * pred$se.fit)
   outFrame <- data.frame(x = xs, y = ys, lo = lo, hi = hi)
-  
+
   attr(outFrame, "factor") <- fac
-  
+
   return(outFrame)
 }
 
@@ -370,12 +370,12 @@
     mf   <- model.frame(glmModel)
     xmat <- model.matrix(terms(glmModel), mf)
   }
-  
+
   umat      <- residuals(glmModel, "working") * glmModel[["weights"]] * xmat
   modelv    <- summary(glmModel)[["cov.unscaled"]]
   robustCov <- modelv%*%(t(umat)%*%umat)%*%modelv
   dimnames(robustCov) <- dimnames(vcov(glmModel))
-  
+
   ##	Format the model output with p-values and CIs
   s <- summary(glmModel)
   robustSE <- sqrt(diag(robustCov))
@@ -384,7 +384,7 @@
 
 .casewiseDiagnosticsLogisticRegression <- function(dataset, model, options) {
   last <- length(model)
-  
+
   # Values for all cases
   dependentAll        <- dataset[[.v(options$dependent)]]
   dependentAllNumeric <- rep(0, nrow(dataset))
@@ -395,7 +395,7 @@
   residualAll  <- resid(model[[last]], type = "response")
   residualZAll <- resid(model[[last]], type = "pearson")
   cooksDAll    <- cooks.distance(model[[last]])
-  
+
   # These will be the variables for the return object
   dependent      <- NA
   predicted      <- NA
@@ -403,14 +403,14 @@
   residual       <- NA
   residualZ      <- NA
   cooksD         <- NA
-  
+
   if (options$casewiseDiagnosticsType == "residualZ")
     index <- which(abs(residualZAll) > options$casewiseDiagnosticsResidualZ)
   else if (options$casewiseDiagnosticsType == "cooksDistance")
     index <- which(abs(cooksDAll) > options$casewiseDiagnosticsCooksDistance)
-  else 
+  else
     index <- seq_along(cooksDAll)
-  
+
   if (length(index) == 0)
     index <- NA
   else {
@@ -448,8 +448,8 @@
 
 ## functions in package car 3.0-12
 # Durbin-Watson
-.durbinWatsonTest.lm <- function(model, max.lag=1, simulate=TRUE, reps=1000, 
-                                method=c("resample","normal"), 
+.durbinWatsonTest.lm <- function(model, max.lag=1, simulate=TRUE, reps=1000,
+                                method=c("resample","normal"),
                                 alternative=c("two.sided", "positive", "negative"), ...){
   method <- match.arg(method)
   alternative <- if (max.lag == 1) match.arg(alternative)
@@ -472,7 +472,7 @@
     S <- summary(model)$sigma
     X <- model.matrix(model)
     mu <- fitted.values(model)
-    Y <- if (method == "resample") 
+    Y <- if (method == "resample")
       matrix(sample(residuals, n*reps, replace=TRUE), n, reps) + matrix(mu, n, reps)
     else matrix(rnorm(n*reps, 0, S), n, reps) + matrix(mu, n, reps)
     E <- residuals(lm(Y ~ X - 1))

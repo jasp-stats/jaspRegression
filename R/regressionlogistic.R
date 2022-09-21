@@ -232,28 +232,28 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 .reglogisticMulticolliTable <- function(jaspResults, dataset, options, ready) {
   if(!options$multicolli || !is.null(jaspResults[["multicolliTable"]]))
     return()
-  
+
   multicolliTable <- createJaspTable(gettext("Multicollinearity Diagnostics"))
   multicolliTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
                            options             = "multicolli")
   multicolliTable$position <- 4
   multicolliTable$showSpecifiedColumnsOnly <- TRUE
-  
+
   multicolliTable$addColumnInfo(name = "var", title = gettext(""), type = "string")
-  
+
   if (ready) {
     glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
   } else {
     glmObj <- NULL
   }
-  
+
   multicolliTable$addColumnInfo(name = "tolerance", title = gettext("Tolerance"), type = "number")
   multicolliTable$addColumnInfo(name = "VIF", title = gettext("VIF"), type = "number")
-  
+
   jaspResults[["multicolliTable"]] <- multicolliTable
-  
+
   res <- try(.reglogisticMulticolliTableFill(jaspResults, dataset, options, glmObj, ready))
-  
+
   .reglogisticSetError(res, multicolliTable)
 }
 
@@ -490,7 +490,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   if (!multimod) {
     s  <- summary(glmObj[[2]])[["coefficients"]]
     rn <- rownames(s)
-    rn[which(rn == "(Intercept)")] <- .v("(Intercept)") #Some magic is going on here, not sure if I should add gettext() at this point and creation of glmObj in commonglm.R... (JCG 6-1-20)
+    rn[which(rn == "(Intercept)")] <- gettext("(Intercept)")
     beta  <- .stdEst(glmObj[[2]], type = "X") # stand. X continuous vars
 
     # Confidence intervals on the odds ratio scale
@@ -550,7 +550,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
       mObj <- glmObj[[midx]]
       s    <- summary(mObj)[["coefficients"]]
       rn   <- rownames(s)
-      rn[which(rn == "(Intercept)")] <- .v("(Intercept)") #???
+      rn[which(rn == "(Intercept)")] <- gettext("(Intercept)")
       beta <- .stdEst(mObj, type = "X") # stand. X continuous vars
 
       # Confidence intervals on the odds ratio scale
@@ -643,7 +643,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
         next
 
         rn <- rownames(summary(glmObj[[i]])[["coefficients"]])
-        rn[which(rn == "(Intercept)")] <- .v("(Intercept)")
+        rn[which(rn == "(Intercept)")] <- gettext("(Intercept)")
         bootname <- paste(rn, collapse = "-")
 
         if (is.null(bootstrapResults[[bootname]])) {
@@ -835,7 +835,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
       list(obs = levs[2], pred0 = m[2,1], pred1 = m[2,2], perCorrect = rowPerCorrect2),
       list(obs = "Overall % Correct", pred0 = "", pred1 = "", perCorrect = accuracy)
     ))
-    
+
     message <- "The cut-off value is set to 0.5"
     container[["confusionMatrix"]]$addFootnote(message)
   } else
@@ -850,7 +850,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   if (ready && !is.null(glmObj)) {
     mObj          <- glmObj[[length(glmObj)]]
     vif_obj       <- .vif.default(mObj)
-    
+
     if (is.matrix(vif_obj)) {
       var_names     <- rownames(vif_obj)
       n_var         <- length(var_names)
@@ -863,13 +863,13 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
       vif_vec       <- vif_obj
       tolerance_vec <- 1/vif_vec
     }
-    
+
     for (i in 1:n_var) {
       jaspResults[["multicolliTable"]]$addRows(list(var       = var_names[[i]],
                                                     tolerance = tolerance_vec[[i]],
                                                     VIF       = vif_vec[[i]]))
     }
-    
+
   } else
     jaspResults[["multicolliTable"]]$addRows(
       list(var = ".", tolerance = ".", VIF = "."))
@@ -883,7 +883,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     m <- .confusionMatrix(mObj, cutoff = 0.5)[["matrix"]]
     n = sum(m)
     accuracy <- (m[1,1]+m[2,2])/n
-    
+
     metrics <- .confusionMatrix(mObj, cutoff = 0.5)[["metrics"]]
     rows <- list(
       list(met = "Accuracy",    val = accuracy),

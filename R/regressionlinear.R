@@ -276,7 +276,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregCreateCoefficientsTable <- function(modelContainer, model, dataset, options, position) {
-  coeffTable <- createJaspTable("Coefficients")
+  coeffTable <- createJaspTable(gettext("Coefficients"))
   coeffTable$dependOn(c("regressionCoefficientsEstimates", "regressionCoefficientsConfidenceIntervals", "regressionCoefficientsConfidenceIntervalsInterval",
                         "collinearityDiagnostics", "VovkSellkeMPR"))
   coeffTable$position <- position
@@ -510,8 +510,8 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregFillCoefficientsCovarianceMatrixTable <- function(covMatTable, model, options) {
-  rawNames    <- setdiff(.linregGetParameterNames(model), "(Intercept)") # names used by R
-  prettyNames <- setdiff(.linregMakePrettyNames(model),   "(Intercept)") # names shown in JASP
+  rawNames    <- setdiff(.linregGetParameterNames(model), "(Intercept)")          # names used by R
+  prettyNames <- setdiff(.linregMakePrettyNames(model),   gettext("(Intercept)")) # names shown in JASP
 
   indicesOfModelsWithPredictors <- .linregGetIndicesOfModelsWithPredictors(model, options)
   for (i in indicesOfModelsWithPredictors) {
