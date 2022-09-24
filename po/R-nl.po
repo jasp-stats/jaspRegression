@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-06-28 15:04\n"
+"POT-Creation-Date: 2022-09-24 03:35\n"
 "PO-Revision-Date: 2022-06-09 07:07+0000\n"
 "Last-Translator: DanaJohanna <dana__@live.nl>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -122,6 +122,10 @@ msgstr "Rangen van %s"
 
 msgid "Predicted"
 msgstr "Voorspeld"
+
+#, fuzzy
+msgid "(Intercept)"
+msgstr "DFBETAS:Intercept"
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"

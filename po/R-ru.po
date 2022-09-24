@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-06-28 15:04\n"
+"POT-Creation-Date: 2022-09-24 03:35\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -115,6 +115,9 @@ msgid "Ranks of %s"
 msgstr ""
 
 msgid "Predicted"
+msgstr ""
+
+msgid "(Intercept)"
 msgstr ""
 
 msgid "VS-MPR%s"

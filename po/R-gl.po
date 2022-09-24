@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-06-28 15:04\n"
+"POT-Creation-Date: 2022-09-24 03:35\n"
 "PO-Revision-Date: 2022-05-16 11:10+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -129,6 +129,10 @@ msgstr "Rangos de %s"
 
 msgid "Predicted"
 msgstr "Predito"
+
+#, fuzzy
+msgid "(Intercept)"
+msgstr "DFBETAS: Constante"
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"

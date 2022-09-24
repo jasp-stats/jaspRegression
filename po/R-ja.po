@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-06-28 15:04\n"
+"POT-Creation-Date: 2022-09-24 03:35\n"
 "PO-Revision-Date: 2022-02-12 21:37+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -120,6 +120,9 @@ msgstr "%sのランク"
 
 msgid "Predicted"
 msgstr "予測"
+
+msgid "(Intercept)"
+msgstr ""
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
