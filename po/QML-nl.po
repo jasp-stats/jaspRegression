@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-09-27 14:19+0000\n"
+"Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
+"Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/nl/>\n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 "X-Language: nl\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1058,324 +1064,310 @@ msgstr "Accuraatheid"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "Gegeneraliseerd Lineair Model"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Geschatte Marginale Gemiddelden en Contrastanalyse"
 
 msgctxt "EmmComponent|"
 msgid "Model variables"
-msgstr ""
+msgstr "Modelvariabelen"
 
 msgctxt "EmmComponent|"
 msgid "Selected variables"
-msgstr ""
+msgstr "Geselecteerde variabelen"
 
-#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
 msgstr "Betrouwbaarheidsinterval"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "Niveaus van covariaten bij gemiddelde +/- "
 
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
-msgstr ""
+msgstr "Vergelijk marginale middelen met:"
 
 msgctxt "EmmComponent|"
 msgid "Use response scale"
-msgstr ""
+msgstr "Gebruik responsschaal"
 
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "Contrasten specificeren"
 
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
-msgstr ""
+msgstr "P-waarde aanpassing"
 
 msgctxt "EmmComponent|"
 msgid "Multivariate-t"
-msgstr ""
+msgstr "Multivariate-t"
 
 msgctxt "EmmComponent|"
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "Afhankelijke variabele"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
 msgstr "Covariaten"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Factors"
 msgstr "Factoren"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
-msgstr ""
+msgstr "Totaal Aantal Proeven"
 
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "Gewichten"
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr ""
+msgstr "Familie"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
 msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
-msgstr ""
+msgstr "Binomiaal"
 
 msgctxt "GlmInputComponent|"
 msgid "Gaussian"
-msgstr ""
+msgstr "Gaussiaans"
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
-msgstr ""
+msgstr "Inverse Gaussiaans"
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "Poisson"
 
 msgctxt "GlmInputComponent|"
 msgid "Link"
-msgstr ""
+msgstr "Koppeling"
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
-msgstr ""
+msgstr "Logit"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
-msgstr ""
+msgstr "Probit"
 
 msgctxt "GlmInputComponent|"
 msgid "Cauchit"
-msgstr ""
+msgstr "Cauchit"
 
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
-msgstr ""
+msgstr "Aanvullende LogLog"
 
 msgctxt "GlmInputComponent|"
 msgid "Identity"
-msgstr ""
+msgstr "Identiteit"
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr ""
+msgstr "Sqrt"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
-msgstr ""
+msgstr "Inverse"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/mu^2"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
-msgstr ""
+msgstr "Analyse van Residuen"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Deviance Residuals"
-msgstr ""
+msgstr "Deviantie Residuen"
 
-#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. fitted"
-msgstr "Residuen vs. fitted"
+msgstr "Residuen vs. gepast"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. predictor"
-msgstr ""
+msgstr "Residuen vs. voorspeller"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "Q-Q plot"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
-msgstr ""
+msgstr "Pearson Residuen"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Quantile Residuals"
-msgstr ""
+msgstr "Kwantielresiduen"
 
-#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Other Plots"
 msgstr "Overige Grafieken"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Partial residual plots"
-msgstr ""
+msgstr "Partiële residuen grafieken"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Working responses vs. linear predictor"
-msgstr ""
+msgstr "Werkende reacties vs. lineaire voorspeller"
 
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr ""
+msgstr "Uitgewerkte"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
 msgstr "Model"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
 msgstr "Componenten"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
 msgstr "Voeg intercept toe"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
 msgstr "Statistieken"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr ""
+msgstr "Model Passing"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
-msgstr ""
+msgstr "Deviantie goodness-of-fit toets"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
-msgstr ""
+msgstr "Pearson goodness-of-fit Toets"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
 msgstr "Schattingen"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
 msgstr "Betrouwbaarheidsintervallen"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnostieken"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "Toon Uitbijters"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals: top"
-msgstr ""
+msgstr "Gestandaardiseerde kwantielresiduen: boven"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
-msgstr ""
+msgstr "Gestandaardiseerde deviantieresiduen: boven"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
-msgstr ""
+msgstr "Gestudentiseerde deviantieresiduen: boven"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Influential Cases"
-msgstr ""
+msgstr "Toon Invloedrijke Gevallen"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFBETAS"
-msgstr ""
+msgstr "DFBETAS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFFITS"
-msgstr ""
+msgstr "DFFITS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Covariance ratio"
-msgstr ""
+msgstr "Covariantieverhouding"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Cook's distance"
-msgstr ""
+msgstr "Cook's afstand"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Leverages"
-msgstr ""
+msgstr "Hefbomen"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "Multicollineariteit"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Tolerantie"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
-msgstr "Geavanceerde opties"
+msgstr "Geavanceerde Opties"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Append columns to data"
-msgstr ""
+msgstr "Kolommen toevoegen aan data"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "Residuen (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "Kolomnaam"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residuals"
-msgstr ""
+msgstr "e.g., residuen"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals std. deviations (%1)"
-msgstr ""
+msgstr "Residuen std. afwijkingen (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
-msgstr ""
+msgstr "e.g., residuen sd"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "Coëfficiënten"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
-msgstr ""
+msgstr "Afstand"
