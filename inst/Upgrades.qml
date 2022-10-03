@@ -299,8 +299,8 @@ Upgrades
 	Upgrade
 	{
 		functionName:		"RegressionLogistic"
-		fromVersion:		"0.16.3"
-		toVersion:			"0.16.4"
+		fromVersion:		"0.16.4"
+		toVersion:			"0.17.0"
 
 		ChangeRename { from: "wlsWeights";					             to: "weights"							                    }
 		ChangeRename { from: "includeIntercept";					     to: "interceptTerm"							            }
