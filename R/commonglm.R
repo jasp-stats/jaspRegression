@@ -403,21 +403,13 @@
   residual       <- NA
   residualZ      <- NA
   cooksD         <- NA
-<<<<<<< HEAD
 
-  if (options$casewiseDiagnosticsType == "residualZ")
-    index <- which(abs(residualZAll) > options$casewiseDiagnosticsResidualZ)
-  else if (options$casewiseDiagnosticsType == "cooksDistance")
-    index <- which(abs(cooksDAll) > options$casewiseDiagnosticsCooksDistance)
-  else
-=======
 
   if (options$residualCasewiseDiagnosticType == "residualZ")
     index <- which(abs(residualZAll) > options$residualCasewiseDiagnosticZThreshold)
   else if (options$residualCasewiseDiagnosticType == "cooksDistance")
     index <- which(abs(cooksDAll) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
   else
->>>>>>> 7513a62 (renamed options for logistic regression)
     index <- seq_along(cooksDAll)
 
   if (length(index) == 0)
