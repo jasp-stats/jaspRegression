@@ -252,8 +252,8 @@ Upgrades
 	Upgrade
 	{
 		functionName:		"RegressionLinear"
-		fromVersion:		"0.16.3"
-		toVersion:			"0.16.4"
+		fromVersion:		"0.16.4"
+		toVersion:			"0.17.0"
 
 		ChangeRename { from: "wlsWeights";					                                to: "weights"							                    }
 		ChangeRename { from: "includeConstant";					                            to: "interceptTerm"							                }
@@ -264,7 +264,6 @@ Upgrades
 		ChangeRename { from: "regressionCoefficientsConfidenceIntervalsInterval";			to: "coefficientCiLevel"							        }
 		ChangeRename { from: "regressionCoefficientsCovarianceMatrix";					    to: "covarianceMatrix"							            }
 		ChangeRename { from: "VovkSellkeMPR";					                            to: "vovkSellke"							                }
-		ChangeRename { from: "descriptives";					                            to: "descriptive"							                }
 		ChangeRename { from: "partAndPartialCorrelations";					                to: "partAndPartialCorrelation"						        }
 		ChangeRename { from: "collinearityDiagnostics";					                    to: "collinearityDiagnostic"						        }
 		ChangeRename { from: "residualsStatistics";					                        to: "residualStatistic"							            }
@@ -289,7 +288,7 @@ Upgrades
 		ChangeRename { from: "plotsMarginalConfidenceLevel";					            to: "marginalPlotCiLevel"							        }
 		ChangeRename { from: "plotsMarginalPredictionIntervals";					        to: "marginalPlotPredictionInterval"				        }
 		ChangeRename { from: "plotsMarginalPredictionLevel";					            to: "marginalPlotPredictionIntervalLevel"			        }
-		ChangeRename { from: "missingValues";							to: "naAction"								}
+		ChangeRename { from: "missingValues";							                    to: "naAction"								                }
 
 		ChangeJS
 		{
@@ -310,7 +309,7 @@ Upgrades
 			name:		"steppingMethodCriteriaType"
 			jsFunction:	function(options)
 			{
-				switch(options["naAction"])
+				switch(options["steppingMethodCriteriaType"])
 				{
 				case "usePValue":		return "pValue";
 				case "useFValue":		return "fValue";

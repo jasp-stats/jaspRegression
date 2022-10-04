@@ -158,7 +158,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("dependent", "method", "covariates", "factors", "weights", "modelTerms", "steppingMethodCriteriaType",
                               "steppingMethodCriteriaPEntry", "steppingMethodCriteriaPRemoval", "steppingMethodCriteriaFEntry", "steppingMethodCriteriaFRemoval",
-                              "interceptTerm", "missingValues"))
+                              "interceptTerm", "naAction"))
     modelContainer$position <- position
     jaspResults[["modelContainer"]] <- modelContainer
   }
