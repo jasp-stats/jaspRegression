@@ -10,10 +10,10 @@ test_that("Fields Book - Chapter 10 results match", {
   options$modelTerms <- list(
     list(components="treat", isNuisance=FALSE)
   )
-  options$factorDescriptivesOpt <- TRUE
-  options$oddsRatios <- TRUE
-  options$coeffCI <- TRUE
-  options$coeffCIOR <- TRUE
+  options$descriptives <- TRUE
+  options$oddsRatio <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiAsOddsRatio <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
   output1 <- results[["results"]][["factorDescriptives"]][["data"]]
   jaspTools::expect_equal_tables(output1,
@@ -46,9 +46,9 @@ test_that("Fields Book - Chapter 10 results match", {
     list(components="quantity", isNuisance=FALSE),
     list(components=list("treat", "quantity"), isNuisance=FALSE)
   )
-  options$oddsRatios <- TRUE
-  options$coeffCI <- TRUE
-  options$coeffCIOR <- TRUE
+  options$oddsRatio <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiAsOddsRatio <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
   output4 <- results[["results"]][["modelSummary"]][["data"]]
   jaspTools::expect_equal_tables(output4,
@@ -72,11 +72,11 @@ test_that("Fields Book - Chapter 10 results match", {
   options$modelTerms <- list(
     list(components="quantity", isNuisance=FALSE)
   )
-  options$oddsRatios <- TRUE
-  options$coeffCI <- TRUE
-  options$coeffCIOR <- TRUE
-  options$estimatesPlotsOpt <- TRUE
-  options$showPoints <- FALSE
+  options$oddsRatio <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiAsOddsRatio <- TRUE
+  options$conditionalEstimatePlot <- TRUE
+  options$conditionalEstimatePlotPoints <- FALSE
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log_subset_treat0.csv", options)
   output6 <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(output6,
@@ -92,11 +92,11 @@ test_that("Fields Book - Chapter 10 results match", {
   options$modelTerms <- list(
     list(components="quantity", isNuisance=FALSE)
   )
-  options$oddsRatios <- TRUE
-  options$coeffCI <- TRUE
-  options$coeffCIOR <- TRUE
-  options$estimatesPlotsOpt <- TRUE
-  options$showPoints <- FALSE
+  options$oddsRatio <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiAsOddsRatio <- TRUE
+  options$conditionalEstimatePlot <- TRUE
+  options$conditionalEstimatePlotPoints <- FALSE
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log_subset_treat1.csv", options)
   output7 <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(output7,
@@ -115,10 +115,10 @@ test_that("Fields Book - Chapter 10 results match", {
     list(components="quantity", isNuisance=FALSE),
     list(components=list("treat", "quantity"), isNuisance=FALSE)
   )
-  options$casewiseDiagnostics <- TRUE
-  options$casewiseDiagnosticsResidualZ <- 2
-  options$coeffEstimatesBootstrapping <- TRUE
-  options$coeffEstimatesBootstrappingReplicates <- 1000
+  options$residualCasewiseDiagnostic <- TRUE
+  options$residualCasewiseDiagnosticZThreshold <- 2
+  options$coefficientBootstrap <- TRUE
+  options$coefficientBootstrapReplicates <- 1000
   set.seed(1) # For Bootstrapping Unit Tests
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
   output9 <- results[["results"]][["casewiseDiagnosticsTable"]][["data"]]
@@ -216,7 +216,7 @@ test_that("Confusion Matrix Table Matches", {
     list(components="contOutlier", isNuisance=FALSE)
   )
   
-  options$confusionMatrixOpt <- TRUE
+  options$confusionMatrix <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_confusionMatrix"]][["data"]]
   jaspTools::expect_equal_tables(table, list("f",                 34, 16, 68.00,
@@ -232,14 +232,14 @@ test_that("Performance Metrics Table Matches", {
   options$modelTerms <- list(
     list(components="contNormal", isNuisance=FALSE)
   )
-  options$Accu  <- TRUE
-  options$AUC  <- TRUE
-  options$Sens <- TRUE
-  options$Spec <- TRUE
-  options$Prec <- TRUE
-  options$Fmsr <- TRUE
-  options$BrierScr  <- TRUE
-  options$Hmsr <- TRUE
+  options$accuracy  <- TRUE
+  options$auc  <- TRUE
+  options$sensitivity <- TRUE
+  options$specificity <- TRUE
+  options$precision <- TRUE
+  options$fMeasure <- TRUE
+  options$brierScore  <- TRUE
+  options$hMeasure <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_performanceMetrics"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -261,7 +261,7 @@ test_that("Confusion Matrix Table Matches", {
     list(components="facFive", isNuisance=FALSE)
   )
   
-  options$multicolli <- TRUE
+  options$multicollinearity <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["multicolliTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("contNormal",   0.9536754, 1.048575,
@@ -277,7 +277,7 @@ test_that("Confusion Matrix Table Matches", {
     list(components="contOutlier",   isNuisance=FALSE)
   )
   
-  options$multicolli <- TRUE
+  options$multicollinearity <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["multicolliTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("contNormal",   0.9958289, 1.004189,
@@ -366,8 +366,8 @@ test_that("Performance plots match", {
                              list(components = "smoke", isNuisance = FALSE)
   )
 
-  options$rocPlotOpt <- TRUE
-  options$prPlotOpt  <- TRUE
+  options$rocPlot <- TRUE
+  options$precisionRecallPlot  <- TRUE
 
   results <- jaspTools::runAnalysis("RegressionLogistic", "lowbwt.csv", options)
 

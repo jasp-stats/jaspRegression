@@ -295,4 +295,51 @@ Upgrades
 			}
 		}
 	}
+
+	Upgrade
+	{
+		functionName:		"RegressionLogistic"
+		fromVersion:		"0.16.4"
+		toVersion:			"0.17.0"
+
+		ChangeRename { from: "wlsWeights";					             to: "weights"							                    }
+		ChangeRename { from: "includeIntercept";					     to: "interceptTerm"							            }
+		ChangeRename { from: "factorDescriptivesOpt";					 to: "descriptives"							                }
+		ChangeRename { from: "confusionMatrixOpt";					     to: "confusionMatrix"							            }
+		ChangeRename { from: "coeffEstimates";					         to: "coefficientEstimate"							        }
+		ChangeRename { from: "coeffEstimatesBootstrapping";				 to: "coefficientBootstrap"							        }
+		ChangeRename { from: "coeffEstimatesBootstrappingReplicates";	 to: "coefficientBootstrapReplicates"						}
+		ChangeRename { from: "stdCoeff";					             to: "coefficientStandardized"							    }
+		ChangeRename { from: "oddsRatios";					             to: "oddsRatio"							                }
+		ChangeRename { from: "coeffCI";					                 to: "coefficientCi"							            }
+		ChangeRename { from: "coeffCIInterval";					         to: "coefficientCiLevel"							        }
+		ChangeRename { from: "coeffCIOR";					             to: "coefficientCiAsOddsRatio"							    }
+		ChangeRename { from: "robustSEOpt";					             to: "robustSe"							        }
+		ChangeRename { from: "VovkSellkeMPR";					         to: "vovkSellke"							                }
+		ChangeRename { from: "multicolli";					             to: "multicollinearity"							        }
+		ChangeRename { from: "Accu";					                 to: "accuracy"							                    }
+		ChangeRename { from: "AUC";					                     to: "auc"							                        }
+		ChangeRename { from: "Sens";					                 to: "sensitivity"							                }
+		ChangeRename { from: "Spec";					                 to: "specificity"							                }
+		ChangeRename { from: "Prec";					                 to: "precision"							                }
+		ChangeRename { from: "Fmsr";					                 to: "fMeasure"							                    }
+		ChangeRename { from: "BrierScr";					             to: "brierScore"							                }
+		ChangeRename { from: "Hmsr";					                 to: "hMeasure"							                    }
+		ChangeRename { from: "casewiseDiagnostics";					     to: "residualCasewiseDiagnostic"							}
+		ChangeRename { from: "casewiseDiagnosticsType";					 to: "residualCasewiseDiagnosticType"						}
+		ChangeRename { from: "casewiseDiagnosticsResidualZ";			 to: "residualCasewiseDiagnosticZThreshold"					}
+		ChangeRename { from: "casewiseDiagnosticsCooksDistance";		 to: "residualCasewiseDiagnosticCooksDistanceThreshold"		}
+		ChangeRename { from: "estimatesPlotsOpt";					     to: "conditionalEstimatePlot"							    }
+		ChangeRename { from: "estimatesPlotsCI";					     to: "conditionalEstimatePlotCi"							}
+		ChangeRename { from: "showPoints";					             to: "conditionalEstimatePlotPoints"						}
+		ChangeRename { from: "predictedPlotOpt";					     to: "residualVsFittedPlot"							        }
+		ChangeRename { from: "predictorPlotsOpt";					     to: "residualVsPredictorPlot"							    }
+		ChangeRename { from: "squaredPearsonPlotOpt";					 to: "squaredPearsonResidualVsFittedPlot"					}
+		ChangeRename { from: "rocPlotOpt";					             to: "rocPlot"							                    }
+		ChangeRename { from: "rocPlotStep";					             to: "rocPlotCutoffStep"							        }
+		ChangeRename { from: "rocPlotAddCutoffLabels";					 to: "rocPlotCutoffLabel"							        }
+		ChangeRename { from: "prPlotOpt";					             to: "precisionRecallPlot"							        }
+		ChangeRename { from: "prPlotStep";					             to: "precisionRecallPlotCutoffStep"						}
+		ChangeRename { from: "prPlotAddCutoffLabels";					 to: "precisionRecallPlotCutoffLabel"						}
+	}
 }

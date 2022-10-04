@@ -27,14 +27,14 @@
     f <- 0~1 # mock formula, always works
 
   modelTerms <- options$modelTerms
-  includeIntercept <- options$includeIntercept
+  interceptTerm <- options$interceptTerm
   if (length(modelTerms) == 0) {
-    if (includeIntercept)
+    if (interceptTerm)
       f <- formula(paste(.v(dependent), "~ 1"))
     else
       f <- formula(paste(.v(dependent), "~ 0"))
   } else {
-    if (includeIntercept)
+    if (interceptTerm)
       t <- character(0)
     else
       t <- "0"
@@ -58,7 +58,7 @@
     return(NULL)
 
   modelTerms <- options$modelTerms
-  includeIntercept <- options$includeIntercept
+  interceptTerm <- options$interceptTerm
 
   t <- character(0)
   for (i in seq_along(modelTerms)) {
@@ -71,7 +71,7 @@
         t <- c(t, paste(.v(unlist(term)), collapse = ":"))
     }
   }
-  if (!includeIntercept)
+  if (!interceptTerm)
     t <- c(t, "0")
   else
     t <- c(t, "1")
@@ -404,10 +404,11 @@
   residualZ      <- NA
   cooksD         <- NA
 
-  if (options$casewiseDiagnosticsType == "residualZ")
-    index <- which(abs(residualZAll) > options$casewiseDiagnosticsResidualZ)
-  else if (options$casewiseDiagnosticsType == "cooksDistance")
-    index <- which(abs(cooksDAll) > options$casewiseDiagnosticsCooksDistance)
+
+  if (options$residualCasewiseDiagnosticType == "residualZ")
+    index <- which(abs(residualZAll) > options$residualCasewiseDiagnosticZThreshold)
+  else if (options$residualCasewiseDiagnosticType == "cooksDistance")
+    index <- which(abs(cooksDAll) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
   else
     index <- seq_along(cooksDAll)
 

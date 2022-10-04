@@ -41,7 +41,7 @@ Form
 		}
 		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");			suggestedColumns: ["scale"]											}
         AssignedVariablesList { name: "factors";	title: qsTr("Factors");				suggestedColumns: ["ordinal", "nominal"];itemType: "fixedFactors"	}
-		AssignedVariablesList { name: "wlsWeights";	title: qsTr("WLS Weights (optional)"); suggestedColumns: ["scale"]; singleVariable: true; debug: true	}
+		AssignedVariablesList { name: "weights";	title: qsTr("WLS Weights (optional)"); suggestedColumns: ["scale"]; singleVariable: true; debug: true	}
 	}
 	
 	Section
@@ -62,7 +62,7 @@ Form
 			ModelTermsList { width: parent.width * 5 / 9 }
 		}
 		
-		CheckBox { name: "includeIntercept"; label: qsTr("Include intercept"); checked: true }
+		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }
 	}
 	
 	Section
@@ -72,7 +72,7 @@ Form
 		Group
 		{
 			title: qsTr("Descriptives")
-			CheckBox { name: "factorDescriptivesOpt"; label: qsTr("Factor descriptives") }
+			CheckBox { name: "descriptives"; label: qsTr("Factor descriptives") }
 		}
 
 		Group
@@ -80,23 +80,23 @@ Form
 			title: qsTr("Performance Diagnostics")
 			CheckBox
 			{
-				name: "confusionMatrixOpt";	label: qsTr("Confusion matrix")
+				name: "confusionMatrix";	label: qsTr("Confusion matrix")
 			}
 		}
 
 		Group
 		{
-			title: qsTr("Regression Coefficients")
-			CheckBox { name: "coeffEstimates";	label: qsTr("Estimates"); checked: true; id: coeffEstimates
+			title: qsTr("Coefficients")
+			CheckBox { name: "coefficientEstimate";	label: qsTr("Estimates"); checked: true; id: coefficientEstimate
                 onClicked: { if (!checked && bootstrapping.checked) bootstrapping.click() }
                 CheckBox
                 {
                     id: bootstrapping
-                    name: "coeffEstimatesBootstrapping"; label: qsTr("From")
+                    name: "coefficientBootstrap"; label: qsTr("From")
                     childrenOnSameRow: true
                     IntegerField
                     {
-                        name: "coeffEstimatesBootstrappingReplicates"
+                        name: "coefficientBootstrapReplicates"
                         defaultValue: 5000
                         fieldWidth: 50
                         min: 100
@@ -104,53 +104,53 @@ Form
                     }
                 }
 
-				CheckBox { name: "stdCoeff";		label: qsTr("Standardized coefficients")	}
-				CheckBox { name: "oddsRatios";		label: qsTr("Odds ratios")					}
+				CheckBox { name: "coefficientStandardized";		label: qsTr("Standardized coefficients")	}
+				CheckBox { name: "oddsRatio";		label: qsTr("Odds ratios")					}
 				CheckBox
 				{
-								name: "coeffCI";			label: qsTr("Confidence intervals")
-					CIField {	name: "coeffCIInterval";	label: qsTr("Interval")				}
-					CheckBox {	name: "coeffCIOR";			label: qsTr("Odds ratio scale")		}
+								name: "coefficientCi";			label: qsTr("Confidence intervals")
+					CIField {	name: "coefficientCiLevel";	label: qsTr("Interval")				}
+					CheckBox {	name: "coefficientCiAsOddsRatio";			label: qsTr("Odds ratio scale")		}
 				}
-				CheckBox { name: "robustSEOpt";		label: qsTr("Robust standard errors")	}
-				CheckBox { name: "VovkSellkeMPR";	label: qsTr("Vovk-Sellke maximum p-ratio")	}
+				CheckBox { name: "robustSe";		label: qsTr("Robust standard errors")	}
+				CheckBox { name: "vovkSellke";	label: qsTr("Vovk-Sellke maximum p-ratio")	}
 			}
 
-            CheckBox { name: "multicolli"; label: qsTr("Multicollinearity Diagnostics") }
+            CheckBox { name: "multicollinearity"; label: qsTr("Multicollinearity Diagnostics") }
 		}        
 
         Group
         {
 			title: qsTr("Performance Metrics")
-            CheckBox { name: "Accu";	    label: qsTr("Accuracy")			}
-            CheckBox { name: "AUC";			label: qsTr("AUC")					}
-            CheckBox { name: "Sens";		label: qsTr("Sensitivity / Recall")	}
-            CheckBox { name: "Spec";		label: qsTr("Specificity")			}
-			CheckBox { name: "Prec";		label: qsTr("Precision")			}
-			CheckBox { name: "Fmsr";		label: qsTr("F-measure")			}
-            CheckBox { name: "BrierScr";	label: qsTr("Brier score")			}
-			CheckBox { name: "Hmsr";		label: qsTr("H-measure")			}
+            CheckBox { name: "accuracy";	    label: qsTr("Accuracy")			}
+            CheckBox { name: "auc";			label: qsTr("AUC")					}
+            CheckBox { name: "sensitivity";		label: qsTr("Sensitivity / Recall")	}
+            CheckBox { name: "specificity";		label: qsTr("Specificity")			}
+			CheckBox { name: "precision";		label: qsTr("Precision")			}
+			CheckBox { name: "fMeasure";		label: qsTr("F-measure")			}
+            CheckBox { name: "brierScore";	label: qsTr("Brier score")			}
+			CheckBox { name: "hMeasure";		label: qsTr("H-measure")			}
         }
 
         Group
         {   title: qsTr("Residuals")
             CheckBox
             {
-                name: "casewiseDiagnostics";	label: qsTr("Casewise diagnostics")
+                name: "residualCasewiseDiagnostic";	label: qsTr("Casewise diagnostics")
                 RadioButtonGroup
                 {
-                    name: "casewiseDiagnosticsType"
+                    name: "residualCasewiseDiagnosticType"
                     RadioButton
                     {
                         value: "residualZ"; label: qsTr("Standard residual >"); checked: true
                         childrenOnSameRow: true
-                        DoubleField { name: "casewiseDiagnosticsResidualZ"; defaultValue: 3	}
+                        DoubleField { name: "residualCasewiseDiagnosticZThreshold"; defaultValue: 3	}
                     }
                     RadioButton
                     {
                         value: "cooksDistance";	label: qsTr("Cook's distance >")
                         childrenOnSameRow: true
-                        DoubleField { name: "casewiseDiagnosticsCooksDistance";	defaultValue: 1	}
+                        DoubleField { name: "residualCasewiseDiagnosticCooksDistanceThreshold";	defaultValue: 1	}
                     }
                     RadioButton { value: "allCases"; label: qsTr("All")										}
                 }
@@ -168,18 +168,18 @@ Form
 			title: qsTr("Inferential Plots")
 			CheckBox
 			{
-							name: "estimatesPlotsOpt";	label: qsTr("Conditional estimates plots")
-				CIField {	name: "estimatesPlotsCI";	label: qsTr("Confidence interval")					}
-				CheckBox {	name: "showPoints";			label: qsTr("Show data points")						}
+							name: "conditionalEstimatePlot";	label: qsTr("Conditional estimates plots")
+				CIField {	name: "conditionalEstimatePlotCi";	label: qsTr("Confidence interval")					}
+				CheckBox {	name: "conditionalEstimatePlotPoints";			label: qsTr("Show data points")						}
 			}
 		}
 
 		Group
 		{
 			title: qsTr("Residual Plots")
-			CheckBox { name: "predictedPlotOpt";		label: qsTr("Predicted - residual plot")		}
-			CheckBox { name: "predictorPlotsOpt";		label: qsTr("Predictor - residual plots")		}
-			CheckBox { name: "squaredPearsonPlotOpt";	label: qsTr("Squared Pearson residuals plot")	}
+			CheckBox { name: "residualVsFittedPlot";		label: qsTr("Predicted - residual plot")		}
+			CheckBox { name: "residualVsPredictorPlot";		label: qsTr("Predictor - residual plots")		}
+			CheckBox { name: "squaredPearsonResidualVsFittedPlot";	label: qsTr("Squared Pearson residuals plot")	}
 		}
 
 		RadioButtonGroup
@@ -195,15 +195,15 @@ Form
             title: qsTr("Performance Plots")
             CheckBox
             {
-                              name: "rocPlotOpt";               label: qsTr("ROC plot")
-                DoubleField { name: "rocPlotStep";              label: qsTr("Cutoff step"); defaultValue: 0.2; min: 0.05; max: 0.5; decimals: 3     }
-                CheckBox    { name: "rocPlotAddCutoffLabels";   label: qsTr("Add cutoff labels")                                                    }
+                              name: "rocPlot";               label: qsTr("ROC plot")
+                DoubleField { name: "rocPlotCutoffStep";              label: qsTr("Cutoff step"); defaultValue: 0.2; min: 0.05; max: 0.5; decimals: 3     }
+                CheckBox    { name: "rocPlotCutoffLabel";   label: qsTr("Add cutoff labels")                                                    }
             }
             CheckBox
             {
-                              name: "prPlotOpt";                label: qsTr("PR plot")
-                DoubleField { name: "prPlotStep";               label: qsTr("Cutoff step"); defaultValue: 0.2; min: 0.05; max: 0.5; decimals: 3     }
-                CheckBox    { name: "prPlotAddCutoffLabels";    label: qsTr("Add cutoff labels")                                                    }
+                              name: "precisionRecallPlot";                label: qsTr("PR plot")
+                DoubleField { name: "precisionRecallPlotCutoffStep";               label: qsTr("Cutoff step"); defaultValue: 0.2; min: 0.05; max: 0.5; decimals: 3     }
+                CheckBox    { name: "precisionRecallPlotCutoffLabel";    label: qsTr("Add cutoff labels")                                                    }
             }
         }
 	}
