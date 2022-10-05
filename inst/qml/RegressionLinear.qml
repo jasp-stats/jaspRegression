@@ -40,7 +40,7 @@ Form
 		}
 		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");				allowedColumns: ["ordinal", "scale"]					}
 		AssignedVariablesList { name: "factors";	title: qsTr("Factors");					allowedColumns: ["ordinal", "nominal", "nominalText"];	}
-		AssignedVariablesList { name: "wlsWeights";	title: qsTr("WLS Weights (optional)");	allowedColumns: ["scale"]; singleVariable: true			}
+		AssignedVariablesList { name: "weights";	title: qsTr("WLS Weights (optional)");	allowedColumns: ["scale"]; singleVariable: true			}
 	}
 
 
@@ -61,7 +61,7 @@ Form
 			ModelTermsList { width: parent.width * 5 / 9 }
 		}
 
-		CheckBox { name: "includeConstant"; label: qsTr("Include intercept"); checked: true }
+		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }
 	}
 
 	Section
@@ -70,26 +70,26 @@ Form
 
 		Group
 		{
-			title: qsTr("Regression Coefficients")
+			title: qsTr("Coefficients")
 			columns: 2
 			Layout.columnSpan: 2
 			Group
 			{
 				CheckBox
 				{
-					name: "regressionCoefficientsEstimates"
+					name: "coefficientEstimate"
 					label: qsTr("Estimates")
 					checked: true
 					onClicked: { if (!checked && bootstrapping.checked) bootstrapping.click() }
 					CheckBox
 					{
 						id: bootstrapping
-						name: "regressionCoefficientsBootstrapping"
+						name: "coefficientBootstrap"
 						label: qsTr("From")
 						childrenOnSameRow: true
 						IntegerField
 						{
-							name: "regressionCoefficientsBootstrappingReplicates"
+							name: "coefficientBootstrapSamples"
 							defaultValue: 5000
 							fieldWidth: 50
 							min: 100
@@ -100,12 +100,12 @@ Form
 
 				CheckBox
 				{
-					name: "regressionCoefficientsConfidenceIntervals"; label: qsTr("Confidence intervals")
+					name: "coefficientCi"; label: qsTr("Confidence intervals")
 					childrenOnSameRow: true
-					CIField { name: "regressionCoefficientsConfidenceIntervalsInterval" }
+					CIField { name: "coefficientCiLevel" }
 				}
-				CheckBox { name: "regressionCoefficientsCovarianceMatrix"; label: qsTr("Covariance matrix") }
-				CheckBox { name: "VovkSellkeMPR"; label: qsTr("Vovk-Sellke maximum p-ratio") }
+				CheckBox { name: "covarianceMatrix"; label: qsTr("Covariance matrix") }
+				CheckBox { name: "vovkSellke"; label: qsTr("Vovk-Sellke maximum p-ratio") }
 			}
 
 			Group
@@ -113,33 +113,33 @@ Form
 				CheckBox { name: "modelFit";					label: qsTr("Model fit");  checked: true		}
 				CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")				}
 				CheckBox { name: "descriptives";				label: qsTr("Descriptives")					}
-				CheckBox { name: "partAndPartialCorrelations";	label: qsTr("Part and partial correlations")	}
-				CheckBox { name: "collinearityDiagnostics";		label: qsTr("Collinearity diagnostics")		}
+				CheckBox { name: "partAndPartialCorrelation";	label: qsTr("Part and partial correlations")	}
+				CheckBox { name: "collinearityDiagnostic";		label: qsTr("Collinearity diagnostics")		}
 			}
 		}
 
 		Group
 		{
 			title: qsTr("Residuals")
-            CheckBox { name: "residualsStatistics";     label: qsTr("Statistics")    }
-            CheckBox { name: "residualsDurbinWatson";	label: qsTr("Durbin-Watson") }
+            CheckBox { name: "residualStatistic";     label: qsTr("Statistics")    }
+            CheckBox { name: "residualDurbinWatson";	label: qsTr("Durbin-Watson") }
 			CheckBox
 			{
-				name: "residualsCasewiseDiagnostics";	label: qsTr("Casewise diagnostics")
+				name: "residualCasewiseDiagnostic";	label: qsTr("Casewise diagnostics")
 				RadioButtonGroup
 				{
-					name: "residualsCasewiseDiagnosticsType"
+					name: "residualCasewiseDiagnosticType"
 					RadioButton
 					{
 						value: "outliersOutside"; label: qsTr("Standard residual >"); checked: true
 						childrenOnSameRow: true
-                        DoubleField { name: "residualsCasewiseDiagnosticsOutliersOutside"; defaultValue: 3	}
+                        DoubleField { name: "residualCasewiseDiagnosticZThreshold"; defaultValue: 3	}
 					}
 					RadioButton
 					{
 						value: "cooksDistance";	label: qsTr("Cook's distance >")
 						childrenOnSameRow: true
-                        DoubleField { name: "residualsCasewiseDiagnosticsCooksDistance";	defaultValue: 1	}
+                        DoubleField { name: "residualCasewiseDiagnosticCooksDistanceThreshold";	defaultValue: 1	}
 					}
 					RadioButton { value: "allCases"; label: qsTr("All")										}
 				}
@@ -159,14 +159,14 @@ Form
 			title: qsTr("Stepping Method Criteria")
 			RadioButton
 			{
-				value: "usePValue"; label: qsTr("Use p value"); checked: true
+				value: "pValue"; label: qsTr("Use p value"); checked: true
 				columns: 2
 				DoubleField { name: "steppingMethodCriteriaPEntry";		label: qsTr("Entry");	fieldWidth: 60; defaultValue: 0.05; max: 1; decimals: 3 }
 				DoubleField { name: "steppingMethodCriteriaPRemoval";	label: qsTr("Removal");	fieldWidth: 60; defaultValue: 0.1; max: 1; decimals: 3	}
 			}
 			RadioButton
 			{
-				value: "useFValue"; label: qsTr("Use F value")
+				value: "fValue"; label: qsTr("Use F value")
 				columns: 2
 				DoubleField { name: "steppingMethodCriteriaFEntry";		label: qsTr("Entry");	fieldWidth: 60; defaultValue: 3.84; decimals: 3 }
 				DoubleField { name: "steppingMethodCriteriaFRemoval";	label: qsTr("Removal");	fieldWidth: 60; defaultValue: 2.71; decimals: 3 }
@@ -175,11 +175,11 @@ Form
 
 		RadioButtonGroup
 		{
-			name: "missingValues"
+			name: "naAction"
 			title: qsTr("Missing Values")
 			debug: true
-			RadioButton { value: "excludeCasesListwise"; label: qsTr("Exclude cases listwise"); checked: true	}
-			RadioButton { value: "excludeCasesPairwise"; label: qsTr("Exclude cases pairwise")					}
+			RadioButton { value: "listwise"; label: qsTr("Exclude cases listwise"); checked: true	}
+			RadioButton { value: "pairwise"; label: qsTr("Exclude cases pairwise")					}
 		}
 	}
 
@@ -190,29 +190,29 @@ Form
 		Group
 		{
 			title: qsTr("Residuals Plots")
-			CheckBox { name: "plotResidualsDependent";	label: qsTr("Residuals vs. dependent")					}
-            CheckBox { name: "plotResidualsCovariates";	label: qsTr("Residuals vs. covariates")					}
-			CheckBox { name: "plotResidualsPredicted";	label: qsTr("Residuals vs. predicted")					}
+			CheckBox { name: "residualVsDependentPlot";	label: qsTr("Residuals vs. dependent")					}
+            CheckBox { name: "residualVsCovariatePlot";	label: qsTr("Residuals vs. covariates")					}
+			CheckBox { name: "residualVsFittedPlot";	label: qsTr("Residuals vs. predicted")					}
 			CheckBox
 			{
-                name: "plotResidualsHistogram";	label: qsTr("Residuals histogram")
-                CheckBox { name: "plotResidualsHistogramStandardized";	label: qsTr("Standardized residuals"); checked: true	}
+                name: "residualHistogramPlot";	label: qsTr("Residuals histogram")
+                CheckBox { name: "residualHistogramStandardizedPlot";	label: qsTr("Standardized residuals"); checked: true	}
 			}
-			CheckBox { name: "plotResidualsQQ";			label: qsTr("Q-Q plot standardized residuals")			}
+			CheckBox { name: "residualQqPlot";			label: qsTr("Q-Q plot standardized residuals")			}
             CheckBox
             {
-                name: "plotsPartialRegression";	label: qsTr("Partial plots")
+                name: "partialResidualPlot";	label: qsTr("Partial plots")
                 CheckBox
                 {
-                    name: "plotsPartialConfidenceIntervals";   label: qsTr("Confidence intervals")
+                    name: "partialResidualPlotCi";   label: qsTr("Confidence intervals")
                     childrenOnSameRow: true
-                    CIField { name: "plotsPartialConfidenceIntervalsInterval"; }
+                    CIField { name: "partialResidualPlotCiLevel"; }
                 }
                 CheckBox
                 {
-                    name: "plotsPartialPredictionIntervals";   label: qsTr("Prediction intervals")
+                    name: "partialResidualPlotPredictionInterval";   label: qsTr("Prediction intervals")
                     childrenOnSameRow: true
-                    CIField { name: "plotsPartialPredictionIntervalsInterval"; }
+                    CIField { name: "partialResidualPlotPredictionIntervalLevel"; }
                 }
             }
 		}
@@ -221,18 +221,18 @@ Form
         {
             title: qsTr("Other Plots")
             CheckBox {
-                name: "plotsMarginal"; label: qsTr("Marginal effects plots")
+                name: "marginalPlot"; label: qsTr("Marginal effects plots")
                 CheckBox
                 {
-                    name: "plotsMarginalConfidenceIntervals"; label: qsTr("Confidence intervals")
+                    name: "marginalPlotCi"; label: qsTr("Confidence intervals")
                     childrenOnSameRow: true
-                    CIField { name: "plotsMarginalConfidenceLevel"; }
+                    CIField { name: "marginalPlotCiLevel"; }
                 }
                 CheckBox
                 {
-                    name: "plotsMarginalPredictionIntervals"; label: qsTr("Prediction intervals")
+                    name: "marginalPlotPredictionInterval"; label: qsTr("Prediction intervals")
                     childrenOnSameRow: true
-                    CIField { name: "plotsMarginalPredictionLevel"; }
+                    CIField { name: "marginalPlotPredictionIntervalLevel"; }
                 }
             }
         }

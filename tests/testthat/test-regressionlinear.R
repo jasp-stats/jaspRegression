@@ -11,12 +11,12 @@ test_that("Main table results match", {
   options <- jaspTools::analysisOptions("RegressionLinear")
   options$dependent <- "contNormal"
   options$covariates <- "contGamma"
-  options$wlsWeights <- "facFifty"
+  options$weights <- "facFifty"
   options$modelTerms <- list(
     list(components="contGamma", isNuisance=FALSE)
   )
   options$rSquaredChange <- TRUE
-  options$residualsDurbinWatson <- TRUE
+  options$residualDurbinWatson <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -35,11 +35,11 @@ test_that("Coefficients table results match", {
   options$modelTerms <- list(
     list(components="contGamma", isNuisance=FALSE)
   )
-  options$regressionCoefficientsEstimates <- TRUE
-  options$regressionCoefficientsConfidenceIntervals <- TRUE
-  options$regressionCoefficientsConfidenceIntervalsInterval <- 0.9
-  options$collinearityDiagnostics <- TRUE
-  options$VovkSellkeMPR <- TRUE
+  options$coefficientEstimate <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiLevel <- 0.9
+  options$collinearityDiagnostic <- TRUE
+  options$vovkSellke <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -62,7 +62,7 @@ test_that("ANOVA table results match", {
     list(components="contGamma", isNuisance=FALSE)
   )
   options$modelFit <- TRUE
-  options$VovkSellkeMPR <- TRUE
+  options$vovkSellke <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -80,7 +80,7 @@ test_that("Coefficients Covariance table results match", {
     list(components="contGamma", isNuisance=FALSE),
     list(components="contcor1", isNuisance=FALSE)
   )
-  options$regressionCoefficientsCovarianceMatrix <- TRUE
+  options$covarianceMatrix <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffCovMatrixTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -115,7 +115,7 @@ test_that("Part and Partial Correlations table results match", {
     list(components="debCollin2", isNuisance=FALSE),
     list(components="contGamma", isNuisance=FALSE)
   )
-  options$partAndPartialCorrelations <- TRUE
+  options$partAndPartialCorrelation <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -131,7 +131,7 @@ test_that("Collinearity Diagonistic table results match", {
   options$modelTerms <- list(
     list(components="contcor1", isNuisance=FALSE)
   )
-  options$collinearityDiagnostics <- TRUE
+  options$collinearityDiagnostic <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_collinearityTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -148,7 +148,7 @@ test_that("Residuals Statistics table results match", {
   options$modelTerms <- list(
     list(components="contcor1", isNuisance=FALSE)
   )
-  options$residualsStatistics <- TRUE
+  options$residualStatistic <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_residualsTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -168,9 +168,9 @@ test_that("Casewise Diagnostics table results match", {
   options$modelTerms <- list(
     list(components="contOutlier", isNuisance=FALSE)
   )
-  options$residualsCasewiseDiagnostics <- TRUE
-  options$residualsCasewiseDiagnosticsType <- "outliersOutside"
-  options$residualsCasewiseDiagnosticsOutliersOutside <- 3
+  options$residualCasewiseDiagnostic <- TRUE
+  options$residualCasewiseDiagnosticType <- "outliersOutside"
+  options$residualCasewiseDiagnosticZThreshold <- 3
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_casewiseTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -187,7 +187,7 @@ test_that("Residuals vs. Dependent plot matches", {
   options$modelTerms <- list(
     list(components="contGamma", isNuisance=FALSE)
   )
-  options$plotResidualsDependent <- TRUE
+  options$residualVsDependentPlot <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
@@ -201,7 +201,7 @@ test_that("Residuals vs. Covariates plot matches", {
   options$modelTerms <- list(
     list(components="contGamma", isNuisance=FALSE)
   )
-  options$plotResidualsCovariates <- TRUE
+  options$residualVsCovariatePlot <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "residuals-covariates")
@@ -214,7 +214,7 @@ test_that("Residuals vs. Predicted plot matches", {
   options$modelTerms <- list(
     list(components="contGamma", isNuisance=FALSE)
   )
-  options$plotResidualsPredicted <- TRUE
+  options$residualVsFittedPlot <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "residuals-predicted")
@@ -227,8 +227,8 @@ test_that("Standardized Residuals Histogram matches", {
   options$modelTerms <- list(
     list(components="contGamma", isNuisance=FALSE)
   )
-  options$plotResidualsHistogram <- TRUE
-  options$plotResidualsHistogramStandardized <- TRUE
+  options$residualHistogramPlot <- TRUE
+  options$residualHistogramStandardizedPlot <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "residuals-histogram")
@@ -241,7 +241,7 @@ test_that("Q-Q Plot Standardized Residuals matches", {
   options$modelTerms <- list(
     list(components="contGamma", isNuisance=FALSE)
   )
-  options$plotResidualsQQ <- TRUE
+  options$residualQqPlot <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "residuals-q-q")
@@ -254,11 +254,11 @@ test_that("Marginal effects plot matches", {
   options$modelTerms <- list(
     list(components="contcor1", isNuisance=FALSE)
   )
-  options$plotsMarginal <- TRUE
-  options$plotsMarginalConfidenceIntervals <- TRUE
-  options$plotsMarginalConfidenceLevel <- 0.95
-  options$plotsMarginalPredictionIntervals <- TRUE
-  options$plotsMarginalPredictionLevel <- 0.95
+  options$marginalPlot <- TRUE
+  options$marginalPlotCi <- TRUE
+  options$marginalPlotCiLevel <- 0.95
+  options$marginalPlotPredictionInterval <- TRUE
+  options$marginalPlotPredictionIntervalLevel <- 0.95
 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
@@ -281,14 +281,14 @@ test_that("Analysis handles errors", {
   expect_identical(results[["status"]], "validationError", label="Inf covariate check")
 
   options$covariates <- "contGamma"
-  options$wlsWeights <- "debInf"
+  options$weights <- "debInf"
   options$modelTerms <- list(list(components="contGamma", isNuisance=FALSE))
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  expect_identical(results[["status"]], "validationError", label="Inf wlsWeights check")
+  expect_identical(results[["status"]], "validationError", label="Inf weights check")
 
   options$dependent <- "debSame"
   options$covariates <- "contGamma"
-  options$wlsWeights <- ""
+  options$weights <- ""
   options$modelTerms <- list(list(components="contGamma", isNuisance=FALSE))
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="No variance dependent check")
@@ -301,14 +301,14 @@ test_that("Analysis handles errors", {
 
   options$dependent <- "contGamma"
   options$covariates <- "contcor1"
-  options$wlsWeights <- "contNormal"
+  options$weights <- "contNormal"
   options$modelTerms <- list(list(components="contcor1", isNuisance=FALSE))
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  expect_identical(results[["status"]], "validationError", label="Negative wlsWeights check")
+  expect_identical(results[["status"]], "validationError", label="Negative weights check")
 
   options$dependent <- "debNaN"
   options$covariates <- "contcor1"
-  options$wlsWeights <- ""
+  options$weights <- ""
   options$modelTerms <- list(list(components="contcor1", isNuisance=FALSE))
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Too few obs dependent check")
@@ -321,10 +321,10 @@ test_that("Analysis handles errors", {
 
   options$dependent <- "contGamma"
   options$covariates <- "contNormal"
-  options$wlsWeights <- "debNaN"
+  options$weights <- "debNaN"
   options$modelTerms <- list(list(components="contNormal", isNuisance=FALSE))
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  expect_identical(results[["status"]], "validationError", label="Too few obs wlsWeights check")
+  expect_identical(results[["status"]], "validationError", label="Too few obs weights check")
 
   options <- jaspTools::analysisOptions("RegressionLinear")
   options$dependent <- "contNormal"
@@ -351,28 +351,28 @@ test_that("Analysis handles categorical predictors in model summary table", {
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
-  expect_equal_tables(table,
-                      list(2.60891821036142, 0.161031927910319, 0.0259312818065142, 0.0259312818065142,
-                           1.04991652929926, 0.0159918050902543, 1, 98, "H<unicode>", 0.109479317429059,
-                           1.1726522384496, 0.26875124434343, 0.0722272313361422, 0.046295949529628,
-                           1.04623657078777, 0.0228776159816817, 4, 94, "H<unicode>", 0.327916402792662
-                      )
-                      )
+  jaspTools::expect_equal_tables(table,
+                                 list(2.60891821036142, 0.161031927910319, 0.0259312818065142, 0.0259312818065142,
+                                      1.04991652929926, 0.0159918050902543, 1, 98, "H<unicode>", 0.109479317429059,
+                                      1.1726522384496, 0.26875124434343, 0.0722272313361422, 0.046295949529628,
+                                      1.04623657078777, 0.0228776159816817, 4, 94, "H<unicode>", 0.327916402792662
+                                 )
+                                 )
 })
 
 test_that("Part And Partial Correlations table results match", {
   # Part and partial correlations, including categorical predictors, verified with SPSS,
   # see pdf doc in https://github.com/jasp-stats/jasp-issues/issues/1638
-  options <- analysisOptions("RegressionLinear")
+  options <- jaspTools::analysisOptions("RegressionLinear")
   options$covariates <- c("education", "prestige")
   options$dependent <- "income"
   options$factors <- "occup_type"
   options$modelTerms <- list(list(components = "education", isNuisance = FALSE), list(
     components = "prestige", isNuisance = FALSE), list(components = "occup_type",
                                                        isNuisance = FALSE))
-  options$partAndPartialCorrelations <- TRUE
+  options$partAndPartialCorrelation <- TRUE
   set.seed(1)
-  results <- runAnalysis("RegressionLinear", "Duncan.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", "Duncan.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -391,35 +391,35 @@ test_that("Bootstrapping runs", {
     list(components="contcor1", isNuisance=TRUE),
     list(components="facFive", isNuisance=FALSE)
   )
-  options$regressionCoefficientsBootstrapping <- TRUE
-  options$regressionCoefficientsBootstrappingReplicates <- 100
-  options$regressionCoefficientsConfidenceIntervals <- TRUE
+  options$coefficientBootstrap <- TRUE
+  options$coefficientBootstrapSamples <- 100
+  options$coefficientCi <- TRUE
 
   set.seed(1)
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_bootstrapCoeffTable"]][["data"]]
-  expect_equal_tables(table,
-                      list("FALSE", 0.0892161465190037, -0.00287484365577048, -0.371812442950162,
-                           "H<unicode>", "(Intercept)", 0.0300000001, -0.199113406958839,
-                           -0.0176184639554442, "FALSE", 0.117569404369009, -0.00805589019986405,
-                           -0.0569483948254311, "H<unicode>", "contcor1", 0.1500000001,
-                           0.158724553944543, 0.487519283989915, "TRUE", 0.175654498371081,
-                           -0.0121825974778153, -0.673747892365681, "H<unicode>", "(Intercept)",
-                           0.1400000001, -0.371223870504199, 0.121533254954997, "FALSE",
-                           0.122922464961942, 0.0153913988225325, -0.0262970092049954,
-                           "H<unicode>", "contcor1", 0.1000000001, 0.195966369322685, 0.464005446105904,
-                           "FALSE", 0.249107600628346, -0.0084397404113783, -0.491879709998025,
-                           "H<unicode>", "facFive (2)", 0.9600000001, -0.0105565135703609,
-                           0.533672515525146, "FALSE", 0.282081078016127, 0.0707620217152187,
-                           -0.295664633425045, "H<unicode>", "facFive (3)", 0.1500000001,
-                           0.624836349410087, 0.979283795047319, "FALSE", 0.279996747482753,
-                           -0.0548509556815403, -0.602483992532204, "H<unicode>", "facFive (4)",
-                           0.9500000001, -0.103511769967569, 0.434875131192545, "FALSE",
-                           0.310440176465095, -0.00991652226343426, -0.24504983749288,
-                           "H<unicode>", "facFive (5)", 0.3000000001, 0.256679862210305,
-                           1.01224684859073)
-                      )
+  jaspTools::expect_equal_tables(table,
+                                 list("FALSE", 0.0892161465190037, -0.00287484365577048, -0.371812442950162,
+                                      "H<unicode>", "(Intercept)", 0.0300000001, -0.199113406958839,
+                                      -0.0176184639554442, "FALSE", 0.117569404369009, -0.00805589019986405,
+                                      -0.0569483948254311, "H<unicode>", "contcor1", 0.1500000001,
+                                      0.158724553944543, 0.487519283989915, "TRUE", 0.175654498371081,
+                                      -0.0121825974778153, -0.673747892365681, "H<unicode>", "(Intercept)",
+                                      0.1400000001, -0.371223870504199, 0.121533254954997, "FALSE",
+                                      0.122922464961942, 0.0153913988225325, -0.0262970092049954,
+                                      "H<unicode>", "contcor1", 0.1000000001, 0.195966369322685, 0.464005446105904,
+                                      "FALSE", 0.249107600628346, -0.0084397404113783, -0.491879709998025,
+                                      "H<unicode>", "facFive (2)", 0.9600000001, -0.0105565135703609,
+                                      0.533672515525146, "FALSE", 0.282081078016127, 0.0707620217152187,
+                                      -0.295664633425045, "H<unicode>", "facFive (3)", 0.1500000001,
+                                      0.624836349410087, 0.979283795047319, "FALSE", 0.279996747482753,
+                                      -0.0548509556815403, -0.602483992532204, "H<unicode>", "facFive (4)",
+                                      0.9500000001, -0.103511769967569, 0.434875131192545, "FALSE",
+                                      0.310440176465095, -0.00991652226343426, -0.24504983749288,
+                                      "H<unicode>", "facFive (5)", 0.3000000001, 0.256679862210305,
+                                      1.01224684859073)
+                                 )
 })
 
 # Below are the unit tests for Andy Field's book ----
@@ -505,7 +505,7 @@ test_that("Fields Book - Chapter 2 results match", {
     list(components="attract", isNuisance=FALSE)
   )
   options$rSquaredChange <- TRUE
-  options$regressionCoefficientsConfidenceIntervals <- TRUE
+  options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   output4 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(output4,
@@ -534,15 +534,15 @@ test_that("Fields Book - Chapter 3 results match", {
     list(components="airplay", isNuisance=FALSE),
     list(components="attract", isNuisance=FALSE)
   )
-  options$plotResidualsPredicted <- TRUE
-  options$plotsPartialRegression <- TRUE
-  options$plotResidualsHistogram <- TRUE
-  options$plotResidualsHistogramStandardized <- TRUE
-  options$plotResidualsQQ <- TRUE
-  options$residualsCasewiseDiagnostics <- TRUE
-  options$residualsCasewiseDiagnosticsType <- "outliersOutside"
-  options$residualsCasewiseDiagnosticsOutliersOutside <- 2
-  options$regressionCoefficientsConfidenceIntervals <- TRUE
+  options$residualVsFittedPlot <- TRUE
+  options$partialResidualPlot <- TRUE
+  options$residualHistogramPlot <- TRUE
+  options$residualHistogramStandardizedPlot <- TRUE
+  options$residualQqPlot <- TRUE
+  options$residualCasewiseDiagnostic <- TRUE
+  options$residualCasewiseDiagnosticType <- "outliersOutside"
+  options$residualCasewiseDiagnosticZThreshold <- 2
+  options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   figure3 <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
   jaspTools::expect_equal_plots(figure3, "field-residuals-predicted")
@@ -580,12 +580,12 @@ test_that("Fields Book - Chapter 3 results match", {
     list(components="airplay", isNuisance=FALSE),
     list(components="attract", isNuisance=FALSE)
   )
-  options$residualsCasewiseDiagnostics <- TRUE
-  options$residualsCasewiseDiagnosticsType <- "allCases"
-  options$regressionCoefficientsBootstrapping <- TRUE
-  options$regressionCoefficientsBootstrappingReplicates <- 1000
+  options$residualCasewiseDiagnostic <- TRUE
+  options$residualCasewiseDiagnosticType <- "allCases"
+  options$coefficientBootstrap <- TRUE
+  options$coefficientBootstrapSamples <- 1000
   set.seed(1) # For Bootstrapping Unit Tests
-  options$regressionCoefficientsConfidenceIntervals <- TRUE
+  options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   figure10 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_casewiseTable"]][["data"]]
   figure10 <- list(figure10[[1]]$cooksD, figure10[[2]]$cooksD, figure10[[3]]$cooksD, figure10[[4]]$cooksD,
@@ -619,9 +619,9 @@ test_that("Fields Book - Chapter 3 results match", {
     list(components="tosca", isNuisance=TRUE),
     list(components="obq", isNuisance=FALSE)
   )
-  options$plotResidualsPredicted <- TRUE
-  options$plotsPartialRegression <- TRUE
-  options$plotResidualsQQ <- TRUE
+  options$residualVsFittedPlot <- TRUE
+  options$partialResidualPlot <- TRUE
+  options$residualQqPlot <- TRUE
   set.seed(1)
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "SocialAnxietyRegression.csv", options)
   figure11a <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
@@ -644,7 +644,7 @@ test_that("Fields Book - Chapter 4 results match", {
     list(components="dummy1", isNuisance=FALSE),
     list(components="dummy2", isNuisance=FALSE)
   )
-  options$regressionCoefficientsConfidenceIntervals <- TRUE
+  options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Dummy.csv", options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(output1a,
@@ -672,7 +672,7 @@ test_that("Fields Book - Chapter 5 results match", {
     list(components="Dummy1", isNuisance=FALSE),
     list(components="Dummy2", isNuisance=FALSE)
   )
-  options$regressionCoefficientsConfidenceIntervals <- TRUE
+  options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Contrast.csv", options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(output1a,

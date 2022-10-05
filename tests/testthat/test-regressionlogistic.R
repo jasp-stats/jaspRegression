@@ -118,7 +118,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$residualCasewiseDiagnostic <- TRUE
   options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientBootstrap <- TRUE
-  options$coefficientBootstrapReplicates <- 1000
+  options$coefficientBootstrapSamples <- 1000
   set.seed(1) # For Bootstrapping Unit Tests
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
   output9 <- results[["results"]][["casewiseDiagnosticsTable"]][["data"]]

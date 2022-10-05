@@ -41,9 +41,9 @@ Upgrades
 			{
 				switch(options["alternative"])
 				{
-					case "correlated":				return "twoSided"	;
-					case "correlatedPositively":	return "greater"	;
-					case "correlatedNegatively":	return "less"		;
+				case "correlated":				return "twoSided"	;
+				case "correlatedPositively":	return "greater"	;
+				case "correlatedNegatively":	return "less"		;
 				}
 			}
 		}
@@ -79,11 +79,11 @@ Upgrades
 			name:		"naAction"
 			jsFunction:	function(options)
 			{
-                switch(options["naAction"])
+				switch(options["naAction"])
 				{
-					case "excludePairwise":		return "pairwise";
-					case "excludeListwise":		return "listwise";
-                    default:					return options["naAction"];
+				case "excludePairwise":		return "pairwise";
+				case "excludeListwise":		return "listwise";
+				default:					return options["naAction"];
 				}
 			}
 		}
@@ -124,15 +124,15 @@ Upgrades
 			{
 				switch(options["priorRegressionCoefficients"])
 				{
-					case "AIC":									return "aic";
-					case "BIC":									return "bic";
-					case "EB-global":							return "ebGlobal";
-					case "EB-local":							return "ebLocal";
-					case "g-prior":								return "gPrior";
-					case "hyper-g":								return "hyperG";
-					case "hyper-g-laplace":						return "hyperGLaplace";
-					case "hyper-g-n":							return "hyperGN";
-					case "JZS":									return "jzs";
+				case "AIC":									return "aic";
+				case "BIC":									return "bic";
+				case "EB-global":							return "ebGlobal";
+				case "EB-local":							return "ebLocal";
+				case "g-prior":								return "gPrior";
+				case "hyper-g":								return "hyperG";
+				case "hyper-g-laplace":						return "hyperGLaplace";
+				case "hyper-g-n":							return "hyperGN";
+				case "JZS":									return "jzs";
 				}
 			}
 		}
@@ -147,10 +147,10 @@ Upgrades
 			{
 				switch(options["modelPrior"])
 				{
-					case "beta.binomial":				return "betaBinomial";
-					case "Wilson":						return "wilson";
-					case "Castillo":					return "castillo";
-					case "Bernoulli":					return "bernoulli";
+				case "beta.binomial":				return "betaBinomial";
+				case "Wilson":						return "wilson";
+				case "Castillo":					return "castillo";
+				case "Bernoulli":					return "bernoulli";
 					return options["modelPrior"]
 				}
 			}
@@ -163,8 +163,8 @@ Upgrades
 			{
 				switch(options["samplingMethod"])
 				{
-					case "BAS":					return "bas";
-					case "MCMC":				return "mcmc";
+				case "BAS":					return "bas";
+				case "MCMC":				return "mcmc";
 				}
 			}
 		}
@@ -175,80 +175,149 @@ Upgrades
 
 	}
 
-    Upgrade
-    {
-        functionName:		"CorrelationBayesian"
-        fromVersion:		"0.16.3"
-        toVersion:			"0.16.4"
+	Upgrade
+	{
+		functionName:		"CorrelationBayesian"
+		fromVersion:		"0.16.3"
+		toVersion:			"0.16.4"
 
-        // MAIN SECTION - Additional options --------------
-        ChangeRename { from: "displayPairwise";						to: "pairwiseDisplay"						}
-        ChangeRename { from: "reportBayesFactors";					to: "bayesFactorReport"						}
-        ChangeRename { from: "flagSupported";						to: "supportCorrelationFlagged"				}
-        ChangeRename { from: "reportN";								to: "sampleSize"                            }
-        ChangeRename { from: "ciValue";								to: "ciLevel"                               }
+		// MAIN SECTION - Additional options --------------
+		ChangeRename { from: "displayPairwise";						to: "pairwiseDisplay"						}
+		ChangeRename { from: "reportBayesFactors";					to: "bayesFactorReport"						}
+		ChangeRename { from: "flagSupported";						to: "supportCorrelationFlagged"				}
+		ChangeRename { from: "reportN";								to: "sampleSize"                            }
+		ChangeRename { from: "ciValue";								to: "ciLevel"                               }
 
-        ChangeJS
-        {
-            name:		"alternative"
-            jsFunction:	function(options)
-            {
-                switch(options["alternative"])
-                {
-                    case "two.sided":				return "twoSided"	;
-                    default:                        return options["alternative"];
-                }
-            }
-        }
+		ChangeJS
+		{
+			name:		"alternative"
+			jsFunction:	function(options)
+			{
+				switch(options["alternative"])
+				{
+				case "two.sided":				return "twoSided"	;
+				default:                        return options["alternative"];
+				}
+			}
+		}
 
-        // Main Plots
-        ChangeRename { from: "plotMatrix";								to: "matrixPlot"							}
-        ChangeRename { from: "plotMatrixDensities";						to: "matrixPlotDensity"						}
-        ChangeRename { from: "plotMatrixPosteriors";					to: "matrixPlotPosterior"					}
+		// Main Plots
+		ChangeRename { from: "plotMatrix";								to: "matrixPlot"							}
+		ChangeRename { from: "plotMatrixDensities";						to: "matrixPlotDensity"						}
+		ChangeRename { from: "plotMatrixPosteriors";					to: "matrixPlotPosterior"					}
 
-        // Main section - Prior
-        ChangeRename { from: "kappa";									to: "priorWidth"							}
+		// Main section - Prior
+		ChangeRename { from: "kappa";									to: "priorWidth"							}
 
-        // PAIRS SECTION --------------
-        ChangeRename { from: "pairs";									to: "variablePairs" 						}
-
-
-        // Pairs Plots - Scatter plots
-        ChangeRename { from: "plotScatter";								to: "scatterPlot"							}
-        ChangeRename { from: "plotScatterAddInfo";						to: "scatterPlotAddInfo"					}
-
-        // Pairs Plots - Prior posterior plots
-        ChangeRename { from: "plotPriorPosterior";						to: "priorPosteriorPlot"					}
-        ChangeRename { from: "plotPriorPosteriorAddEstimationInfo";		to: "priorPosteriorPlotAddEstimationInfo"	}
-        ChangeRename { from: "plotPriorPosteriorAddTestingInfo";		to: "priorPosteriorPlotAddTestingInfo"		}
-
-        // Pairs Plots - Robustness plots
-        ChangeRename { from: "plotBfRobustness";						to: "bfRobustnessPlot"						}
-        ChangeRename { from: "plotBfRobustnessAddInfo";					to: "bfRobustnessPlotAddInfo"				}
-
-        // Pairs Plots - Sequential plots
-        ChangeRename { from: "plotBfSequential";						to: "bfSequentialPlot"						}
-        ChangeRename { from: "plotBfSequentialAddInfo";					to: "bfSequentialPlotAddInfo"				}
+		// PAIRS SECTION --------------
+		ChangeRename { from: "pairs";									to: "variablePairs" 						}
 
 
-        // OPTIONS SECTION --------------
-        ChangeRename { from: "missingValues";							to: "naAction"								}
+		// Pairs Plots - Scatter plots
+		ChangeRename { from: "plotScatter";								to: "scatterPlot"							}
+		ChangeRename { from: "plotScatterAddInfo";						to: "scatterPlotAddInfo"					}
 
-        ChangeJS
-        {
-            name:		"naAction"
-            jsFunction:	function(options)
-            {
-                switch(options["naAction"])
-                {
-                    case "excludePairwise":		return "pairwise";
-                    case "excludeListwise":		return "listwise";
-                    default:					return options["naAction"];
-                }
-            }
-        }
-    }
+		// Pairs Plots - Prior posterior plots
+		ChangeRename { from: "plotPriorPosterior";						to: "priorPosteriorPlot"					}
+		ChangeRename { from: "plotPriorPosteriorAddEstimationInfo";		to: "priorPosteriorPlotAddEstimationInfo"	}
+		ChangeRename { from: "plotPriorPosteriorAddTestingInfo";		to: "priorPosteriorPlotAddTestingInfo"		}
 
+		// Pairs Plots - Robustness plots
+		ChangeRename { from: "plotBfRobustness";						to: "bfRobustnessPlot"						}
+		ChangeRename { from: "plotBfRobustnessAddInfo";					to: "bfRobustnessPlotAddInfo"				}
+
+		// Pairs Plots - Sequential plots
+		ChangeRename { from: "plotBfSequential";						to: "bfSequentialPlot"						}
+		ChangeRename { from: "plotBfSequentialAddInfo";					to: "bfSequentialPlotAddInfo"				}
+
+
+		// OPTIONS SECTION --------------
+		ChangeRename { from: "missingValues";							to: "naAction"								}
+
+		ChangeJS
+		{
+			name:		"naAction"
+			jsFunction:	function(options)
+			{
+				switch(options["naAction"])
+				{
+				case "excludePairwise":		return "pairwise";
+				case "excludeListwise":		return "listwise";
+				default:					return options["naAction"];
+				}
+			}
+		}
+	}
+
+	Upgrade
+	{
+		functionName:		"RegressionLinear"
+		fromVersion:		"0.16.4"
+		toVersion:			"0.17.0"
+
+		ChangeRename { from: "wlsWeights";					                                to: "weights"							                    }
+		ChangeRename { from: "includeConstant";					                            to: "interceptTerm"							                }
+		ChangeRename { from: "regressionCoefficientsEstimates";					            to: "coefficientEstimate"							        }
+		ChangeRename { from: "regressionCoefficientsBootstrapping";				            to: "coefficientBootstrap"			                        }
+		ChangeRename { from: "regressionCoefficientsBootstrappingReplicates";				to: "coefficientBootstrapSamples"			            }
+		ChangeRename { from: "regressionCoefficientsConfidenceIntervals";					to: "coefficientCi"							                }
+		ChangeRename { from: "regressionCoefficientsConfidenceIntervalsInterval";			to: "coefficientCiLevel"							        }
+		ChangeRename { from: "regressionCoefficientsCovarianceMatrix";					    to: "covarianceMatrix"							            }
+		ChangeRename { from: "VovkSellkeMPR";					                            to: "vovkSellke"							                }
+		ChangeRename { from: "partAndPartialCorrelations";					                to: "partAndPartialCorrelation"						        }
+		ChangeRename { from: "collinearityDiagnostics";					                    to: "collinearityDiagnostic"						        }
+		ChangeRename { from: "residualsStatistics";					                        to: "residualStatistic"							            }
+		ChangeRename { from: "residualsDurbinWatson";					                    to: "residualDurbinWatson"							        }
+		ChangeRename { from: "residualsCasewiseDiagnostics";					            to: "residualCasewiseDiagnostic"					        }
+		ChangeRename { from: "residualsCasewiseDiagnosticsType";					        to: "residualCasewiseDiagnosticType"				        }
+		ChangeRename { from: "residualsCasewiseDiagnosticsOutliersOutside";					to: "residualCasewiseDiagnosticZThreshold"	                }
+		ChangeRename { from: "residualsCasewiseDiagnosticsCooksDistance";					to: "residualCasewiseDiagnosticCooksDistanceThreshold"		}
+		ChangeRename { from: "plotResidualsDependent";					                    to: "residualVsDependentPlot"						        }
+		ChangeRename { from: "plotResidualsCovariates";					                    to: "residualVsCovariatePlot"						        }
+		ChangeRename { from: "plotResidualsPredicted";					                    to: "residualVsFittedPlot"							        }
+		ChangeRename { from: "plotResidualsHistogram";					                    to: "residualHistogramPlot"							        }
+		ChangeRename { from: "plotResidualsHistogramStandardized";					        to: "residualHistogramStandardizedPlot"				        }
+		ChangeRename { from: "plotResidualsQQ";					                            to: "residualQqPlot"							            }
+		ChangeRename { from: "plotsPartialRegression";					                    to: "partialResidualPlot"							        }
+		ChangeRename { from: "plotsPartialConfidenceIntervals";					            to: "partialResidualPlotCi"							        }
+		ChangeRename { from: "plotsPartialConfidenceIntervalsInterval";					    to: "partialResidualPlotCiLevel"					        }
+		ChangeRename { from: "plotsPartialPredictionIntervals";					            to: "partialResidualPlotPredictionInterval"			        }
+		ChangeRename { from: "plotsPartialPredictionIntervalsInterval";					    to: "partialResidualPlotPredictionIntervalLevel"	        }
+		ChangeRename { from: "plotsMarginal";					                            to: "marginalPlot"							                }
+		ChangeRename { from: "plotsMarginalConfidenceIntervals";					        to: "marginalPlotCi"							            }
+		ChangeRename { from: "plotsMarginalConfidenceLevel";					            to: "marginalPlotCiLevel"							        }
+		ChangeRename { from: "plotsMarginalPredictionIntervals";					        to: "marginalPlotPredictionInterval"				        }
+		ChangeRename { from: "plotsMarginalPredictionLevel";					            to: "marginalPlotPredictionIntervalLevel"			        }
+		ChangeRename { from: "missingValues";							                    to: "naAction"								                }
+
+		ChangeJS
+		{
+			name:		"naAction"
+			jsFunction:	function(options)
+			{
+				switch(options["naAction"])
+				{
+				case "excludeCasesPairwise":		return "pairwise";
+				case "excludeCasesListwise":		return "listwise";
+				default:					return options["naAction"];
+				}
+			}
+		}
+
+		ChangeJS
+		{
+			name:		"steppingMethodCriteriaType"
+			jsFunction:	function(options)
+			{
+				switch(options["steppingMethodCriteriaType"])
+				{
+				case "usePValue":		return "pValue";
+				case "useFValue":		return "fValue";
+				default:				return options["naAction"];
+				}
+			}
+		}
+	}
 
 	Upgrade
 	{
@@ -294,7 +363,6 @@ Upgrades
 				}
 			}
 		}
-	}
 
 	Upgrade
 	{
@@ -308,7 +376,7 @@ Upgrades
 		ChangeRename { from: "confusionMatrixOpt";					     to: "confusionMatrix"							            }
 		ChangeRename { from: "coeffEstimates";					         to: "coefficientEstimate"							        }
 		ChangeRename { from: "coeffEstimatesBootstrapping";				 to: "coefficientBootstrap"							        }
-		ChangeRename { from: "coeffEstimatesBootstrappingReplicates";	 to: "coefficientBootstrapReplicates"						}
+		ChangeRename { from: "coeffEstimatesBootstrappingReplicates";	 to: "coefficientBootstrapSamples"						}
 		ChangeRename { from: "stdCoeff";					             to: "coefficientStandardized"							    }
 		ChangeRename { from: "oddsRatios";					             to: "oddsRatio"							                }
 		ChangeRename { from: "coeffCI";					                 to: "coefficientCi"							            }

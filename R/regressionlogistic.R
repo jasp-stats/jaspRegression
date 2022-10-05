@@ -186,7 +186,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTableBootstrap <- createJaspTable(gettext("Bootstrap Coefficients"))
   estimatesTableBootstrap$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
                                    options             = c("coefficientBootstrap",
-                                                           "coefficientBootstrapReplicates",
+                                                           "coefficientBootstrapSamples",
                                                            "coefficientCi", "coefficientCiAsOddsRatio", "coefficientStandardized", "oddsRatio", "coefficientCiLevel",
                                                            "robustSe"))
   estimatesTableBootstrap$position <- 3
@@ -635,7 +635,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
     expon <- if (options$coefficientCiAsOddsRatio) function(x) exp(x) else identity
 
-    startProgressbar(options$coefficientBootstrapReplicates *
+    startProgressbar(options$coefficientBootstrapSamples *
                      if (multimod) length(glmObj) else 1)
 
     for (i in 1:length(glmObj)) {
@@ -655,7 +655,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
           envir <- new.env()
           envir$idx <- envir$idx_rse <- 0L
           envir$stdEst <- envir$robustSE <-
-            matrix(NA, options$coefficientBootstrapReplicates, length(coef(glmObj[[i]])))
+            matrix(NA, options$coefficientBootstrapSamples, length(coef(glmObj[[i]])))
 
           .bootstrapping    <- function(data, indices, model.formula, options, envir) {
             progressbarTick()
@@ -685,7 +685,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
 
           bootstrap.summary <- try(boot::boot(data = dataset,
                                               statistic = .bootstrapping,
-                                              R = options$coefficientBootstrapReplicates,
+                                              R = options$coefficientBootstrapSamples,
                                               model.formula = formula(glmObj[[i]]),
                                               options = options,
                                               envir = envir),
@@ -747,7 +747,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
     }
     bootstrapResultsState <- createJaspState(bootstrapResults)
     bootstrapResultsState$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                                   options             = c("coefficientBootstrap", "coefficientBootstrapReplicates"))
+                                   options             = c("coefficientBootstrap", "coefficientBootstrapSamples"))
     jaspResults[["bootstrapResults"]] <- bootstrapResultsState
   } else {
     return()
