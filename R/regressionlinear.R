@@ -370,7 +370,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
 .linregCreateBootstrapCoefficientsTable <- function(modelContainer, model, dataset, options, position) {
   bootstrapCoeffTable <- createJaspTable(gettext("Bootstrap Coefficients"))
   bootstrapCoeffTable$dependOn(c("coefficientEstimate", "coefficientCi", "coefficientCiLevel",
-                                 "coefficientBootstrap", "coefficientBootstrapReplicates"))
+                                 "coefficientBootstrap", "coefficientBootstrapSamples"))
   bootstrapCoeffTable$position <- position
   bootstrapCoeffTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -387,7 +387,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     bootstrapCoeffTable$addColumnInfo(name = "upper", title = gettext("Upper"), type = "number", overtitle = overtitle)
   }
 
-  bootstrapCoeffTable$addFootnote(gettextf("Bootstrapping based on %i replicates.", options[['coefficientBootstrapReplicates']]))
+  bootstrapCoeffTable$addFootnote(gettextf("Bootstrapping based on %i replicates.", options[['coefficientBootstrapSamples']]))
   bootstrapCoeffTable$addFootnote(gettext("Coefficient estimate is based on the median of the bootstrap distribution."))
   bootstrapCoeffTable$addFootnote(gettext("Bias corrected accelerated."), colNames = "pvalue", symbol = "\u002A")
 
@@ -407,7 +407,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
   metaCols <- .linregGetTitlesAndIsNewGroups(model)
 
   if (is.null(modelContainer[["bootstrapCoefficients"]])) {
-    startProgressbar(options$coefficientBootstrapReplicates * length(model))
+    startProgressbar(options$coefficientBootstrapSamples * length(model))
     bootstrapCoeffTable$setData(metaCols)
 
     anyMissingValues <- FALSE
@@ -424,7 +424,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       bootstrapCoeffTable$addFootnote(gettext("Some bootstrap results could not be computed."))
 
     modelContainer[["bootstrapCoefficients"]] <- createJaspState(coefficients)
-    modelContainer[["bootstrapCoefficients"]]$dependOn(c("coefficientBootstrapReplicates", "coefficientCiLevel"))
+    modelContainer[["bootstrapCoefficients"]]$dependOn(c("coefficientBootstrapSamples", "coefficientCiLevel"))
   } else {
     bootstrapCoeffTable$setData(.linregCombineMetaWithData(metaCols, modelContainer[["bootstrapCoefficients"]]$object))
   }
@@ -1239,7 +1239,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
       missingCoeffs <- coefNames[which(is.na(coef(fit)))]
 
     summary <- boot::boot(data = dataset, statistic = .bootstrapping,
-                          R = options$coefficientBootstrapReplicates,
+                          R = options$coefficientBootstrapSamples,
                           formula = formula(fit),
                           wlsWeights = options$weights)
 

@@ -259,7 +259,7 @@ Upgrades
 		ChangeRename { from: "includeConstant";					                            to: "interceptTerm"							                }
 		ChangeRename { from: "regressionCoefficientsEstimates";					            to: "coefficientEstimate"							        }
 		ChangeRename { from: "regressionCoefficientsBootstrapping";				            to: "coefficientBootstrap"			                        }
-		ChangeRename { from: "regressionCoefficientsBootstrappingReplicates";				to: "coefficientBootstrapReplicates"			            }
+		ChangeRename { from: "regressionCoefficientsBootstrappingReplicates";				to: "coefficientBootstrapSamples"			            }
 		ChangeRename { from: "regressionCoefficientsConfidenceIntervals";					to: "coefficientCi"							                }
 		ChangeRename { from: "regressionCoefficientsConfidenceIntervalsInterval";			to: "coefficientCiLevel"							        }
 		ChangeRename { from: "regressionCoefficientsCovarianceMatrix";					    to: "covarianceMatrix"							            }
@@ -366,48 +366,6 @@ Upgrades
 
 	Upgrade
 	{
-		functionName:		"RegressionLinear"
-		fromVersion:		"0.16.4"
-		toVersion:			"0.17.0"
-
-		ChangeRename { from: "wlsWeights";					                                to: "weights"							            }
-		ChangeRename { from: "includeConstant";					                            to: "interceptTerm"							        }
-		ChangeRename { from: "regressionCoefficientsEstimates";					            to: "coefficientEstimate"							}
-		ChangeRename { from: "regressionCoefficientsBootstrapping";				            to: "coefficientBootstrap"			                }
-		ChangeRename { from: "regressionCoefficientsBootstrappingReplicates";				to: "coefficientBootstrapReplicates"			    }
-		ChangeRename { from: "regressionCoefficientsConfidenceIntervals";					to: "coefficientCi"							        }
-		ChangeRename { from: "regressionCoefficientsConfidenceIntervalsInterval";			to: "coefficientCiLevel"							}
-		ChangeRename { from: "regressionCoefficientsCovarianceMatrix";					    to: "covarianceMatrix"							    }
-		ChangeRename { from: "VovkSellkeMPR";					                            to: "vovkSellke"							        }
-		ChangeRename { from: "descriptives";					                            to: "descriptive"							        }
-		ChangeRename { from: "partAndPartialCorrelations";					                to: "partAndPartialCorrelation"						}
-		ChangeRename { from: "collinearityDiagnostics";					                    to: "collinearityDiagnostic"						}
-		ChangeRename { from: "residualsStatistics";					                        to: "residualStatistic"							    }
-		ChangeRename { from: "residualsDurbinWatson";					                    to: "residualDurbinWatson"							}
-		ChangeRename { from: "residualsCasewiseDiagnostics";					            to: "residualCasewiseDiagnostic"					}
-		ChangeRename { from: "residualsCasewiseDiagnosticsType";					        to: "residualCasewiseDiagnosticType"				}
-		ChangeRename { from: "residualsCasewiseDiagnosticsOutliersOutside";					to: "residualCasewiseDiagnosticOutlierThreshold"	}
-		ChangeRename { from: "residualsCasewiseDiagnosticsCooksDistance";					to: "residualCasewiseDiagnosticCooksDistance"		}
-		ChangeRename { from: "plotResidualsDependent";					                    to: "residualVsDependentPlot"						}
-		ChangeRename { from: "plotResidualsCovariates";					                    to: "residualVsCovariatePlot"						}
-		ChangeRename { from: "plotResidualsPredicted";					                    to: "residualVsFittedPlot"							}
-		ChangeRename { from: "plotResidualsHistogram";					                    to: "residualHistogramPlot"							}
-		ChangeRename { from: "plotResidualsHistogramStandardized";					        to: "residualHistogramStandardizedPlot"				}
-		ChangeRename { from: "plotResidualsQQ";					                            to: "residualQqPlot"							    }
-		ChangeRename { from: "plotsPartialRegression";					                    to: "partialResidualPlot"							}
-		ChangeRename { from: "plotsPartialConfidenceIntervals";					            to: "partialResidualPlotCi"							}
-		ChangeRename { from: "plotsPartialConfidenceIntervalsInterval";					    to: "partialResidualPlotCiLevel"					}
-		ChangeRename { from: "plotsPartialPredictionIntervals";					            to: "partialResidualPlotPredictionInterval"			}
-		ChangeRename { from: "plotsPartialPredictionIntervalsInterval";					    to: "partialResidualPlotPredictionIntervalLevel"	}
-		ChangeRename { from: "plotsMarginal";					                            to: "marginalPlot"							        }
-		ChangeRename { from: "plotsMarginalConfidenceIntervals";					        to: "marginalPlotCi"							    }
-		ChangeRename { from: "plotsMarginalConfidenceLevel";					            to: "marginalPlotCiLevel"							}
-		ChangeRename { from: "plotsMarginalPredictionIntervals";					        to: "marginalPlotPredictionInterval"				}
-		ChangeRename { from: "plotsMarginalPredictionLevel";					            to: "marginalPlotPredictionIntervalLevel"			}
-	}
-
-	Upgrade
-	{
 		functionName:		"RegressionLogistic"
 		fromVersion:		"0.16.4"
 		toVersion:			"0.17.0"
@@ -418,7 +376,7 @@ Upgrades
 		ChangeRename { from: "confusionMatrixOpt";					     to: "confusionMatrix"							            }
 		ChangeRename { from: "coeffEstimates";					         to: "coefficientEstimate"							        }
 		ChangeRename { from: "coeffEstimatesBootstrapping";				 to: "coefficientBootstrap"							        }
-		ChangeRename { from: "coeffEstimatesBootstrappingReplicates";	 to: "coefficientBootstrapReplicates"						}
+		ChangeRename { from: "coeffEstimatesBootstrappingReplicates";	 to: "coefficientBootstrapSamples"						}
 		ChangeRename { from: "stdCoeff";					             to: "coefficientStandardized"							    }
 		ChangeRename { from: "oddsRatios";					             to: "oddsRatio"							                }
 		ChangeRename { from: "coeffCI";					                 to: "coefficientCi"							            }

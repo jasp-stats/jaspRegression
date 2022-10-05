@@ -392,7 +392,7 @@ test_that("Bootstrapping runs", {
     list(components="facFive", isNuisance=FALSE)
   )
   options$coefficientBootstrap <- TRUE
-  options$coefficientBootstrapReplicates <- 100
+  options$coefficientBootstrapSamples <- 100
   options$coefficientCi <- TRUE
 
   set.seed(1)
@@ -583,7 +583,7 @@ test_that("Fields Book - Chapter 3 results match", {
   options$residualCasewiseDiagnostic <- TRUE
   options$residualCasewiseDiagnosticType <- "allCases"
   options$coefficientBootstrap <- TRUE
-  options$coefficientBootstrapReplicates <- 1000
+  options$coefficientBootstrapSamples <- 1000
   set.seed(1) # For Bootstrapping Unit Tests
   options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)

@@ -89,7 +89,7 @@ Form
 						childrenOnSameRow: true
 						IntegerField
 						{
-							name: "coefficientBootstrapReplicates"
+							name: "coefficientBootstrapSamples"
 							defaultValue: 5000
 							fieldWidth: 50
 							min: 100
