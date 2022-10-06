@@ -41,7 +41,7 @@ De Correlatie Matrix maakt het mogelijk de populatiecorrelatie te schatten en de
   - Interval: Dekking van het betrouwbaarheidsinterval in percentages.
   - Van `...` bootstraps: Door deze optie te selecteren, worden gebootstrapte schatting gebruikt. Standaard is het aantal replicaties ingesteld op 1000. Dit kan worden veranderd in het gewenste aantal.
 - Vovk-Selke maximum p-ratio: De grens 1/(-e p log(p)) is berekend aan de hand van de p-waarde verdeling. Onder de nullhypothese (H<sub>0</sub>) is het uniform (0,1), en onder de alternatieve (H<sub>1</sub>) verlaagt de p-waarde, e.g., een beta (α, 1) verdeling, met 0 < α < 1. De Vovk-Sellke MPR is verkregen door de vorm α van de verdeling te kiezen onder H1 zodat de behaalde p-waarde diagnostisch gemaximaliseerd is. De waarde is dan de ratio van de verdelingen op punt p onder H<sub>0</sub> en H<sub>1</sub>. Bijvoorbeeld, als de tweezijdige p-waarde gelijk is aan .05, de Vovk-Sellke MPR gelijk is aam 2.46, dit geeft aan dat deze p-waarde is hoogstens 2.46 keer meer aannemelijk is voor H<sub>1</sub> dan voor H<sub>0</sub>.
-- Effectgrootte (Fishers z): De Fisher-getransformeerde effectgrootte met standaardfout. De effectgrootte wordt voor alle correlatiecoëfficiënten gegeven door artanh(r). De standaardfout van de effectgrootte wordt voor Pearsons r gegeven door sqrt(1/n-3). De standaardfout van de effectgrootte wordt voor Spearmans rho gegeven door sqrt(1.06/n-3). De standaardfout van de effectgrootte wordt voor Kendalls tau gegeven door sqrt(0.437/n-4).
+- Effectgrootte (Fishers z): De Fisher-getransformeerde effectgrootte met standaardfout. 
 - Steekproefgrootte: Het aantal volledige observaties voor een gegeven paar variabelen.
 
 #### Grafieken
@@ -106,7 +106,8 @@ De Correlatie Matrix maakt het mogelijk de populatiecorrelatie te schatten en de
 - Moore, D. S., McCabe, G. P., & Craig, B. A. (2012). *Introduction to the practice of statistics (7th ed.)*. New York, NY: W. H. Freeman and Company.
 - Whitlock, M. C., & Schluter, D. (2015). *The analysis of biological data (2nd ed.)*. Greenwood Village, Colorado: Roberts and Company Publishers.
 - Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of *p* values for testing precise null hypotheses. *The American Statistician, 55*(1), 62-71.
-- Fieller, E. C., Hartley, H. O., & Pearson, E. S. (1957). Tests for rank correlation coefficients: I. *Biometrika, 44*, 470–481.
+- Caruso, J.C., & Cliff, N. (1997). Empirical Size, Coverage, and Power of Confidence Intervals for Spearman's Rho. *Educational and Psychological Measurement, 57*(4), 637-654.
+- Xu, W., Hou, Y., Hung, Y.S., & Zou, Y. (2013). A comparative analysis of Spearman’s rho and Kendall’s tau in normal and contaminated normal models. *Signal Processing, 93*, 261-276.
 
 ### R Packages
 ---

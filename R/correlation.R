@@ -146,6 +146,9 @@ Correlation <- function(jaspResults, dataset, options){
     mainTable$addFootnote(message = message)
   }
 
+  if(length(options[["partialOutVariables"]]) != 0 && (isTRUE(options[["spearman"]]) || isTRUE(options[["kendallsTauB"]])))
+    mainTable$addFootnote(message = gettext("Standard error of effect size (Fisher's z) is currently unavailable for non-parametric partial correlations."))
+
   if(length(options[["partialOutVariables"]]) != 0 && isTRUE(options[["ci"]]) && isFALSE(options[["ciBootstrap"]]))
     mainTable$addFootnote(message = gettext("Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."))
 
@@ -353,7 +356,7 @@ Correlation <- function(jaspResults, dataset, options){
                         conf.level = options$ciLevel,
                         compute = compute, sample.size = currentResults[['sample.size']],
                         effect.size = options$effectSize,
-                        se.effect.size = options$effectSize)
+                        se.effect.size = options$effectSize, options = options)
 
         testErrors[[test]] <- r[['errors']]
         currentResults[[test]] <- r[['result']]
@@ -457,7 +460,7 @@ Correlation <- function(jaspResults, dataset, options){
 
 # helper that unifies output of cor.test and ppcor::pcor.test
 
-.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, ...){
+.corr.test <- function(x, y, z = NULL, alternative = c("twoSided", "greater", "less"), method, exact = NULL, conf.interval = TRUE, conf.level = 0.95, continuity = FALSE, compute=TRUE, sample.size, options, ...){
   stats <- c("estimate", "p.value", "conf.int", "vsmpr",  "effect.size", "se.effect.size")
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr", "effect.size", "se.effect.size")
   alternative <- match.arg(alternative)
@@ -492,15 +495,24 @@ Correlation <- function(jaspResults, dataset, options){
       result$vsmpr <- jaspBase:::VovkSellkeMPR(result$p.value)
       result$vsmpr <- ifelse(result$vsmpr == "∞", Inf, result$vsmpr)
 
-      #effect size (fisher's z) and SE are computed following the recommendations of
-      #Fieller, E. C., Hartley, H. O., & Pearson, E. S. (1957). Tests for rank correlation coefficients: I. Biometrika, 44, 470–481.
+      #effect size (fisher's z) and SE for Spearman and Kendall are computed following the recommendations of
+      #Caruso, J.C., & Cliff, N. (1997). Empirical Size, Coverage, and Power of Confidence Intervals for Spearman's Rho. Educational and Psychological Measurement, 57(4), 637-654.
+      #Xu, W., Hou, Y., Hung, Y.S., & Zou, Y. (2013). A comparative analysis of Spearman’s rho and Kendall’s tau in normal and contaminated normal models. Signal Processing, 93, 261-276.
       result$effect.size <- atanh(result$estimate)
       if(method == "pearson")
         result$se.effect.size <- sqrt(1/(sample.size-3))
-      if(method == "spearman")
-        result$se.effect.size <- sqrt(1.06/(sample.size-3))
-      if(method == "kendall")
-        result$se.effect.size <- sqrt(0.437/(sample.size-4))
+      if(method == "spearman") {
+        n <- sample.size
+        result$se.effect.size <- sqrt((1 / (n-2)) + (abs(atanh(result$estimate)) / ((6 * n) + (4 * n)^(1/2))))
+      }
+      if(method == "kendall") {
+        n <- sample.size
+        s1 <- asin(sin((pi/2) * result$estimate))
+        s2 <- asin(sin((pi/2) * result$estimate)/2)
+        result$se.effect.size <- sqrt((2 / (n * (n - 1))) * (1 - (4 * (s1^2 / pi^2)) + (2 * (n - 2) * ((1/9) - (4 * (s2^2 / pi^2))))))
+      }
+
+
 
 
       result <- unlist(result[stats], use.names = FALSE)
@@ -541,11 +553,11 @@ Correlation <- function(jaspResults, dataset, options){
       #Fieller, E. C., Hartley, H. O., & Pearson, E. S. (1957). Tests for rank correlation coefficients: I. Biometrika, 44, 470–481.
       result$effect.size <- atanh(result$estimate)
       if(method == "pearson")
-        result$se.effect.size <- sqrt(1/(sample.size-3))
+        result$se.effect.size <- sqrt(1/(sample.size-3-length(options$partialOutVariables)))
       if(method == "spearman")
-        result$se.effect.size <- sqrt(1.06/(sample.size-3))
+        result$se.effect.size <- NA
       if(method == "kendall")
-        result$se.effect.size <- sqrt(0.437/(sample.size-4))
+        result$se.effect.size <- NA
 
       result <- unlist(result[statsNames], use.names = FALSE)
       names(result) <- statsNames

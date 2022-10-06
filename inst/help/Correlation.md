@@ -41,7 +41,7 @@ The Correlation analysis allows estimation of the population correlation, as wel
   - Interval: Coverage of the confidence interval in percentages.
   - From `...` bootstraps: By selecting this option, bootstrapped estimation is applied. By default, the number of replications is set to 1000. This can be changed into the desired number. 
 - Vovk-Selke maximum p-ratio: The bound 1/(-e p log(p)) is derived from the shape of the p-value distribution. Under the null hypothesis (H<sub>0</sub>) it is uniform (0,1), and under the alternative (H<sub>1</sub>) it is decreasing in p, e.g., a beta (α, 1) distribution, where 0 < α < 1. The Vovk-Sellke MPR is obtained by choosing the shape α of the distribution under H1 such that the obtained p-value is maximally diagnostic. The value is then the ratio of the densities at point p under H<sub>0</sub> and H<sub>1</sub>. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H<sub>0</sub>.
-- Effect size (Fisher's z): The Fisher transformed effect size with standard error. For all correlation coefficients, the effect size is computed by artanh(r). For Pearson's r, the standard error of the effect size is computed by sqrt(1/n-3). For Spearman's rho, the standard error of the effect size is computed by sqrt(1.06/n-3). For Kendall's tau, the standard error of the effect size is computed by sqrt(0.437/n-4). 
+- Effect size (Fisher's z): The Fisher transformed effect size with standard error. 
 - Sample size: The number of complete observations for a given pair of variables.
 
 #### Plots
@@ -106,7 +106,8 @@ The Correlation analysis allows estimation of the population correlation, as wel
 - Moore, D. S., McCabe, G. P., & Craig, B. A. (2012). *Introduction to the practice of statistics (7th ed.)*. New York, NY: W. H. Freeman and Company.
 - Whitlock, M. C., & Schluter, D. (2015). *The analysis of biological data (2nd ed.)*. Greenwood Village, Colorado: Roberts and Company Publishers.
 - Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of *p* values for testing precise null hypotheses. *The American Statistician, 55*(1), 62-71.
-- Fieller, E. C., Hartley, H. O., & Pearson, E. S. (1957). Tests for rank correlation coefficients: I. *Biometrika, 44*, 470–481.
+- Caruso, J.C., & Cliff, N. (1997). Empirical Size, Coverage, and Power of Confidence Intervals for Spearman's Rho. *Educational and Psychological Measurement, 57*(4), 637-654.
+- Xu, W., Hou, Y., Hung, Y.S., & Zou, Y. (2013). A comparative analysis of Spearman’s rho and Kendall’s tau in normal and contaminated normal models. *Signal Processing, 93*, 261-276.
 
 ### R Packages
 ---
