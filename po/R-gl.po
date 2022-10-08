@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-09-24 03:35\n"
+"POT-Creation-Date: 2022-10-08 03:16\n"
 "PO-Revision-Date: 2022-09-25 11:23+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -190,6 +190,11 @@ msgid "Conditioned on variables: %s."
 msgstr "Condicionado ás variables: %s."
 
 msgid ""
+"Standard error of effect size (Fisher's z) is currently unavailable for non-"
+"parametric partial correlations."
+msgstr ""
+
+msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
@@ -204,6 +209,12 @@ msgstr "p"
 
 msgid "VS-MPR"
 msgstr "VS-MPR"
+
+msgid "Effect size (Fisher's z)"
+msgstr ""
+
+msgid "SE Effect size"
+msgstr ""
 
 msgid "r"
 msgstr "r"
@@ -310,6 +321,12 @@ msgstr ""
 "máxima probabilidade posible favorable a H%1$s sobre H%2$s igual a 1/(-e "
 "<em>p</em> log(<em>p</em>)) para <em>p</em> %3$s .37 (Sellke, Bayarri & "
 "Berger, 2001)."
+
+msgid ""
+"Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
+"small sample sizes (< 10), approximation by Fisher's z transformation "
+"becomes less accurate"
+msgstr ""
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "

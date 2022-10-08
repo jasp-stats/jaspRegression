@@ -729,10 +729,6 @@ msgid "Statistics"
 msgstr "Estatísticos"
 
 msgctxt "RegressionLinear|"
-msgid "Regression Coefficients"
-msgstr "Coeficientes da Regresión"
-
-msgctxt "RegressionLinear|"
 msgid "Estimates"
 msgstr "Estimacións"
 
@@ -971,10 +967,6 @@ msgstr "Descritivos"
 msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
 msgstr "Matriz de desarranxo"
-
-msgctxt "RegressionLogistic|"
-msgid "Regression Coefficients"
-msgstr "Coeficientes da Regresión"
 
 msgctxt "RegressionLogistic|"
 msgid "Estimates"
@@ -1365,3 +1357,17 @@ msgstr "Coeficientes"
 msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr "Compensación"
+
+msgctxt "Correlation|"
+msgid "Effect Size (Fisher's z)"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Coefficients"
+msgstr "Coeficientes"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Coefficients"
+msgstr "Coeficientes"

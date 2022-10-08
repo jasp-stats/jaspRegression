@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-09-24 03:35\n"
+"POT-Creation-Date: 2022-10-08 03:16\n"
 "PO-Revision-Date: 2022-10-04 08:15+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -176,6 +176,11 @@ msgid "Conditioned on variables: %s."
 msgstr ""
 
 msgid ""
+"Standard error of effect size (Fisher's z) is currently unavailable for non-"
+"parametric partial correlations."
+msgstr ""
+
+msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
@@ -187,6 +192,12 @@ msgid "p"
 msgstr ""
 
 msgid "VS-MPR"
+msgstr ""
+
+msgid "Effect size (Fisher's z)"
+msgstr ""
+
+msgid "SE Effect size"
 msgstr ""
 
 msgid "r"
@@ -283,6 +294,12 @@ msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+
+msgid ""
+"Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
+"small sample sizes (< 10), approximation by Fisher's z transformation "
+"becomes less accurate"
 msgstr ""
 
 msgid ""

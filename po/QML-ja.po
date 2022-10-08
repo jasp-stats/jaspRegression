@@ -384,10 +384,6 @@ msgid "Statistics"
 msgstr "統計量"
 
 msgctxt "RegressionLinear|"
-msgid "Regression Coefficients"
-msgstr "回帰係数"
-
-msgctxt "RegressionLinear|"
 msgid "Estimates"
 msgstr "推定値"
 
@@ -858,10 +854,6 @@ msgstr "パフォーマンス診断"
 msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
 msgstr "混同行列"
-
-msgctxt "RegressionLogistic|"
-msgid "Regression Coefficients"
-msgstr "回帰係数"
 
 msgctxt "RegressionLogistic|"
 msgid "Estimates"
@@ -1378,3 +1370,17 @@ msgstr "係数"
 msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect Size (Fisher's z)"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Coefficients"
+msgstr "係数"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Coefficients"
+msgstr "係数"

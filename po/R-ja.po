@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-09-24 03:35\n"
+"POT-Creation-Date: 2022-10-08 03:16\n"
 "PO-Revision-Date: 2022-02-12 21:37+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -187,6 +187,11 @@ msgid "Conditioned on variables: %s."
 msgstr "変数に対する条件: %s"
 
 msgid ""
+"Standard error of effect size (Fisher's z) is currently unavailable for non-"
+"parametric partial correlations."
+msgstr ""
+
+msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
@@ -201,6 +206,12 @@ msgstr "p"
 
 msgid "VS-MPR"
 msgstr "VS-MPR"
+
+msgid "Effect size (Fisher's z)"
+msgstr ""
+
+msgid "SE Effect size"
+msgstr ""
 
 msgid "r"
 msgstr "r"
@@ -305,6 +316,12 @@ msgstr ""
 "Vovk-Sellke 最大 <em>p</em> 比: <em>p</em>-値に基づいて、H%2$sよりもH%1$sを支"
 "持する最大の可能なオッズは、<em>p</em> %3$s .37に対して1/(-e <em>p</em> "
 "log(<em>p</em>))に等しくなります(Sellke, Bayarri, & Berger, 2001)。"
+
+msgid ""
+"Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
+"small sample sizes (< 10), approximation by Fisher's z transformation "
+"becomes less accurate"
+msgstr ""
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "

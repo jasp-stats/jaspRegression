@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-10-03 09:20+0000\n"
-"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
-"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
-"jasp/jaspregression-qml/zh_Hans/>\n"
-"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.1\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -400,10 +394,6 @@ msgstr "包括截距"
 msgctxt "RegressionLinear|"
 msgid "Statistics"
 msgstr "统计量"
-
-msgctxt "RegressionLinear|"
-msgid "Regression Coefficients"
-msgstr "回归系数"
 
 msgctxt "RegressionLinear|"
 msgid "Estimates"
@@ -876,10 +866,6 @@ msgstr "性能诊断"
 msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
 msgstr "混淆矩阵"
-
-msgctxt "RegressionLogistic|"
-msgid "Regression Coefficients"
-msgstr "回归系数"
 
 msgctxt "RegressionLogistic|"
 msgid "Estimates"
@@ -1371,3 +1357,17 @@ msgstr "系数"
 msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect Size (Fisher's z)"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Coefficients"
+msgstr "系数"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Coefficients"
+msgstr "系数"
