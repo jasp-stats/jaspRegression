@@ -363,6 +363,7 @@ Upgrades
 				}
 			}
 		}
+	}
 
 	Upgrade
 	{
