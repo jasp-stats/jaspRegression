@@ -239,7 +239,7 @@ RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
   multicolliTable$position <- 4
   multicolliTable$showSpecifiedColumnsOnly <- TRUE
 
-  multicolliTable$addColumnInfo(name = "var", title = gettext(""), type = "string")
+  multicolliTable$addColumnInfo(name = "var", title = "", type = "string")
 
   if (ready) {
     glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
