@@ -932,7 +932,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   }
 
 
-  jaspResults[["diagnosticsContainer"]][["multicolliTable"]]$addColumnInfo(name = "var", title = gettext(""), type = "string")
+  jaspResults[["diagnosticsContainer"]][["multicolliTable"]]$addColumnInfo(name = "var", title = "", type = "string")
 
   if (is.null(jaspResults[["glmModels"]]))
     return()
