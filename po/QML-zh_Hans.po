@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-10-16 10:38+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jaspregression-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -1349,25 +1355,22 @@ msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
 msgstr "例如：残差标准差"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "系数"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
-msgstr ""
+msgstr "偏移量"
 
 msgctxt "Correlation|"
 msgid "Effect Size (Fisher's z)"
-msgstr ""
+msgstr "效应量（Fisher's z）"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
 msgstr "系数"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
 msgstr "系数"
