@@ -259,8 +259,8 @@ msgstr "Correlatiediagram"
 msgid "Correlation undefined: %s"
 msgstr "Correlatie niet gedefinieerd: %s"
 
-msgid "%s%% CI: [%s, %s]"
-msgstr "%s%% CI: [%s, %s]"
+msgid "%1$s%% CI: [%2$s, %3$s]"
+msgstr "%1$s%% CI: [%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
@@ -358,8 +358,8 @@ msgstr "Bayesiaanse correlatie gepaarde grafieken"
 msgid "max %s"
 msgstr "max %s"
 
-msgid "%s at kappa==%s"
-msgstr "%s met kappa==%s"
+msgid "%1$s at kappa==%2$s"
+msgstr "%1$s met kappa==%2$s"
 
 msgid "user prior"
 msgstr "gebruikersprior"
@@ -958,8 +958,8 @@ msgstr ""
 msgid "Marginal Effects Plots"
 msgstr "Marginale Effecten Grafieken"
 
-msgid "Marginal effect of %s on %s"
-msgstr "Marginaal effect van %s op %s"
+msgid "Marginal effect of %1$s on %2$s"
+msgstr "Marginaal effect van %1$s op %2$s"
 
 msgid "All effects are specified as nuisance"
 msgstr "Alle effecten zijn gespecificeerd als ruis"

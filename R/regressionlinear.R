@@ -2020,7 +2020,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(marginalPlotsContainer,
                                    index = predictor,
-                                   title = gettextf("Marginal effect of %s on %s", predictor, options$dependent))
+                                   title = gettextf("Marginal effect of %1$s on %2$s", predictor, options$dependent))
 
     for (predictor in predictors) {
       .linregFillMarginalPlots(marginalPlotsContainer[[predictor]], predictor, finalModel$fit, dataset, options)

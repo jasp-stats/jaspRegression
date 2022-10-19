@@ -1120,12 +1120,12 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
       if (i==1) {
         legendText1[i] <- gettextf("max %s", bfLegendLabel)
         legendText1[i] <- gsub(pattern = "\\s+", "~", legendText1[i])
-        legendText2[i] <- gettextf("%s at kappa==%s", format(yPoint[i], digits=nDigits), format(xPoint[i], digits=nDigits))
+        legendText2[i] <- gettextf("%1$s at kappa==%2$s", format(yPoint[i], digits=nDigits), format(xPoint[i], digits=nDigits))
         legendText2[i] <- gsub(pattern = "\\s+", "~", legendText2[i])
       } else if (i==2) {
         legendText1[i] <- gettext("user prior")
         legendText1[i] <- paste0("\"", legendText1[i], "\"")
-        legendText2[i] <- gettextf("%s at kappa==%s", format(yPoint[i], digits=nDigits), format(xPoint[i], digits=nDigits))
+        legendText2[i] <- gettextf("%1$s at kappa==%2$s", format(yPoint[i], digits=nDigits), format(xPoint[i], digits=nDigits))
         legendText2[i] <- gsub(pattern = "\\s+", "~", legendText2[i])
       }
       # TODO(Alexander): Do something here, with user-prior, wide etc etc. Also loop over colours

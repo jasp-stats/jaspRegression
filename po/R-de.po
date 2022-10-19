@@ -261,8 +261,8 @@ msgstr "Streudiagramm"
 msgid "Correlation undefined: %s"
 msgstr "Korrelation undefiniert: %s"
 
-msgid "%s%% CI: [%s, %s]"
-msgstr "%s%% GI: [%s, %s]"
+msgid "%1$s%% CI: [%2$s, %3$s]"
+msgstr "%1$s%% GI: [%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
@@ -363,8 +363,8 @@ msgstr "Bayessche Korrelation Paarweise Diagramme"
 msgid "max %s"
 msgstr "max %s"
 
-msgid "%s at kappa==%s"
-msgstr "%s bei kappa==%s"
+msgid "%1$s at kappa==%2$s"
+msgstr "%1$s bei kappa==%2$s"
 
 msgid "user prior"
 msgstr "benutzerdefinierter Prior"
@@ -965,8 +965,8 @@ msgstr ""
 msgid "Marginal Effects Plots"
 msgstr "Diagramme Marginaler Effekte"
 
-msgid "Marginal effect of %s on %s"
-msgstr "Marginaler Effekt von %s auf %s"
+msgid "Marginal effect of %1$s on %2$s"
+msgstr "Marginaler Effekt von %1$s auf %2$s"
 
 msgid "All effects are specified as nuisance"
 msgstr "Alle Effekte sind als Störfaktoren spezifiziert"

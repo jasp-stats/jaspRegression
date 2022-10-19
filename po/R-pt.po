@@ -269,8 +269,8 @@ msgstr "Diagrama de correlação"
 msgid "Correlation undefined: %s"
 msgstr "Correlação indefinida: %s"
 
-msgid "%s%% CI: [%s, %s]"
-msgstr "%s%% CI: [%s, %s]"
+msgid "%1$s%% CI: [%2$s, %3$s]"
+msgstr "%1$s%% CI: [%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
@@ -368,8 +368,8 @@ msgstr "Gráficos par a par de correlação bayesiana"
 msgid "max %s"
 msgstr "máx. %s"
 
-msgid "%s at kappa==%s"
-msgstr "%s kappa==%s"
+msgid "%1$s at kappa==%2$s"
+msgstr "%1$s kappa==%2$s"
 
 msgid "user prior"
 msgstr "usuário anterior"
@@ -971,7 +971,7 @@ msgstr ""
 msgid "Marginal Effects Plots"
 msgstr ""
 
-msgid "Marginal effect of %s on %s"
+msgid "Marginal effect of %1$s on %2$s"
 msgstr ""
 
 msgid "All effects are specified as nuisance"

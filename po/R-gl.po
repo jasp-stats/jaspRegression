@@ -267,8 +267,8 @@ msgstr "Gráfica de correlación"
 msgid "Correlation undefined: %s"
 msgstr "Correlación indefinida: %s"
 
-msgid "%s%% CI: [%s, %s]"
-msgstr "IC do %s%% : [%s, %s]"
+msgid "%1$s%% CI: [%2$s, %3$s]"
+msgstr "IC do %1$s%% : [%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
@@ -369,8 +369,8 @@ msgstr "Gráficas das Parellas de Correlación Baiesiana"
 msgid "max %s"
 msgstr "máx %s"
 
-msgid "%s at kappa==%s"
-msgstr "%s en kappa==%s"
+msgid "%1$s at kappa==%2$s"
+msgstr "%1$s en kappa==%2$s"
 
 msgid "user prior"
 msgstr "usuario previo"
@@ -966,8 +966,8 @@ msgstr ""
 msgid "Marginal Effects Plots"
 msgstr "Gráficas dos Efectos Marxinais"
 
-msgid "Marginal effect of %s on %s"
-msgstr "Efecto marxinal de %s sobre %s"
+msgid "Marginal effect of %1$s on %2$s"
+msgstr "Efecto marxinal de %1$s sobre %2$s"
 
 msgid "All effects are specified as nuisance"
 msgstr "Todos os efectos se indican como molestos"
