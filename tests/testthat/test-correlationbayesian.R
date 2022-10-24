@@ -190,8 +190,8 @@ test_that("Scatterplot with ranks matches", {
 #   )
 #   options$alternative <- "greater"
 #   options$priorPosteriorPlot <- TRUE
-#   options$priorPosteriorPlotAddEstimationInfo <- TRUE
-#   options$priorPosteriorPlotAddTestingInfo <- TRUE
+#   options$priorPosteriorPlotAdditionalEstimationInfo <- TRUE
+#   options$priorPosteriorPlotAdditionalTestingInfo <- TRUE
 #   options$priorWidth <- "1"
 #
 #   set.seed(1)
