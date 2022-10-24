@@ -1,322 +1,331 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-10-25 08:08+0000\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/ru/>\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr ""
+msgstr "Регрессия"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr ""
+msgstr "Классическая регрессия"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "Корреляционный анализ"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "Линейная регрессия"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "Логистическая регрессия"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr ""
+msgstr "Байесовский"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr ""
+msgstr "Байесовская корреляционный анализ"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "Байесовская линейная регрессия"
 
 msgctxt "Correlation|"
 msgid "Variables"
-msgstr ""
+msgstr "Переменные"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
-msgstr ""
+msgstr "Выборочный коэффициент корреляции"
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr ""
+msgstr "r Пирсона"
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Ро Спирмена"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "Тау-б Кендалла"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Дополнительные опции"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
-msgstr ""
+msgstr "Отобразить корреляции попарно"
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr ""
+msgstr "Отобразить уровни значимости"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
-msgstr ""
+msgstr "Пометить значимые корреляции"
 
 msgctxt "Correlation|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Доверительные интервалы"
 
 msgctxt "Correlation|"
 msgid "Interval"
-msgstr ""
+msgstr "Интервал"
 
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr ""
+msgstr "Максимальное p-отношение Вовк-Селлке"
 
 msgctxt "Correlation|"
 msgid "Sample size"
-msgstr ""
+msgstr "Размер выборки"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Альт. гипотеза"
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr ""
+msgstr "Коррелированный"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Коррелирует положительно"
 
 msgctxt "Correlation|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Коррелирует отрицательно"
 
 msgctxt "Correlation|"
 msgid "Plots"
-msgstr ""
+msgstr "Графики"
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
-msgstr ""
+msgstr "Диаграммы рассеяния"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "Плотности для переменных"
 
 msgctxt "Correlation|"
 msgid "Statistics"
-msgstr ""
+msgstr "Статистики"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "Интервалы прогнозирования"
 
 msgctxt "Correlation|"
 msgid "Heatmap"
-msgstr ""
+msgstr "Теплая карта"
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
-msgstr ""
+msgstr "Проверка допущений"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr ""
+msgstr "Многомерная нормальность"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr ""
+msgstr "Шапиро"
 
 msgctxt "Correlation|"
 msgid "Royston"
-msgstr ""
+msgstr "Ройстон"
 
 msgctxt "Correlation|"
 msgid "Mardia"
-msgstr ""
+msgstr "Мардия"
 
 msgctxt "Correlation|"
 msgid "Energy"
-msgstr ""
+msgstr "Энергия"
 
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
-msgstr ""
+msgstr "Проверка парной нормальности"
 
 msgctxt "Correlation|"
 msgid "Options"
-msgstr ""
+msgstr "Параметры"
 
 msgctxt "Correlation|"
 msgid "Means and standard deviations"
-msgstr ""
+msgstr "Средние значения и стандартные отклонения"
 
 msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances"
-msgstr ""
+msgstr "Отклонения перекрестного произведения и ковариации"
 
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr ""
+msgstr "Пропущенные значения"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Исключить случаи попарно"
 
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Исключить случаи целиком"
 
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
-msgstr ""
+msgstr "Генеральный коэффициент корреляции"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
-msgstr ""
+msgstr "Ро Пирсона"
 
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Ро Спирмена"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "Тау-б Кендалла"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Дополнительные опции"
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr ""
+msgstr "Показать таблицу парных корреляций"
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr ""
+msgstr "Отобразить факторы Байеса"
 
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
-msgstr ""
+msgstr "Пометить поддерживаемые корреляции"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
-msgstr ""
+msgstr "Размер выборки"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
-msgstr ""
+msgstr "Постериорная медиана"
 
 msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
-msgstr ""
+msgstr "Достоверные интервалы"
 
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
-msgstr ""
+msgstr "Интервал"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Альт. гипотеза"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
-msgstr ""
+msgstr "Коррелированный"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Коррелирует положительно"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Коррелирует отрицательно"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "Графики"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Корреляционная матрица"
 
 msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "Плотности для переменных"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
-msgstr ""
+msgstr "Постериорные вероятности под H₁"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "Предшествующий"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "Растянутая ширина бета-предшественника"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Plot Individual Pairs"
-msgstr ""
+msgstr "Графики индивидуальных пар"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation coefficient to plot"
-msgstr ""
+msgstr "Коэффициент корреляции к графику"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau"
-msgstr ""
+msgstr "Тау Кендалла"
 
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
-msgstr ""
+msgstr "Диаграмма рассеяния"
 
 msgctxt "CorrelationBayesian|"
 msgid "Robustness check"
-msgstr ""
+msgstr "Проверка робастности (устойчивости)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior and posterior"
-msgstr ""
+msgstr "Априорный и апостериорный"
 
 msgctxt "CorrelationBayesian|"
 msgid "Estimation info"
-msgstr ""
+msgstr "Информация об оценке"
 
 msgctxt "CorrelationBayesian|"
 msgid "Testing info"
-msgstr ""
+msgstr "Информация о результатах тестирования"
 
 msgctxt "CorrelationBayesian|"
 msgid "Bayes factor robustness check"
-msgstr ""
+msgstr "Проверка робастности коэффициента Байеса"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional info"
-msgstr ""
+msgstr "Дополнительная информация"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sequential analysis"
-msgstr ""
+msgstr "Последовательный анализ"
 
 msgctxt "CorrelationBayesian|"
 msgid "Options"
-msgstr ""
+msgstr "Параметры"
 
 msgctxt "CorrelationBayesian|"
 msgid "Missing Values"
