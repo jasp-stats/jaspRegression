@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-10-08 03:16\n"
-"PO-Revision-Date: 2022-10-23 11:33+0000\n"
+"PO-Revision-Date: 2022-10-25 08:07+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -26,13 +26,13 @@ msgid "Scatterplot"
 msgstr ""
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "Априорный и апостериорный"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "Проверка робастности коэффициента Байеса"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Последовательный анализ"
 
 msgid "Bayesian Pearson Correlations"
 msgstr ""
@@ -296,6 +296,10 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Максимальное значение <em>p</em> критерия Вовк-Селлке: исходя из значения "
+"<em>p</em>, максимально возможные шансы в пользу H%1$s над H%2$s равны 1/ (-"
+"e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 (Sellke, Bayarri, & "
+"Berger, 2001)."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -511,13 +515,13 @@ msgid "SE"
 msgstr "SE"
 
 msgid "Lower"
-msgstr ""
+msgstr "Нижний"
 
 msgid "%s%% CI"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
+msgstr "Верхний"
 
 msgid "t"
 msgstr ""
@@ -794,13 +798,13 @@ msgid "Maximum"
 msgstr ""
 
 msgid "Mean"
-msgstr ""
+msgstr "Среднее"
 
 msgid "SD"
 msgstr "SD"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
@@ -845,7 +849,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "Описательные статистики"
 
 msgid "H%s"
 msgstr ""
