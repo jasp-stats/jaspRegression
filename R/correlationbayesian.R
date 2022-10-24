@@ -799,7 +799,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
                                greater  = "greater",
                                less = "less")
 
-    if (isTRUE(options[["priorPosteriorPlotAddEstimationInfo"]])) {
+    if (isTRUE(options[["priorPosteriorPlotAdditionalEstimationInfo"]])) {
       if (postPlotValues[["ciValue"]] != options[["ciLevel"]]) {
         if (purpose=="pairs") {
           methodName <- options[["pairsMethod"]]
@@ -824,7 +824,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
       CRItxt <- gettextf("%s%% CI:", ciLevel * 100)
     }
 
-    if (isTRUE(options[["priorPosteriorPlotAddTestingInfo"]])) {
+    if (isTRUE(options[["priorPosteriorPlotAdditionalTestingInfo"]])) {
       dfPoints <- data.frame(
         x = c(postPlotValues[["h0"]], postPlotValues[["h0"]]),
         y = c(postPlotValues[["priorAtH0"]], postPlotValues[["posteriorAtH0"]]),
@@ -913,15 +913,15 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
   bfPlotPriorPosteriorDependencies <- c("pairsMethod", "priorWidth", "alternative", "setSeed", "seed")
   bfPlotDependencies <- c(bfPlotPriorPosteriorDependencies, "bayesFactorType")
 
-  if (options[["priorPosteriorPlot"]] && options[["priorPosteriorPlotAddEstimationInfo"]])
+  if (options[["priorPosteriorPlot"]] && options[["priorPosteriorPlotAdditionalEstimationInfo"]])
     bfPlotPriorPosteriorDependencies <- c(bfPlotPriorPosteriorDependencies, "ciLevel")
 
   plotItemDependencies <- list(
-    "scatterPlot"=c("scatterPlot", "scatterPlotAddInfo", "pairsMethod"),
+    "scatterPlot"=c("scatterPlot", "scatterPlotAdditionalInfo", "pairsMethod"),
     "priorPosteriorPlot"=c("priorPosteriorPlot", bfPlotPriorPosteriorDependencies,
-                           "priorPosteriorPlotAddTestingInfo", "priorPosteriorPlotAddEstimationInfo"),
-    "bfRobustnessPlot"=c("bfRobustnessPlot", "bfRobustnessPlotAddInfo", bfPlotDependencies),
-    "bfSequentialPlot"=c("bfSequentialPlot", "bfSequentialPlotAddInfo", bfPlotDependencies)
+                           "priorPosteriorPlotAdditionalTestingInfo", "priorPosteriorPlotAdditionalEstimationInfo"),
+    "bfRobustnessPlot"=c("bfRobustnessPlot", "bfRobustnessPlotAdditionalInfo", bfPlotDependencies),
+    "bfSequentialPlot"=c("bfSequentialPlot", "bfSequentialPlotAdditionalInfo", bfPlotDependencies)
   )
 
   pairs <- options[["variablePairs"]]
@@ -1056,7 +1056,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
                                greater  = "greater",
                                less = "less")
 
-    if (isTRUE(options[["bfRobustnessPlotAddInfo"]])) {
+    if (isTRUE(options[["bfRobustnessPlotAdditionalInfo"]])) {
       maxBf <- robustnessValues[["robustnessMaxBf"]]
       kappaOfMaxBf <- robustnessValues[["robustnessKappaOfMaxBf"]]
       userBf <- bfObject[[alternativeLocal]][["bf"]]
@@ -1207,7 +1207,7 @@ CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
                                greater  = "greater",
                                less = "less")
 
-    if (options[["bfSequentialPlotAddInfo"]]) {
+    if (options[["bfSequentialPlotAdditionalInfo"]]) {
       BF <- bfObject[[alternativeLocal]][["bf"]]
       BF <- .recodeBFtype(BF, newBFtype = bfType, oldBFtype = "BF10")
     }

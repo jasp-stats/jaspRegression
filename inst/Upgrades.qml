@@ -249,6 +249,26 @@ Upgrades
 		}
 	}
 
+    Upgrade
+    {
+        functionName:		"CorrelationBayesian"
+        fromVersion:		"0.16.4"
+        toVersion:			"0.17.0"
+
+        // Pairs Plots - Scatter plots
+        ChangeRename { from: "scatterPlotAddInfo";						to: "scatterPlotAdditionalInfo"                     }
+
+        // Pairs Plots - Prior posterior plots
+        ChangeRename { from: "priorPosteriorPlotAddEstimationInfo";     to: "priorPosteriorPlotAdditionalEstimationInfo"	}
+        ChangeRename { from: "priorPosteriorPlotAddTestingInfo";		to: "priorPosteriorPlotAdditionalTestingInfo"		}
+
+        // Pairs Plots - Robustness plots
+        ChangeRename { from: "bfRobustnessPlotAddInfo";					to: "bfRobustnessPlotAdditionalInfo"				}
+
+        // Pairs Plots - Sequential plots
+        ChangeRename { from: "bfSequentialPlotAddInfo";					to: "bfSequentialPlotAdditionalInfo"				}
+    }
+
 	Upgrade
 	{
 		functionName:		"RegressionLinear"
