@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-10-08 03:16\n"
-"PO-Revision-Date: 2022-10-25 08:07+0000\n"
+"PO-Revision-Date: 2022-10-26 00:31+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -77,7 +77,7 @@ msgid "Kendall"
 msgstr ""
 
 msgid "Density"
-msgstr ""
+msgstr "Плотность"
 
 msgid "Plotting not possible: Number of observations is < 3"
 msgstr ""
@@ -107,7 +107,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -243,7 +243,7 @@ msgid "Scatter plots"
 msgstr ""
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "Корреляционный график"
 
 msgid "Correlation undefined: %s"
 msgstr ""
@@ -262,7 +262,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "Невозможно построить график: %s"
 
 msgid "Partial Pearson's r"
 msgstr ""
@@ -277,7 +277,7 @@ msgid "%s heatmap"
 msgstr ""
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "Теплые карты"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr ""
@@ -325,14 +325,16 @@ msgstr ""
 msgid "Could not compute the posteriors"
 msgstr ""
 
+#, fuzzy
 msgid "Prior"
-msgstr ""
+msgstr "Приор"
 
+#, fuzzy
 msgid "Posterior"
-msgstr ""
+msgstr "Постериор"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "%s%% CI:"
 
 msgid "Bayesian Correlation Pairwise Plots"
 msgstr ""
@@ -343,8 +345,9 @@ msgstr ""
 msgid "%s at kappa==%s"
 msgstr ""
 
+#, fuzzy
 msgid "user prior"
-msgstr ""
+msgstr "пользовательский приор"
 
 msgid "Stretched beta prior width"
 msgstr ""
@@ -410,7 +413,7 @@ msgid "Model Fit"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Статистика"
 
 msgid "Coefficients"
 msgstr ""
@@ -524,10 +527,10 @@ msgid "Upper"
 msgstr "Верхний"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
 msgstr ""
@@ -685,13 +688,13 @@ msgid "Mean Square"
 msgstr ""
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "Итого"
 
 msgid "Unstandardized"
 msgstr ""
@@ -792,10 +795,10 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "Минимум"
 
 msgid "Maximum"
-msgstr ""
+msgstr "Максимум"
 
 msgid "Mean"
 msgstr "Среднее"
@@ -861,7 +864,7 @@ msgid "Standardized Residuals"
 msgstr ""
 
 msgid "Theoretical Quantiles"
-msgstr ""
+msgstr "Теоретические квантили"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -1035,7 +1038,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "К-К график"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
