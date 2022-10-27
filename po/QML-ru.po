@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-10-25 08:08+0000\n"
+"PO-Revision-Date: 2022-10-28 15:08+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/ru/>\n"
@@ -19,7 +19,7 @@ msgstr "Регрессия"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr "Классическая регрессия"
+msgstr "Классический анализ"
 
 msgctxt "Description|"
 msgid "Correlation"
@@ -35,7 +35,7 @@ msgstr "Логистическая регрессия"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr "Байесовский"
+msgstr "Байесовский анализ"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
