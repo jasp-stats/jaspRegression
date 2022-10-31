@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-10-08 03:16\n"
-"PO-Revision-Date: 2022-10-04 08:15+0000\n"
-"Last-Translator: Daria Omelchenko <dariaomelchenko2110@gmail.com>\n"
+"PO-Revision-Date: 2022-10-26 00:31+0000\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
 "Language: ru\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.14.2-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -26,13 +26,13 @@ msgid "Scatterplot"
 msgstr ""
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "Априорный и апостериорный"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "Проверка робастности коэффициента Байеса"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Последовательный анализ"
 
 msgid "Bayesian Pearson Correlations"
 msgstr ""
@@ -68,7 +68,7 @@ msgid "Kendall's tau B"
 msgstr ""
 
 msgid "Pearson"
-msgstr ""
+msgstr "Пирсона"
 
 msgid "Spearman"
 msgstr ""
@@ -77,7 +77,7 @@ msgid "Kendall"
 msgstr ""
 
 msgid "Density"
-msgstr ""
+msgstr "Плотность"
 
 msgid "Plotting not possible: Number of observations is < 3"
 msgstr ""
@@ -107,7 +107,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -190,7 +190,7 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "VS-MPR"
 msgstr ""
@@ -231,7 +231,7 @@ msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "Критерий Шапиро-Уилка"
 
 msgid "Variables"
 msgstr ""
@@ -243,7 +243,7 @@ msgid "Scatter plots"
 msgstr ""
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "Корреляционный график"
 
 msgid "Correlation undefined: %s"
 msgstr ""
@@ -262,7 +262,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "Невозможно построить график: %s"
 
 msgid "Partial Pearson's r"
 msgstr ""
@@ -277,7 +277,7 @@ msgid "%s heatmap"
 msgstr ""
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "Теплые карты"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr ""
@@ -296,6 +296,10 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Максимальное значение <em>p</em> критерия Вовк-Селлке: исходя из значения "
+"<em>p</em>, максимально возможные шансы в пользу H%1$s над H%2$s равны 1/ (-"
+"e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 (Sellke, Bayarri, & "
+"Berger, 2001)."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -321,14 +325,16 @@ msgstr ""
 msgid "Could not compute the posteriors"
 msgstr ""
 
+#, fuzzy
 msgid "Prior"
-msgstr ""
+msgstr "Приор"
 
+#, fuzzy
 msgid "Posterior"
-msgstr ""
+msgstr "Постериор"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "%s%% CI:"
 
 msgid "Bayesian Correlation Pairwise Plots"
 msgstr ""
@@ -339,8 +345,9 @@ msgstr ""
 msgid "%s at kappa==%s"
 msgstr ""
 
+#, fuzzy
 msgid "user prior"
-msgstr ""
+msgstr "пользовательский приор"
 
 msgid "Stretched beta prior width"
 msgstr ""
@@ -397,7 +404,7 @@ msgid "BIC"
 msgstr ""
 
 msgid "df"
-msgstr ""
+msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s"
 msgstr ""
@@ -406,7 +413,7 @@ msgid "Model Fit"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Статистика"
 
 msgid "Coefficients"
 msgstr ""
@@ -496,7 +503,7 @@ msgid "Multicollinearity Diagnostics"
 msgstr ""
 
 msgid "Tolerance"
-msgstr ""
+msgstr "Толерантность"
 
 msgid "VIF"
 msgstr ""
@@ -508,22 +515,22 @@ msgid "Estimated Marginal Means"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Lower"
-msgstr ""
+msgstr "Нижний"
 
 msgid "%s%% CI"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
+msgstr "Верхний"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
 msgstr ""
@@ -553,7 +560,7 @@ msgid "P-values are not adjusted."
 msgstr ""
 
 msgid "Holm"
-msgstr ""
+msgstr "Холм"
 
 msgid "Homel"
 msgstr ""
@@ -565,7 +572,7 @@ msgid "Multivariate-t"
 msgstr ""
 
 msgid "Tukey"
-msgstr ""
+msgstr "Тьюки"
 
 msgid "Benjamini-Hochberg"
 msgstr ""
@@ -574,13 +581,13 @@ msgid "Benjamini-Yekutieli"
 msgstr ""
 
 msgid "Scheffé"
-msgstr ""
+msgstr "Шеффе"
 
 msgid "Sidak"
 msgstr ""
 
 msgid "Dunnett"
-msgstr ""
+msgstr "Даннетт"
 
 msgid "Bonferroni"
 msgstr "Бонферрони"
@@ -672,7 +679,7 @@ msgid "No covariate could be entered in the model"
 msgstr ""
 
 msgid "ANOVA"
-msgstr ""
+msgstr "Дисперсионный анализ"
 
 msgid "Sum of Squares"
 msgstr ""
@@ -681,13 +688,13 @@ msgid "Mean Square"
 msgstr ""
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "Итого"
 
 msgid "Unstandardized"
 msgstr ""
@@ -782,25 +789,25 @@ msgid "Predicted Value"
 msgstr ""
 
 msgid "Cook's Distance"
-msgstr ""
+msgstr "Расстояние Кука"
 
 msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "Минимум"
 
 msgid "Maximum"
-msgstr ""
+msgstr "Максимум"
 
 msgid "Mean"
-msgstr ""
+msgstr "Среднее"
 
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
@@ -845,7 +852,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "Описательные статистики"
 
 msgid "H%s"
 msgstr ""
@@ -857,7 +864,7 @@ msgid "Standardized Residuals"
 msgstr ""
 
 msgid "Theoretical Quantiles"
-msgstr ""
+msgstr "Теоретические квантили"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -1031,7 +1038,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "К-К график"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
