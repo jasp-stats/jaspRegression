@@ -830,7 +830,7 @@ msgstr "逐步選取法"
 
 msgctxt "RegressionLogistic|"
 msgid "Covariates"
-msgstr "共變數(為連續變數的預測變項)"
+msgstr "共變數(為連續變數的預測變數)"
 
 msgctxt "RegressionLogistic|"
 msgid "Factors"
