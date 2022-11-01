@@ -316,12 +316,16 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (options[["otherGlmModel"]] == "firthLogistic") {
     dev <- modelObj[["loglik"]]["full"]*-2
     pearsonResid <- (modelObj[['y']] - modelObj[["predict"]])/sqrt(modelObj[["predict"]]*(1-modelObj[["predict"]]))
-    pearson <- sum(pearsonRes^2)
+    pearson <- sum(pearsonResid^2)
     dof <- modelObj[["n"]] - modelObj[["df"]]
 
   } else {
+
+    if (options[["family"]] == "other")
+      pearson <- sum(VGAM::residuals(modelObj, type = "pearson")^2)
+    else
+      pearson <- sum(residuals(modelObj, type = "pearson")^2)
     dev <- deviance(modelObj)
-    pearson <- sum(resid(modelObj, type = "pearson")^2)
     dof <- df.residual(modelObj)
   }
 
@@ -394,7 +398,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   fullModel <- glmModels[["fullModel"]]
 
   if ((options[["family"]] == "other") & (options[["otherGlmModel"]] %in% c("multinomialLogistic", "ordinalLogistic")))
-    modelSummary <- coef(summaryvglm(fullModel))
+    modelSummary <- VGAM::coef(VGAM::summaryvglm(fullModel))
 
   if (options[["otherGlmModel"]] == "firthLogistic")
     modelSummary <- cbind(coef(fullModel), sqrt(diag(fullModel$var)), qchisq(1 - fullModel$prob, 1), fullModel$prob)
@@ -437,7 +441,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   if (options[["otherGlmModel"]] == "ordinalLogistic") {
     dv      <- options$dependent
     dvLevels <- paste(paste(seq(1, length(dv)), levels(dataset[[dv]]), sep = ":"), collapse = ", ")
-    linearPredictors <- paste(summaryvglm(fullModel)@misc$predictors.names, collapse = ", ")
+    linearPredictors <- paste(VGAM::summaryvglm(fullModel)@misc$predictors.names, collapse = ", ")
 
     jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. Linear predictors: %3$s.", dv, dvLevels, linearPredictors))
   }
