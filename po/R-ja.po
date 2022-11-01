@@ -261,8 +261,8 @@ msgstr "相関のプロット"
 msgid "Correlation undefined: %s"
 msgstr "相関関係が未定義です: %s"
 
-msgid "%s%% CI: [%s, %s]"
-msgstr "%s%% CI: [%s, %s]"
+msgid "%1$s%% CI: [%2$s, %3$s]"
+msgstr "%1$s%% CI: [%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
@@ -358,8 +358,8 @@ msgstr "ベイズ相関のペアワイズプロット"
 msgid "max %s"
 msgstr "最大%s"
 
-msgid "%s at kappa==%s"
-msgstr "カッパ係数==%s における%s"
+msgid "%1$s at kappa==%2$s"
+msgstr "カッパ係数==%1$s における%2$s"
 
 msgid "user prior"
 msgstr "ユーザー事前分布"
@@ -940,7 +940,7 @@ msgstr "切片モデルのみで、意味のある情報を表示することは
 msgid "Marginal Effects Plots"
 msgstr "周辺効果量プロット"
 
-msgid "Marginal effect of %s on %s"
+msgid "Marginal effect of %1$s on %2$s"
 msgstr "%2$sに対する%1$sの周辺効果"
 
 msgid "All effects are specified as nuisance"

@@ -1052,7 +1052,7 @@ Correlation <- function(jaspResults, dataset, options){
       upper.ci <- res[[tests[i]]][['upper.ci']]
       upper.ci <- formatC(upper.ci, format = "f", digits = 3)
 
-      cilab[i] <- gettextf("%s%% CI: [%s, %s]", 100*options$ciLevel, lower.ci, upper.ci)
+      cilab[i] <- gettextf("%1$s%% CI: [%2$s, %3$s]", 100*options$ciLevel, lower.ci, upper.ci)
     } else{
       cilab[i] <- ""
     }

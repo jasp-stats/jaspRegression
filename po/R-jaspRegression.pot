@@ -232,7 +232,7 @@ msgstr ""
 msgid "Correlation undefined: %s"
 msgstr ""
 
-msgid "%s%% CI: [%s, %s]"
+msgid "%1$s%% CI: [%2$s, %3$s]"
 msgstr ""
 
 msgid "Plotting not possible:\n Number of observations is < 3"
@@ -307,7 +307,7 @@ msgstr ""
 msgid "max %s"
 msgstr ""
 
-msgid "%s at kappa==%s"
+msgid "%1$s at kappa==%2$s"
 msgstr ""
 
 msgid "user prior"
@@ -826,7 +826,7 @@ msgstr ""
 msgid "Marginal Effects Plots"
 msgstr ""
 
-msgid "Marginal effect of %s on %s"
+msgid "Marginal effect of %1$s on %2$s"
 msgstr ""
 
 msgid "All effects are specified as nuisance"
