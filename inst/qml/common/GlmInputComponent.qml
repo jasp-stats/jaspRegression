@@ -24,6 +24,7 @@ import JASP				1.0
 
 // All Analysis forms must be built with the From QML item
 Group {
+	property bool otherFamilyNotSelected: family.currentValue !== "other"
 
 	VariablesForm
 	{
@@ -89,7 +90,8 @@ Group {
 				{ label: qsTr("Gaussian"),				value: "gaussian"},
 				{ label: qsTr("Gamma"),					value: "gamma"},
 				{ label: qsTr("Inverse Gaussian"),		value: "inverseGaussian"},
-				{ label: qsTr("Poisson"),				value: "poisson"}
+				{ label: qsTr("Poisson"),				value: "poisson"},
+				{ label: qsTr("Other"),				    value: "other"}
 			]
 
 			property var familyMap:
@@ -132,6 +134,7 @@ Group {
 			name:					"link"
 			title:					qsTr("Link")
 			radioButtonsOnSameRow:	true
+			visible:                family.currentValue !== "other"
 
 			RadioButton
 			{
@@ -204,6 +207,21 @@ Group {
 				visible:	family.familyMap[family.currentValue].includes(value)
 				checked:	family.familyDefault[family.currentValue] === "1/mu^2"
 			}
+		}
+
+		DropDown
+		{
+			name:				"otherGlmModel"
+			label:				qsTr("Model")
+			id:					otherGlmModel
+			visible:            family.currentValue === "other"
+			indexDefaultValue:	0
+			values:
+				[
+				{ label: qsTr("Multinomial Logistic Regression"),		value: "multinomialLogistic"},
+				{ label: qsTr("Ordinal Logistic Regression"),	        value: "ordinalLogistic"},
+				{ label: qsTr("Firth Logistic Regression"),				value: "firthLogistic"}
+			]
 		}
 	}
 }

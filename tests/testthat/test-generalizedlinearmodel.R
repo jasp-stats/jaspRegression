@@ -360,3 +360,97 @@ test_that("Intercept-only binomial regression results match", {
   jaspTools::expect_equal_tables(table, list("(Intercept)", -1.1235, 0.1118, -10.05, .000, -1.347, -0.9082))
 
 })
+
+
+# test multinomial logistic regression
+test_that("Multinomial logistic regression results match", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$covariates <- c("contNormal")
+  options$dependent  <- "facFive"
+  options$modelTerms <- list(
+    list(components="contNormal", isNuisance=FALSE)
+  )
+  options$devianceGoodnessOfFit <- TRUE
+  options$pearsonGoodnessOfFit  <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiLevel <- 0.95
+  options$family     <- "other"
+  options$otherGlmModel <- "multinomialLogistic"
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
+  table <- results[["results"]][["estimatesTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(-0.694719007279079, 0.582071603027983, -0.0563237021255478, "(Intercept)<unicode><unicode><unicode>1",
+                                             0.862712942200181, 0.325717875526852, -0.172921741044895, -0.717808103822768,
+                                             0.570581627970062, -0.0736132379263526, "(Intercept)<unicode><unicode><unicode>2",
+                                             0.822781889719081, 0.328676889462124, -0.223968402666886, -0.630295504485506,
+                                             0.614094914233988, -0.00810029512575909, "(Intercept)<unicode><unicode><unicode>3",
+                                             0.979642932998874, 0.317452368649396, -0.0255165685492343, -0.704151601955603,
+                                             0.577382116241445, -0.0633847428570791, "(Intercept)<unicode><unicode><unicode>4",
+                                             0.84626992424874, 0.326927874263411, -0.19387989782116, -0.930384360212812,
+                                             0.29749919990225, -0.316442580155281, "contNormal<unicode><unicode><unicode>1",
+                                             0.312390059031085, 0.313241357953628, -1.01021966646603, -0.98463420118505,
+                                             0.256038172468671, -0.364298014358189, "contNormal<unicode><unicode><unicode>2",
+                                             0.249729558435057, 0.31650387033639, -1.15100650734856, -0.439350709251133,
+                                             0.681154160098849, 0.120901725423858, "contNormal<unicode><unicode><unicode>3",
+                                             0.67232619342689, 0.285848331445981, 0.422957604168159, -0.953382729130251,
+                                             0.279941825642027, -0.336720451744112, "contNormal<unicode><unicode><unicode>4",
+                                             0.284523464240265, 0.314629392300212, -1.07021295525633))
+
+})
+
+
+# test ordinal logistic regression
+test_that("Ordinal logistic regression results match", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$covariates <- c("contNormal")
+  options$dependent  <- "facFive"
+  options$modelTerms <- list(
+    list(components="contNormal", isNuisance=FALSE)
+  )
+  options$devianceGoodnessOfFit <- TRUE
+  options$pearsonGoodnessOfFit  <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiLevel <- 0.95
+  options$family     <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
+  table <- results[["results"]][["estimatesTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(-1.92119305349926, -0.925351795497781, -1.42327242449852, "(Intercept)<unicode><unicode><unicode>1",
+                                             2.11374210463909e-08, 0.254045805396564, -5.60242442215016,
+                                             -0.840434215981626, -0.0264133113280063, -0.433423763654816,
+                                             "(Intercept)<unicode><unicode><unicode>2", 0.036873889007028,
+                                             0.207662209886129, -2.08715761954225, -0.0234567208898863, 0.78657180442429,
+                                             0.381557541767202, "(Intercept)<unicode><unicode><unicode>3",
+                                             0.0648267301248355, 0.206643727054063, 1.84645112245472, 0.871446124139646,
+                                             1.8561073410799, 1.36377673260977, "(Intercept)<unicode><unicode><unicode>4",
+                                             5.66124127361787e-08, 0.251193701697361, 5.42918362759291, -0.491644444603388,
+                                             0.170180146671655, -0.160732148965867, "contNormal", 0.341095881967457,
+                                             0.168835906296093, -0.952002168803985))
+
+})
+
+
+# test firth logistic regression
+test_that("Firth logistic regression results match", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$covariates <- c("contNormal")
+  options$dependent  <- "facGender"
+  options$modelTerms <- list(
+    list(components="contNormal", isNuisance=FALSE)
+  )
+  options$devianceGoodnessOfFit <- TRUE
+  options$pearsonGoodnessOfFit  <- TRUE
+  options$coefficientCi <- TRUE
+  options$coefficientCiLevel <- 0.95
+  options$family     <- "other"
+  options$otherGlmModel <- "firthLogistic"
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
+  table <- results[["results"]][["estimatesTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(-0.321648430817825, 0.49637552658174, 0.0833656241411372, "(Intercept)",
+                                             0.687684018886119, 0.207349730577828, 0.161604008071805, 0.0438031690299891,
+                                             0.864979794866346, 0.429594461170132, "contNormal", 0.0283926079313983,
+                                             0.205791561077245, 4.80406875037797))
+
+})
