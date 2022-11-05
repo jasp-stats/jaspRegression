@@ -510,13 +510,13 @@ msgid "SE"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "下界"
 
 msgid "%s%% CI"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
+msgstr "上界"
 
 msgid "t"
 msgstr ""
@@ -1178,3 +1178,12 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] ""
 msgstr[1] ""
+
+msgid "%s%% CI: [%s, %s]"
+msgstr ""
+
+msgid "%s at kappa==%s"
+msgstr ""
+
+msgid "Marginal effect of %s on %s"
+msgstr ""
