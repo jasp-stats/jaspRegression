@@ -24,7 +24,7 @@ import JASP				1.0
 
 // All Analysis forms must be built with the From QML item
 Group {
-	property bool otherFamilyNotSelected: family.currentValue !== "other"
+	property bool otherFamilyNotSelected: family.currentValue !== "other";
 
 	VariablesForm
 	{
@@ -39,7 +39,7 @@ Group {
 		{
 			name:				"dependent"
 			title:				qsTr("Dependent variable")
-			allowedColumns:		["scale","ordinal", "nominal", "nominalText"]
+			allowedColumns:		["scale", "ordinal", "nominal", "nominalText"]
 			singleVariable:		true
 		}
 

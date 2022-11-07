@@ -189,10 +189,15 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     glmModels <- .glmComputeModel(jaspResults, dataset, options)
     hasNuisance <- .hasNuisance(options)
     if (hasNuisance) {
-      terms <- rownames(coef(summary(glmModels[["nullModel"]])))
-      terms <- jaspBase::gsubInteractionSymbol(terms[terms!="(Intercept)"])
-      message <- gettextf("Null model contains nuisance parameters: %s",
-                          paste(terms, collapse = ", "))
+      if ((options[["family"]] == "other") & (options[["otherGlmModel"]] %in% c("multinomialLogistic", "ordinalLogistic")))
+        termsNullModel <- rownames(VGAM::coef(VGAM::summaryvglm(glmModels[["nullModel"]])))
+      else if (options[["otherGlmModel"]] == "firthLogistic")
+        termsNullModel <- names(coef((glmModels[["nullModel"]])))
+      else
+        termsNullModel <- rownames(coef(summary(glmModels[["nullModel"]])))
+      nuisanceTerms <- jaspBase::gsubInteractionSymbol(termsNullModel[!grepl("(Intercept)", termsNullModel, fixed = TRUE)])
+      message <- gettextf("Null model contains nuisance parameters: %s.",
+                          paste(nuisanceTerms, collapse = ", "))
       jaspResults[["modelSummary"]]$addFootnote(message)
     }
 
@@ -223,17 +228,17 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
         pValue       <- 1 - pchisq(chiValue, glmModels[["fullModel"]][["df"]])
       }
       else {
-        devNullModel <- deviance(glmModels[["nullModel"]])
-        aicNullModel <- AIC(glmModels[["nullModel"]])
-        bicNullModel <- BIC(glmModels[["nullModel"]])
-        dofNullModel <- df.residual(glmModels[["nullModel"]])
+        devNullModel <- VGAM::deviance(glmModels[["nullModel"]])
+        aicNullModel <- VGAM::AIC(glmModels[["nullModel"]])
+        bicNullModel <- VGAM::BIC(glmModels[["nullModel"]])
+        dofNullModel <- VGAM::df.residual(glmModels[["nullModel"]])
 
-        devFullModel <- deviance(glmModels[["fullModel"]])
-        aicFullModel <- AIC(glmModels[["fullModel"]])
-        bicFullModel <- BIC(glmModels[["fullModel"]])
-        dofFullModel <- df.residual(glmModels[["fullModel"]])
+        devFullModel <- VGAM::deviance(glmModels[["fullModel"]])
+        aicFullModel <- VGAM::AIC(glmModels[["fullModel"]])
+        bicFullModel <- VGAM::BIC(glmModels[["fullModel"]])
+        dofFullModel <- VGAM::df.residual(glmModels[["fullModel"]])
 
-        anovaRes     <- anova(glmModels[["nullModel"]], glmModels[["fullModel"]], type = 1)
+        anovaRes     <- VGAM::anova.vglm(glmModels[["nullModel"]], glmModels[["fullModel"]], type = 1)
         chiValue     <- devNullModel - devFullModel
         pValue       <- anovaRes[["Pr(>Chi)"]][[2]]
       }

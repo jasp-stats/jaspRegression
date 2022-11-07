@@ -89,22 +89,22 @@
       fullModel <- VGAM::vglm(ff,
                               family = VGAM::multinomial(),
                               data = dataset,
-                              weights = .getWeightVariable(options$weights))
+                              weights = eval(.getWeightVariable(options$weights)))
       nullModel <- VGAM::vglm(nf,
                               family = VGAM::multinomial(),
                               data = dataset,
-                              weights = .getWeightVariable(options$weights))
+                              weights = eval(.getWeightVariable(options$weights)))
     }
 
     if (options$otherGlmModel == "ordinalLogistic") {
       fullModel <- VGAM::vglm(ff,
                               family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
                               data = dataset,
-                              weights = .getWeightVariable(options$weights))
+                              weights = eval(.getWeightVariable(options$weights)))
       nullModel <- VGAM::vglm(nf,
                               family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
                               data = dataset,
-                              weights = .getWeightVariable(options$weights))
+                              weights = eval(.getWeightVariable(options$weights)))
     }
 
     if (options$otherGlmModel == "firthLogistic") {
@@ -112,12 +112,12 @@
                                     data = dataset,
                                     pl = TRUE,
                                     firth = TRUE,
-                                    weights = .getWeightVariable(options$weights))
+                                    weights = eval(.getWeightVariable(options$weights)))
       nullModel <- logistf::logistf(nf,
                                     data = dataset,
                                     pl = TRUE,
                                     firth = TRUE,
-                                    weights = .getWeightVariable(options$weights))
+                                    weights = eval(.getWeightVariable(options$weights)))
     }
   }
 
