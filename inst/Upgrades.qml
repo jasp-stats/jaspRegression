@@ -397,13 +397,13 @@ Upgrades
 		ChangeRename { from: "confusionMatrixOpt";					     to: "confusionMatrix"							            }
 		ChangeRename { from: "coeffEstimates";					         to: "coefficientEstimate"							        }
 		ChangeRename { from: "coeffEstimatesBootstrapping";				 to: "coefficientBootstrap"							        }
-		ChangeRename { from: "coeffEstimatesBootstrappingReplicates";	 to: "coefficientBootstrapSamples"						}
+		ChangeRename { from: "coeffEstimatesBootstrappingReplicates";	 to: "coefficientBootstrapSamples"						    }
 		ChangeRename { from: "stdCoeff";					             to: "coefficientStandardized"							    }
 		ChangeRename { from: "oddsRatios";					             to: "oddsRatio"							                }
 		ChangeRename { from: "coeffCI";					                 to: "coefficientCi"							            }
 		ChangeRename { from: "coeffCIInterval";					         to: "coefficientCiLevel"							        }
 		ChangeRename { from: "coeffCIOR";					             to: "coefficientCiAsOddsRatio"							    }
-		ChangeRename { from: "robustSEOpt";					             to: "robustSe"							        }
+		ChangeRename { from: "robustSEOpt";					             to: "robustSe"							                    }
 		ChangeRename { from: "VovkSellkeMPR";					         to: "vovkSellke"							                }
 		ChangeRename { from: "multicolli";					             to: "multicollinearity"							        }
 		ChangeRename { from: "Accu";					                 to: "accuracy"							                    }
