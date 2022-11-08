@@ -40,7 +40,7 @@ Form
 			]
 		}
 		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");			suggestedColumns: ["scale"]											}
-        AssignedVariablesList { name: "factors";	title: qsTr("Factors");				suggestedColumns: ["ordinal", "nominal"];itemType: "fixedFactors"	}
+		AssignedVariablesList { name: "factors";	title: qsTr("Factors");				suggestedColumns: ["ordinal", "nominal"]	                        }
 		AssignedVariablesList { name: "weights";	title: qsTr("WLS Weights (optional)"); suggestedColumns: ["scale"]; singleVariable: true; debug: true	}
 	}
 	
