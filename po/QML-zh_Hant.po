@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-08 09:33+0000\n"
+"PO-Revision-Date: 2022-11-09 04:41+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-qml/zh_Hant/>\n"
@@ -276,7 +276,7 @@ msgstr "基於H₁的事後機率"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr "事前"
+msgstr "先驗"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
@@ -685,7 +685,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "先驗"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "AIC"
