@@ -27,9 +27,9 @@
 </defs>
 <g clip-path='url(#cpMTQxLjMxfDU3MC4zNnwyMC43MXw1MDcuMDk=)'>
 <rect x='141.31' y='20.71' width='429.04' height='486.39' style='stroke-width: 10.67; stroke: none;' />
-<rect x='160.81' y='355.10' width='87.50' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #CCCCCC;' />
-<rect x='160.81' y='203.10' width='89.46' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #CCCCCC;' />
-<rect x='160.81' y='51.11' width='96.04' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: square; stroke-linejoin: miter; fill: #CCCCCC;' />
+<rect x='160.81' y='355.10' width='87.50' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCCCCC;' />
+<rect x='160.81' y='203.10' width='89.46' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCCCCC;' />
+<rect x='160.81' y='51.11' width='96.04' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCCCCC;' />
 <polyline points='550.85,324.70 550.85,203.10 ' style='stroke-width: 2.67; stroke-dasharray: 14.23,14.23; stroke-linecap: butt;' />
 <polyline points='550.85,172.70 550.85,51.11 ' style='stroke-width: 2.67; stroke-dasharray: 14.23,14.23; stroke-linecap: butt;' />
 <polyline points='550.85,476.69 550.85,355.10 ' style='stroke-width: 2.67; stroke-dasharray: 14.23,14.23; stroke-linecap: butt;' />
