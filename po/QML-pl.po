@@ -1,9 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2022-11-14 06:44+0000\n"
+"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/pl/>\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.15-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -12,7 +19,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr ""
+msgstr "Klasyczne"
 
 msgctxt "Description|"
 msgid "Correlation"
@@ -28,7 +35,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr ""
+msgstr "Bayesowski"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
@@ -180,7 +187,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Wyklucz obserwacje ze wszystkich analiz"
 
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
@@ -292,7 +299,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior and posterior"
-msgstr ""
+msgstr "Prior i posterior"
 
 msgctxt "CorrelationBayesian|"
 msgid "Estimation info"
@@ -328,7 +335,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Wyklucz obserwacje ze wszystkich analiz"
 
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
@@ -480,7 +487,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Wyklucz obserwacje ze wszystkich analiz"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases pairwise"
