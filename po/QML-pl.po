@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-11-14 06:44+0000\n"
+"PO-Revision-Date: 2022-11-24 17:46+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pl/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr ""
+msgstr "Regresja"
 
 msgctxt "Description|"
 msgid "Classical"
@@ -23,15 +23,15 @@ msgstr "Klasyczne"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "Korelacja"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "Regresja liniowa"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "Regresja logistyczna"
 
 msgctxt "Description|"
 msgid "Bayesian"
@@ -39,15 +39,15 @@ msgstr "Bayesowski"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr ""
+msgstr "Korelacja bayesowska"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "Bayesowska regresja liniowa"
 
 msgctxt "Correlation|"
 msgid "Variables"
-msgstr ""
+msgstr "Zmienne"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
@@ -55,39 +55,39 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr ""
+msgstr "r Pearsona"
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "rho Spearmana"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "tau-b Kendalla"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Dodatkowe opcje"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
-msgstr ""
+msgstr "Wyświetlaj parami"
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr ""
+msgstr "Pokaż istotność statystyczną"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
-msgstr ""
+msgstr "Oznacz korelacje istotne"
 
 msgctxt "Correlation|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Przedziały ufności"
 
 msgctxt "Correlation|"
 msgid "Interval"
-msgstr ""
+msgstr "Przedział"
 
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
@@ -95,27 +95,27 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Sample size"
-msgstr ""
+msgstr "Wielkość próby"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Hipoteza alt."
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr ""
+msgstr "Skorelowane"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Skorelowane dodatnio"
 
 msgctxt "Correlation|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Skorelowane ujemnie"
 
 msgctxt "Correlation|"
 msgid "Plots"
-msgstr ""
+msgstr "Wykresy"
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
@@ -147,15 +147,15 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr ""
+msgstr "Shapiro"
 
 msgctxt "Correlation|"
 msgid "Royston"
-msgstr ""
+msgstr "Royston"
 
 msgctxt "Correlation|"
 msgid "Mardia"
-msgstr ""
+msgstr "Mardia"
 
 msgctxt "Correlation|"
 msgid "Energy"
@@ -167,7 +167,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Options"
-msgstr ""
+msgstr "Opcje"
 
 msgctxt "Correlation|"
 msgid "Means and standard deviations"
@@ -271,7 +271,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "Prior"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
@@ -375,7 +375,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLinear|"
 msgid "Components"
@@ -399,7 +399,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "bootstraps"
-msgstr ""
+msgstr "bootstrap"
 
 msgctxt "RegressionLinear|"
 msgid "Confidence intervals"
@@ -439,7 +439,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Durbin-Watson"
-msgstr ""
+msgstr "Durbin-Watson"
 
 msgctxt "RegressionLinear|"
 msgid "Casewise diagnostics"
@@ -603,11 +603,11 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Yes, show best"
-msgstr ""
+msgstr "Tak, pokaż najlepsze"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Data"
@@ -619,7 +619,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Components"
@@ -643,7 +643,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Models"
-msgstr ""
+msgstr "Modele"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Log posterior odds"
@@ -675,15 +675,15 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "Prior"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "EB-global"
@@ -695,19 +695,19 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "g-prior"
-msgstr ""
+msgstr "g-prior"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g"
-msgstr ""
+msgstr "Hyper-g"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g-Laplace"
-msgstr ""
+msgstr "Hyper-g-Laplace"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g-n"
-msgstr ""
+msgstr "Hyper-g-n"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "alpha"
@@ -715,7 +715,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "JZS"
-msgstr ""
+msgstr "JZS"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "r scale"
@@ -731,11 +731,11 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "a"
-msgstr ""
+msgstr "a"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "b"
-msgstr ""
+msgstr "b"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Uniform"
@@ -743,27 +743,27 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Wilson"
-msgstr ""
+msgstr "Wilson"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "λ"
-msgstr ""
+msgstr "λ"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Castillo"
-msgstr ""
+msgstr "Castillo"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "u"
-msgstr ""
+msgstr "u"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Sampling Method"
@@ -771,7 +771,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "BAS"
-msgstr ""
+msgstr "BAS"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "No. models"
@@ -779,7 +779,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "MCMC"
-msgstr ""
+msgstr "MCMC"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "No. samples"
@@ -871,7 +871,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "bootstraps"
-msgstr ""
+msgstr "bootstrap"
 
 msgctxt "RegressionLogistic|"
 msgid "Standardized coefficients"
@@ -907,7 +907,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "AUC"
-msgstr ""
+msgstr "AUC"
 
 msgctxt "RegressionLogistic|"
 msgid "Sensitivity / Recall"
@@ -995,7 +995,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Pearson"
-msgstr ""
+msgstr "Pearson"
 
 msgctxt "RegressionLogistic|"
 msgid "Performance Plots"
@@ -1099,19 +1099,19 @@ msgstr ""
 
 msgctxt "EmmComponent|"
 msgid "None"
-msgstr ""
+msgstr "Żadne"
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "Zmienna zależna"
 
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
-msgstr ""
+msgstr "Współzmienne"
 
 msgctxt "GlmInputComponent|"
 msgid "Factors"
-msgstr ""
+msgstr "Czynniki"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
@@ -1119,7 +1119,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "Wagi"
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
@@ -1127,7 +1127,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
@@ -1139,7 +1139,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
@@ -1147,7 +1147,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "Poisson"
 
 msgctxt "GlmInputComponent|"
 msgid "Link"
@@ -1155,7 +1155,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
-msgstr ""
+msgstr "Logit"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
@@ -1187,7 +1187,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/mu^2"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
@@ -1207,7 +1207,7 @@ msgstr ""
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "Wykres K-K"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
@@ -1235,7 +1235,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
@@ -1267,7 +1267,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Przedziały ufności"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
@@ -1275,7 +1275,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "Pokaż przypadki odstające"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals: top"
@@ -1295,11 +1295,11 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFBETAS"
-msgstr ""
+msgstr "DFBETAS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFFITS"
-msgstr ""
+msgstr "DFFITS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Covariance ratio"
@@ -1307,7 +1307,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Cook's distance"
-msgstr ""
+msgstr "Dystans Cooka"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Leverages"
@@ -1319,15 +1319,15 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Tolerancja"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "Opcje zaawansowane"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Append columns to data"
@@ -1340,7 +1340,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "Nazwa kolumny"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residuals"
@@ -1357,7 +1357,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Współczynniki"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
@@ -1369,8 +1369,8 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Współczyniki"
 
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Współczyniki"
