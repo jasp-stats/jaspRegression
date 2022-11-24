@@ -2,58 +2,61 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2022-10-08 03:16\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-11-26 00:43+0000\n"
+"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"jasp/jaspregression-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
-msgstr ""
+msgstr "所有考驗中，對立假設是 %s為正"
 
 msgid "For all tests, the alternative hypothesis specifies that the %s is negative."
-msgstr ""
+msgstr "所有考驗中，對立假設是 %s為負"
 
 msgid "Scatterplot"
-msgstr ""
+msgstr "散佈圖"
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "先驗與後驗"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "貝氏因子穩健性檢查"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "順序分析"
 
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "貝氏皮爾森相關"
 
 msgid "Bayesian Kendall's Tau Correlations"
-msgstr ""
+msgstr "貝氏Kendall's Tau相關"
 
 msgid "Bayesian Spearman Correlations"
-msgstr ""
+msgstr "貝氏Spearman相關"
 
 msgid "Bayesian Correlation Table"
-msgstr ""
+msgstr "貝氏相關表"
 
 msgid "Pearson Correlations"
-msgstr ""
+msgstr "皮爾森相關"
 
 msgid "Kendall's Tau Correlations"
-msgstr ""
+msgstr "Kendall's Tau 相關"
 
 msgid "Spearman Correlations"
-msgstr ""
+msgstr "Spearman 相關"
 
 msgid "Correlation Table"
-msgstr ""
+msgstr "相關表"
 
 msgid "Pearson's r"
-msgstr ""
+msgstr "皮爾森r"
 
 msgid "Spearman's rho"
 msgstr ""
