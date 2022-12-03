@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-10-08 03:16\n"
+"POT-Creation-Date: 2022-12-03 02:50\n"
 "PO-Revision-Date: 2022-11-07 09:02+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -1178,12 +1178,3 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] ""
 msgstr[1] ""
-
-msgid "%s%% CI: [%s, %s]"
-msgstr ""
-
-msgid "%s at kappa==%s"
-msgstr ""
-
-msgid "Marginal effect of %s on %s"
-msgstr ""
