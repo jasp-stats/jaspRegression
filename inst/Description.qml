@@ -58,4 +58,10 @@ Description
 		title:	qsTr("Bayesian Linear Regression")
 		func:	"RegressionLinearBayesian"
 	}
+	Analysis
+	{
+		menu:	qsTr("Logistic Regression")
+		title:	qsTr("Bayesian Logistic Regression")
+		func:	"RegressionLogisticBayesian"
+	}
 }
