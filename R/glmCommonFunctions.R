@@ -54,7 +54,11 @@
 
   # make formulas for the full model and the null model
   ff <- .createGLMFormula(options, nullModel = FALSE)
+  environment(ff) <- environment()
   nf <- .createGLMFormula(options, nullModel = TRUE)
+  environment(nf) <- environment()
+
+  weights <- dataset[[options[["weights"]]]]
 
   if (options$family != "other") {
     # specify family and link
@@ -76,11 +80,11 @@
     fullModel <- stats::glm(ff,
                             family = familyLink,
                             data = dataset,
-                            weights = eval(.getWeightVariable(options$weights)))
+                            weights = weights)
     nullModel <- stats::glm(nf,
                             family = familyLink,
                             data = dataset,
-                            weights = eval(.getWeightVariable(options$weights)))
+                            weights = weights)
   }
 
   if (options$family == "other") {
@@ -89,22 +93,22 @@
       fullModel <- VGAM::vglm(ff,
                               family = VGAM::multinomial(),
                               data = dataset,
-                              weights = eval(.getWeightVariable(options$weights)))
+                              weights = weights)
       nullModel <- VGAM::vglm(nf,
                               family = VGAM::multinomial(),
                               data = dataset,
-                              weights = eval(.getWeightVariable(options$weights)))
+                              weights = weights)
     }
 
     if (options$otherGlmModel == "ordinalLogistic") {
       fullModel <- VGAM::vglm(ff,
                               family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
                               data = dataset,
-                              weights = eval(.getWeightVariable(options$weights)))
+                              weights = weights)
       nullModel <- VGAM::vglm(nf,
                               family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
                               data = dataset,
-                              weights = eval(.getWeightVariable(options$weights)))
+                              weights = weights)
     }
 
     if (options$otherGlmModel == "firthLogistic") {
@@ -112,12 +116,12 @@
                                     data = dataset,
                                     pl = TRUE,
                                     firth = TRUE,
-                                    weights = eval(.getWeightVariable(options$weights)))
+                                    weights = weights)
       nullModel <- logistf::logistf(nf,
                                     data = dataset,
                                     pl = TRUE,
                                     firth = TRUE,
-                                    weights = eval(.getWeightVariable(options$weights)))
+                                    weights = weights)
     }
   }
 
@@ -131,10 +135,6 @@
   return(glmModels)
   }
 
-.getWeightVariable <- function(weightsFromOptions) {
-  if (weightsFromOptions == "") return(NULL)
-  return(call("get", weightsFromOptions))
-}
 
 .hasNuisance <- function(options) {
   return(any(sapply(options$modelTerms, function(x) x[["isNuisance"]])))
