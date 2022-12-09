@@ -208,42 +208,64 @@ Form {
 			title: qsTr("Prior")
 
 			RadioButton { value: "aic";			label: qsTr("AIC")		}
+			RadioButton { value: "betaPrime";	label: qsTr("Beta-Prime")		}
 			RadioButton { value: "bic";			label: qsTr("BIC")		}
-			RadioButton { value: "ebGlobal";	label: qsTr("EB-global")}
 			RadioButton { value: "ebLocal";		label: qsTr("EB-local")	}
 			GridLayout
 			{
 				rowSpacing: jaspTheme.rowGroupSpacing
 				columnSpacing: 0
+				RadioButton { value: "cch"; label: qsTr("CCH"); checked: true; id: cch }
+				Group
+				{
+					DoubleField
+					{
+						name: "cchAlpha"
+						label: qsTr("alpha")
+						enabled: cch.checked
+						fieldWidth: 50
+						defaultValue: 0.5
+						min: 0
+						inclusive: JASP.MaxOnly
+					}
+					DoubleField
+					{
+						name: "cchBeta"
+						label: qsTr("beta")
+						enabled: cch.checked
+						fieldWidth: 50
+						defaultValue: 2
+						min: 0
+						inclusive: JASP.MaxOnly
+					}
+					DoubleField
+					{
+						name: "cchS"
+						label: qsTr("s")
+						enabled: cch.checked
+						fieldWidth: 50
+						defaultValue: 0
+						inclusive: JASP.None
+					}
+				}
+
 				Group
 				{
 					RadioButton { value: "gPrior";			label: qsTr("g-prior");				id: gprior			}
-					RadioButton { value: "hyperG";			label: qsTr("Hyper-g");				id: hyperg			}
-					RadioButton { value: "hyperGLaplace";	label: qsTr("Hyper-g-Laplace");		id: hyperglaplace	}
-					RadioButton { value: "hyperGN";			label: qsTr("Hyper-g-n");			id: hypergn			}
 				}
 				DoubleField
 				{
 					name: "gPriorAlpha"
 					label: qsTr("alpha")
-					enabled: gprior.checked || hyperg.checked || hyperglaplace.checked || hypergn.checked
+					enabled: gprior.checked
 					defaultValue: 3.0
 					min: 2
 					max: 4
 					inclusive: JASP.None
 				}
-				RadioButton { value: "jzs"; label: qsTr("JZS"); checked: true; id: jzs }
-				DoubleField
-				{
-					name: "jzsRScale"
-					label: qsTr("r scale")
-					enabled: jzs.checked
-					fieldWidth: 50
-					defaultValue: 0.354
-					max: 100000
-					inclusive: JASP.MaxOnly
-				}
 			}
+			RadioButton { value: "instrinsic";		label: qsTr("Instrinsic")	}
+			RadioButton { value: "robust";		label: qsTr("Robust")	}
 		}
 
 		ColumnLayout
