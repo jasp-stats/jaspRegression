@@ -85,9 +85,7 @@
                             family = familyLink,
                             data = dataset,
                             weights = weights)
-  }
-
-  if (options$family == "other") {
+  } else {
 
     if (options$otherGlmModel == "multinomialLogistic") {
       fullModel <- VGAM::vglm(ff,
