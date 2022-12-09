@@ -368,15 +368,41 @@ for sparse regression when there are more covariates than observations (Castillo
     rownames(terms) <- colnames(terms)
     effectNames <- colnames(terms)
 
+
+    #include only real model terms (excluding the factor levels)
+    termsToLookup <- .generateLookupTerms(options[["modelTerms"]])
+    inclMatColInd <- numeric()
+    for (i in seq_along(effectNames)) {
+      ind <- which(grepl(termsToLookup[[effectNames[[i]]]], colnames(inclMat)))[[1]]
+      inclMatColInd <- c(inclMatColInd, ind)
+    }
+
+    inclMat <- inclMat[, inclMatColInd]
+    colnames(inclMat) <- effectNames
+
     tmp <- jaspAnova::BANOVAcomputMatchedInclusion(
       effectNames, inclMat, terms, priorModelProbs, postModelProbs
     )
-    probne0     <- c(1 ,tmp[["postInclProb"]])
-    priorProbs  <- c(1, tmp[["priorInclProb"]])
-    BFinclusion <- c(1, tmp[["bfIncl"]])
-    priorExcl   <- c(0, tmp[["priorExclProb"]])
-    postExcl    <- c(0, tmp[["postExclProb"]])
 
+    probne0 <- priorProbs <- BFinclusion <- priorExcl <- postExcl <- numeric()
+    for (i in seq_along(effectNames)) {
+      if (i == length(effectNames))
+        nEffects <- length(bayesianLogisticRegModel$namesx) - inclMatColInd[[i]]
+      else
+        nEffects <- inclMatColInd[[i+1]] - inclMatColInd[[i]]
+
+      probne0     <- c(probne0, rep(tmp[["postInclProb"]][[i]], nEffects))
+      priorProbs  <- c(priorProbs, rep(tmp[["priorInclProb"]][[i]], nEffects))
+      BFinclusion <- c(BFinclusion, rep(tmp[["bfIncl"]][[i]], nEffects))
+      priorExcl   <- c(priorExcl, rep(tmp[["priorExclProb"]][[i]], nEffects))
+      postExcl    <- c(postExcl, rep(tmp[["postExclProb"]][[i]], nEffects))
+    }
+
+    probne0     <- c(1 ,probne0)
+    priorProbs  <- c(1, priorProbs)
+    BFinclusion <- c(1, BFinclusion)
+    priorExcl   <- c(0, priorExcl)
+    postExcl    <- c(0, postExcl)
   }
 
   # show BFinclusion for nuisance predictors as 1, rather than NaN
@@ -1287,22 +1313,30 @@ for sparse regression when there are more covariates than observations (Castillo
   # probably be used again
 
   if (estimator == "MPM") {
-    formula <- .bayesianLogisticRegCreateFormula(options$dependent, options$modelTerms)
-    nvar = bayesianLogisticRegModel$n.vars - 1
+    formulas <- .bayesianLogisticRegCreateFormula(options[["dependent"]], options[["modelTerms"]])
+    modelFormula <- formulas[["modelFormula"]]
+    nullFormula <- formulas[["nullFormula"]]
+
+    nvar <- bayesianLogisticRegModel$n.vars - 1
     bestmodel <- (0:nvar)[bayesianLogisticRegModel$probne0 > 0.5]
-    best = 1
+    best <- 1
     models <- rep(0, nvar + 1)
     models[bestmodel + 1] <- 1
     if (sum(models) > 1) {
-      bayesianLogisticRegModel <- BAS::bas.glm(formula = formula,
-                                               data = dataset,
+      bayesianLogisticRegModel <- BAS::bas.glm(formula = modelFormula,
+                                               family  = binomial(link = "logit"),
+                                               data    = dataset,
                                                weights = weights,
                                                n.models = 1,
-                                               # alpha = bayesianLogisticRegModel$g,
-                                               initprobs = bayesianLogisticRegModel$probne0,
-                                               prior = bayesianLogisticRegModel$prior,
+                                               betaprior = bayesianLogisticRegModel$betaprior,
                                                modelprior = bayesianLogisticRegModel$modelprior,
-                                               update = NULL, bestmodel = models, prob.local = 0)
+                                               method     = toupper(options$samplingMethod),
+                                               update = NULL,
+                                               bestmodel = models,
+                                               MCMC.iterations = NULL,
+                                               renormalize  = TRUE,
+                                               force.heredity  = TRUE,
+                                               include.always = nullFormula)
     }
   }
   postprobs = bayesianLogisticRegModel$postprobs
