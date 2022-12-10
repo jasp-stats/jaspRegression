@@ -2,50 +2,52 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2022-12-03 02:50\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2022-12-10 10:58+0000\n"
+"Last-Translator: Nico <episcience@outlook.com>\n"
+"Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-r/it/>\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.15-dev\n"
 
 msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
-msgstr ""
+msgstr "Per tutti i test, l'ipotesi alternativa specifica che il %s è positivo."
 
 msgid "For all tests, the alternative hypothesis specifies that the %s is negative."
-msgstr ""
+msgstr "Per tutti i test, l'ipotesi alternativa specifica che il %s è negativo."
 
 msgid "Scatterplot"
-msgstr ""
+msgstr "Grafico a dispersione"
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "Priore e posteriore"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "Controllo di robustezza del fattore di Bayes"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Analisi sequenziale"
 
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "Correlazioni bayesiane di Pearson"
 
 msgid "Bayesian Kendall's Tau Correlations"
-msgstr ""
+msgstr "Correlazioni bayesiane di Kendall Tau"
 
 msgid "Bayesian Spearman Correlations"
-msgstr ""
+msgstr "Correlazioni bayesiane di Spearman"
 
 msgid "Bayesian Correlation Table"
-msgstr ""
+msgstr "Tavola di correlazione bayesiana"
 
 msgid "Pearson Correlations"
-msgstr ""
+msgstr "Correlazioni di Pearson"
 
 msgid "Kendall's Tau Correlations"
-msgstr ""
+msgstr "Correlazioni Tau di Kendall"
 
 msgid "Spearman Correlations"
 msgstr ""
