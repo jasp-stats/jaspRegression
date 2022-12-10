@@ -25,7 +25,6 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     ready <- options[["dependent"]] != ""
   }
 
-
   if (ready) {
     dataset <- .glmReadData(dataset, options)
     .glmCheckDataErrors(dataset, options)
@@ -35,6 +34,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   .glmModelSummaryTable(jaspResults, dataset, options, ready, position = 1)
   .glmModelFitTable(    jaspResults, dataset, options, ready, position = 2)
   .glmEstimatesTable(   jaspResults, dataset, options, ready, position = 3)
+  if (options$family == "other") return()
 
   #diagnostic tables and plots
   .glmDiagnostics(jaspResults, dataset, options, ready, position = 4)
@@ -58,7 +58,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     dependentVar <- options[["dependent"]]
     dependentVar <- dependentVar[dependentVar != ""]
 
-    if (options[["family"]] == "bernoulli") {
+    if (options[["family"]] %in% c("bernoulli", "other")) {
       return(.readDataSetToEnd(columns.as.numeric  = numericVars,
                                columns.as.factor   = c(factorVars, dependentVar),
                                exclude.na.listwise = c(numericVars, factorVars, dependentVar)))
@@ -134,6 +134,21 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     if (!is.numeric(dataset[, options[["dependent"]]]))
       .quitAnalysis(gettextf("The Gaussian family requires the dependent variable to be a numerical variable."))
   }
+
+  if ((options[["family"]] == "other") && (options[["otherGlmModel"]] == "multinomialLogistic")) {
+    if (length(levels(dataset[, options[["dependent"]]])) < 3)
+      .quitAnalysis(gettext("Multinomial logistic regression requires the dependent variable to be a factor with at least 3 levels."))
+  }
+
+  if (options[["otherGlmModel"]] == "ordinalLogistic") {
+    if (length(levels(dataset[, options[["dependent"]]])) < 3)
+      .quitAnalysis(gettext("Ordinal logistic regression requires the dependent variable to be a factor with at least 3 levels."))
+  }
+
+  if (options[["otherGlmModel"]] == "firthLogistic") {
+    if (length(levels(dataset[, options[["dependent"]]])) != 2)
+      .quitAnalysis(gettext("Firth logistic regression requires the dependent variable to be a factor with 2 levels."))
+  }
 }
 
 # Model Summary Table
@@ -149,7 +164,7 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     modelSummary <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
   }
 
-  dependList <- c("dependent", "family", "link", "modelTerms", "interceptTerm", "weights", "offset")
+  dependList <- c("dependent", "family", "link", "modelTerms", "interceptTerm", "weights", "offset", "otherGlmModel")
   modelSummary$dependOn(dependList)
   modelSummary$position <- position
   modelSummary$showSpecifiedColumnsOnly <- TRUE
@@ -174,14 +189,20 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     glmModels <- .glmComputeModel(jaspResults, dataset, options)
     hasNuisance <- .hasNuisance(options)
     if (hasNuisance) {
-      terms <- rownames(summary(glmModels[["nullModel"]])[["coefficients"]])
-      terms <- jaspBase::gsubInteractionSymbol(terms[terms!="(Intercept)"])
-      message <- gettextf("Null model contains nuisance parameters: %s",
-                          paste(terms, collapse = ", "))
+      if ((options[["family"]] == "other") & (options[["otherGlmModel"]] %in% c("multinomialLogistic", "ordinalLogistic")))
+        termsNullModel <- rownames(VGAM::coef(VGAM::summaryvglm(glmModels[["nullModel"]])))
+      else if (options[["otherGlmModel"]] == "firthLogistic")
+        termsNullModel <- names(coef((glmModels[["nullModel"]])))
+      else
+        termsNullModel <- rownames(coef(summary(glmModels[["nullModel"]])))
+      nuisanceTerms <- jaspBase::gsubInteractionSymbol(termsNullModel[!grepl("(Intercept)", termsNullModel, fixed = TRUE)])
+      message <- gettextf("Null model contains nuisance parameters: %s.",
+                          paste(nuisanceTerms, collapse = ", "))
       jaspResults[["modelSummary"]]$addFootnote(message)
     }
+
     #log-likelihood ratio test to compare nested models (null vs full)
-    if (options[["family"]] %in% c("bernoulli", "binomial", "poisson")) {
+    if (options[["family"]] %in% c("bernoulli", "binomial", "poisson", "other")) {
       testType <- "Chisq"
       pvalName <- "Pr(>Chi)"
     }
@@ -191,24 +212,68 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
       pvalName <- "Pr(>F)"
     }
 
-    anovaRes <- anova(glmModels[["nullModel"]], glmModels[["fullModel"]],
-                      test = testType)
+    if (options[["family"]] == "other") {
+      if (options[["otherGlmModel"]] == "firthLogistic") {
+        devNullModel <- glmModels[["nullModel"]][["loglik"]]["full"]*-2
+        aicNullModel <- devNullModel + 2*glmModels[["nullModel"]][["df"]]
+        bicNullModel <- devNullModel + log(nobs(glmModels[["nullModel"]]))*glmModels[["nullModel"]][["df"]]
+        dofNullModel <- glmModels[["nullModel"]][["n"]] - glmModels[["nullModel"]][["df"]]
+
+        devFullModel <- glmModels[["fullModel"]][["loglik"]]["full"]*-2
+        aicFullModel <- devFullModel + 2*glmModels[["fullModel"]][["df"]]
+        bicFullModel <- devFullModel + log(nobs(glmModels[["fullModel"]]))*glmModels[["fullModel"]][["df"]]
+        dofFullModel <- glmModels[["fullModel"]][["n"]] - glmModels[["fullModel"]][["df"]]
+
+        chiValue     <- devNullModel - devFullModel
+        pValue       <- 1 - pchisq(chiValue, glmModels[["fullModel"]][["df"]])
+      }
+      else {
+        devNullModel <- VGAM::deviance(glmModels[["nullModel"]])
+        aicNullModel <- VGAM::AIC(glmModels[["nullModel"]])
+        bicNullModel <- VGAM::BIC(glmModels[["nullModel"]])
+        dofNullModel <- VGAM::df.residual(glmModels[["nullModel"]])
+
+        devFullModel <- VGAM::deviance(glmModels[["fullModel"]])
+        aicFullModel <- VGAM::AIC(glmModels[["fullModel"]])
+        bicFullModel <- VGAM::BIC(glmModels[["fullModel"]])
+        dofFullModel <- VGAM::df.residual(glmModels[["fullModel"]])
+
+        anovaRes     <- VGAM::anova.vglm(glmModels[["nullModel"]], glmModels[["fullModel"]], type = 1)
+        chiValue     <- devNullModel - devFullModel
+        pValue       <- anovaRes[["Pr(>Chi)"]][[2]]
+      }
+    } else {
+      devNullModel <- glmModels[["nullModel"]][["deviance"]]
+      aicNullModel <- glmModels[["nullModel"]][["aic"]]
+      bicNullModel <- BIC(glmModels[["nullModel"]])
+      dofNullModel <- glmModels[["nullModel"]][["df.residual"]]
+
+      devFullModel <- glmModels[["fullModel"]][["deviance"]]
+      aicFullModel <- glmModels[["fullModel"]][["aic"]]
+      bicFullModel <- BIC(glmModels[["fullModel"]])
+      dofFullModel <- glmModels[["fullModel"]][["df.residual"]]
+
+      anovaRes     <- anova(glmModels[["nullModel"]], glmModels[["fullModel"]],
+                            test = testType)
+      chiValue     <- anovaRes$Deviance[[2]]
+      pValue       <- anovaRes[[pvalName]][[2]]
+    }
 
     rows <- list(
       list(mod = "H\u2080",
-           dev = glmModels[["nullModel"]][["deviance"]],
-           aic = glmModels[["nullModel"]][["aic"]],
-           bic = BIC(glmModels[["nullModel"]]),
-           dof = glmModels[["nullModel"]][["df.residual"]],
+           dev = devNullModel,
+           aic = aicNullModel,
+           bic = bicNullModel,
+           dof = dofNullModel,
            chi = "",
            pvl = ""),
       list(mod = "H\u2081",
-           dev = glmModels[["fullModel"]][["deviance"]],
-           aic = glmModels[["fullModel"]][["aic"]],
-           bic = BIC(glmModels[["fullModel"]]),
-           dof = glmModels[["fullModel"]][["df.residual"]],
-           chi = anovaRes$Deviance[[2]],
-           pvl = anovaRes[[pvalName]][[2]])
+           dev = devFullModel,
+           aic = aicFullModel,
+           bic = bicFullModel,
+           dof = dofFullModel,
+           chi = chiValue,
+           pvl = pValue)
     )
   } else {
     rows <- list(
@@ -253,25 +318,40 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   glmModels <- .glmComputeModel(jaspResults, dataset, options)
   modelObj  <- glmModels[["fullModel"]]
 
+  if (options[["otherGlmModel"]] == "firthLogistic") {
+    dev <- modelObj[["loglik"]]["full"]*-2
+    pearsonResid <- (modelObj[['y']] - modelObj[["predict"]])/sqrt(modelObj[["predict"]]*(1-modelObj[["predict"]]))
+    pearson <- sum(pearsonResid^2)
+    dof <- modelObj[["n"]] - modelObj[["df"]]
+
+  } else {
+
+    if (options[["family"]] == "other")
+      pearson <- sum(VGAM::residuals(modelObj, type = "pearson")^2)
+    else
+      pearson <- sum(residuals(modelObj, type = "pearson")^2)
+    dev <- deviance(modelObj)
+    dof <- df.residual(modelObj)
+  }
+
   if (options[["devianceGoodnessOfFit"]]) {
     jaspResults[["modelFitTable"]]$addRows(
       list(gofType = "Deviance",
-           gof     = modelObj$deviance,
-           dof     = modelObj$df.residual,
-           pval    = pchisq(modelObj$deviance,
-                            df=modelObj$df.residual,
+           gof     = dev,
+           dof     = dof,
+           pval    = pchisq(dev,
+                            df=dof,
                             lower.tail=FALSE))
     )
   }
 
   if (options[["pearsonGoodnessOfFit"]]) {
-    pearson  <- sum(modelObj$weights * modelObj$residuals^2)
     jaspResults[["modelFitTable"]]$addRows(
       list(gofType = "Pearson",
            gof     = pearson,
-           dof     = modelObj$df.residual,
+           dof     = dof,
            pval    = pchisq(pearson,
-                            df=modelObj$df.residual,
+                            df=dof,
                             lower.tail=FALSE))
     )
   }
@@ -288,10 +368,13 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTable$position <- position
   estimatesTable$showSpecifiedColumnsOnly <- TRUE
 
-  if (options[["family"]] %in% c("bernoulli", "binomial", "poisson"))
+  if (options[["family"]] %in% c("bernoulli", "binomial", "poisson", "other"))
     testStat <- "z"
   else
     testStat <- "t"
+
+  if (options["otherGlmModel"] == "firthLogistic")
+    testStat <- "\u03A7\u00B2"
 
   estimatesTable$addColumnInfo(name = "param",    title = "", type = "string")
   estimatesTable$addColumnInfo(name = "est",      title = gettext("Estimate"), type = "number")
@@ -317,11 +400,21 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
     return()
   # compute glm models
   glmModels <- .glmComputeModel(jaspResults, dataset, options)
-  modelSummary <- summary(glmModels[["fullModel"]])[["coefficients"]]
+  fullModel <- glmModels[["fullModel"]]
+
+  if ((options[["family"]] == "other") & (options[["otherGlmModel"]] %in% c("multinomialLogistic", "ordinalLogistic")))
+    modelSummary <- VGAM::coef(VGAM::summaryvglm(fullModel))
+
+  if (options[["otherGlmModel"]] == "firthLogistic")
+    modelSummary <- cbind(coef(fullModel), sqrt(diag(fullModel$var)), qchisq(1 - fullModel$prob, 1), fullModel$prob)
+
+  if (options[["family"]] != "other")
+    modelSummary <- coef(summary(fullModel))
+
   rowNames <- rownames(modelSummary)
 
   if (options[["coefficientCi"]]) {
-    coefCiSummary <- confint(glmModels[["fullModel"]], level = options[["coefficientCiLevel"]])
+    coefCiSummary <- confint(fullModel, level = options[["coefficientCiLevel"]])
     if (length(rowNames) == 1) coefCiSummary <- matrix(coefCiSummary, ncol = 2)
   } else {
     coefCiSummary <- matrix(nrow = length(rowNames),
@@ -335,23 +428,27 @@ GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
   estimatesTableData <- cbind(paramDf, modelSummary, coefCiSummary)
   jaspResults[["estimatesTable"]]$setData(estimatesTableData)
 
-#  for (i in seq_along(rowNames)) {
-#    jaspResults[["estimatesTable"]]$addRows(
-#      list(param     = jaspBase::gsubInteractionSymbol(rowNames[i]),
-#           est       = modelSummary[i, "Estimate"],
-#           se        = modelSummary[i, "Std. Error"],
-#           testStat  = modelSummary[i, 3],
-#           pval      = modelSummary[i, 4],
-#           ciLow     = coefCiSummary[i, 1],
-#           ciUpp     = coefCiSummary[i, 2])
-#    )
-#  }
-
-  if (options[["family"]] == "bernoulli") {
-    dv      <- as.character(glmModels[["nullModel"]][["terms"]])[2]
-    dvLevel <- levels(glmModels[["nullModel"]][["data"]][[dv]])[2]
+  if ((options[["family"]] == "bernoulli") | (options[["otherGlmModel"]] == "firthLogistic")) {
+    dv      <- options$dependent
+    dvLevel <- levels(dataset[[dv]])[2]
 
     jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s level '%2$s' coded as class 1.", dv, dvLevel))
+  }
+
+  if ((options["family"] == "other") & options[["otherGlmModel"]] == "multinomialLogistic") {
+    dv      <- options$dependent
+    dvReferenceLevel <- tail(levels(dataset[[dv]]), 1)
+    dvLevels <- paste(paste(seq(1, length(dv)), levels(dataset[[dv]]), sep = ":"), collapse = ", ")
+
+    jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. '%3$s' is the reference level.", dv, dvLevels, dvReferenceLevel))
+  }
+
+  if (options[["otherGlmModel"]] == "ordinalLogistic") {
+    dv      <- options$dependent
+    dvLevels <- paste(paste(seq(1, length(dv)), levels(dataset[[dv]]), sep = ":"), collapse = ", ")
+    linearPredictors <- paste(VGAM::summaryvglm(fullModel)@misc$predictors.names, collapse = ", ")
+
+    jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. Linear predictors: %3$s.", dv, dvLevels, linearPredictors))
   }
 }
 

@@ -54,35 +54,73 @@
 
   # make formulas for the full model and the null model
   ff <- .createGLMFormula(options, nullModel = FALSE)
+  environment(ff) <- environment()
   nf <- .createGLMFormula(options, nullModel = TRUE)
-  # specify family and link
-  if (options$family == "bernoulli") {
-    family <- "binomial"
-  }
-  else if (options$family == "gamma") {
-    family <- "Gamma"
-  }
-  else if (options$family == "inverseGaussian") {
-    family <- "inverse.gaussian"
-  }
-  else {
-    family <- options$family
-  }
+  environment(nf) <- environment()
 
-  familyLink <- eval(call(family, link = options$link))
-  # compute full and null models
-  if (options$weights == "") {
-    fullModel <- stats::glm(ff, family = familyLink, data = dataset, weights = NULL)
-    nullModel <- stats::glm(nf, family = familyLink, data = dataset, weights = NULL)
-  } else {
+  weights <- dataset[[options[["weights"]]]]
+
+  if (options$family != "other") {
+    # specify family and link
+    if (options$family == "bernoulli") {
+      family <- "binomial"
+    }
+    else if (options$family == "gamma") {
+      family <- "Gamma"
+    }
+    else if (options$family == "inverseGaussian") {
+      family <- "inverse.gaussian"
+    }
+    else {
+      family <- options$family
+    }
+
+    familyLink <- eval(call(family, link = options$link))
+    # compute full and null models
     fullModel <- stats::glm(ff,
                             family = familyLink,
                             data = dataset,
-                            weights = get(options$weights))
+                            weights = weights)
     nullModel <- stats::glm(nf,
                             family = familyLink,
                             data = dataset,
-                            weights = get(options$weights))
+                            weights = weights)
+  } else {
+
+    if (options$otherGlmModel == "multinomialLogistic") {
+      fullModel <- VGAM::vglm(ff,
+                              family = VGAM::multinomial(),
+                              data = dataset,
+                              weights = weights)
+      nullModel <- VGAM::vglm(nf,
+                              family = VGAM::multinomial(),
+                              data = dataset,
+                              weights = weights)
+    }
+
+    if (options$otherGlmModel == "ordinalLogistic") {
+      fullModel <- VGAM::vglm(ff,
+                              family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
+                              data = dataset,
+                              weights = weights)
+      nullModel <- VGAM::vglm(nf,
+                              family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
+                              data = dataset,
+                              weights = weights)
+    }
+
+    if (options$otherGlmModel == "firthLogistic") {
+      fullModel <- logistf::logistf(ff,
+                                    data = dataset,
+                                    pl = TRUE,
+                                    firth = TRUE,
+                                    weights = weights)
+      nullModel <- logistf::logistf(nf,
+                                    data = dataset,
+                                    pl = TRUE,
+                                    firth = TRUE,
+                                    weights = weights)
+    }
   }
 
   glmModels <- list("nullModel" = nullModel,
@@ -93,8 +131,8 @@
   jaspResults[["glmModels"]]$object <- glmModels
 
   return(glmModels)
+  }
 
-}
 
 .hasNuisance <- function(options) {
   return(any(sapply(options$modelTerms, function(x) x[["isNuisance"]])))

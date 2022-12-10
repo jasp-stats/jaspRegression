@@ -23,13 +23,15 @@ Imports:
   jaspGraphs,
   jaspTTests,
   lmtest,
+  logistf,
   MASS,
   matrixStats,
   mdscore,
   ppcor,
   purrr,
   Rcpp,
-  statmod
+  statmod,
+  VGAM
 Remotes:
   AlexanderLyNL/bstats,
   jasp-stats/jaspAnova,

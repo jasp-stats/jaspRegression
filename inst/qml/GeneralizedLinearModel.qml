@@ -26,7 +26,7 @@ import "./common"		as GLM
 // All Analysis forms must be built with the From QML item
 Form {
 
-	GLM.GlmInputComponent {}
+	GLM.GlmInputComponent { id: input}
 
 	Section
 	{
@@ -86,6 +86,7 @@ Form {
 	Section
 	{
 		title: qsTr("Diagnostics")
+		enabled: input.otherFamilyNotSelected
 
 		GLM.GlmResidualAnalysisPlotsComponent {}
 
@@ -133,12 +134,13 @@ Form {
 		}
 	}
 
-	GLM.EmmComponent {}
+	GLM.EmmComponent { enabled: input.otherFamilyNotSelected }
 
 	Section
 	{
 		title: qsTr("Advanced Options")
 		SetSeed {}
+		enabled: input.otherFamilyNotSelected
 	}
 }
 
