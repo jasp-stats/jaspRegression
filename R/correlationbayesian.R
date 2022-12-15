@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-CorrelationBayesian <- function(jaspResults, dataset=NULL, options, ...) {
+CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...) {
   ready <- length(options[["variables"]]) >= 2
   pairs <- unique(options[["variablePairs"]])
 

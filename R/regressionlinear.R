@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-RegressionLinear <- function(jaspResults, dataset = NULL, options) {
+RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   ready <- options$dependent != "" && (length(unlist(options$modelTerms)) > 0 || options$interceptTerm)
 
   if (ready) {

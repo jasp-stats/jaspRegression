@@ -16,15 +16,21 @@
 // <http://www.gnu.org/licenses/>.
 //
 
-import QtQuick			2.8
-import QtQuick.Layouts  1.3
-import JASP.Controls	1.0
-import JASP.Widgets		1.0
-import JASP				1.0
+import QtQuick
+import QtQuick.Layouts
+import JASP
+import JASP.Controls
 import "./common"		as GLM
 
 // All Analysis forms must be built with the From QML item
-Form {
+Form
+{
+	Formula
+	{
+		lhs: "dependent"
+		rhs: [{ name: "modelTerms", extraOptions: "isNuisance" }]
+		userMustSpecify: "covariates"
+	}
 
 	GLM.GlmInputComponent { id: input}
 
