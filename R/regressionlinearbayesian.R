@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-RegressionLinearBayesian <- function(jaspResults, dataset = NULL, options) {
+RegressionLinearBayesianInternal <- function(jaspResults, dataset = NULL, options) {
   ready <- length(options$modelTerms) > 0 && options$dependent != ""
 
   if (ready) {

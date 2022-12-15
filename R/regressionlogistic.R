@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-RegressionLogistic <- function(jaspResults, dataset = NULL, options, ...) {
+RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...) {
   ready <- options$dependent != "" #&& options$weights != ""
   if(ready) {
     dataset <- .reglogisticReadData(dataset, options)

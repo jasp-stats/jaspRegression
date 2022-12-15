@@ -17,7 +17,7 @@
 
 #still to do: multinomial, ordinal, negative binomial, quasi
 
-GeneralizedLinearModel <- function(jaspResults, dataset = NULL, options, ...) {
+GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options, ...) {
   if (options[["family"]] == "binomial") {
     ready <- (options[["dependent"]] != "" && options[["weights"]] != "")
 
