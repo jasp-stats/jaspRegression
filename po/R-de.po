@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-10-08 03:16\n"
+"POT-Creation-Date: 2022-12-17 02:46\n"
 "PO-Revision-Date: 2022-12-10 12:02+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -140,21 +140,6 @@ msgstr ""
 "durch \n"
 "  1/(-e <em>p</em> log(<em>p</em>)) für <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
-
-msgid "residuals include missing values"
-msgstr "Residuen enthalten fehlende Werte"
-
-msgid "requires vector of residuals"
-msgstr "Benötigt Residuen-Vektor"
-
-msgid "there are aliased coefficients in the model"
-msgstr "Es gibt Alias-Koeffizienten im Modell"
-
-msgid "No intercept: vifs may not be sensible."
-msgstr "Keine Konstante: VIFs sind möglicherweise nicht sinnvoll."
-
-msgid "model contains fewer than 2 terms"
-msgstr "Modell enthält weniger als 2 Terme"
 
 msgid "Kendall's Tau"
 msgstr "Kendalls Tau"
@@ -418,6 +403,30 @@ msgstr ""
 "Bei der Gauß-Familie muss die abhängige Variable eine numerische Variable "
 "sein."
 
+#, fuzzy
+msgid ""
+"Multinomial logistic regression requires the dependent variable to be a "
+"factor with at least 3 levels."
+msgstr ""
+"Bei der Bernoulli-Familie muss die abhängige Variable ein Faktor mit 2 "
+"Stufen sein."
+
+#, fuzzy
+msgid ""
+"Ordinal logistic regression requires the dependent variable to be a factor "
+"with at least 3 levels."
+msgstr ""
+"Bei der Bernoulli-Familie muss die abhängige Variable ein Faktor mit 2 "
+"Stufen sein."
+
+#, fuzzy
+msgid ""
+"Firth logistic regression requires the dependent variable to be a factor "
+"with 2 levels."
+msgstr ""
+"Bei der Bernoulli-Familie muss die abhängige Variable ein Faktor mit 2 "
+"Stufen sein."
+
 msgid "Model Summary"
 msgstr "Modellzusammenfassung"
 
@@ -439,7 +448,8 @@ msgstr "BIC"
 msgid "df"
 msgstr "df"
 
-msgid "Null model contains nuisance parameters: %s"
+#, fuzzy
+msgid "Null model contains nuisance parameters: %s."
 msgstr "Nullmodell enthält Störfaktoren: %s"
 
 msgid "Model Fit"
@@ -465,6 +475,12 @@ msgstr "Obere Grenze"
 
 msgid "%1$s level '%2$s' coded as class 1."
 msgstr "%1$s Stufe '%2$s' kodiert als Klasse 1."
+
+msgid "%1$s levels: %2$s. '%3$s' is the reference level."
+msgstr ""
+
+msgid "%1$s levels: %2$s. Linear predictors: %3$s."
+msgstr ""
 
 msgid "Diagnostics"
 msgstr "Diagnostiken"
@@ -629,39 +645,11 @@ msgstr "Bonferroni"
 msgid "P-values are adjusted using %s adjustment."
 msgstr "P-Werte sind korrigiert mit %s-Korrektur."
 
-msgid "no terms in scope"
-msgstr "keine Terme im Geltungsbereich"
-
-msgid "no terms in scope for adding to object"
-msgstr "keine Terme im Geltungsbereich für Hinzufügen zu Objekt"
-
 msgid "trying + %s"
 msgstr "probiere + %s"
 
 msgid "F test assumes 'quasi%s' family"
 msgstr "F-Test setzt 'quasi%s' Familie voraus"
-
-msgid "'use.start' cannot be used with R's version of 'glm'"
-msgstr "'use.start' kann nicht mit R-version von 'glm' benutzt werden"
-
-msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
-msgstr ""
-"AIC ist für dieses Modell nicht definiert, sodass 'stepAIC' nicht "
-"fortgesetzt werden kann"
-
-msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
-msgstr ""
-"AIC ist -unendlich für dieses Modell, sodass 'stepAIC' nicht fortgesetzt "
-"werden kann"
-
-msgid "0 df terms are changing AIC"
-msgstr "0 df Terme ändern AIC"
-
-msgid "number of rows in use has changed: remove missing values?"
-msgstr "Anzahl der verwendeten Zeilen geändert: Fehlende Werte entfernen?"
-
-msgid "AIC undefined for REML fit"
-msgstr "AIC undefiniert für REML-Anpassung"
 
 msgid ""
 "Stepwise procedures are not supported for models containing interaction terms"
@@ -1202,6 +1190,9 @@ msgstr "Performanz-Metriken"
 msgid "Value"
 msgstr "Wert"
 
+msgid "Null model contains nuisance parameters: %s"
+msgstr "Nullmodell enthält Störfaktoren: %s"
+
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrap basiert auf %i erfolgreichen Wiederholungen."
 
@@ -1280,6 +1271,49 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Partielles Regressionsdiagramm"
 msgstr[1] "Partielle Regressionsdiagramme"
+
+#~ msgid "residuals include missing values"
+#~ msgstr "Residuen enthalten fehlende Werte"
+
+#~ msgid "requires vector of residuals"
+#~ msgstr "Benötigt Residuen-Vektor"
+
+#~ msgid "there are aliased coefficients in the model"
+#~ msgstr "Es gibt Alias-Koeffizienten im Modell"
+
+#~ msgid "No intercept: vifs may not be sensible."
+#~ msgstr "Keine Konstante: VIFs sind möglicherweise nicht sinnvoll."
+
+#~ msgid "model contains fewer than 2 terms"
+#~ msgstr "Modell enthält weniger als 2 Terme"
+
+#~ msgid "no terms in scope"
+#~ msgstr "keine Terme im Geltungsbereich"
+
+#~ msgid "no terms in scope for adding to object"
+#~ msgstr "keine Terme im Geltungsbereich für Hinzufügen zu Objekt"
+
+#~ msgid "'use.start' cannot be used with R's version of 'glm'"
+#~ msgstr "'use.start' kann nicht mit R-version von 'glm' benutzt werden"
+
+#~ msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
+#~ msgstr ""
+#~ "AIC ist für dieses Modell nicht definiert, sodass 'stepAIC' nicht "
+#~ "fortgesetzt werden kann"
+
+#~ msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
+#~ msgstr ""
+#~ "AIC ist -unendlich für dieses Modell, sodass 'stepAIC' nicht fortgesetzt "
+#~ "werden kann"
+
+#~ msgid "0 df terms are changing AIC"
+#~ msgstr "0 df Terme ändern AIC"
+
+#~ msgid "number of rows in use has changed: remove missing values?"
+#~ msgstr "Anzahl der verwendeten Zeilen geändert: Fehlende Werte entfernen?"
+
+#~ msgid "AIC undefined for REML fit"
+#~ msgstr "AIC undefiniert für REML-Anpassung"
 
 #~ msgid "%s%% bca* CI"
 #~ msgstr "%s%% bca* CI"

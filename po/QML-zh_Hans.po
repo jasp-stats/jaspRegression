@@ -1368,3 +1368,24 @@ msgstr "系数"
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
 msgstr "系数"
+
+msgctxt "GlmInputComponent|"
+msgid "Other"
+msgstr ""
+
+#, fuzzy
+msgctxt "GlmInputComponent|"
+msgid "Model"
+msgstr "模型"
+
+msgctxt "GlmInputComponent|"
+msgid "Multinomial Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Ordinal Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Firth Logistic Regression"
+msgstr ""

@@ -1384,3 +1384,24 @@ msgstr "Coeficientes"
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
 msgstr "Coeficientes"
+
+msgctxt "GlmInputComponent|"
+msgid "Other"
+msgstr ""
+
+#, fuzzy
+msgctxt "GlmInputComponent|"
+msgid "Model"
+msgstr "Modelo"
+
+msgctxt "GlmInputComponent|"
+msgid "Multinomial Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Ordinal Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Firth Logistic Regression"
+msgstr ""

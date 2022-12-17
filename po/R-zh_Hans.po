@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-12-03 02:50\n"
+"POT-Creation-Date: 2022-12-17 02:46\n"
 "PO-Revision-Date: 2022-11-07 09:02+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -131,21 +131,6 @@ msgid ""
 "  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
-msgstr ""
-
-msgid "residuals include missing values"
-msgstr ""
-
-msgid "requires vector of residuals"
-msgstr ""
-
-msgid "there are aliased coefficients in the model"
-msgstr ""
-
-msgid "No intercept: vifs may not be sensible."
-msgstr ""
-
-msgid "model contains fewer than 2 terms"
 msgstr ""
 
 msgid "Kendall's Tau"
@@ -377,6 +362,21 @@ msgid ""
 "variable."
 msgstr ""
 
+msgid ""
+"Multinomial logistic regression requires the dependent variable to be a "
+"factor with at least 3 levels."
+msgstr ""
+
+msgid ""
+"Ordinal logistic regression requires the dependent variable to be a factor "
+"with at least 3 levels."
+msgstr ""
+
+msgid ""
+"Firth logistic regression requires the dependent variable to be a factor "
+"with 2 levels."
+msgstr ""
+
 msgid "Model Summary"
 msgstr "模型摘要"
 
@@ -398,7 +398,7 @@ msgstr ""
 msgid "df"
 msgstr ""
 
-msgid "Null model contains nuisance parameters: %s"
+msgid "Null model contains nuisance parameters: %s."
 msgstr ""
 
 msgid "Model Fit"
@@ -423,6 +423,12 @@ msgid "Upper Bound"
 msgstr ""
 
 msgid "%1$s level '%2$s' coded as class 1."
+msgstr ""
+
+msgid "%1$s levels: %2$s. '%3$s' is the reference level."
+msgstr ""
+
+msgid "%1$s levels: %2$s. Linear predictors: %3$s."
 msgstr ""
 
 msgid "Diagnostics"
@@ -587,34 +593,10 @@ msgstr ""
 msgid "P-values are adjusted using %s adjustment."
 msgstr ""
 
-msgid "no terms in scope"
-msgstr ""
-
-msgid "no terms in scope for adding to object"
-msgstr ""
-
 msgid "trying + %s"
 msgstr ""
 
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
-
-msgid "'use.start' cannot be used with R's version of 'glm'"
-msgstr ""
-
-msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
-msgstr ""
-
-msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
-msgstr ""
-
-msgid "0 df terms are changing AIC"
-msgstr ""
-
-msgid "number of rows in use has changed: remove missing values?"
-msgstr ""
-
-msgid "AIC undefined for REML fit"
 msgstr ""
 
 msgid ""
@@ -1100,6 +1082,9 @@ msgid "Performance metrics"
 msgstr ""
 
 msgid "Value"
+msgstr ""
+
+msgid "Null model contains nuisance parameters: %s"
 msgstr ""
 
 msgid "Bootstrapping based on %i successful replicates."

@@ -1382,3 +1382,23 @@ msgstr ""
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
 msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Other"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Model"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Multinomial Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Ordinal Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Firth Logistic Regression"
+msgstr ""

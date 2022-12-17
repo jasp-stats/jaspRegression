@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-10-08 03:16\n"
+"POT-Creation-Date: 2022-12-17 02:46\n"
 "PO-Revision-Date: 2022-02-12 21:37+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -138,23 +138,6 @@ msgstr ""
 "<em>p</em> %3$s .37に対して1/(-e <em>p</em> log(<em>p</em>))に等しくなりま"
 "す\n"
 "(Sellke, Bayarri, & Berger, 2001)。"
-
-msgid "residuals include missing values"
-msgstr ""
-
-#, fuzzy
-msgid "requires vector of residuals"
-msgstr "予測変数 - 残差プロット"
-
-#, fuzzy
-msgid "there are aliased coefficients in the model"
-msgstr "モデルに共変量を組み込むことができませんでした"
-
-msgid "No intercept: vifs may not be sensible."
-msgstr ""
-
-msgid "model contains fewer than 2 terms"
-msgstr ""
 
 msgid "Kendall's Tau"
 msgstr "ケンドールのタウ"
@@ -400,6 +383,21 @@ msgid ""
 "variable."
 msgstr ""
 
+msgid ""
+"Multinomial logistic regression requires the dependent variable to be a "
+"factor with at least 3 levels."
+msgstr ""
+
+msgid ""
+"Ordinal logistic regression requires the dependent variable to be a factor "
+"with at least 3 levels."
+msgstr ""
+
+msgid ""
+"Firth logistic regression requires the dependent variable to be a factor "
+"with 2 levels."
+msgstr ""
+
 msgid "Model Summary"
 msgstr "モデルの概要"
 
@@ -421,7 +419,8 @@ msgstr "BIC"
 msgid "df"
 msgstr "df"
 
-msgid "Null model contains nuisance parameters: %s"
+#, fuzzy
+msgid "Null model contains nuisance parameters: %s."
 msgstr "Nullモデルには妨害パラメータが含まれています: %s"
 
 #, fuzzy
@@ -450,6 +449,12 @@ msgstr "上限"
 
 msgid "%1$s level '%2$s' coded as class 1."
 msgstr "%1$s水準の「%2$s」がクラス1としてコード化されています。"
+
+msgid "%1$s levels: %2$s. '%3$s' is the reference level."
+msgstr ""
+
+msgid "%1$s levels: %2$s. Linear predictors: %3$s."
+msgstr ""
 
 #, fuzzy
 msgid "Diagnostics"
@@ -626,36 +631,11 @@ msgstr ""
 msgid "P-values are adjusted using %s adjustment."
 msgstr ""
 
-msgid "no terms in scope"
-msgstr "範囲内の用語なし"
-
-msgid "no terms in scope for adding to object"
-msgstr "オブジェクトに追加するための範囲内の用語がない"
-
 msgid "trying + %s"
 msgstr "試行回数 + %s"
 
 msgid "F test assumes 'quasi%s' family"
 msgstr "F検定は「準%s」ファミリーを想定しています"
-
-msgid "'use.start' cannot be used with R's version of 'glm'"
-msgstr "「use.start」は、Rバージョンの「glm」では使用できません。"
-
-msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
-msgstr ""
-"AIC はこのモデルに対して定義されていないので、'stepAIC' は続行できません"
-
-msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
-msgstr "このモデルのAICが負の無限大なので、'stepAIC'は続行できません"
-
-msgid "0 df terms are changing AIC"
-msgstr "自由度0の項がAIC を変更しています"
-
-msgid "number of rows in use has changed: remove missing values?"
-msgstr "使用中の行数が変更されました: 欠損値を削除しますか?"
-
-msgid "AIC undefined for REML fit"
-msgstr "REMLフィットのAICは未定義です"
 
 msgid ""
 "Stepwise procedures are not supported for models containing interaction terms"
@@ -1175,6 +1155,9 @@ msgstr "パフォーマンス・メトリクス"
 msgid "Value"
 msgstr "値"
 
+msgid "Null model contains nuisance parameters: %s"
+msgstr "Nullモデルには妨害パラメータが含まれています: %s"
+
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "%i 回の成功した再現に基づいてブートストラップを実行する."
 
@@ -1250,6 +1233,39 @@ msgstr[0] "次の共変量が考慮されましたが、含まれていません
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏回帰プロット"
+
+#, fuzzy
+#~ msgid "requires vector of residuals"
+#~ msgstr "予測変数 - 残差プロット"
+
+#, fuzzy
+#~ msgid "there are aliased coefficients in the model"
+#~ msgstr "モデルに共変量を組み込むことができませんでした"
+
+#~ msgid "no terms in scope"
+#~ msgstr "範囲内の用語なし"
+
+#~ msgid "no terms in scope for adding to object"
+#~ msgstr "オブジェクトに追加するための範囲内の用語がない"
+
+#~ msgid "'use.start' cannot be used with R's version of 'glm'"
+#~ msgstr "「use.start」は、Rバージョンの「glm」では使用できません。"
+
+#~ msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
+#~ msgstr ""
+#~ "AIC はこのモデルに対して定義されていないので、'stepAIC' は続行できません"
+
+#~ msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
+#~ msgstr "このモデルのAICが負の無限大なので、'stepAIC'は続行できません"
+
+#~ msgid "0 df terms are changing AIC"
+#~ msgstr "自由度0の項がAIC を変更しています"
+
+#~ msgid "number of rows in use has changed: remove missing values?"
+#~ msgstr "使用中の行数が変更されました: 欠損値を削除しますか?"
+
+#~ msgid "AIC undefined for REML fit"
+#~ msgstr "REMLフィットのAICは未定義です"
 
 #~ msgid "%s%% bca* CI"
 #~ msgstr "%s%% bca* CI"

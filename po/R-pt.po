@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2022-10-08 03:16\n"
+"POT-Creation-Date: 2022-12-17 02:46\n"
 "PO-Revision-Date: 2022-08-29 00:19+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -144,23 +144,6 @@ msgstr ""
 "  a probabilidade máxima possível a favor de H%1$s sobre H%2$s é igual\n"
 "  1/(-e <em>p</em> log(<em>p</em>)) para <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
-
-msgid "residuals include missing values"
-msgstr ""
-
-#, fuzzy
-msgid "requires vector of residuals"
-msgstr "Preditor - Gráficos de resíduos"
-
-#, fuzzy
-msgid "there are aliased coefficients in the model"
-msgstr "Nenhuma covariável pôde ser inserida no modelo"
-
-msgid "No intercept: vifs may not be sensible."
-msgstr ""
-
-msgid "model contains fewer than 2 terms"
-msgstr ""
 
 msgid "Kendall's Tau"
 msgstr "Tau de Kendall"
@@ -410,6 +393,21 @@ msgid ""
 "variable."
 msgstr ""
 
+msgid ""
+"Multinomial logistic regression requires the dependent variable to be a "
+"factor with at least 3 levels."
+msgstr ""
+
+msgid ""
+"Ordinal logistic regression requires the dependent variable to be a factor "
+"with at least 3 levels."
+msgstr ""
+
+msgid ""
+"Firth logistic regression requires the dependent variable to be a factor "
+"with 2 levels."
+msgstr ""
+
 msgid "Model Summary"
 msgstr "Resumo do modelo"
 
@@ -431,7 +429,8 @@ msgstr "BIC"
 msgid "df"
 msgstr "gl"
 
-msgid "Null model contains nuisance parameters: %s"
+#, fuzzy
+msgid "Null model contains nuisance parameters: %s."
 msgstr "O modelo nulo contém parâmetros incômodos: %s"
 
 #, fuzzy
@@ -460,6 +459,12 @@ msgstr "Limite superior"
 
 msgid "%1$s level '%2$s' coded as class 1."
 msgstr "%1$s nível '%2$s' codificado como classe 1."
+
+msgid "%1$s levels: %2$s. '%3$s' is the reference level."
+msgstr ""
+
+msgid "%1$s levels: %2$s. Linear predictors: %3$s."
+msgstr ""
 
 #, fuzzy
 msgid "Diagnostics"
@@ -636,36 +641,11 @@ msgstr ""
 msgid "P-values are adjusted using %s adjustment."
 msgstr ""
 
-msgid "no terms in scope"
-msgstr "nenhum termo no escopo"
-
-msgid "no terms in scope for adding to object"
-msgstr "nenhum termo no escopo para adicionar ao objeto"
-
 msgid "trying + %s"
 msgstr "tentando + %s"
 
 msgid "F test assumes 'quasi%s' family"
 msgstr "Teste F assume 'quasi%s'"
-
-msgid "'use.start' cannot be used with R's version of 'glm'"
-msgstr "'use.start' não pode ser usado com a versão do R de 'glm'"
-
-msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
-msgstr ""
-"AIC não está definido para esse modelo, então 'stepAIC' não pode prosseguir"
-
-msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
-msgstr "AIC é infinito para esse modelo, então 'stepAIC' não pode prosseguir"
-
-msgid "0 df terms are changing AIC"
-msgstr "0 gl estão mudando AIC"
-
-msgid "number of rows in use has changed: remove missing values?"
-msgstr "o número de linhas em uso mudou: remover valores ausentes?"
-
-msgid "AIC undefined for REML fit"
-msgstr "AIC indefinido para ajuste REML"
 
 msgid ""
 "Stepwise procedures are not supported for models containing interaction terms"
@@ -1210,6 +1190,9 @@ msgstr "Métricas de performance"
 msgid "Value"
 msgstr "Valor"
 
+msgid "Null model contains nuisance parameters: %s"
+msgstr "O modelo nulo contém parâmetros incômodos: %s"
+
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrapping baseado em %i replicações bem-sucedidas."
 
@@ -1288,6 +1271,41 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Gráfico de regressão parcial"
 msgstr[1] "Gráficos de regressão parcial"
+
+#, fuzzy
+#~ msgid "requires vector of residuals"
+#~ msgstr "Preditor - Gráficos de resíduos"
+
+#, fuzzy
+#~ msgid "there are aliased coefficients in the model"
+#~ msgstr "Nenhuma covariável pôde ser inserida no modelo"
+
+#~ msgid "no terms in scope"
+#~ msgstr "nenhum termo no escopo"
+
+#~ msgid "no terms in scope for adding to object"
+#~ msgstr "nenhum termo no escopo para adicionar ao objeto"
+
+#~ msgid "'use.start' cannot be used with R's version of 'glm'"
+#~ msgstr "'use.start' não pode ser usado com a versão do R de 'glm'"
+
+#~ msgid "AIC is not defined for this model, so 'stepAIC' cannot proceed"
+#~ msgstr ""
+#~ "AIC não está definido para esse modelo, então 'stepAIC' não pode "
+#~ "prosseguir"
+
+#~ msgid "AIC is -infinity for this model, so 'stepAIC' cannot proceed"
+#~ msgstr ""
+#~ "AIC é infinito para esse modelo, então 'stepAIC' não pode prosseguir"
+
+#~ msgid "0 df terms are changing AIC"
+#~ msgstr "0 gl estão mudando AIC"
+
+#~ msgid "number of rows in use has changed: remove missing values?"
+#~ msgstr "o número de linhas em uso mudou: remover valores ausentes?"
+
+#~ msgid "AIC undefined for REML fit"
+#~ msgstr "AIC indefinido para ajuste REML"
 
 #~ msgid "%s%% bca* CI"
 #~ msgstr "%s%% bca* IC"
