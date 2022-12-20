@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2022-11-26 00:43+0000\n"
+"PO-Revision-Date: 2022-12-20 20:17+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -49,7 +49,7 @@ msgid "Pearson Correlations"
 msgstr "皮爾森相關"
 
 msgid "Kendall's Tau Correlations"
-msgstr "Kendall's Tau 相關"
+msgstr "肯德爾等級相關係數Tau"
 
 msgid "Spearman Correlations"
 msgstr "Spearman 相關"
@@ -61,31 +61,31 @@ msgid "Pearson's r"
 msgstr "皮爾森r"
 
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Spearman等級相關係數"
 
 msgid "Kendall's tau B"
-msgstr ""
+msgstr "肯德爾等級相關係數B"
 
 msgid "Pearson"
-msgstr ""
+msgstr "皮爾森"
 
 msgid "Spearman"
-msgstr ""
+msgstr "Spearman"
 
 msgid "Kendall"
-msgstr ""
+msgstr "Kendall"
 
 msgid "Density"
-msgstr ""
+msgstr "密度"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr ""
+msgstr "無法繪圖:觀察值低於3個"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr ""
+msgstr "無法繪圖:有無限個觀察值"
 
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 msgid "tau"
 msgstr ""
@@ -106,25 +106,25 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "樣本數"
 
 msgid "Upper %s%% CI"
-msgstr ""
+msgstr "%s%%信賴區間上界"
 
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "%s%%信賴區間下界"
 
 msgid "Ranks of %s"
-msgstr ""
+msgstr "%s序"
 
 msgid "Predicted"
-msgstr ""
+msgstr "預測的"
 
 msgid "(Intercept)"
-msgstr ""
+msgstr "(截距)"
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR (Vovk-Sellke maximum p-ratio) %s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -137,19 +137,19 @@ msgid "Kendall's Tau"
 msgstr ""
 
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "淨相關表"
 
 msgid "%s Correlations"
-msgstr ""
+msgstr "%s 相關"
 
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "%s 淨相關"
 
 msgid "All tests one-tailed, for positive correlation."
-msgstr ""
+msgstr "所有正相關皆為單尾考驗"
 
 msgid ", one-tailed"
-msgstr ""
+msgstr ", 單尾"
 
 msgid "All tests one-tailed, for negative correlation."
 msgstr ""
@@ -515,14 +515,16 @@ msgstr ""
 msgid "SE"
 msgstr ""
 
+#, fuzzy
 msgid "Lower"
-msgstr ""
+msgstr "下界"
 
 msgid "%s%% CI"
 msgstr ""
 
+#, fuzzy
 msgid "Upper"
-msgstr ""
+msgstr "上界"
 
 msgid "t"
 msgstr ""
@@ -552,7 +554,7 @@ msgid "P-values correspond to test of null hypothesis against %s."
 msgstr ""
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "結果是以下列水準的平均數：%s。"
 
 msgid "P-values are not adjusted."
 msgstr ""
