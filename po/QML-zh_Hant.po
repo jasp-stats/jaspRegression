@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2022-12-20 16:48+0000\n"
+"PO-Revision-Date: 2022-12-24 02:44+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-qml/zh_Hant/>\n"
@@ -278,13 +278,14 @@ msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
 msgstr ""
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Plot Individual Pairs"
-msgstr ""
+msgstr "繪製個別配對圖"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation coefficient to plot"
-msgstr ""
+msgstr "繪製相關係數"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau"
@@ -549,47 +550,55 @@ msgstr "報表"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Posterior summary"
-msgstr ""
+msgstr "後驗結論"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
-msgstr ""
+msgstr "與所有模型比較"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Across matched models"
-msgstr ""
+msgstr "與配對模型比較"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Plot of coefficients"
-msgstr ""
+msgstr "係數圖"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Omit intercept"
-msgstr ""
+msgstr "省略截距"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Best model"
-msgstr ""
+msgstr "最佳模型"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Most complex model"
-msgstr ""
+msgstr "最複雜模型"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Median model"
-msgstr ""
+msgstr "中位數模型"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model averaged"
-msgstr ""
+msgstr "模型平均"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Credible interval"
-msgstr ""
+msgstr "可信區間"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Order"
-msgstr ""
+msgstr "序"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to best model"
@@ -599,17 +608,19 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Compare to null model"
 msgstr "相較於虛無模型"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Limit No. Models Shown"
-msgstr ""
+msgstr "限制列出的模型數目"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "No"
-msgstr ""
+msgstr "否"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Yes, show best"
-msgstr ""
+msgstr "是，顯示最佳組合"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Data"
@@ -635,46 +646,51 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Coefficients"
 msgstr "係數"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Inclusion probabilities"
-msgstr ""
+msgstr "纳入概率"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Marginal posterior distributions"
-msgstr ""
+msgstr "邊際後驗分佈"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Models"
 msgstr "模型"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Log posterior odds"
-msgstr ""
+msgstr "對數後驗概率"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Log(P(data|M)) vs. model size"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model probabilities"
-msgstr ""
+msgstr "模型機率"
 
 #, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals"
 msgstr "殘差"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "殘差與擬合"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Q-Q plot of model averaged residuals"
-msgstr ""
+msgstr "模型平均殘差Q-Q圖"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "進階選項"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Prior"
@@ -682,11 +698,11 @@ msgstr "先驗"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "EB-global"
@@ -724,13 +740,14 @@ msgctxt "RegressionLinearBayesian|"
 msgid "r scale"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model Prior"
-msgstr ""
+msgstr "模型先驗"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Beta binomial"
-msgstr ""
+msgstr "Βeta 二項式"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "a"
@@ -762,7 +779,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "p"
@@ -1051,19 +1068,19 @@ msgstr "邊際效果圖"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "廣義線性模式"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "邊際估計平均值和對比分析"
 
 msgctxt "EmmComponent|"
 msgid "Model variables"
-msgstr ""
+msgstr "模型變數"
 
 msgctxt "EmmComponent|"
 msgid "Selected variables"
-msgstr ""
+msgstr "選擇變數"
 
 #, fuzzy
 msgctxt "EmmComponent|"
@@ -1072,51 +1089,56 @@ msgstr "信賴區間"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "平均值+/-的共變數值 "
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
-msgstr ""
+msgstr "比較邊際均值："
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Use response scale"
-msgstr ""
+msgstr "使用回應量表"
 
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "指定比較"
 
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
-msgstr ""
+msgstr "調整p值"
 
 msgctxt "EmmComponent|"
 msgid "Multivariate-t"
-msgstr ""
+msgstr "多變量-t"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "None"
-msgstr ""
+msgstr "無"
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "依變數"
 
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
-msgstr ""
+msgstr "共變數"
 
 msgctxt "GlmInputComponent|"
 msgid "Factors"
-msgstr ""
+msgstr "因子"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
-msgstr ""
+msgstr "試驗總數"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "權重"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
@@ -1124,19 +1146,19 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr ""
+msgstr "家族"
 
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
-msgstr ""
+msgstr "二項式"
 
 msgctxt "GlmInputComponent|"
 msgid "Gaussian"
-msgstr ""
+msgstr "高斯"
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
@@ -1148,7 +1170,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "卜瓦松"
 
 msgctxt "GlmInputComponent|"
 msgid "Link"
@@ -1156,11 +1178,11 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
-msgstr ""
+msgstr "對數機率"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
-msgstr ""
+msgstr "多元概率比"
 
 msgctxt "GlmInputComponent|"
 msgid "Cauchit"
@@ -1176,72 +1198,76 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "對數"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr ""
+msgstr "平方根"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
-msgstr ""
+msgstr "逆"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
 msgstr ""
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
-msgstr ""
+msgstr "殘差分析"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Deviance Residuals"
-msgstr ""
+msgstr "偏差殘差"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "殘差 vs. 擬合"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. predictor"
-msgstr ""
+msgstr "殘差 vs. 預測變數"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "Q-Q 圖"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
-msgstr ""
+msgstr "皮爾森殘差"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Quantile Residuals"
-msgstr ""
+msgstr "四分位數殘差"
 
 #, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Other Plots"
 msgstr "其他圖"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Partial residual plots"
-msgstr ""
+msgstr "部分殘差圖"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Working responses vs. linear predictor"
-msgstr ""
+msgstr "工作反應 vs. 線性預測變數"
 
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr ""
+msgstr "排除"
 
 msgctxt "Correlation|"
 msgid "Effect Size (Fisher's z)"
-msgstr ""
+msgstr "效果量 (Fisher's z)"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
-msgstr ""
+msgstr "模型"
 
 #, fuzzy
 msgctxt "GeneralizedLinearModel|"
@@ -1260,15 +1286,15 @@ msgstr "統計數"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr ""
+msgstr "模型適配度"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
-msgstr ""
+msgstr "離差量數適合度考驗"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
-msgstr ""
+msgstr "皮爾森適合度考驗"
 
 #, fuzzy
 msgctxt "GeneralizedLinearModel|"
