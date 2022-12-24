@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2022-11-26 00:43+0000\n"
+"PO-Revision-Date: 2022-12-24 02:44+0000\n"
 "Last-Translator: Changya Hu <changyahu@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.15-dev\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -49,7 +49,7 @@ msgid "Pearson Correlations"
 msgstr "皮爾森相關"
 
 msgid "Kendall's Tau Correlations"
-msgstr "Kendall's Tau 相關"
+msgstr "肯德爾等級相關係數Tau"
 
 msgid "Spearman Correlations"
 msgstr "Spearman 相關"
@@ -61,70 +61,70 @@ msgid "Pearson's r"
 msgstr "皮爾森r"
 
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Spearman等級相關係數"
 
 msgid "Kendall's tau B"
-msgstr ""
+msgstr "肯德爾等級相關係數B"
 
 msgid "Pearson"
-msgstr ""
+msgstr "皮爾森"
 
 msgid "Spearman"
-msgstr ""
+msgstr "Spearman"
 
 msgid "Kendall"
-msgstr ""
+msgstr "Kendall"
 
 msgid "Density"
-msgstr ""
+msgstr "密度"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr ""
+msgstr "無法繪圖:觀察值低於3個"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr ""
+msgstr "無法繪圖:有無限個觀察值"
 
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 msgid "tau"
-msgstr ""
+msgstr "tau"
 
 msgid "rho[s]"
 msgstr ""
 
 msgid "Pearson's"
-msgstr ""
+msgstr "皮爾森"
 
 msgid "Spearman's"
-msgstr ""
+msgstr "Spearman's"
 
 msgid "Kendall's"
-msgstr ""
+msgstr "Kendall's"
 
 msgid "Kendall's tau"
-msgstr ""
+msgstr "Kendall's tau"
 
 msgid "n"
-msgstr ""
+msgstr "樣本數"
 
 msgid "Upper %s%% CI"
-msgstr ""
+msgstr "%s%%信賴區間上界"
 
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "%s%%信賴區間下界"
 
 msgid "Ranks of %s"
-msgstr ""
+msgstr "%s序"
 
 msgid "Predicted"
-msgstr ""
+msgstr "預測的"
 
 msgid "(Intercept)"
-msgstr ""
+msgstr "(截距)"
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR (Vovk-Sellke maximum p-ratio) %s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -137,25 +137,25 @@ msgid "Kendall's Tau"
 msgstr ""
 
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "淨相關表"
 
 msgid "%s Correlations"
-msgstr ""
+msgstr "%s 相關"
 
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "%s 淨相關"
 
 msgid "All tests one-tailed, for positive correlation."
-msgstr ""
+msgstr "所有正相關皆為單尾考驗"
 
 msgid ", one-tailed"
-msgstr ""
+msgstr ", 單尾"
 
 msgid "All tests one-tailed, for negative correlation."
-msgstr ""
+msgstr "所有負相關皆為單尾檢定"
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
-msgstr ""
+msgstr "p < .05, ** p < .01, *** p < .001%s"
 
 msgid "Conditioned on variables: %s."
 msgstr ""
@@ -163,24 +163,24 @@ msgstr ""
 msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
-msgstr ""
+msgstr "目前無法提供無母數部分相關效果量的標準誤(Fisher's z)"
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
-msgstr ""
+msgstr "無法提供部分相關分析的信賴區間。但可以透過拔靴法來估計。"
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr ""
+msgstr "基於%i 拔靴法樣本的信賴區間"
 
 msgid "p"
-msgstr ""
+msgstr "p值"
 
 msgid "VS-MPR"
 msgstr ""
 
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "效果量 (Fisher's z)"
 
 msgid "SE Effect size"
 msgstr ""
@@ -195,85 +195,91 @@ msgid "Kendall's Tau B"
 msgstr ""
 
 msgid "p-value"
-msgstr ""
+msgstr "p值"
 
 msgid "Number of observations is < %s."
-msgstr ""
+msgstr "觀察值 < %s"
 
 msgid "Bootstrapping"
-msgstr ""
+msgstr "拔靴法"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
-msgstr ""
+msgstr "無法計算偏相關：共變數陣在計算上是奇異矩陣"
 
 msgid "Assumption checks"
-msgstr ""
+msgstr "統計技術假設檢查"
 
 msgid "Shapiro-Wilk Test for Multivariate Normality"
-msgstr ""
+msgstr "Shapiro-Wilk 多變數常態分配"
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "Shapiro-Wilk"
 
 msgid "Variables"
-msgstr ""
+msgstr "變數"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
-msgstr ""
+msgstr "Shapiro-Wilk 雙變數常態分配考驗"
 
+#, fuzzy
 msgid "Scatter plots"
-msgstr ""
+msgstr "散佈圖"
 
+#, fuzzy
 msgid "Correlation plot"
-msgstr ""
+msgstr "相關圖"
 
 msgid "Correlation undefined: %s"
-msgstr ""
+msgstr "未定義相關： %s"
 
 msgid "%1$s%% CI: [%2$s, %3$s]"
-msgstr ""
+msgstr "%1$s%% 信賴區間： [%2$s， %3$s]"
 
+#, fuzzy
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 3"
-msgstr ""
+msgstr "無法繪圖:觀察值低於3個"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 2"
-msgstr ""
+msgstr "無法繪圖:觀察值少於2"
 
+#, fuzzy
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "無法繪圖: %s"
 
 msgid "Partial Pearson's r"
-msgstr ""
+msgstr "皮爾森部分相關"
 
 msgid "Partial Spearman's rho"
-msgstr ""
+msgstr "Spearman 部分相關"
 
 msgid "Partial Kendall's tau B"
-msgstr ""
+msgstr "Kendall's 部分相關tau B"
 
+#, fuzzy
 msgid "%s heatmap"
-msgstr ""
+msgstr "%s 熱圖"
 
+#, fuzzy
 msgid "Heatmaps"
-msgstr ""
+msgstr "熱圖"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
-msgstr ""
+msgstr "%1$d%% 信賴區間：[%2$d, %3$d]"
 
 msgid "italic(r)"
-msgstr ""
+msgstr "斜體(r)"
 
 msgid "italic(rho)"
-msgstr ""
+msgstr "斜體(rho)"
 
 msgid "italic(tau)"
-msgstr ""
+msgstr "斜體(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -285,46 +291,51 @@ msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
 "small sample sizes (< 10), approximation by Fisher's z transformation "
 "becomes less accurate"
-msgstr ""
+msgstr "效應量（Fisher's z）：對於大的相關係數（> 0.9）和小的樣本量（< 10），"
+"Fisher's z 變換的近似值會變得不太準確"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
 "62-71."
 msgstr ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
+"for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
+"62-71."
 
 msgid "Posterior is too peaked"
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "變數"
 
 msgid "Bayesian Correlation Matrix Plot"
-msgstr ""
+msgstr "貝氏相關矩陣圖"
 
 msgid "Could not compute the posteriors"
-msgstr ""
+msgstr "無法計算後驗機率"
 
 msgid "Prior"
-msgstr ""
+msgstr "先驗"
 
 msgid "Posterior"
-msgstr ""
+msgstr "後驗"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "%s%% 信賴區間："
 
 msgid "Bayesian Correlation Pairwise Plots"
-msgstr ""
+msgstr "貝氏相關圖"
 
+#, fuzzy
 msgid "max %s"
-msgstr ""
+msgstr "最大值 %s"
 
 msgid "%1$s at kappa==%2$s"
-msgstr ""
+msgstr "Kappa %1$s = %"
 
 msgid "user prior"
-msgstr ""
+msgstr "使用者先驗"
 
 msgid "Stretched beta prior width"
 msgstr ""
@@ -337,12 +348,12 @@ msgstr ""
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "
 "successes) to be between 0 and 1 (inclusive)."
-msgstr ""
+msgstr "二項式類的分析需要依變數（即成功的比例）介於0和1（含）之間。"
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be an integer."
-msgstr ""
+msgstr "二項式類分析的權重變數（即試驗總數）為需要為整數。"
 
 msgid ""
 "The Gamma family and the Inverse Gaussian family require the dependent "
@@ -377,113 +388,128 @@ msgid ""
 "with 2 levels."
 msgstr ""
 
+#, fuzzy
 msgid "Model Summary"
-msgstr ""
+msgstr "模型摘要"
 
+#, fuzzy
 msgid "Model Summary - %s"
-msgstr ""
+msgstr "模型摘要 - %s"
 
 msgid "Model"
-msgstr ""
+msgstr "模型"
 
 msgid "Deviance"
-msgstr ""
+msgstr "離差量數"
 
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "df"
-msgstr ""
+msgstr "自由度"
 
 msgid "Null model contains nuisance parameters: %s."
-msgstr ""
+msgstr "空模型包含無用的參數：%s。"
 
 msgid "Model Fit"
-msgstr ""
+msgstr "模型適配度"
 
 msgid "Statistic"
-msgstr ""
+msgstr "統計"
 
 msgid "Coefficients"
-msgstr ""
+msgstr "係數"
 
 msgid "Estimate"
-msgstr ""
+msgstr "估計"
 
 msgid "Standard Error"
-msgstr ""
+msgstr "標準誤"
 
+#, fuzzy
 msgid "Lower Bound"
-msgstr ""
+msgstr "下界"
 
+#, fuzzy
 msgid "Upper Bound"
-msgstr ""
+msgstr "上界"
 
 msgid "%1$s level '%2$s' coded as class 1."
-msgstr ""
+msgstr "%1$s 水準 '%2$s' 編碼為第1類 。"
 
 msgid "%1$s levels: %2$s. '%3$s' is the reference level."
-msgstr ""
+msgstr "%1$s 水準： %2$s. '%3$s' 是參考水準。"
 
 msgid "%1$s levels: %2$s. Linear predictors: %3$s."
-msgstr ""
+msgstr "%1$s 水準： %2$s。線性預測變數： %3$s。"
 
+#, fuzzy
 msgid "Diagnostics"
-msgstr ""
+msgstr "診斷指標"
 
 msgid "Residuals vs. Fitted Plots"
-msgstr ""
+msgstr "殘差與預測值圖"
 
 msgid "Standardized %1s residuals vs. fitted values"
-msgstr ""
+msgstr "標準化 %1s 殘差與預測值"
 
+#, fuzzy
 msgid "Standardized %1s residual"
-msgstr ""
+msgstr "標準化 %1s 殘差"
 
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr ""
+msgstr "%1s 殘差與預測變數圖"
 
+#, fuzzy
 msgid "Standardized %1s residuals vs. %2s"
-msgstr ""
+msgstr "標準化 %1s 殘差與 %2s"
 
 msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr ""
+msgstr "常態 Q-Q 圖：標準化殘差"
 
 msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr ""
+msgstr "常態 Q-Q 圖：標準化 %1s 殘差"
 
+#, fuzzy
 msgid "Partial Residual Plots"
-msgstr ""
+msgstr "部分殘差圖"
 
+#, fuzzy
 msgid "Partial residual plot for %1s"
-msgstr ""
+msgstr "%1s 的部分殘差圖"
 
+#, fuzzy
 msgid "Partial residual for %1s"
-msgstr ""
+msgstr "%1s 的部分殘差"
 
 msgid "Plot: Working responses vs. linear predictor"
-msgstr ""
+msgstr "繪圖：工作回應 vs. 線性預測變數"
 
+#, fuzzy
 msgid "Working responses, z"
-msgstr ""
+msgstr "工作回應，z"
 
+#, fuzzy
 msgid "Outliers Tables"
-msgstr ""
+msgstr "異常值表"
 
+#, fuzzy
 msgid "Table: Top n outliers based on %1s residuals"
-msgstr ""
+msgstr "表：基於 %1s 殘差的前 n 個異常值"
 
 msgid "Case Number"
-msgstr ""
+msgstr "個案編號"
 
+#, fuzzy
 msgid "Residual"
-msgstr ""
+msgstr "殘差"
 
+#, fuzzy
 msgid "Table: Influential Cases"
-msgstr ""
+msgstr "表：影響案例"
 
 msgid "DFBETAS_%1s"
 msgstr ""
@@ -495,40 +521,46 @@ msgid "DFBETAS:%1s"
 msgstr ""
 
 msgid "No influential cases found."
-msgstr ""
+msgstr "未發現有影響力的個案。"
 
+#, fuzzy
 msgid "Multicollinearity Diagnostics"
-msgstr ""
+msgstr "多元共線性診斷指標"
 
+#, fuzzy
 msgid "Tolerance"
-msgstr ""
+msgstr "容忍度"
 
 msgid "VIF"
 msgstr ""
 
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "邊際估計平均數和對比分析"
 
+#, fuzzy
 msgid "Estimated Marginal Means"
-msgstr ""
+msgstr "估計邊際平均值"
 
 msgid "SE"
-msgstr ""
+msgstr "標準誤"
 
+#, fuzzy
 msgid "Lower"
-msgstr ""
+msgstr "下界"
 
+#, fuzzy
 msgid "%s%% CI"
-msgstr ""
+msgstr "%s%% 信賴區間"
 
+#, fuzzy
 msgid "Upper"
-msgstr ""
+msgstr "上界"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
 msgstr ""
@@ -536,23 +568,26 @@ msgstr ""
 msgid "Results are not on the response scale and might be misleading."
 msgstr ""
 
+#, fuzzy
 msgid "Contrasts"
-msgstr ""
+msgstr "比較"
 
 msgid "Odds Ratio"
-msgstr ""
+msgstr "勝率比"
 
+#, fuzzy
 msgid "Ratio"
-msgstr ""
+msgstr "比率"
 
+#, fuzzy
 msgid "Plotting is not possible: %s"
-msgstr ""
+msgstr "無法繪圖：%s"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
+msgstr "P 值對應於針對 %s 的虛無假設檢驗。"
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "結果是基於下列水準的平均數：%s。"
 
 msgid "P-values are not adjusted."
 msgstr ""
