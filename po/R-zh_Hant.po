@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2022-12-24 02:44+0000\n"
-"Last-Translator: Changya Hu <changyahu@gmail.com>\n"
+"PO-Revision-Date: 2022-12-31 15:48+0000\n"
+"Last-Translator: Sau-chin Chen <pmsp96@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -67,7 +67,7 @@ msgid "Kendall's tau B"
 msgstr "肯德爾等級相關係數B"
 
 msgid "Pearson"
-msgstr "皮爾森"
+msgstr "皮爾森相關"
 
 msgid "Spearman"
 msgstr "Spearman"
@@ -218,7 +218,7 @@ msgid "Shapiro-Wilk"
 msgstr "Shapiro-Wilk"
 
 msgid "Variables"
-msgstr "變數"
+msgstr "變項"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Shapiro-Wilk 雙變數常態分配考驗"
@@ -316,7 +316,7 @@ msgid "Could not compute the posteriors"
 msgstr "無法計算後驗機率"
 
 msgid "Prior"
-msgstr "先驗"
+msgstr "先驗機率"
 
 msgid "Posterior"
 msgstr "後驗"
@@ -593,7 +593,7 @@ msgid "P-values are not adjusted."
 msgstr ""
 
 msgid "Holm"
-msgstr ""
+msgstr "Holm檢定"
 
 msgid "Homel"
 msgstr ""
@@ -614,16 +614,16 @@ msgid "Benjamini-Yekutieli"
 msgstr ""
 
 msgid "Scheffé"
-msgstr ""
+msgstr "Scheffé檢定"
 
 msgid "Sidak"
 msgstr ""
 
 msgid "Dunnett"
-msgstr ""
+msgstr "Dunnett檢定"
 
 msgid "Bonferroni"
-msgstr ""
+msgstr "Bonferroni校正"
 
 msgid "P-values are adjusted using %s adjustment."
 msgstr ""
@@ -694,7 +694,7 @@ msgid "Sum of Squares"
 msgstr ""
 
 msgid "Mean Square"
-msgstr ""
+msgstr "離均差平方平均值"
 
 msgid "F"
 msgstr ""
@@ -798,7 +798,7 @@ msgid "Predicted Value"
 msgstr ""
 
 msgid "Cook's Distance"
-msgstr ""
+msgstr "庫克距離"
 
 msgid "Residuals Statistics"
 msgstr ""
@@ -1108,7 +1108,7 @@ msgid "Factor"
 msgstr ""
 
 msgid "Confusion matrix"
-msgstr ""
+msgstr "誤差矩陣"
 
 msgid "%% Correct"
 msgstr ""
