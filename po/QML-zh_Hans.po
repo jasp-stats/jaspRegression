@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-01-07 02:47+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jaspregression-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.15.1-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -73,7 +79,7 @@ msgstr "成对显示"
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr "报告显著性(significance)"
+msgstr "报告显著性"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
@@ -425,7 +431,7 @@ msgstr "模型拟合"
 
 msgctxt "RegressionLinear|"
 msgid "R squared change"
-msgstr "R squared change"
+msgstr "R 平方变化量"
 
 msgctxt "RegressionLinear|"
 msgid "Descriptives"
@@ -557,11 +563,11 @@ msgstr "后验摘要"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
-msgstr "交叉(across)所有模型"
+msgstr "跨所有模型"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across matched models"
-msgstr "交叉(Across )匹配的模型"
+msgstr "跨匹配的模型"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Plot of coefficients"
@@ -1161,7 +1167,7 @@ msgstr "Cauchit"
 
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
-msgstr ""
+msgstr "补余 Log-Log"
 
 msgctxt "GlmInputComponent|"
 msgid "Identity"
