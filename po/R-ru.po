@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2022-12-18 07:58+0000\n"
-"Last-Translator: Елизавета <elizaveta_alekseeva_23@mail.ru>\n"
+"PO-Revision-Date: 2023-01-04 19:48+0000\n"
+"Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
 "Language: ru\n"
@@ -125,7 +125,7 @@ msgid "(Intercept)"
 msgstr "(Перехват)"
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR%s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -907,14 +907,15 @@ msgid ""
 "(Castillo et al., 2015)."
 msgstr ""
 
+#, fuzzy
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
 msgstr "Модели"
@@ -963,9 +964,8 @@ msgstr ""
 msgid "P(excl)"
 msgstr ""
 
-#, fuzzy
 msgid "P(incl|data)"
-msgstr "P(включая|данные)"
+msgstr "P(incl|data)"
 
 msgid "P(excl|data)"
 msgstr ""
