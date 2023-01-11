@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-11 16:51+0000\n"
+"PO-Revision-Date: 2023-01-12 00:08+0000\n"
 "Last-Translator: Johnny van Doorn <johnnydoorn@gmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/nl/>\n"
@@ -1380,19 +1380,18 @@ msgctxt "GlmInputComponent|"
 msgid "Other"
 msgstr "Andere"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Model"
 msgstr "Model"
 
 msgctxt "GlmInputComponent|"
 msgid "Multinomial Logistic Regression"
-msgstr ""
+msgstr "Multinomiale Logistische Regressie"
 
 msgctxt "GlmInputComponent|"
 msgid "Ordinal Logistic Regression"
-msgstr ""
+msgstr "Ordinale Logistische Regressie"
 
 msgctxt "GlmInputComponent|"
 msgid "Firth Logistic Regression"
-msgstr ""
+msgstr "Firth Logistische Regressie"
