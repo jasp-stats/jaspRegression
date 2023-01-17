@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-15 10:47+0000\n"
+"PO-Revision-Date: 2023-01-18 12:51+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
@@ -652,7 +652,7 @@ msgstr "Log-a-posteriori-Chancen"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Log(P(data|M)) vs. model size"
-msgstr "Log(p(data|M)) vs. Modellgröße"
+msgstr "Log(P(Daten|M)) vs. Modellgröße"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model probabilities"
