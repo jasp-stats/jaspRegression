@@ -1325,6 +1325,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
     # drop the term from the formula and refit the model
     newFormula <- update(formula, as.formula(sprintf(". ~ . - %s", predictor)))
+    data <- dataset # because we call lm(..., data = data) in .linregForwardRegression we need 'data' to exist.
     newFit     <- update(fit, formula = newFormula)
     newR2      <- summary(newFit)[["r.squared"]]
 
