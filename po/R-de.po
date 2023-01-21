@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2022-12-18 14:17+0000\n"
+"PO-Revision-Date: 2023-01-15 11:50+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/de/>\n"
@@ -82,10 +82,10 @@ msgid "Density"
 msgstr "Dichte"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr "Abbildung unmöglich: Anzahl Beobachtungen ist < 3"
+msgstr "Abbilden nicht möglich: Anzahl Beobachtungen ist < 3"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr "Abbildung unmöglich: Unendliche(r) Wert(e)"
+msgstr "Abbilden nicht möglich: Unendliche(r) Wert(e)"
 
 msgid "rho"
 msgstr "Rho"
@@ -328,7 +328,7 @@ msgid "Variable"
 msgstr "Variable"
 
 msgid "Bayesian Correlation Matrix Plot"
-msgstr "Bayessche Korrelationsmatrix Abbildung"
+msgstr "Diagramm Bayessche Korrelationsmatrix"
 
 msgid "Could not compute the posteriors"
 msgstr "Konnte die Posterior nicht berechnen"
@@ -1200,22 +1200,22 @@ msgstr ""
 "Möglicherweise zu wenige Bootstrap-Wiederholungen."
 
 msgid "Residual plots"
-msgstr "Residuen-Abbildungen"
+msgstr "Residuendiagramme"
 
 msgid "Estimates plots"
-msgstr "Schätzer-Abbildungen"
+msgstr "Schätzer-Diagramme"
 
 msgid "Predicted - residuals plot"
-msgstr "Vorhergesagt - Residuen-Abbildung"
+msgstr "Vorhergesagt - Residuendiagramm"
 
 msgid "Predictor - residuals plots"
-msgstr "Prädiktor - Residuen-Abbildungen"
+msgstr "Prädiktor - Residuendiagramm"
 
 msgid "Squared Pearson residuals plot"
 msgstr "Quadriertes Pearson Residuendiagramm"
 
 msgid "Performance plots"
-msgstr "Performanz-Abbildungen"
+msgstr "Performanz-Diagramme"
 
 msgid "ROC plot"
 msgstr "ROC-Diagramm"
