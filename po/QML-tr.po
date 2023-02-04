@@ -1,51 +1,57 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-01-31 20:49+0000\n"
+"Last-Translator: Ünal Halit ÖZDEN <uozden@ticaret.edu.tr>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/tr/>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 4.16-dev\n"
 "X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr ""
+msgstr "Regresyon"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr ""
+msgstr "Classical"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "korelasyon"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "Doğrusal Regresyon"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "Lojistik regresyon"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr ""
+msgstr "Bayesçi"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr ""
+msgstr "Bayesçi korelasyon"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "Bayesçi Doğrusal Regresyon"
 
 msgctxt "Correlation|"
 msgid "Variables"
-msgstr ""
+msgstr "Değişkenler"
 
 msgctxt "Correlation|"
 msgid "Sample Correlation Coefficient"
-msgstr ""
+msgstr "Örneklem Korelasyon Katsayısı"
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
@@ -53,15 +59,15 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Spearman'ın rho"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "Kendall'ın tau-b"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Ekstra seçenekler"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
@@ -85,7 +91,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "From"
-msgstr ""
+msgstr "İtibaren"
 
 msgctxt "Correlation|"
 msgid "bootstraps"
@@ -97,15 +103,15 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Sample size"
-msgstr ""
+msgstr "Örneklem büyüklüğü"
 
 msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Alt. Hipotez"
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr ""
+msgstr "ilişkili"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
@@ -117,11 +123,11 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
-msgstr ""
+msgstr "Serpilme diagramı"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
@@ -129,7 +135,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Statistics"
-msgstr ""
+msgstr "İstatistikler"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
