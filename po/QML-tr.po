@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-01-31 20:49+0000\n"
-"Last-Translator: Ünal Halit ÖZDEN <uozden@ticaret.edu.tr>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/tr/>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.16-dev\n"
 "X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
@@ -205,17 +199,20 @@ msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
 msgstr ""
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Spearman'ın rho"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
-msgstr ""
+msgstr "Kendall'ın tau-b"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
-msgstr ""
+msgstr "Ekstra seçenekler"
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
@@ -229,9 +226,10 @@ msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
 msgstr ""
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
-msgstr ""
+msgstr "Örneklem büyüklüğü"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
@@ -245,13 +243,15 @@ msgctxt "CorrelationBayesian|"
 msgid "Interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr ""
+msgstr "Alt. Hipotez"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
-msgstr ""
+msgstr "ilişkili"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
@@ -261,9 +261,10 @@ msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
 msgstr ""
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
@@ -393,17 +394,19 @@ msgctxt "RegressionLinear|"
 msgid "Include intercept"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Statistics"
-msgstr ""
+msgstr "İstatistikler"
 
 msgctxt "RegressionLinear|"
 msgid "Estimates"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "From"
-msgstr ""
+msgstr "İtibaren"
 
 msgctxt "RegressionLinear|"
 msgid "bootstraps"
@@ -501,9 +504,10 @@ msgctxt "RegressionLinear|"
 msgid "Exclude cases pairwise"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals Plots"
@@ -633,9 +637,10 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Components"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Coefficients"
@@ -849,9 +854,10 @@ msgctxt "RegressionLogistic|"
 msgid "Include intercept"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Statistics"
-msgstr ""
+msgstr "İstatistikler"
 
 msgctxt "RegressionLogistic|"
 msgid "Descriptives"
@@ -873,9 +879,10 @@ msgctxt "RegressionLogistic|"
 msgid "Estimates"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "From"
-msgstr ""
+msgstr "İtibaren"
 
 msgctxt "RegressionLogistic|"
 msgid "bootstraps"
@@ -961,9 +968,10 @@ msgctxt "RegressionLogistic|"
 msgid "All"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Plots"
-msgstr ""
+msgstr "Grafikler"
 
 msgctxt "RegressionLogistic|"
 msgid "Inferential Plots"
@@ -1245,9 +1253,10 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
-msgstr ""
+msgstr "İstatistikler"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
