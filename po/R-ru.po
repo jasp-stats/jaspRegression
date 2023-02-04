@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2023-01-04 19:48+0000\n"
+"PO-Revision-Date: 2023-01-31 20:42+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -12,18 +12,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.15.1-dev\n"
+"X-Generator: Weblate 4.16-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
+"Для всех критериев альтернативная гипотеза указывает, что %s положительна."
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
+"Для всех критериев альтернативная гипотеза указывает, что %s отрицательна."
 
 msgid "Scatterplot"
-msgstr ""
+msgstr "Диаграмма рассеяния"
 
 msgid "Prior and Posterior"
 msgstr "Априорный и апостериорный"
@@ -34,8 +36,9 @@ msgstr "Проверка робастности коэффициента Бай�
 msgid "Sequential Analysis"
 msgstr "Последовательный анализ"
 
+#, fuzzy
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "Байесовские корреляции Пирсона"
 
 msgid "Bayesian Kendall's Tau Correlations"
 msgstr ""
@@ -175,7 +178,7 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr "уровень значимости"
+msgstr "p"
 
 msgid "VS-MPR"
 msgstr "VS-MPR"
@@ -247,7 +250,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr "Невозможно построить график: %s"
+msgstr "Построение графиков невозможно: %s"
 
 msgid "Partial Pearson's r"
 msgstr ""
@@ -399,7 +402,7 @@ msgid "AIC"
 msgstr ""
 
 msgid "BIC"
-msgstr "Байесовский информационный критерий"
+msgstr "BIC"
 
 msgid "df"
 msgstr "df"
