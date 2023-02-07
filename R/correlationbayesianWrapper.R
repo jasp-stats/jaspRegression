@@ -19,7 +19,7 @@
 
 CorrelationBayesian <- function(
           data = NULL,
-          version = "0.17",
+          version = "0.17.1",
           alternative = "twoSided",
           bayesFactorReport = TRUE,
           bayesFactorType = "BF10",
