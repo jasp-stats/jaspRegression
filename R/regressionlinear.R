@@ -82,16 +82,28 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
 }
 #TODO: capture crashes with many interactions between factors!
-.linregReadDataset <- function(dataset, options) {
+.linregReadDataset <- function(dataset, options, onlyCompleteCases = TRUE) {
   if (!is.null(dataset))
     return(dataset)
 
   numericVariables  <- c(options$dependent, unlist(options$covariates), options$weights)
   numericVariables  <- numericVariables[numericVariables != ""]
   factors           <- unlist(options$factors)
-  dataset           <- .readDataSetToEnd(columns.as.factor = factors, columns.as.numeric = numericVariables, exclude.na.listwise = c(factors, numericVariables))
+  excludeNaListwise <- if(onlyCompleteCases) c(factors, numericVariables) else NULL
+  dataset           <- .readDataSetToEnd(columns.as.factor = factors, columns.as.numeric = numericVariables, exclude.na.listwise = excludeNaListwise)
 
   return(dataset)
+}
+
+.linregGetCaseNumbers <- function(options) {
+  dataset    <- .linregReadDataset(NULL, options, onlyCompleteCases = FALSE)
+
+  numericVariables <- c(options$dependent, unlist(options$covariates), options$weights)
+  numericVariables <- numericVariables[numericVariables != ""]
+  factors          <- unlist(options$factors)
+  completeCases    <- complete.cases(dataset[, c(factors, numericVariables)])
+
+  return(seq_len(nrow(dataset))[completeCases])
 }
 
 .linregCheckErrors <- function(dataset, options) {
@@ -1440,7 +1452,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       index <- seq_along(predictedValuesAll)
 
     if (length(index) > 0) {
-      diagnostics[["caseNumber"]]   <- index
+      caseNumbers <- .linregGetCaseNumbers(options)
+      diagnostics[["caseNumber"]]   <- caseNumbers[index]
       diagnostics[["stdResidual"]]  <- stdResidualsAll[index]
       diagnostics[["dependent"]]    <- fit$model[index, 1]
       diagnostics[["predicted"]]    <- predictedValuesAll[index]
