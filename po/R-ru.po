@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2023-01-31 20:42+0000\n"
+"PO-Revision-Date: 2023-02-09 18:37+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -27,155 +27,185 @@ msgstr ""
 msgid "Scatterplot"
 msgstr "Диаграмма рассеяния"
 
+#, fuzzy
 msgid "Prior and Posterior"
-msgstr "Априорный и апостериорный"
-
-msgid "Bayes Factor Robustness Check"
-msgstr "Проверка робастности коэффициента Байеса"
-
-msgid "Sequential Analysis"
-msgstr "Последовательный анализ"
+msgstr "Приор и Постериор"
 
 #, fuzzy
+msgid "Bayes Factor Robustness Check"
+msgstr "Проверка робастности фактора Байеса"
+
+#, fuzzy
+msgid "Sequential Analysis"
+msgstr "Последовательная проверка гипотез"
+
 msgid "Bayesian Pearson Correlations"
 msgstr "Байесовские корреляции Пирсона"
 
 msgid "Bayesian Kendall's Tau Correlations"
-msgstr ""
+msgstr "Байесовские корреляции Кендалла"
 
 msgid "Bayesian Spearman Correlations"
-msgstr ""
+msgstr "Байесовские корреляции Спирмена"
 
 msgid "Bayesian Correlation Table"
-msgstr ""
+msgstr "Байесовская корреляционная таблица"
 
 msgid "Pearson Correlations"
-msgstr ""
+msgstr "Корреляции Пирсона"
 
 msgid "Kendall's Tau Correlations"
-msgstr ""
+msgstr "Корреляции Кендалла"
 
 msgid "Spearman Correlations"
-msgstr ""
+msgstr "Корреляции Спирмена"
 
 msgid "Correlation Table"
-msgstr ""
+msgstr "Корреляционная таблица"
 
 msgid "Pearson's r"
-msgstr ""
+msgstr "Корреляция Пирсона"
 
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Корреляция Спирмена"
 
 msgid "Kendall's tau B"
-msgstr ""
+msgstr "Корреляция Кендалла"
 
+#, fuzzy
 msgid "Pearson"
-msgstr "Пирсона"
+msgstr "Корреляционный анализ Пирсона"
 
+#, fuzzy
 msgid "Spearman"
-msgstr ""
+msgstr "Корреляционный анализ Спирмена"
 
+#, fuzzy
 msgid "Kendall"
-msgstr ""
+msgstr "Корреляционный анализ Кендалла"
 
+#, fuzzy
 msgid "Density"
 msgstr "Плотность"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr ""
+msgstr "Построение графика невозможно: количество наблюдений < 3"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr ""
+msgstr "График невозможен: бесконечные значения"
 
 msgid "rho"
-msgstr ""
+msgstr "ро"
 
 msgid "tau"
-msgstr ""
+msgstr "тау"
 
+#, fuzzy
 msgid "rho[s]"
-msgstr ""
+msgstr "ро"
 
 msgid "Pearson's"
-msgstr ""
+msgstr "Корреляции Пирсона"
 
 msgid "Spearman's"
-msgstr ""
+msgstr "Корреляции Спирмена"
 
 msgid "Kendall's"
-msgstr ""
+msgstr "Корреляции Кендалла"
 
+#, fuzzy
 msgid "Kendall's tau"
-msgstr ""
+msgstr "Корреляция Кенделла"
 
 msgid "n"
 msgstr "n"
 
+#, fuzzy
 msgid "Upper %s%% CI"
-msgstr ""
+msgstr "Верхняя граница ДИ %s%%"
 
+#, fuzzy
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "Нижняя граница ДИ %s%%"
 
+#, fuzzy
 msgid "Ranks of %s"
-msgstr ""
+msgstr "Ранги %s"
 
+#, fuzzy
 msgid "Predicted"
-msgstr ""
+msgstr "Предсказанный"
 
 msgid "(Intercept)"
-msgstr "(Перехват)"
+msgstr "(Интерцепт)"
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
 
+#, fuzzy
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
 "  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Максимальное значение <em>p</em> критерия Вовк-Селлке: исходя из значения "
+"<em>p</em>, максимально возможные шансы в пользу H%1$s над H%2$s равны 1/ (-"
+"e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 (Sellke, Bayarri, & "
+"Berger, 2001)."
 
+#, fuzzy
 msgid "Kendall's Tau"
-msgstr ""
+msgstr "Корреляция Кендалла"
 
+#, fuzzy
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "Таблица частных корреляций"
 
+#, fuzzy
 msgid "%s Correlations"
-msgstr ""
+msgstr "%s Корреляции"
 
+#, fuzzy
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "%s Частные корреляции"
 
+#, fuzzy
 msgid "All tests one-tailed, for positive correlation."
-msgstr ""
+msgstr "Все критерии односторонние, для положительной корреляции."
 
+#, fuzzy
 msgid ", one-tailed"
-msgstr ""
+msgstr ", односторонний"
 
+#, fuzzy
 msgid "All tests one-tailed, for negative correlation."
-msgstr ""
+msgstr "Все критерии односторонние, для отрицательной корреляции."
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
-msgstr ""
+msgstr "p < .05, ** p < .01, *** p < .001%s"
 
+#, fuzzy
 msgid "Conditioned on variables: %s."
-msgstr ""
+msgstr "Обусловлено переменными: %s."
 
+#, fuzzy
 msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
 msgstr ""
+"Стандартная ошибка размера эффекта (z Фишера) в настоящее время недоступна "
+"для непараметрических частных корреляций."
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
+"Аналитические доверительные интервалы для частных корреляций пока "
+"недоступны, но вместо этого их можно получить с помощью бутстрэппинга."
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr ""
+msgstr "Доверительные интервалы на основе %i повторов бутстрэпа."
 
 msgid "p"
 msgstr "p"
@@ -183,37 +213,42 @@ msgstr "p"
 msgid "VS-MPR"
 msgstr "VS-MPR"
 
+#, fuzzy
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "Размер эффекта (z Фишера)"
 
+#, fuzzy
 msgid "SE Effect size"
-msgstr ""
+msgstr "SE Effect size"
 
 msgid "r"
-msgstr ""
+msgstr "r"
 
 msgid "tau B"
-msgstr ""
+msgstr "tau B"
 
+#, fuzzy
 msgid "Kendall's Tau B"
-msgstr ""
+msgstr "Корреляции Кендалла"
 
 msgid "p-value"
-msgstr ""
+msgstr "p"
 
 msgid "Number of observations is < %s."
-msgstr ""
+msgstr "Количество наблюдений < %s."
 
 msgid "Bootstrapping"
-msgstr ""
+msgstr "Бутстрэппинг"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
 msgstr ""
+"Частная корреляция не может быть вычислена: ковариационная матрица "
+"сингулярна."
 
 msgid "Assumption checks"
-msgstr ""
+msgstr "Проверка допущений"
 
 msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
@@ -313,14 +348,16 @@ msgstr ""
 msgid "Could not compute the posteriors"
 msgstr ""
 
+#, fuzzy
 msgid "Prior"
-msgstr "Априорный"
+msgstr "Приор"
 
+#, fuzzy
 msgid "Posterior"
-msgstr "Апостериорный"
+msgstr "Постериор"
 
 msgid "%s%% CI:"
-msgstr "%s%% CI:"
+msgstr "%s%% ДИ:"
 
 msgid "Bayesian Correlation Pairwise Plots"
 msgstr ""
@@ -524,14 +561,16 @@ msgstr ""
 msgid "SE"
 msgstr "SE"
 
+#, fuzzy
 msgid "Lower"
-msgstr "Нижний"
+msgstr "Нижняя граница"
 
 msgid "%s%% CI"
 msgstr ""
 
+#, fuzzy
 msgid "Upper"
-msgstr "Верхний"
+msgstr "Верхняя граница"
 
 msgid "t"
 msgstr "t"
