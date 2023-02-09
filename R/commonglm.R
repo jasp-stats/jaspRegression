@@ -471,14 +471,45 @@
   }
   else {
     S <- summary(model)$sigma
-    X <- model.matrix(model)
+    X <- unname(model.matrix(model)) # CHANGE: unname
     mu <- fitted.values(model)
-    Y <- if (method == "resample")
-      matrix(sample(residuals, n*reps, replace=TRUE), n, reps) + matrix(mu, n, reps)
-    else matrix(rnorm(n*reps, 0, S), n, reps) + matrix(mu, n, reps)
-    E <- residuals(lm(Y ~ X - 1))
-    DW <- apply(E, 2, .durbinWatsonTest.default, max.lag=max.lag)
-    if (max.lag == 1) DW <- rbind(DW)
+
+    # START OF CHANGES
+    # the original code is horrible for larger datasets.
+    # It creates all bootstrap datasets at once (e.g., matrix(sample(residuals, n*reps, replace=TRUE), n, reps))
+    # we do this one at a time.
+
+    # since the design matrix is constant across bootstraps, we precompute solve(t(X) %*% X) %*% t(X) with
+    # a QR factorization. Otherwise lm does this again and again in every step.
+    qrX <- qr(X)
+    R <- qr.R(qrX)
+    Rinv <-  backsolve(r = R, x = diag(ncol(R))) # efficiently invert triangular matrix (see https://stackoverflow.com/a/31772085 )
+    # this is the same as solve(t(X) %*% X) %*% t(X) but then computed more efficiently
+    inv_XTX_XT <- tcrossprod(tcrossprod(Rinv), X)
+    # all.equal(inv_XTX_XT, solve(t(X) %*% X) %*% t(X), check.attributes = FALSE)  # assertion 1
+    # y <- model$model[[1]]
+    # resids <- y - X %*% (inv_XTX_XT %*% y)
+    # all.equal(unname(residuals), c(resids)) # assertion 2
+
+    # drop names to avoid copying them
+    bootResult <- boot::boot(unname(residuals), statistic = function(data, indices, inv_XTX_XT, max.lag) {
+      y <- data[indices]
+      resids <- c(y - X %*% (inv_XTX_XT %*% y)) # NOTE: parenthesis are super important here because doing X %*% inv_XTX_XT first allocates an n by n matrix
+      # original code
+      # E <- c(residuals(lm(y ~ X - 1)))
+      # all.equal(unname(E), resids)
+      .durbinWatsonTest.default(resids, max.lag = max.lag)
+    }, R = reps, inv_XTX_XT = inv_XTX_XT, max.lag = max.lag)
+    DW <- bootResult$t
+
+    # ORIGINAL CODE
+    # Y <- if (method == "resample")
+    #   matrix(sample(residuals, n*reps, replace=TRUE), n, reps) + matrix(mu, n, reps)
+    # else matrix(rnorm(n*reps, 0, S), n, reps) + matrix(mu, n, reps)
+    # E <- residuals(lm(Y ~ X - 1))
+    # DW <- apply(E, 2, .durbinWatsonTest.default, max.lag=max.lag)
+    # if (max.lag == 1) DW <- rbind(DW)
+    # END OF CHANGES
     p <- rep(0, max.lag)
     if (alternative == 'two.sided'){
       for (lag in 1:max.lag) {
