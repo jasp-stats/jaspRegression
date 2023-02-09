@@ -491,15 +491,24 @@
     # resids <- y - X %*% (inv_XTX_XT %*% y)
     # all.equal(unname(residuals), c(resids)) # assertion 2
 
+    # start a progressbar if we expect this to take a while
+    if (length(residuals) > 50000L) {
+      startProgressbar(expectedTicks = reps, label = gettext("Computing Durbin-Watson Statistics"))
+      tick <- progressbarTick
+    } else {
+      tick <- function() {}
+    }
+
     # drop names to avoid copying them
-    bootResult <- boot::boot(unname(residuals), statistic = function(data, indices, inv_XTX_XT, max.lag) {
+    bootResult <- boot::boot(unname(residuals), statistic = function(data, indices, inv_XTX_XT, max.lag, tick) {
       y <- data[indices]
       resids <- c(y - X %*% (inv_XTX_XT %*% y)) # NOTE: parenthesis are super important here because doing X %*% inv_XTX_XT first allocates an n by n matrix
       # original code
       # E <- c(residuals(lm(y ~ X - 1)))
       # all.equal(unname(E), resids)
       .durbinWatsonTest.default(resids, max.lag = max.lag)
-    }, R = reps, inv_XTX_XT = inv_XTX_XT, max.lag = max.lag)
+      tick()
+    }, R = reps, inv_XTX_XT = inv_XTX_XT, max.lag = max.lag, tick = tick)
     DW <- bootResult$t
 
     # ORIGINAL CODE
