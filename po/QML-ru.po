@@ -1,16 +1,10 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-02-09 18:35+0000\n"
-"Last-Translator: fedder <fedor.derish@gmail.com>\n"
-"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/ru/>\n"
-"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Generator: Weblate 4.16-dev\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Language: ru\n"
 "X-Qt-Contexts: true\n"
 
@@ -564,17 +558,20 @@ msgctxt "RegressionLinear|"
 msgid "Prediction intervals"
 msgstr "Интервалы прогнозирования"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Зависимая переменная"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
-msgstr ""
+msgstr "Ковариаты"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "Веса WLS (опционально)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Output"
@@ -652,13 +649,15 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Descriptives"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model"
-msgstr ""
+msgstr "Модель"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Components"
-msgstr ""
+msgstr "Компоненты"
 
 #, fuzzy
 msgctxt "RegressionLinearBayesian|"
@@ -830,53 +829,65 @@ msgctxt "RegressionLinearBayesian|"
 msgid "No. samples for credible interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Зависимая переменная"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Method"
-msgstr ""
+msgstr "Метод"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Enter"
-msgstr ""
+msgstr "Принудительный"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Backward"
-msgstr ""
+msgstr "Исключения"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Forward"
-msgstr ""
+msgstr "Включения"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Stepwise"
-msgstr ""
+msgstr "Пошаговый"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Covariates"
-msgstr ""
+msgstr "Ковариаты"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Factors"
-msgstr ""
+msgstr "Факторы"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "Веса WLS (опционально)"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Model"
-msgstr ""
+msgstr "Модель"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Components"
-msgstr ""
+msgstr "Компоненты"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Include intercept"
-msgstr ""
+msgstr "Включить интерцепт"
 
 #, fuzzy
 msgctxt "RegressionLogistic|"
@@ -899,17 +910,20 @@ msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Estimates"
-msgstr ""
+msgstr "Оценки"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "From"
-msgstr ""
+msgstr "Из"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "bootstraps"
-msgstr ""
+msgstr "бутстрэп"
 
 msgctxt "RegressionLogistic|"
 msgid "Standardized coefficients"
@@ -1059,13 +1073,15 @@ msgctxt "RegressionLogistic|"
 msgid "PR plot"
 msgstr ""
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "From"
-msgstr ""
+msgstr "Из"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "bootstraps"
-msgstr ""
+msgstr "бутстрэп"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
@@ -1147,13 +1163,15 @@ msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
 msgstr ""
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
-msgstr ""
+msgstr "Ковариаты"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Factors"
-msgstr ""
+msgstr "Факторы"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
@@ -1275,17 +1293,20 @@ msgctxt "Correlation|"
 msgid "Partial out"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
-msgstr ""
+msgstr "Модель"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
-msgstr ""
+msgstr "Компоненты"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
-msgstr ""
+msgstr "Включить интерцепт"
 
 #, fuzzy
 msgctxt "GeneralizedLinearModel|"
@@ -1304,9 +1325,10 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
-msgstr ""
+msgstr "Оценки"
 
 #, fuzzy
 msgctxt "GeneralizedLinearModel|"
@@ -1423,9 +1445,10 @@ msgctxt "GlmInputComponent|"
 msgid "Other"
 msgstr ""
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Model"
-msgstr ""
+msgstr "Модель"
 
 msgctxt "GlmInputComponent|"
 msgid "Multinomial Logistic Regression"
