@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-02-16 13:03+0000\n"
+"PO-Revision-Date: 2023-02-18 02:51+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/ru/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr "Регрессия"
+msgstr "Корреляции"
 
 msgctxt "Description|"
 msgid "Classical"
@@ -68,7 +68,7 @@ msgstr "Спирмена (ро)"
 #, fuzzy
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr "Кендалла (тау)"
+msgstr "Кендалла (tau-b)"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
@@ -198,21 +198,22 @@ msgctxt "Correlation|"
 msgid "Exclude cases listwise"
 msgstr "Исключить случаи целиком"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
 msgstr "Генеральный коэффициент корреляции"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
-msgstr "Пирсона (ро)"
+msgstr "Пирсона (rho)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
-msgstr "Спирмена (ро)"
+msgstr "Спирмена (rho)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
-msgstr "Кендалла (тау)"
+msgstr "Кендалла (tau-b)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
@@ -396,7 +397,7 @@ msgstr "Факторы"
 #, fuzzy
 msgctxt "RegressionLinear|"
 msgid "WLS Weights (optional)"
-msgstr "Веса WLS (опционально)"
+msgstr "Веса WLS (необязательно)"
 
 msgctxt "RegressionLinear|"
 msgid "Model"
@@ -589,7 +590,7 @@ msgstr "Ковариаты"
 #, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "WLS Weights (optional)"
-msgstr "Веса WLS (опционально)"
+msgstr "Веса WLS (необязательно)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Output"
@@ -862,19 +863,17 @@ msgctxt "RegressionLinearBayesian|"
 msgid "BAS"
 msgstr "BAS"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "No. models"
-msgstr "№ модели"
+msgstr "Кол-во моделей"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "MCMC"
 msgstr "MCMC"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "No. samples"
-msgstr "№ выборок"
+msgstr "Кол-во выборок"
 
 #, fuzzy
 msgctxt "RegressionLinearBayesian|"
@@ -884,7 +883,7 @@ msgstr "Числовая точность"
 #, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "No. samples for credible interval"
-msgstr "№ выборок для достоверного интервала"
+msgstr "Кол-во выборок для достоверного интервала"
 
 #, fuzzy
 msgctxt "RegressionLogistic|"
@@ -929,7 +928,7 @@ msgstr "Факторы"
 #, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "WLS Weights (optional)"
-msgstr "Веса WLS (опционально)"
+msgstr "Веса WLS (необязательно)"
 
 msgctxt "RegressionLogistic|"
 msgid "Model"
@@ -1111,133 +1110,152 @@ msgstr "Предсказанные значения - остатки (графи
 #, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Predictor - residual plots"
-msgstr "Предсказанные значения - остатки (графики)"
+msgstr "Предиктор - остатки (графики)"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "График квадратичных остатков Пирсона"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Residual Type"
-msgstr ""
+msgstr "Тип остатков"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Deviance"
-msgstr ""
+msgstr "Отклонение"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Pearson"
-msgstr ""
+msgstr "Пирсона"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Performance Plots"
-msgstr ""
+msgstr "Графики"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "ROC plot"
-msgstr ""
+msgstr "ROC-график"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
-msgstr ""
+msgstr "Шаг отсечения"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Add cutoff labels"
-msgstr ""
+msgstr "Добавить метки отсечек"
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
-msgstr ""
+msgstr "PR-график"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "From"
-msgstr "Из"
+msgstr "С помощью"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "bootstraps"
-msgstr "бутстрэп"
+msgstr "бутстрэп-выборок"
 
+#, fuzzy
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
-msgstr ""
+msgstr "Оценить связь между переменными"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals histogram"
-msgstr ""
+msgstr "Гистограмма остатков"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
-msgstr ""
+msgstr "Графики условных оценок"
 
 msgctxt "RegressionLinear|"
 msgid "Other Plots"
-msgstr ""
+msgstr "Другие графики"
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Marginal effects plots"
-msgstr ""
+msgstr "Графики маргинальных эффектов"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity Diagnostics"
-msgstr ""
+msgstr "Диагностика мультиколлинеарности"
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
-msgstr ""
+msgstr "Точность"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "Общая линейная модель"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Оценка предельных средних значений и контрастный анализ"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Model variables"
-msgstr ""
+msgstr "Переменные модели"
 
 msgctxt "EmmComponent|"
 msgid "Selected variables"
-msgstr ""
+msgstr "Выбранные переменные"
 
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
-msgstr ""
+msgstr "Доверительный интервал"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "Уровни ковариат в среднем +/- "
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
-msgstr ""
+msgstr "Сравните маргинальные средние с:"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Use response scale"
-msgstr ""
+msgstr "Использовать шкалу отклика"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "Указать контрасты"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
-msgstr ""
+msgstr "Скорректированное p-значение"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Multivariate-t"
-msgstr ""
+msgstr "Многомерный t-критерий"
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "None"
-msgstr ""
+msgstr "Нет"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "Зависимая переменная"
 
 #, fuzzy
 msgctxt "GlmInputComponent|"
@@ -1249,125 +1267,142 @@ msgctxt "GlmInputComponent|"
 msgid "Factors"
 msgstr "Факторы"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
-msgstr ""
+msgstr "Общее количество испытаний"
 
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "Веса"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr ""
+msgstr "Семейство"
 
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Бернулли"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
-msgstr ""
+msgstr "Биномиальный"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Gaussian"
-msgstr ""
+msgstr "Гауссово"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "Гамма"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
-msgstr ""
+msgstr "Обратное Гауссово"
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "Пуассон"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Link"
-msgstr ""
+msgstr "Связь"
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
-msgstr ""
+msgstr "Логит"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
-msgstr ""
+msgstr "Пробит"
 
 msgctxt "GlmInputComponent|"
 msgid "Cauchit"
-msgstr ""
+msgstr "Коши"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
-msgstr ""
+msgstr "Дополнительный LogLog"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Identity"
-msgstr ""
+msgstr "Тождество"
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "Лог"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr ""
+msgstr "Квдр"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
-msgstr ""
+msgstr "Обратить"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/mu^2"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
-msgstr ""
+msgstr "Анализ остатков"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Deviance Residuals"
-msgstr ""
+msgstr "Отклонение остатков"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "Остатки vs. подогнанные значения"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. predictor"
-msgstr ""
+msgstr "Остатки vs. предиктор"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "К-К график"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
-msgstr ""
+msgstr "Остатки Пирсона"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Quantile Residuals"
-msgstr ""
+msgstr "Квантили остатков"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Other Plots"
-msgstr ""
+msgstr "Другие графики"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Partial residual plots"
-msgstr ""
+msgstr "Графики частных остатков"
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Working responses vs. linear predictor"
-msgstr ""
+msgstr "Рабочие отклики vs. линейный предиктор"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr ""
+msgstr "\"Третья\" переменная (частные корреляции)"
 
 #, fuzzy
 msgctxt "GeneralizedLinearModel|"
@@ -1413,45 +1448,52 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
 msgstr "Доверительные интервалы"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnostics"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "Показать выбросы"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals: top"
-msgstr ""
+msgstr "Квантили стандартизированных остатков: сверху"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
-msgstr ""
+msgstr "Отклонение стандартизированных остатков: сверху"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
-msgstr ""
+msgstr "Отклонение стьюдентизированных остатков: сверху"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Influential Cases"
-msgstr ""
+msgstr "Показать влиятельные случаи"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "DFBETAS"
-msgstr ""
+msgstr "DFBETAS"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "DFFITS"
 msgstr "DFFITS"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Covariance ratio"
-msgstr ""
+msgstr "Отношение ковариаций"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Cook's distance"
-msgstr ""
+msgstr "Расстояние Кука"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Leverages"
@@ -1459,49 +1501,52 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "Мультиколлинеарность"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Толерантность"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "Дополнительные параметры"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Append columns to data"
-msgstr ""
+msgstr "Добавить столбцы к данным"
 
 #, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "Остатки (%1)"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "Имя столбца"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residuals"
-msgstr ""
+msgstr "т.е., остатки"
 
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals std. deviations (%1)"
-msgstr ""
+msgstr "Остатки стд. отклонений (%1)"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
-msgstr ""
+msgstr "например, СО остатков"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Коэффициенты"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
