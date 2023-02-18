@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2023-02-09 18:37+0000\n"
+"PO-Revision-Date: 2023-02-18 02:51+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -64,13 +64,13 @@ msgid "Correlation Table"
 msgstr "Корреляционная таблица"
 
 msgid "Pearson's r"
-msgstr "Корреляция Пирсона"
+msgstr "Корреляции Пирсона (r)"
 
 msgid "Spearman's rho"
-msgstr "Корреляция Спирмена"
+msgstr "Корреляция Спирмена (rho)"
 
 msgid "Kendall's tau B"
-msgstr "Корреляция Кендалла"
+msgstr "Корреляция Кендалла (tau-b)"
 
 #, fuzzy
 msgid "Pearson"
@@ -95,10 +95,10 @@ msgid "Plotting not possible: Infinite value(s)"
 msgstr "График невозможен: бесконечные значения"
 
 msgid "rho"
-msgstr "ро"
+msgstr "rho"
 
 msgid "tau"
-msgstr "тау"
+msgstr "tau"
 
 #, fuzzy
 msgid "rho[s]"
@@ -110,12 +110,13 @@ msgstr "Корреляции Пирсона"
 msgid "Spearman's"
 msgstr "Корреляции Спирмена"
 
+#, fuzzy
 msgid "Kendall's"
 msgstr "Корреляции Кендалла"
 
 #, fuzzy
 msgid "Kendall's tau"
-msgstr "Корреляция Кенделла"
+msgstr "Корреляции Кенделла"
 
 msgid "n"
 msgstr "n"
@@ -156,7 +157,7 @@ msgstr ""
 
 #, fuzzy
 msgid "Kendall's Tau"
-msgstr "Корреляция Кендалла"
+msgstr "Корреляции Кендалла"
 
 #, fuzzy
 msgid "Partial Correlation Table"
@@ -202,7 +203,7 @@ msgid ""
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
 "Аналитические доверительные интервалы для частных корреляций пока "
-"недоступны, но вместо этого их можно получить с помощью бутстрэппинга."
+"недоступны, но их можно получить с помощью бутстрэппинга."
 
 msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr "Доверительные интервалы на основе %i повторов бутстрэпа."
@@ -229,7 +230,7 @@ msgstr "tau B"
 
 #, fuzzy
 msgid "Kendall's Tau B"
-msgstr "Корреляции Кендалла"
+msgstr "Корреляции Кендалла (tau-b)"
 
 msgid "p-value"
 msgstr "p"
@@ -244,75 +245,84 @@ msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
 msgstr ""
-"Частная корреляция не может быть вычислена: ковариационная матрица "
-"сингулярна."
+"Частная корреляция не может быть вычислена: ковариационная матрица вырождена."
 
 msgid "Assumption checks"
 msgstr "Проверка допущений"
 
+#, fuzzy
 msgid "Shapiro-Wilk Test for Multivariate Normality"
-msgstr ""
+msgstr "Критерий Шапиро-Уилка на многомерную нормальность"
 
 msgid "Shapiro-Wilk"
 msgstr "Критерий Шапиро-Уилка"
 
 msgid "Variables"
-msgstr ""
+msgstr "Переменные"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
-msgstr ""
+msgstr "Критерий Шапиро-Уилка для оценки двумерной нормальности"
 
+#, fuzzy
 msgid "Scatter plots"
-msgstr ""
+msgstr "Диаграмма рассеяния"
 
 msgid "Correlation plot"
 msgstr "Корреляционный график"
 
+#, fuzzy
 msgid "Correlation undefined: %s"
-msgstr ""
+msgstr "Корреляция не определена: %s"
 
 msgid "%1$s%% CI: [%2$s, %3$s]"
-msgstr ""
+msgstr "%1$s%% ДИ: [%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 3"
 msgstr ""
+"Построение графиков невозможно:\n"
+" Количество наблюдений < 3"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 2"
 msgstr ""
+"Построение графиков невозможно:\n"
+" Количество наблюдений < 2"
 
 msgid "Plotting not possible: %s"
 msgstr "Построение графиков невозможно: %s"
 
 msgid "Partial Pearson's r"
-msgstr ""
+msgstr "Частная корреляция Пирсона (r)"
 
+#, fuzzy
 msgid "Partial Spearman's rho"
-msgstr ""
+msgstr "Частная корреляция Спирмена (rho)"
 
+#, fuzzy
 msgid "Partial Kendall's tau B"
-msgstr ""
+msgstr "Частные корреляции Кендалла (tau-b)"
 
+#, fuzzy
 msgid "%s heatmap"
-msgstr ""
+msgstr "%s теплая карта"
 
 msgid "Heatmaps"
 msgstr "Теплые карты"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
-msgstr ""
+msgstr "%1$d%% ДИ: [%2$d, %3$d]"
 
 msgid "italic(r)"
-msgstr ""
+msgstr "курсив(r)"
 
 msgid "italic(rho)"
-msgstr ""
+msgstr "курсив(rho)"
 
 msgid "italic(tau)"
-msgstr ""
+msgstr "курсив(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -329,24 +339,33 @@ msgid ""
 "small sample sizes (< 10), approximation by Fisher's z transformation "
 "becomes less accurate"
 msgstr ""
+"Величина эффекта (z-Фишера): для больших коэффициентов корреляции (> 0,9) и "
+"небольших размеров выборки (< 10) аппроксимация преобразованием z-Фишера "
+"становится менее точной"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
 "62-71."
 msgstr ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
+"for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
+"62-71."
 
+#, fuzzy
 msgid "Posterior is too peaked"
-msgstr ""
+msgstr "Постериор слишком заострен"
 
 msgid "Variable"
 msgstr "Переменная"
 
+#, fuzzy
 msgid "Bayesian Correlation Matrix Plot"
-msgstr ""
+msgstr "График байесовской корреляционной матрицы"
 
+#, fuzzy
 msgid "Could not compute the posteriors"
-msgstr ""
+msgstr "Не удалось вычислить постериоры"
 
 #, fuzzy
 msgid "Prior"
@@ -359,84 +378,113 @@ msgstr "Постериор"
 msgid "%s%% CI:"
 msgstr "%s%% ДИ:"
 
+#, fuzzy
 msgid "Bayesian Correlation Pairwise Plots"
-msgstr ""
+msgstr "Попарные графики байесовской корреляции"
 
+#, fuzzy
 msgid "max %s"
-msgstr ""
+msgstr "максимум %s"
 
+#, fuzzy
 msgid "%1$s at kappa==%2$s"
-msgstr ""
+msgstr "%1$s при kappa==%2$s"
 
 #, fuzzy
 msgid "user prior"
 msgstr "пользовательский приор"
 
+#, fuzzy
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "Stretched beta prior width"
 
 msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "
 "levels."
 msgstr ""
+"Распределение Бернулли требует, чтобы зависимая переменная была фактором с "
+"двумя уровнями."
 
+#, fuzzy
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "
 "successes) to be between 0 and 1 (inclusive)."
 msgstr ""
+"Биномиальное распределение требует, чтобы зависимая переменная (т.е. доля "
+"успехов) находилась в диапазоне от 0 до 1 (включительно)."
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be an integer."
 msgstr ""
+"Биномиальное распределение требует, чтобы весовая переменная (т.е. общее "
+"количество испытаний) была целым числом."
 
 msgid ""
 "The Gamma family and the Inverse Gaussian family require the dependent "
 "variable to be positive."
 msgstr ""
+"Гамма-распределение и обратное распределение Гаусса требуют, чтобы зависимая "
+"переменная была положительной."
 
 msgid "The Poisson family requires the dependent variable to be an integer."
 msgstr ""
+"Распределение Пуассона требует, чтобы зависимая переменная была целым числом."
 
 msgid ""
 "The Gaussian family with the log link requires the dependent variable to be "
 "positive."
 msgstr ""
+"Распределение Гаусса с логарифмической связью требует, чтобы зависимая "
+"переменная была положительной."
 
 msgid ""
 "The Gaussian family requires the dependent variable to be a numerical "
 "variable."
 msgstr ""
+"Распределение Гаусса требует, чтобы зависимая переменная была числовой "
+"переменной."
 
+#, fuzzy
 msgid ""
 "Multinomial logistic regression requires the dependent variable to be a "
 "factor with at least 3 levels."
 msgstr ""
+"Полиномиальная логистическая регрессия требует, чтобы зависимая переменная "
+"была фактором по крайней мере с тремя уровнями."
 
+#, fuzzy
 msgid ""
 "Ordinal logistic regression requires the dependent variable to be a factor "
 "with at least 3 levels."
 msgstr ""
+"Порядковая логистическая регрессия требует, чтобы зависимая переменная была "
+"фактором по крайней мере с тремя уровнями."
 
 msgid ""
 "Firth logistic regression requires the dependent variable to be a factor "
 "with 2 levels."
 msgstr ""
+"Логистическая регрессия Фёрта требует, чтобы зависимая переменная была "
+"фактором с двумя уровнями."
 
+#, fuzzy
 msgid "Model Summary"
-msgstr ""
+msgstr "Сводка"
 
+#, fuzzy
 msgid "Model Summary - %s"
-msgstr ""
+msgstr "Сводка - %s"
 
 msgid "Model"
 msgstr "Модель"
 
+#, fuzzy
 msgid "Deviance"
-msgstr "Девиантность"
+msgstr "Отклонение"
 
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
@@ -444,11 +492,13 @@ msgstr "BIC"
 msgid "df"
 msgstr "df"
 
+#, fuzzy
 msgid "Null model contains nuisance parameters: %s."
-msgstr ""
+msgstr "Нулевая модель содержит мешающие параметры: %s."
 
+#, fuzzy
 msgid "Model Fit"
-msgstr ""
+msgstr "Оценка пригодности модели"
 
 msgid "Statistic"
 msgstr "Статистика"
@@ -462,113 +512,133 @@ msgstr "Оценка"
 msgid "Standard Error"
 msgstr "Стандартная ошибка"
 
+#, fuzzy
 msgid "Lower Bound"
-msgstr ""
+msgstr "Нижняя граница"
 
+#, fuzzy
 msgid "Upper Bound"
-msgstr ""
+msgstr "Верхняя граница"
 
+#, fuzzy
 msgid "%1$s level '%2$s' coded as class 1."
-msgstr ""
+msgstr "Уровень %1$s '%2$s' закодирован как класс 1."
 
+#, fuzzy
 msgid "%1$s levels: %2$s. '%3$s' is the reference level."
-msgstr ""
+msgstr "Уровни %1$s: %2$s. «%3$s» — эталонный уровень."
 
+#, fuzzy
 msgid "%1$s levels: %2$s. Linear predictors: %3$s."
-msgstr ""
+msgstr "Уровни %1$s: %2$s. Линейные предикторы: %3$s."
 
+#, fuzzy
 msgid "Diagnostics"
-msgstr ""
+msgstr "Диагностика"
 
+#, fuzzy
 msgid "Residuals vs. Fitted Plots"
-msgstr ""
+msgstr "Графики \"Остатки vs. Подогнанные значения\""
 
 msgid "Standardized %1s residuals vs. fitted values"
-msgstr ""
+msgstr "Стандартизованные %1s остатки vs. подогнанные значения"
 
 msgid "Standardized %1s residual"
-msgstr ""
+msgstr "Стандартизованные %1s остатки"
 
+#, fuzzy
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr ""
+msgstr "Графики \"%1s Остатки vs. Предсказанные значения\""
 
 msgid "Standardized %1s residuals vs. %2s"
-msgstr ""
+msgstr "Стандартизованные %1s остатки vs. %2s"
 
+#, fuzzy
 msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr ""
+msgstr "Нормальные К-К графики: стандартизированные остатки"
 
+#, fuzzy
 msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr ""
+msgstr "Нормальный К-К график: стандартизированные остатки %1s"
 
+#, fuzzy
 msgid "Partial Residual Plots"
-msgstr ""
+msgstr "Графики частных остатков"
 
+#, fuzzy
 msgid "Partial residual plot for %1s"
-msgstr ""
+msgstr "График частных остатков для %1s"
 
+#, fuzzy
 msgid "Partial residual for %1s"
-msgstr ""
+msgstr "Частные остатки для %1s"
 
+#, fuzzy
 msgid "Plot: Working responses vs. linear predictor"
-msgstr ""
+msgstr "График: рабочие ответы vs. линейный предиктор"
 
+#, fuzzy
 msgid "Working responses, z"
-msgstr ""
+msgstr "Рабочие ответы, z"
 
 msgid "Outliers Tables"
-msgstr ""
+msgstr "Таблицы выбросов"
 
+#, fuzzy
 msgid "Table: Top n outliers based on %1s residuals"
-msgstr ""
+msgstr "Таблица: Первые n выбросов на основе остатков %1s"
 
 msgid "Case Number"
-msgstr ""
+msgstr "Номер случая"
 
 msgid "Residual"
-msgstr ""
+msgstr "Остатки"
 
+#, fuzzy
 msgid "Table: Influential Cases"
-msgstr ""
+msgstr "Таблица: Влияющие случаи"
 
 msgid "DFBETAS_%1s"
-msgstr ""
+msgstr "DFBETAS_%1s"
 
+#, fuzzy
 msgid "DFBETAS:Intercept"
-msgstr ""
+msgstr "DFBETAS:Интерцепт"
 
 msgid "DFBETAS:%1s"
-msgstr ""
+msgstr "DFBETAS:%1s"
 
+#, fuzzy
 msgid "No influential cases found."
-msgstr ""
+msgstr "Влияющих случаев не найдено."
 
 msgid "Multicollinearity Diagnostics"
-msgstr ""
+msgstr "Диагностика мультиколлинеарности"
 
 msgid "Tolerance"
 msgstr "Толерантность"
 
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
+#, fuzzy
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Оцененные маргинальные средние и контрастный анализ"
 
+#, fuzzy
 msgid "Estimated Marginal Means"
-msgstr ""
+msgstr "Расчетные предельные средние"
 
 msgid "SE"
 msgstr "SE"
 
-#, fuzzy
 msgid "Lower"
 msgstr "Нижняя граница"
 
-msgid "%s%% CI"
-msgstr ""
-
 #, fuzzy
+msgid "%s%% CI"
+msgstr "%s%% ДИ"
+
 msgid "Upper"
 msgstr "Верхняя граница"
 
@@ -578,59 +648,73 @@ msgstr "t"
 msgid "z"
 msgstr "z"
 
+#, fuzzy
 msgid "Results are on the response scale."
-msgstr ""
+msgstr "Результаты приведены по шкале ответов."
 
+#, fuzzy
 msgid "Results are not on the response scale and might be misleading."
 msgstr ""
+"Результаты не соответствуют шкале ответов и могут вводить в заблуждение."
 
+#, fuzzy
 msgid "Contrasts"
-msgstr ""
+msgstr "Контрасты"
 
+#, fuzzy
 msgid "Odds Ratio"
 msgstr "Отношение шансов"
 
+#, fuzzy
 msgid "Ratio"
-msgstr ""
+msgstr "Соотношение"
 
+#, fuzzy
 msgid "Plotting is not possible: %s"
-msgstr ""
+msgstr "Построение графика невозможно: %s"
 
+#, fuzzy
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
+msgstr "P-значения соответствуют нулевой гипотезе против %s."
 
+#, fuzzy
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "Результаты усредняются по уровням: %s."
 
+#, fuzzy
 msgid "P-values are not adjusted."
-msgstr ""
+msgstr "P-значения не корректируются."
 
 msgid "Holm"
 msgstr "Холм"
 
+#, fuzzy
 msgid "Homel"
-msgstr ""
+msgstr "Хомел"
 
+#, fuzzy
 msgid "Hochberg"
-msgstr ""
+msgstr "Хохберг"
 
+#, fuzzy
 msgid "Multivariate-t"
-msgstr ""
+msgstr "Многомерный t-критерий"
 
 msgid "Tukey"
 msgstr "Тьюки"
 
 msgid "Benjamini-Hochberg"
-msgstr ""
+msgstr "Беньямини-Хохберг"
 
+#, fuzzy
 msgid "Benjamini-Yekutieli"
-msgstr ""
+msgstr "Бендьямини-Екутиэли"
 
 msgid "Scheffé"
 msgstr "Шеффе"
 
 msgid "Sidak"
-msgstr ""
+msgstr "Шидак"
 
 msgid "Dunnett"
 msgstr "Даннетт"
@@ -638,183 +722,234 @@ msgstr "Даннетт"
 msgid "Bonferroni"
 msgstr "Бонферрони"
 
+#, fuzzy
 msgid "P-values are adjusted using %s adjustment."
-msgstr ""
+msgstr "P-значения изменены с помощью корректировки %s."
 
+#, fuzzy
 msgid "trying + %s"
-msgstr ""
+msgstr "попытка + %s"
 
+#, fuzzy
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
+msgstr "F-критерий предполагает наличие семейства \"квази%s\""
 
+#, fuzzy
 msgid ""
 "Stepwise procedures are not supported for models containing interaction terms"
 msgstr ""
+"Пошаговые процедуры не поддерживаются для моделей, содержащих условия "
+"взаимодействия."
 
+#, fuzzy
 msgid "Stepwise procedures are not supported for models containing factors"
-msgstr ""
+msgstr "Пошаговые процедуры не поддерживаются для моделей, содержащих факторы"
 
+#, fuzzy
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
 "removal p-value"
 msgstr ""
+"Ошибка в пошаговом методе: входное p-значение должно быть меньше p-значения "
+"исключения"
 
+#, fuzzy
 msgid ""
 "Error in Stepping Method Criteria: Entry F-value needs to be larger than "
 "removal F-value"
 msgstr ""
+"Ошибка в пошаговом методе: Входящее F-значение должно быть больше, чем F-"
+"значение исключения"
 
 msgid "R"
-msgstr ""
+msgstr "R"
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
-msgstr ""
+msgstr "Скорр. R%s"
 
 msgid "RMSE"
-msgstr ""
+msgstr "RMSE"
 
 msgid "R%s Change"
-msgstr ""
+msgstr "Изменение R%s"
 
+#, fuzzy
 msgid "F Change"
-msgstr ""
+msgstr "Изменение F"
 
 msgid "df1"
-msgstr ""
+msgstr "df1"
 
 msgid "df2"
-msgstr ""
+msgstr "df2"
 
+#, fuzzy
 msgid "Autocorrelation"
-msgstr ""
+msgstr "Автокорреляции"
 
 msgid "Durbin-Watson"
-msgstr ""
+msgstr "Дарбин-Ватсон"
 
+#, fuzzy
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
+"p-значение для критерия Дарбина-Ватсона недоступно для взвешенной регрессии."
 
+#, fuzzy
 msgid "No covariate could be entered in the model"
-msgstr ""
+msgstr "В модель нельзя включить ковариат"
 
 msgid "ANOVA"
 msgstr "Дисперсионный анализ"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "Сумма квадратов"
 
+#, fuzzy
 msgid "Mean Square"
-msgstr ""
+msgstr "Средний квадрат"
 
 msgid "F"
 msgstr "F"
 
 msgid "Regression"
-msgstr ""
+msgstr "Регрессия"
 
 msgid "Total"
-msgstr "Итого"
+msgstr "Всего"
 
+#, fuzzy
 msgid "Unstandardized"
-msgstr ""
+msgstr "Нестандартизованный"
 
+#, fuzzy
 msgid "Standardized"
-msgstr ""
+msgstr "Стандартизованный"
 
+#, fuzzy
 msgid "%.0f%% CI"
-msgstr ""
+msgstr "%.0f%% ДИ"
 
+#, fuzzy
 msgid "Collinearity Statistics"
-msgstr ""
+msgstr "Статистики коллинеарности"
 
+#, fuzzy
 msgid ""
 "Standardized coefficients and collinearity statistics can only be computed "
 "for continuous predictors."
 msgstr ""
+"Стандартизированные коэффициенты и статистики коллинеарности могут быть "
+"вычислены только для непрерывных предикторов."
 
+#, fuzzy
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
+"Стандартизированные коэффициенты могут быть рассчитаны только для "
+"непрерывных предикторов."
 
+#, fuzzy
 msgid ""
 "Missing coefficients are undefined because of singularities. Check the data "
 "for anything out of order!"
 msgstr ""
+"Отсутствующие коэффициенты не определены из-за сингулярностей. Проверьте "
+"данные!"
 
 msgid "Bootstrap Coefficients"
-msgstr ""
+msgstr "Коэффициенты бутстрэпа"
 
+#, fuzzy
 msgid "Bias"
-msgstr ""
+msgstr "Искажение"
 
+#, fuzzy
 msgid "%s%% CI*"
-msgstr ""
+msgstr "%s%% ДИ*"
 
+#, fuzzy
 msgid "Bootstrapping based on %i replicates."
-msgstr ""
+msgstr "Бутстрэппинг выполнен на основе %i повторений."
 
+#, fuzzy
 msgid ""
 "Coefficient estimate is based on the median of the bootstrap distribution."
-msgstr ""
+msgstr "Оценка коэффициента основана на медиане бутстрэп-распределения."
 
+#, fuzzy
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "Ускорение с коррекцией предубеждений."
 
 msgid "Some bootstrap results could not be computed."
-msgstr ""
+msgstr "Некоторые результаты бутстрэпа не могут быть вычислены."
 
+#, fuzzy
 msgid "expecting both arguments to be data.frames"
-msgstr ""
+msgstr "ожидая, что оба аргумента будут data.frames"
 
+#, fuzzy
 msgid "Part And Partial Correlations"
-msgstr ""
+msgstr "Частные и получастные корреляции"
 
+#, fuzzy
 msgid "Partial"
-msgstr ""
+msgstr "Частные"
 
+#, fuzzy
 msgid "Part"
-msgstr ""
+msgstr "Получастные"
 
+#, fuzzy
 msgid "Coefficients Covariance Matrix"
-msgstr ""
+msgstr "Ковариационная матрица коэффициентов"
 
 msgid "Collinearity Diagnostics"
-msgstr ""
+msgstr "Диагностика коллинеарности"
 
+#, fuzzy
 msgid "Dimension"
-msgstr ""
+msgstr "Величина"
 
 msgid "Eigenvalue"
 msgstr "Собственное значение"
 
+#, fuzzy
 msgid "Condition Index"
-msgstr ""
+msgstr "Индекс состояния"
 
+#, fuzzy
 msgid "Variance Proportions"
-msgstr ""
+msgstr "Доли дисперсии"
 
+#, fuzzy
 msgid ""
 "Some collinearity diagnostics could not be computed. This is expected if the "
 "model contains singularities."
 msgstr ""
+"При диагностике коллинеарности обнаружены ошибки. Это ожидаемо, если модель "
+"содержит сингулярности."
 
+#, fuzzy
 msgid "Casewise Diagnostics"
-msgstr ""
+msgstr "Диагностика случаев"
 
+#, fuzzy
 msgid "Std. Residual"
-msgstr ""
+msgstr "Стд. остатки"
 
 msgid "Predicted Value"
-msgstr ""
+msgstr "Предсказанное значение"
 
 msgid "Cook's Distance"
 msgstr "Расстояние Кука"
 
+#, fuzzy
 msgid "Residuals Statistics"
-msgstr ""
+msgstr "Статистики остатков"
 
 msgid "Minimum"
 msgstr "Минимум"
@@ -831,72 +966,87 @@ msgstr "SD"
 msgid "N"
 msgstr "N"
 
+#, fuzzy
 msgid "Residuals vs. Dependent"
-msgstr ""
+msgstr "Остатки vs. Зависимая переменная"
 
 msgid "Residuals"
-msgstr ""
+msgstr "Остатки"
 
 msgid "Residuals vs. Covariates"
-msgstr ""
+msgstr "Остатки vs. Ковариаты"
 
+#, fuzzy
 msgid "Residuals vs. %s"
-msgstr ""
+msgstr "Остатки vs. %s"
 
+#, fuzzy
 msgid "Cannot plot residuals versus an interaction with a factor."
-msgstr ""
+msgstr "Невозможно построить график \"Остатки vs. Взаимодействие с фактором\"."
 
 msgid "Residuals vs. Predicted"
-msgstr ""
+msgstr "Остатки vs. Предсказанные значения"
 
 msgid "Predicted Values"
-msgstr ""
+msgstr "Предсказанные значения"
 
 msgid "Residuals Histogram"
-msgstr ""
+msgstr "Гистограмма остатков"
 
+#, fuzzy
 msgid "Standardized %s"
-msgstr ""
+msgstr "Стандартизованные %s"
 
 msgid "Q-Q Plot Standardized Residuals"
-msgstr ""
+msgstr "К-К график стандартизованных остатков"
 
+#, fuzzy
 msgid "Partial plots are not supported for models containing interaction terms"
 msgstr ""
+"Графики частных корреляций не поддерживаются для моделей, содержащие "
+"взаимодействующие члены"
 
 msgid "%1$s vs. %2$s"
-msgstr ""
+msgstr "%1$s vs. %2$s"
 
+#, fuzzy
 msgid "Partial plots are not supported for factors"
-msgstr ""
+msgstr "Графики частных корреляций не поддерживаются для факторов"
 
+#, fuzzy
 msgid "Residuals %s"
-msgstr ""
+msgstr "Остатки %s"
 
 msgid "Descriptives"
 msgstr "Описательные статистики"
 
 msgid "H%s"
-msgstr ""
+msgstr "H%s"
 
+#, fuzzy
 msgid "Std. Predicted Value"
-msgstr ""
+msgstr "Стд. предсказанное значение"
 
 msgid "Standardized Residuals"
-msgstr ""
+msgstr "Стандартизированные остатки"
 
 msgid "Theoretical Quantiles"
 msgstr "Теоретические квантили"
 
+#, fuzzy
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
 msgstr ""
+"Неизвестное значение предназначено для modelType, а возможные значения: "
+"`alternative`, `null`"
 
+#, fuzzy
 msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
+msgstr "Нужен хотя бы один предиктор или интерцепт для создания формулы"
 
+#, fuzzy
 msgid "Null model includes %s"
-msgstr ""
+msgstr "Нулевая модель включает %s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -904,26 +1054,37 @@ msgid ""
 "        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Максимальное <em>p</em>-отношение Вовк-Селлке: на основе значения <em>p</em>-"
+"значения, где максимальное значение имеет\n"
+"        возможные шансы в пользу H%1$s над H%2$s равные 1/(-e <em>p</em> "
+"log(<em>p</em>)) для <em>p</em > %3$s 0,37 (Sellke, Bayarri, & Berger, 2001)."
 
+#, fuzzy
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
-msgstr ""
+msgstr "Интерцепт модели опущен, так как не отражает значимой информации."
 
+#, fuzzy
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
 msgstr ""
+"Есть только интерцепт модели, нельзя показать никакой значимой информации."
 
+#, fuzzy
 msgid "Marginal Effects Plots"
-msgstr ""
+msgstr "Графики маргинальных эффектов"
 
+#, fuzzy
 msgid "Marginal effect of %1$s on %2$s"
-msgstr ""
+msgstr "Маргинальный эффект %1$s на %2$s"
 
+#, fuzzy
 msgid "All effects are specified as nuisance"
-msgstr ""
+msgstr "All effects are specified as nuisance"
 
+#, fuzzy
 msgid "There are nonpositive weights"
-msgstr ""
+msgstr "Существуют неположительные веса"
 
 msgid "Posterior Summary"
 msgstr ""
@@ -931,9 +1092,11 @@ msgstr ""
 msgid "Model Comparison"
 msgstr "Сравнение моделей"
 
+#, fuzzy
 msgid "Model Comparison - %s"
-msgstr ""
+msgstr "Сравнение моделей — %s"
 
+#, fuzzy
 msgid ""
 "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 "
 "and %2$s = p * %3$s and \n"
@@ -941,13 +1104,23 @@ msgid ""
 "odds scale for each additional \n"
 "covariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
 msgstr ""
+"Априорная модель Уилсона соответствует бета-биномиальному приору с %1$s = 1 "
+"и %2$s = p * %3$s и\n"
+"соответствует приблизительному штрафу, равному log(%3$s + 1) по шкале "
+"логарифмических шансов за каждый дополнительный\n"
+"в модель добавлена ковариата (Consonni et al., 2018; Wilson et al., 2010)."
 
+#, fuzzy
 msgid ""
 "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 "
 "and %2$s = p^u and is suitable \n"
 "for sparse regression when there are more covariates than observations "
 "(Castillo et al., 2015)."
 msgstr ""
+"Априорная модель Кастильо соответствует бета-биномиальной априорной модели с "
+"%1$s = 1 и %2$s = p^u и подходит\n"
+"для разреженной регрессии, когда ковариатов больше, чем наблюдений (Castillo "
+"et al., 2015)."
 
 #, fuzzy
 msgid "BF<sub>10</sub>"
@@ -965,25 +1138,31 @@ msgstr "Модели"
 msgid "P(M)"
 msgstr "P(M)"
 
+#, fuzzy
 msgid "P(M|data)"
-msgstr "P(M|данные)"
+msgstr "P(M|data)"
 
+#, fuzzy
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
+#, fuzzy
 msgid "All models include %s."
-msgstr ""
+msgstr "Все модели включают %s."
 
+#, fuzzy
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
 "under \"Limit No. Models Shown\"."
 msgstr ""
+"%sTable отображает только часть моделей; чтобы увидеть все модели, выберите "
+"«Нет» в разделе «Ограничение количества отображаемых моделей»."
 
 msgid "Null model"
-msgstr ""
+msgstr "Нулевая модель"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "Нулевая модель (вкл. %s)"
 
 msgid "Posterior Summaries of Coefficients"
 msgstr ""
@@ -997,11 +1176,13 @@ msgstr ""
 msgid "%s%% Credible Interval"
 msgstr ""
 
+#, fuzzy
 msgid "Coefficient"
-msgstr ""
+msgstr "Коэффициент"
 
+#, fuzzy
 msgid "P(incl)"
-msgstr ""
+msgstr "P(incl)"
 
 msgid "P(excl)"
 msgstr ""
@@ -1012,8 +1193,9 @@ msgstr "P(incl|data)"
 msgid "P(excl|data)"
 msgstr ""
 
+#, fuzzy
 msgid "<em>Warning.</em>"
-msgstr ""
+msgstr "<em>Предупреждение.</em>"
 
 msgid "Posterior Coefficients with %s%% Credible Interval"
 msgstr ""
@@ -1106,8 +1288,9 @@ msgid ""
 "the bootstrap distribution."
 msgstr ""
 
+#, fuzzy
 msgid "Observed"
-msgstr "Наблюдаемый"
+msgstr "Наблюдаемые"
 
 msgid "Predicted Group"
 msgstr ""
