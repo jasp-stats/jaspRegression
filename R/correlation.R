@@ -374,6 +374,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       # store state for pair
       state <- createJaspState(object = results[[vpair[i]]])
       state$dependOn(options = c("partialOutVariables", "alternative",
+                                 "pearson", "spearman", "kendallsTauB",
                                  "ci", "ciLevel",
                                  "naAction"),
                      optionContainsValue = list(variables = .unv(vcomb[[i]])))
