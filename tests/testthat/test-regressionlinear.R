@@ -422,6 +422,29 @@ test_that("Bootstrapping runs", {
                                  )
 })
 
+test_that("Marginal effects plots works with interactions", {
+  options <- analysisOptions("RegressionLinear")
+  options$.meta <- list(covariates = list(shouldEncode = TRUE), dependent = list(
+    shouldEncode = TRUE), factors = list(shouldEncode = TRUE),
+    modelTerms = list(shouldEncode = TRUE), weights = list(shouldEncode = TRUE))
+  options$covariates <- c("contGamma", "contcor1")
+  options$dependent <- "contNormal"
+  options$marginalPlot <- TRUE
+  options$modelTerms <- list(list(components = "contGamma", isNuisance = FALSE), list(
+    components = "contcor1", isNuisance = FALSE), list(components = c("contGamma",
+                                                                      "contcor1"), isNuisance = FALSE))
+  set.seed(1)
+  results <- runAnalysis("RegressionLinear", "test.csv", options)
+
+  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_marginalPlotsContainer"]][["collection"]][["modelContainer_marginalPlotsContainer_contGamma"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "marginal-effect-of-contgamma-on-contnormal")
+
+  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_marginalPlotsContainer"]][["collection"]][["modelContainer_marginalPlotsContainer_contcor1"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "marginal-effect-of-contcor1-on-contnormal")
+})
+
 # Below are the unit tests for Andy Field's book ----
 
 # Chapter 1

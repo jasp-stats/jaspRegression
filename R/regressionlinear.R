@@ -2030,7 +2030,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(finalModel)) {
     predictors <- finalModel$predictors
-
+    # marginal plots display only the main effects
+    predictors <- predictors[!grepl(":", predictors)]
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(marginalPlotsContainer,
                                    index = predictor,
