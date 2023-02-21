@@ -436,6 +436,8 @@ test_that("Marginal effects plots works with interactions", {
   set.seed(1)
   results <- runAnalysis("RegressionLinear", "test.csv", options)
 
+  testthat::expect_equal(results[["status"]], "complete")
+
   plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_marginalPlotsContainer"]][["collection"]][["modelContainer_marginalPlotsContainer_contGamma"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "marginal-effect-of-contgamma-on-contnormal")
