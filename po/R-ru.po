@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2023-02-21 06:37+0000\n"
+"PO-Revision-Date: 2023-02-23 17:37+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -143,7 +143,6 @@ msgstr "(Интерцепт)"
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
 
-#, fuzzy
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
 "  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
@@ -151,9 +150,10 @@ msgid ""
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 "Максимальное значение <em>p</em> критерия Вовк-Селлке: исходя из значения "
-"<em>p</em>, максимально возможные шансы в пользу H%1$s над H%2$s равны 1/ (-"
-"e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 (Sellke, Bayarri, & "
-"Berger, 2001)."
+"<em>p</em>, \n"
+"  максимально возможные шансы в пользу H%1$s над H%2$s равны \n"
+"  1/ (-e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 \n"
+"  (Sellke, Bayarri, & Berger, 2001)."
 
 #, fuzzy
 msgid "Kendall's Tau"
@@ -739,7 +739,7 @@ msgid ""
 "Stepwise procedures are not supported for models containing interaction terms"
 msgstr ""
 "Пошаговые процедуры не поддерживаются для моделей, содержащих условия "
-"взаимодействия."
+"взаимодействия"
 
 #, fuzzy
 msgid "Stepwise procedures are not supported for models containing factors"
@@ -810,7 +810,7 @@ msgstr "Сумма квадратов"
 
 #, fuzzy
 msgid "Mean Square"
-msgstr "Средний квадрат"
+msgstr "Дисперсия"
 
 msgid "F"
 msgstr "F"
@@ -882,7 +882,7 @@ msgstr "Оценка коэффициента основана на медиан
 
 #, fuzzy
 msgid "Bias corrected accelerated."
-msgstr "Ускорение с коррекцией предубеждений."
+msgstr "Bias corrected accelerated."
 
 msgid "Some bootstrap results could not be computed."
 msgstr "Некоторые результаты бутстрэпа не могут быть вычислены."
@@ -1373,8 +1373,8 @@ msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
 msgstr ""
-"Не удалось рассчитать некоторые доверительные интервалы.\n"
-"Возможно, слишком мало выборок бутстрэпа."
+"Некоторые доверительные интервалы не могут быть рассчитаны.\n"
+"Возможно здесь слишком мало бутстрэп-выборок."
 
 msgid "Residual plots"
 msgstr "Графики остатков"
