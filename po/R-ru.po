@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2022-12-17 02:46\n"
-"PO-Revision-Date: 2023-02-18 02:51+0000\n"
+"PO-Revision-Date: 2023-02-23 17:37+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -143,7 +143,6 @@ msgstr "(Интерцепт)"
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
 
-#, fuzzy
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
 "  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
@@ -151,9 +150,10 @@ msgid ""
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
 "Максимальное значение <em>p</em> критерия Вовк-Селлке: исходя из значения "
-"<em>p</em>, максимально возможные шансы в пользу H%1$s над H%2$s равны 1/ (-"
-"e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 (Sellke, Bayarri, & "
-"Berger, 2001)."
+"<em>p</em>, \n"
+"  максимально возможные шансы в пользу H%1$s над H%2$s равны \n"
+"  1/ (-e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 \n"
+"  (Sellke, Bayarri, & Berger, 2001)."
 
 #, fuzzy
 msgid "Kendall's Tau"
@@ -739,7 +739,7 @@ msgid ""
 "Stepwise procedures are not supported for models containing interaction terms"
 msgstr ""
 "Пошаговые процедуры не поддерживаются для моделей, содержащих условия "
-"взаимодействия."
+"взаимодействия"
 
 #, fuzzy
 msgid "Stepwise procedures are not supported for models containing factors"
@@ -810,7 +810,7 @@ msgstr "Сумма квадратов"
 
 #, fuzzy
 msgid "Mean Square"
-msgstr "Средний квадрат"
+msgstr "Дисперсия"
 
 msgid "F"
 msgstr "F"
@@ -882,7 +882,7 @@ msgstr "Оценка коэффициента основана на медиан
 
 #, fuzzy
 msgid "Bias corrected accelerated."
-msgstr "Ускорение с коррекцией предубеждений."
+msgstr "Bias corrected accelerated."
 
 msgid "Some bootstrap results could not be computed."
 msgstr "Некоторые результаты бутстрэпа не могут быть вычислены."
@@ -1080,14 +1080,15 @@ msgstr "Маргинальный эффект %1$s на %2$s"
 
 #, fuzzy
 msgid "All effects are specified as nuisance"
-msgstr "All effects are specified as nuisance"
+msgstr "Все эффекты обозначены как мешающие"
 
 #, fuzzy
 msgid "There are nonpositive weights"
 msgstr "Существуют неположительные веса"
 
+#, fuzzy
 msgid "Posterior Summary"
-msgstr ""
+msgstr "Постериорные итоги"
 
 msgid "Model Comparison"
 msgstr "Сравнение моделей"
@@ -1104,8 +1105,8 @@ msgid ""
 "odds scale for each additional \n"
 "covariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
 msgstr ""
-"Априорная модель Уилсона соответствует бета-биномиальному приору с %1$s = 1 "
-"и %2$s = p * %3$s и\n"
+"Априорная модель Уилсона соответствует бета-биномиальной априорной модели с "
+"%1$s = 1 и %2$s = p * %3$s и\n"
 "соответствует приблизительному штрафу, равному log(%3$s + 1) по шкале "
 "логарифмических шансов за каждый дополнительный\n"
 "в модель добавлена ковариата (Consonni et al., 2018; Wilson et al., 2010)."
@@ -1164,17 +1165,21 @@ msgstr "Нулевая модель"
 msgid "Null model (incl. %s)"
 msgstr "Нулевая модель (вкл. %s)"
 
+#, fuzzy
 msgid "Posterior Summaries of Coefficients"
-msgstr ""
+msgstr "Апостериорнные итоги коэффициентов"
 
+#, fuzzy
 msgid "BF<sub>inclusion</sub>"
-msgstr ""
+msgstr "BF<sub>inclusion</sub>"
 
+#, fuzzy
 msgid "Log(BF<sub>inclusion</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>inclusion</sub>)"
 
+#, fuzzy
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "%s%% достоверный интервал"
 
 #, fuzzy
 msgid "Coefficient"
@@ -1184,214 +1189,278 @@ msgstr "Коэффициент"
 msgid "P(incl)"
 msgstr "P(incl)"
 
+#, fuzzy
 msgid "P(excl)"
-msgstr ""
+msgstr "P(excl)"
 
 msgid "P(incl|data)"
 msgstr "P(incl|data)"
 
+#, fuzzy
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(excl|data)"
 
 #, fuzzy
 msgid "<em>Warning.</em>"
 msgstr "<em>Предупреждение.</em>"
 
+#, fuzzy
 msgid "Posterior Coefficients with %s%% Credible Interval"
-msgstr ""
+msgstr "Апостериорные коэффициенты с доверительным интервалом %s%%"
 
+#, fuzzy
 msgid "Posterior Log Odds"
-msgstr ""
+msgstr "Posterior Log Odds"
 
+#, fuzzy
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
 msgstr ""
+"Не удается отобразить шансы постериоров, если используется метод выборки "
+"MCMC."
 
+#, fuzzy
 msgid "Residuals vs Fitted"
-msgstr ""
+msgstr "Остатки vs. подогнанные значения"
 
+#, fuzzy
 msgid "Predictions under BMA"
-msgstr ""
+msgstr "Прогнозы по BMA"
 
+#, fuzzy
 msgid "Model Probabilities"
-msgstr ""
+msgstr "Модель вероятностей"
 
+#, fuzzy
 msgid "Cumulative Probability"
-msgstr ""
+msgstr "Накопленная вероятность"
 
+#, fuzzy
 msgid "Model Search Order"
-msgstr ""
+msgstr "Порядок поиска модели"
 
+#, fuzzy
 msgid "Log(P(data|M)) vs. Model Size"
-msgstr ""
+msgstr "Log(P(data|M)) vs. Model Size"
 
+#, fuzzy
 msgid "Log(P(data|M))"
-msgstr ""
+msgstr "Log(P(data|M))"
 
+#, fuzzy
 msgid "Model Dimension"
-msgstr ""
+msgstr "Model Dimension"
 
+#, fuzzy
 msgid "Inclusion Probabilities"
-msgstr ""
+msgstr "Вероятности включения"
 
+#, fuzzy
 msgid "Marginal Inclusion Probability"
-msgstr ""
+msgstr "Маржинальная вероятность включения"
 
+#, fuzzy
 msgid ""
 "Prior\n"
 "Inclusion\n"
 "Probabilities"
 msgstr ""
+"Приор\n"
+"Включение\n"
+"Вероятности"
 
 msgid "Q-Q Plot"
 msgstr "К-К график"
 
+#, fuzzy
 msgid "Marginal Posterior Distributions"
-msgstr ""
+msgstr "Маргинальные апостериорные распределения"
 
+#, fuzzy
 msgid "Parameters estimates and/or credible intervals could not be calculated."
-msgstr ""
+msgstr "Не удалось рассчитать оценки параметров и/или достоверные интервалы."
 
+#, fuzzy
 msgid "Performance Diagnostics"
-msgstr ""
+msgstr "Диагностика пригодности"
 
+#, fuzzy
 msgid "McFadden R%s"
-msgstr ""
+msgstr "R%s МакФаддена"
 
+#, fuzzy
 msgid "Nagelkerke R%s"
-msgstr ""
+msgstr "R%s Нагелькерке"
 
+#, fuzzy
 msgid "Tjur R%s"
-msgstr ""
+msgstr "R%s Тьюра"
 
+#, fuzzy
 msgid "Cox & Snell R%s"
-msgstr ""
+msgstr "R%s Кокса-Снелла"
 
+#, fuzzy
 msgid "Standardized%s"
-msgstr ""
+msgstr "Стандартизованные%s"
 
 msgid "Wald Statistic"
-msgstr ""
+msgstr "Статистика Вальда"
 
 msgid "Lower bound"
-msgstr ""
+msgstr "Нижняя граница"
 
 msgid "Upper bound"
-msgstr ""
+msgstr "Верхняя граница"
 
+#, fuzzy
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
 "are standardized (X-standardization)."
 msgstr ""
+"Стандартизированные оценки представляют собой оценки, в которых "
+"стандартизированы непрерывные предикторы (X-стандартизация)."
 
+#, fuzzy
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
 msgstr ""
+"Оценка коэффициента и робастная стандартная ошибка основаны на медиане "
+"бутстрэп-распределения."
 
 #, fuzzy
 msgid "Observed"
 msgstr "Наблюдаемые"
 
+#, fuzzy
 msgid "Predicted Group"
-msgstr ""
+msgstr "Предсказанная группа"
 
 msgid "Studentized Residual"
-msgstr ""
+msgstr "Стьюдентизированные остатки"
 
 msgid "Factor Descriptives"
-msgstr ""
+msgstr "Описательные статистики факторов"
 
 msgid "Factor"
 msgstr "Фактор"
 
+#, fuzzy
 msgid "Confusion matrix"
-msgstr ""
+msgstr "Матрица ошибок I и II родов"
 
+#, fuzzy
 msgid "%% Correct"
-msgstr ""
+msgstr "%% корректных"
 
+#, fuzzy
 msgid "Performance metrics"
-msgstr ""
+msgstr "Пригодность модели"
 
 msgid "Value"
 msgstr "Значение"
 
+#, fuzzy
 msgid "Null model contains nuisance parameters: %s"
-msgstr ""
+msgstr "Нулевая модель содержит мешающие параметры: %s"
 
+#, fuzzy
 msgid "Bootstrapping based on %i successful replicates."
-msgstr ""
+msgstr "Бутстрэппинг основан на %i успешных выборках."
 
+#, fuzzy
 msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
 msgstr ""
+"Некоторые доверительные интервалы не могут быть рассчитаны.\n"
+"Возможно здесь слишком мало бутстрэп-выборок."
 
 msgid "Residual plots"
-msgstr ""
+msgstr "Графики остатков"
 
+#, fuzzy
 msgid "Estimates plots"
-msgstr ""
+msgstr "Графики оценки модели"
 
+#, fuzzy
 msgid "Predicted - residuals plot"
-msgstr ""
+msgstr "Предсказанные значения - остатки"
 
+#, fuzzy
 msgid "Predictor - residuals plots"
-msgstr ""
+msgstr "Значения предиктора - остатки"
 
+#, fuzzy
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "Квадратичные остатки Пирсона"
 
+#, fuzzy
 msgid "Performance plots"
-msgstr ""
+msgstr "Пригодность"
 
 msgid "ROC plot"
-msgstr ""
+msgstr "Качество бинарной классификации (ROC)"
 
+#, fuzzy
 msgid "PR plot"
-msgstr ""
+msgstr "Точность-полнота (PR)"
 
 msgid "Predicted Probability"
-msgstr ""
+msgstr "Предсказанная вероятность"
 
+#, fuzzy
 msgid "Squared Pearson Residual"
-msgstr ""
+msgstr "Квадратичные остатки Пирсона"
 
+#, fuzzy
 msgid "False positive rate"
-msgstr ""
+msgstr "Ложноположительные результаты"
 
+#, fuzzy
 msgid "True positive rate"
-msgstr ""
+msgstr "Истиноположительные результаты"
 
+#, fuzzy
 msgid "Positive predictive value"
-msgstr ""
+msgstr "Положительно предсказанное значение"
 
+#, fuzzy
 msgid "%1$s%% bca%2$s Confidence interval"
-msgstr ""
+msgstr "%1$s%% bca%2$s Доверительный интервал"
 
+#, fuzzy
 msgid "%s%% Confidence interval"
-msgstr ""
+msgstr "%s%% Доверительный интервал"
 
+#, fuzzy
 msgid "%s <br> (odds ratio scale)"
-msgstr ""
+msgstr "%s <br> (odds ratio scale)"
 
+#, fuzzy
 msgid "Robust <br> %s"
-msgstr ""
+msgstr "Робастный <br> %s"
 
+#, fuzzy
 msgid "Parameter"
-msgstr ""
+msgstr "Параметр"
 
+#, fuzzy
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "используя %d/%d строки из комбинированной подгонки"
+msgstr[1] "используя %d/%d строк из комбинированной подгонки"
+msgstr[2] "используя %d/%d строк из комбинированной подгонки"
 
+#, fuzzy
 msgid "The following covariate was considered but not included: %s."
 msgid_plural "The following covariates were considered but not included: %s."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Следующая ковариата была рассмотрена, но не включена: %s."
+msgstr[1] "Следующие ковариаты были рассмотрены, но не включены: %s."
+msgstr[2] "Следующие ковариаты были рассмотрены, но не включены: %s."
 
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Частная регрессия"
+msgstr[1] "Частные регрессии"
+msgstr[2] "Частные регрессии"
