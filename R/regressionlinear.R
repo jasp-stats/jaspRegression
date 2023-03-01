@@ -791,15 +791,18 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (!ready)
     return()
 
-  if (!is.null(modelContainer[["model"]]))
-    return(modelContainer[["model"]]$object)
+  if (!is.null(modelContainer[["model"]])) {
+    model <- modelContainer[["model"]]$object
+    model <- .linregCalcDurBinWatsonTestResults(modelContainer, model, options)
+    return(model)
+  }
 
-  dependent         <- .v(options$dependent)
+  dependent         <- options$dependent
   predictorsInNull  <- .linregGetPredictors(options$modelTerms, modelType = "null")
   predictors        <- .linregGetPredictors(options$modelTerms, modelType = "alternative") # these include the null terms
 
   if (options$weights != "")
-    weights <- dataset[[.v(options$weights)]]
+    weights <- dataset[[options$weights]]
   else
     weights <- rep(1, length(dataset[[dependent]]))
 
@@ -812,11 +815,29 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     singleModel <- model[[i]]
     model[[i]][["title"]]         <- .linregGetModelTitle(singleModel$predictors, predictorsInNull, options$method, i)
     model[[i]][["summary"]]       <- .linregGetSummary(singleModel$fit)
-    model[[i]][["durbinWatson"]]  <- .linregGetDurBinWatsonTestResults(singleModel$fit, options$weights)
     model[[i]][["rSquareChange"]] <- .linregGetrSquaredChange(singleModel$fit, i, model[1:i], options)
   }
 
   modelContainer[["model"]] <- createJaspState(model)
+
+  model <- .linregCalcDurBinWatsonTestResults(modelContainer, model, options)
+
+  return(model)
+}
+
+.linregCalcDurBinWatsonTestResults <- function(modelContainer, model, options) {
+
+  if (!options[["residualDurbinWatson"]])
+    return(model)
+
+  durbinWatsonResults <- modelContainer[["durbinWatsonResults"]] %setOrRetrieve% (
+    lapply(model, function(singleModel) {
+      .linregGetDurBinWatsonTestResults(singleModel$fit, options$weights)
+    }) |> createJaspState()
+  )
+
+  for (i in seq_along(model))
+    model[[i]][["durbinWatson"]] <- durbinWatsonResults[[i]]
 
   return(model)
 }
