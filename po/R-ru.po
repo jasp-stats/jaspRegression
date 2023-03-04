@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-12-17 02:46\n"
+"POT-Creation-Date: 2023-03-04 02:55\n"
 "PO-Revision-Date: 2023-02-23 17:37+0000\n"
 "Last-Translator: fedder <fedor.derish@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -154,6 +154,10 @@ msgstr ""
 "  максимально возможные шансы в пользу H%1$s над H%2$s равны \n"
 "  1/ (-e <em>p</em> log(<em>p</em>)) для <em>p</em> %3$s .37 \n"
 "  (Sellke, Bayarri, & Berger, 2001)."
+
+#, fuzzy
+msgid "Computing Durbin-Watson Statistics"
+msgstr "Статистики коллинеарности"
 
 #, fuzzy
 msgid "Kendall's Tau"

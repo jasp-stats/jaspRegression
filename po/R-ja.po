@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2022-12-17 02:46\n"
+"POT-Creation-Date: 2023-03-04 02:55\n"
 "PO-Revision-Date: 2022-02-12 21:37+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -138,6 +138,10 @@ msgstr ""
 "<em>p</em> %3$s .37に対して1/(-e <em>p</em> log(<em>p</em>))に等しくなりま"
 "す\n"
 "(Sellke, Bayarri, & Berger, 2001)。"
+
+#, fuzzy
+msgid "Computing Durbin-Watson Statistics"
+msgstr "共線性統計"
 
 msgid "Kendall's Tau"
 msgstr "ケンドールのタウ"

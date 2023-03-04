@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2022-12-17 02:46\n"
+"POT-Creation-Date: 2023-03-04 02:55\n"
 "PO-Revision-Date: 2023-01-18 15:03+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -140,6 +140,10 @@ msgstr ""
 "  la máxima probabilidad posible favorable a H%1$s sobre H%2$s igual\n"
 "  1/(-e <em>p</em> log(<em>p</em>)) para <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri & Berger, 2001)."
+
+#, fuzzy
+msgid "Computing Durbin-Watson Statistics"
+msgstr "Estadísticos de Multicolinealidad"
 
 msgid "Kendall's Tau"
 msgstr "Tau de Kendall"

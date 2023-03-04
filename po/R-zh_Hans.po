@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2022-12-17 02:46\n"
+"POT-Creation-Date: 2023-03-04 02:55\n"
 "PO-Revision-Date: 2022-11-07 09:02+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -131,6 +131,9 @@ msgid ""
 "  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+
+msgid "Computing Durbin-Watson Statistics"
 msgstr ""
 
 msgid "Kendall's Tau"
