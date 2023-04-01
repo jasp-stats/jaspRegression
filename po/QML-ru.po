@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-03-26 14:41+0000\n"
+"Last-Translator: Катя <katakxx@mail.ru>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/ru/>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.17-dev\n"
 "X-Language: ru\n"
 "X-Qt-Contexts: true\n"
 
@@ -540,36 +546,30 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Output"
 msgstr "Вывод"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Posterior summary"
-msgstr "Итог по постериорам"
+msgstr "Сумма постериоров"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
 msgstr "Во всех моделях"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Across matched models"
 msgstr "В подходящих моделях"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Plot of coefficients"
 msgstr "График коэффициентов"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Omit intercept"
-msgstr "Опустить интерцепт"
+msgstr "Опустить перехват"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Best model"
 msgstr "Лучшая модель"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Most complex model"
 msgstr "Самая сложная модель"
@@ -578,42 +578,34 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Median model"
 msgstr "Медианная модель"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model averaged"
 msgstr "Усредненная модель"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Credible interval"
-msgstr "Достоверный интервал"
+msgstr "Доверительный интервал"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Order"
 msgstr "Порядок"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to best model"
 msgstr "Сравнить с лучшей моделью"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to null model"
 msgstr "Сравнить с нулевой моделью"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Limit No. Models Shown"
 msgstr "Предельное количество показанных моделей"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "No"
 msgstr "№"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Yes, show best"
 msgstr "Да, показать лучшее"
@@ -622,7 +614,6 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Data"
 msgstr "Данные"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Descriptives"
 msgstr "Описательные статистики"
@@ -639,37 +630,30 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Plots"
 msgstr "Графики"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Coefficients"
 msgstr "Коэффициенты"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Inclusion probabilities"
 msgstr "Включение вероятностей"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Marginal posterior distributions"
 msgstr "Маргинальные распределения постериоров"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Models"
 msgstr "Модели"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Log posterior odds"
 msgstr "Лог-постериорные шансы"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Log(P(data|M)) vs. model size"
 msgstr "Log(P(data|M)) vs. размер модели"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model probabilities"
 msgstr "Вероятности модели"
