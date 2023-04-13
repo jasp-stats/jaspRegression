@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-13 17:11+0000\n"
+"PO-Revision-Date: 2023-04-13 17:14+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pl/>\n"
@@ -652,11 +652,11 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Log(P(data|M)) vs. model size"
-msgstr ""
+msgstr "Log(P(dane|M)) vs. wielkość modelu"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model probabilities"
-msgstr ""
+msgstr "Prawdopodobieństwo modelu"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals"
@@ -664,7 +664,7 @@ msgstr "Reszty"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "Reszty vs. dopasowane"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Q-Q plot of model averaged residuals"
