@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2023-03-04 02:55\n"
-"PO-Revision-Date: 2023-04-05 21:52+0000\n"
+"PO-Revision-Date: 2023-04-14 22:50+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pl/>\n"
@@ -115,7 +115,7 @@ msgid "Upper %s%% CI"
 msgstr "Górny %s%% PU"
 
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "Dolny %s%% PU"
 
 msgid "Ranks of %s"
 msgstr "Rangi %s"
@@ -410,7 +410,7 @@ msgid "Model"
 msgstr "Model"
 
 msgid "Deviance"
-msgstr "Odchylenie"
+msgstr "Odchylanie"
 
 msgid "AIC"
 msgstr "AIC"
@@ -434,7 +434,7 @@ msgid "Coefficients"
 msgstr "Współczynniki"
 
 msgid "Estimate"
-msgstr "Oszacuj"
+msgstr "Oszacowanie"
 
 msgid "Standard Error"
 msgstr "Błąd standardowy"
@@ -578,7 +578,7 @@ msgid "Results are averaged over the levels of: %s."
 msgstr ""
 
 msgid "P-values are not adjusted."
-msgstr ""
+msgstr "Wartości p nie zostały skorygowane."
 
 msgid "Holm"
 msgstr "Holm"
@@ -590,7 +590,7 @@ msgid "Hochberg"
 msgstr "Hochberg"
 
 msgid "Multivariate-t"
-msgstr ""
+msgstr "Wielowymiarowe t"
 
 msgid "Tukey"
 msgstr "Tukey"
@@ -614,7 +614,7 @@ msgid "Bonferroni"
 msgstr "Bonferroni"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr ""
+msgstr "Wartości P zostały skorygowane za pomocą korekty %s."
 
 msgid "trying + %s"
 msgstr ""
@@ -986,13 +986,13 @@ msgid "P(incl)"
 msgstr "P(zawiera)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(excl)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(incl|data)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(excl|dane)"
 
 msgid "<em>Warning.</em>"
 msgstr "<em>Ostrzeżenie.</em>"
