@@ -1085,11 +1085,42 @@ for sparse regression when there are more covariates than observations (Castillo
   basGlmObject[["weights"]] <- weights
   basGlmObject[["BFinclusion"]] <- .bayesianLogisticRegComputeInclusionBF(basGlmObject)
   basGlmObject[["namesx"]][-1] <- basGlmObject[["namesx"]][-1]
+  basGlmObject[["namesx"]] <- .bayesianLogisticRegRenameTermsWithLevels(basGlmObject[["namesx"]], options[["covariates"]], options[["factors"]])
   basGlmObject[["nuisanceTerms"]] <- setNames(isNuisance, names(isNuisance))
 
   bayesianLogisticRegContainer[["bayesianLogisticRegModel"]] <- createJaspState(basGlmObject)
 
+  save(basGlmObject, options, file = '~/Downloads/bas.Rdata')
   return(basGlmObject)
+}
+
+.bayesianLogisticRegRenameTermsWithLevels <- function(names, covariates, factors) {
+  # This function renames model coefficients such that factor levels are formatted nicely
+  # e.g. "facExperim (experimental)" instead of "facExperimexperimental"
+  # The code is horrible, I could not figure out atm how to do it more elegantly
+  # (or is there a jaspBase function that does that??)
+  # It would be good to make this better at some point
+  predNames <- c(gettext("Intercept"), covariates, factors)
+  
+  componentsList <- strsplit(names, ":")
+  
+  newNames <- c()
+  for (components in componentsList) {
+    newName <- NULL
+    for (component in components) {
+      for (predName in predNames) {
+        if(grepl(predName, component)) {
+          niceLevel <- gsub(predName, "", component)
+          niceLevel <- if(niceLevel == "") "" else sprintf(" (%s)", niceLevel)
+          newName <- paste(c(newName, paste0(predName, niceLevel)), collapse = ":")
+          break
+        }
+      }
+    }
+    newNames <- c(newNames, newName)
+  }
+
+  return(newNames)
 }
 
 .bayesianLogisticRegCreateFormula <- function(dependent, modelTerms) {
