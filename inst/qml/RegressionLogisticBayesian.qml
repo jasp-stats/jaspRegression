@@ -124,7 +124,7 @@ Form {
 				name:	"availableTerms"
 				title:	qsTr("Components")
 				width:	parent.width / 4
-				source:	['covariates']
+				source:	['covariates', 'factors']
 			}
 
 			ModelTermsList { width: parent.width * 5 / 9 }
