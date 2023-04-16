@@ -1090,7 +1090,6 @@ for sparse regression when there are more covariates than observations (Castillo
 
   bayesianLogisticRegContainer[["bayesianLogisticRegModel"]] <- createJaspState(basGlmObject)
 
-  save(basGlmObject, options, file = '~/Downloads/bas.Rdata')
   return(basGlmObject)
 }
 
