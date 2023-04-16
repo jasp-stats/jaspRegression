@@ -100,7 +100,7 @@ RegressionLogisticBayesianInternal <- function(jaspResults, dataset = NULL, opti
     bayesianLogisticRegContainer$position <- position
     bayesianLogisticRegContainer$dependOn(c(
       "dependent", "covariates", "factors", "weights", "modelTerms",
-      "priorRegressionCoefficients", "gPriorAlpha", "cchAlpha", "cchBeta", "cchS",
+      "priorRegressionCoefficients", "gPriorAlpha", "cchPriorAlpha", "cchPriorBeta", "cchPriorS",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
       "samplingMethod", "samples", "numberOfModels", "seed", "setSeed", "numericalAccuracy"
@@ -1045,9 +1045,9 @@ for sparse regression when there are more covariates than observations (Castillo
     "betaPrime"     = BAS::beta.prime(),
     "bic"           = BAS::bic.prior(),
     "ebLocal"       = BAS::EB.local(),
-    "cch"           = BAS::CCH(alpha = options$cchAlpha,
-                               beta  = options$cchBeta,
-                               s     = options$cchS),
+    "cch"           = BAS::CCH(alpha = options$cchPriorAlpha,
+                               beta  = options$cchPriorBeta,
+                               s     = options$cchPriorS),
     "gPrior"        = BAS::g.prior(g = options$gPriorAlpha),
     "instrinsic"    = BAS::intrinsic(),
     "robust"        = BAS::robust()

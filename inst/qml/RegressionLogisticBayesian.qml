@@ -230,7 +230,7 @@ Form {
 				checked: true
 				DoubleField
 				{
-					name: "cchAlpha"
+					name: "cchPriorAlpha"
 					label: qsTr("alpha")
 					fieldWidth: 50
 					defaultValue: 0.5
@@ -239,7 +239,7 @@ Form {
 				}
 				DoubleField
 				{
-					name: "cchBeta"
+					name: "cchPriorBeta"
 					label: qsTr("beta")
 					fieldWidth: 50
 					defaultValue: 2
@@ -248,7 +248,7 @@ Form {
 				}
 				DoubleField
 				{
-					name: "cchS"
+					name: "cchPriorS"
 					label: qsTr("s")
 					fieldWidth: 50
 					defaultValue: 0
