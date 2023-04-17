@@ -59,13 +59,13 @@ RegressionLogisticBayesianInternal <- function(jaspResults, dataset = NULL, opti
                                               position = 3)
 
   if (options$posteriorSummaryPlot && is.null(bayesianLogisticRegContainer[["postSumContainer"]][["postSumPlot"]]))
-    .basregPlotPosteriorSummary(postSumContainer, postSumModel, options, position = 4)
+    .bayesianLogisticRegPlotPosteriorSummary(postSumContainer, postSumModel, options, position = 4)
 
   if (options$logPosteriorOddsPlot && is.null(bayesianLogisticRegContainer[["logPosteriorOddsPlot"]]))
-    .basregPlotPosteriorLogOdds(bayesianLogisticRegContainer, bayesianLogisticRegModel, options, position = 5)
+    .bayesianLogisticRegPlotPosteriorLogOdds(bayesianLogisticRegContainer, bayesianLogisticRegModel, options, position = 5)
 
   if (options$residualsVsFittedPlot && is.null(bayesianLogisticRegContainer[["ResidualsVsFittedPlot"]]))
-    .basregresidualsVsFittedPlot(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 6)
+    .bayesianLogisticRegresidualsVsFittedPlot(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 6)
 
   if (options$modelProbabilitiesPlot && is.null(bayesianLogisticRegContainer[["modelProbabilitiesPlot"]]))
     .bayesianLogisticRegModelProbabilitiesPlot(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 7)
@@ -74,13 +74,13 @@ RegressionLogisticBayesianInternal <- function(jaspResults, dataset = NULL, opti
     .bayesianLogisticRegModelComplexityPlot(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 8)
 
   if (options$inclusionProbabilitiesPlot && is.null(bayesianLogisticRegContainer[["inclusionProbabilitiesPlot"]]))
-    .basreginclusionProbabilitiesPlot(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 9)
+    .bayesianLogisticReginclusionProbabilitiesPlot(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 9)
 
   if (options$qqPlot && is.null(bayesianLogisticRegContainer[["qqPlot"]]))
-    .basregPlotQQ(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 10)
+    .bayesianLogisticRegPlotQQ(bayesianLogisticRegContainer, bayesianLogisticRegModel, position = 10)
 
   if (options$marginalPosteriorPlot && is.null(bayesianLogisticRegContainer[["postDistContainer"]]))
-    .basregPlotsPosteriorDistribution(bayesianLogisticRegContainer, postSumModel, bayesianLogisticRegModel, options, position = 11)
+    .bayesianLogisticRegPlotsPosteriorDistribution(bayesianLogisticRegContainer, postSumModel, bayesianLogisticRegModel, options, position = 11)
 
 
   #### second container
@@ -90,7 +90,7 @@ RegressionLogisticBayesianInternal <- function(jaspResults, dataset = NULL, opti
     .bayesianLogisticRegTableDescriptives(jaspResults, descriptivesContainer, dataset, options, ready)
   }
 
-  .basregExportResiduals(bayesianLogisticRegContainer, bayesianLogisticRegModel, dataset, options, ready)
+  .bayesianLogisticRegExportResiduals(bayesianLogisticRegContainer, bayesianLogisticRegModel, dataset, options, ready)
 }
 
 
@@ -461,7 +461,7 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 }
 
-.basregPlotPosteriorSummary <- function(postSumContainer, postSumModel, options, position) {
+.bayesianLogisticRegPlotPosteriorSummary <- function(postSumContainer, postSumModel, options, position) {
   title <- gettextf("Posterior Coefficients with %s%% Credible Interval",
                    format(100 * options$posteriorSummaryPlotCiLevel, digits = 3))
   postSumPlot <- createJaspPlot(title = title, width = 530, height = 400)
@@ -471,15 +471,15 @@ for sparse regression when there are more covariates than observations (Castillo
   postSumContainer[["postSumPlot"]] <- postSumPlot
 
   if (!is.null(postSumModel))
-    .basregFillPlotPosteriorSummary(postSumPlot, postSumModel, options)
+    .bayesianLogisticRegFillPlotPosteriorSummary(postSumPlot, postSumModel, options)
 }
 
-.basregFillPlotPosteriorSummary <- function(postSumPlot, postSumModel, options) {
+.bayesianLogisticRegFillPlotPosteriorSummary <- function(postSumPlot, postSumModel, options) {
   coef <- postSumModel[["coef"]]
   confInt <- postSumModel[["conf95"]]
   loopIdx <- postSumModel[["loopIdx"]]
   coefficients <- postSumModel[["coefficients"]]
-  coefficients <- .basregReplaceInteractionUnicodeSymbol(coefficients)
+  coefficients <- .bayesianLogisticRegReplaceInteractionUnicodeSymbol(coefficients)
 
   # exlude intercept if it's not the only predictor?
   if (options[["posteriorSummaryPlotWithoutIntercept"]] && length(loopIdx) > 1)
@@ -514,7 +514,7 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 }
 
-.basregPlotPosteriorLogOdds <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, options, position) {
+.bayesianLogisticRegPlotPosteriorLogOdds <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, options, position) {
   postLogOddsPlot <- createJaspPlot(title = gettext("Posterior Log Odds"), width = 530, height = 400)
   postLogOddsPlot$position <- position
   postLogOddsPlot$dependOn("logPosteriorOddsPlot")
@@ -527,18 +527,18 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 
   if (!is.null(bayesianLogisticRegModel))
-    .basregFillPlotPosteriorLogOdds(postLogOddsPlot, bayesianLogisticRegModel)
+    .bayesianLogisticRegFillPlotPosteriorLogOdds(postLogOddsPlot, bayesianLogisticRegModel)
 }
 
-.basregFillPlotPosteriorLogOdds <- function(postLogOddsPlot, bayesianLogisticRegModel) {
-  bayesianLogisticRegModel$namesx <- .basregReplaceInteractionUnicodeSymbol(bayesianLogisticRegModel$namesx)
+.bayesianLogisticRegFillPlotPosteriorLogOdds <- function(postLogOddsPlot, bayesianLogisticRegModel) {
+  bayesianLogisticRegModel$namesx <- .bayesianLogisticRegReplaceInteractionUnicodeSymbol(bayesianLogisticRegModel$namesx)
   postLogOddsPlot$plotObject <- function() {
     BAS:::image.bas(bayesianLogisticRegModel, rotate = FALSE)
   }
 }
 
 
-.basregresidualsVsFittedPlot <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, position) {
+.bayesianLogisticRegresidualsVsFittedPlot <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, position) {
   residualsVsFittedPlot <- createJaspPlot(title = gettext("Residuals vs Fitted"), width = 530, height = 400)
   residualsVsFittedPlot$position <- position
   residualsVsFittedPlot$dependOn("residualsVsFittedPlot")
@@ -546,11 +546,11 @@ for sparse regression when there are more covariates than observations (Castillo
   bayesianLogisticRegContainer[["ResidualsVsFittedPlot"]] <- residualsVsFittedPlot
 
   if (!is.null(bayesianLogisticRegModel))
-    .basregFillresidualsVsFittedPlot(residualsVsFittedPlot, bayesianLogisticRegModel)
+    .bayesianLogisticRegFillresidualsVsFittedPlot(residualsVsFittedPlot, bayesianLogisticRegModel)
 
 }
 
-.basregFillresidualsVsFittedPlot <- function(residualsVsFittedPlot, bayesianLogisticRegModel) {
+.bayesianLogisticRegFillresidualsVsFittedPlot <- function(residualsVsFittedPlot, bayesianLogisticRegModel) {
   x <- fitted(bayesianLogisticRegModel, estimator = "BMA")
   y <- bayesianLogisticRegModel$Y - x
   dfPoints <- data.frame(
@@ -585,10 +585,10 @@ for sparse regression when there are more covariates than observations (Castillo
   bayesianLogisticRegContainer[["modelProbabilitiesPlot"]] <- modelProbabilitiesPlot
 
   if (!is.null(bayesianLogisticRegModel))
-    .basregFillmodelProbabilitiesPlot(modelProbabilitiesPlot, bayesianLogisticRegModel)
+    .bayesianLogisticRegFillmodelProbabilitiesPlot(modelProbabilitiesPlot, bayesianLogisticRegModel)
 }
 
-.basregFillmodelProbabilitiesPlot <- function(modelProbabilitiesPlot, bayesianLogisticRegModel) {
+.bayesianLogisticRegFillmodelProbabilitiesPlot <- function(modelProbabilitiesPlot, bayesianLogisticRegModel) {
   cum.prob = cumsum(bayesianLogisticRegModel$postprobs)
   m.index = 1:bayesianLogisticRegModel$n.models
 
@@ -622,10 +622,10 @@ for sparse regression when there are more covariates than observations (Castillo
   bayesianLogisticRegContainer[["modelComplexityPlot"]] <- modelComplexityPlot
 
   if (!is.null(bayesianLogisticRegModel))
-    .basregFillmodelComplexityPlot(modelComplexityPlot, bayesianLogisticRegModel)
+    .bayesianLogisticRegFillmodelComplexityPlot(modelComplexityPlot, bayesianLogisticRegModel)
 }
 
-.basregFillmodelComplexityPlot <- function(modelComplexityPlot, bayesianLogisticRegModel) {
+.bayesianLogisticRegFillmodelComplexityPlot <- function(modelComplexityPlot, bayesianLogisticRegModel) {
   logmarg = bayesianLogisticRegModel$logmarg
   dim = bayesianLogisticRegModel$size
 
@@ -652,7 +652,7 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 }
 
-.basreginclusionProbabilitiesPlot <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, position) {
+.bayesianLogisticReginclusionProbabilitiesPlot <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, position) {
   inclusionProbabilitiesPlot <- createJaspPlot(title = gettext("Inclusion Probabilities"), width = 700, height = 400)
   inclusionProbabilitiesPlot$position <- position
   inclusionProbabilitiesPlot$dependOn("inclusionProbabilitiesPlot")
@@ -660,13 +660,13 @@ for sparse regression when there are more covariates than observations (Castillo
   bayesianLogisticRegContainer[["inclusionProbabilitiesPlot"]] <- inclusionProbabilitiesPlot
 
   if (!is.null(bayesianLogisticRegModel))
-    .basregFillinclusionProbabilitiesPlot(inclusionProbabilitiesPlot, bayesianLogisticRegModel)
+    .bayesianLogisticRegFillinclusionProbabilitiesPlot(inclusionProbabilitiesPlot, bayesianLogisticRegModel)
 }
 
-.basregFillinclusionProbabilitiesPlot <- function(inclusionProbabilitiesPlot, bayesianLogisticRegModel) {
+.bayesianLogisticRegFillinclusionProbabilitiesPlot <- function(inclusionProbabilitiesPlot, bayesianLogisticRegModel) {
   probne0 <- bayesianLogisticRegModel$probne0[-1]
   variables <- bayesianLogisticRegModel$namesx[-1] # 1:bayesianLogisticRegModel$n.vars
-  variables <- .basregReplaceInteractionUnicodeSymbol(variables)
+  variables <- .bayesianLogisticRegReplaceInteractionUnicodeSymbol(variables)
   priorProb <- bayesianLogisticRegModel$priorprobsPredictor[1:bayesianLogisticRegModel$n.vars][-1]
 
   # reorder from low to high
@@ -714,7 +714,7 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 }
 
-.basregPlotQQ <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, position) {
+.bayesianLogisticRegPlotQQ <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, position) {
   qqPlot <- createJaspPlot(title = gettext("Q-Q Plot"), width = 700, height = 400)
   qqPlot$position <- position
   qqPlot$dependOn("qqPlot")
@@ -722,10 +722,10 @@ for sparse regression when there are more covariates than observations (Castillo
   bayesianLogisticRegContainer[["qqPlot"]] <- qqPlot
 
   if (!is.null(bayesianLogisticRegModel))
-    .basregFillPlotQQ(qqPlot, bayesianLogisticRegModel)
+    .bayesianLogisticRegFillPlotQQ(qqPlot, bayesianLogisticRegModel)
 }
 
-.basregFillPlotQQ <- function(qqPlot, bayesianLogisticRegModel) {
+.bayesianLogisticRegFillPlotQQ <- function(qqPlot, bayesianLogisticRegModel) {
   p <- try({
     x <- fitted(bayesianLogisticRegModel, estimator = "BMA")
     y <- bayesianLogisticRegModel$Y - x
@@ -740,7 +740,7 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 }
 
-.basregPlotsPosteriorDistribution <- function(bayesianLogisticRegContainer, postSumModel, bayesianLogisticRegModel, options, position) {
+.bayesianLogisticRegPlotsPosteriorDistribution <- function(bayesianLogisticRegContainer, postSumModel, bayesianLogisticRegModel, options, position) {
   postDistContainer <- createJaspContainer(gettext("Marginal Posterior Distributions")) #TODO: check if this name is ok
   postDistContainer$position <- position
   postDistContainer$dependOn(c(
@@ -748,22 +748,22 @@ for sparse regression when there are more covariates than observations (Castillo
     "posteriorSummaryPlotCiLevel", "numericalAccuracy", "seed", "setSeed"
   )) #TODO: check if dependencies are correct for this item: was probably wrong in release
 
-  .basregInsertPosteriorDistributionPlots("placeholders", postDistContainer, plotNames, options, bayesianLogisticRegModel)
+  .bayesianLogisticRegInsertPosteriorDistributionPlots("placeholders", postDistContainer, plotNames, options, bayesianLogisticRegModel)
 
   if (!is.null(bayesianLogisticRegModel) && !is.null(postSumModel))
-      .basregInsertPosteriorDistributionPlots("fill", postDistContainer, plotNames, options, bayesianLogisticRegModel, postSumModel)
+      .bayesianLogisticRegInsertPosteriorDistributionPlots("fill", postDistContainer, plotNames, options, bayesianLogisticRegModel, postSumModel)
 
   bayesianLogisticRegContainer[["postDistContainer"]] <- postDistContainer
 }
 
-.basregInsertPosteriorDistributionPlots <- function(type, postDistContainer, plotNames, options, bayesianLogisticRegModel = NULL, postSumModel = NULL) {
+.bayesianLogisticRegInsertPosteriorDistributionPlots <- function(type, postDistContainer, plotNames, options, bayesianLogisticRegModel = NULL, postSumModel = NULL) {
   if (is.null(bayesianLogisticRegModel)) {
     plotNames <- "Intercept"
     isNuisance <- setNames(FALSE, "Intercept")
   } else {
-    plotNames <- .basregReplaceInteractionUnicodeSymbol(bayesianLogisticRegModel$namesx)
+    plotNames <- .bayesianLogisticRegReplaceInteractionUnicodeSymbol(bayesianLogisticRegModel$namesx)
     isNuisance <- bayesianLogisticRegModel[["nuisanceTerms"]]
-    names(isNuisance) <- .basregReplaceInteractionUnicodeSymbol(names(isNuisance))
+    names(isNuisance) <- .bayesianLogisticRegReplaceInteractionUnicodeSymbol(names(isNuisance))
   }
 
   for (plotName in plotNames) {
@@ -773,12 +773,12 @@ for sparse regression when there are more covariates than observations (Castillo
     if (type == "placeholders")
       postDistContainer[[plotName]] <- createJaspPlot(title = plotName, width = 530, height = 400)
     else
-      .basregFillPlotPosteriorDistribution(postDistContainer[[plotName]], which(plotNames == plotName), postSumModel)
+      .bayesianLogisticRegFillPlotPosteriorDistribution(postDistContainer[[plotName]], which(plotNames == plotName), postSumModel)
 
   }
 }
 
-.basregFillPlotPosteriorDistribution <- function(posteriorDistributionPlot, index, postSumModel) {
+.bayesianLogisticRegFillPlotPosteriorDistribution <- function(posteriorDistributionPlot, index, postSumModel) {
   # these first lines are there to create compatibility with the BAS plotting code we copied
   x      <- postSumModel[["coefBMA"]]
   conf95 <- postSumModel[["conf95BMA"]]
@@ -796,7 +796,7 @@ for sparse regression when there are more covariates than observations (Castillo
   means    <- x$conditionalmeans[sel, i, drop = TRUE]
   sds      <- x$conditionalsd[sel, i, drop = TRUE]
   name     <- x$namesx[i]
-  name     <- .basregReplaceInteractionUnicodeSymbol(name)
+  name     <- .bayesianLogisticRegReplaceInteractionUnicodeSymbol(name)
   df.sel   <- df[sel]
 
   df <- df.sel # modified from original
@@ -1136,7 +1136,7 @@ for sparse regression when there are more covariates than observations (Castillo
     modelFormula <- c(modelFormula, "+", termName)
     if (term[["isNuisance"]]) nullFormula <- c(nullFormula, "+", termName)
   }
-  modelFormula <- as.formula(paste(modelFormula, collapse = ""), env = parent.frame(1)) # bas.lm searches for objects defined in .basregGetModel in the formula env..
+  modelFormula <- as.formula(paste(modelFormula, collapse = ""), env = parent.frame(1)) # bas.lm searches for objects defined in .bayesianLogisticRegGetModel in the formula env..
   nullFormula <- as.formula(paste(nullFormula, collapse = ""), env = parent.frame(1))
   return(list("modelFormula" = modelFormula, "nullFormula" = nullFormula))
 }
@@ -1386,7 +1386,7 @@ for sparse regression when there are more covariates than observations (Castillo
   gsub("\u2009\u273b\u2009", " x ", name, fixed = TRUE)
 }
 
-.basregExportResiduals <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, dataset, options, ready) {
+.bayesianLogisticRegExportResiduals <- function(bayesianLogisticRegContainer, bayesianLogisticRegModel, dataset, options, ready) {
 
   if (!ready)
     return()
@@ -1411,7 +1411,7 @@ for sparse regression when there are more covariates than observations (Castillo
 
   } else if (options[["summaryType"]] == "median") {
 
-    # We do this for the same reason we need .basregOverwritecoefBas some weird lazy evaluation issues in R.
+    # We do this for the same reason we need .bayesianLogisticRegOverwritecoefBas some weird lazy evaluation issues in R.
     # See also https://github.com/merliseclyde/BAS/issues/56, once that is fixed we can probably remove this
     weights <- NULL
     if (options$weights != "") {
