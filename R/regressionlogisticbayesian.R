@@ -339,6 +339,11 @@ for sparse regression when there are more covariates than observations (Castillo
   postSumTable$addColumnInfo(name = "lowerCri",    title = gettext("Lower"),         type = "number", overtitle = overtitle)
   postSumTable$addColumnInfo(name = "upperCri",    title = gettext("Upper"),         type = "number", overtitle = overtitle)
 
+  if (options[['factors']] != "" && !is.null(options[['factors']])) {
+    footnote <- gettextf("Inclusion/exclusion statistics for coefficients within factor(s) %s are the same as the coefficients are always included or excluded together.", paste(options[["factors"]], collapse = ", "))
+    postSumTable$addFootnote(footnote)
+  }
+
   if (!is.null(bayesianLogisticRegModel) && !is.null(postSumModel)) {
     footnote <- postSumModel[["footnotes"]]
     if (!is.null(footnote))
@@ -1100,9 +1105,9 @@ for sparse regression when there are more covariates than observations (Castillo
   # (or is there a jaspBase function that does that??)
   # It would be good to make this better at some point
   predNames <- c(gettext("Intercept"), covariates, factors)
-  
+
   componentsList <- strsplit(names, ":")
-  
+
   newNames <- c()
   for (components in componentsList) {
     newName <- NULL
