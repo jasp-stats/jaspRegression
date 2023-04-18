@@ -13,6 +13,7 @@ Imports:
   BAS,
   boot,
   bstats,
+  combinat,
   emmeans,
   ggplot2,
   ggrepel,

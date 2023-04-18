@@ -133,6 +133,7 @@ test_that("Coefficient plots match", {
     )
     options$inclusionProbabilitiesPlot <- TRUE
     options$marginalPosteriorPlot <- TRUE
+    options$posteriorSummaryPlotWithoutIntercept <- FALSE
 
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
 
@@ -292,7 +293,7 @@ test_that("Model priors match", {
 test_that("Exporting residuals works", {
 
   data("Hald", package = "BAS")
-  options <- analysisOptions("RegressionLinearBayesian")
+  options <- jaspTools::analysisOptions("RegressionLinearBayesian")
   options$dependent <- "Y"
   options$covariates <- paste0("X", 1:4)
   options$modelTerms <- lapply(options$covariates, function(x) list(components = x, isNuisance = FALSE))
@@ -310,7 +311,7 @@ test_that("Exporting residuals works", {
     options$residualsSavedToDataColumn   <- paste("residualsSavedToData",   "-", summaryType)
     options$residualSdsSavedToDataColumn <- paste("residualSdsSavedToData", "-", summaryType)
 
-    results <- runAnalysis("RegressionLinearBayesian", Hald, options)
+    results <- jaspTools::runAnalysis("RegressionLinearBayesian", Hald, options)
 
     # ideally we'd check the actual data here but the jaspTools output unfortunately does not contain the data
     testthat::expect_identical(
