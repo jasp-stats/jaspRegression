@@ -339,7 +339,7 @@ for sparse regression when there are more covariates than observations (Castillo
   postSumTable$addColumnInfo(name = "lowerCri",    title = gettext("Lower"),         type = "number", overtitle = overtitle)
   postSumTable$addColumnInfo(name = "upperCri",    title = gettext("Upper"),         type = "number", overtitle = overtitle)
 
-  if (options[['factors']] != "" && !is.null(options[['factors']])) {
+  if (length(options[["factors"]]) > 0) {
     footnote <- gettextf("Inclusion/exclusion statistics for coefficients within factor(s) %s are the same as the coefficients are always included or excluded together.", paste(options[["factors"]], collapse = ", "))
     postSumTable$addFootnote(footnote)
   }
