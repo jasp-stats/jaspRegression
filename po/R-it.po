@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2023-03-04 02:55\n"
+"POT-Creation-Date: 2023-04-22 02:45\n"
 "PO-Revision-Date: 2022-12-10 10:58+0000\n"
 "Last-Translator: Nico <episcience@outlook.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
@@ -1152,6 +1152,26 @@ msgid "Robust <br> %s"
 msgstr ""
 
 msgid "Parameter"
+msgstr ""
+
+msgid ""
+"Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
+"same as the coefficients are always included or excluded together."
+msgstr ""
+
+msgid "DV/Factor Descriptives"
+msgstr ""
+
+msgid "DV/Factor"
+msgstr ""
+
+msgid "Level"
+msgstr ""
+
+msgid "Covariate Descriptives"
+msgstr ""
+
+msgid "Intercept"
 msgstr ""
 
 msgid "using the %d/%d row from a combined fit"

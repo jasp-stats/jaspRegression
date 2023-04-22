@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2023-03-04 02:55\n"
+"POT-Creation-Date: 2023-04-22 02:45\n"
 "PO-Revision-Date: 2023-03-05 13:40+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -1255,6 +1255,30 @@ msgstr "Robust <br> %s"
 
 msgid "Parameter"
 msgstr "Parameter"
+
+msgid ""
+"Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
+"same as the coefficients are always included or excluded together."
+msgstr ""
+
+#, fuzzy
+msgid "DV/Factor Descriptives"
+msgstr "Faktorbeschreibungen"
+
+#, fuzzy
+msgid "DV/Factor"
+msgstr "Faktor"
+
+msgid "Level"
+msgstr ""
+
+#, fuzzy
+msgid "Covariate Descriptives"
+msgstr "Faktorbeschreibungen"
+
+#, fuzzy
+msgid "Intercept"
+msgstr "(Konstante)"
 
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"

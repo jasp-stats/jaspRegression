@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2023-03-04 02:55\n"
+"POT-Creation-Date: 2023-04-22 02:45\n"
 "PO-Revision-Date: 2023-03-26 15:41+0000\n"
 "Last-Translator: Катя <katakxx@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -1447,6 +1447,30 @@ msgstr "Робастный <br> %s"
 #, fuzzy
 msgid "Parameter"
 msgstr "Параметр"
+
+msgid ""
+"Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
+"same as the coefficients are always included or excluded together."
+msgstr ""
+
+#, fuzzy
+msgid "DV/Factor Descriptives"
+msgstr "Описательные статистики факторов"
+
+#, fuzzy
+msgid "DV/Factor"
+msgstr "Фактор"
+
+msgid "Level"
+msgstr ""
+
+#, fuzzy
+msgid "Covariate Descriptives"
+msgstr "Описательные статистики факторов"
+
+#, fuzzy
+msgid "Intercept"
+msgstr "(Интерцепт)"
 
 #, fuzzy
 msgid "using the %d/%d row from a combined fit"

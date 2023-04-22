@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-03-04 02:55\n"
+"POT-Creation-Date: 2023-04-22 02:45\n"
 "PO-Revision-Date: 2023-03-05 21:38+0000\n"
 "Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -1261,6 +1261,30 @@ msgstr "Robusto <br> %s"
 
 msgid "Parameter"
 msgstr "Parámetro"
+
+msgid ""
+"Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
+"same as the coefficients are always included or excluded together."
+msgstr ""
+
+#, fuzzy
+msgid "DV/Factor Descriptives"
+msgstr "Descritivos dos Factores"
+
+#, fuzzy
+msgid "DV/Factor"
+msgstr "Factor"
+
+msgid "Level"
+msgstr ""
+
+#, fuzzy
+msgid "Covariate Descriptives"
+msgstr "Descritivos dos Factores"
+
+#, fuzzy
+msgid "Intercept"
+msgstr "(Constante)"
 
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"

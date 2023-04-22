@@ -1389,3 +1389,366 @@ msgstr ""
 msgctxt "GlmInputComponent|"
 msgid "Firth Logistic Regression"
 msgstr ""
+
+msgctxt "Description|"
+msgid "Bayesian Logistic Regression"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Dependent Variable"
+msgstr "因变量"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Covariates"
+msgstr "协变量（Covariates）"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Factors"
+msgstr "因子"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "WLS Weights (optional)"
+msgstr "WLS 权重（可选）"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Output"
+msgstr "输出"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Posterior summary"
+msgstr "后验摘要"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Across all models"
+msgstr "跨所有模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Across matched models"
+msgstr "跨匹配的模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Plot of coefficients"
+msgstr "系数图"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Omit intercept"
+msgstr "省略截距"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Best model"
+msgstr "最佳模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Most complex model"
+msgstr "最复杂的模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Median model"
+msgstr "中位数模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model averaged"
+msgstr "平均模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Credible interval"
+msgstr "可信区间"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Order"
+msgstr "秩次(order)"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Compare to best model"
+msgstr "与最优模型比较"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Compare to null model"
+msgstr "与空模型比较"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Limit No. Models Shown"
+msgstr "限制模型显示的数量"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No"
+msgstr "无"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Yes, show best"
+msgstr "显示最优的"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Data"
+msgstr "数据"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Descriptives"
+msgstr "描述"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Components"
+msgstr "成分（Components）"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Plots"
+msgstr "绘图"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Coefficients"
+msgstr "系数"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Inclusion probabilities"
+msgstr "包含概率（ Inclusion probabilities）"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Marginal posterior distributions"
+msgstr "边际后验分布"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Models"
+msgstr "模型"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Log posterior odds"
+msgstr "对数后验几率"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Log(P(data|M)) vs. model size"
+msgstr "Log(P(data|M)) 与模型大小"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model probabilities"
+msgstr "模型概率"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals"
+msgstr "残差"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals vs. fitted"
+msgstr "残差 vs. 拟合"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Q-Q plot of model averaged residuals"
+msgstr "模型平均残差的 Q-Q 图"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Advanced Options"
+msgstr "高级选项"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Append columns to data"
+msgstr "向数据中追加列"
+
+#, fuzzy, qt-format
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals (%1)"
+msgstr "残差 (%1)"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Column name"
+msgstr "列名"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "e.g., residuals"
+msgstr "例如：残差"
+
+#, fuzzy, qt-format
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr "残差的标准偏差（%1）"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "e.g., residual sd"
+msgstr "例如：残差标准差"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Prior"
+msgstr "先验"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "AIC"
+msgstr "AIC"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "BIC"
+msgstr "BIC"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "EB-local"
+msgstr "EB-local"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "g-prior"
+msgstr "EB-local"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "alpha"
+msgstr "alpha"
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "CCH"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "beta"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "s"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Beta-Prime"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Instrinsic"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Robust"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model Prior"
+msgstr "模型先验"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Beta binomial"
+msgstr "Beta-binomial分布"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "a"
+msgstr "a"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "b"
+msgstr "b"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform"
+msgstr "均匀分布"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Wilson"
+msgstr "Wilson"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "λ"
+msgstr "λ"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Castillo"
+msgstr "Castillo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "u"
+msgstr "u"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Bernoulli"
+msgstr "Bernoulli"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "p"
+msgstr "p"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Sampling Method"
+msgstr "抽样方法"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "BAS"
+msgstr "BAS"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No. models"
+msgstr "模型数量"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "MCMC"
+msgstr "MCMC"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No. samples"
+msgstr "样本数量"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Numerical Accuracy"
+msgstr "数值精度"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No. samples for credible interval"
+msgstr "可信区间的样本数"

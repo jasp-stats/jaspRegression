@@ -1389,3 +1389,366 @@ msgstr "Regresión Loxística Ordinal"
 msgctxt "GlmInputComponent|"
 msgid "Firth Logistic Regression"
 msgstr "Regresión Loxística de Firth"
+
+msgctxt "Description|"
+msgid "Bayesian Logistic Regression"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Dependent Variable"
+msgstr "Variable Dependente"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Covariates"
+msgstr "Covariantes"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Factors"
+msgstr "Factores"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "WLS Weights (optional)"
+msgstr "Ponderacións de MCP (WLS, opcional)"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Output"
+msgstr "Saída de resultados"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Posterior summary"
+msgstr "Resumo posterior"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Across all models"
+msgstr "A través de todos os modelos"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Across matched models"
+msgstr "A través de modelos emparellados"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Plot of coefficients"
+msgstr "Gráfica dos coeficientes"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Omit intercept"
+msgstr "Suprimir a constante"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Best model"
+msgstr "Mellor modelo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Most complex model"
+msgstr "O modelo máis complexo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Median model"
+msgstr "Modelo Mediano"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model averaged"
+msgstr "Modelo medio"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Credible interval"
+msgstr "Intervalo de credibilidade"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Order"
+msgstr "Orde"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Compare to best model"
+msgstr "Comparar co mellor modelo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Compare to null model"
+msgstr "Comparar co modelo nulo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Limit No. Models Shown"
+msgstr "Limitar o Número de Modelos Amosados"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No"
+msgstr "Non"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Yes, show best"
+msgstr "Si, amosar o mellor"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Data"
+msgstr "Datos"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Descriptives"
+msgstr "Descritivos"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model"
+msgstr "Modelo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Components"
+msgstr "Compoñentes"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Plots"
+msgstr "Gráficas"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Coefficients"
+msgstr "Coeficientes"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Inclusion probabilities"
+msgstr "Probabilidades de inclusión"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Marginal posterior distributions"
+msgstr "Distribucións posteriores marxinais"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Models"
+msgstr "Modelos"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Log posterior odds"
+msgstr "Logaritmo de probabilidades posteriores"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Log(P(data|M)) vs. model size"
+msgstr "Log(p(datos|M)) vs. Dimensión do modelo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model probabilities"
+msgstr "Probabilidades do modelo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals"
+msgstr "Erros"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals vs. fitted"
+msgstr "Erros vs. Axustes"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Q-Q plot of model averaged residuals"
+msgstr "Gráfica Q-Q dos erros medios do modelo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Advanced Options"
+msgstr "Opcións Avanzadas"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Append columns to data"
+msgstr "Engadir columnas aos datos"
+
+#, fuzzy, qt-format
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals (%1)"
+msgstr "Erros (%1)"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Column name"
+msgstr "Nome de columna"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "e.g., residuals"
+msgstr "p.e. erros"
+
+#, fuzzy, qt-format
+msgctxt "RegressionLogisticBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr "Desvíos padrón dos erros (%1)"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "e.g., residual sd"
+msgstr "p.e. dp dos erros"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Prior"
+msgstr "Previo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "AIC"
+msgstr "AIC"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "BIC"
+msgstr "BIC"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "EB-local"
+msgstr "EB-lokal"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "g-prior"
+msgstr "g previa"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "alpha"
+msgstr "alfa"
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "CCH"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "beta"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "s"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Beta-Prime"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Instrinsic"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Robust"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Model Prior"
+msgstr "Previo do modelo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Beta binomial"
+msgstr "Binomial Beta"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "a"
+msgstr "a"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "b"
+msgstr "b"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform"
+msgstr "Uniforme"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Wilson"
+msgstr "Wilson"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "λ"
+msgstr "λ"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Castillo"
+msgstr "Castillo"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "u"
+msgstr "u"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Bernoulli"
+msgstr "Bernoulli"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "p"
+msgstr "p"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Sampling Method"
+msgstr "Método da mostraxe"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "BAS"
+msgstr "BAS"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No. models"
+msgstr "Número de modelos"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "MCMC"
+msgstr "MCMC"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No. samples"
+msgstr "Nº mostras"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "Numerical Accuracy"
+msgstr "Precisión Numérica"
+
+#, fuzzy
+msgctxt "RegressionLogisticBayesian|"
+msgid "No. samples for credible interval"
+msgstr "Número de mostras para intervalo de credibilidade"
