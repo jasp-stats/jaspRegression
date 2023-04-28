@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-04-26 18:52+0000\n"
+"PO-Revision-Date: 2023-04-29 02:43+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pl/>\n"
@@ -1020,11 +1020,11 @@ msgstr "Wykres PR"
 
 msgctxt "Correlation|"
 msgid "From"
-msgstr "Z"
+msgstr "z"
 
 msgctxt "Correlation|"
 msgid "bootstraps"
-msgstr "bootstraps"
+msgstr "próbek bootstrapowych"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
@@ -1124,7 +1124,7 @@ msgstr "Wagi"
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr "Rodzina"
+msgstr "Typ"
 
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
@@ -1150,7 +1150,6 @@ msgctxt "GlmInputComponent|"
 msgid "Poisson"
 msgstr "Poisson"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Link"
 msgstr "Link"
@@ -1613,7 +1612,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "e.g., residual sd"
 msgstr ""
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
 msgstr "Prior"
@@ -1633,7 +1631,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "EB-local"
 msgstr "EB-lokalne"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
 msgstr "g-prior"
@@ -1692,7 +1689,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform"
 msgstr "Jednorodny"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
@@ -1702,7 +1698,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
 msgstr "λ"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
 msgstr "Castillo"
@@ -1712,7 +1707,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "u"
 msgstr "u"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli"
 msgstr "Bernoulli"
