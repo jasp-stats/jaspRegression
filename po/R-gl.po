@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2023-04-22 02:45\n"
-"PO-Revision-Date: 2023-03-05 21:38+0000\n"
-"Last-Translator: gallegonovato <fran-carro@hotmail.es>\n"
+"PO-Revision-Date: 2023-04-22 23:57+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/gl/>\n"
 "Language: gl\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.2-dev\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Virgin-Header: remove this line if you change anything in the header.\n"
 "X-Language: gl_ES\n"
 "X-Source-Language: C\n"
@@ -1093,10 +1093,10 @@ msgid "Model Search Order"
 msgstr "Orde de Procura de Modelos"
 
 msgid "Log(P(data|M)) vs. Model Size"
-msgstr "Log(p(datos|M)) vs. Dimensión do Modelo"
+msgstr "Log(P(datos|M)) vs. Dimensión do Modelo"
 
 msgid "Log(P(data|M))"
-msgstr "Log(p(datos|M))"
+msgstr "Log(P(datos|M))"
 
 msgid "Model Dimension"
 msgstr "Dimensión do Modelo"
@@ -1266,25 +1266,23 @@ msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
 "same as the coefficients are always included or excluded together."
 msgstr ""
+"Os estatísticos de inclusión/exclusión dos coeficientes no(s) factor(es) %s "
+"son os mesmos que os coeficientes que sempre se inclúen ou exclúen xuntos."
 
-#, fuzzy
 msgid "DV/Factor Descriptives"
-msgstr "Descritivos dos Factores"
+msgstr "Descriptivos de DV/Factores"
 
-#, fuzzy
 msgid "DV/Factor"
-msgstr "Factor"
+msgstr "DV/Factor"
 
 msgid "Level"
-msgstr ""
+msgstr "Nivel"
 
-#, fuzzy
 msgid "Covariate Descriptives"
-msgstr "Descritivos dos Factores"
+msgstr "Descritivos das Covariantes"
 
-#, fuzzy
 msgid "Intercept"
-msgstr "(Constante)"
+msgstr "Constante"
 
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"
