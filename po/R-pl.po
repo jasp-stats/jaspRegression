@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2023-04-22 02:45\n"
-"PO-Revision-Date: 2023-05-02 05:11+0000\n"
+"PO-Revision-Date: 2023-05-04 19:40+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pl/>\n"
@@ -141,9 +141,8 @@ msgstr ""
 "  1/(-e <em>p</em> log(<em>p</em>)) dla <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 
-#, fuzzy
 msgid "Computing Durbin-Watson Statistics"
-msgstr "Statystyki współliniowości"
+msgstr "Obliczanie statystyk Durbina-Watsona"
 
 msgid "Kendall's Tau"
 msgstr "tau Kendalla"
@@ -158,13 +157,13 @@ msgid "%s Partial Correlations"
 msgstr "%s Korelacje cząstkowe"
 
 msgid "All tests one-tailed, for positive correlation."
-msgstr ""
+msgstr "Wszystkie testy jednostronne (dla korelacji dodatniej)."
 
 msgid ", one-tailed"
 msgstr ", jednostronnie"
 
 msgid "All tests one-tailed, for negative correlation."
-msgstr ""
+msgstr "Wszystkie testy jednostronne (dla korelacji ujemnej)."
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < .05, ** p < .01, *** p < .001%s"
@@ -176,6 +175,8 @@ msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
 msgstr ""
+"Błąd standardowy wielkości efektu (z Fishera) jest obecnie niedostępny dla "
+"nieparametrycznych korelacji cząstkowych."
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
@@ -545,7 +546,7 @@ msgid "%s%% CI"
 msgstr "%s%% PU"
 
 msgid "Upper"
-msgstr "Górny"
+msgstr "Górna granica"
 
 msgid "t"
 msgstr "t"
@@ -575,7 +576,7 @@ msgid "P-values correspond to test of null hypothesis against %s."
 msgstr ""
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "Wyniki są uśrednione dla poziomów z: %s."
 
 msgid "P-values are not adjusted."
 msgstr "Wartości p nie zostały skorygowane."
@@ -736,7 +737,7 @@ msgid ""
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "Skorygowane względem obciążenia i przyspieszone (BCa)."
 
 msgid "Some bootstrap results could not be computed."
 msgstr ""
@@ -909,7 +910,7 @@ msgid "There are nonpositive weights"
 msgstr ""
 
 msgid "Posterior Summary"
-msgstr ""
+msgstr "Podsumowanie a posteriori"
 
 msgid "Model Comparison"
 msgstr "Porównanie modeli"
@@ -968,7 +969,7 @@ msgid "Null model (incl. %s)"
 msgstr "Model zerowy (zaw. %s)"
 
 msgid "Posterior Summaries of Coefficients"
-msgstr ""
+msgstr "Podsumowania a posteriori współczynników"
 
 msgid "BF<sub>inclusion</sub>"
 msgstr ""
@@ -1001,7 +1002,7 @@ msgid "Posterior Coefficients with %s%% Credible Interval"
 msgstr ""
 
 msgid "Posterior Log Odds"
-msgstr ""
+msgstr "Log. szans a posteriori"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
 msgstr ""
@@ -1170,7 +1171,6 @@ msgstr ""
 msgid "%1$s%% bca%2$s Confidence interval"
 msgstr "%1$s%% bca%2$s Przedział ufności"
 
-#, fuzzy
 msgid "%s%% Confidence interval"
 msgstr "%s%% Przedział ufności"
 
@@ -1188,24 +1188,20 @@ msgid ""
 "same as the coefficients are always included or excluded together."
 msgstr ""
 
-#, fuzzy
 msgid "DV/Factor Descriptives"
-msgstr "Statystyki opisowe"
+msgstr ""
 
-#, fuzzy
 msgid "DV/Factor"
-msgstr "Czynnik"
+msgstr ""
 
 msgid "Level"
 msgstr ""
 
-#, fuzzy
 msgid "Covariate Descriptives"
-msgstr "Statystyki opisowe"
+msgstr ""
 
-#, fuzzy
 msgid "Intercept"
-msgstr "(Wyraz wolny)"
+msgstr "Wyraz wolny"
 
 msgid "using the %d/%d row from a combined fit"
 msgid_plural "using the %d/%d rows from a combined fit"
