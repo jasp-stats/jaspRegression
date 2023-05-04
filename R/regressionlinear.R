@@ -1177,6 +1177,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregGetCoefficients <- function(fit, predictors, dataset, options) {
   rows <- list()
+  footnote <- NULL
 
   if (!is.null(fit)) {
     if (options$interceptTerm)
