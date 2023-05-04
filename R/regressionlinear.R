@@ -589,8 +589,20 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   caseDiagTable$addColumnInfo(name = "residual",    title = gettext("Residual"),        type = "number")
   caseDiagTable$addColumnInfo(name = "cooksD",      title = gettext("Cook's Distance"), type = "number", format = "dp:3")
 
-  if (!is.null(finalModel))
-    caseDiagTable$setData(.linregGetCasewiseDiagnostics(finalModel$fit, options)) #TODO: maybe add footnote to casewise diagnostics if there are no cases to show?
+  if (!is.null(finalModel)) {
+    caseDiagData <- .linregGetCasewiseDiagnostics(finalModel$fit, options)
+    caseDiagTable$setData(caseDiagData) 
+
+    if (length(caseDiagData) == 0) {
+      message <- switch(
+        options[["residualCasewiseDiagnosticType"]],
+        cooksDistance = gettextf("No cases where |Cook's distance| > %s", options[["residualCasewiseDiagnosticCooksDistanceThreshold"]]),
+        outliersOutside = gettextf("No cases where |Standard residual| > %s", options[["residualCasewiseDiagnosticZThreshold"]]),
+        gettextf("No cases to show")
+      )
+      caseDiagTable$addFootnote(message = message)
+    }
+  }
 
   modelContainer[["casewiseTable"]] <- caseDiagTable
 }
