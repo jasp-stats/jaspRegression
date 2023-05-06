@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2023-04-22 02:45\n"
+"POT-Creation-Date: 2023-05-06 02:44\n"
 "PO-Revision-Date: 2023-05-04 19:40+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
@@ -788,6 +788,15 @@ msgstr "Wartość przewidywana"
 
 msgid "Cook's Distance"
 msgstr "Odległość Cooka"
+
+msgid "No cases where |Cook's distance| > %s"
+msgstr ""
+
+msgid "No cases where |Standard residual| > %s"
+msgstr ""
+
+msgid "No cases to show"
+msgstr ""
 
 msgid "Residuals Statistics"
 msgstr "Statystyki reszt"

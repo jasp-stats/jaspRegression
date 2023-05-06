@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2023-04-22 02:45\n"
+"POT-Creation-Date: 2023-05-06 02:44\n"
 "PO-Revision-Date: 2023-03-26 15:41+0000\n"
 "Last-Translator: Катя <katakxx@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -949,6 +949,15 @@ msgstr "Предсказанное значение"
 
 msgid "Cook's Distance"
 msgstr "Расстояние Кука"
+
+msgid "No cases where |Cook's distance| > %s"
+msgstr ""
+
+msgid "No cases where |Standard residual| > %s"
+msgstr ""
+
+msgid "No cases to show"
+msgstr ""
 
 #, fuzzy
 msgid "Residuals Statistics"

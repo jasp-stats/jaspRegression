@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2023-04-22 02:45\n"
+"POT-Creation-Date: 2023-05-06 02:44\n"
 "PO-Revision-Date: 2022-08-29 00:19+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -837,6 +837,15 @@ msgstr "Valor previsto"
 
 msgid "Cook's Distance"
 msgstr "Distância de Cook"
+
+msgid "No cases where |Cook's distance| > %s"
+msgstr ""
+
+msgid "No cases where |Standard residual| > %s"
+msgstr ""
+
+msgid "No cases to show"
+msgstr ""
 
 msgid "Residuals Statistics"
 msgstr "Estatísticas de Resíduos"

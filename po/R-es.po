@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2023-04-22 02:45\n"
+"POT-Creation-Date: 2023-05-06 02:44\n"
 "PO-Revision-Date: 2023-04-22 23:57+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -837,6 +837,15 @@ msgstr "Valor Predicho"
 
 msgid "Cook's Distance"
 msgstr "Distancia de Cook"
+
+msgid "No cases where |Cook's distance| > %s"
+msgstr ""
+
+msgid "No cases where |Standard residual| > %s"
+msgstr ""
+
+msgid "No cases to show"
+msgstr ""
 
 msgid "Residuals Statistics"
 msgstr "Estadísticos de los Errores"
