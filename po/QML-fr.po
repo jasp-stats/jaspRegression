@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-05-08 08:51+0000\n"
+"Last-Translator: Josée Turcotte <jturcotte@laurentienne.ca>\n"
+"Language-Team: French <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/fr/>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.18-dev\n"
 "X-Language: fr\n"
 "X-Qt-Contexts: true\n"
 
@@ -61,7 +67,7 @@ msgstr "Rho de Spearman"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr "Le tau-b de Kendall"
+msgstr "tau-b de Kendall"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
@@ -95,6 +101,7 @@ msgctxt "Correlation|"
 msgid "bootstraps"
 msgstr "bootstraps"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr "Ratio p maximal de Vovk-Sellke"
@@ -139,9 +146,10 @@ msgctxt "Correlation|"
 msgid "Prediction intervals"
 msgstr "Intervalles de prédiction"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Heatmap"
-msgstr "Carte de chaleur"
+msgstr "Carte thermique"
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
@@ -195,9 +203,10 @@ msgctxt "Correlation|"
 msgid "Exclude cases listwise"
 msgstr "Exclure les observations par liste"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
-msgstr "Coefficient de corrélation de population"
+msgstr "Coefficient de corrélation de la population"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
@@ -231,13 +240,14 @@ msgctxt "CorrelationBayesian|"
 msgid "Sample size"
 msgstr "Taille de l'échantillon"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
 msgstr "Médiane postérieure"
 
 msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
-msgstr "Intervalles crédibles"
+msgstr "Intervalles de crédibilité"
 
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
@@ -271,14 +281,17 @@ msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
 msgstr "Densités pour les variables"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
 msgstr "Postérieurs sous H₁"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
 msgstr "Antérieur"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
 msgstr "Largeur antérieure bêta étirée"
@@ -293,7 +306,7 @@ msgstr "Coefficient de corrélation à tracer"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau"
-msgstr "Le tau de Kendall"
+msgstr "Tau de Kendall"
 
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
@@ -303,6 +316,7 @@ msgctxt "CorrelationBayesian|"
 msgid "Robustness check"
 msgstr "Contrôle de robustesse"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Prior and posterior"
 msgstr "Antérieur et postérieur"
@@ -357,7 +371,7 @@ msgstr "Entrer"
 
 msgctxt "RegressionLinear|"
 msgid "Backward"
-msgstr "En arrière"
+msgstr "Vers l'arrière"
 
 msgctxt "RegressionLinear|"
 msgid "Forward"
@@ -431,6 +445,7 @@ msgctxt "RegressionLinear|"
 msgid "Descriptives"
 msgstr "Descriptifs"
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Part and partial correlations"
 msgstr "Corrélations partielles et partielles"
@@ -509,15 +524,15 @@ msgstr "Tracés des résidus"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. dependent"
-msgstr "Résiduels vs dépendants"
+msgstr "Résidus vs dépendant"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. covariates"
-msgstr "Résiduels vs covariables"
+msgstr "Résidus vs covariables"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. predicted"
-msgstr "Résiduels vs prédits"
+msgstr "Résidus vs prédite"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals histogram"
@@ -529,7 +544,7 @@ msgstr "Résidus normalisés"
 
 msgctxt "RegressionLinear|"
 msgid "Q-Q plot standardized residuals"
-msgstr "Diagramme Q-Q résiduels normalisés"
+msgstr "Diagramme Q-Q résidus normalisés"
 
 msgctxt "RegressionLinear|"
 msgid "Partial plots"
@@ -563,6 +578,7 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Output"
 msgstr "Sortie"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Posterior summary"
 msgstr "Résumé postérieur"
@@ -581,7 +597,7 @@ msgstr "Graphique des coefficients"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Omit intercept"
-msgstr "Omettre l'interception"
+msgstr "Omettre l'intercept"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Best model"
@@ -597,11 +613,11 @@ msgstr "Modèle médian"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model averaged"
-msgstr "Modèle en moyenne"
+msgstr "Modèle moyenné"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Credible interval"
-msgstr "Intervalle crédible"
+msgstr "Intervalle de crédibilité"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Order"
@@ -1049,95 +1065,92 @@ msgstr "Graphique PR"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "Modèle linéaire généralisé"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Moyennes marginales estimées et analyse de contraste"
 
 msgctxt "EmmComponent|"
 msgid "Model variables"
-msgstr ""
+msgstr "Modèle de variables"
 
 msgctxt "EmmComponent|"
 msgid "Selected variables"
-msgstr ""
+msgstr "Variables sélectionnées"
 
-#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
 msgstr "Intervalle de confiance"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "Niveaux des covariables à moyenne +/- "
 
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
-msgstr ""
+msgstr "Comparer les moyennes marginales avec :"
 
 msgctxt "EmmComponent|"
 msgid "Use response scale"
-msgstr ""
+msgstr "Utiliser l'échelle de réponse"
 
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "Spécifier les contrastes"
 
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
-msgstr ""
+msgstr "Ajustement de la valeur p"
 
 msgctxt "EmmComponent|"
 msgid "Multivariate-t"
-msgstr ""
+msgstr "t multivarié"
 
 msgctxt "EmmComponent|"
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "Variable dépendante"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
 msgstr "Covariables"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Factors"
 msgstr "Facteurs"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
-msgstr ""
+msgstr "Nombre total d'essais"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "Poids"
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr ""
+msgstr "Famille"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
 msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
-msgstr ""
+msgstr "Binomiale"
 
 msgctxt "GlmInputComponent|"
 msgid "Gaussian"
-msgstr ""
+msgstr "Gaussian"
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
@@ -1145,7 +1158,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "Poisson"
 
 msgctxt "GlmInputComponent|"
 msgid "Link"
@@ -1153,15 +1166,15 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
-msgstr ""
+msgstr "Logit"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
-msgstr ""
+msgstr "Probit"
 
 msgctxt "GlmInputComponent|"
 msgid "Cauchit"
-msgstr ""
+msgstr "Cauchit"
 
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
@@ -1173,7 +1186,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
@@ -1185,7 +1198,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/mu^2"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
@@ -1206,7 +1219,7 @@ msgstr ""
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "Diagramme Q-Q"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
@@ -1238,24 +1251,22 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Model"
 msgstr "Modèle"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
 msgstr "Composantes"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
 msgstr "Inclure l'intercept"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
 msgstr "Statistiques"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr ""
+msgstr "Ajustement du modèle"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
@@ -1265,23 +1276,21 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
 msgstr ""
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
 msgstr "Estimations"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
 msgstr "Intervalles de confiance"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnostiques"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "Montrer les scores aberrants"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals: top"
@@ -1313,7 +1322,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Cook's distance"
-msgstr ""
+msgstr "Distance de Cook"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Leverages"
@@ -1321,17 +1330,16 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "Multicolinéarité"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Tolérance"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
 msgstr ""
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
 msgstr "Options avancées"
@@ -1340,14 +1348,14 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Append columns to data"
 msgstr ""
 
-#, qt-format
+#, fuzzy, qt-format
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "Résidues (%1)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "Nom de la colonne"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residuals"
@@ -1362,7 +1370,6 @@ msgctxt "RegressionLinearBayesian|"
 msgid "e.g., residual sd"
 msgstr ""
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "Coefficients"
@@ -1375,7 +1382,6 @@ msgctxt "Correlation|"
 msgid "Effect Size (Fisher's z)"
 msgstr ""
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
 msgstr "Coefficients"
@@ -1387,40 +1393,36 @@ msgstr "Coefficients"
 
 msgctxt "GlmInputComponent|"
 msgid "Other"
-msgstr ""
+msgstr "Autre"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Model"
 msgstr "Modèle"
 
 msgctxt "GlmInputComponent|"
 msgid "Multinomial Logistic Regression"
-msgstr ""
+msgstr "Régression logistique multinomiale"
 
 msgctxt "GlmInputComponent|"
 msgid "Ordinal Logistic Regression"
-msgstr ""
+msgstr "Régression logistique ordinale"
 
 msgctxt "GlmInputComponent|"
 msgid "Firth Logistic Regression"
-msgstr ""
+msgstr "Régression logistique de Firth"
 
 msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
-msgstr ""
+msgstr "Régression logistique bayésienne"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
 msgstr "Variable dépendante"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Covariates"
 msgstr "Covariables"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Factors"
 msgstr "Facteurs"
@@ -1430,10 +1432,9 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "WLS Weights (optional)"
 msgstr "Poids WLS (facultatif)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Output"
-msgstr "Sortie"
+msgstr "Sortie des résultats"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
@@ -1455,12 +1456,10 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Plot of coefficients"
 msgstr "Graphique des coefficients"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Omit intercept"
-msgstr "Omettre l'interception"
+msgstr "Omettre l'intercept"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Best model"
 msgstr "Meilleur modèle"
@@ -1483,19 +1482,17 @@ msgstr "Modèle en moyenne"
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Credible interval"
-msgstr "Intervalle crédible"
+msgstr "Intervalle de crédibilité"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Order"
 msgstr "Ordre"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to best model"
 msgstr "Comparer au meilleur modèle"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to null model"
 msgstr "Comparer au modèle nul"
@@ -1505,17 +1502,14 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Limit No. Models Shown"
 msgstr "Nombre limite de modèles illustrés"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No"
 msgstr "Non"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Yes, show best"
 msgstr "Oui, afficher le meilleur"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Data"
 msgstr "Données"
@@ -1525,17 +1519,14 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Descriptives"
 msgstr "Descriptifs"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model"
 msgstr "Modèle"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Components"
 msgstr "Composantes"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plots"
 msgstr "Graphiques"
@@ -1555,10 +1546,9 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Marginal posterior distributions"
 msgstr "Distributions postérieures marginales"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Models"
-msgstr "Modèle"
+msgstr "Modèles"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
@@ -1590,7 +1580,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Q-Q plot of model averaged residuals"
 msgstr "Diagramme Q-Q des résidus moyens du modèle"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Advanced Options"
 msgstr "Options avancées"
@@ -1602,7 +1591,7 @@ msgstr ""
 #, qt-format
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "Résidus (%1)"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Column name"
@@ -1655,9 +1644,10 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
-msgstr ""
+msgstr "bêta"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "s"
@@ -1673,7 +1663,7 @@ msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Robust"
-msgstr ""
+msgstr "Robuste"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
@@ -1695,42 +1685,34 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "b"
 msgstr "b"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform"
 msgstr "Uniforme"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
 msgstr "λ"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
 msgstr "Castillo"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "u"
 msgstr "u"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli"
 msgstr "Bernoulli"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "p"
 msgstr "p"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Sampling Method"
 msgstr "Méthode d'échantillonnage"
@@ -1763,4 +1745,4 @@ msgstr "Précision numérique"
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
-msgstr "Nombre d'échantillons pour l'intervalle crédible"
+msgstr "Nombre d'échantillons pour l'intervalle de crédibilité"
