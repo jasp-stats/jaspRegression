@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2023-05-06 02:44\n"
-"PO-Revision-Date: 2022-11-07 09:02+0000\n"
+"PO-Revision-Date: 2023-05-08 10:42+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-r/zh_Hans/>\n"
@@ -11,45 +11,45 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.14.2\n"
+"X-Generator: Weblate 4.18-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
-msgstr ""
+msgstr "对于所有检验，备择假设指定 %s 为正。"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
-msgstr ""
+msgstr "对于所有检验，备择假设指定 %s 为负。"
 
 msgid "Scatterplot"
-msgstr ""
+msgstr "散点图"
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "先验和后验"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "贝叶斯因子稳健性检验"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "序贯分析"
 
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "贝叶斯 Pearson 相关系数"
 
 msgid "Bayesian Kendall's Tau Correlations"
-msgstr ""
+msgstr "贝叶斯 Kendall's Tau 相关性"
 
 msgid "Bayesian Spearman Correlations"
-msgstr ""
+msgstr "贝叶斯斯 Spearman 相关性"
 
 msgid "Bayesian Correlation Table"
-msgstr ""
+msgstr "贝叶斯相关表"
 
 msgid "Pearson Correlations"
-msgstr ""
+msgstr "Pearson 相关性"
 
 msgid "Kendall's Tau Correlations"
-msgstr ""
+msgstr "Kendall's Tau 相关性"
 
 msgid "Spearman Correlations"
 msgstr ""
