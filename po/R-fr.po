@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
 "POT-Creation-Date: 2023-05-06 02:44\n"
-"PO-Revision-Date: 2023-05-08 10:42+0000\n"
+"PO-Revision-Date: 2023-05-09 13:24+0000\n"
 "Last-Translator: Josée Turcotte <jturcotte@laurentienne.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/fr/>\n"
@@ -541,7 +541,6 @@ msgstr "Graphique impossible : %s"
 msgid "P-values correspond to test of null hypothesis against %s."
 msgstr "Les valeurs p correspondent au test de l'hypothèse nulle contre %s."
 
-#, fuzzy
 msgid "Results are averaged over the levels of: %s."
 msgstr "Les résultats sont moyennés aux niveaux suivants : %s."
 
