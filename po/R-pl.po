@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2023-05-06 02:44\n"
-"PO-Revision-Date: 2023-05-08 10:42+0000\n"
-"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
+"PO-Revision-Date: 2023-05-12 13:49+0000\n"
+"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pl/>\n"
 "Language: pl\n"
@@ -196,7 +196,7 @@ msgid "Effect size (Fisher's z)"
 msgstr "Wielkość efektu (z Fishera)"
 
 msgid "SE Effect size"
-msgstr "SE wielkości efektu"
+msgstr "Błąd stand. wielkości efektu"
 
 msgid "r"
 msgstr "r"
@@ -214,7 +214,7 @@ msgid "Number of observations is < %s."
 msgstr "Liczba obserwacji wynosi < %s."
 
 msgid "Bootstrapping"
-msgstr "Bootstrapping"
+msgstr "Bootstrap"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
@@ -537,10 +537,10 @@ msgid "Estimated Marginal Means"
 msgstr "Oszacowane średnie brzegowe"
 
 msgid "SE"
-msgstr "SE"
+msgstr "Błąd stand."
 
 msgid "Lower"
-msgstr "Dolny"
+msgstr "Dolna granica"
 
 msgid "%s%% CI"
 msgstr "%s%% PU"
@@ -730,7 +730,7 @@ msgid "%s%% CI*"
 msgstr "%s%% PU*"
 
 msgid "Bootstrapping based on %i replicates."
-msgstr "Bootstrapping oparty na %i replikacjach."
+msgstr "Bootstrap oparty na %i replikacjach."
 
 msgid ""
 "Coefficient estimate is based on the median of the bootstrap distribution."
@@ -811,7 +811,7 @@ msgid "Mean"
 msgstr "Średnia"
 
 msgid "SD"
-msgstr "SD"
+msgstr "Odch. stand."
 
 msgid "N"
 msgstr "N"
@@ -958,7 +958,7 @@ msgid "P(M)"
 msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr "P(M|data)"
+msgstr "P(M|dane)"
 
 msgid "BF<sub>M</sub>"
 msgstr "BF<sub>M</sub>"
@@ -993,13 +993,13 @@ msgid "Coefficient"
 msgstr "Współczynnik"
 
 msgid "P(incl)"
-msgstr "P(zawiera)"
+msgstr "P(incl)"
 
 msgid "P(excl)"
 msgstr "P(excl)"
 
 msgid "P(incl|data)"
-msgstr "P(incl|data)"
+msgstr "P(incl|dane)"
 
 msgid "P(excl|data)"
 msgstr "P(excl|dane)"
@@ -1129,7 +1129,7 @@ msgid "Null model contains nuisance parameters: %s"
 msgstr ""
 
 msgid "Bootstrapping based on %i successful replicates."
-msgstr "Bootstrapping oparty na %i udanych replikacjach."
+msgstr "Bootstrap oparty na %i udanych replikacjach."
 
 msgid ""
 "Some confidence intervals could not be computed.\n"
