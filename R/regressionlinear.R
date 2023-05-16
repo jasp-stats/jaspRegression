@@ -344,13 +344,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregAddFootnoteFactors <- function(table, factors, collinearityDiagnostics = FALSE) {
   if (length(factors) > 0L) {
-    if (collinearityDiagnostics) {
-      colNames <- c("standCoeff", "VIF", "tolerance")
-      message <- gettext("Standardized coefficients and collinearity statistics can only be computed for continuous predictors.")
-    } else {
-      colNames <- "standCoeff"
-      message <- gettext("Standardized coefficients can only be computed for continuous predictors.")
-    }
+    colNames <- "standCoeff"
+    message <- gettext("Standardized coefficients can only be computed for continuous predictors.")
     table$addFootnote(colNames = colNames, message = message)
   }
 }
@@ -591,7 +586,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(finalModel)) {
     caseDiagData <- .linregGetCasewiseDiagnostics(finalModel$fit, options)
-    caseDiagTable$setData(caseDiagData) 
+    caseDiagTable$setData(caseDiagData)
 
     if (length(caseDiagData) == 0) {
       message <- switch(
@@ -1208,31 +1203,33 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
     rows <- vector("list", nrow(estimates))
 
-    if (length(predictors) > 1 || predictors != "(Intercept)") {
-      appropriatePredictors <- predictors[predictors != "(Intercept)"]
-      appropriatePredictors <- .linregRemoveFactors(fit, appropriatePredictors)
-      if (length(appropriatePredictors) > 0L)
-        collinearityDiagnostics <- .linregGetVIFAndTolerance(appropriatePredictors, dataset, includeConstant = TRUE)
-    }
-
+    collinearityDiagnostics <- .linregGetVIFAndTolerance(fit)
     dataClasses <- attr(terms(fit), "dataClasses")
+
+    # counts if we're showing a second level of a factor/ interaction
+    # for example for collinearity diagnostics
+    factorsSeen <- hashtab()
     rowIndex <- 1L
 
     for (i in seq_along(names)) {
 
+      hasFactors <- any(dataClasses[rawNames[[i]]] == "factor")
       unstandCoeff <- estimates[i, "Estimate"]
-      if (!identical(rawNames[[i]], "(Intercept)") && !any(dataClasses[rawNames[[i]]] == "factor")) {
-        # these don't exist for the intercept or categorical predictors
-
-        predictor <- paste(rawNames[[i]], collapse = ":")
-
+      predictor <- paste(rawNames[[i]], collapse = ":")
+      # these don't exist for the intercept or categorical predictors.
+      standCoeff <- NULL
+      if (!identical(rawNames[[i]], "(Intercept)") && !hasFactors)
         standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, unstandCoeff)
+
+      # tolerance/ VIF is only shown for the first level of categorical variables/ interactions
+      tolerance <- VIF <- NULL
+      if (!is.null(collinearityDiagnostics) && !identical(predictor, "(Intercept)") && (!hasFactors || !factorsSeen[[rawNames[[i]], nomatch = FALSE]])) {
+
         tolerance  <- collinearityDiagnostics[["tolerance"]][[predictor]]
         VIF        <- collinearityDiagnostics[["VIF"]][[predictor]]
 
-      } else {
-
-        standCoeff <- tolerance  <- VIF <- NULL
+        if (hasFactors)
+          factorsSeen[[rawNames[[i]]]] <- TRUE
 
       }
 
@@ -1318,31 +1315,27 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(data)
 }
 
-.linregGetVIFAndTolerance <- function(predictors, dataset, includeConstant) {
-  VIF       <- list()
-  tolerance <- list()
-  if (length(predictors) > 1) {
-    for (predictor in predictors) {
+.linregGetVIFAndTolerance <- function(fit) {
 
-      if (.linregIsInteraction(predictor)) {
-        newVar                <- .linregMakeCombinedVariableFromInteraction(predictor, dataset)
-        newVarName            <- gsub(":", ".", predictor, fixed = TRUE)
-        dataset[[newVarName]] <- newVar
-      } else {
-        newVarName            <- predictor
-      }
-
-      cleanedPredictors <- predictors[-which(predictors == predictor)]
-      formula           <- .linregGetFormula(newVarName, cleanedPredictors, includeConstant = TRUE)
-      fitVIF            <- stats::lm(formula, data = dataset)
-
-      VIF[[predictor]]        <- 1 / (1 - summary(fitVIF)$"r.squared")
-      tolerance[[predictor]]  <- 1 / VIF[[predictor]]
-    }
-  } else {
-    VIF[[predictors]]       <- 1
-    tolerance[[predictors]] <- 1
+  # also used inside car:::vif.default
+  noTerms <- length(labels(stats::terms(fit)))
+  if (noTerms == 0L) # nothing can be computed
+    return(NULL)
+  if (noTerms == 1L) {# trivial case, always 1
+    name  <- labels(stats::terms(fit))
+    value <- setNames(1, name)
+    return(list(VIF = value, tolerance = value))
   }
+
+  # we can actually compute things
+  result <- car::vif(fit)
+
+  VIF <- if (is.matrix(result)) {
+    result[, 3L]
+  } else {
+    result
+  }
+  tolerance <- 1 / VIF
 
   result <- list(VIF       = VIF,
                  tolerance = tolerance)
