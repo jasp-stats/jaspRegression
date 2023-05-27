@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2023-05-06 02:44\n"
+"POT-Creation-Date: 2023-05-27 02:46\n"
 "PO-Revision-Date: 2023-03-26 15:41+0000\n"
 "Last-Translator: Катя <katakxx@mail.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -842,14 +842,6 @@ msgstr "Статистики коллинеарности"
 
 #, fuzzy
 msgid ""
-"Standardized coefficients and collinearity statistics can only be computed "
-"for continuous predictors."
-msgstr ""
-"Стандартизированные коэффициенты и статистики коллинеарности могут быть "
-"вычислены только для непрерывных предикторов."
-
-#, fuzzy
-msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
 "Стандартизированные коэффициенты могут быть рассчитаны только для "
@@ -1500,3 +1492,11 @@ msgid_plural "Partial Regression Plots"
 msgstr[0] "Частная регрессия"
 msgstr[1] "Частные регрессии"
 msgstr[2] "Частные регрессии"
+
+#, fuzzy
+#~ msgid ""
+#~ "Standardized coefficients and collinearity statistics can only be "
+#~ "computed for continuous predictors."
+#~ msgstr ""
+#~ "Стандартизированные коэффициенты и статистики коллинеарности могут быть "
+#~ "вычислены только для непрерывных предикторов."

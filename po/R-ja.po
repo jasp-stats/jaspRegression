@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2023-05-06 02:44\n"
+"POT-Creation-Date: 2023-05-27 02:46\n"
 "PO-Revision-Date: 2023-04-21 17:51+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -727,11 +727,6 @@ msgid "Collinearity Statistics"
 msgstr "共線性統計"
 
 msgid ""
-"Standardized coefficients and collinearity statistics can only be computed "
-"for continuous predictors."
-msgstr "標準化係数と共線性統計は、連続の予測変数に対してのみ計算できます。"
-
-msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr "標準化係数は，連続予測変数についてのみ計算されます。"
 
@@ -1269,6 +1264,11 @@ msgstr[0] "次の共変量が考慮されましたが、含まれていません
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏回帰プロット"
+
+#~ msgid ""
+#~ "Standardized coefficients and collinearity statistics can only be "
+#~ "computed for continuous predictors."
+#~ msgstr "標準化係数と共線性統計は、連続の予測変数に対してのみ計算できます。"
 
 #, fuzzy
 #~ msgid "requires vector of residuals"

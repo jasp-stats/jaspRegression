@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2023-05-06 02:44\n"
+"POT-Creation-Date: 2023-05-27 02:46\n"
 "PO-Revision-Date: 2023-05-12 13:49+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
@@ -705,11 +705,6 @@ msgstr "%.0f%% PU"
 
 msgid "Collinearity Statistics"
 msgstr "Statystyki współliniowości"
-
-msgid ""
-"Standardized coefficients and collinearity statistics can only be computed "
-"for continuous predictors."
-msgstr ""
 
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
