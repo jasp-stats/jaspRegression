@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2023-05-27 02:46\n"
-"PO-Revision-Date: 2023-05-12 13:49+0000\n"
+"PO-Revision-Date: 2023-06-02 20:51+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pl/>\n"
@@ -327,7 +327,7 @@ msgid "Bayesian Correlation Matrix Plot"
 msgstr "Wykres macierzy korelacji bayesowskiej"
 
 msgid "Could not compute the posteriors"
-msgstr ""
+msgstr "Nie można było obliczyć prawd. a posteriori"
 
 msgid "Prior"
 msgstr "Prior"
@@ -450,7 +450,7 @@ msgid "%1$s level '%2$s' coded as class 1."
 msgstr "%1$s poziom '%2$s' zakodowany jako klasa 1."
 
 msgid "%1$s levels: %2$s. '%3$s' is the reference level."
-msgstr ""
+msgstr "%1$s poziomy: %2$s. '%3$s' jest punktem odniesienia."
 
 msgid "%1$s levels: %2$s. Linear predictors: %3$s."
 msgstr ""
@@ -465,7 +465,7 @@ msgid "Standardized %1s residuals vs. fitted values"
 msgstr ""
 
 msgid "Standardized %1s residual"
-msgstr ""
+msgstr "Reszty standaryzowane %1s"
 
 msgid "%1s Residuals vs. Predictor Plots"
 msgstr ""
@@ -776,13 +776,13 @@ msgid "Casewise Diagnostics"
 msgstr "Diagnostyka obserwacji"
 
 msgid "Std. Residual"
-msgstr "Std. reszta"
+msgstr "Reszty stand."
 
 msgid "Predicted Value"
 msgstr "Wartość przewidywana"
 
 msgid "Cook's Distance"
-msgstr "Odległość Cooka"
+msgstr "Dystans Cooka"
 
 msgid "No cases where |Cook's distance| > %s"
 msgstr ""
@@ -982,7 +982,7 @@ msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr "%s%% Przedział wiarygodności"
+msgstr "%s%% przedział wiarygodności"
 
 msgid "Coefficient"
 msgstr "Współczynnik"
