@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2023-05-27 02:46\n"
-"PO-Revision-Date: 2023-05-25 04:04+0000\n"
+"PO-Revision-Date: 2023-06-08 01:48+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-r/zh_Hans/>\n"
@@ -137,7 +137,7 @@ msgid "Computing Durbin-Watson Statistics"
 msgstr ""
 
 msgid "Kendall's Tau"
-msgstr ""
+msgstr "Kendall's Tau"
 
 msgid "Partial Correlation Table"
 msgstr ""
@@ -300,7 +300,7 @@ msgid "Posterior is too peaked"
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "变量"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr ""
@@ -414,7 +414,7 @@ msgid "Coefficients"
 msgstr "系数"
 
 msgid "Estimate"
-msgstr ""
+msgstr "估计"
 
 msgid "Standard Error"
 msgstr ""
@@ -638,7 +638,7 @@ msgid "F Change"
 msgstr ""
 
 msgid "df1"
-msgstr ""
+msgstr "df1"
 
 msgid "df2"
 msgstr ""
@@ -656,16 +656,16 @@ msgid "No covariate could be entered in the model"
 msgstr ""
 
 msgid "ANOVA"
-msgstr ""
+msgstr "方差分析"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "平方和"
 
 msgid "Mean Square"
 msgstr ""
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr ""
