@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-06-18 14:51+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.18.1\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1392,9 +1398,8 @@ msgstr "Firths logistische Regression"
 
 msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
-msgstr ""
+msgstr "Bayessche logistische Regression"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
 msgstr "Abhängige Variable"
@@ -1404,27 +1409,22 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Covariates"
 msgstr "Kovariaten"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Factors"
 msgstr "Faktoren"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "WLS Weights (optional)"
 msgstr "WLS-Gewichte (optional)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Output"
 msgstr "Ausgabe"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Posterior summary"
 msgstr "Posterior-Zusammenfassung"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across all models"
 msgstr "Über alle Modelle"
@@ -1432,24 +1432,20 @@ msgstr "Über alle Modelle"
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across matched models"
-msgstr "Über alle gematchte Modelle"
+msgstr "Über alle gematchten Modelle"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plot of coefficients"
 msgstr "Diagramm der Koeffizienten"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Omit intercept"
 msgstr "Konstante weglassen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Best model"
 msgstr "Bestes Modell"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Most complex model"
 msgstr "Das komplexeste Modell"
@@ -1457,14 +1453,13 @@ msgstr "Das komplexeste Modell"
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Median model"
-msgstr "Modell-Median"
+msgstr "Median-Modell"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model averaged"
 msgstr "Modell-Mittelwert"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Credible interval"
 msgstr "Glaubwürdigkeitsintervall"
@@ -1474,151 +1469,125 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Order"
 msgstr "Reihenfolge"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to best model"
 msgstr "Mit bestem Modell vergleichen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to null model"
 msgstr "Mit Nullmodell vergleichen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Limit No. Models Shown"
 msgstr "Anzahl gezeigter Modelle einschränken"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No"
 msgstr "Nein"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Yes, show best"
 msgstr "Ja, zeige beste"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Data"
 msgstr "Daten"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Deskriptive Statistiken"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model"
 msgstr "Modell"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Components"
 msgstr "Komponenten"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plots"
 msgstr "Diagramme"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Coefficients"
 msgstr "Koeffizienten"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Inclusion probabilities"
 msgstr "Inklusionswahrscheinlichkeiten"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Marginal posterior distributions"
 msgstr "Posterior-Randverteilungen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Models"
 msgstr "Modelle"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log posterior odds"
-msgstr "Log-a-posteriori-Chancen"
+msgstr "Log a-posteriori-Chancen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log(P(data|M)) vs. model size"
 msgstr "Log(P(Daten|M)) vs. Modellgröße"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model probabilities"
 msgstr "Modellwahrscheinlichkeiten"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals"
 msgstr "Residuen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals vs. fitted"
 msgstr "Residuen vs. angepasst"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Q-Q plot of model averaged residuals"
 msgstr "Q-Q-Diagramm der modellgemittelten Residuen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Advanced Options"
 msgstr "Weitere Optionen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Append columns to data"
 msgstr "Spalten zu Daten hinzufügen"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals (%1)"
 msgstr "Residuen (%1)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Column name"
 msgstr "Spaltenname"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "e.g., residuals"
 msgstr "z.B. Residuen"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals std. deviations (%1)"
 msgstr "Residuen Std.-Abweichungen (%1)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "e.g., residual sd"
 msgstr "z.B. Residuen-SD"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
 msgstr "Prior"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "AIC"
 msgstr "AIC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "BIC"
 msgstr "BIC"
@@ -1628,15 +1597,13 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "EB-local"
 msgstr "EB-lokal"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
 msgstr "g-Prior"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
-msgstr "alpha"
+msgstr "Alpha"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
@@ -1644,23 +1611,26 @@ msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
-msgstr ""
+msgstr "Beta"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
-msgstr ""
+msgstr "Beta-Strich"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Instrinsic"
-msgstr ""
+msgstr "Intrinsisch"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Robust"
-msgstr ""
+msgstr "Robust"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
