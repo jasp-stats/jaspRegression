@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-06-18 14:51+0000\n"
+"PO-Revision-Date: 2023-06-22 19:01+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
@@ -1458,7 +1458,7 @@ msgstr "Median-Modell"
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model averaged"
-msgstr "Modell-Mittelwert"
+msgstr "Modell-gemittelt"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Credible interval"
@@ -1622,32 +1622,26 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
 msgstr "Beta-Strich"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Instrinsic"
 msgstr "Intrinsisch"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Robust"
 msgstr "Robust"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model Prior"
 msgstr "Modell-Prior"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta binomial"
 msgstr "Beta-Binomial"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "a"
 msgstr "a"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
 msgstr "b"
@@ -1657,32 +1651,26 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform"
 msgstr "Uniform"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
 msgstr "λ"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
 msgstr "Castillo"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "u"
 msgstr "u"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli"
 msgstr "Bernoulli"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "p"
 msgstr "p"
@@ -1697,17 +1685,14 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "BAS"
 msgstr "BAS"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. models"
 msgstr "Anzahl Modelle"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "MCMC"
 msgstr "MCMC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples"
 msgstr "Stichprobenumfang"
@@ -1717,7 +1702,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Numerical Accuracy"
 msgstr "Numerische Genauigkeit"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr "Stichprobenumfang für Glaubwürdigkeitsintervall"
