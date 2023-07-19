@@ -63,7 +63,7 @@ Section
 		defaultValue: 	1
 		min:			0
 		enabled:		marginalMeansVars.columnsTypes.includes("scale")
-		afterLabel:     "SD"
+		afterLabel:     qsTr("SD")
 	}
 
 	Group

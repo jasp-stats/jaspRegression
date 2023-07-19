@@ -584,7 +584,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     for (predictor in predictors) {
       .glmCreatePlotPlaceholder(glmPlotResVsPredictorContainer,
                                 index = predictor,
-                                title = gettextf("Standardized %1s residuals vs. %2s", residType, predictor))
+                                title = gettextf("Standardized %1$s residuals vs. %2$s", residType, predictor))
 
       .glmInsertPlot(glmPlotResVsPredictorContainer[[predictor]],
                      .glmFillPlotResVsPredictor,
