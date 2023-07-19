@@ -1853,3 +1853,7 @@ msgstr "Числовая точность"
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr "Кол-во выборок для достоверного интервала"
+
+msgctxt "EmmComponent|"
+msgid "SD"
+msgstr ""

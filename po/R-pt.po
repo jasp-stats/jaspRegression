@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2023-05-27 02:46\n"
+"POT-Creation-Date: 2023-07-19 08:14\n"
 "PO-Revision-Date: 2022-08-29 00:19+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -491,7 +491,7 @@ msgid "%1s Residuals vs. Predictor Plots"
 msgstr "Resíduos vs. Previstos"
 
 #, fuzzy
-msgid "Standardized %1s residuals vs. %2s"
+msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "Resíduos padronizados"
 
 #, fuzzy

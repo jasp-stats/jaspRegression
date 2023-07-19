@@ -1707,3 +1707,7 @@ msgstr ""
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "SD"
+msgstr ""

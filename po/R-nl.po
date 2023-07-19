@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2023-05-27 02:46\n"
+"POT-Creation-Date: 2023-07-19 08:14\n"
 "PO-Revision-Date: 2023-04-20 12:51+0000\n"
 "Last-Translator: Don van den Bergh <donvdbergh@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -496,7 +496,8 @@ msgstr "Gestandaardiseerd %1s residu"
 msgid "%1s Residuals vs. Predictor Plots"
 msgstr "%1s Residuals vs. Predictor Plots"
 
-msgid "Standardized %1s residuals vs. %2s"
+#, fuzzy
+msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "Gestandaardiseerde %1s residuen vs. %2s"
 
 msgid "Normal Q-Q Plots: Standardized Residuals"

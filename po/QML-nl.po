@@ -1750,3 +1750,7 @@ msgstr "Numerieke Precisie"
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr "Steekproeven geloofwaardigheidsinterval"
+
+msgctxt "EmmComponent|"
+msgid "SD"
+msgstr ""

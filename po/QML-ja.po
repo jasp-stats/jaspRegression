@@ -1764,3 +1764,7 @@ msgstr "数値精度"
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr "信用区間のためのサンプルなし"
+
+msgctxt "EmmComponent|"
+msgid "SD"
+msgstr ""

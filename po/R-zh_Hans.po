@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2023-05-27 02:46\n"
+"POT-Creation-Date: 2023-07-19 08:14\n"
 "PO-Revision-Date: 2023-06-08 01:48+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
@@ -449,7 +449,7 @@ msgstr ""
 msgid "%1s Residuals vs. Predictor Plots"
 msgstr ""
 
-msgid "Standardized %1s residuals vs. %2s"
+msgid "Standardized %1$s residuals vs. %2$s"
 msgstr ""
 
 msgid "Normal Q-Q Plots: Standardized Residuals"

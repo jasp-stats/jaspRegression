@@ -1688,3 +1688,7 @@ msgstr "数值精度"
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr "可信区间的样本数"
+
+msgctxt "EmmComponent|"
+msgid "SD"
+msgstr ""

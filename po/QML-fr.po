@@ -1741,3 +1741,7 @@ msgstr "Précision numérique"
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr "Nombre d'échantillons pour l'intervalle de crédibilité"
+
+msgctxt "EmmComponent|"
+msgid "SD"
+msgstr ""
