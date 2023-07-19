@@ -1094,8 +1094,8 @@ msgstr ""
 msgid "Intercept"
 msgstr ""
 
-msgid "using the %d/%d row from a combined fit"
-msgid_plural "using the %d/%d rows from a combined fit"
+msgid "using the %1$d/%2$d row from a combined fit"
+msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] ""
 msgstr[1] ""
 

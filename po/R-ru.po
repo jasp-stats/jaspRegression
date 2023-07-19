@@ -1474,11 +1474,11 @@ msgid "Intercept"
 msgstr "(Интерцепт)"
 
 #, fuzzy
-msgid "using the %d/%d row from a combined fit"
-msgid_plural "using the %d/%d rows from a combined fit"
-msgstr[0] "используя %d/%d строки из комбинированной подгонки"
-msgstr[1] "используя %d/%d строк из комбинированной подгонки"
-msgstr[2] "используя %d/%d строк из комбинированной подгонки"
+msgid "using the %1$d/%2$d row from a combined fit"
+msgid_plural "using the %1$d/%2$d rows from a combined fit"
+msgstr[0] "используя %1$d/%2$d строки из комбинированной подгонки"
+msgstr[1] "используя %1$d/%2$d строк из комбинированной подгонки"
+msgstr[2] "используя %1$d/%2$d строк из комбинированной подгонки"
 
 #, fuzzy
 msgid "The following covariate was considered but not included: %s."

@@ -62,8 +62,8 @@ JASPaddterm <-
     newn <- length(y)
     if(newn < oldn)
         warning(sprintf(ngettext(newn,
-                                 "using the %d/%d row from a combined fit",
-                                 "using the %d/%d rows from a combined fit"),
+                                 "using the %1$d/%2$d row from a combined fit",
+                                 "using the %1$d/%2$d rows from a combined fit"),
                         newn, oldn), domain = NA)
     wt <- object$prior.weights
     if(is.null(wt)) wt <- rep(1, n)
