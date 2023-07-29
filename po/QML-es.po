@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-07-22 18:10+0000\n"
+"PO-Revision-Date: 2023-07-28 19:32+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/es/>\n"
@@ -476,7 +476,7 @@ msgstr "Entrada"
 
 msgctxt "RegressionLinear|"
 msgid "Removal"
-msgstr "Eliminar"
+msgstr "Eliminación"
 
 msgctxt "RegressionLinear|"
 msgid "Use F value"
@@ -1180,7 +1180,7 @@ msgstr "Logaritmo"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr "Raíz"
+msgstr "Cuadrado"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
