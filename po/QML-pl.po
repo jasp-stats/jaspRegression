@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-09-20 11:21+0000\n"
+"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
+"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/pl/>\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.1-dev\n"
 "X-Language: pl\n"
 "X-Qt-Contexts: true\n"
 
@@ -1392,89 +1398,72 @@ msgstr "Regresja logistyczna Firtha"
 
 msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
-msgstr ""
+msgstr "Bayesowska regresja logistyczna"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
 msgstr "Zmienna zależna"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Covariates"
 msgstr "Współzmienne"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Factors"
 msgstr "Czynniki"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "WLS Weights (optional)"
 msgstr "Wagi WLS (opcjonalnie)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Output"
 msgstr "Wyniki"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Posterior summary"
 msgstr "Podsumowanie posterior"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across all models"
 msgstr "We wszystkich modelach"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across matched models"
 msgstr "W ramach dopasowanych modeli"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plot of coefficients"
 msgstr "Wykres współczynników"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Omit intercept"
 msgstr "Pomiń wyraz wolny"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Best model"
 msgstr "Najlepszy model"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Most complex model"
 msgstr "Najbardziej złożony model"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Median model"
 msgstr "Przeciętny model (mediana)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model averaged"
 msgstr "Model uśredniony"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Credible interval"
 msgstr "Przedział wiarygodności"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Order"
 msgstr "Porządek"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to best model"
 msgstr "Porównaj z najlepszym modelem"
@@ -1637,7 +1626,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Model Prior"
 msgstr "Rozkład a priori modelu"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta binomial"
 msgstr "Rozkład beta-dwumianowy"
@@ -1646,7 +1634,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "a"
 msgstr "a"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
 msgstr "b"
@@ -1659,7 +1646,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
 msgstr "λ"
@@ -1668,7 +1654,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
 msgstr "Castillo"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "u"
 msgstr "u"
@@ -1681,41 +1666,34 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "p"
 msgstr "<em>p</em>"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Sampling Method"
 msgstr "Metoda próbkowania"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "BAS"
 msgstr "BAS"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. models"
 msgstr "Liczba modeli"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "MCMC"
 msgstr "MCMC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples"
 msgstr "Liczba próbek"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Numerical Accuracy"
 msgstr "Dokładność"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
 msgstr "Liczba próbek dla przedziału wiarygodności"
 
 msgctxt "EmmComponent|"
 msgid "SD"
-msgstr ""
+msgstr "Odch. stand."
