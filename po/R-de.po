@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2023-07-19 08:14\n"
-"PO-Revision-Date: 2023-09-02 08:01+0000\n"
+"PO-Revision-Date: 2023-10-13 04:14+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/de/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 5.0.1-dev\n"
+"X-Generator: Weblate 5.1-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -1268,18 +1268,18 @@ msgstr ""
 
 #, fuzzy
 msgid "DV/Factor Descriptives"
-msgstr "DV/Faktor, Deskriptiv"
+msgstr "AV/Faktor, deskriptiv"
 
 #, fuzzy
 msgid "DV/Factor"
-msgstr "DV/Faktor"
+msgstr "AV/Faktor"
 
 msgid "Level"
 msgstr "Stufe"
 
 #, fuzzy
 msgid "Covariate Descriptives"
-msgstr "Kovariate, Deskriptiv"
+msgstr "Kovariate, deskriptiv"
 
 msgid "Intercept"
 msgstr "Konstante"
