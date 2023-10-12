@@ -66,7 +66,7 @@ Form
 		}
 
 		CheckBox { name: "vovkSellke";		label: qsTr("Vovk-Sellke maximum p-ratio")			}
-		CheckBox { name: "effectSize";			label: qsTr("Effect Size (Fisher's z)")		}
+		CheckBox { name: "effectSize";		label: qsTr("Effect size (Fisher's z)")		}
 		CheckBox { name: "sampleSize";		label: qsTr("Sample size") }
 
 	}
