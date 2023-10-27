@@ -360,7 +360,7 @@ test_that("Pseudo R-squared are correct", {
   set.seed(1)
   n <- 1e5
   x <- runif(n, min = 0, max = 1)
-  y_hat <- 5 * x# + 0.5 * x2
+  y_hat <- 5 * x
   p <- plogis(y_hat)
   y <- rbinom(n, 1, p)
 
@@ -376,7 +376,7 @@ test_that("Pseudo R-squared are correct", {
   options <- jaspTools::analysisOptions("RegressionLogistic")
   options$dependent <- "y"
   options$covariates <- "x"
-  options$modelTerms <- list(list(components = "x1", isNuisance = FALSE))
+  options$modelTerms <- list(list(components = "x", isNuisance = FALSE))
 
   results <- jaspTools::runAnalysis("RegressionLogistic", df, options)
   r_squared <- results$results$modelSummary$data[[2]][c("fad", "nag", "tju", "cas")]
