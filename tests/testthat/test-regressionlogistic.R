@@ -215,7 +215,7 @@ test_that("Confusion Matrix Table Matches", {
     list(components="contNormal",    isNuisance=FALSE),
     list(components="contOutlier", isNuisance=FALSE)
   )
-  
+
   options$confusionMatrix <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_confusionMatrix"]][["data"]]
@@ -254,35 +254,35 @@ test_that("Confusion Matrix Table Matches", {
   options$covariates <- c("contNormal", "contOutlier")
   options$factors <- c("facFive")
   options$dependent <- "facGender"
-  
+
   options$modelTerms <- list(
     list(components="contNormal",    isNuisance=FALSE),
     list(components="contOutlier",   isNuisance=FALSE),
     list(components="facFive", isNuisance=FALSE)
   )
-  
+
   options$multicollinearity <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["multicolliTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("contNormal",   0.9536754, 1.048575,
-                                             "contOutlier",  0.9742628, 1.026417, 
+                                             "contOutlier",  0.9742628, 1.026417,
                                              "facFive",      0.9377347, 1.0664))
-  
+
   options <- jaspTools::analysisOptions("RegressionLogistic")
   options$covariates <- c("contNormal", "contOutlier")
   options$dependent <- "facGender"
-  
+
   options$modelTerms <- list(
     list(components="contNormal",    isNuisance=FALSE),
     list(components="contOutlier",   isNuisance=FALSE)
   )
-  
+
   options$multicollinearity <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["multicolliTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("contNormal",   0.9958289, 1.004189,
                                              "contOutlier",  0.9958289, 1.004189))
-  
+
 })
 
 test_that("Error Handling", {
@@ -353,6 +353,36 @@ test_that("Pseudo R-squared are correct", {
   jaspTools::expect_equal_tables(r_squared,
                       list(0.0856291418878957, 0.141844242772774, 0.0962310669224921, 0.100864461712579)
                       )
+
+
+  # Another test, inspired by the issue: https://github.com/jasp-stats/jasp-issues/issues/2368
+  # That issue was caused by a numerical overflow for a somewhat large dataset
+  set.seed(1)
+  n <- 1e5
+  x <- runif(n, min = 0, max = 1)
+  y_hat <- 5 * x# + 0.5 * x2
+  p <- plogis(y_hat)
+  y <- rbinom(n, 1, p)
+
+  df <- data.frame(x, y)
+
+  # library(performance) # version 0.10.5
+  # fit <- glm(y~x, data = df, family = binomial)
+  # performance::r2_mcfadden(fit)$R2 # 0.2066583
+  # performance::r2_nagelkerke(fit) # 0.2767422
+  # performance::r2_tjur(fit) # 0.1713724
+  # performance::r2_coxsnell(fit) # 0.1524201
+
+  options <- jaspTools::analysisOptions("RegressionLogistic")
+  options$dependent <- "y"
+  options$covariates <- "x"
+  options$modelTerms <- list(list(components = "x1", isNuisance = FALSE))
+
+  results <- jaspTools::runAnalysis("RegressionLogistic", df, options)
+  r_squared <- results$results$modelSummary$data[[2]][c("fad", "nag", "tju", "cas")]
+  jaspTools::expect_equal_tables(r_squared,
+                                 list(0.206658284548968, 0.276742170706529, 0.171372447470285, 0.152420076012601)
+  )
 })
 
 test_that("Performance plots match", {
