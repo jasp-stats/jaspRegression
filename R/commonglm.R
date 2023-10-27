@@ -173,8 +173,8 @@
     l0 <- -0.5*nullModel[["deviance"]]
     lm <- as.numeric(logLik(glmModel))
     n  <- length(glmModel[["y"]])
-    coxSnell <- 1 - exp(l0 - lm)^(2 / n)
-    denom <- 1 - exp(l0)^(2 / n)
+    coxSnell <- .coxSnellCompute(l0, lm, n)
+    denom <- -expm1(2*l0/n)
     return(max(c(0,coxSnell / denom)))
   }
 }
@@ -195,9 +195,13 @@
     l0 <- -0.5*nullModel[["deviance"]]
     lm <- as.numeric(logLik(glmModel))
     n  <- length(glmModel[["y"]])
-    coxSnell <- 1 - exp(l0 - lm)^(2 / n)
+    coxSnell <- .coxSnellCompute(l0, lm, n)
     return(max(c(0,coxSnell)))
   }
+}
+
+.coxSnellCompute <- function(l0, lm, n) {
+  return(-expm1(2*(l0 - lm)/n))
 }
 
 .bic <- function(glmModel) {
