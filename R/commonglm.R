@@ -174,7 +174,7 @@
     lm <- as.numeric(logLik(glmModel))
     n  <- length(glmModel[["y"]])
     coxSnell <- .coxSnellCompute(l0, lm, n)
-    denom <- 1 - exp(2*l0/n)
+    denom <- -expm1(2*l0/n)
     return(max(c(0,coxSnell / denom)))
   }
 }
@@ -201,7 +201,7 @@
 }
 
 .coxSnellCompute <- function(l0, lm, n) {
-  return(1 - exp(2*(l0 - lm)/n))
+  return(-expm1(2*(l0 - lm)/n))
 }
 
 .bic <- function(glmModel) {
