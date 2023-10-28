@@ -1358,10 +1358,6 @@ msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr "Afstand"
 
-msgctxt "Correlation|"
-msgid "Effect Size (Fisher's z)"
-msgstr "Effectgrootte (Fisher's z)"
-
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
 msgstr "Coëfficiënten"
@@ -1753,4 +1749,8 @@ msgstr "Steekproeven geloofwaardigheidsinterval"
 
 msgctxt "EmmComponent|"
 msgid "SD"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect size (Fisher's z)"
 msgstr ""

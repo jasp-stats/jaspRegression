@@ -1371,10 +1371,6 @@ msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr ""
 
-msgctxt "Correlation|"
-msgid "Effect Size (Fisher's z)"
-msgstr ""
-
 #, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
@@ -1767,4 +1763,8 @@ msgstr "信用区間のためのサンプルなし"
 
 msgctxt "EmmComponent|"
 msgid "SD"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect size (Fisher's z)"
 msgstr ""

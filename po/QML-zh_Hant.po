@@ -1255,10 +1255,6 @@ msgctxt "Correlation|"
 msgid "Partial out"
 msgstr "排除"
 
-msgctxt "Correlation|"
-msgid "Effect Size (Fisher's z)"
-msgstr "效果量 (Fisher's z)"
-
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
 msgstr "模型"
@@ -1781,4 +1777,8 @@ msgstr "計算可信區間的樣本數"
 
 msgctxt "EmmComponent|"
 msgid "SD"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect size (Fisher's z)"
 msgstr ""

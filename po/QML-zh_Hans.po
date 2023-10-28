@@ -1357,10 +1357,6 @@ msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr "偏移量"
 
-msgctxt "Correlation|"
-msgid "Effect Size (Fisher's z)"
-msgstr "效应量（Fisher's z）"
-
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
 msgstr "系数"
@@ -1691,4 +1687,8 @@ msgstr "可信区间的样本数"
 
 msgctxt "EmmComponent|"
 msgid "SD"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect size (Fisher's z)"
 msgstr ""

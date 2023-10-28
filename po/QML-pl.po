@@ -1358,10 +1358,6 @@ msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr ""
 
-msgctxt "Correlation|"
-msgid "Effect Size (Fisher's z)"
-msgstr "Wielkość efektu (z Fishera)"
-
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
 msgstr "Współczynniki"
@@ -1691,3 +1687,7 @@ msgstr "Liczba próbek dla przedziału wiarygodności"
 msgctxt "EmmComponent|"
 msgid "SD"
 msgstr "Odch. stand."
+
+msgctxt "Correlation|"
+msgid "Effect size (Fisher's z)"
+msgstr ""

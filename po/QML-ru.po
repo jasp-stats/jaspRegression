@@ -1456,10 +1456,6 @@ msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr "Смещение"
 
-msgctxt "Correlation|"
-msgid "Effect Size (Fisher's z)"
-msgstr "Размер эффекта (z Фишера)"
-
 #, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
@@ -1856,4 +1852,8 @@ msgstr "Кол-во выборок для достоверного интерв�
 
 msgctxt "EmmComponent|"
 msgid "SD"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect size (Fisher's z)"
 msgstr ""
