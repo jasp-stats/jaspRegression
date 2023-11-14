@@ -289,7 +289,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregCreateCoefficientsTable <- function(modelContainer, model, dataset, options, position) {
 
-  coeffTable <- createJaspTable("Coefficients")
+  coeffTable <- createJaspTable(gettext("Coefficients"))
   coeffTable$dependOn(c("coefficientEstimate", "coefficientCi", "coefficientCiLevel",
                         "collinearityDiagnostic", "vovkSellke"))
   coeffTable$position <- position
