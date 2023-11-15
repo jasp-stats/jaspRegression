@@ -1233,8 +1233,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
       }
 
+      # get translation for (Intercept) 
+      name = names[i]
+      if (identical(name, "(Intercept)") { name = gettext(name) }
+
       row <- list(
-        name         = names[i],
+        name         = name,
         unstandCoeff = unstandCoeff,
         SE           = estimates[i, "Std. Error"],
         t            = estimates[i, "t value"],
