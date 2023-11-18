@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2023-11-06 09:06+0000\n"
-"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"PO-Revision-Date: 2023-11-18 02:41+0000\n"
+"Last-Translator: Thomas Langkamp <thomas.lassdiesonnerein@gmx.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
 "Language: de\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.2-dev\n"
+"X-Generator: Weblate 5.2\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1444,12 +1444,10 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Most complex model"
 msgstr "Das komplexeste Modell"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Median model"
 msgstr "Median-Modell"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model averaged"
 msgstr "Modell-gemittelt"
@@ -1458,10 +1456,9 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Credible interval"
 msgstr "Glaubwürdigkeitsintervall"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Order"
-msgstr "Reihenfolge"
+msgstr "Ordnung"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to best model"
@@ -1585,7 +1582,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "EB-local"
 msgstr "EB-lokal"
@@ -1600,7 +1596,7 @@ msgstr "Alpha"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
-msgstr ""
+msgstr "CCH"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
@@ -1670,7 +1666,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Sampling Method"
 msgstr "Stichprobenmethode"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "BAS"
 msgstr "BAS"
