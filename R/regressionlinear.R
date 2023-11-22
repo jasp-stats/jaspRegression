@@ -1234,8 +1234,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       }
 
       # get translation for (Intercept) 
-      name = names[i]
-      if (identical(name, "(Intercept)")) { name = gettext(name) }
+      name <- names[i]
+      if (identical(name, "(Intercept)")) 
+        name <- gettext("(Intercept)")
 
       row <- list(
         name         = name,
