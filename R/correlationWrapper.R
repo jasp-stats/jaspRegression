@@ -19,7 +19,7 @@
 
 Correlation <- function(
           data = NULL,
-          version = "0.17",
+          version = "0.18.2",
           alternative = "twoSided",
           assumptionCheckMultivariateEnergy = FALSE,
           assumptionCheckMultivariateMardia = FALSE,
