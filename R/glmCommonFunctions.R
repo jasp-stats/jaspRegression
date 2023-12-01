@@ -124,13 +124,13 @@
   }
 
   if (jaspBase::isTryError(fullModel)) {
-    msg <- jaspBase::.extractErrorMessage(fullModel)
+    msg <- .glmFitErrorMessageHelper(fullModel)
     msg <- gettextf("The full model could not be fitted to the data, with the following error message: '%s'", msg)
     jaspBase::.quitAnalysis(msg)
   }
 
   if (jaspBase::isTryError(nullModel)) {
-    msg <- jaspBase::.extractErrorMessage(nullModel)
+    msg <- .glmFitErrorMessageHelper(nullModel)
     msg <- gettextf("The null model could not be fitted to the data, with the following error message: '%s'", msg)
     jaspBase::.quitAnalysis(msg)
   }
@@ -143,7 +143,15 @@
   jaspResults[["glmModels"]]$object <- glmModels
 
   return(glmModels)
-  }
+}
+
+.glmFitErrorMessageHelper <- function(tryError) {
+  msg <- jaspBase::.extractErrorMessage(tryError)
+  if(msg == "cannot find valid starting values: please specify some")
+    msg <- gettext("Could not find valid starting values. Check feasibility of the model to fit the data.")
+
+  return(msg)
+}
 
 
 .hasNuisance <- function(options) {
