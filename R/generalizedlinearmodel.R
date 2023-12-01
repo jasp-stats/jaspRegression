@@ -133,21 +133,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
     if (!is.numeric(dataset[, options[["dependent"]]]))
       .quitAnalysis(gettextf("The Gaussian family requires the dependent variable to be a numerical variable."))
-  }
-
-  if ((options[["family"]] == "other") && (options[["otherGlmModel"]] == "multinomialLogistic")) {
-    if (length(levels(dataset[, options[["dependent"]]])) < 3)
+  } else if (options[["family"]] == "other") {
+    if (options[["otherGlmModel"]] == "multinomialLogistic" && nlevels(dataset[[options[["dependent"]]]]) < 3) {
       .quitAnalysis(gettext("Multinomial logistic regression requires the dependent variable to be a factor with at least 3 levels."))
-  }
-
-  if (options[["otherGlmModel"]] == "ordinalLogistic") {
-    if (length(levels(dataset[, options[["dependent"]]])) < 3)
+    } else if (options[["otherGlmModel"]] == "ordinalLogistic" && nlevels(dataset[[options[["dependent"]]]]) < 3) {
       .quitAnalysis(gettext("Ordinal logistic regression requires the dependent variable to be a factor with at least 3 levels."))
-  }
-
-  if (options[["otherGlmModel"]] == "firthLogistic") {
-    if (length(levels(dataset[, options[["dependent"]]])) != 2)
+    } else if (options[["otherGlmModel"]] == "firthLogistic" && nlevels(dataset[[options[["dependent"]]]]) != 2) {
       .quitAnalysis(gettext("Firth logistic regression requires the dependent variable to be a factor with 2 levels."))
+    }
   }
 }
 
@@ -405,7 +398,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   if ((options[["family"]] == "other") & (options[["otherGlmModel"]] %in% c("multinomialLogistic", "ordinalLogistic")))
     modelSummary <- VGAM::coef(VGAM::summaryvglm(fullModel))
 
-  if (options[["otherGlmModel"]] == "firthLogistic")
+  if (options[["family"]] == "other" && options[["otherGlmModel"]] == "firthLogistic")
     modelSummary <- cbind(coef(fullModel), sqrt(diag(fullModel$var)), qchisq(1 - fullModel$prob, 1), fullModel$prob)
 
   if (options[["family"]] != "other")
@@ -428,14 +421,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   estimatesTableData <- cbind(paramDf, modelSummary, coefCiSummary)
   jaspResults[["estimatesTable"]]$setData(estimatesTableData)
 
-  if ((options[["family"]] == "bernoulli") | (options[["otherGlmModel"]] == "firthLogistic")) {
+  if (options[["family"]] == "bernoulli" || (options[["family"]] == "other" && options[["otherGlmModel"]] == "firthLogistic")) {
     dv      <- options$dependent
     dvLevel <- levels(dataset[[dv]])[2]
 
     jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s level '%2$s' coded as class 1.", dv, dvLevel))
   }
 
-  if ((options["family"] == "other") & options[["otherGlmModel"]] == "multinomialLogistic") {
+  if (options["family"] == "other" && options[["otherGlmModel"]] == "multinomialLogistic") {
     dv      <- options$dependent
     dvReferenceLevel <- tail(levels(dataset[[dv]]), 1)
     dvLevels <- paste(paste(seq(1, length(dv)), levels(dataset[[dv]]), sep = ":"), collapse = ", ")
@@ -443,7 +436,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. '%3$s' is the reference level.", dv, dvLevels, dvReferenceLevel))
   }
 
-  if (options[["otherGlmModel"]] == "ordinalLogistic") {
+  if (options["family"] == "other" && options[["otherGlmModel"]] == "ordinalLogistic") {
     dv      <- options$dependent
     dvLevels <- paste(paste(seq(1, length(dv)), levels(dataset[[dv]]), sep = ":"), collapse = ", ")
     linearPredictors <- paste(VGAM::summaryvglm(fullModel)@misc$predictors.names, collapse = ", ")
