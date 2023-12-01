@@ -77,50 +77,62 @@
 
     familyLink <- eval(call(family, link = options$link))
     # compute full and null models
-    fullModel <- stats::glm(ff,
+    fullModel <- try(stats::glm(ff,
                             family = familyLink,
                             data = dataset,
-                            weights = weights)
-    nullModel <- stats::glm(nf,
+                            weights = weights))
+    nullModel <- try(stats::glm(nf,
                             family = familyLink,
                             data = dataset,
-                            weights = weights)
+                            weights = weights))
   } else {
 
     if (options$otherGlmModel == "multinomialLogistic") {
-      fullModel <- VGAM::vglm(ff,
+      fullModel <- try(VGAM::vglm(ff,
                               family = VGAM::multinomial(),
                               data = dataset,
-                              weights = weights)
-      nullModel <- VGAM::vglm(nf,
+                              weights = weights))
+      nullModel <- try(VGAM::vglm(nf,
                               family = VGAM::multinomial(),
                               data = dataset,
-                              weights = weights)
+                              weights = weights))
     }
 
     if (options$otherGlmModel == "ordinalLogistic") {
-      fullModel <- VGAM::vglm(ff,
+      fullModel <- try(VGAM::vglm(ff,
                               family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
                               data = dataset,
-                              weights = weights)
-      nullModel <- VGAM::vglm(nf,
+                              weights = weights))
+      nullModel <- try(VGAM::vglm(nf,
                               family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
                               data = dataset,
-                              weights = weights)
+                              weights = weights))
     }
 
     if (options$otherGlmModel == "firthLogistic") {
-      fullModel <- logistf::logistf(ff,
+      fullModel <- try(logistf::logistf(ff,
                                     data = dataset,
                                     pl = TRUE,
                                     firth = TRUE,
-                                    weights = weights)
-      nullModel <- logistf::logistf(nf,
+                                    weights = weights))
+      nullModel <- try(logistf::logistf(nf,
                                     data = dataset,
                                     pl = TRUE,
                                     firth = TRUE,
-                                    weights = weights)
+                                    weights = weights))
     }
+  }
+
+  if (jaspBase::isTryError(fullModel)) {
+    msg <- jaspBase::.extractErrorMessage(fullModel)
+    msg <- gettextf("The full model could not be fitted to the data, with the following error message: '%s'", msg)
+    jaspBase::.quitAnalysis(msg)
+  }
+
+  if (jaspBase::isTryError(nullModel)) {
+    msg <- jaspBase::.extractErrorMessage(nullModel)
+    msg <- gettextf("The null model could not be fitted to the data, with the following error message: '%s'", msg)
+    jaspBase::.quitAnalysis(msg)
   }
 
   glmModels <- list("nullModel" = nullModel,
