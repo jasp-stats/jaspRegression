@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.18.2\n"
-"POT-Creation-Date: 2023-11-25 02:42\n"
+"POT-Creation-Date: 2023-12-09 02:42\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -501,6 +501,15 @@ msgid "Odds Ratio"
 msgstr ""
 
 msgid "Ratio"
+msgstr ""
+
+msgid "The full model could not be fitted to the data, with the following error message: '%s'"
+msgstr ""
+
+msgid "The null model could not be fitted to the data, with the following error message: '%s'"
+msgstr ""
+
+msgid "Could not find valid starting values. Check feasibility of the model to fit the data."
 msgstr ""
 
 msgid "Plotting is not possible: %s"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2023-07-19 08:14\n"
+"POT-Creation-Date: 2023-12-09 02:42\n"
 "PO-Revision-Date: 2023-05-08 10:48+0000\n"
 "Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -586,6 +586,21 @@ msgstr "勝率比"
 #, fuzzy
 msgid "Ratio"
 msgstr "比率"
+
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
 
 #, fuzzy
 msgid "Plotting is not possible: %s"

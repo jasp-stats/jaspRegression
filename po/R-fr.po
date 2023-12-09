@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2023-07-19 08:14\n"
+"POT-Creation-Date: 2023-12-09 02:42\n"
 "PO-Revision-Date: 2023-07-12 02:21+0000\n"
 "Last-Translator: Josée Turcotte <jturcotte@laurentienne.ca>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
@@ -578,6 +578,21 @@ msgstr "Rapport de cotes"
 
 msgid "Ratio"
 msgstr "Rapport"
+
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
 
 msgid "Plotting is not possible: %s"
 msgstr "Graphique impossible : %s"

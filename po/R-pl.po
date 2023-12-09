@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2023-07-19 08:14\n"
+"POT-Creation-Date: 2023-12-09 02:42\n"
 "PO-Revision-Date: 2023-09-20 11:21+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
@@ -569,6 +569,21 @@ msgstr "Iloraz szans"
 
 msgid "Ratio"
 msgstr "Stosunek"
+
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
 
 msgid "Plotting is not possible: %s"
 msgstr ""
