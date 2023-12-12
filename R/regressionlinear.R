@@ -1080,7 +1080,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     # TODO: Make some nicer error messsage/footnote when durbin watson computation fails
     durbinWatson <- try(.durbinWatsonTest.lm(fit, alternative = c("two.sided")))
 
-    if (isTryError(durbinWatson)) {
+    if (jaspBase::isTryError(durbinWatson)) {
       return(list(r = NaN, dw = NaN, p = NaN))
     }
 
