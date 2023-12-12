@@ -119,7 +119,6 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   modelSummary$addColumnInfo(name = "cas", title = gettextf("Cox & Snell R%s","\u00B2"), type = "number")
 
   jaspResults[["modelSummary"]] <- modelSummary
-
   res <- try(.reglogisticModelSummaryFill(jaspResults, dataset, options, ready))
 
   .reglogisticSetError(res, modelSummary)

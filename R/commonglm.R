@@ -155,8 +155,7 @@
 
 .mcFadden <- function(glmModel, nullModel) {
   # https://eml.berkeley.edu/reprints/mcfadden/zarembka.pdf
-  rightSide <- deparse(glmModel[["formula"]][[3]])
-  if (length(rightSide == 1) && rightSide %in% c("1", "0")) {
+  if (.isInterceptOnly(glmModel)) {
     # intercept-only model needs fix because of computer precision limits
     return(0)
   } else
@@ -165,8 +164,7 @@
 
 .nagelkerke <- function(glmModel, nullModel) {
   # https://doi.org/10.1093/biomet/78.3.691
-  rightSide <- deparse(glmModel[["formula"]][[3]])
-  if (length(rightSide == 1) && rightSide %in% c("1", "0")) {
+  if (.isInterceptOnly(glmModel)) {
     # intercept-only model needs fix because of computer precision limits
     return(NULL)
   } else {
@@ -187,8 +185,7 @@
 }
 
 .coxSnell <- function(glmModel, nullModel) {
-  rightSide <- deparse(glmModel[["formula"]][[3]])
-  if (length(rightSide == 1) && rightSide %in% c("1", "0")) {
+  if (.isInterceptOnly(glmModel)) {
     # intercept-only model needs fix because of computer precision limits
     return(NULL)
   } else {
@@ -587,4 +584,22 @@
   if (all(result[, 2] == 1)) result <- result[, 1]
   else result[, 3] <- result[, 1]^(1/(2 * result[, 2]))
   result
+}
+
+# test if a model is intercept only
+.isInterceptOnly <- function(model) {
+  terms <- try(terms(model))
+  if (jaspBase::isTryError(terms)) {
+    terms <- try(terms(model[["formula"]]))
+
+    if (jaspBase::isTryError(terms)) {
+      stop("Something went wrong; Cannot tell if a model is intercept-only.")
+    }
+  }
+
+  intercept <- attr(terms, "intercept")
+  labels <- attr(terms, "term.labels")
+
+  # test if we have intercept and no other predictors
+  return(intercept && length(labels) == 0)
 }
