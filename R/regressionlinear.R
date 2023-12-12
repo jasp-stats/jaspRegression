@@ -1077,7 +1077,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   durbinWatson <- list(r = NaN, dw = NaN, p = NaN)
 
   if (!is.null(fit)) {
-    durbinWatson <- .durbinWatsonTest.lm(fit, alternative = c("two.sided"))
+    # TODO: Make some nicer error messsage/footnote when durbin watson computation fails
+    durbinWatson <- try(.durbinWatsonTest.lm(fit, alternative = c("two.sided")))
+
+    if (isTryError(durbinWatson)) {
+      return(list(r = NaN, dw = NaN, p = NaN))
+    }
 
     if (weights == "") # if regression is not weighted, calculate p-value with lmtest (car method is unstable)
       # TODO: this can fail when there are many interactions between factors. Do we want to show a footnote about that?
