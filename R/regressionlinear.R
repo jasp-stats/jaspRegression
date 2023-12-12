@@ -1077,7 +1077,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   durbinWatson <- list(r = NaN, dw = NaN, p = NaN)
 
   if (!is.null(fit)) {
-    durbinWatson <- .durbinWatsonTest.lm(fit, alternative = c("two.sided"))
+    # TODO: Make some nicer error messsage/footnote when durbin watson computation fails
+    durbinWatson <- try(.durbinWatsonTest.lm(fit, alternative = c("two.sided")))
+
+    if (jaspBase::isTryError(durbinWatson)) {
+      return(list(r = NaN, dw = NaN, p = NaN))
+    }
 
     if (weights == "") # if regression is not weighted, calculate p-value with lmtest (car method is unstable)
       # TODO: this can fail when there are many interactions between factors. Do we want to show a footnote about that?
@@ -1233,9 +1238,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
       }
 
-      # get translation for (Intercept) 
+      # get translation for (Intercept)
       name <- names[i]
-      if (identical(name, "(Intercept)")) 
+      if (identical(name, "(Intercept)"))
         name <- gettext("(Intercept)")
 
       row <- list(
@@ -1333,7 +1338,14 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 
   # we can actually compute things
-  result <- car::vif(fit)
+  result <- try(car::vif(fit))
+
+  if (jaspBase::isTryError(result)) {
+    nas <- rep(NA, noTerms)
+    names(nas) <- labels(terms(fit))
+    result <- list(VIF = nas, tolerance = nas)
+    return(result)
+  }
 
   VIF <- if (is.matrix(result)) {
     result[, 3L]

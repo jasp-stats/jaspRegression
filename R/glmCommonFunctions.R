@@ -229,6 +229,11 @@
 # JASP crashes when loading the regression module (at least on Windows 10).
 
 .vif.default <- function(mod, ...) {
+  # modified to fix bug: https://github.com/jasp-stats/jasp-test-release/issues/2487
+  if (length(coef(mod)) == 0) {
+    stop(gettext("There are no predictors to test for multicollinearity"))
+  }
+  # end modification
   if (any(is.na(coef(mod))))
     stop ("there are aliased coefficients in the model")
   v <- vcov(mod)
