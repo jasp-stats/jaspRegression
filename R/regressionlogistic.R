@@ -505,7 +505,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
         s[3] <- s[1]/s[2] # new z
         s[4] <- 2*pnorm(-abs(s[3])) # new p
       }
-      waldtest  <- mdscore::wald.test(glmObj[[2]], term = 1)
+      waldtest  <- .waldTest(glmObj[[2]], term = 1)
       jaspResults[["estimatesTable"]]$addRows(
         list(           param   = .formatTerm(rn, glmObj[[2]]),
                         est     = s[1],
@@ -514,11 +514,12 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
                         or      = exp(s[1]),
                         zval    = s[3],
                         pval    = s[4],
-                        waldsta = as.numeric(waldtest$W),
+                        waldsta = as.numeric(waldtest),
                         walddf  = as.numeric(1),
                         vsmpr   = VovkSellkeMPR(s[4]),
                         cilo    = expon(s[1] - alpha * s[2]),
                         ciup    = expon(s[1] + alpha * s[2])))
+
     } else {
       if (options$robustSe) {
         s[,2] <- unname(.glmRobustSE(glmObj[[2]])) # new se
@@ -527,7 +528,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
       }
       for (i in seq_along(rn)) {
 
-        waldtest <- mdscore::wald.test(glmObj[[2]], term = i)
+        waldtest <- .waldTest(glmObj[[2]], term = i)
 
         jaspResults[["estimatesTable"]]$addRows(list(
                           param   = .formatTerm(rn[i], glmObj[[2]]),
@@ -537,7 +538,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
                           or      = exp(s[i,1]),
                           zval    = s[i,3],
                           pval    = s[i,4],
-                          waldsta = as.numeric(waldtest$W),
+                          waldsta = as.numeric(waldtest),
                           walddf  = as.numeric(1),
                           vsmpr   = VovkSellkeMPR(s[i,4]),
                           cilo    = expon(s[i,1] - alpha * s[i,2]),
@@ -566,7 +567,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
           s[3] <- s[1]/s[2] # new z
           s[4] <- 2*pnorm(-abs(s[3])) # new p
         }
-        waldtest <- mdscore::wald.test(mObj, term = 1)
+        waldtest <- .waldTest(mObj, term = 1)
 
         jaspResults[["estimatesTable"]]$addRows(list(
           model   = as.character(midx),
@@ -577,7 +578,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
           or      = exp(s[1]),
           zval    = s[3],
           pval    = s[4],
-          waldsta = as.numeric(waldtest$W),
+          waldsta = as.numeric(waldtest),
           walddf  = as.numeric(1),
           vsmpr   = VovkSellkeMPR(s[4]),
           cilo    = expon(s[1] - alpha * s[2]),
@@ -592,7 +593,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
         }
         for (i in seq_along(rn)) {
 
-          waldtest <- mdscore::wald.test(mObj, term = i)
+          waldtest <- .waldTest(mObj, term = i)
           jaspResults[["estimatesTable"]]$addRows(list(
             model   = as.character(midx),
             param   = .formatTerm(rn[i], mObj),
@@ -602,7 +603,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
             or      = exp(s[i,1]),
             zval    = s[i,3],
             pval    = s[i,4],
-            waldsta = as.numeric(waldtest$W),
+            waldsta = as.numeric(waldtest),
             walddf  = as.numeric(1),
             vsmpr   = VovkSellkeMPR(s[i,4]),
             cilo    = expon(s[i,1] - alpha * s[i,2]),
@@ -1380,4 +1381,15 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     paramtitle <- gettext("Parameter")
   }
   return(list(ciTitle = ciTitle, seTitle = seTitle, multimod = multimod, paramtitle = paramtitle))
+}
+
+# wrapper for wald test
+.waldTest <- function(...) {
+  result <- try(mdscore::wald.test(...))
+  if (jaspBase::isTryError(result)) {
+    result <- NA
+    return(result)
+  }
+
+  return(result[["W"]])
 }
