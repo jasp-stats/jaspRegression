@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2023-12-09 02:42\n"
-"PO-Revision-Date: 2023-05-08 10:48+0000\n"
-"Last-Translator: JASP Stats <b.boutin@uva.nl>\n"
+"PO-Revision-Date: 2023-12-16 02:41+0000\n"
+"Last-Translator: Ginger Shu-Ying Yeh <gingershuying@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
 "jasp/jaspregression-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.3\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -25,7 +25,7 @@ msgid "Scatterplot"
 msgstr "散佈圖"
 
 msgid "Prior and Posterior"
-msgstr "先驗與後驗"
+msgstr "先驗分布與後驗分布"
 
 msgid "Bayes Factor Robustness Check"
 msgstr "貝氏因子穩健性檢查"
@@ -106,7 +106,7 @@ msgid "Kendall's tau"
 msgstr "Kendall's tau"
 
 msgid "n"
-msgstr "樣本數"
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr "%s%%信賴區間上界"
@@ -138,7 +138,7 @@ msgstr ""
 "Bayarri, & Berger, 2001)."
 
 msgid "Computing Durbin-Watson Statistics"
-msgstr ""
+msgstr "計算Durbin-Watson統計量"
 
 msgid "Kendall's Tau"
 msgstr "Kendall's Tau"
@@ -181,7 +181,7 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr "基於%i 拔靴法樣本的信賴區間"
 
 msgid "p"
-msgstr "p值"
+msgstr "p"
 
 msgid "VS-MPR"
 msgstr "VS-MPR"
@@ -230,11 +230,9 @@ msgstr "變數"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Shapiro-Wilk 雙變數常態分配考驗"
 
-#, fuzzy
 msgid "Scatter plots"
 msgstr "散佈圖"
 
-#, fuzzy
 msgid "Correlation plot"
 msgstr "相關圖"
 
@@ -244,20 +242,18 @@ msgstr "未定義相關： %s"
 msgid "%1$s%% CI: [%2$s, %3$s]"
 msgstr "%1$s%% 信賴區間： [%2$s， %3$s]"
 
-#, fuzzy
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 3"
-msgstr "無法繪圖:觀察值低於3個"
+msgstr "無法繪圖：觀測值低於3個"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 2"
 msgstr "無法繪圖:觀察值少於2"
 
-#, fuzzy
 msgid "Plotting not possible: %s"
-msgstr "無法繪圖: %s"
+msgstr "無法繪圖：%s"
 
 msgid "Partial Pearson's r"
 msgstr "皮爾森部分相關"
@@ -272,7 +268,6 @@ msgstr "Kendall's 部分相關tau B"
 msgid "%s heatmap"
 msgstr "%s 熱圖"
 
-#, fuzzy
 msgid "Heatmaps"
 msgstr "熱圖"
 
@@ -396,7 +391,6 @@ msgid ""
 "with 2 levels."
 msgstr ""
 
-#, fuzzy
 msgid "Model Summary"
 msgstr "模型摘要"
 
@@ -552,15 +546,12 @@ msgstr "估計邊際平均值"
 msgid "SE"
 msgstr "標準誤"
 
-#, fuzzy
 msgid "Lower"
 msgstr "下界"
 
-#, fuzzy
 msgid "%s%% CI"
 msgstr "%s%% 信賴區間"
 
-#, fuzzy
 msgid "Upper"
 msgstr "上界"
 
@@ -628,7 +619,7 @@ msgid "Multivariate-t"
 msgstr ""
 
 msgid "Tukey"
-msgstr ""
+msgstr "Tukey"
 
 msgid "Benjamini-Hochberg"
 msgstr ""
@@ -699,7 +690,7 @@ msgid "df2"
 msgstr ""
 
 msgid "Autocorrelation"
-msgstr ""
+msgstr "自相關"
 
 msgid "Durbin-Watson"
 msgstr ""
@@ -732,7 +723,7 @@ msgid "Unstandardized"
 msgstr ""
 
 msgid "Standardized"
-msgstr ""
+msgstr "標準化"
 
 msgid "%.0f%% CI"
 msgstr ""
@@ -831,19 +822,19 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "最小值"
 
 msgid "Maximum"
-msgstr ""
+msgstr "最大值"
 
 msgid "Mean"
-msgstr ""
+msgstr "平均數"
 
 msgid "SD"
-msgstr ""
+msgstr "標準差"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
@@ -870,10 +861,10 @@ msgid "Residuals Histogram"
 msgstr ""
 
 msgid "Standardized %s"
-msgstr ""
+msgstr "標準化 %s"
 
 msgid "Q-Q Plot Standardized Residuals"
-msgstr ""
+msgstr "標準化殘差 Q-Q圖"
 
 msgid "Partial plots are not supported for models containing interaction terms"
 msgstr ""
@@ -888,7 +879,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "敘述統計量"
 
 msgid "H%s"
 msgstr ""
@@ -897,7 +888,7 @@ msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
-msgstr ""
+msgstr "標準化殘差"
 
 msgid "Theoretical Quantiles"
 msgstr ""
@@ -943,7 +934,7 @@ msgid "Posterior Summary"
 msgstr ""
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "模型比較"
 
 msgid "Model Comparison - %s"
 msgstr ""
@@ -1074,7 +1065,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Q-Q 圖"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1098,16 +1089,16 @@ msgid "Cox & Snell R%s"
 msgstr ""
 
 msgid "Standardized%s"
-msgstr ""
+msgstr "標準化 %s"
 
 msgid "Wald Statistic"
 msgstr ""
 
 msgid "Lower bound"
-msgstr ""
+msgstr "下界"
 
 msgid "Upper bound"
-msgstr ""
+msgstr "上界"
 
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
@@ -1170,7 +1161,7 @@ msgid "Predictor - residuals plots"
 msgstr ""
 
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "皮爾森殘差平方圖"
 
 #, fuzzy
 msgid "Performance plots"
@@ -1215,7 +1206,7 @@ msgid "Robust <br> %s"
 msgstr ""
 
 msgid "Parameter"
-msgstr ""
+msgstr "參數"
 
 msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
@@ -1229,14 +1220,13 @@ msgid "DV/Factor"
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "水準"
 
 msgid "Covariate Descriptives"
 msgstr ""
 
-#, fuzzy
 msgid "Intercept"
-msgstr "(截距)"
+msgstr "截距"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
@@ -1250,5 +1240,4 @@ msgstr[1] ""
 
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "偏迴歸圖"
