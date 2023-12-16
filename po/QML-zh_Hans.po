@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-12-10 15:07+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified) <https://hosted.weblate.org/projects/"
+"jasp/jaspregression-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.3-dev\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
 
@@ -1069,7 +1075,7 @@ msgstr "置信区间"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "协变量水平位于平均值 +/- "
 
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
@@ -1169,15 +1175,15 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "对数"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr ""
+msgstr "平方根"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
-msgstr ""
+msgstr "逆"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
@@ -1413,15 +1419,13 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Posterior summary"
 msgstr "后验摘要"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across all models"
-msgstr "跨所有模型"
+msgstr "跨所有模型比较"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across matched models"
-msgstr "跨匹配的模型"
+msgstr "跨配对的模型比较"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plot of coefficients"
@@ -1691,4 +1695,4 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "效应量(Fisher's z)"
