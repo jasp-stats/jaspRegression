@@ -22,7 +22,7 @@ Linear regression allows the user to model a linear relationship between one or 
 	- Backward: All predictors are entered simultaneously, and then removed sequentially based on the criterion specified in "Stepping method criteria".
 	- Forward: Predictors are entered sequentially based on the criterion specified in "Stepping method criteria".
 	- Stepwise: Predictors are entered sequentially based on the criterion specified in "Stepping method criteria"; after each step, the least useful predictor is removed.
-- Covariates: Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continous predictor variables.
+- Covariates: Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continuous predictor variables.
 - Factors: Categorical predictors variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.
 - WLS Weights: The weights used for weighted least square regression.
 
