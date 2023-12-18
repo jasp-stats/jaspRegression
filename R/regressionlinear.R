@@ -1543,7 +1543,7 @@ RegressionLinear <- function(jaspResults, dataset = NULL, options) {
     xScale <- ggplot2::scale_x_continuous(name = xlab, breaks = xticks, labels = xlabs)
   }
 
-  # y-axis scale is always continuous (since the dependent variable in linear regression should be continous)
+  # y-axis scale is always continuous (since the dependent variable in linear regression should be continuous)
   ylow   <- min(pretty(res))
   yhigh  <- max(pretty(res))
   yticks <- pretty(c(ylow, yhigh, 0))
