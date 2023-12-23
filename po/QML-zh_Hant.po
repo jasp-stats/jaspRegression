@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2023-12-19 21:54+0000\n"
+"Last-Translator: Ginger Shu-Ying Yeh <gingershuying@gmail.com>\n"
+"Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
+"jasp/jaspregression-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.3\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -566,7 +572,6 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Omit intercept"
 msgstr "省略截距"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Best model"
 msgstr "最佳模型"
@@ -575,17 +580,14 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Most complex model"
 msgstr "最複雜模型"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Median model"
 msgstr "中位數模型"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model averaged"
 msgstr "模型平均"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Credible interval"
 msgstr "可信區間"
@@ -1749,19 +1751,17 @@ msgstr "抽樣方法"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "BAS"
-msgstr ""
+msgstr "BAS"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. models"
 msgstr "模型數"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "MCMC"
 msgstr "馬可夫鏈蒙地卡羅法(MCMC)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples"
 msgstr "樣本數"
