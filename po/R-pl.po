@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2023-12-09 02:42\n"
+"POT-Creation-Date: 2023-12-30 02:42\n"
 "PO-Revision-Date: 2023-09-20 11:21+0000\n"
 "Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
 "Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
@@ -586,6 +586,9 @@ msgid ""
 msgstr ""
 
 msgid "Plotting is not possible: %s"
+msgstr ""
+
+msgid "There are no predictors to test for multicollinearity"
 msgstr ""
 
 msgid "P-values correspond to test of null hypothesis against %s."

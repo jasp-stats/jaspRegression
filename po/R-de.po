@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2023-12-09 02:42\n"
+"POT-Creation-Date: 2023-12-30 02:42\n"
 "PO-Revision-Date: 2023-12-19 10:10+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -619,6 +619,9 @@ msgstr ""
 
 msgid "Plotting is not possible: %s"
 msgstr "Abbilden ist nicht möglich: %s"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
 
 msgid "P-values correspond to test of null hypothesis against %s."
 msgstr "P-Werte entsprechen dem Test der Nullhypothese gegen %s."

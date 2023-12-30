@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.18.2\n"
-"POT-Creation-Date: 2023-12-09 02:42\n"
+"POT-Creation-Date: 2023-12-30 02:42\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -513,6 +513,9 @@ msgid "Could not find valid starting values. Check feasibility of the model to f
 msgstr ""
 
 msgid "Plotting is not possible: %s"
+msgstr ""
+
+msgid "There are no predictors to test for multicollinearity"
 msgstr ""
 
 msgid "P-values correspond to test of null hypothesis against %s."

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2023-12-09 02:42\n"
+"POT-Creation-Date: 2023-12-30 02:42\n"
 "PO-Revision-Date: 2023-06-24 02:58+0000\n"
 "Last-Translator: Borisov Igor Borisovich <borisov_i@pimunn.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -691,6 +691,9 @@ msgstr ""
 #, fuzzy
 msgid "Plotting is not possible: %s"
 msgstr "Построение графика невозможно: %s"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
 
 #, fuzzy
 msgid "P-values correspond to test of null hypothesis against %s."

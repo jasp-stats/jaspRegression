@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2023-12-09 02:42\n"
+"POT-Creation-Date: 2023-12-30 02:42\n"
 "PO-Revision-Date: 2023-12-16 02:41+0000\n"
 "Last-Translator: Ginger Shu-Ying Yeh <gingershuying@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -596,6 +596,9 @@ msgstr ""
 #, fuzzy
 msgid "Plotting is not possible: %s"
 msgstr "無法繪圖：%s"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
 
 msgid "P-values correspond to test of null hypothesis against %s."
 msgstr "P 值對應於針對 %s 的虛無假設檢驗。"

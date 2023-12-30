@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-12-09 02:42\n"
+"POT-Creation-Date: 2023-12-30 02:42\n"
 "PO-Revision-Date: 2023-12-09 14:30+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -625,6 +625,9 @@ msgstr ""
 
 msgid "Plotting is not possible: %s"
 msgstr "Non é posible a representación gráfica: %s"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
 
 msgid "P-values correspond to test of null hypothesis against %s."
 msgstr "Os valores p correspóndense coa proba da hipótese nula contra %s."
