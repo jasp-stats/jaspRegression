@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
 "POT-Creation-Date: 2023-12-30 02:42\n"
-"PO-Revision-Date: 2023-06-13 15:42+0000\n"
-"Last-Translator: George Gunnesch-Luca <george.gunnesch-luca@fpse.unibuc.ro>\n"
+"PO-Revision-Date: 2024-01-11 18:06+0000\n"
+"Last-Translator: fiscuteancom <vladfiscutean@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ro/>\n"
 "Language: ro\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
 "20)) ? 1 : 2;\n"
-"X-Generator: Weblate 4.18-dev\n"
+"X-Generator: Weblate 5.4-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -28,13 +28,13 @@ msgid "Scatterplot"
 msgstr "Grafic de dispersie"
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "Anterior și Posterior"
 
 msgid "Bayes Factor Robustness Check"
 msgstr ""
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Analiză secvențială"
 
 msgid "Bayesian Pearson Correlations"
 msgstr ""
@@ -70,7 +70,7 @@ msgid "Kendall's tau B"
 msgstr ""
 
 msgid "Pearson"
-msgstr ""
+msgstr "Pearson"
 
 msgid "Spearman"
 msgstr ""
@@ -127,7 +127,7 @@ msgid "(Intercept)"
 msgstr ""
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR%s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -180,7 +180,7 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "VS-MPR"
 msgstr ""
@@ -221,7 +221,7 @@ msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "Shapiro-Wilk"
 
 msgid "Variables"
 msgstr ""
@@ -402,7 +402,7 @@ msgid "BIC"
 msgstr ""
 
 msgid "df"
-msgstr ""
+msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr ""
@@ -417,7 +417,7 @@ msgid "Coefficients"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimat"
 
 msgid "Standard Error"
 msgstr ""
@@ -519,19 +519,19 @@ msgid "Estimated Marginal Means"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Lower"
-msgstr ""
+msgstr "Inferior"
 
 msgid "%s%% CI"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
+msgstr "Superior"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
 msgstr ""
@@ -582,7 +582,7 @@ msgid "P-values are not adjusted."
 msgstr ""
 
 msgid "Holm"
-msgstr ""
+msgstr "Holm"
 
 msgid "Homel"
 msgstr ""
@@ -603,16 +603,16 @@ msgid "Benjamini-Yekutieli"
 msgstr ""
 
 msgid "Scheffé"
-msgstr ""
+msgstr "Scheffé"
 
 msgid "Sidak"
 msgstr ""
 
 msgid "Dunnett"
-msgstr ""
+msgstr "Dunnett"
 
 msgid "Bonferroni"
-msgstr ""
+msgstr "Bonferroni"
 
 msgid "P-values are adjusted using %s adjustment."
 msgstr ""
@@ -677,16 +677,16 @@ msgid "No covariate could be entered in the model"
 msgstr ""
 
 msgid "ANOVA"
-msgstr ""
+msgstr "Analiză de varianță (ANOVA)"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "Suma pătratelor"
 
 msgid "Mean Square"
 msgstr ""
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr ""
@@ -732,7 +732,7 @@ msgid ""
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "Corecția bias-urilor accelerată."
 
 msgid "Some bootstrap results could not be computed."
 msgstr ""
@@ -803,13 +803,13 @@ msgid "Maximum"
 msgstr ""
 
 msgid "Mean"
-msgstr ""
+msgstr "Media"
 
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
@@ -854,7 +854,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "Descriptive"
 
 msgid "H%s"
 msgstr ""
