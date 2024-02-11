@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2023-12-30 02:42\n"
-"PO-Revision-Date: 2024-02-11 11:01+0000\n"
-"Last-Translator: Albert Dessì <websites.onstage058@passinbox.com>\n"
+"PO-Revision-Date: 2024-02-12 12:02+0000\n"
+"Last-Translator: Alberto Dessì <websites.onstage058@passinbox.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/it/>\n"
 "Language: it\n"
@@ -72,61 +72,62 @@ msgid "Pearson"
 msgstr "Pearson"
 
 msgid "Spearman"
-msgstr ""
+msgstr "Spearman"
 
 msgid "Kendall"
-msgstr ""
+msgstr "Kendall"
 
 msgid "Density"
-msgstr ""
+msgstr "Densità"
 
 msgid "Plotting not possible: Number of observations is < 3"
 msgstr ""
+"Non è possibile costruire il grafico: Il numero delle osservazioni è < 3"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr ""
+msgstr "Non è possibile sviluppare il grafico: Valore/i infiniti"
 
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 msgid "tau"
-msgstr ""
+msgstr "tau"
 
 msgid "rho[s]"
-msgstr ""
+msgstr "rho[s]"
 
 msgid "Pearson's"
-msgstr ""
+msgstr "di Pearson"
 
 msgid "Spearman's"
-msgstr ""
+msgstr "di Spearman"
 
 msgid "Kendall's"
-msgstr ""
+msgstr "di Kendall"
 
 msgid "Kendall's tau"
-msgstr ""
+msgstr "tau di Kendall"
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
-msgstr ""
+msgstr "Limite superiore %s%% CI"
 
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "Limite inferiore %s%% CI"
 
 msgid "Ranks of %s"
 msgstr ""
 
 msgid "Predicted"
-msgstr ""
+msgstr "Previsto"
 
 msgid "(Intercept)"
-msgstr ""
+msgstr "(Intercetta)"
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR%s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -134,24 +135,30 @@ msgid ""
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke Maximum <em>p</em>-Rapporto: Basato sul <em>p</em>-value,\n"
+"  la massima probabilità  possibile in favore del H%1$s over H%2$s equals\n"
+"  1/(-e <em>p</em> log(<em>p</em>)) per <em>p</em> %3$s .37\n"
+"  (Sellke, Bayarri, & Berger, 2001)."
 
 msgid "Computing Durbin-Watson Statistics"
-msgstr ""
+msgstr "Calcolo della Statistica Durbin-Watson"
 
 msgid "Kendall's Tau"
-msgstr ""
+msgstr "Tau di Kendall"
 
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "Tabella di Correlazione Parziale"
 
 msgid "%s Correlations"
-msgstr ""
+msgstr "%s delle Correlazioni"
 
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "%s delle Correlazioni Parziali"
 
 msgid "All tests one-tailed, for positive correlation."
 msgstr ""
+"Tutto ha avuto un esito del test monodirezionale, per la correlazione "
+"positiva."
 
 msgid ", one-tailed"
 msgstr ""
@@ -160,7 +167,7 @@ msgid "All tests one-tailed, for negative correlation."
 msgstr ""
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
-msgstr ""
+msgstr "p < .05, ** p < .01, *** p < .001%s"
 
 msgid "Conditioned on variables: %s."
 msgstr ""
@@ -169,41 +176,46 @@ msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
 msgstr ""
+"L'Errore Standard dell'effect size (z di Fisher) attualmente non è "
+"disponibile per correlazioni parziali non parametriche."
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
+"Gli intervalli di confidenza analitici per le correlazioni parziali non sono "
+"ancora disponibili, ma possono essere ottenuti utilizzando il bootstrapping "
+"al suo posto."
 
 msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "VS-MPR"
-msgstr ""
+msgstr "VS-MPR"
 
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "Effect size (Z di Fisher)"
 
 msgid "SE Effect size"
-msgstr ""
+msgstr "SE dell'Effect size"
 
 msgid "r"
-msgstr ""
+msgstr "r"
 
 msgid "tau B"
-msgstr ""
+msgstr "tau B"
 
 msgid "Kendall's Tau B"
-msgstr ""
+msgstr "Tau B di Kendall"
 
 msgid "p-value"
-msgstr ""
+msgstr "p-value"
 
 msgid "Number of observations is < %s."
-msgstr ""
+msgstr "Il numero di osservazioni è inferiore al %s."
 
 msgid "Bootstrapping"
 msgstr ""
@@ -212,33 +224,35 @@ msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
 msgstr ""
+"La correlazione parziale non può essere calcolata: la matrice di covarianza "
+"è computazionalmente singolare."
 
 msgid "Assumption checks"
 msgstr ""
 
 msgid "Shapiro-Wilk Test for Multivariate Normality"
-msgstr ""
+msgstr "Test di Shapiro-Wilk per la normalità multivariata"
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "Shapiro-Wilk"
 
 msgid "Variables"
-msgstr ""
+msgstr "Variabili"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
-msgstr ""
+msgstr "Test di Shapiro-Wilk per la Normalità Bivariata"
 
 msgid "Scatter plots"
-msgstr ""
+msgstr "Grafici a dispersione"
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "Grafico di correlazione"
 
 msgid "Correlation undefined: %s"
-msgstr ""
+msgstr "Correlazione non definita: %s"
 
 msgid "%1$s%% CI: [%2$s, %3$s]"
-msgstr ""
+msgstr "Intervallo di confidenza del %1$s%%: [%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
@@ -251,16 +265,16 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "Non è possibile costruire il grafico: %s"
 
 msgid "Partial Pearson's r"
-msgstr ""
+msgstr "r di Pearson parziale"
 
 msgid "Partial Spearman's rho"
-msgstr ""
+msgstr "rho di Spearman parziale"
 
 msgid "Partial Kendall's tau B"
-msgstr ""
+msgstr "Tau B di Kendall parziale"
 
 msgid "%s heatmap"
 msgstr ""
@@ -269,22 +283,26 @@ msgid "Heatmaps"
 msgstr ""
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
-msgstr ""
+msgstr "Intervallo di confidenza del %1$d%%: [%2$d, %3$d]"
 
 msgid "italic(r)"
-msgstr ""
+msgstr "italic(r)"
 
 msgid "italic(rho)"
-msgstr ""
+msgstr "italic(rho)"
 
 msgid "italic(tau)"
-msgstr ""
+msgstr "italic(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Rapporto massimo di <em>p</em>-valore Vovk-Sellke: Basato sul <em>p</em>-"
+"valore, il massimo rapporto di probabilità possibile a favore di H%1$s "
+"rispetto a H%2$s è pari a 1/(-e <em>p</em> log(<em>p</em>)) per <em>p</em> "
+"%3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -527,7 +545,7 @@ msgid "%s%% CI"
 msgstr ""
 
 msgid "Upper"
-msgstr ""
+msgstr "Superiore"
 
 msgid "t"
 msgstr ""
@@ -1109,7 +1127,7 @@ msgid "Performance metrics"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Valore"
 
 msgid "Null model contains nuisance parameters: %s"
 msgstr ""
@@ -1153,10 +1171,10 @@ msgid "Squared Pearson Residual"
 msgstr ""
 
 msgid "False positive rate"
-msgstr ""
+msgstr "Tasso di Falsi positivi"
 
 msgid "True positive rate"
-msgstr ""
+msgstr "Tasso di Veri positivi"
 
 msgid "Positive predictive value"
 msgstr ""
