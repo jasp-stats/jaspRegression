@@ -127,7 +127,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
           return(gettext("Stepwise procedures are not supported for models containing interaction terms"))
 
         if (any(vapply(dataset, .linregCheckIfFactorWithMoreLevels, logical(1L)))) {
-          return(gettext("Stepwise procedures are not supported for models containing factor with more than 2 levels; retry the analysis using dummy variables"))
+          return(gettext("Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"))
         }
       },
 
