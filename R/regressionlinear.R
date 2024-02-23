@@ -116,16 +116,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (options$method %in% c("backward", "forward", "stepwise")) {
     stepwiseProcedureChecks <- list(
 
-      checkIfContainsInteractions = function() {
-        hasInteractions <- FALSE
-
-        for (i in seq_along(options$modelTerms))
-          if (length(options$modelTerms[[i]]$components) > 1)
-            hasInteractions <- TRUE
-
-        if (hasInteractions)
-          return(gettext("Stepwise procedures are not supported for models containing interaction terms"))
-
+      checkIfFactorWithMoreLevels = function() {
         if (any(vapply(dataset, .linregCheckIfFactorWithMoreLevels, logical(1L)))) {
           return(gettext("Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"))
         }
@@ -1001,11 +992,21 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     fValue  <- summary(fit)$coefficients[, "t value"]
     pValue  <- summary(fit)$coefficients[, "Pr(>|t|)"]
 
+    if (grepl(candidatePredictors[i], pattern = ":")) {
+      variables <- unlist(strsplit(candidatePredictors[i], ":")) # split up interaction
+      permutations <- combinat::permn(variables) # realize all orderings
+      myPattern <- paste(sapply(permutations, 
+                                function(perm) paste(perm, collapse = ":")), 
+                         collapse = "|") # paste together with "|"
+    } else {
+      myPattern <- candidatePredictors[i]
+    }
+
     if (length(fValue) > 1)
-      fValue <- fValue[grepl(pattern = candidatePredictors[i], x = names(fValue))]
+      fValue <- fValue[grepl(pattern = myPattern, x = names(fValue))]
 
     if (length(pValue) > 1)
-      pValue <- pValue[grepl(pattern = candidatePredictors[i], x = names(pValue))]
+      pValue <- pValue[grepl(pattern = myPattern, x = names(pValue))]
 
     fValues[i] <- fValue^2 # turn t-value into f-value by squaring
     pValues[i] <- pValue
