@@ -106,6 +106,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(seq_len(nrow(dataset))[completeCases])
 }
 
+.linregCheckIfFactorWithMoreLevels <- function(var) {
+  # Custom function to check if a variable is a factor with more than 2 levels
+  is.factor(var) && nlevels(var) > 2
+}
+
 .linregCheckErrors <- function(dataset, options) {
   stepwiseProcedureChecks <- NULL
   if (options$method %in% c("backward", "forward", "stepwise")) {
@@ -121,8 +126,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
         if (hasInteractions)
           return(gettext("Stepwise procedures are not supported for models containing interaction terms"))
 
-        if (any(vapply(dataset, is.factor, logical(1L))))
-          return(gettext("Stepwise procedures are not supported for models containing factors"))
+        if (any(vapply(dataset, .linregCheckIfFactorWithMoreLevels, logical(1L)))) {
+          return(gettext("Stepwise procedures are not supported for models containing factor with more than 2 levels; retry the analysis using dummy variables"))
+        }
       },
 
       checkIfPEntryIsValid = function() {
@@ -996,12 +1002,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     pValue  <- summary(fit)$coefficients[, "Pr(>|t|)"]
 
     if (length(fValue) > 1)
-      fValue <- fValue[names(fValue) == candidatePredictors[i]]
+      fValue <- fValue[grepl(pattern = candidatePredictors[i], x = names(fValue))]
 
     if (length(pValue) > 1)
-      pValue <- pValue[names(pValue) == candidatePredictors[i]]
+      pValue <- pValue[grepl(pattern = candidatePredictors[i], x = names(pValue))]
 
-    fValues[i] <- fValue^2
+    fValues[i] <- fValue^2 # turn t-value into f-value by squaring
     pValues[i] <- pValue
   }
 
