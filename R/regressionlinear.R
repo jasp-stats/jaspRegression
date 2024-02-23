@@ -996,7 +996,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       variables <- unlist(strsplit(candidatePredictors[i], ":")) # split up interaction
       permutations <- combinat::permn(variables) # realize all orderings
       myPattern <- paste(sapply(permutations, 
-                                function(perm) paste(perm, collapse = ":")), 
+                                function(perm) paste(paste0(perm, ".?"), collapse = ":")), 
                          collapse = "|") # paste together with "|"
     } else {
       myPattern <- candidatePredictors[i]
