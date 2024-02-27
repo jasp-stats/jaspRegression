@@ -130,6 +130,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       checkIfFactorInteractions = function() {
         if (any(vapply(options[["modelTerms"]], .linregCheckIfInteractionWithFactors, logical(1L), factorVariables = options[["factors"]]))) {
           return(gettext("Stepwise procedures are not supported for interactions containing more than 1 factor"))
+        }
       },  
 
       checkIfPEntryIsValid = function() {
@@ -2037,7 +2038,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
     ans <- character(length(params))
     for (i in seq_along(params)) {
-      ans[i] <- if (levels[i] == "") params[i] else paste0(params[i], " (", levels[i], ")")
+      ans[i] <- if (is.na(levels[i]) || levels[i] == "") params[i] else paste0(params[i], " (", levels[i], ")")
     }
     title[j] <- paste(ans, collapse = " \u2009\u273b\u2009 ")
   }
