@@ -106,23 +106,20 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(seq_len(nrow(dataset))[completeCases])
 }
 
+.linregCheckIfFactorWithMoreLevels <- function(var) {
+  # Custom function to check if a variable is a factor with more than 2 levels
+  is.factor(var) && nlevels(var) > 2
+}
+
 .linregCheckErrors <- function(dataset, options) {
   stepwiseProcedureChecks <- NULL
   if (options$method %in% c("backward", "forward", "stepwise")) {
     stepwiseProcedureChecks <- list(
 
-      checkIfContainsInteractions = function() {
-        hasInteractions <- FALSE
-
-        for (i in seq_along(options$modelTerms))
-          if (length(options$modelTerms[[i]]$components) > 1)
-            hasInteractions <- TRUE
-
-        if (hasInteractions)
-          return(gettext("Stepwise procedures are not supported for models containing interaction terms"))
-
-        if (any(vapply(dataset, is.factor, logical(1L))))
-          return(gettext("Stepwise procedures are not supported for models containing factors"))
+      checkIfFactorWithMoreLevels = function() {
+        if (any(vapply(dataset, .linregCheckIfFactorWithMoreLevels, logical(1L)))) {
+          return(gettext("Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"))
+        }
       },
 
       checkIfPEntryIsValid = function() {
@@ -995,13 +992,23 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     fValue  <- summary(fit)$coefficients[, "t value"]
     pValue  <- summary(fit)$coefficients[, "Pr(>|t|)"]
 
+    if (grepl(candidatePredictors[i], pattern = ":")) {
+      variables <- unlist(strsplit(candidatePredictors[i], ":")) # split up interaction
+      permutations <- combinat::permn(variables) # realize all orderings
+      myPattern <- paste(sapply(permutations, 
+                                function(perm) paste(paste0(perm, ".?"), collapse = ":")), 
+                         collapse = "|") # paste together with "|"
+    } else {
+      myPattern <- candidatePredictors[i]
+    }
+
     if (length(fValue) > 1)
-      fValue <- fValue[names(fValue) == candidatePredictors[i]]
+      fValue <- fValue[grepl(pattern = myPattern, x = names(fValue))]
 
     if (length(pValue) > 1)
-      pValue <- pValue[names(pValue) == candidatePredictors[i]]
+      pValue <- pValue[grepl(pattern = myPattern, x = names(pValue))]
 
-    fValues[i] <- fValue^2
+    fValues[i] <- fValue^2 # turn t-value into f-value by squaring
     pValues[i] <- pValue
   }
 
