@@ -111,6 +111,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   is.factor(var) && nlevels(var) > 2
 }
 
+.linregCheckIfInteractionWithFactors <- function(modelTerm, factorVariables) {
+  # Custom function to check if interaction contains more than 1 factor
+  sum(modelTerm[["components"]] %in% factorVariables) > 1
+}
+
 .linregCheckErrors <- function(dataset, options) {
   stepwiseProcedureChecks <- NULL
   if (options$method %in% c("backward", "forward", "stepwise")) {
@@ -121,6 +126,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
           return(gettext("Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"))
         }
       },
+      
+      checkIfFactorInteractions = function() {
+        if (any(vapply(options[["modelTerms"]], .linregCheckIfInteractionWithFactors, logical(1L), factorVariables = options[["factors"]]))) {
+          return(gettext("Stepwise procedures are not supported for interactions containing more than 1 factor"))
+      },  
 
       checkIfPEntryIsValid = function() {
         if (options$steppingMethodCriteriaType == "pValue" && options$steppingMethodCriteriaPEntry > options$steppingMethodCriteriaPRemoval)
