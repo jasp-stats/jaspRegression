@@ -18,7 +18,7 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 10.67; stroke: none;' />
+<rect x='-0.000000000000064' y='0.00' width='720.00' height='576.00' style='stroke-width: 10.67; stroke: none;' />
 </g>
 <defs>
   <clipPath id='cpODIuNzJ8NjUxLjE0fDIwLjcxfDUwNy4wOQ=='>
@@ -178,13 +178,13 @@
 <polyline points='74.22,153.36 82.72,153.36 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <polyline points='74.22,42.82 82.72,42.82 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <polyline points='651.14,507.09 651.14,20.71 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
-<polyline points='651.14,454.87 659.65,454.87 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,391.21 659.65,391.21 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,327.56 659.65,327.56 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,263.90 659.65,263.90 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,200.25 659.65,200.25 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,136.59 659.65,136.59 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,72.93 659.65,72.93 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,454.87 651.14,454.87 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,391.21 651.14,391.21 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,327.56 651.14,327.56 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,263.90 651.14,263.90 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,200.25 651.14,200.25 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,136.59 651.14,136.59 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,72.93 651.14,72.93 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <text x='661.84' y='460.72' style='font-size: 17.00px; font-family: sans;' textLength='15.12px' lengthAdjust='spacingAndGlyphs'>-3</text>
 <text x='661.84' y='397.06' style='font-size: 17.00px; font-family: sans;' textLength='15.12px' lengthAdjust='spacingAndGlyphs'>-2</text>
 <text x='661.84' y='333.41' style='font-size: 17.00px; font-family: sans;' textLength='15.12px' lengthAdjust='spacingAndGlyphs'>-1</text>
@@ -211,8 +211,8 @@
 <text x='625.30' y='534.27' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='28.37px' lengthAdjust='spacingAndGlyphs'>100</text>
 <text x='366.93' y='566.78' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='154.25px' lengthAdjust='spacingAndGlyphs'>Predicted Values</text>
 <text transform='translate(19.02,263.90) rotate(-90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='89.60px' lengthAdjust='spacingAndGlyphs'>Residuals</text>
-<text transform='translate(701.73,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='215.50px' lengthAdjust='spacingAndGlyphs'>Standardized Residuals</text>
-<text transform='translate(679.69,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='0.00px' lengthAdjust='spacingAndGlyphs'></text>
+<text transform='translate(705.96,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='215.50px' lengthAdjust='spacingAndGlyphs'>Standardized Residuals</text>
+<text transform='translate(683.93,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='0.00px' lengthAdjust='spacingAndGlyphs'></text>
 <text x='366.93' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='275.94px' lengthAdjust='spacingAndGlyphs'>socialAnxiety-residuals-vs.-predicted</text>
 </g>
 </svg>
