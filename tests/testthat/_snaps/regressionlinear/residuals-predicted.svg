@@ -152,12 +152,12 @@
 <polyline points='55.31,105.98 63.81,105.98 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <polyline points='55.31,42.82 63.81,42.82 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <polyline points='651.14,507.09 651.14,20.71 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
-<polyline points='651.14,428.96 659.65,428.96 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,362.22 659.65,362.22 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,295.48 659.65,295.48 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,228.74 659.65,228.74 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,162.01 659.65,162.01 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
-<polyline points='651.14,95.27 659.65,95.27 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,428.96 651.14,428.96 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,362.22 651.14,362.22 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,295.48 651.14,295.48 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,228.74 651.14,228.74 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,162.01 651.14,162.01 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='659.65,95.27 651.14,95.27 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
 <text x='661.84' y='434.81' style='font-size: 17.00px; font-family: sans;' textLength='15.12px' lengthAdjust='spacingAndGlyphs'>-2</text>
 <text x='661.84' y='368.07' style='font-size: 17.00px; font-family: sans;' textLength='15.12px' lengthAdjust='spacingAndGlyphs'>-1</text>
 <text x='661.84' y='301.33' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>0</text>
@@ -177,8 +177,8 @@
 <text x='624.45' y='534.27' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='29.29px' lengthAdjust='spacingAndGlyphs'>-0.1</text>
 <text x='357.48' y='566.78' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='154.25px' lengthAdjust='spacingAndGlyphs'>Predicted Values</text>
 <text transform='translate(19.02,263.90) rotate(-90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='89.60px' lengthAdjust='spacingAndGlyphs'>Residuals</text>
-<text transform='translate(701.73,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='215.50px' lengthAdjust='spacingAndGlyphs'>Standardized Residuals</text>
-<text transform='translate(679.69,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='0.00px' lengthAdjust='spacingAndGlyphs'></text>
+<text transform='translate(705.96,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='215.50px' lengthAdjust='spacingAndGlyphs'>Standardized Residuals</text>
+<text transform='translate(683.93,263.90) rotate(90)' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='0.00px' lengthAdjust='spacingAndGlyphs'></text>
 <text x='357.48' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='143.65px' lengthAdjust='spacingAndGlyphs'>residuals-predicted</text>
 </g>
 </svg>
