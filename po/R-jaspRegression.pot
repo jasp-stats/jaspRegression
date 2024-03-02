@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.18.3\n"
-"POT-Creation-Date: 2024-01-13 02:43\n"
+"POT-Creation-Date: 2024-03-02 02:46\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -569,10 +569,10 @@ msgstr ""
 msgid "F test assumes 'quasi%s' family"
 msgstr ""
 
-msgid "Stepwise procedures are not supported for models containing interaction terms"
+msgid "Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
 
-msgid "Stepwise procedures are not supported for models containing factors"
+msgid "Stepwise procedures are not supported for interactions containing more than 1 factor"
 msgstr ""
 
 msgid "Error in Stepping Method Criteria: Entry p-value needs to be smaller than removal p-value"

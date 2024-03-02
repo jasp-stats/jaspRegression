@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2023-12-30 02:42\n"
+"POT-Creation-Date: 2024-03-02 02:46\n"
 "PO-Revision-Date: 2023-04-21 17:51+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -659,11 +659,16 @@ msgstr "試行回数 + %s"
 msgid "F test assumes 'quasi%s' family"
 msgstr "F検定は「準%s」ファミリーを想定しています"
 
+#, fuzzy
 msgid ""
-"Stepwise procedures are not supported for models containing interaction terms"
+"Stepwise procedures are not supported for models containing factors with "
+"more than 2 levels; retry the analysis using dummy variables"
 msgstr "交互作用項を含むモデルでは、ステップワイズ法はサポートされていません"
 
-msgid "Stepwise procedures are not supported for models containing factors"
+#, fuzzy
+msgid ""
+"Stepwise procedures are not supported for interactions containing more than "
+"1 factor"
 msgstr "ステップワイズ法は、因子を含むモデルには対応していません"
 
 msgid ""

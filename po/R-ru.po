@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2023-12-30 02:42\n"
+"POT-Creation-Date: 2024-03-02 02:46\n"
 "PO-Revision-Date: 2023-06-24 02:58+0000\n"
 "Last-Translator: Borisov Igor Borisovich <borisov_i@pimunn.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -758,13 +758,16 @@ msgstr "F-критерий предполагает наличие семейс�
 
 #, fuzzy
 msgid ""
-"Stepwise procedures are not supported for models containing interaction terms"
+"Stepwise procedures are not supported for models containing factors with "
+"more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
 "Пошаговые процедуры не поддерживаются для моделей, содержащих условия "
 "взаимодействия"
 
 #, fuzzy
-msgid "Stepwise procedures are not supported for models containing factors"
+msgid ""
+"Stepwise procedures are not supported for interactions containing more than "
+"1 factor"
 msgstr "Пошаговые процедуры не поддерживаются для моделей, содержащих факторы"
 
 #, fuzzy

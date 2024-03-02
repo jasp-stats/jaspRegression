@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2023-12-30 02:42\n"
+"POT-Creation-Date: 2024-03-02 02:46\n"
 "PO-Revision-Date: 2023-12-31 13:06+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -680,13 +680,18 @@ msgstr "intentando + %s"
 msgid "F test assumes 'quasi%s' family"
 msgstr "A proba F supón unha familia 'quasi%s'"
 
+#, fuzzy
 msgid ""
-"Stepwise procedures are not supported for models containing interaction terms"
+"Stepwise procedures are not supported for models containing factors with "
+"more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
 "Os procedementos paso a paso non se admiten en modelos que conteñen "
 "elementos de interación"
 
-msgid "Stepwise procedures are not supported for models containing factors"
+#, fuzzy
+msgid ""
+"Stepwise procedures are not supported for interactions containing more than "
+"1 factor"
 msgstr ""
 "Os procedementos paso a paso non se admiten en modelos que conteñen factores"
 
