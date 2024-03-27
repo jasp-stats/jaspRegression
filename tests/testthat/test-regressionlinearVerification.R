@@ -17,6 +17,11 @@ options$modelTerms <- list(
   list(components="MeanCenteredX", isNuisance=FALSE)
 )
 options$descriptives <- TRUE
+options$residualDurbinWatson <- FALSE
+options$residualCasewiseDiagnostic <- FALSE
+options$residualsSavedToData <- FALSE
+options$residualsSavedToDataColumn <- FALSE
+options$residualStatistic <- FALSE
 
 results <- jaspTools::runAnalysis("RegressionLinear", "Regression.csv", options)
 
