@@ -31,13 +31,6 @@ Group
 		label: qsTr("Statistics") 
 		visible: analysis === Type.Analysis.LinearRegression
 	}
-
-	CheckBox 
-	{ 
-		name: "residualDurbinWatson"
-		label: qsTr("Durbin-Watson")
-		visible: analysis === Type.Analysis.LinearRegression 
-	}
 	
 	CheckBox
 	{

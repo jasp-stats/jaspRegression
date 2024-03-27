@@ -123,6 +123,7 @@ Form
 			CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")				}
 			CheckBox { name: "fChange";						label: qsTr("F change")				}
 			CheckBox { name: "modelAICBIC";					label: qsTr("AIC and BIC")				}
+			CheckBox { name: "residualDurbinWatson";		label: qsTr("Durbin-Watson")	}
 			
 		}
 
