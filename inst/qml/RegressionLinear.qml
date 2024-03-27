@@ -19,9 +19,14 @@ import QtQuick
 import QtQuick.Layouts
 import JASP
 import JASP.Controls
+import "./common"		as Common
 
 Form
 {
+	id: form
+	property int analysis:	Common.Type.Analysis.LinearRegression
+	property int framework:	Common.Type.Framework.Classical
+
 	Formula
 	{
 		lhs: "dependent"
@@ -74,83 +79,67 @@ Form
 	{
 		title: qsTr("Statistics")
 
+		columns: 2
 		Group
 		{
 			title: qsTr("Coefficients")
-			columns: 2
-			Layout.columnSpan: 2
-			Group
+			CheckBox
 			{
+				name: "coefficientEstimate"
+				label: qsTr("Estimates")
+				checked: true
+				onClicked: { if (!checked && bootstrapping.checked) bootstrapping.click() }
 				CheckBox
 				{
-					name: "coefficientEstimate"
-					label: qsTr("Estimates")
-					checked: true
-					onClicked: { if (!checked && bootstrapping.checked) bootstrapping.click() }
-					CheckBox
+					id: bootstrapping
+					name: "coefficientBootstrap"
+					label: qsTr("From")
+					childrenOnSameRow: true
+					IntegerField
 					{
-						id: bootstrapping
-						name: "coefficientBootstrap"
-						label: qsTr("From")
-						childrenOnSameRow: true
-						IntegerField
-						{
-							name: "coefficientBootstrapSamples"
-							defaultValue: 5000
-							fieldWidth: 50
-							min: 100
-							afterLabel: qsTr("bootstraps")
-						}
+						name: "coefficientBootstrapSamples"
+						defaultValue: 5000
+						fieldWidth: 50
+						min: 100
+						afterLabel: qsTr("bootstraps")
 					}
 				}
-
-				CheckBox
-				{
-					name: "coefficientCi"; label: qsTr("Confidence intervals")
-					childrenOnSameRow: true
-					CIField { name: "coefficientCiLevel" }
-				}
-				CheckBox { name: "covarianceMatrix"; label: qsTr("Covariance matrix") }
-				CheckBox { name: "vovkSellke"; label: qsTr("Vovk-Sellke maximum p-ratio") }
 			}
 
-			Group
+			CheckBox
 			{
-				CheckBox { name: "modelFit";					label: qsTr("Model fit");  checked: true		}
-				CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")				}
-				CheckBox { name: "descriptives";				label: qsTr("Descriptives")					}
-				CheckBox { name: "partAndPartialCorrelation";	label: qsTr("Part and partial correlations")	}
-				CheckBox { name: "collinearityDiagnostic";		label: qsTr("Collinearity diagnostics")		}
+				name: "coefficientCi"; label: qsTr("Confidence intervals")
+				childrenOnSameRow: true
+				CIField { name: "coefficientCiLevel" }
 			}
+			CheckBox { name: "collinearityStatistic";		label: qsTr("Tolerance and VIF")		}
+			CheckBox { name: "vovkSellke"; label: qsTr("Vovk-Sellke maximum p-ratio") }
+		}
+		
+
+		Group
+		{
+			title: qsTr("Model Summary")
+			CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")				}
+			CheckBox { name: "fChange";						label: qsTr("F change")				}
+			CheckBox { name: "modelAICBIC";					label: qsTr("AIC and BIC")				}
+			
 		}
 
 		Group
 		{
-			title: qsTr("Residuals")
-            CheckBox { name: "residualStatistic";     label: qsTr("Statistics")    }
-            CheckBox { name: "residualDurbinWatson";	label: qsTr("Durbin-Watson") }
-			CheckBox
-			{
-				name: "residualCasewiseDiagnostic";	label: qsTr("Casewise diagnostics")
-				RadioButtonGroup
-				{
-					name: "residualCasewiseDiagnosticType"
-					RadioButton
-					{
-						value: "outliersOutside"; label: qsTr("Standard residual >"); checked: true
-						childrenOnSameRow: true
-                        DoubleField { name: "residualCasewiseDiagnosticZThreshold"; defaultValue: 3	}
-					}
-					RadioButton
-					{
-						value: "cooksDistance";	label: qsTr("Cook's distance >")
-						childrenOnSameRow: true
-                        DoubleField { name: "residualCasewiseDiagnosticCooksDistanceThreshold";	defaultValue: 1	}
-					}
-					RadioButton { value: "allCases"; label: qsTr("All")										}
-				}
-			}
+			title: qsTr("Display")
+			CheckBox { name: "modelFit";					label: qsTr("Model fit");  checked: true		}
+			CheckBox { name: "descriptives";				label: qsTr("Descriptives")					}
+			CheckBox { name: "partAndPartialCorrelation";	label: qsTr("Part and partial correlations")	}
+			CheckBox { name: "covarianceMatrix"; label: qsTr("Coefficients covariance matrix") }
+			CheckBox { name: "collinearityDiagnostic";		label: qsTr("Collinearity diagnostics")		}
+
 		}
+
+		
+
+	Common.OutlierComponent { id: outlierComponentt}
 
 	}
 

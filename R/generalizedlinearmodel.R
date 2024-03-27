@@ -470,7 +470,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "standardized deviance")
   .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "studentized deviance")
 
-  .glmInfluenceTable(jaspResults, dataset, options, ready, position = 9)
+  .glmInfluenceTable(jaspResults[["diagnosticsContainer"]], 
+                     jaspResults[["glmModels"]][["object"]][["fullModel"]],
+                     dataset, options, ready, position = 9)
+  
+  .regressionExportResiduals(jaspResults, 
+                             jaspResults[["glmModels"]][["object"]][["fullModel"]],
+                             dataset, options, ready)
+  
   .glmMulticolliTable(jaspResults, dataset, options, ready, position = 10)
 
   return()
@@ -896,29 +903,31 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
 
 # Table: Influential cases
-.glmInfluenceTable <- function(jaspResults, dataset, options, ready, position) {
+.glmInfluenceTable <- function(jaspResults, model, dataset, options, ready, position, linRegAnalysis = FALSE) {
 
   tableOptionsOn <- c(options[["dfbetas"]],
                       options[["dffits"]],
                       options[["covarianceRatio"]],
-                      options[["cooksDistance"]],
+                      # options[["cooksDistance"]],
                       options[["leverage"]])
 
-
-  if (!ready | !any(tableOptionsOn))
+  if (!ready | !options[["residualCasewiseDiagnostic"]])
     return()
 
 
-  tableOptions <- c("dfbetas", "dffits", "covarianceRatio", "cooksDistance", "leverage")
+  tableOptions <- c("dfbetas", "dffits", "covarianceRatio", "leverage")
   tableOptionsClicked <- tableOptions[tableOptionsOn]
+  tableOptionsClicked <- c("cooksDistance", tableOptionsClicked)
 
-  if (is.null(jaspResults[["diagnosticsContainer"]][["influenceTable"]])) {
+  if (is.null(jaspResults[["influenceTable"]])) {
     influenceTable <- createJaspTable(gettext("Table: Influential Cases"))
     influenceTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
                             options             = tableOptions)
+    influenceTable$dependOn(c("residualCasewiseDiagnostic", "residualCasewiseDiagnosticType",
+                             "residualCasewiseDiagnosticZThreshold", "residualCasewiseDiagnosticCooksDistanceThreshold"))
     influenceTable$position <- position
     influenceTable$showSpecifiedColumnsOnly <- TRUE
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]] <- influenceTable
+    jaspResults[["influenceTable"]] <- influenceTable
   }
 
   tableOptionToColName <- function(x) {
@@ -930,18 +939,24 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
            "leverage" = "Leverage")
   }
 
-  if (is.null(jaspResults[["glmModels"]])) {
+  if (is.null(model)) {
     for (option in tableOptionsClicked) {
       colTitle    <- tableOptionToColName(option)
-      jaspResults[["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
+      influenceTable$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
     }
   } else {
-    glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
+    
     colNameList  <- c()
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
+    influenceTable$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
+    influenceTable$addColumnInfo(name = "stdResidual", title = gettext("Std. Residual"),   type = "number", format = "dp:3")
+    influenceTable$addColumnInfo(name = "dependent",   title = options$dependent,          type = "number")
+    influenceTable$addColumnInfo(name = "predicted",   title = gettext("Predicted Value"), type = "number")
+    influenceTable$addColumnInfo(name = "residual", title = gettext("Residual"),   type = "number", format = "dp:3")
+    
+    alwaysPresent <- c("caseN", "stdResidual", "dependent", "predicted", "residual")
     for (option in tableOptionsClicked) {
       if (option == "dfbetas") {
-        predictors <- names(glmFullModel$coefficients)
+        predictors <- names(model$coefficients)
         for (predictor in predictors) {
           dfbetasName  <- gettextf("DFBETAS_%1s", predictor)
           colNameList <- c(colNameList, dfbetasName)
@@ -949,19 +964,23 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
             dfbetasTitle <- gettext("DFBETAS:Intercept")
           else
             dfbetasTitle <- gettextf("DFBETAS:%1s", gsub(":", "*", predictor))
-          jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = dfbetasName, title = dfbetasTitle, type = "number")
+          influenceTable$addColumnInfo(name = dfbetasName, title = dfbetasTitle, type = "number")
         }
       } else {
         colNameList <- c(colNameList, option)
         colTitle    <- tableOptionToColName(option)
-        jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
+        influenceTable$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
       }
     }
-    .glmInfluenceTableFill(jaspResults, dataset, options, ready, model = glmFullModel, influenceMeasures = tableOptionsClicked, colNames = colNameList)
+    .glmInfluenceTableFill(influenceTable, dataset, options, ready, 
+                           model = model, 
+                           influenceMeasures = tableOptionsClicked, 
+                           colNames = c(colNameList, alwaysPresent))
   }
 }
 
-.glmInfluenceTableFill <- function(jaspResults, dataset, options, ready, model, influenceMeasures, colNames) {
+.glmInfluenceTableFill <- function(influenceTable, dataset, options, ready, model, influenceMeasures, colNames) {
+
   influenceRes <- influence.measures(model)
   nDFBETAS     <- length(names(model$coefficients))
 
@@ -978,25 +997,44 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     colInd <- c(colInd, optionToColInd(measure, nDFBETAS))
   }
 
-  influenceResData      <- as.data.frame(influenceRes[["infmat"]][, colInd])
-  names(influenceResData) <- colNames
-  caseN <- seq.int(nrow(influenceResData))
-  influenceResData <- cbind(caseN, influenceResData)
+  influenceResData <- as.data.frame(influenceRes[["infmat"]][, colInd])
+  influenceResData[["caseN"]] <- seq.int(nrow(influenceResData))
+  influenceResData[["stdResidual"]] <- rstandard(model)
+  influenceResData[["dependent"]] <- model.frame(model)[[options$dependent]]
+  influenceResData[["predicted"]] <- model$fitted.values
+  influenceResData[["residual"]] <- model$residual
+  
+  
+  if (options$residualCasewiseDiagnosticType == "cooksDistance")
+    index <- which(abs(influenceResData[["cook.d"]]) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
+  else if (options$residualCasewiseDiagnosticType == "outliersOutside")
+    index <- which(abs(influenceResData[["stdResidual"]]) > options$residualCasewiseDiagnosticZThreshold)
+  else # all
+    index <- seq.int(nrow(influenceResData))
 
-  influenceResSig       <- influenceRes[["is.inf"]][, colInd]
+  # funky statement to ensure a df even if only 1 row
+  influenceResSig       <- subset(influenceRes[["is.inf"]], 1:nrow(influenceResData) %in% index, select = colInd)
+  colnames(influenceResSig) <- colNames[1:length(colInd)]
+  
+  influenceResData <- influenceResData[index, ]
+  colnames(influenceResData) <- colNames
 
-  if (length(colInd) > 1) {
-    influenceResDataFinal <- influenceResData[rowSums(influenceResSig) > 0, , drop = FALSE]
-  } else {
-    influenceResDataFinal <- influenceResData[influenceResSig > 0, , drop = FALSE]
-  }
-
-  nRowInfluential <- nrow(influenceResDataFinal)
-
-  if (nRowInfluential == 0)
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addFootnote(gettext("No influential cases found."))
+  if (length(index) == 0)
+    influenceTable$addFootnote(gettext("No influential cases found."))
   else {
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$setData(influenceResDataFinal)
+    influenceTable$setData(influenceResData)
+    # if any other metrix show influence, add footnotes:
+    if (sum(influenceResSig) > 0) {
+      for (thisCol in colnames(influenceResSig)) {
+        if (sum(influenceResSig[, thisCol]) > 0) 
+          influenceTable$addFootnote(
+            gettext("Potentially influential case, according to the selected influence measure."), 
+            colNames = thisCol,
+            rowNames = rownames(influenceResData)[influenceResSig[, thisCol]],
+            symbol = "*"
+          )
+      }
+    }
   }
 }
 

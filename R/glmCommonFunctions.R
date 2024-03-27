@@ -198,6 +198,23 @@
   }
 }
 
+.regressionExportResiduals <- function(container, model, dataset, options, ready) {
+  
+  if (isFALSE(options[["residualsSavedToData"]]))
+    return()
+  
+  if (is.null(container[["residualsSavedToDataColumn"]]) && options[["residualsSavedToDataColumn"]] != "") {
+    
+    residuals <- model[["residuals"]] # extract residuals
+    
+    container[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
+    container[["residualsSavedToDataColumn"]]$dependOn(options = c("residualsSavedToDataColumn", "residualsSavedToData"))
+    container[["residualsSavedToDataColumn"]]$setScale(residuals)
+    
+  }
+  
+}
+
 .constInfoTransform <- function(family, x) {
   switch(family,
          "bernoulli" = 1/(sin(sqrt(x))),
