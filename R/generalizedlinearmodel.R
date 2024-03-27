@@ -908,14 +908,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   tableOptionsOn <- c(options[["dfbetas"]],
                       options[["dffits"]],
                       options[["covarianceRatio"]],
-                      # options[["cooksDistance"]],
-                      options[["leverage"]])
+                      options[["leverage"]],
+                      options[["mahalanobis"]])
 
   if (!ready | !options[["residualCasewiseDiagnostic"]])
     return()
 
 
-  tableOptions <- c("dfbetas", "dffits", "covarianceRatio", "leverage")
+  tableOptions <- c("dfbetas", "dffits", "covarianceRatio", "leverage", "mahalanobis")
   tableOptionsClicked <- tableOptions[tableOptionsOn]
   tableOptionsClicked <- c("cooksDistance", tableOptionsClicked)
 
@@ -936,7 +936,8 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
            "dffits"   = "DFFITS",
            "covarianceRatio" = "Covariance Ratio",
            "cooksDistance"   = "Cook's Distance",
-           "leverage" = "Leverage")
+           "leverage" = "Leverage",
+           "mahalanobis" = "Mahalanobis")
   }
 
   if (is.null(model)) {
@@ -1003,7 +1004,10 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   influenceResData[["dependent"]] <- model.frame(model)[[options$dependent]]
   influenceResData[["predicted"]] <- model$fitted.values
   influenceResData[["residual"]] <- model$residual
-  
+# browser()
+  modelMatrix <- as.data.frame(model.matrix(model))
+  modelMatrix <- modelMatrix[colnames(modelMatrix) != "(Intercept)"]
+  influenceResData[["mahalanobis"]] <- mahalanobis(modelMatrix, center = colMeans(modelMatrix), cov = cov(modelMatrix))
   
   if (options$residualCasewiseDiagnosticType == "cooksDistance")
     index <- which(abs(influenceResData[["cook.d"]]) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
@@ -1017,7 +1021,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   colnames(influenceResSig) <- colNames[1:length(colInd)]
   
   influenceResData <- influenceResData[index, ]
-  colnames(influenceResData) <- colNames
+  colnames(influenceResData)[1:length(colInd)] <- colNames[1:length(colInd)]
 
   if (length(index) == 0)
     influenceTable$addFootnote(gettext("No influential cases found."))
