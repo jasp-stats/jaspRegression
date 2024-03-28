@@ -51,9 +51,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   # these output elements show statistics of the "final model" (lm fit with all predictors in enter method and last lm fit in stepping methods)
   finalModel <- model[[length(model)]]
 
-  if (options$residualCasewiseDiagnostic && is.null(modelContainer[["casewiseTable"]]))
-    .linregCreateCasewiseDiagnosticsTable(modelContainer, finalModel, options, position = 9)
-
+  if (options$residualCasewiseDiagnostic && is.null(modelContainer[["influenceTable"]])) 
+    .glmInfluenceTable(modelContainer, finalModel$fit, dataset, options, ready = TRUE, position = 9, linRegAnalysis = TRUE)
+  .regressionExportResiduals(modelContainer, finalModel$fit, dataset, options, ready = TRUE)
+  
+  
   if (options$residualStatistic && is.null(modelContainer[["residualsTable"]]))
     .linregCreateResidualsTable(modelContainer, finalModel, options, position = 10)
 
@@ -191,7 +193,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   else
     summaryTable <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
 
-  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange"))
+  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange", "fChange", "modelAICBIC"))
   summaryTable$position <- position
   summaryTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -201,9 +203,16 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   summaryTable$addColumnInfo(name = "adjR2",  title = gettextf("Adjusted R%s", "\u00B2"),  type = "number", format = "dp:3")
   summaryTable$addColumnInfo(name = "RMSE",   title = gettext("RMSE"),                     type = "number")
 
-  if (options$rSquaredChange) {
-    summaryTable$addColumnInfo(name = "R2c",  title = gettextf("R%s Change", "\u00B2"), type = "number", format = "dp:3")
-    summaryTable$addColumnInfo(name = "Fc",   title = gettext("F Change"),              type = "number")
+  if (options$modelAICBIC) {
+    summaryTable$addColumnInfo(name = "AIC",      title = gettext("AIC"),                  type = "number", format = "dp:3")
+    summaryTable$addColumnInfo(name = "BIC",      title = gettext("BIC"),                  type = "number", format = "dp:3")
+  }
+    
+  if (options$rSquaredChange || options$fChange) {
+    if (options$rSquaredChange)
+        summaryTable$addColumnInfo(name = "R2c",  title = gettextf("R%s Change", "\u00B2"), type = "number", format = "dp:3")
+    if (options$fChange)
+        summaryTable$addColumnInfo(name = "Fc",   title = gettext("F Change"),              type = "number")
     summaryTable$addColumnInfo(name = "df1",  title = gettext("df1"),                   type = "integer")
     summaryTable$addColumnInfo(name = "df2",  title = gettext("df2"),                   type = "integer")
     summaryTable$addColumnInfo(name = "p",    title = gettext("p"),                     type = "pvalue")
@@ -242,6 +251,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       R     = as.numeric(sqrt(lmSummary$r.squared)),
       R2    = as.numeric(lmSummary$r.squared),
       adjR2 = as.numeric(lmSummary$adj.r.squared),
+      AIC   = as.numeric(AIC(model[[i]][["fit"]])),
+      BIC   = as.numeric(BIC(model[[i]][["fit"]])),
       RMSE  = as.numeric(lmSummary$sigma),
       R2c   = rSquareChange$R2c,
       Fc    = rSquareChange$Fc,
@@ -299,7 +310,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   coeffTable <- createJaspTable(gettext("Coefficients"))
   coeffTable$dependOn(c("coefficientEstimate", "coefficientCi", "coefficientCiLevel",
-                        "collinearityDiagnostic", "vovkSellke"))
+                        "collinearityStatistic", "vovkSellke"))
   coeffTable$position <- position
   coeffTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -319,7 +330,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     coeffTable$addColumnInfo(name = "upper", title = gettext("Upper"), type = "number", overtitle = overtitle)
   }
 
-  if (options$collinearityDiagnostic) {
+  if (options$collinearityStatistic) {
     overtitle <- gettext("Collinearity Statistics")
     coeffTable$addColumnInfo(name = "tolerance",  title = gettext("Tolerance"),  type = "number", format = "dp:3", overtitle = overtitle)
     coeffTable$addColumnInfo(name = "VIF",        title = gettext("VIF"),        type = "number",                  overtitle = overtitle)
@@ -593,10 +604,28 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   caseDiagTable$addColumnInfo(name = "cooksD",      title = gettext("Cook's Distance"), type = "number", format = "dp:3")
 
   if (!is.null(finalModel)) {
-    caseDiagData <- .linregGetCasewiseDiagnostics(finalModel$fit, options)
-    caseDiagTable$setData(caseDiagData)
+    
+    stdResidualsAll       <- rstandard(finalModel$fit)
+    # stdResidualsAll       <-  statmod::qresid(fit)
+    # stdResidualsAll       <- rstudent(fit
+    cooksDAll             <- cooks.distance(finalModel$fit)
+    
+    if (options$residualCasewiseDiagnosticType == "cooksDistance")
+      index <- which(abs(cooksDAll) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
+    else if (options$residualCasewiseDiagnosticType == "outliersOutside")
+      index <- which(abs(stdResidualsAll) > options$residualCasewiseDiagnosticZThreshold)
+    else # all
+      index <- seq_along(predictedValuesAll)
+    
+    # browser()
+    diagnosticsContainer <- createJaspContainer(title = gettext("Diagnostics"))
+    modelContainer[["diagnosticsContainer"]] <- diagnosticsContainer
+    
+    .glmInfluenceTable(modelContainer, dataset[index, ], options, ready = TRUE, 
+                       position = position, linRegAnalysis = TRUE)
 
-    if (length(caseDiagData) == 0) {
+
+    if (sum(index) == 0) {
       message <- switch(
         options[["residualCasewiseDiagnosticType"]],
         cooksDistance = gettextf("No cases where |Cook's distance| > %s", options[["residualCasewiseDiagnosticCooksDistanceThreshold"]]),
@@ -1504,6 +1533,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     residualsAll          <- residuals(fit)
     stdPredictedValuesAll <- (predictedValuesAll - mean(predictedValuesAll)) / sd(predictedValuesAll)
     stdResidualsAll       <- rstandard(fit)
+    # stdResidualsAll       <-  statmod::qresid(fit)
+    # stdResidualsAll       <- rstudent(fit
     cooksDAll             <- cooks.distance(fit)
 
     if (options$residualCasewiseDiagnosticType == "cooksDistance")

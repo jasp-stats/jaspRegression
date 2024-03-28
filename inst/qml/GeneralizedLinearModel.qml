@@ -20,11 +20,15 @@ import QtQuick
 import QtQuick.Layouts
 import JASP
 import JASP.Controls
-import "./common"		as GLM
+import "./common"		as Common
 
 // All Analysis forms must be built with the From QML item
 Form
 {
+	id: form
+	property int analysis:	Common.Type.Analysis.GLM
+	property int framework:	Common.Type.Framework.Classical
+
 	Formula
 	{
 		lhs: "dependent"
@@ -32,7 +36,7 @@ Form
 		userMustSpecify: "covariates"
 	}
 
-	GLM.GlmInputComponent { id: input}
+	Common.GlmInputComponent {}
 
 	Section
 	{
@@ -94,7 +98,9 @@ Form
 		title: qsTr("Diagnostics")
 		enabled: input.otherFamilyNotSelected
 
-		GLM.GlmResidualAnalysisPlotsComponent {}
+		Common.OutlierComponent { id: outlierComponentt}
+
+		Common.GlmResidualAnalysisPlotsComponent {}
 
 		Group
 		{
@@ -102,7 +108,7 @@ Form
 			CheckBox
 			{
 				name:				"quantileResidualOutlierTable"
-				label:				qsTr("Standardized quantile residuals: top")
+				label:				qsTr("Standardized quantile residuals : top")
 				childrenOnSameRow:	true
 				IntegerField { name: "quantileResidualOutlierTableTopN"; defaultValue: 3	}
 			}
@@ -122,15 +128,7 @@ Form
 			}
 		}
 
-		Group
-		{
-			title: qsTr("Show Influential Cases")
-			CheckBox { name: "dfbetas";  label: qsTr("DFBETAS")				}
-			CheckBox { name: "dffits";   label: qsTr("DFFITS")				}
-			CheckBox { name: "covarianceRatio"; label: qsTr("Covariance ratio")	}
-			CheckBox { name: "cooksDistance";   label: qsTr("Cook's distance")		}
-			CheckBox { name: "leverage"; label: qsTr("Leverages")			}
-		}
+
 
 		Group
 		{
@@ -140,7 +138,7 @@ Form
 		}
 	}
 
-	GLM.EmmComponent { enabled: input.otherFamilyNotSelected }
+	Common.EmmComponent { enabled: input.otherFamilyNotSelected }
 
 	Section
 	{

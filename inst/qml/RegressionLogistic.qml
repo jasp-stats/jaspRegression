@@ -123,7 +123,7 @@ Form
 				CheckBox { name: "vovkSellke";	label: qsTr("Vovk-Sellke maximum p-ratio")	}
 			}
 
-            CheckBox { name: "multicollinearity"; label: qsTr("Multicollinearity Diagnostics") }
+            CheckBox { name: "multicollinearity"; label: qsTr("Multicollinearity diagnostics") }
 		}        
 
         Group
