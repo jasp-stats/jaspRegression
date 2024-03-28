@@ -56,10 +56,12 @@ Group
 
 		Group
 		{
-			CheckBox { name: "dfbetas";  label: qsTr("DFBETAS")				}
-			CheckBox { name: "dffits";   label: qsTr("DFFITS")				}
+			CheckBox { name: "dfbetas"; 		label: qsTr("DFBETAS")		}
+			CheckBox { name: "dffits";   		label: qsTr("DFFITS")		}
 			CheckBox { name: "covarianceRatio"; label: qsTr("Cov ratio")	}
-			CheckBox { name: "leverage"; label: qsTr("Leverage")			}
+			CheckBox { name: "leverage"; 		label: qsTr("Leverage")		}
+			CheckBox { name: "mahalanobis"; 	label: qsTr("Mahalanobis")	}
+
 		}
 
 	}
