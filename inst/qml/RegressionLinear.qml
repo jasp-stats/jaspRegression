@@ -82,6 +82,16 @@ Form
 		columns: 2
 		Group
 		{
+			title: qsTr("Model Summary")
+			CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")				}
+			CheckBox { name: "fChange";						label: qsTr("F change")				}
+			CheckBox { name: "modelAICBIC";					label: qsTr("AIC and BIC")				}
+			CheckBox { name: "residualDurbinWatson";		label: qsTr("Durbin-Watson")	}
+			
+		}
+		
+		Group
+		{
 			title: qsTr("Coefficients")
 			CheckBox
 			{
@@ -114,17 +124,6 @@ Form
 			}
 			CheckBox { name: "collinearityStatistic";		label: qsTr("Tolerance and VIF")		}
 			CheckBox { name: "vovkSellke"; label: qsTr("Vovk-Sellke maximum p-ratio") }
-		}
-		
-
-		Group
-		{
-			title: qsTr("Model Summary")
-			CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")				}
-			CheckBox { name: "fChange";						label: qsTr("F change")				}
-			CheckBox { name: "modelAICBIC";					label: qsTr("AIC and BIC")				}
-			CheckBox { name: "residualDurbinWatson";		label: qsTr("Durbin-Watson")	}
-			
 		}
 
 		Group

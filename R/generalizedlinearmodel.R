@@ -999,6 +999,8 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   }
 
   influenceResData <- as.data.frame(influenceRes[["infmat"]][, colInd])
+  colnames(influenceResData)[1:length(colInd)] <- colNames[1:length(colInd)]
+  
   influenceResData[["caseN"]] <- seq.int(nrow(influenceResData))
   influenceResData[["stdResidual"]] <- rstandard(model)
   influenceResData[["dependent"]] <- model.frame(model)[[options$dependent]]
@@ -1010,7 +1012,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   influenceResData[["mahalanobis"]] <- mahalanobis(modelMatrix, center = colMeans(modelMatrix), cov = cov(modelMatrix))
   
   if (options$residualCasewiseDiagnosticType == "cooksDistance")
-    index <- which(abs(influenceResData[["cook.d"]]) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
+    index <- which(abs(influenceResData[["cooksDistance"]]) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
   else if (options$residualCasewiseDiagnosticType == "outliersOutside")
     index <- which(abs(influenceResData[["stdResidual"]]) > options$residualCasewiseDiagnosticZThreshold)
   else # all
@@ -1021,7 +1023,6 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   colnames(influenceResSig) <- colNames[1:length(colInd)]
   
   influenceResData <- influenceResData[index, ]
-  colnames(influenceResData)[1:length(colInd)] <- colNames[1:length(colInd)]
 
   if (length(index) == 0)
     influenceTable$addFootnote(gettext("No influential cases found."))
