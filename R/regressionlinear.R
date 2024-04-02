@@ -1847,7 +1847,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (is.null(predictors) && includeConstant == FALSE)
     stop(gettext("We need at least one predictor, or an intercept to make a formula"))
 
-  if (is.null(predictors))
+  if (length(predictors) == 0)
     formula <- paste(dependent, "~", "1")
   else if (includeConstant)
     formula <- paste(dependent, "~", paste(predictors, collapse = "+"))
@@ -1928,10 +1928,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetIndicesOfModelsWithPredictors <- function(model, options) {
-  predictorsInNull  <- .linregGetPredictors(options$modelTerms, modelType = "null")
+  predictorsInNull  <- model[[1]]$predictors
   indices           <- seq_along(model)
+  
   if (options$method == "enter") {
-    if (length(model) >= 1 && options$interceptTerm && is.null(predictorsInNull))
+    if (length(model) >= 1 && options$interceptTerm && length(predictorsInNull) == 0)
       indices <- indices[-1]
   } else {
     for (i in seq_along(model))
