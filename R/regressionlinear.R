@@ -228,7 +228,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       summaryTable$addFootnote(message = gettext("p-value for Durbin-Watson test is unavailable for weighted regression."))
   }
 
-  .linregAddPredictorsInNullFootnote(summaryTable, options$modelTerms)
+  .linregAddPredictorsInNullFootnote(summaryTable, options$modelTerms[[1]][["indicators"]])
 
   if (!is.null(model)) {
     if (length(model) == 1 && length(model[[1]]$predictors) == 0 && !options$interceptTerm)
@@ -280,7 +280,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   anovaTable$addColumnInfo(name = "F",     title = gettext("F"),              type = "number")
   anovaTable$addColumnInfo(name = "p",     title = gettext("p"),              type = "pvalue")
 
-  .linregAddPredictorsInNullFootnote(anovaTable, options$modelTerms)
+  .linregAddPredictorsInNullFootnote(anovaTable, options$modelTerms[[1]][["indicators"]])
   .linregAddVovkSellke(anovaTable, options$vovkSellke)
 
   if (!is.null(model)) {
@@ -617,7 +617,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     else # all
       index <- seq_along(predictedValuesAll)
     
-    # browser()
     diagnosticsContainer <- createJaspContainer(title = gettext("Diagnostics"))
     modelContainer[["diagnosticsContainer"]] <- diagnosticsContainer
     
@@ -758,7 +757,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregCreatePartialPlots <- function(modelContainer, dataset, options, position) {
-  predictors <- .linregGetPredictors(options$modelTerms, encoded = TRUE)
+  predictors <- .linregGetPredictors(options$modelTerms)
 
   title <- ngettext(length(predictors), "Partial Regression Plot", "Partial Regression Plots")
 
@@ -768,7 +767,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   partialPlotContainer$position <- position
   modelContainer[["partialPlotContainer"]] <- partialPlotContainer
 
-  predictors <- .linregGetPredictors(options$modelTerms, encoded = TRUE)
+  predictors <- .linregGetPredictors(options$modelTerms)
   if (any(.linregIsInteraction(predictors))) {
     .linregCreatePlotPlaceholder(partialPlotContainer, index = "placeholder", title = "")
     partialPlotContainer$setError(gettext("Partial plots are not supported for models containing interaction terms"))
@@ -840,24 +839,25 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     model <- .linregCalcDurBinWatsonTestResults(modelContainer, model, options)
     return(model)
   }
-
+  nModels           <- length(options$modelTerms)
   dependent         <- options$dependent
-  predictorsInNull  <- .linregGetPredictors(options$modelTerms, modelType = "null")
-  predictors        <- .linregGetPredictors(options$modelTerms, modelType = "alternative") # these include the null terms
-
+ 
+  predictorsInNull  <- gsub(options$modelTerms[[1]]$indicators, pattern = " .* ", replacement = ":")
+  predictorsInFull        <- gsub(options$modelTerms[[nModels]]$indicators, pattern = " .* ", replacement = ":") # these include the null terms
+  
   if (options$weights != "")
     weights <- dataset[[options$weights]]
   else
     weights <- rep(1, length(dataset[[dependent]]))
-
-  if (options$method %in% c("backward", "forward", "stepwise") && length(predictors) > 0)
-    model <- .linregGetModelSteppingMethod(dependent, predictors, predictorsInNull, dataset, options, weights)
+  
+  if (options$method %in% c("backward", "forward", "stepwise") && length(predictorsInFull) > 0)
+    model <- .linregGetModelSteppingMethod(dependent, predictorsInFull, predictorsInNull, dataset, options, weights)
   else
-    model <- .linregGetModelEnterMethod(dependent, predictors, predictorsInNull, dataset, options, weights)
+    model <- .linregGetModelEnterMethod(dependent, modelTerms = options[["modelTerms"]], dataset, options, weights)
 
   for (i in seq_along(model)) {
     singleModel <- model[[i]]
-    model[[i]][["title"]]         <- .linregGetModelTitle(singleModel$predictors, predictorsInNull, options$method, i)
+    model[[i]][["title"]]         <-  gettextf("M%s", intToUtf8(0x2080 + i - 1, multiple = FALSE)) # singleModel[["title"]]
     model[[i]][["summary"]]       <- .linregGetSummary(singleModel$fit)
     model[[i]][["rSquareChange"]] <- .linregGetrSquaredChange(singleModel$fit, i, model[1:i], options)
   }
@@ -897,27 +897,16 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(model)
 }
 
-.linregGetModelEnterMethod <- function(dependent, predictors, predictorsInNull, dataset, options, weights) {
+.linregGetModelEnterMethod <- function(dependent, modelTerms, dataset, options, weights) {
   model <- list()
 
-  formulaNull <- NULL
-  if (length(predictorsInNull) > 0)
-    formulaNull <- .linregGetFormula(dependent, predictorsInNull, options$interceptTerm)
-  else if (options$interceptTerm)
-    formulaNull <- .linregGetFormula(dependent, NULL, TRUE)
+  for (thisModel in modelTerms) {
 
-  formula <- NULL
-  if (length(predictors) > 0 && !all(predictors %in% predictorsInNull))
-    formula <- .linregGetFormula(dependent, predictors, options$interceptTerm)
-
-  if (!is.null(formulaNull)) {
-    fitNull <- stats::lm(formulaNull, data = dataset, weights = weights, x = TRUE)
-    model[[1]] <- list(fit = fitNull, predictors = predictorsInNull, title = gettextf("H%s", "\u2080"))
-  }
-
-  if (!is.null(formula)) {
+    thisModelTerms <- gsub(thisModel[["indicators"]], pattern = " .* ", replacement = ":")
+    formula <- .linregGetFormula(dependent, thisModelTerms, options$interceptTerm)
     fit <- stats::lm(formula, data = dataset, weights = weights, x = TRUE)
-    model[[length(model) + 1]] <- list(fit = fit, predictors = predictors, title = gettextf("H%s", "\u2081"))
+    model[[length(model) + 1]] <- list(fit = fit, predictors = thisModelTerms, title = gettext(thisModel[["title"]]))
+    
   }
 
   return(model)
@@ -1827,24 +1816,18 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(p)
 }
 
-.linregGetPredictors <- function(modelTerms, modelType = "alternative", encoded = TRUE) {
+.linregGetPredictors <- function(modelTerms, modelType = "alternative") {
   if (!is.character(modelType) || !modelType %in% c("alternative", "null"))
     stop(gettext("Unknown value provided for modelType, possible values: `alternative`, `null`"))
 
   predictors <- NULL
   for (i in seq_along(modelTerms)) {
-    components <- unlist(modelTerms[[i]]$components)
-    if (encoded)
-      components <- .v(components)
+    components <- modelTerms[i]
     predictor <- paste0(components, collapse = ":")
 
-    if (modelType == "alternative") {
-      predictors <- c(predictors, predictor)
-    } else if (modelType == "null") {
-      isNuisance <- modelTerms[[i]]$isNuisance
-      if (isNuisance)
-        predictors <- c(predictors, predictor)
-    }
+
+    predictors <- c(predictors, predictor)
+
   }
 
   return(predictors)
@@ -1874,17 +1857,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(as.formula(formula, env = parent.frame(1)))
 }
 
-.linregGetModelTitle <- function(predictors, predictorsInNull, method, index) {
-  modelTitle <- index
-  if (method == "enter") {
-    if (index == 1 && (length(predictors) == 0 || all(predictors %in% predictorsInNull)))
-      modelTitle <- gettextf("H%s", "\u2080")
-    else
-      modelTitle <- gettextf("H%s", "\u2081")
-  }
-
-  return(modelTitle)
-}
 
 .linregIsInteraction <- function(predictor) {
   grepl(":", predictor)
@@ -1930,10 +1902,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregAddPredictorsInNullFootnote <- function(jaspTable, modelTerms) {
-  containsNuisance <- .reglinTermsContainNuisance(modelTerms)
-  if (containsNuisance) {
-    predictorsInNull <- .linregGetPredictors(modelTerms, modelType = "null", encoded = FALSE)
-    jaspTable$addFootnote(message = gettextf("Null model includes %s", paste(predictorsInNull, collapse = ", "), sep = ""))
+  
+  if (length(modelTerms > 0)) {
+    jaspTable$addFootnote(message = gettextf("Null model includes %s", paste(modelTerms, collapse = ", "), sep = ""))
   }
 }
 
