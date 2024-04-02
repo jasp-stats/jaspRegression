@@ -55,21 +55,70 @@ Form
 	}
 
 
+	// Section
+	// {
+	// 	title: qsTr("Model")
+
+	// 	VariablesForm
+	// 	{
+	// 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
+	// 		AvailableVariablesList
+	// 		{
+	// 			name: "availableTerms"
+	// 			title: qsTr("Components")
+	// 			width: parent.width / 4
+	// 			source: ['covariates', 'factors']
+	// 		}
+	// 		ModelTermsList { width: parent.width * 5 / 9 }
+	// 	}
+
+	// 	CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }
+	// }
+
 	Section
 	{
 		title: qsTr("Model")
 
-		VariablesForm
+		
+		// VariablesForm
+		// {
+		// 	preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
+		// 	AvailableVariablesList
+		// 	{
+		// 		title: "Available variables"
+		// 		name: "availableVariables"
+		// 		source: ['covariates', 'factors']
+
+		// 	}
+		// 	AssignedVariablesList
+		// 	{
+		// 		title: "Selected variables"
+		// 		name: "variables"
+		// 	}
+		// }
+
+		FactorsForm
 		{
-			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-			AvailableVariablesList
-			{
-				name: "availableTerms"
-				title: qsTr("Components")
-				width: parent.width / 4
-				source: ['covariates', 'factors']
-			}
-			ModelTermsList { width: parent.width * 5 / 9 }
+			id:					factors
+			name:				"modelTerms"
+			allowAll:			true
+			nested:				nested.checked
+			allowInteraction:	true
+			initNumberFactors:	2
+			baseName:			"model"
+			baseTitle:			"Model"
+			// availableVariablesList.source:		"variables"
+			availableVariablesList.source: ['covariates', 'factors']
+			startIndex:			0
+			availableVariablesListName: "availableTerms"
+		}
+
+		CheckBox
+		{
+			id:			nested
+			label:		"Nested"
+			name:		"nested"
+			checked:	true
 		}
 
 		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }
