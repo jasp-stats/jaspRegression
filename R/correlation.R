@@ -283,11 +283,11 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
 
   if(options$ci){
-    mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),
-                            title = gettextf("Upper %s%% CI", 100*options$ciLevel),
-                            type = "number", overtitle = overtitle)
     mainTable$addColumnInfo(name = sprintf(name, "lower.ci"),
                             title = gettextf("Lower %s%% CI", 100*options$ciLevel),
+                            type = "number", overtitle = overtitle)
+    mainTable$addColumnInfo(name = sprintf(name, "upper.ci"),
+                            title = gettextf("Upper %s%% CI", 100*options$ciLevel),
                             type = "number", overtitle = overtitle)
   }
 
