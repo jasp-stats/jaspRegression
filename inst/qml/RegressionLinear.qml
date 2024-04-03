@@ -54,48 +54,9 @@ Form
 		AssignedVariablesList { name: "weights";	title: qsTr("WLS Weights (optional)");	allowedColumns: ["scale"]; singleVariable: true			}
 	}
 
-
-	// Section
-	// {
-	// 	title: qsTr("Model")
-
-	// 	VariablesForm
-	// 	{
-	// 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-	// 		AvailableVariablesList
-	// 		{
-	// 			name: "availableTerms"
-	// 			title: qsTr("Components")
-	// 			width: parent.width / 4
-	// 			source: ['covariates', 'factors']
-	// 		}
-	// 		ModelTermsList { width: parent.width * 5 / 9 }
-	// 	}
-
-	// 	CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }
-	// }
-
 	Section
 	{
 		title: qsTr("Model")
-
-		
-		// VariablesForm
-		// {
-		// 	preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-		// 	AvailableVariablesList
-		// 	{
-		// 		title: "Available variables"
-		// 		name: "availableVariables"
-		// 		source: ['covariates', 'factors']
-
-		// 	}
-		// 	AssignedVariablesList
-		// 	{
-		// 		title: "Selected variables"
-		// 		name: "variables"
-		// 	}
-		// }
 
 		FactorsForm
 		{
@@ -107,7 +68,6 @@ Form
 			initNumberFactors:	2
 			baseName:			"model"
 			baseTitle:			"Model"
-			// availableVariablesList.source:		"variables"
 			availableVariablesList.source: ['covariates', 'factors']
 			startIndex:			0
 			availableVariablesListName: "availableTerms"

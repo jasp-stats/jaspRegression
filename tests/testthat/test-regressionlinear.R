@@ -13,7 +13,8 @@ initOptsLinReg <- function() {
   options$dependent <- "contNormal"
   options$covariates <- "contGamma"
   options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
+    list(indicators= NULL, name="model0", title = "Model 0"),
+    list(indicators="contGamma", name="model1", title = "Model 1")
   )
   
   options$rSquaredChange <- TRUE
@@ -87,7 +88,7 @@ test_that("ANOVA table results match", {
 test_that("Coefficients Covariance table results match", {
   options <- initOptsLinReg()
   options$covariates <- c("contGamma", "contcor1")
-  options$modelTerms <- list(
+  options$models <- list(
     list(components="contGamma", isNuisance=FALSE),
     list(components="contcor1", isNuisance=FALSE)
   )
