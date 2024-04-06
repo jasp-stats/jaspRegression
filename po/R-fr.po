@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
 "POT-Creation-Date: 2024-03-02 02:46\n"
-"PO-Revision-Date: 2024-02-19 17:01+0000\n"
+"PO-Revision-Date: 2024-04-07 21:02+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/fr/>\n"
@@ -418,7 +418,6 @@ msgstr "AIC"
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgid "df"
 msgstr "ddl"
 
@@ -1043,7 +1042,7 @@ msgid "Coefficient"
 msgstr "Coefficient"
 
 msgid "P(incl)"
-msgstr "P(inclus)"
+msgstr "P(incl)"
 
 msgid "P(excl)"
 msgstr "P(exclu)"
