@@ -47,7 +47,7 @@ Group
 			}
 			RadioButton
 			{
-				value: "cooksDistance";	label: qsTr("Cook's dist >")
+				value: "cooksDistance";	label: qsTr("Cook's dist. >")
 				childrenOnSameRow: true
 				DoubleField { name: "residualCasewiseDiagnosticCooksDistanceThreshold";	defaultValue: 1	}
 			}

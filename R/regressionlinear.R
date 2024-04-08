@@ -110,15 +110,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregCheckIfFactorWithMoreLevels <- function(var) {
   # Custom function to check if a variable is a factor with more than 2 levels
-  is.factor(var) && nlevels(var) > 2
+  return(is.factor(var) && nlevels(var) > 2)
 }
 
 .linregCheckIfInteractionWithFactors <- function(modelTerm, factorVariables) {
   # Custom function to check if interaction contains more than 1 factor
-  if (grepl(modelTerm[["indicators"]], pattern = ":") {
-    thisInterTerm <- strplit(modelTerm[["indicators"]], split = ":")
-    return(sum(modelTerm[["indicators"]] %in% factorVariables) > 1)
-  } 
+  return(sum(modelTerm[["components"]] %in% factorVariables) > 1)
 }
 
 .linregCheckErrors <- function(dataset, options) {
@@ -152,15 +149,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 
   defaultTarget <- c(options$dependent, unlist(options$covariates))
-  .hasErrors(dataset, type = c("infinity", "variance", "observations", "modelInteractions", "varCovData"),
+  .hasErrors(dataset, type = c("infinity", "variance", "observations", "varCovData"),
              custom = stepwiseProcedureChecks,
              custom.target = defaultTarget,
 
              observations.amount = "< 2",
              observations.target = defaultTarget,
-
-             modelInteractions.modelTerms = options$modelTerms,
-             modelInteractions.target = defaultTarget,
 
              varCovData.target = unlist(options$covariates),
              varCovData.corFun = stats::cov,
@@ -231,7 +225,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       summaryTable$addFootnote(message = gettext("p-value for Durbin-Watson test is unavailable for weighted regression."))
   }
 
-  .linregAddPredictorsInNullFootnote(summaryTable, options$modelTerms[[1]][["indicators"]])
+  .linregAddPredictorsInNullFootnote(summaryTable, options$modelTerms[[1]][["components"]])
 
   if (!is.null(model)) {
     if (length(model) == 1 && length(model[[1]]$predictors) == 0 && !options$interceptTerm)
@@ -283,7 +277,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   anovaTable$addColumnInfo(name = "F",     title = gettext("F"),              type = "number")
   anovaTable$addColumnInfo(name = "p",     title = gettext("p"),              type = "pvalue")
 
-  .linregAddPredictorsInNullFootnote(anovaTable, options$modelTerms[[1]][["indicators"]])
+  .linregAddPredictorsInNullFootnote(anovaTable, options$modelTerms[[1]][["components"]])
   .linregAddVovkSellke(anovaTable, options$vovkSellke)
 
   if (!is.null(model)) {
@@ -844,9 +838,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
   nModels           <- length(options$modelTerms)
   dependent         <- options$dependent
- 
-  predictorsInNull  <- gsub(options$modelTerms[[1]]$indicators, pattern = " .* ", replacement = ":")
-  predictorsInFull        <- gsub(options$modelTerms[[nModels]]$indicators, pattern = " .* ", replacement = ":") # these include the null terms
+
+  predictorsInNull  <- .linregGetPredictors(options$modelTerms[[1]][["components"]], modelType = "null")
+  predictorsInFull  <- .linregGetPredictors(options$modelTerms[[nModels]][["components"]], modelType = "alternative") # these include the null terms
+  
   
   if (options$weights != "")
     weights <- dataset[[options$weights]]
@@ -904,8 +899,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   model <- list()
 
   for (thisModel in modelTerms) {
-
-    thisModelTerms <- gsub(thisModel[["indicators"]], pattern = " .* ", replacement = ":")
+    thisModelTerms <- .linregGetPredictors(thisModel[["components"]])
     formula <- .linregGetFormula(dependent, thisModelTerms, options$interceptTerm)
     fit <- stats::lm(formula, data = dataset, weights = weights, x = TRUE)
     model[[length(model) + 1]] <- list(fit = fit, predictors = thisModelTerms, title = gettext(thisModel[["title"]]))
@@ -1825,7 +1819,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   predictors <- NULL
   for (i in seq_along(modelTerms)) {
-    components <- modelTerms[i]
+    components <- modelTerms[[i]]
     predictor <- paste0(components, collapse = ":")
 
 
@@ -1905,9 +1899,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregAddPredictorsInNullFootnote <- function(jaspTable, modelTerms) {
-  
-  if (length(modelTerms > 0)) {
-    jaspTable$addFootnote(message = gettextf("Null model includes %s", paste(modelTerms, collapse = ", "), sep = ""))
+  if (length(modelTerms) > 0) {
+    predictorsInNull <- .linregGetPredictors(modelTerms, modelType = "null")
+    jaspTable$addFootnote(message = gettextf("Null model includes %s", paste(predictorsInNull, collapse = ", "), sep = ""))
   }
 }
 
