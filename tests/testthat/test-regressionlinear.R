@@ -517,12 +517,9 @@ test_that("Fields Book - Chapter 1 results match", {
 
   options$covariates <- c("adverts", "airplay", "attract")
   options$modelTerms <- list(
-    list(components="adverts", name="model0", title = "Model 0"),
-    list(components="airplay", name="model0", title = "Model 0"),
-    list(components="attract", name="model0", title = "Model 0")
-  )
-  list(components=NULL, name="model0", title = "Model 0"),
-  
+    list(components=list("adverts"), name="model0", title = "Model 0"),
+    list(components=list("adverts", "airplay", "attract"), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   output4 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(output4,
@@ -605,6 +602,7 @@ test_that("Fields Book - Chapter 3 results match", {
   options$residualCasewiseDiagnosticType <- "outliersOutside"
   options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientCi <- TRUE
+
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   figure3 <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
   jaspTools::expect_equal_plots(figure3, "field-residuals-predicted")
@@ -706,7 +704,7 @@ test_that("Fields Book - Chapter 4 results match", {
   options$dependent <- "Happiness"
   options$covariates <- c("dummy1", "dummy2")
   options$modelTerms <- list(
-    list(components=list("dummy1"), name="model0", title = "Model 0"),
+    list(components=NULL, name="model0", title = "Model 0"),
     list(components=list("dummy1", "dummy2"), name="model1", title = "Model 1")
   ) 
   options$coefficientCi <- TRUE
@@ -734,11 +732,11 @@ test_that("Fields Book - Chapter 5 results match", {
   options$dependent <- "Happiness"
   options$covariates <- c("Dummy1", "Dummy2")
   options$modelTerms <- list(
-    list(components=list("dummy1"), name="model0", title = "Model 0"),
-    list(components=list("dummy1", "dummy2"), name="model1", title = "Model 1")
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list("Dummy1", "Dummy2"), name="model1", title = "Model 1")
   ) 
   options$coefficientCi <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Contrast.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = Puppies_Contrast, options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(output1a,
                       list("TRUE", 5.11864406779661, 10.0666666666667, 20.1333333333333,
@@ -765,15 +763,6 @@ test_that("VIF is correct when the model contains factors", {
   options$covariates <- c("contcor1", "contcor2", "contGamma")
   options$dependent <- "contNormal"
   options$factors <- c("contBinom", "facFive")
-  options$modelTerms <- list(
-    list(components = "contcor1",  isNuisance = FALSE),
-    list(components = "contcor2",  isNuisance = FALSE),
-    list(components = "contGamma", isNuisance = FALSE),
-    list(components = "contBinom", isNuisance = FALSE),
-    list(components = "facFive", isNuisance = FALSE),
-    list(components = c("contBinom", "facFive"), isNuisance = FALSE),
-    list(components = c("contcor1", "facFive"),  isNuisance = FALSE)
-  )
   options$modelTerms <- list(
     list(components=NULL, name="model0", title = "Model 0"),
     list(components=list("contcor1", "contcor2", "contGamma", "contBinom", "facFive",  

@@ -764,7 +764,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   partialPlotContainer$position <- position
   modelContainer[["partialPlotContainer"]] <- partialPlotContainer
 
-  predictors <- .linregGetPredictors(options$modelTerms)
+  predictors <- .linregGetPredictors(options$modelTerms[[length(options$modelTerms)]][["components"]])
   if (any(.linregIsInteraction(predictors))) {
     .linregCreatePlotPlaceholder(partialPlotContainer, index = "placeholder", title = "")
     partialPlotContainer$setError(gettext("Partial plots are not supported for models containing interaction terms"))
