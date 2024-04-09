@@ -736,7 +736,7 @@ test_that("Fields Book - Chapter 5 results match", {
     list(components=list("Dummy1", "Dummy2"), name="model1", title = "Model 1")
   ) 
   options$coefficientCi <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = Puppies_Contrast, options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Contrast.csv", options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(output1a,
                       list("TRUE", 5.11864406779661, 10.0666666666667, 20.1333333333333,
