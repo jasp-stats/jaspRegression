@@ -52,8 +52,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   finalModel <- model[[length(model)]]
 
   if (options$residualCasewiseDiagnostic && is.null(modelContainer[["influenceTable"]])) 
-    .glmInfluenceTable(modelContainer, finalModel$fit, dataset, options, ready = TRUE, position = 9, linRegAnalysis = TRUE)
-  .regressionExportResiduals(modelContainer, finalModel$fit, dataset, options, ready = TRUE)
+    .glmInfluenceTable(modelContainer, finalModel$fit, dataset, options, ready = ready, position = 9, linRegAnalysis = TRUE)
+  .regressionExportResiduals(modelContainer, finalModel$fit, dataset, options, ready = ready)
   
   
   if (options$residualStatistic && is.null(modelContainer[["residualsTable"]]))
@@ -587,54 +587,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 }
 
-.linregCreateCasewiseDiagnosticsTable <- function(modelContainer, finalModel, options, position) {
-  caseDiagTable <- createJaspTable(gettext("Casewise Diagnostics"))
-  caseDiagTable$dependOn(c("residualCasewiseDiagnostic", "residualCasewiseDiagnosticType",
-                           "residualCasewiseDiagnosticZThreshold", "residualCasewiseDiagnosticCooksDistanceThreshold"))
-  caseDiagTable$position <- position
-
-  caseDiagTable$addColumnInfo(name = "caseNumber",  title = gettext("Case Number"),     type = "integer")
-  caseDiagTable$addColumnInfo(name = "stdResidual", title = gettext("Std. Residual"),   type = "number", format = "dp:3")
-  caseDiagTable$addColumnInfo(name = "dependent",   title = options$dependent,          type = "number")
-  caseDiagTable$addColumnInfo(name = "predicted",   title = gettext("Predicted Value"), type = "number")
-  caseDiagTable$addColumnInfo(name = "residual",    title = gettext("Residual"),        type = "number")
-  caseDiagTable$addColumnInfo(name = "cooksD",      title = gettext("Cook's Distance"), type = "number", format = "dp:3")
-
-  if (!is.null(finalModel)) {
-    
-    stdResidualsAll       <- rstandard(finalModel$fit)
-    # stdResidualsAll       <-  statmod::qresid(fit)
-    # stdResidualsAll       <- rstudent(fit
-    cooksDAll             <- cooks.distance(finalModel$fit)
-    
-    if (options$residualCasewiseDiagnosticType == "cooksDistance")
-      index <- which(abs(cooksDAll) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
-    else if (options$residualCasewiseDiagnosticType == "outliersOutside")
-      index <- which(abs(stdResidualsAll) > options$residualCasewiseDiagnosticZThreshold)
-    else # all
-      index <- seq_along(predictedValuesAll)
-    
-    diagnosticsContainer <- createJaspContainer(title = gettext("Diagnostics"))
-    modelContainer[["diagnosticsContainer"]] <- diagnosticsContainer
-    
-    .glmInfluenceTable(modelContainer, dataset[index, ], options, ready = TRUE, 
-                       position = position, linRegAnalysis = TRUE)
-
-
-    if (sum(index) == 0) {
-      message <- switch(
-        options[["residualCasewiseDiagnosticType"]],
-        cooksDistance = gettextf("No cases where |Cook's distance| > %s", options[["residualCasewiseDiagnosticCooksDistanceThreshold"]]),
-        outliersOutside = gettextf("No cases where |Standard residual| > %s", options[["residualCasewiseDiagnosticZThreshold"]]),
-        gettextf("No cases to show")
-      )
-      caseDiagTable$addFootnote(message = message)
-    }
-  }
-
-  modelContainer[["casewiseTable"]] <- caseDiagTable
-}
-
 .linregCreateResidualsTable <- function(modelContainer, finalModel, options, position) {
   residualsTable <- createJaspTable(gettext("Residuals Statistics"))
   residualsTable$dependOn("residualStatistic")
@@ -749,7 +701,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(finalModel) && !is.null(finalModel$fit)) {
     fit <- finalModel$fit
-    .linregInsertPlot(residQQPlot, .linregPlotQQresiduals, res = residuals(fit) / sd(residuals(fit)))
+
+    .linregInsertPlot(residQQPlot, .glmFillPlotResQQ, model = fit, 
+                      residType = "deviance", options = options)
   }
 }
 
@@ -1768,47 +1722,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     jaspGraphs::geom_rangeframe() +
     jaspGraphs::themeJaspRaw(axis.title.cex = 1.2) +
     ggplot2::theme(axis.ticks.y = ggplot2::element_blank())
-
-  return(p)
-}
-
-.linregPlotQQresiduals <- function(res = NULL, xlab = gettext("Theoretical Quantiles"), ylab= gettext("Standardized Residuals"), cexPoints= 1.3, cexXAxis= 1.3, cexYAxis= 1.3, lwd= 2, lwdAxis=1.2) {
-  d     <- data.frame(qqnorm(res, plot.it = FALSE))
-  d     <- na.omit(d)
-  xVar  <- d$x
-  yVar  <- d$y
-
-  xlow    <- min(pretty(xVar))
-  xhigh   <- max(pretty(xVar))
-  xticks  <- pretty(c(xlow, xhigh))
-
-  ylow    <- min(pretty(yVar))
-  yhigh   <- max(pretty(yVar))
-  yticks  <- pretty(c(ylow, yhigh))
-
-  yLabs <- vector("character", length(yticks))
-
-  for (i in seq_along(yticks)) {
-    if (yticks[i] < 10^6)
-      yLabs[i] <- format(yticks[i], digits= 3, scientific = FALSE)
-    else
-      yLabs[i] <- format(yticks[i], digits= 3, scientific = TRUE)
-  }
-
-  p <- ggplot2::ggplot() +
-    ggplot2::scale_x_continuous(name = gettext("Theoretical Quantiles"), breaks = xticks) +
-    ggplot2::scale_y_continuous(name = gettext("Standardized Residuals"), breaks = xticks) +# TODO: why are xticks used here even though yticks exists?
-    ggplot2::geom_line(
-      data = data.frame(x = c(min(xticks), max(xticks)), y = c(min(xticks), max(xticks))),
-      mapping = ggplot2::aes(x = x, y = y),
-      col = "darkred", size = 1
-    ) +
-    jaspGraphs::geom_point(
-      data = data.frame(x = xVar, y = yVar),
-      mapping = ggplot2::aes(x = x, y = y)
-    ) +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
 
   return(p)
 }

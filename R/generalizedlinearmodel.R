@@ -656,7 +656,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   residNames <- c("deviance", "Pearson", "quantile")
 
-  glmPlotResQQContainer <- createJaspContainer(gettext("Normal Q-Q Plots: Standardized Residuals"))
+  glmPlotResQQContainer <- createJaspContainer(gettext("Q-Q Plots"))
   glmPlotResQQContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                                  options           = c(plotNames, "seed", "setSeed"))
   glmPlotResQQContainer$position <- position
@@ -669,27 +669,27 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
       if (options[[plotNames[[i]]]]) {
         .glmCreatePlotPlaceholder(glmPlotResQQContainer,
                                   index = plotNames[[i]],
-                                  title = gettextf("Normal Q-Q plot: Standardized %1s residuals", residNames[[i]]))
+                                  title = gettextf("Q-Q plot: Standardized %1s residuals", residNames[[i]]))
 
         .glmInsertPlot(glmPlotResQQContainer[[plotNames[[i]]]],
                        .glmFillPlotResQQ,
                        residType = residNames[[i]],
                        model = glmFullModel,
-                       family = options[["family"]])
+                       options = options)
       }
     }
   }
   return()
 }
 
-.glmFillPlotResQQ <- function(residType, model, family) {
+.glmFillPlotResQQ <- function(residType, model, options) {
 
   # compute residuals
   stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
 
-  thePlot <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "blue")
+  p <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "darkred")
 
-  return(thePlot)
+  return(p)
 }
 
 
@@ -911,7 +911,9 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
                       options[["leverage"]],
                       options[["mahalanobis"]])
 
-  if (!ready | !options[["residualCasewiseDiagnostic"]])
+  nModels <- length(options$modelTerms)
+  if (!ready || !options[["residualCasewiseDiagnostic"]] || 
+      length(unlist(options$modelTerms[[nModels]][["components"]])) > 0)
     return()
 
 
