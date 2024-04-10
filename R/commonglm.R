@@ -363,7 +363,7 @@
   # compute residuals
   stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
   
-  p <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "darkred")
+  p <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "darkred", ablineOrigin = TRUE, identicalAxes = TRUE)
   
   return(p)
 }
