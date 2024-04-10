@@ -5,7 +5,7 @@
   type <- "binomial"
   if (type == "binomial") {
     # Logistic regression
-    ff <- .createGlmFormula(options)
+    ff <- .createLogisticRegFormula(options)
     nf <- .createNullFormula(options)
     # calculate null and full models
     nullMod <- glm(nf, family = "binomial", data = dataset)
@@ -18,7 +18,53 @@
   return(glmRes)
 }
 
-.createGlmFormula <- function(options) {
+# create GLM formula
+.createGLMFormula <- function(options, nullModel = FALSE) {
+  
+  leftTerm <- options$dependent
+  modelTerms <- options$modelTerms
+  includeIntercept <- options$interceptTerm
+  offsetTerm <- options$offset
+  
+  if (includeIntercept)
+    rightTerms <- "1"
+  else
+    rightTerms <- "-1"
+  
+  if (offsetTerm != "")
+    rightTerms <- c(rightTerms, paste("offset(", offsetTerm, ")", sep = ""))
+  
+  if (length(modelTerms) == 0) {
+    f <- formula(paste(leftTerm, "~", rightTerms))
+  } else {
+    
+    if (nullModel) {
+      for (i in seq_along(modelTerms)) {
+        nuisance <- modelTerms[[i]][["isNuisance"]]
+        if (!is.null(nuisance) && nuisance) {
+          term <- modelTerms[[i]][["components"]]
+          if (length(term) == 1)
+            rightTerms <- c(rightTerms, term)
+          else
+            rightTerms <- c(rightTerms, paste(term, collapse = ":"))
+        }
+      }
+      
+    } else {
+      for (i in seq_along(modelTerms)) {
+        term <- modelTerms[[i]][["components"]]
+        if (length(term) == 1)
+          rightTerms <- c(rightTerms, term)
+        else
+          rightTerms <- c(rightTerms, paste(term, collapse = ":"))
+      }
+    }
+    f <- formula(paste(leftTerm, "~", paste(rightTerms, collapse = "+")))
+  }
+  return(f)
+}
+
+.createLogisticRegFormula <- function(options) {
   # this function outputs a formula name with base64 values as varnames
   f <- NULL
 
@@ -122,6 +168,266 @@
 
   return(modlist)
 }
+
+# as explained in ?is.integer
+.is.wholenumber <- function(x, tol = .Machine$double.eps^0.5)  abs(x - round(x)) < tol
+
+
+.glmComputeModel <- function(jaspResults, dataset, options) {
+  if (!is.null(jaspResults[["glmModels"]]))
+    return(jaspResults[["glmModels"]]$object)
+  
+  # make formulas for the full model and the null model
+  ff <- .createGLMFormula(options, nullModel = FALSE)
+  environment(ff) <- environment()
+  nf <- .createGLMFormula(options, nullModel = TRUE)
+  environment(nf) <- environment()
+  
+  weights <- dataset[[options[["weights"]]]]
+  
+  if (options$family != "other") {
+    # specify family and link
+    if (options$family == "bernoulli") {
+      family <- "binomial"
+    }
+    else if (options$family == "gamma") {
+      family <- "Gamma"
+    }
+    else if (options$family == "inverseGaussian") {
+      family <- "inverse.gaussian"
+    }
+    else {
+      family <- options$family
+    }
+    
+    familyLink <- eval(call(family, link = options$link))
+    # compute full and null models
+    fullModel <- try(stats::glm(ff,
+                                family = familyLink,
+                                data = dataset,
+                                weights = weights))
+    nullModel <- try(stats::glm(nf,
+                                family = familyLink,
+                                data = dataset,
+                                weights = weights))
+  } else {
+    
+    if (options$otherGlmModel == "multinomialLogistic") {
+      fullModel <- try(VGAM::vglm(ff,
+                                  family = VGAM::multinomial(),
+                                  data = dataset,
+                                  weights = weights))
+      nullModel <- try(VGAM::vglm(nf,
+                                  family = VGAM::multinomial(),
+                                  data = dataset,
+                                  weights = weights))
+    }
+    
+    if (options$otherGlmModel == "ordinalLogistic") {
+      fullModel <- try(VGAM::vglm(ff,
+                                  family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
+                                  data = dataset,
+                                  weights = weights))
+      nullModel <- try(VGAM::vglm(nf,
+                                  family = VGAM::cumulative(link = "logitlink", parallel = TRUE),
+                                  data = dataset,
+                                  weights = weights))
+    }
+    
+    if (options$otherGlmModel == "firthLogistic") {
+      fullModel <- try(logistf::logistf(ff,
+                                        data = dataset,
+                                        pl = TRUE,
+                                        firth = TRUE,
+                                        weights = weights))
+      nullModel <- try(logistf::logistf(nf,
+                                        data = dataset,
+                                        pl = TRUE,
+                                        firth = TRUE,
+                                        weights = weights))
+    }
+  }
+  
+  if (jaspBase::isTryError(fullModel)) {
+    msg <- .glmFitErrorMessageHelper(fullModel)
+    msg <- gettextf("The full model could not be fitted to the data, with the following error message: '%s'", msg)
+    jaspBase::.quitAnalysis(msg)
+  }
+  
+  if (jaspBase::isTryError(nullModel)) {
+    msg <- .glmFitErrorMessageHelper(nullModel)
+    msg <- gettextf("The null model could not be fitted to the data, with the following error message: '%s'", msg)
+    jaspBase::.quitAnalysis(msg)
+  }
+  
+  glmModels <- list("nullModel" = nullModel,
+                    "fullModel" = fullModel)
+  # combine both models
+  jaspResults[["glmModels"]] <- createJaspState()
+  jaspResults[["glmModels"]]$dependOn(optionsFromObject = jaspResults[["modelSummary"]])
+  jaspResults[["glmModels"]]$object <- glmModels
+  
+  return(glmModels)
+}
+
+.glmFitErrorMessageHelper <- function(tryError) {
+  msg <- jaspBase::.extractErrorMessage(tryError)
+  if(msg == "cannot find valid starting values: please specify some")
+    msg <- gettext("Could not find valid starting values. Check feasibility of the model to fit the data.")
+  
+  return(msg)
+}
+
+
+.hasNuisance <- function(options) {
+  return(any(sapply(options$modelTerms, function(x) x[["isNuisance"]])))
+}
+
+.glmCreatePlotPlaceholder <- function(container, index, title) {
+  jaspPlot            <- createJaspPlot(title = title)
+  jaspPlot$status     <- "running"
+  container[[index]]  <- jaspPlot
+  return()
+}
+
+
+.glmStdResidCompute <- function(model, residType, options) {
+  if (residType == "deviance") {
+    stdResid <- rstandard(model)
+  }
+  else if (residType == "Pearson") {
+    phiEst <- summary(model)[["dispersion"]]
+    resid <- resid(model, type="pearson")
+    stdResid <- resid / sqrt(phiEst * (1 - hatvalues(model)))
+  }
+  else if (residType == "quantile") {
+    jaspBase::.setSeedJASP(options)
+    resid <- statmod::qresid(model)
+    stdResid <- resid / sqrt(1 - hatvalues(model))
+  } else {
+    stdResid <- NULL
+  }
+  
+  return(stdResid)
+}
+
+.glmInsertPlot <- function(jaspPlot, func, ...) {
+  p <- try(func(...))
+  
+  if (inherits(p, "try-error")) {
+    errorMessage <- .extractErrorMessage(p)
+    jaspPlot$setError(gettextf("Plotting is not possible: %s", errorMessage))
+  } else {
+    jaspPlot$plotObject <- p
+    jaspPlot$status     <- "complete"
+  }
+}
+
+.regressionExportResiduals <- function(container, model, dataset, options, ready) {
+  
+  if (isFALSE(options[["residualsSavedToData"]]))
+    return()
+  
+  if (is.null(container[["residualsSavedToDataColumn"]]) && options[["residualsSavedToDataColumn"]] != "") {
+    
+    residuals <- model[["residuals"]] # extract residuals
+    
+    container[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
+    container[["residualsSavedToDataColumn"]]$dependOn(options = c("residualsSavedToDataColumn", "residualsSavedToData"))
+    container[["residualsSavedToDataColumn"]]$setScale(residuals)
+    
+  }
+  
+}
+
+.constInfoTransform <- function(family, x) {
+  switch(family,
+         "bernoulli" = 1/(sin(sqrt(x))),
+         "binomial" = 1/(sin(sqrt(x))),
+         "poisson" = sqrt(x),
+         "Gamma" = log(x),
+         "inverse.gaussian" = 1/sqrt(x),
+         "gaussian" = x)
+}
+
+.constInfoTransName <- function(family) {
+  switch(family,
+         "bernoulli" = expression(sin^-1 * sqrt("Fitted values")),
+         "binomial" = expression(sin^-1 * sqrt("Fitted values")),
+         "poisson" = expression(sqrt("Fitted values")),
+         "Gamma" = expression(log("Fitted values")),
+         "inverse.gaussian" = expression(1/sqrt("Fitted Values")),
+         "gaussian" = "Fitted values")
+}
+
+.capitalize <- function(x) {
+  x_new <- paste(toupper(substr(x, 1, 1)), substr(x, 2, nchar(x)), sep="")
+  return(x_new)
+}
+
+# function for multicollineary statistics, taken from the source code of car::vif
+# car version: 3.0-13 see https://rdrr.io/cran/car/src/R/vif.R
+# the reason is to remove the dependency on the car package. When importing the entire car package,
+# JASP crashes when loading the regression module (at least on Windows 10).
+
+.vif.default <- function(mod, ...) {
+  # modified to fix bug: https://github.com/jasp-stats/jasp-test-release/issues/2487
+  if (length(coef(mod)) == 0) {
+    stop(gettext("There are no predictors to test for multicollinearity"))
+  }
+  # end modification
+  if (any(is.na(coef(mod))))
+    stop ("there are aliased coefficients in the model")
+  v <- vcov(mod)
+  assign <- attr(model.matrix(mod), "assign")
+  if (names(coefficients(mod)[1]) == "(Intercept)") {
+    v <- v[-1, -1]
+    assign <- assign[-1]
+  }
+  else warning("No intercept: vifs may not be sensible.")
+  terms <- labels(terms(mod))
+  n.terms <- length(terms)
+  if (n.terms < 2) stop("model contains fewer than 2 terms")
+  R <- cov2cor(v)
+  detR <- det(R)
+  result <- matrix(0, n.terms, 3)
+  rownames(result) <- terms
+  colnames(result) <- c("GVIF", "Df", "GVIF^(1/(2*Df))")
+  for (term in 1:n.terms) {
+    subs <- which(assign == term)
+    result[term, 1] <- det(as.matrix(R[subs, subs])) *
+      det(as.matrix(R[-subs, -subs])) / detR
+    result[term, 2] <- length(subs)
+  }
+  if (all(result[, 2] == 1)) result <- result[, 1]
+  else result[, 3] <- result[, 1]^(1/(2 * result[, 2]))
+  result
+}
+
+# message for estimated marginal means table
+.emmMessageTestNull     <- function(value)  gettextf("P-values correspond to test of null hypothesis against %s.", value)
+.emmMessageAveragedOver <- function(terms)  gettextf("Results are averaged over the levels of: %s.",paste(terms, collapse = ", "))
+.messagePvalAdjustment  <- function(adjustment) {
+  if (adjustment == "none") {
+    return(gettext("P-values are not adjusted."))
+  }
+  adjustment <- switch(adjustment,
+                       "holm"       = gettext("Holm"),
+                       "hommel"     = gettext("Homel"),
+                       "hochberg"   = gettext("Hochberg"),
+                       "mvt"        = gettext("Multivariate-t"),
+                       "tukey"      = gettext("Tukey"),
+                       "BH"         = gettext("Benjamini-Hochberg"),
+                       "BY"         = gettext("Benjamini-Yekutieli"),
+                       "scheffe"    = gettext("Scheffé"),
+                       "sidak"      = gettext("Sidak"),
+                       "dunnettx"   = gettext("Dunnett"),
+                       "bonferroni" = gettext("Bonferroni")
+  )
+  return(gettextf("P-values are adjusted using %s adjustment.", adjustment))
+}
+
+
 
 .confusionMatAddColInfo <- function(table, levs, type) {
   table$addColumnInfo(name = "pred0", title = paste0(levs[1]), type = type, overtitle = gettext("Predicted"))
@@ -381,6 +687,150 @@
   s <- summary(glmModel)
   robustSE <- sqrt(diag(robustCov))
   return(robustSE)
+}
+
+
+# Table: Influential cases
+.glmInfluenceTable <- function(jaspResults, model, dataset, options, ready, position, linRegAnalysis = FALSE) {
+  
+  tableOptionsOn <- c(options[["dfbetas"]],
+                      options[["dffits"]],
+                      options[["covarianceRatio"]],
+                      options[["leverage"]],
+                      options[["mahalanobis"]])
+  
+  nModels <- length(options$modelTerms)
+  if (!ready || !options[["residualCasewiseDiagnostic"]] || 
+      length(unlist(options$modelTerms[[nModels]][["components"]])) == 0)
+    return()
+  
+  
+  tableOptions <- c("dfbetas", "dffits", "covarianceRatio", "leverage", "mahalanobis")
+  tableOptionsClicked <- tableOptions[tableOptionsOn]
+  tableOptionsClicked <- c("cooksDistance", tableOptionsClicked)
+  
+  if (is.null(jaspResults[["influenceTable"]])) {
+    influenceTable <- createJaspTable(gettext("Table: Influential Cases"))
+    influenceTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
+                            options             = tableOptions)
+    influenceTable$dependOn(c("residualCasewiseDiagnostic", "residualCasewiseDiagnosticType",
+                              "residualCasewiseDiagnosticZThreshold", "residualCasewiseDiagnosticCooksDistanceThreshold"))
+    influenceTable$position <- position
+    influenceTable$showSpecifiedColumnsOnly <- TRUE
+    jaspResults[["influenceTable"]] <- influenceTable
+  }
+  
+  tableOptionToColName <- function(x) {
+    switch(x,
+           "dfbetas"  = "DFBETAS",
+           "dffits"   = "DFFITS",
+           "covarianceRatio" = "Covariance Ratio",
+           "cooksDistance"   = "Cook's Distance",
+           "leverage" = "Leverage",
+           "mahalanobis" = "Mahalanobis")
+  }
+  
+  if (is.null(model)) {
+    for (option in tableOptionsClicked) {
+      colTitle    <- tableOptionToColName(option)
+      influenceTable$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
+    }
+  } else {
+    
+    colNameList  <- c()
+    influenceTable$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
+    influenceTable$addColumnInfo(name = "stdResidual", title = gettext("Std. Residual"),   type = "number", format = "dp:3")
+    influenceTable$addColumnInfo(name = "dependent",   title = options$dependent,          type = "number")
+    influenceTable$addColumnInfo(name = "predicted",   title = gettext("Predicted Value"), type = "number")
+    influenceTable$addColumnInfo(name = "residual", title = gettext("Residual"),   type = "number", format = "dp:3")
+    
+    alwaysPresent <- c("caseN", "stdResidual", "dependent", "predicted", "residual")
+    for (option in tableOptionsClicked) {
+      if (option == "dfbetas") {
+        predictors <- names(model$coefficients)
+        for (predictor in predictors) {
+          dfbetasName  <- gettextf("DFBETAS_%1s", predictor)
+          colNameList <- c(colNameList, dfbetasName)
+          if (predictor == "(Intercept)")
+            dfbetasTitle <- gettext("DFBETAS:Intercept")
+          else
+            dfbetasTitle <- gettextf("DFBETAS:%1s", gsub(":", "*", predictor))
+          influenceTable$addColumnInfo(name = dfbetasName, title = dfbetasTitle, type = "number")
+        }
+      } else {
+        colNameList <- c(colNameList, option)
+        colTitle    <- tableOptionToColName(option)
+        influenceTable$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
+      }
+    }
+    .glmInfluenceTableFill(influenceTable, dataset, options, ready, 
+                           model = model, 
+                           influenceMeasures = tableOptionsClicked, 
+                           colNames = c(colNameList, alwaysPresent))
+  }
+}
+
+.glmInfluenceTableFill <- function(influenceTable, dataset, options, ready, model, influenceMeasures, colNames) {
+  
+  influenceRes <- influence.measures(model)
+  nDFBETAS     <- length(names(model$coefficients))
+  
+  optionToColInd <- function(x, nDFBETAS) {
+    switch(x,
+           "dfbetas"  = 1:nDFBETAS,
+           "dffits"   = (nDFBETAS+1),
+           "covarianceRatio" = (nDFBETAS+2),
+           "cooksDistance"   = (nDFBETAS+3),
+           "leverage" = (nDFBETAS+4))}
+  
+  colInd <- c()
+  for (measure in influenceMeasures) {
+    colInd <- c(colInd, optionToColInd(measure, nDFBETAS))
+  }
+  
+  influenceResData <- as.data.frame(influenceRes[["infmat"]][, colInd])
+  colnames(influenceResData)[1:length(colInd)] <- colNames[1:length(colInd)]
+  
+  influenceResData[["caseN"]] <- seq.int(nrow(influenceResData))
+  influenceResData[["stdResidual"]] <- rstandard(model)
+  influenceResData[["dependent"]] <- model.frame(model)[[options$dependent]]
+  influenceResData[["predicted"]] <- model$fitted.values
+  influenceResData[["residual"]] <- model$residual
+  # browser()
+  modelMatrix <- as.data.frame(model.matrix(model))
+  modelMatrix <- modelMatrix[colnames(modelMatrix) != "(Intercept)"]
+  influenceResData[["mahalanobis"]] <- mahalanobis(modelMatrix, center = colMeans(modelMatrix), cov = cov(modelMatrix))
+  
+  if (options$residualCasewiseDiagnosticType == "cooksDistance")
+    index <- which(abs(influenceResData[["cooksDistance"]]) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
+  else if (options$residualCasewiseDiagnosticType == "outliersOutside")
+    index <- which(abs(influenceResData[["stdResidual"]]) > options$residualCasewiseDiagnosticZThreshold)
+  else # all
+    index <- seq.int(nrow(influenceResData))
+  
+  # funky statement to ensure a df even if only 1 row
+  influenceResSig       <- subset(influenceRes[["is.inf"]], 1:nrow(influenceResData) %in% index, select = colInd)
+  colnames(influenceResSig) <- colNames[1:length(colInd)]
+  
+  influenceResData <- influenceResData[index, ]
+  
+  if (length(index) == 0)
+    influenceTable$addFootnote(gettext("No influential cases found."))
+  else {
+    influenceTable$setData(influenceResData)
+    # if any other metrix show influence, add footnotes:
+    if (sum(influenceResSig) > 0) {
+      for (thisCol in colnames(influenceResSig)) {
+        if (sum(influenceResSig[, thisCol]) > 0) 
+          influenceTable$addFootnote(
+            gettext("Potentially influential case, according to the selected influence measure."), 
+            colNames = thisCol,
+            rowNames = rownames(influenceResData)[influenceResSig[, thisCol]],
+            symbol = "*"
+          )
+      }
+    }
+  }
 }
 
 .casewiseDiagnosticsLogisticRegression <- function(dataset, model, options) {
