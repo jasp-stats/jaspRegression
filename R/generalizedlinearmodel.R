@@ -646,53 +646,6 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 }
 
 
-
-# Plots: Residuals Q-Q
-.glmPlotResQQ <- function(jaspResults, dataset, options, ready, position) {
-
-  plotNames <- c("devianceResidualQqPlot", "pearsonResidualQqPlot", "quantileResidualQqPlot")
-  if (!ready || !any(unlist(options[plotNames])))
-    return()
-
-  residNames <- c("deviance", "Pearson", "quantile")
-
-  glmPlotResQQContainer <- createJaspContainer(gettext("Q-Q Plots"))
-  glmPlotResQQContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                                 options           = c(plotNames, "seed", "setSeed"))
-  glmPlotResQQContainer$position <- position
-  jaspResults[["diagnosticsContainer"]][["glmPlotResQQ"]] <- glmPlotResQQContainer
-
-
-  if (!is.null(jaspResults[["glmModels"]])) {
-    glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
-    for (i in 1:length(plotNames)) {
-      if (options[[plotNames[[i]]]]) {
-        .glmCreatePlotPlaceholder(glmPlotResQQContainer,
-                                  index = plotNames[[i]],
-                                  title = gettextf("Q-Q plot: Standardized %1s residuals", residNames[[i]]))
-
-        .glmInsertPlot(glmPlotResQQContainer[[plotNames[[i]]]],
-                       .glmFillPlotResQQ,
-                       residType = residNames[[i]],
-                       model = glmFullModel,
-                       options = options)
-      }
-    }
-  }
-  return()
-}
-
-.glmFillPlotResQQ <- function(residType, model, options) {
-
-  # compute residuals
-  stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
-
-  p <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "darkred")
-
-  return(p)
-}
-
-
 # Plots: Partial residuals
 .glmPlotResPartial <- function(jaspResults, dataset, options, ready, position) {
   if (!ready)
