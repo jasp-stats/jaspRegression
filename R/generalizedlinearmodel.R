@@ -913,7 +913,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   nModels <- length(options$modelTerms)
   if (!ready || !options[["residualCasewiseDiagnostic"]] || 
-      length(unlist(options$modelTerms[[nModels]][["components"]])) > 0)
+      length(unlist(options$modelTerms[[nModels]][["components"]])) == 0)
     return()
 
 
