@@ -762,7 +762,7 @@ for sparse regression when there are more covariates than observations (Castillo
   p <- try({
     x <- fitted(basregModel, estimator = "BMA")
     y <- basregModel$Y - x
-    jaspGraphs::plotQQnorm(y)
+    jaspGraphs::plotQQnorm(y, ablineColor = "darkred")
   })
 
   if (isTryError(p)) {

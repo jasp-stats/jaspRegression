@@ -470,7 +470,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "standardized deviance")
   .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "studentized deviance")
 
-  .glmInfluenceTable(jaspResults, dataset, options, ready, position = 9)
+  .glmInfluenceTable(jaspResults[["diagnosticsContainer"]], 
+                     jaspResults[["glmModels"]][["object"]][["fullModel"]],
+                     dataset, options, ready, position = 9)
+  
+  .regressionExportResiduals(jaspResults, 
+                             jaspResults[["glmModels"]][["object"]][["fullModel"]],
+                             dataset, options, ready)
+  
   .glmMulticolliTable(jaspResults, dataset, options, ready, position = 10)
 
   return()
@@ -635,53 +642,6 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
       jaspGraphs::geom_rangeframe() +
       jaspGraphs::themeJaspRaw()
   }
-  return(thePlot)
-}
-
-
-
-# Plots: Residuals Q-Q
-.glmPlotResQQ <- function(jaspResults, dataset, options, ready, position) {
-
-  plotNames <- c("devianceResidualQqPlot", "pearsonResidualQqPlot", "quantileResidualQqPlot")
-  if (!ready || !any(unlist(options[plotNames])))
-    return()
-
-  residNames <- c("deviance", "Pearson", "quantile")
-
-  glmPlotResQQContainer <- createJaspContainer(gettext("Normal Q-Q Plots: Standardized Residuals"))
-  glmPlotResQQContainer$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                                 options           = c(plotNames, "seed", "setSeed"))
-  glmPlotResQQContainer$position <- position
-  jaspResults[["diagnosticsContainer"]][["glmPlotResQQ"]] <- glmPlotResQQContainer
-
-
-  if (!is.null(jaspResults[["glmModels"]])) {
-    glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
-    for (i in 1:length(plotNames)) {
-      if (options[[plotNames[[i]]]]) {
-        .glmCreatePlotPlaceholder(glmPlotResQQContainer,
-                                  index = plotNames[[i]],
-                                  title = gettextf("Normal Q-Q plot: Standardized %1s residuals", residNames[[i]]))
-
-        .glmInsertPlot(glmPlotResQQContainer[[plotNames[[i]]]],
-                       .glmFillPlotResQQ,
-                       residType = residNames[[i]],
-                       model = glmFullModel,
-                       family = options[["family"]])
-      }
-    }
-  }
-  return()
-}
-
-.glmFillPlotResQQ <- function(residType, model, family) {
-
-  # compute residuals
-  stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
-
-  thePlot <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "blue")
-
   return(thePlot)
 }
 
@@ -891,112 +851,6 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
              residScore = residRankedDf[i, "residScore"])
       )
     }
-  }
-}
-
-
-# Table: Influential cases
-.glmInfluenceTable <- function(jaspResults, dataset, options, ready, position) {
-
-  tableOptionsOn <- c(options[["dfbetas"]],
-                      options[["dffits"]],
-                      options[["covarianceRatio"]],
-                      options[["cooksDistance"]],
-                      options[["leverage"]])
-
-
-  if (!ready | !any(tableOptionsOn))
-    return()
-
-
-  tableOptions <- c("dfbetas", "dffits", "covarianceRatio", "cooksDistance", "leverage")
-  tableOptionsClicked <- tableOptions[tableOptionsOn]
-
-  if (is.null(jaspResults[["diagnosticsContainer"]][["influenceTable"]])) {
-    influenceTable <- createJaspTable(gettext("Table: Influential Cases"))
-    influenceTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                            options             = tableOptions)
-    influenceTable$position <- position
-    influenceTable$showSpecifiedColumnsOnly <- TRUE
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]] <- influenceTable
-  }
-
-  tableOptionToColName <- function(x) {
-    switch(x,
-           "dfbetas"  = "DFBETAS",
-           "dffits"   = "DFFITS",
-           "covarianceRatio" = "Covariance Ratio",
-           "cooksDistance"   = "Cook's Distance",
-           "leverage" = "Leverage")
-  }
-
-  if (is.null(jaspResults[["glmModels"]])) {
-    for (option in tableOptionsClicked) {
-      colTitle    <- tableOptionToColName(option)
-      jaspResults[["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
-    }
-  } else {
-    glmFullModel <- jaspResults[["glmModels"]][["object"]][["fullModel"]]
-    colNameList  <- c()
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
-    for (option in tableOptionsClicked) {
-      if (option == "dfbetas") {
-        predictors <- names(glmFullModel$coefficients)
-        for (predictor in predictors) {
-          dfbetasName  <- gettextf("DFBETAS_%1s", predictor)
-          colNameList <- c(colNameList, dfbetasName)
-          if (predictor == "(Intercept)")
-            dfbetasTitle <- gettext("DFBETAS:Intercept")
-          else
-            dfbetasTitle <- gettextf("DFBETAS:%1s", gsub(":", "*", predictor))
-          jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = dfbetasName, title = dfbetasTitle, type = "number")
-        }
-      } else {
-        colNameList <- c(colNameList, option)
-        colTitle    <- tableOptionToColName(option)
-        jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
-      }
-    }
-    .glmInfluenceTableFill(jaspResults, dataset, options, ready, model = glmFullModel, influenceMeasures = tableOptionsClicked, colNames = colNameList)
-  }
-}
-
-.glmInfluenceTableFill <- function(jaspResults, dataset, options, ready, model, influenceMeasures, colNames) {
-  influenceRes <- influence.measures(model)
-  nDFBETAS     <- length(names(model$coefficients))
-
-  optionToColInd <- function(x, nDFBETAS) {
-    switch(x,
-           "dfbetas"  = 1:nDFBETAS,
-           "dffits"   = (nDFBETAS+1),
-           "covarianceRatio" = (nDFBETAS+2),
-           "cooksDistance"   = (nDFBETAS+3),
-           "leverage" = (nDFBETAS+4))}
-
-  colInd <- c()
-  for (measure in influenceMeasures) {
-    colInd <- c(colInd, optionToColInd(measure, nDFBETAS))
-  }
-
-  influenceResData      <- as.data.frame(influenceRes[["infmat"]][, colInd])
-  names(influenceResData) <- colNames
-  caseN <- seq.int(nrow(influenceResData))
-  influenceResData <- cbind(caseN, influenceResData)
-
-  influenceResSig       <- influenceRes[["is.inf"]][, colInd]
-
-  if (length(colInd) > 1) {
-    influenceResDataFinal <- influenceResData[rowSums(influenceResSig) > 0, , drop = FALSE]
-  } else {
-    influenceResDataFinal <- influenceResData[influenceResSig > 0, , drop = FALSE]
-  }
-
-  nRowInfluential <- nrow(influenceResDataFinal)
-
-  if (nRowInfluential == 0)
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$addFootnote(gettext("No influential cases found."))
-  else {
-    jaspResults[["diagnosticsContainer"]][["influenceTable"]]$setData(influenceResDataFinal)
   }
 }
 

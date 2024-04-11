@@ -43,6 +43,7 @@ The Correlation analysis allows estimation of the population correlation, as wel
 - Vovk-Selke maximum p-ratio: The bound 1/(-e p log(p)) is derived from the shape of the p-value distribution. Under the null hypothesis (H<sub>0</sub>) it is uniform (0,1), and under the alternative (H<sub>1</sub>) it is decreasing in p, e.g., a beta (α, 1) distribution, where 0 < α < 1. The Vovk-Sellke MPR is obtained by choosing the shape α of the distribution under H1 such that the obtained p-value is maximally diagnostic. The value is then the ratio of the densities at point p under H<sub>0</sub> and H<sub>1</sub>. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H<sub>0</sub>.
 - Effect size (Fisher's z): The Fisher transformed effect size with standard error. 
 - Sample size: The number of complete observations for a given pair of variables.
+- Covariance: The covariance between each pair of variables. 
 
 #### Plots
 - Scatter plots: Display a scatter plots for each possible combination of the selected variables. In a matrix format, these are placed above the diagonal.

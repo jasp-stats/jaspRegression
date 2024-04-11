@@ -115,7 +115,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   mainTable$dependOn(c("variables", "partialOutVariables",
                        "pearson", "spearman", "kendallsTauB", "pairwiseDisplay", "significanceReport",
                        "significanceFlagged", "sampleSize",
-                       "ci", "ciLevel",
+                       "ci", "ciLevel", "covariance",
                        "vovkSellke", "alternative", "naAction",
                        "ciBootstrap", "ciBootstrapSamples", "effectSize"))
 
@@ -201,7 +201,14 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
       if(options$significanceReport)
         mainTable$addColumnInfo(name = paste0(test, "_p.value"), title = gettext("p"), type = "pvalue", overtitle = overtitle)
-
+      
+      if(options$vovkSellke){
+        mainTable$addColumnInfo(name = paste0(test, "_vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
+        
+        mainTable$addFootnote(message = .corrGetTexts()$footnotes$VSMPR, symbol = "\u2020", colNames = paste0(test, "_vsmpr"))
+        mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
+      }
+      
       if(options$ci){
         mainTable$addColumnInfo(name = paste0(test, "_lower.ci"),
                                 title = gettextf("Lower %s%% CI", 100*options$ciLevel), type = "number",
@@ -211,18 +218,15 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                 overtitle = overtitle)
       }
 
-      if(options$vovkSellke){
-        mainTable$addColumnInfo(name = paste0(test, "_vsmpr"), title = gettext("VS-MPR"), type = "number", overtitle = overtitle)
-
-        mainTable$addFootnote(message = .corrGetTexts()$footnotes$VSMPR, symbol = "\u2020", colNames = paste0(test, "_vsmpr"))
-        mainTable$addCitation(.corrGetTexts()$references$Sellke_etal_2001)
-      }
-
       if(options$effectSize){
         mainTable$addColumnInfo(name = paste0(test, "_effect.size"),    title = gettext("Effect size (Fisher's z)"),                                type = "number", overtitle = overtitle)
         mainTable$addColumnInfo(name = paste0(test, "_se.effect.size"), title = gettext("SE Effect size"),                                          type = "number", overtitle = overtitle)
       }
     }
+  }
+  
+  if(options$covariance){
+    mainTable$addColumnInfo(name = "covariance", title = gettext("Covariance"), type = "number")
   }
 }
 
@@ -252,13 +256,19 @@ CorrelationInternal <- function(jaspResults, dataset, options){
     overtitle <- paste(vi, variables[vi], sep = ". ")
 
     if(options$sampleSize) {
-      mainTable$addColumnInfo(name = paste(.v(variables[vi]), "sample.size", sep = "_"), title = "n",
+      mainTable$addColumnInfo(name = paste(variables[vi], "sample.size", sep = "_"), title = "n",
                               type = "integer", overtitle = overtitle)
     }
 
     for(ti in seq_along(tests)){
       .corrInitCorrelationTableRowAsColumn(mainTable, options, variables[vi], testsTitles[ti], tests[ti], overtitle)
     }
+    
+    if(options$covariance) {
+      mainTable$addColumnInfo(name = paste(variables[vi], "covariance", sep = "_"), gettextf("Covariance"),
+                              type = "number", overtitle = overtitle)
+    }
+    
     mainTable$setRowName(vi, .v(variables[vi]))
   }
 }
@@ -290,11 +300,11 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                             title = gettextf("Upper %s%% CI", 100*options$ciLevel),
                             type = "number", overtitle = overtitle)
   }
-
+  
   if(options$effectSize){
     mainTable$addColumnInfo(name = sprintf(name, "effect.size"),    title = gettextf("Effect size (Fisher's z)"), type = "number", overtitle = overtitle)
     mainTable$addColumnInfo(name = sprintf(name, "se.effect.size"), title = gettext("SE Effect size"),            type = "number", overtitle = overtitle)
-    }
+  }
 }
 
 ### Compute results ----
@@ -343,7 +353,9 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       currentResults <- list()
       testErrors     <- list()
       currentResults[['sample.size']] <- nrow(data)
-
+      if (isFALSE(errors))
+        currentResults[['covariance']] <- cov(x = data[,1], y = data[,2])
+      
       # even if we do not want the specific tests results
       # we still want the output as NaN - to fill the jaspTables correctly
       # so we still loop over all tests - .corr.test() returns empty lists if isFALSE(compute)
@@ -466,7 +478,6 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   statsNames <- c("estimate", "p.value", "lower.ci", "upper.ci", "vsmpr", "effect.size", "se.effect.size")
   alternative <- match.arg(alternative)
 
-
   if(isFALSE(compute)){
     result <- rep(NaN, length(statsNames))
     names(result) <- statsNames
@@ -512,9 +523,6 @@ CorrelationInternal <- function(jaspResults, dataset, options){
         s2 <- asin(sin((pi/2) * result$estimate)/2)
         result$se.effect.size <- sqrt((2 / (n * (n - 1))) * (1 - (4 * (s1^2 / pi^2)) + (2 * (n - 2) * ((1/9) - (4 * (s2^2 / pi^2))))))
       }
-
-
-
 
       result <- unlist(result[stats], use.names = FALSE)
       names(result) <- statsNames
@@ -705,6 +713,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   testErrors     <- lapply(corrResults, function(x) x[['testErrors']])
 
   mainTable[['sample.size']] <- sapply(results, function(x) x[['sample.size']])
+  mainTable[['covariance']] <- sapply(results, function(x) x[['covariance']])
 
   # would be nice to be able to fill table cell-wise, i.e., mainTable[[row, col]] <- value
   colNames <- character() # this is for error footnotes

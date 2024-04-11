@@ -79,12 +79,18 @@ The following table summarized the available distributions (also called families
   - Top n standardized quantile residuals
   - Top n standardized deviance residuals
   - Top n studentized deviance residuals
-- Show influential cases: A table showing influential observations (i.e. outliers with high leverage) according to the selected measure(s). The column "Case Number" refers to the row number of the observation in the data set. The cut-offs for determining whether a case is influential are listed as follows.
-  - DFBETAS: When the absolute value of DFBETAS is greater than 1.
-  - DFFITS: When the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)) where k refers to the number of parameters in the model and n refers to the sample size.
-  - Covariance ratio: When the covariance ratio is greater than 3 * k/(n-k).
-  - Cook's distance: When Cook's distance exceeds the 50th percentile of the F distribution with (k, n-k) degrees of freedom.
-  - Leverages: When the leverages are greater than 3 * k/n.
+- Residuals:
+  - Casewise diagnostic: Casewise and summarized diagnostics for the residuals.
+    - Standard residual > 3: Outliers outside x standard deviations: Display diagnostics for cases where the absolute value of the standardized residual is larger than x; default is x=3.
+    - Cook's distance > 1 : Display diagnostics for cases where the value of Cook’s distance is larger than x; default is x = 1. 
+    - All cases: Display diagnostics for all cases.
+  - Cases are marked as influential in the table, according to the following thresholds:
+    - DFBETAS: When the absolute value of DFBETAS is greater than 1.      
+    - DFFITS: When the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)) where k refers to the number of parameters in the model and n refers to the sample size.
+    - Covariance ratio: When the covariance ratio is greater than 3 * k/(n-k).
+    - Cook's distance: When Cook's distance exceeds the 50th percentile of the F distribution with (k, n-k) degrees of freedom.
+    - Leverages: When the leverages are greater than 3 * k/n.
+  - Append residuals to data: Save the residuals of the most complex model as a new column in the data file.
 - Multicollinearity: A table showing multicollinearity diagnostics of the model. The choices of measures are as follows.
   - Tolerance
   - VIF: Variance Inflation Factor.

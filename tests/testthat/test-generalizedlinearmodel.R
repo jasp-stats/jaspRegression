@@ -14,7 +14,8 @@ addCommonQmlOptions <- function(options) {
     options,
     jaspTools:::readQML(file.path(root, "GlmInputComponent.qml")),
     jaspTools:::readQML(file.path(root, "GlmResidualAnalysisPlotsComponent.qml")),
-    jaspTools:::readQML(file.path(root, "EmmComponent.qml"))
+    jaspTools:::readQML(file.path(root, "EmmComponent.qml")),
+    jaspTools:::readQML(file.path(root, "OutlierComponent.qml"))
   )
 }
 
@@ -94,10 +95,14 @@ options$standardizedResidualOutlierTableTopN  <- 3
 options$studentizedResidualOutlierTable      <- TRUE
 options$studentizedResidualOutlierTableTopN  <- 3
 
+options$residualCasewiseDiagnostic <- TRUE
+options$residualCasewiseDiagnosticType <- "outliersOutside"
+options$residualCasewiseDiagnosticZThreshold <- 1
+
+
 options$dfbetas  <- TRUE
 options$dffits   <- TRUE
 options$covarianceRatio <- TRUE
-options$cooksDistance   <- TRUE
 options$leverage <- TRUE
 
 options$setSeed  <- TRUE
@@ -224,9 +229,18 @@ test_that("Outlier table based on studentized deviance residuals matches", {
 test_that("Influential cases table matches", {
   table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_influenceTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(4,  -0.1795, 0.146,  -0.1918, 1.693,  0.0228, 0.2708,
-                                      9,  -0.290,  0.750,  1.439,    0.3537, 0.6321, 0.1902,
-                                      10, 0.1632,  -0.2761,-0.3971, 1.687, 0.0982,  0.3111))})
+                                 list(-0.607898874134593, 0.562520030505165, 1, 0.0910041875476176,
+                                      0.811136811632276, 0, -0.608545530898244, 0.122014731899716,
+                                      0.0286397537025298, -1.02948417315995, -1.60670300282295, -0.182578461118574,
+                                      0.0432371780205531, 7, 0.0954834805489629, 1.14396823117325,
+                                      0.214285714285714, -0.421414814442793, 0.141203925314399, 0.283760332058426,
+                                      -0.341834673218477, -1.10858029927343, 0, -0.290005764938072,
+                                      0.750048649952999, 9, 0.632130380240399, 0.353736621049185,
+                                      0.647058823529412, 1.43918415935164, 0.190243757445277, 0.468418331001346,
+                                      0.717424210957795, 2.32732272718569, 0.484997819985084, -0.707619585051628,
+                                      11, 0.447283433716663, 1.44554646273235, 0.583333333333333,
+                                      -0.886667016095175, 0.36304481969478, 0.662151029321139, -0.352325499848782,
+                                      -1.2326217135089))})
 
 
 # multicollinearity table

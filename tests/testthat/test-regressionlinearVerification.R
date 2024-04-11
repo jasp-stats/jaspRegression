@@ -14,9 +14,15 @@ options$dependent <- "Y"
 options$covariates <- "MeanCenteredX"
 
 options$modelTerms <- list(
-  list(components="MeanCenteredX", isNuisance=FALSE)
+  list(components=NULL,  name="model0", title = "Model 0"),
+  list(components=list("MeanCenteredX"),  name="model1", title = "Model 1")
 )
 options$descriptives <- TRUE
+options$residualDurbinWatson <- FALSE
+options$residualCasewiseDiagnostic <- FALSE
+options$residualsSavedToData <- FALSE
+options$residualsSavedToDataColumn <- FALSE
+options$residualStatistic <- FALSE
 
 results <- jaspTools::runAnalysis("RegressionLinear", "Regression.csv", options)
 

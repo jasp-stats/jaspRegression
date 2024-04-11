@@ -7,16 +7,33 @@ context("Linear Regression")
 # - stepwise methods (currently gives an error if I set p entry too high)
 # - plots handle errors
 
-test_that("Main table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+initOptsLinReg <- function() {
+  options <-  jaspTools::analysisOptions("RegressionLinear")
+  
   options$dependent <- "contNormal"
   options$covariates <- "contGamma"
-  options$weights <- "facFifty"
   options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
+    list(components= NULL, name="model0", title = "Model 0"),
+    list(components=list("contGamma"), name="model1", title = "Model 1")
   )
+  
   options$rSquaredChange <- TRUE
+  options$fChange <- TRUE
+  options$residualDurbinWatson <- FALSE
+  options$residualCasewiseDiagnostic <- FALSE
+  options$residualsSavedToData <- FALSE
+  options$residualsSavedToDataColumn <- FALSE
+  options$residualStatistic <- FALSE
+  
+  return(options)
+}
+
+test_that("Main table results match", {
+  options <- initOptsLinReg()
+  
+  options$weights <- "facFifty"
   options$residualDurbinWatson <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -29,17 +46,15 @@ test_that("Main table results match", {
 })
 
 test_that("Coefficients table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
+  options <- initOptsLinReg()
+
   options$coefficientEstimate <- TRUE
   options$coefficientCi <- TRUE
   options$coefficientCiLevel <- 0.9
   options$collinearityDiagnostic <- TRUE
+  options$collinearityStatistic <- TRUE
   options$vovkSellke <- TRUE
+ 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -55,14 +70,12 @@ test_that("Coefficients table results match", {
 })
 
 test_that("ANOVA table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
+  
   options$dependent <- "debCollin1"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
   options$modelFit <- TRUE
   options$vovkSellke <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -73,32 +86,28 @@ test_that("ANOVA table results match", {
 })
 
 test_that("Coefficients Covariance table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
+  options <- initOptsLinReg()
   options$covariates <- c("contGamma", "contcor1")
   options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE),
-    list(components="contcor1", isNuisance=FALSE)
+    list(components=list("contGamma"), name="model0", title = "Model 0"),
+    list(components=list("contGamma", "contcor1"), name="model1", title = "Model 1")
   )
   options$covarianceMatrix <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffCovMatrixTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list("TRUE", 0.00490486111017858, 0.00116294327838645, "H<unicode>",
-         "contGamma", "FALSE", "", 0.0112500585702943, "H<unicode>",
-         "contcor1")
+    list("FALSE", 0.00485075592634222, "", "M<unicode>", "contGamma", "TRUE",
+         0.00490486111017858, 0.00116294327838645, "M<unicode>", "contGamma",
+         "FALSE", "", 0.0112500585702943, "M<unicode>", "contcor1")
 
   )
 })
 
 test_that("Descriptive table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
+  options <- initOptsLinReg()
+  
   options$descriptives <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_descriptivesTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -108,28 +117,32 @@ test_that("Descriptive table results match", {
 })
 
 test_that("Part and Partial Correlations table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
+  options <- initOptsLinReg()
+  
   options$covariates <- c("debCollin2", "contGamma")
   options$modelTerms <- list(
-    list(components="debCollin2", isNuisance=FALSE),
-    list(components="contGamma", isNuisance=FALSE)
+    list(components=list("debCollin2"), name="model0", title = "Model 0"),
+    list(components=list("contGamma", "debCollin2"), name="model1", title = "Model 1")
   )
   options$partAndPartialCorrelation <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list("TRUE", "H<unicode>", "debCollin2", -0.0198338559459939, -0.0198687032851428,
-         "FALSE", "H<unicode>", "contGamma", -0.0617145529439823, -0.0617173111983368)
+                                 list("FALSE", "M<unicode>", "debCollin2", -0.0094541786161782, -0.0094541786161782,
+                                      "TRUE", "M<unicode>", "contGamma", -0.0617145529439822, -0.0617173111983367,
+                                      "FALSE", "M<unicode>", "debCollin2", -0.0198338559459935, -0.0198687032851424
+                                 )
   )
 })
 
 test_that("Collinearity Diagonistic table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
+  options <- initOptsLinReg()
+
   options$covariates <- "contcor1"
   options$modelTerms <- list(
-    list(components="contcor1", isNuisance=FALSE)
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components="contcor1", name="model1", title = "Model 1")
   )
   options$collinearityDiagnostic <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
@@ -142,11 +155,12 @@ test_that("Collinearity Diagonistic table results match", {
 })
 
 test_that("Residuals Statistics table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "contNormal"
   options$covariates <- "contcor1"
   options$modelTerms <- list(
-    list(components="contcor1", isNuisance=FALSE)
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components="contcor1", name="model1", title = "Model 1")
   )
   options$residualStatistic <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
@@ -162,32 +176,30 @@ test_that("Residuals Statistics table results match", {
 })
 
 test_that("Casewise Diagnostics table results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "contNormal"
   options$covariates <- "contOutlier"
   options$modelTerms <- list(
-    list(components="contOutlier", isNuisance=FALSE)
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components="contOutlier", name="model1", title = "Model 1")
   )
   options$residualCasewiseDiagnostic <- TRUE
   options$residualCasewiseDiagnosticType <- "outliersOutside"
   options$residualCasewiseDiagnosticZThreshold <- 3
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_casewiseTable"]][["data"]]
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_influenceTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(55, 3.34810934796608, 3.356094448, -0.187237305306683, 3.54333175330668,
-                           0.0577123260439598, 83, 3.22377600371253, 2.958797116, -0.143545494526366,
-                           3.10234261052637, 1.15289593050314)
+                      list(55, 0.0577123260439598, 3.356094448, -0.187237305306683, 3.54333175330668,
+                           3.34810934796609, 0, 83, 1.15289593050314, 2.958797116, -0.143545494526367,
+                           3.10234261052637, 3.22377600371253)
   )
 })
 
 test_that("Residuals vs. Dependent plot matches", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
+  options <- initOptsLinReg()
+
   options$residualVsDependentPlot <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
@@ -195,52 +207,39 @@ test_that("Residuals vs. Dependent plot matches", {
 })
 
 test_that("Residuals vs. Covariates plot matches", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
+  options <- initOptsLinReg()
+  
   options$residualVsCovariatePlot <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "residuals-covariates")
 })
 
 test_that("Residuals vs. Predicted plot matches", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
+  options <- initOptsLinReg()
+  
   options$residualVsFittedPlot <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "residuals-predicted")
 })
 
 test_that("Standardized Residuals Histogram matches", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
+  options <- initOptsLinReg()
+  
   options$residualHistogramPlot <- TRUE
   options$residualHistogramStandardizedPlot <- TRUE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "residuals-histogram")
 })
 
 test_that("Q-Q Plot Standardized Residuals matches", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
-  options$covariates <- "contGamma"
-  options$modelTerms <- list(
-    list(components="contGamma", isNuisance=FALSE)
-  )
+  options <- initOptsLinReg()
+  
   options$residualQqPlot <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
@@ -248,11 +247,12 @@ test_that("Q-Q Plot Standardized Residuals matches", {
 })
 
 test_that("Marginal effects plot matches", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-  options$dependent <- "contNormal"
+  options <- initOptsLinReg()
+
   options$covariates <- "contcor1"
   options$modelTerms <- list(
-    list(components="contcor1", isNuisance=FALSE)
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components="contcor1", name="model1", title = "Model 1")
   )
   options$marginalPlot <- TRUE
   options$marginalPlotCi <- TRUE
@@ -266,63 +266,91 @@ test_that("Marginal effects plot matches", {
 })
 
 test_that("Analysis handles errors", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
-
+  options <- initOptsLinReg()
+  
   options$dependent <- "debInf"
   options$covariates <- "contGamma"
-  options$modelTerms <- list(list(components="contGamma", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components="contGamma", name="model1", title = "Model 1")
+  )  
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Inf dependent check")
 
   options$dependent <- "contNormal"
   options$covariates <- "debInf"
-  options$modelTerms <- list(list(components="debInf", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
+  options$modelTerms <- list(list(components="debInf", name="model0", title = "Model 0"))
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Inf covariate check")
 
   options$covariates <- "contGamma"
   options$weights <- "debInf"
-  options$modelTerms <- list(list(components="contGamma", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Inf weights check")
 
   options$dependent <- "debSame"
   options$covariates <- "contGamma"
   options$weights <- ""
-  options$modelTerms <- list(list(components="contGamma", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="No variance dependent check")
 
   options$dependent <- "contNormal"
   options$covariates <- "debSame"
-  options$modelTerms <- list(list(components="debSame", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="No variance covariate check")
 
   options$dependent <- "contGamma"
   options$covariates <- "contcor1"
   options$weights <- "contNormal"
-  options$modelTerms <- list(list(components="contcor1", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Negative weights check")
 
   options$dependent <- "debNaN"
   options$covariates <- "contcor1"
   options$weights <- ""
-  options$modelTerms <- list(list(components="contcor1", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Too few obs dependent check")
 
   options$dependent <- "contGamma"
   options$covariates <- "debNaN"
-  options$modelTerms <- list(list(components="debNaN", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Too few obs covariate check")
 
   options$dependent <- "contGamma"
   options$covariates <- "contNormal"
   options$weights <- "debNaN"
-  options$modelTerms <- list(list(components="contNormal", isNuisance=FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list(options$covariates), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Too few obs weights check")
 
@@ -330,24 +358,26 @@ test_that("Analysis handles errors", {
   options$dependent <- "contNormal"
   options$covariates <- c("debCollin2", "debCollin3")
   options$modelTerms <- list(
-    list(components="debCollin2", isNuisance=FALSE),
-    list(components="debCollin3", isNuisance=FALSE)
-  )
+    list(components=list("debCollin2"), name="model0", title = "Model 0"),
+    list(components=list("debCollin2", "debCollin3"), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   results$results$errorMessage
   expect_identical(results[["status"]], "validationError", label="Perfect correlation check")
 })
 
 test_that("Analysis handles categorical predictors in model summary table", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "contNormal"
   options$covariates <- "contcor1"
   options$factors <- "facFive"
   options$modelTerms <- list(
-    list(components="contcor1", isNuisance=TRUE),
-    list(components="facFive", isNuisance=FALSE)
-  )
+    list(components=list("contcor1"), name="model0", title = "Model 0"),
+    list(components=list("contcor1", "facFive"), name="model1", title = "Model 1")
+  ) 
   options$rSquaredChange <- TRUE
+  options$fChange <- TRUE
+
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
@@ -363,34 +393,34 @@ test_that("Analysis handles categorical predictors in model summary table", {
 test_that("Part And Partial Correlations table results match", {
   # Part and partial correlations, including categorical predictors, verified with SPSS,
   # see pdf doc in https://github.com/jasp-stats/jasp-issues/issues/1638
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$covariates <- c("education", "prestige")
   options$dependent <- "income"
   options$factors <- "occup_type"
-  options$modelTerms <- list(list(components = "education", isNuisance = FALSE), list(
-    components = "prestige", isNuisance = FALSE), list(components = "occup_type",
-                                                       isNuisance = FALSE))
+  options$modelTerms <- list(
+    list(components=list("education", "prestige", "occup_type"), name="model0", title = "Model 0")
+  ) 
   options$partAndPartialCorrelation <- TRUE
   set.seed(1)
   results <- jaspTools::runAnalysis("RegressionLinear", "Duncan.csv", options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("TRUE", "H<unicode>", "education", -0.107546637580272, -0.218295377900754,
-                                      "FALSE", "H<unicode>", "prestige", 0.363479641784283, 0.603066145085564,
-                                      "FALSE", "H<unicode>", "occup_type", 0.236073658532065, 0.440752114010841
+                                 list("FALSE", "M<unicode>", "education", -0.107546637580271, -0.218295377900751,
+                                      "FALSE", "M<unicode>", "prestige", 0.363479641784282, 0.603066145085563,
+                                      "FALSE", "M<unicode>", "occup_type", 0.236073658532064, 0.44075211401084
                                  ))
 })
 
 test_that("Bootstrapping runs", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "contNormal"
   options$covariates <- "contcor1"
   options$factors <- "facFive"
   options$modelTerms <- list(
-    list(components="contcor1", isNuisance=TRUE),
-    list(components="facFive", isNuisance=FALSE)
-  )
+    list(components=list("contcor1"), name="model0", title = "Model 0"),
+    list(components=list("contcor1", "facFive"), name="model1", title = "Model 1")
+  ) 
   options$coefficientBootstrap <- TRUE
   options$coefficientBootstrapSamples <- 100
   options$coefficientCi <- TRUE
@@ -423,16 +453,17 @@ test_that("Bootstrapping runs", {
 })
 
 test_that("Marginal effects plots works with interactions", {
-  options <- analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$.meta <- list(covariates = list(shouldEncode = TRUE), dependent = list(
     shouldEncode = TRUE), factors = list(shouldEncode = TRUE),
     modelTerms = list(shouldEncode = TRUE), weights = list(shouldEncode = TRUE))
   options$covariates <- c("contGamma", "contcor1")
   options$dependent <- "contNormal"
   options$marginalPlot <- TRUE
-  options$modelTerms <- list(list(components = "contGamma", isNuisance = FALSE), list(
-    components = "contcor1", isNuisance = FALSE), list(components = c("contGamma",
-                                                                      "contcor1"), isNuisance = FALSE))
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list("contGamma", "contcor1", list("contGamma", "contcor1")), name="model1", title = "Model 1")
+  ) 
   set.seed(1)
   results <- runAnalysis("RegressionLinear", "test.csv", options)
 
@@ -451,12 +482,16 @@ test_that("Marginal effects plots works with interactions", {
 
 # Chapter 1
 test_that("Fields Book - Chapter 1 results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "sales"
   options$covariates <- "adverts"
   options$modelTerms <- list(
-    list(components="adverts", isNuisance=FALSE)
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list("adverts"), name="model1", title = "Model 1")
   )
+  options$fChange <- FALSE
+  options$rSquaredChange <- FALSE
+  
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   output1 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(output1,
@@ -482,10 +517,9 @@ test_that("Fields Book - Chapter 1 results match", {
 
   options$covariates <- c("adverts", "airplay", "attract")
   options$modelTerms <- list(
-    list(components="adverts", isNuisance=TRUE),
-    list(components="airplay", isNuisance=FALSE),
-    list(components="attract", isNuisance=FALSE)
-  )
+    list(components=list("adverts"), name="model0", title = "Model 0"),
+    list(components=list("adverts", "airplay", "attract"), name="model1", title = "Model 1")
+  ) 
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   output4 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(output4,
@@ -521,15 +555,16 @@ test_that("Fields Book - Chapter 1 results match", {
 
 # Chapter 2
 test_that("Fields Book - Chapter 2 results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "sales"
   options$covariates <- c("adverts", "airplay", "attract")
   options$modelTerms <- list(
-    list(components="adverts", isNuisance=TRUE),
-    list(components="airplay", isNuisance=FALSE),
-    list(components="attract", isNuisance=FALSE)
-  )
+    list(components=list("adverts"), name="model0", title = "Model 0"),
+    list(components=list("adverts", "airplay", "attract"), name="model1", title = "Model 1")
+  ) 
   options$rSquaredChange <- TRUE
+  options$fChange <- TRUE
+  
   options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   output4 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
@@ -551,14 +586,13 @@ test_that("Fields Book - Chapter 2 results match", {
 
 # Chapter 3
 test_that("Fields Book - Chapter 3 results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "sales"
   options$covariates <- c("adverts", "airplay", "attract")
   options$modelTerms <- list(
-    list(components="adverts", isNuisance=TRUE),
-    list(components="airplay", isNuisance=FALSE),
-    list(components="attract", isNuisance=FALSE)
-  )
+    list(components=list("adverts"), name="model0", title = "Model 0"),
+    list(components=list("adverts", "airplay", "attract"), name="model1", title = "Model 1")
+  ) 
   options$residualVsFittedPlot <- TRUE
   options$partialResidualPlot <- TRUE
   options$residualHistogramPlot <- TRUE
@@ -568,6 +602,7 @@ test_that("Fields Book - Chapter 3 results match", {
   options$residualCasewiseDiagnosticType <- "outliersOutside"
   options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientCi <- TRUE
+
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
   figure3 <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
   jaspTools::expect_equal_plots(figure3, "field-residuals-predicted")
@@ -581,7 +616,7 @@ test_that("Fields Book - Chapter 3 results match", {
   jaspTools::expect_equal_plots(figure5a, "field-residuals-histogram")
   figure5b <- results[["state"]][["figures"]][[3]][["obj"]] # Q-Q-Plot
   jaspTools::expect_equal_plots(figure5b, "field-qq")
-  output1 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_casewiseTable"]][["data"]]
+  output1 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_influenceTable"]][["data"]]
   jaspTools::expect_equal_tables(output1,
                       list(1, 2.177404, 330, 229.9203, 100.0797, 0.05870388,
                            2, -2.323083, 120, 228.949, -108.949, 0.01088943,
@@ -597,14 +632,13 @@ test_that("Fields Book - Chapter 3 results match", {
                            200, -2.088044, 110, 207.2061, -97.20606, 0.02513455)
   )
 
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "sales"
   options$covariates <- c("adverts", "airplay", "attract")
   options$modelTerms <- list(
-    list(components="adverts", isNuisance=TRUE),
-    list(components="airplay", isNuisance=FALSE),
-    list(components="attract", isNuisance=FALSE)
-  )
+    list(components=list("adverts"), name="model0", title = "Model 0"),
+    list(components=list("adverts", "airplay", "attract"), name="model1", title = "Model 1")
+  ) 
   options$residualCasewiseDiagnostic <- TRUE
   options$residualCasewiseDiagnosticType <- "allCases"
   options$coefficientBootstrap <- TRUE
@@ -612,7 +646,7 @@ test_that("Fields Book - Chapter 3 results match", {
   set.seed(1) # For Bootstrapping Unit Tests
   options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
-  figure10 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_casewiseTable"]][["data"]]
+  figure10 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_influenceTable"]][["data"]]
   figure10 <- list(figure10[[1]]$cooksD, figure10[[2]]$cooksD, figure10[[3]]$cooksD, figure10[[4]]$cooksD,
                    figure10[[5]]$cooksD, figure10[[6]]$cooksD, figure10[[7]]$cooksD, figure10[[8]]$cooksD,
                    figure10[[9]]$cooksD, figure10[[10]]$cooksD, figure10[[11]]$cooksD, figure10[[12]]$cooksD,
@@ -637,13 +671,17 @@ test_that("Fields Book - Chapter 3 results match", {
   #                          "", "attract", -0.2110928, 11.08634, 2.234141, 6.502079, 15.13605)
   # )
 
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "spai"
   options$covariates <- c("tosca", "obq")
   options$modelTerms <- list(
-    list(components="tosca", isNuisance=TRUE),
-    list(components="obq", isNuisance=FALSE)
+    list(components="tosca", name="model0", title = "Model 0"),
+    list(components="obq", name="model0", title = "Model 0")
   )
+  options$modelTerms <- list(
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list("tosca", "obq"), name="model1", title = "Model 1")
+  ) 
   options$residualVsFittedPlot <- TRUE
   options$partialResidualPlot <- TRUE
   options$residualQqPlot <- TRUE
@@ -662,13 +700,13 @@ test_that("Fields Book - Chapter 3 results match", {
 
 # Chapter 4
 test_that("Fields Book - Chapter 4 results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "Happiness"
   options$covariates <- c("dummy1", "dummy2")
   options$modelTerms <- list(
-    list(components="dummy1", isNuisance=FALSE),
-    list(components="dummy2", isNuisance=FALSE)
-  )
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list("dummy1", "dummy2"), name="model1", title = "Model 1")
+  ) 
   options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Dummy.csv", options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
@@ -690,13 +728,13 @@ test_that("Fields Book - Chapter 4 results match", {
 
 # Chapter 5
 test_that("Fields Book - Chapter 5 results match", {
-  options <- jaspTools::analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$dependent <- "Happiness"
   options$covariates <- c("Dummy1", "Dummy2")
   options$modelTerms <- list(
-    list(components="Dummy1", isNuisance=FALSE),
-    list(components="Dummy2", isNuisance=FALSE)
-  )
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list("Dummy1", "Dummy2"), name="model1", title = "Model 1")
+  ) 
   options$coefficientCi <- TRUE
   results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Contrast.csv", options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
@@ -719,20 +757,19 @@ test_that("VIF is correct when the model contains factors", {
 # test issue reported in https://forum.cogsci.nl/discussion/comment/27675
 # previously, we computed the variance inflation factor (vif) in an incorrect manner when categorical variables were in play.
 
-  options <- analysisOptions("RegressionLinear")
+  options <- initOptsLinReg()
   options$collinearityDiagnostic <- TRUE
+  options$collinearityStatistic <- TRUE
   options$covariates <- c("contcor1", "contcor2", "contGamma")
   options$dependent <- "contNormal"
   options$factors <- c("contBinom", "facFive")
   options$modelTerms <- list(
-    list(components = "contcor1",  isNuisance = FALSE),
-    list(components = "contcor2",  isNuisance = FALSE),
-    list(components = "contGamma", isNuisance = FALSE),
-    list(components = "contBinom", isNuisance = FALSE),
-    list(components = "facFive", isNuisance = FALSE),
-    list(components = c("contBinom", "facFive"), isNuisance = FALSE),
-    list(components = c("contcor1", "facFive"),  isNuisance = FALSE)
-  )
+    list(components=NULL, name="model0", title = "Model 0"),
+    list(components=list("contcor1", "contcor2", "contGamma", "contBinom", "facFive",  
+                         list("contBinom", "facFive"), 
+                         list("contcor1", "facFive")),
+         name="model1", title = "Model 1")
+  ) 
   set.seed(1)
   results <- runAnalysis("RegressionLinear", "debug.csv", options)
 

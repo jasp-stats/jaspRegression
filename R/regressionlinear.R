@@ -51,9 +51,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   # these output elements show statistics of the "final model" (lm fit with all predictors in enter method and last lm fit in stepping methods)
   finalModel <- model[[length(model)]]
 
-  if (options$residualCasewiseDiagnostic && is.null(modelContainer[["casewiseTable"]]))
-    .linregCreateCasewiseDiagnosticsTable(modelContainer, finalModel, options, position = 9)
-
+  if (options$residualCasewiseDiagnostic && is.null(modelContainer[["influenceTable"]])) 
+    .glmInfluenceTable(modelContainer, finalModel$fit, dataset, options, ready = ready, position = 9, linRegAnalysis = TRUE)
+  .regressionExportResiduals(modelContainer, finalModel$fit, dataset, options, ready = ready)
+  
+  
   if (options$residualStatistic && is.null(modelContainer[["residualsTable"]]))
     .linregCreateResidualsTable(modelContainer, finalModel, options, position = 10)
 
@@ -108,12 +110,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregCheckIfFactorWithMoreLevels <- function(var) {
   # Custom function to check if a variable is a factor with more than 2 levels
-  is.factor(var) && nlevels(var) > 2
+  return(is.factor(var) && nlevels(var) > 2)
 }
 
 .linregCheckIfInteractionWithFactors <- function(modelTerm, factorVariables) {
   # Custom function to check if interaction contains more than 1 factor
-  sum(modelTerm[["components"]] %in% factorVariables) > 1
+  return(sum(modelTerm[["components"]] %in% factorVariables) > 1)
 }
 
 .linregCheckErrors <- function(dataset, options) {
@@ -147,15 +149,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 
   defaultTarget <- c(options$dependent, unlist(options$covariates))
-  .hasErrors(dataset, type = c("infinity", "variance", "observations", "modelInteractions", "varCovData"),
+  .hasErrors(dataset, type = c("infinity", "variance", "observations", "varCovData"),
              custom = stepwiseProcedureChecks,
              custom.target = defaultTarget,
 
              observations.amount = "< 2",
              observations.target = defaultTarget,
-
-             modelInteractions.modelTerms = options$modelTerms,
-             modelInteractions.target = defaultTarget,
 
              varCovData.target = unlist(options$covariates),
              varCovData.corFun = stats::cov,
@@ -191,7 +190,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   else
     summaryTable <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
 
-  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange"))
+  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange", "fChange", "modelAICBIC"))
   summaryTable$position <- position
   summaryTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -201,9 +200,16 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   summaryTable$addColumnInfo(name = "adjR2",  title = gettextf("Adjusted R%s", "\u00B2"),  type = "number", format = "dp:3")
   summaryTable$addColumnInfo(name = "RMSE",   title = gettext("RMSE"),                     type = "number")
 
-  if (options$rSquaredChange) {
-    summaryTable$addColumnInfo(name = "R2c",  title = gettextf("R%s Change", "\u00B2"), type = "number", format = "dp:3")
-    summaryTable$addColumnInfo(name = "Fc",   title = gettext("F Change"),              type = "number")
+  if (options$modelAICBIC) {
+    summaryTable$addColumnInfo(name = "AIC",      title = gettext("AIC"),                  type = "number", format = "dp:3")
+    summaryTable$addColumnInfo(name = "BIC",      title = gettext("BIC"),                  type = "number", format = "dp:3")
+  }
+    
+  if (options$rSquaredChange || options$fChange) {
+    if (options$rSquaredChange)
+        summaryTable$addColumnInfo(name = "R2c",  title = gettextf("R%s Change", "\u00B2"), type = "number", format = "dp:3")
+    if (options$fChange)
+        summaryTable$addColumnInfo(name = "Fc",   title = gettext("F Change"),              type = "number")
     summaryTable$addColumnInfo(name = "df1",  title = gettext("df1"),                   type = "integer")
     summaryTable$addColumnInfo(name = "df2",  title = gettext("df2"),                   type = "integer")
     summaryTable$addColumnInfo(name = "p",    title = gettext("p"),                     type = "pvalue")
@@ -219,7 +225,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       summaryTable$addFootnote(message = gettext("p-value for Durbin-Watson test is unavailable for weighted regression."))
   }
 
-  .linregAddPredictorsInNullFootnote(summaryTable, options$modelTerms)
+  .linregAddPredictorsInNullFootnote(summaryTable, options$modelTerms[[1]][["components"]])
 
   if (!is.null(model)) {
     if (length(model) == 1 && length(model[[1]]$predictors) == 0 && !options$interceptTerm)
@@ -242,6 +248,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       R     = as.numeric(sqrt(lmSummary$r.squared)),
       R2    = as.numeric(lmSummary$r.squared),
       adjR2 = as.numeric(lmSummary$adj.r.squared),
+      AIC   = as.numeric(AIC(model[[i]][["fit"]])),
+      BIC   = as.numeric(BIC(model[[i]][["fit"]])),
       RMSE  = as.numeric(lmSummary$sigma),
       R2c   = rSquareChange$R2c,
       Fc    = rSquareChange$Fc,
@@ -269,7 +277,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   anovaTable$addColumnInfo(name = "F",     title = gettext("F"),              type = "number")
   anovaTable$addColumnInfo(name = "p",     title = gettext("p"),              type = "pvalue")
 
-  .linregAddPredictorsInNullFootnote(anovaTable, options$modelTerms)
+  .linregAddPredictorsInNullFootnote(anovaTable, options$modelTerms[[1]][["components"]])
   .linregAddVovkSellke(anovaTable, options$vovkSellke)
 
   if (!is.null(model)) {
@@ -299,7 +307,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   coeffTable <- createJaspTable(gettext("Coefficients"))
   coeffTable$dependOn(c("coefficientEstimate", "coefficientCi", "coefficientCiLevel",
-                        "collinearityDiagnostic", "vovkSellke"))
+                        "collinearityStatistic", "vovkSellke"))
   coeffTable$position <- position
   coeffTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -319,7 +327,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     coeffTable$addColumnInfo(name = "upper", title = gettext("Upper"), type = "number", overtitle = overtitle)
   }
 
-  if (options$collinearityDiagnostic) {
+  if (options$collinearityStatistic) {
     overtitle <- gettext("Collinearity Statistics")
     coeffTable$addColumnInfo(name = "tolerance",  title = gettext("Tolerance"),  type = "number", format = "dp:3", overtitle = overtitle)
     coeffTable$addColumnInfo(name = "VIF",        title = gettext("VIF"),        type = "number",                  overtitle = overtitle)
@@ -579,37 +587,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 }
 
-.linregCreateCasewiseDiagnosticsTable <- function(modelContainer, finalModel, options, position) {
-  caseDiagTable <- createJaspTable(gettext("Casewise Diagnostics"))
-  caseDiagTable$dependOn(c("residualCasewiseDiagnostic", "residualCasewiseDiagnosticType",
-                           "residualCasewiseDiagnosticZThreshold", "residualCasewiseDiagnosticCooksDistanceThreshold"))
-  caseDiagTable$position <- position
-
-  caseDiagTable$addColumnInfo(name = "caseNumber",  title = gettext("Case Number"),     type = "integer")
-  caseDiagTable$addColumnInfo(name = "stdResidual", title = gettext("Std. Residual"),   type = "number", format = "dp:3")
-  caseDiagTable$addColumnInfo(name = "dependent",   title = options$dependent,          type = "number")
-  caseDiagTable$addColumnInfo(name = "predicted",   title = gettext("Predicted Value"), type = "number")
-  caseDiagTable$addColumnInfo(name = "residual",    title = gettext("Residual"),        type = "number")
-  caseDiagTable$addColumnInfo(name = "cooksD",      title = gettext("Cook's Distance"), type = "number", format = "dp:3")
-
-  if (!is.null(finalModel)) {
-    caseDiagData <- .linregGetCasewiseDiagnostics(finalModel$fit, options)
-    caseDiagTable$setData(caseDiagData)
-
-    if (length(caseDiagData) == 0) {
-      message <- switch(
-        options[["residualCasewiseDiagnosticType"]],
-        cooksDistance = gettextf("No cases where |Cook's distance| > %s", options[["residualCasewiseDiagnosticCooksDistanceThreshold"]]),
-        outliersOutside = gettextf("No cases where |Standard residual| > %s", options[["residualCasewiseDiagnosticZThreshold"]]),
-        gettextf("No cases to show")
-      )
-      caseDiagTable$addFootnote(message = message)
-    }
-  }
-
-  modelContainer[["casewiseTable"]] <- caseDiagTable
-}
-
 .linregCreateResidualsTable <- function(modelContainer, finalModel, options, position) {
   residualsTable <- createJaspTable(gettext("Residuals Statistics"))
   residualsTable$dependOn("residualStatistic")
@@ -724,12 +701,14 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(finalModel) && !is.null(finalModel$fit)) {
     fit <- finalModel$fit
-    .linregInsertPlot(residQQPlot, .linregPlotQQresiduals, res = residuals(fit) / sd(residuals(fit)))
+
+    .linregInsertPlot(residQQPlot, .glmFillPlotResQQ, model = fit, 
+                      residType = "deviance", options = options)
   }
 }
 
 .linregCreatePartialPlots <- function(modelContainer, dataset, options, position) {
-  predictors <- .linregGetPredictors(options$modelTerms, encoded = TRUE)
+  predictors <- .linregGetPredictors(options$modelTerms)
 
   title <- ngettext(length(predictors), "Partial Regression Plot", "Partial Regression Plots")
 
@@ -739,7 +718,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   partialPlotContainer$position <- position
   modelContainer[["partialPlotContainer"]] <- partialPlotContainer
 
-  predictors <- .linregGetPredictors(options$modelTerms, encoded = TRUE)
+  predictors <- .linregGetPredictors(options$modelTerms[[length(options$modelTerms)]][["components"]])
   if (any(.linregIsInteraction(predictors))) {
     .linregCreatePlotPlaceholder(partialPlotContainer, index = "placeholder", title = "")
     partialPlotContainer$setError(gettext("Partial plots are not supported for models containing interaction terms"))
@@ -811,24 +790,26 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     model <- .linregCalcDurBinWatsonTestResults(modelContainer, model, options)
     return(model)
   }
-
+  nModels           <- length(options$modelTerms)
   dependent         <- options$dependent
-  predictorsInNull  <- .linregGetPredictors(options$modelTerms, modelType = "null")
-  predictors        <- .linregGetPredictors(options$modelTerms, modelType = "alternative") # these include the null terms
 
+  predictorsInNull  <- .linregGetPredictors(options$modelTerms[[1]][["components"]], modelType = "null")
+  predictorsInFull  <- .linregGetPredictors(options$modelTerms[[nModels]][["components"]], modelType = "alternative") # these include the null terms
+  
+  
   if (options$weights != "")
     weights <- dataset[[options$weights]]
   else
     weights <- rep(1, length(dataset[[dependent]]))
-
-  if (options$method %in% c("backward", "forward", "stepwise") && length(predictors) > 0)
-    model <- .linregGetModelSteppingMethod(dependent, predictors, predictorsInNull, dataset, options, weights)
+  
+  if (options$method %in% c("backward", "forward", "stepwise") && length(predictorsInFull) > 0)
+    model <- .linregGetModelSteppingMethod(dependent, predictorsInFull, predictorsInNull, dataset, options, weights)
   else
-    model <- .linregGetModelEnterMethod(dependent, predictors, predictorsInNull, dataset, options, weights)
+    model <- .linregGetModelEnterMethod(dependent, modelTerms = options[["modelTerms"]], dataset, options, weights)
 
   for (i in seq_along(model)) {
     singleModel <- model[[i]]
-    model[[i]][["title"]]         <- .linregGetModelTitle(singleModel$predictors, predictorsInNull, options$method, i)
+    model[[i]][["title"]]         <-  gettextf("M%s", intToUtf8(0x2080 + i - 1, multiple = FALSE)) # singleModel[["title"]]
     model[[i]][["summary"]]       <- .linregGetSummary(singleModel$fit)
     model[[i]][["rSquareChange"]] <- .linregGetrSquaredChange(singleModel$fit, i, model[1:i], options)
   }
@@ -868,27 +849,15 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(model)
 }
 
-.linregGetModelEnterMethod <- function(dependent, predictors, predictorsInNull, dataset, options, weights) {
+.linregGetModelEnterMethod <- function(dependent, modelTerms, dataset, options, weights) {
   model <- list()
 
-  formulaNull <- NULL
-  if (length(predictorsInNull) > 0)
-    formulaNull <- .linregGetFormula(dependent, predictorsInNull, options$interceptTerm)
-  else if (options$interceptTerm)
-    formulaNull <- .linregGetFormula(dependent, NULL, TRUE)
-
-  formula <- NULL
-  if (length(predictors) > 0 && !all(predictors %in% predictorsInNull))
-    formula <- .linregGetFormula(dependent, predictors, options$interceptTerm)
-
-  if (!is.null(formulaNull)) {
-    fitNull <- stats::lm(formulaNull, data = dataset, weights = weights, x = TRUE)
-    model[[1]] <- list(fit = fitNull, predictors = predictorsInNull, title = gettextf("H%s", "\u2080"))
-  }
-
-  if (!is.null(formula)) {
+  for (thisModel in modelTerms) {
+    thisModelTerms <- .linregGetPredictors(thisModel[["components"]])
+    formula <- .linregGetFormula(dependent, thisModelTerms, options$interceptTerm)
     fit <- stats::lm(formula, data = dataset, weights = weights, x = TRUE)
-    model[[length(model) + 1]] <- list(fit = fit, predictors = predictors, title = gettextf("H%s", "\u2081"))
+    model[[length(model) + 1]] <- list(fit = fit, predictors = thisModelTerms, title = gettext(thisModel[["title"]]))
+    
   }
 
   return(model)
@@ -1504,6 +1473,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     residualsAll          <- residuals(fit)
     stdPredictedValuesAll <- (predictedValuesAll - mean(predictedValuesAll)) / sd(predictedValuesAll)
     stdResidualsAll       <- rstandard(fit)
+    # stdResidualsAll       <-  statmod::qresid(fit)
+    # stdResidualsAll       <- rstudent(fit
     cooksDAll             <- cooks.distance(fit)
 
     if (options$residualCasewiseDiagnosticType == "cooksDistance")
@@ -1755,65 +1726,18 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(p)
 }
 
-.linregPlotQQresiduals <- function(res = NULL, xlab = gettext("Theoretical Quantiles"), ylab= gettext("Standardized Residuals"), cexPoints= 1.3, cexXAxis= 1.3, cexYAxis= 1.3, lwd= 2, lwdAxis=1.2) {
-  d     <- data.frame(qqnorm(res, plot.it = FALSE))
-  d     <- na.omit(d)
-  xVar  <- d$x
-  yVar  <- d$y
-
-  xlow    <- min(pretty(xVar))
-  xhigh   <- max(pretty(xVar))
-  xticks  <- pretty(c(xlow, xhigh))
-
-  ylow    <- min(pretty(yVar))
-  yhigh   <- max(pretty(yVar))
-  yticks  <- pretty(c(ylow, yhigh))
-
-  yLabs <- vector("character", length(yticks))
-
-  for (i in seq_along(yticks)) {
-    if (yticks[i] < 10^6)
-      yLabs[i] <- format(yticks[i], digits= 3, scientific = FALSE)
-    else
-      yLabs[i] <- format(yticks[i], digits= 3, scientific = TRUE)
-  }
-
-  p <- ggplot2::ggplot() +
-    ggplot2::scale_x_continuous(name = gettext("Theoretical Quantiles"), breaks = xticks) +
-    ggplot2::scale_y_continuous(name = gettext("Standardized Residuals"), breaks = xticks) +# TODO: why are xticks used here even though yticks exists?
-    ggplot2::geom_line(
-      data = data.frame(x = c(min(xticks), max(xticks)), y = c(min(xticks), max(xticks))),
-      mapping = ggplot2::aes(x = x, y = y),
-      col = "darkred", size = 1
-    ) +
-    jaspGraphs::geom_point(
-      data = data.frame(x = xVar, y = yVar),
-      mapping = ggplot2::aes(x = x, y = y)
-    ) +
-    jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
-
-  return(p)
-}
-
-.linregGetPredictors <- function(modelTerms, modelType = "alternative", encoded = TRUE) {
+.linregGetPredictors <- function(modelTerms, modelType = "alternative") {
   if (!is.character(modelType) || !modelType %in% c("alternative", "null"))
     stop(gettext("Unknown value provided for modelType, possible values: `alternative`, `null`"))
 
   predictors <- NULL
   for (i in seq_along(modelTerms)) {
-    components <- unlist(modelTerms[[i]]$components)
-    if (encoded)
-      components <- .v(components)
+    components <- modelTerms[[i]]
     predictor <- paste0(components, collapse = ":")
 
-    if (modelType == "alternative") {
-      predictors <- c(predictors, predictor)
-    } else if (modelType == "null") {
-      isNuisance <- modelTerms[[i]]$isNuisance
-      if (isNuisance)
-        predictors <- c(predictors, predictor)
-    }
+
+    predictors <- c(predictors, predictor)
+
   }
 
   return(predictors)
@@ -1833,7 +1757,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (is.null(predictors) && includeConstant == FALSE)
     stop(gettext("We need at least one predictor, or an intercept to make a formula"))
 
-  if (is.null(predictors))
+  if (length(predictors) == 0)
     formula <- paste(dependent, "~", "1")
   else if (includeConstant)
     formula <- paste(dependent, "~", paste(predictors, collapse = "+"))
@@ -1843,17 +1767,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(as.formula(formula, env = parent.frame(1)))
 }
 
-.linregGetModelTitle <- function(predictors, predictorsInNull, method, index) {
-  modelTitle <- index
-  if (method == "enter") {
-    if (index == 1 && (length(predictors) == 0 || all(predictors %in% predictorsInNull)))
-      modelTitle <- gettextf("H%s", "\u2080")
-    else
-      modelTitle <- gettextf("H%s", "\u2081")
-  }
-
-  return(modelTitle)
-}
 
 .linregIsInteraction <- function(predictor) {
   grepl(":", predictor)
@@ -1899,9 +1812,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregAddPredictorsInNullFootnote <- function(jaspTable, modelTerms) {
-  containsNuisance <- .reglinTermsContainNuisance(modelTerms)
-  if (containsNuisance) {
-    predictorsInNull <- .linregGetPredictors(modelTerms, modelType = "null", encoded = FALSE)
+  if (length(modelTerms) > 0) {
+    predictorsInNull <- .linregGetPredictors(modelTerms, modelType = "null")
     jaspTable$addFootnote(message = gettextf("Null model includes %s", paste(predictorsInNull, collapse = ", "), sep = ""))
   }
 }
@@ -1926,10 +1838,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetIndicesOfModelsWithPredictors <- function(model, options) {
-  predictorsInNull  <- .linregGetPredictors(options$modelTerms, modelType = "null")
+  predictorsInNull  <- model[[1]]$predictors
   indices           <- seq_along(model)
+  
   if (options$method == "enter") {
-    if (length(model) >= 1 && options$interceptTerm && is.null(predictorsInNull))
+    if (length(model) >= 1 && options$interceptTerm && length(predictorsInNull) == 0)
       indices <- indices[-1]
   } else {
     for (i in seq_along(model))
