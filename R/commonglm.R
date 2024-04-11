@@ -834,7 +834,10 @@
     colInd <- c(colInd, optionToColInd(measure, nDFBETAS))
   }
   
-  influenceResData <- as.data.frame(influenceRes[["infmat"]][, colInd])
+  tempResult <- influenceRes[["infmat"]][, colInd]
+  resultContainsNaN <- any(is.nan(tempResult))
+  tempResult[which(is.nan(tempResult))] <- NA
+  influenceResData <- as.data.frame(tempResult)
   colnames(influenceResData)[1:length(colInd)] <- colNames[1:length(colInd)]
   
   influenceResData[["caseN"]] <- seq.int(nrow(influenceResData))
@@ -857,17 +860,16 @@
   # funky statement to ensure a df even if only 1 row
   influenceResSig       <- subset(influenceRes[["is.inf"]], 1:nrow(influenceResData) %in% index, select = colInd)
   colnames(influenceResSig) <- colNames[1:length(colInd)]
-  
   influenceResData <- influenceResData[index, ]
-  
+
   if (length(index) == 0)
     influenceTable$addFootnote(gettext("No influential cases found."))
   else {
     influenceTable$setData(influenceResData)
     # if any other metrix show influence, add footnotes:
-    if (sum(influenceResSig) > 0) {
+    if (sum(influenceResSig, na.rm = TRUE) > 0) {
       for (thisCol in colnames(influenceResSig)) {
-        if (sum(influenceResSig[, thisCol]) > 0) 
+        if (sum(influenceResSig[, thisCol], na.rm = TRUE) > 0) 
           influenceTable$addFootnote(
             gettext("Potentially influential case, according to the selected influence measure."), 
             colNames = thisCol,
@@ -875,6 +877,12 @@
             symbol = "*"
           )
       }
+    }
+    
+    if (resultContainsNaN) {
+      influenceTable$addFootnote(
+        gettext("Influence measures could not be computed for some cases due to extreme values, try another measure.")
+      )
     }
   }
 }
