@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2024-03-02 02:46\n"
-"PO-Revision-Date: 2024-02-12 12:02+0000\n"
-"Last-Translator: Alberto Dessì <websites.onstage058@passinbox.com>\n"
+"PO-Revision-Date: 2024-04-11 14:02+0000\n"
+"Last-Translator: federicapicogna <picognafederica@gmail.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/it/>\n"
 "Language: it\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.4-dev\n"
+"X-Generator: Weblate 5.5-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -193,6 +193,7 @@ msgstr ""
 msgid "p"
 msgstr "p"
 
+#, fuzzy
 msgid "VS-MPR"
 msgstr "VS-MPR"
 
@@ -279,8 +280,9 @@ msgstr "Tau B di Kendall parziale"
 msgid "%s heatmap"
 msgstr ""
 
+#, fuzzy
 msgid "Heatmaps"
-msgstr ""
+msgstr "Mappa di calore"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr "Intervallo di confidenza del %1$d%%: [%2$d, %3$d]"
@@ -320,7 +322,7 @@ msgid "Posterior is too peaked"
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "Variabile"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr ""
@@ -434,7 +436,7 @@ msgid "Coefficients"
 msgstr ""
 
 msgid "Estimate"
-msgstr ""
+msgstr "Stima"
 
 msgid "Standard Error"
 msgstr ""
@@ -536,7 +538,7 @@ msgid "Estimated Marginal Means"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Lower"
 msgstr "Inferiore"
@@ -685,7 +687,7 @@ msgid "df2"
 msgstr ""
 
 msgid "Autocorrelation"
-msgstr ""
+msgstr "Autocorrelazione"
 
 msgid "Durbin-Watson"
 msgstr ""
@@ -712,7 +714,7 @@ msgid "Regression"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "Totale"
 
 msgid "Unstandardized"
 msgstr ""
@@ -817,16 +819,16 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "Minimo"
 
 msgid "Maximum"
-msgstr ""
+msgstr "Massimo"
 
 msgid "Mean"
-msgstr ""
+msgstr "Media"
 
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgid "N"
 msgstr ""
@@ -886,7 +888,7 @@ msgid "Standardized Residuals"
 msgstr ""
 
 msgid "Theoretical Quantiles"
-msgstr ""
+msgstr "Quantili teorici"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -1060,7 +1062,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Q-Q Plot"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1195,7 +1197,7 @@ msgid "Robust <br> %s"
 msgstr ""
 
 msgid "Parameter"
-msgstr ""
+msgstr "Parametro"
 
 msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
