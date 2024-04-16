@@ -37,7 +37,7 @@ Group {
 		{
 			name:				"dependent"
 			title:				qsTr("Dependent variable")
-			allowedColumns:		["scale", "ordinal", "nominal", "nominalText"]
+			allowedColumns:		["scale", "ordinal", "nominal"]
 			singleVariable:		true
 		}
 
@@ -52,7 +52,7 @@ Group {
 		{
 			name:				"factors"
 			title:				qsTr("Factors")
-			allowedColumns:		["ordinal", "nominal", "nominalText"]
+			allowedColumns:		["ordinal", "nominal"]
 		}
 
 		AssignedVariablesList
