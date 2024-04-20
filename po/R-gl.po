@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2024-04-20 02:42\n"
-"PO-Revision-Date: 2024-03-03 11:01+0000\n"
+"PO-Revision-Date: 2024-04-20 14:01+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/gl/>\n"
@@ -151,13 +151,11 @@ msgstr ""
 msgid "Plotting is not possible: %s"
 msgstr "Non é posible a representación gráfica: %s"
 
-#, fuzzy
 msgid "Q-Q Plots"
-msgstr "Gráfica Q-Q"
+msgstr "Gráficas Q-Q"
 
-#, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
-msgstr "Gráfica Q-Q Normal: Erros %1s tipificados"
+msgstr "Gráfica Q-Q: Erros %1s tipificados"
 
 msgid "There are no predictors to test for multicollinearity"
 msgstr "Non hai preditores para probar a multicolinearidade"
@@ -240,11 +238,15 @@ msgstr "Non se atoparon casos influentes."
 msgid ""
 "Potentially influential case, according to the selected influence measure."
 msgstr ""
+"Caso potencialmente influínte, de acordo coa medida de influencia "
+"seleccionada."
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
 "values, try another measure."
 msgstr ""
+"As medidas de influencia non se poden calcular para algúns casos debido a "
+"valores extremos; proba outra medida."
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
@@ -319,9 +321,8 @@ msgstr "Magnitude do efecto (z de Fisher)"
 msgid "SE Effect size"
 msgstr "EP da Magnitude do efecto"
 
-#, fuzzy
 msgid "Covariance"
-msgstr "Desviación"
+msgstr "Covarianza"
 
 msgid "r"
 msgstr "r"
@@ -845,7 +846,7 @@ msgid "Part"
 msgstr "Parte"
 
 msgid "Coefficients Covariance Matrix"
-msgstr "Matriz de Covarianza dos Coeficientes"
+msgstr "Matriz de covarianzas dos coeficientes"
 
 msgid "Collinearity Diagnostics"
 msgstr "Diagnósticos de Multicolinearidade"
@@ -934,12 +935,11 @@ msgstr "Erros %s"
 msgid "Descriptives"
 msgstr "Descritivos"
 
-#, fuzzy
 msgid "M%s"
-msgstr "R%s"
+msgstr "M%s"
 
 msgid "title"
-msgstr ""
+msgstr "Título"
 
 msgid "Std. Predicted Value"
 msgstr "Valor Predito Típico"
@@ -1200,7 +1200,7 @@ msgstr ""
 "distribución con bootstrap."
 
 msgid "Casewise Diagnostics"
-msgstr "Diagnósticos Caso a Caso"
+msgstr "Diagnósticos caso a caso"
 
 msgid "Observed"
 msgstr "Observado"
