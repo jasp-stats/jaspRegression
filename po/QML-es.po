@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-04-20 14:01+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Language: es\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1632,102 +1638,94 @@ msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
 msgstr "Magnitud del efecto (z de Fisher)"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Residuals"
 msgstr "Errores"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Statistics"
 msgstr "Estadísticos"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
 msgstr "Diagnósticos caso a caso"
 
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
-msgstr ""
+msgstr "Error tipificado >"
 
 msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
-msgstr ""
+msgstr "Distr. de Cook >"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "All"
 msgstr "Todo"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "DFBETAS"
 msgstr "GLBETAS"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "DFFITS"
 msgstr "GLFITS"
 
 msgctxt "OutlierComponent|"
 msgid "Cov ratio"
-msgstr ""
+msgstr "Ratio de cov"
 
 msgctxt "OutlierComponent|"
 msgid "Leverage"
-msgstr ""
+msgstr "Apalancamiento"
 
 msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
-msgstr ""
+msgstr "Mahalanobis"
 
 msgctxt "OutlierComponent|"
 msgid "Append residuals to data"
-msgstr ""
+msgstr "Añadir los errores a los datos"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Column name"
 msgstr "Nombre de columna"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "e.g., residuals"
 msgstr "p.e. errores"
 
 msgctxt "Correlation|"
 msgid "Covariance"
-msgstr ""
+msgstr "Covarianza"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals : top"
-msgstr ""
+msgstr "Cuantil de los errores tipificados: superior"
 
 msgctxt "RegressionLinear|"
 msgid "Model Summary"
-msgstr ""
+msgstr "Resumen del Modelo"
 
 msgctxt "RegressionLinear|"
 msgid "F change"
-msgstr ""
+msgstr "Cambio en F"
 
 msgctxt "RegressionLinear|"
 msgid "AIC and BIC"
-msgstr ""
+msgstr "AIC y BIC"
 
 msgctxt "RegressionLinear|"
 msgid "Tolerance and VIF"
-msgstr ""
+msgstr "Tolerancia y FIV"
 
 msgctxt "RegressionLinear|"
 msgid "Display"
-msgstr ""
+msgstr "Mostrar"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients covariance matrix"
-msgstr ""
+msgstr "Matriz de covarianzas de los coeficientes"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
-msgstr ""
+msgstr "Diagnósticos de Multicolinealidad"
