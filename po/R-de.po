@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2024-04-20 02:42\n"
-"PO-Revision-Date: 2024-03-03 11:01+0000\n"
+"PO-Revision-Date: 2024-04-20 14:01+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/de/>\n"
@@ -144,13 +144,11 @@ msgstr ""
 msgid "Plotting is not possible: %s"
 msgstr "Abbilden ist nicht möglich: %s"
 
-#, fuzzy
 msgid "Q-Q Plots"
-msgstr "Q-Q-Diagramm"
+msgstr "Q-Q-Diagramme"
 
-#, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
-msgstr "Normal-Q-Q-Diagramm: Standardisierte %1s Residuen"
+msgstr "Q-Q-Diagramm: Standardisierte %1s Residuen"
 
 msgid "There are no predictors to test for multicollinearity"
 msgstr "Es gibt keine Prädiktoren um auf Multikollinearität zu testen"
@@ -232,12 +230,14 @@ msgstr "Keine einflussreichen Fälle gefunden."
 
 msgid ""
 "Potentially influential case, according to the selected influence measure."
-msgstr ""
+msgstr "Möglicherweise einflussreicher Fall, nach dem ausgewählten Einflussmaß."
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
 "values, try another measure."
 msgstr ""
+"Einflussmaße konnten für einige Fälle aufgrund extremer Werte nicht "
+"berechnet werden, versuchen Sie ein anderes Maß."
 
 msgid "VS-MPR%s"
 msgstr "VS-MPQ%s"
@@ -313,9 +313,8 @@ msgstr "Effektstärke (Fishers z)"
 msgid "SE Effect size"
 msgstr "SE Effektstärke"
 
-#, fuzzy
 msgid "Covariance"
-msgstr "Devianz"
+msgstr "Kovarianz"
 
 msgid "r"
 msgstr "r"
@@ -931,12 +930,11 @@ msgstr "Residuen %s"
 msgid "Descriptives"
 msgstr "Deskriptive Statistiken"
 
-#, fuzzy
 msgid "M%s"
-msgstr "R%s"
+msgstr "M%s"
 
 msgid "title"
-msgstr ""
+msgstr "Titel"
 
 msgid "Std. Predicted Value"
 msgstr "Std. Vorhergesagter Wert"
