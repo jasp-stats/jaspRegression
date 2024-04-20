@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2024-03-02 02:46\n"
+"POT-Creation-Date: 2024-04-20 02:42\n"
 "PO-Revision-Date: 2023-12-16 02:41+0000\n"
 "Last-Translator: Ginger Shu-Ying Yeh <gingershuying@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -117,11 +117,121 @@ msgstr "%s%%信賴區間下界"
 msgid "Ranks of %s"
 msgstr "%s序"
 
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
+
+#, fuzzy
+msgid "Plotting is not possible: %s"
+msgstr "無法繪圖：%s"
+
+#, fuzzy
+msgid "Q-Q Plots"
+msgstr "Q-Q 圖"
+
+#, fuzzy
+msgid "Q-Q plot: Standardized %1s residuals"
+msgstr "常態 Q-Q 圖：標準化 %1s 殘差"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr "P 值對應於針對 %s 的虛無假設檢驗。"
+
+msgid "Results are averaged over the levels of: %s."
+msgstr "結果是基於下列水準的平均數：%s。"
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr "Holm檢定"
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr "Tukey"
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr "Scheffé檢定"
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr "Dunnett檢定"
+
+msgid "Bonferroni"
+msgstr "Bonferroni校正"
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "Predicted"
 msgstr "預測的"
 
 msgid "(Intercept)"
 msgstr "(截距)"
+
+#, fuzzy
+msgid "Table: Influential Cases"
+msgstr "表：影響案例"
+
+msgid "Std. Residual"
+msgstr ""
+
+msgid "Predicted Value"
+msgstr ""
+
+#, fuzzy
+msgid "Residual"
+msgstr "殘差"
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr "未發現有影響力的個案。"
+
+msgid ""
+"Potentially influential case, according to the selected influence measure."
+msgstr ""
+
+msgid ""
+"Influence measures could not be computed for some cases due to extreme "
+"values, try another measure."
+msgstr ""
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR (Vovk-Sellke maximum p-ratio) %s"
@@ -191,6 +301,10 @@ msgstr "效果量 (Fisher's z)"
 
 msgid "SE Effect size"
 msgstr "標準誤效果量"
+
+#, fuzzy
+msgid "Covariance"
+msgstr "離差量數"
 
 msgid "r"
 msgstr "r"
@@ -469,12 +583,6 @@ msgstr "%1s 殘差與預測變數圖"
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "標準化 %1s 殘差與 %2s"
 
-msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr "常態 Q-Q 圖：標準化殘差"
-
-msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr "常態 Q-Q 圖：標準化 %1s 殘差"
-
 #, fuzzy
 msgid "Partial Residual Plots"
 msgstr "部分殘差圖"
@@ -504,26 +612,6 @@ msgstr "表：基於 %1s 殘差的前 n 個異常值"
 
 msgid "Case Number"
 msgstr "個案編號"
-
-#, fuzzy
-msgid "Residual"
-msgstr "殘差"
-
-#, fuzzy
-msgid "Table: Influential Cases"
-msgstr "表：影響案例"
-
-msgid "DFBETAS_%1s"
-msgstr ""
-
-msgid "DFBETAS:Intercept"
-msgstr ""
-
-msgid "DFBETAS:%1s"
-msgstr ""
-
-msgid "No influential cases found."
-msgstr "未發現有影響力的個案。"
 
 #, fuzzy
 msgid "Multicollinearity Diagnostics"
@@ -577,73 +665,6 @@ msgstr "勝率比"
 #, fuzzy
 msgid "Ratio"
 msgstr "比率"
-
-msgid ""
-"The full model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"The null model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"Could not find valid starting values. Check feasibility of the model to fit "
-"the data."
-msgstr ""
-
-#, fuzzy
-msgid "Plotting is not possible: %s"
-msgstr "無法繪圖：%s"
-
-msgid "There are no predictors to test for multicollinearity"
-msgstr ""
-
-msgid "P-values correspond to test of null hypothesis against %s."
-msgstr "P 值對應於針對 %s 的虛無假設檢驗。"
-
-msgid "Results are averaged over the levels of: %s."
-msgstr "結果是基於下列水準的平均數：%s。"
-
-msgid "P-values are not adjusted."
-msgstr ""
-
-msgid "Holm"
-msgstr "Holm檢定"
-
-msgid "Homel"
-msgstr ""
-
-msgid "Hochberg"
-msgstr ""
-
-msgid "Multivariate-t"
-msgstr ""
-
-msgid "Tukey"
-msgstr "Tukey"
-
-msgid "Benjamini-Hochberg"
-msgstr ""
-
-msgid "Benjamini-Yekutieli"
-msgstr ""
-
-msgid "Scheffé"
-msgstr "Scheffé檢定"
-
-msgid "Sidak"
-msgstr ""
-
-msgid "Dunnett"
-msgstr "Dunnett檢定"
-
-msgid "Bonferroni"
-msgstr "Bonferroni校正"
-
-msgid "P-values are adjusted using %s adjustment."
-msgstr ""
 
 msgid "trying + %s"
 msgstr ""
@@ -803,27 +824,6 @@ msgid ""
 "model contains singularities."
 msgstr ""
 
-msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Std. Residual"
-msgstr ""
-
-msgid "Predicted Value"
-msgstr ""
-
-msgid "Cook's Distance"
-msgstr "庫克距離"
-
-msgid "No cases where |Cook's distance| > %s"
-msgstr ""
-
-msgid "No cases where |Standard residual| > %s"
-msgstr ""
-
-msgid "No cases to show"
-msgstr ""
-
 msgid "Residuals Statistics"
 msgstr ""
 
@@ -887,7 +887,10 @@ msgstr ""
 msgid "Descriptives"
 msgstr "敘述統計量"
 
-msgid "H%s"
+msgid "M%s"
+msgstr ""
+
+msgid "title"
 msgstr ""
 
 msgid "Std. Predicted Value"
@@ -895,9 +898,6 @@ msgstr ""
 
 msgid "Standardized Residuals"
 msgstr "標準化殘差"
-
-msgid "Theoretical Quantiles"
-msgstr ""
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -1116,6 +1116,9 @@ msgid ""
 "the bootstrap distribution."
 msgstr ""
 
+msgid "Casewise Diagnostics"
+msgstr ""
+
 msgid "Observed"
 msgstr ""
 
@@ -1124,6 +1127,9 @@ msgstr ""
 
 msgid "Studentized Residual"
 msgstr ""
+
+msgid "Cook's Distance"
+msgstr "庫克距離"
 
 msgid "Factor Descriptives"
 msgstr ""
@@ -1247,3 +1253,6 @@ msgstr[1] ""
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏迴歸圖"
+
+#~ msgid "Normal Q-Q Plots: Standardized Residuals"
+#~ msgstr "常態 Q-Q 圖：標準化殘差"

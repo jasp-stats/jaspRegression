@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-03-02 02:46\n"
+"POT-Creation-Date: 2024-04-20 02:42\n"
 "PO-Revision-Date: 2022-08-29 00:19+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -125,10 +125,117 @@ msgstr "IC inferior a %s%%"
 msgid "Ranks of %s"
 msgstr "Fileiras de %s"
 
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
+
+msgid "Plotting is not possible: %s"
+msgstr "Não é possível realizar a plotagem: %s"
+
+#, fuzzy
+msgid "Q-Q Plots"
+msgstr "Diagrama Q-Q"
+
+#, fuzzy
+msgid "Q-Q plot: Standardized %1s residuals"
+msgstr "Gráfico Q-Q dos resíduos"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr ""
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr ""
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr ""
+
+msgid "Bonferroni"
+msgstr ""
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "Predicted"
 msgstr "Previsto"
 
 msgid "(Intercept)"
+msgstr ""
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "Std. Residual"
+msgstr "Resíduos padrão"
+
+msgid "Predicted Value"
+msgstr "Valor previsto"
+
+msgid "Residual"
+msgstr "Resíduos"
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+msgid ""
+"Potentially influential case, according to the selected influence measure."
+msgstr ""
+
+msgid ""
+"Influence measures could not be computed for some cases due to extreme "
+"values, try another measure."
 msgstr ""
 
 msgid "VS-MPR%s"
@@ -205,6 +312,10 @@ msgstr ""
 
 msgid "SE Effect size"
 msgstr ""
+
+#, fuzzy
+msgid "Covariance"
+msgstr "Desvio"
 
 msgid "r"
 msgstr "r"
@@ -495,14 +606,6 @@ msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "Resíduos padronizados"
 
 #, fuzzy
-msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr "Gráfico Q-Q dos resíduos"
-
-#, fuzzy
-msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr "Gráfico Q-Q dos resíduos"
-
-#, fuzzy
 msgid "Partial Residual Plots"
 msgstr "Gráfico de regressão parcial"
 
@@ -527,24 +630,6 @@ msgstr ""
 
 msgid "Case Number"
 msgstr "Número do caso"
-
-msgid "Residual"
-msgstr "Resíduos"
-
-msgid "Table: Influential Cases"
-msgstr ""
-
-msgid "DFBETAS_%1s"
-msgstr ""
-
-msgid "DFBETAS:Intercept"
-msgstr ""
-
-msgid "DFBETAS:%1s"
-msgstr ""
-
-msgid "No influential cases found."
-msgstr ""
 
 #, fuzzy
 msgid "Multicollinearity Diagnostics"
@@ -596,72 +681,6 @@ msgstr "Razão de probabilidade"
 #, fuzzy
 msgid "Ratio"
 msgstr "Razão de probabilidade"
-
-msgid ""
-"The full model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"The null model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"Could not find valid starting values. Check feasibility of the model to fit "
-"the data."
-msgstr ""
-
-msgid "Plotting is not possible: %s"
-msgstr "Não é possível realizar a plotagem: %s"
-
-msgid "There are no predictors to test for multicollinearity"
-msgstr ""
-
-msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
-
-msgid "Results are averaged over the levels of: %s."
-msgstr ""
-
-msgid "P-values are not adjusted."
-msgstr ""
-
-msgid "Holm"
-msgstr ""
-
-msgid "Homel"
-msgstr ""
-
-msgid "Hochberg"
-msgstr ""
-
-msgid "Multivariate-t"
-msgstr ""
-
-msgid "Tukey"
-msgstr ""
-
-msgid "Benjamini-Hochberg"
-msgstr ""
-
-msgid "Benjamini-Yekutieli"
-msgstr ""
-
-msgid "Scheffé"
-msgstr ""
-
-msgid "Sidak"
-msgstr ""
-
-msgid "Dunnett"
-msgstr ""
-
-msgid "Bonferroni"
-msgstr ""
-
-msgid "P-values are adjusted using %s adjustment."
-msgstr ""
 
 msgid "trying + %s"
 msgstr "tentando + %s"
@@ -842,27 +861,6 @@ msgstr ""
 "Alguns diagnósticos de colinearidade não puderam ser calculados. Isso é "
 "esperado se o modelo contiver singularidades."
 
-msgid "Casewise Diagnostics"
-msgstr "Diagnósticos caso a caso"
-
-msgid "Std. Residual"
-msgstr "Resíduos padrão"
-
-msgid "Predicted Value"
-msgstr "Valor previsto"
-
-msgid "Cook's Distance"
-msgstr "Distância de Cook"
-
-msgid "No cases where |Cook's distance| > %s"
-msgstr ""
-
-msgid "No cases where |Standard residual| > %s"
-msgstr ""
-
-msgid "No cases to show"
-msgstr ""
-
 msgid "Residuals Statistics"
 msgstr "Estatísticas de Resíduos"
 
@@ -928,17 +926,18 @@ msgstr "Resíduos %s"
 msgid "Descriptives"
 msgstr "Descritivas"
 
-msgid "H%s"
-msgstr "H%s"
+#, fuzzy
+msgid "M%s"
+msgstr "R%s"
+
+msgid "title"
+msgstr ""
 
 msgid "Std. Predicted Value"
 msgstr "Valor predito padrão"
 
 msgid "Standardized Residuals"
 msgstr "Resíduos padronizados"
-
-msgid "Theoretical Quantiles"
-msgstr "Quantis teóricos"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -1191,6 +1190,9 @@ msgstr ""
 "A estimativa do coeficiente e o erro padrão robusto são baseados na mediana "
 "da distribuição bootstrap."
 
+msgid "Casewise Diagnostics"
+msgstr "Diagnósticos caso a caso"
+
 msgid "Observed"
 msgstr "Observado"
 
@@ -1199,6 +1201,9 @@ msgstr "Grupo predito"
 
 msgid "Studentized Residual"
 msgstr "Resíduo estudantilizado (studentized residual)"
+
+msgid "Cook's Distance"
+msgstr "Distância de Cook"
 
 msgid "Factor Descriptives"
 msgstr "Descritivas do fator"
@@ -1323,6 +1328,16 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Gráfico de regressão parcial"
 msgstr[1] "Gráficos de regressão parcial"
+
+#, fuzzy
+#~ msgid "Normal Q-Q Plots: Standardized Residuals"
+#~ msgstr "Gráfico Q-Q dos resíduos"
+
+#~ msgid "H%s"
+#~ msgstr "H%s"
+
+#~ msgid "Theoretical Quantiles"
+#~ msgstr "Quantis teóricos"
 
 #~ msgid ""
 #~ "Standardized coefficients and collinearity statistics can only be "

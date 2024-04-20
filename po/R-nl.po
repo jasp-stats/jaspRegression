@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-03-02 02:46\n"
+"POT-Creation-Date: 2024-04-20 02:42\n"
 "PO-Revision-Date: 2023-10-18 15:29+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -120,11 +120,118 @@ msgstr "Onder %s%% BI"
 msgid "Ranks of %s"
 msgstr "Rangen van %s"
 
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
+
+msgid "Plotting is not possible: %s"
+msgstr "Grafeken maken niet mogelijk: %s"
+
+#, fuzzy
+msgid "Q-Q Plots"
+msgstr "Q-Q plot"
+
+#, fuzzy
+msgid "Q-Q plot: Standardized %1s residuals"
+msgstr "Normale Q-Q-plot: Gestandaardiseerde %1s residuen"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr "P-waarden komen overeen met de toetsing van de nulhypothese tegen %s."
+
+msgid "Results are averaged over the levels of: %s."
+msgstr "Resultaten zijn gemiddeld over de levels van: %s."
+
+msgid "P-values are not adjusted."
+msgstr "De p-waarden zijn niet bijgesteld."
+
+msgid "Holm"
+msgstr "Holm"
+
+msgid "Homel"
+msgstr "Homel"
+
+msgid "Hochberg"
+msgstr "Hochberg"
+
+msgid "Multivariate-t"
+msgstr "Multivariate-t"
+
+msgid "Tukey"
+msgstr "Tukey"
+
+msgid "Benjamini-Hochberg"
+msgstr "Benjamini-Hochberg"
+
+msgid "Benjamini-Yekutieli"
+msgstr "Benjamini-Yekutieli"
+
+msgid "Scheffé"
+msgstr "Scheffé"
+
+msgid "Sidak"
+msgstr "Sidak"
+
+msgid "Dunnett"
+msgstr "Dunnett"
+
+msgid "Bonferroni"
+msgstr "Bonferroni"
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr "P-waarden worden aangepast met %s aanpassing."
+
 msgid "Predicted"
 msgstr "Voorspeld"
 
 msgid "(Intercept)"
 msgstr "(Intercept)"
+
+msgid "Table: Influential Cases"
+msgstr "Tabel: Invloedrijke Gevallen"
+
+msgid "Std. Residual"
+msgstr "Std. Residu"
+
+msgid "Predicted Value"
+msgstr "Voorspelde Waarde"
+
+msgid "Residual"
+msgstr "Residu"
+
+msgid "DFBETAS_%1s"
+msgstr "DFBETAS_%1s"
+
+msgid "DFBETAS:Intercept"
+msgstr "DFBETAS:Intercept"
+
+msgid "DFBETAS:%1s"
+msgstr "DFBETAS:%1s"
+
+msgid "No influential cases found."
+msgstr "Geen invloedrijke gevallen gevonden."
+
+msgid ""
+"Potentially influential case, according to the selected influence measure."
+msgstr ""
+
+msgid ""
+"Influence measures could not be computed for some cases due to extreme "
+"values, try another measure."
+msgstr ""
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
@@ -199,6 +306,10 @@ msgstr "Effectgrootte (Fisher's z)"
 
 msgid "SE Effect size"
 msgstr "SE Effectgrootte"
+
+#, fuzzy
+msgid "Covariance"
+msgstr "Afwijking"
 
 msgid "r"
 msgstr "r"
@@ -500,12 +611,6 @@ msgstr "%1s Residuals vs. Predictor Plots"
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "Gestandaardiseerde %1s residuen vs. %2s"
 
-msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr "Normale Q-Q Plots: Gestandaardiseerde Residuals"
-
-msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr "Normale Q-Q-plot: Gestandaardiseerde %1s residuen"
-
 msgid "Partial Residual Plots"
 msgstr "Gedeeltelijke Residu Plots"
 
@@ -529,24 +634,6 @@ msgstr "Tabel: Top n van uitschieters op basis van %1s residuen"
 
 msgid "Case Number"
 msgstr "Gevalsnummer"
-
-msgid "Residual"
-msgstr "Residu"
-
-msgid "Table: Influential Cases"
-msgstr "Tabel: Invloedrijke Gevallen"
-
-msgid "DFBETAS_%1s"
-msgstr "DFBETAS_%1s"
-
-msgid "DFBETAS:Intercept"
-msgstr "DFBETAS:Intercept"
-
-msgid "DFBETAS:%1s"
-msgstr "DFBETAS:%1s"
-
-msgid "No influential cases found."
-msgstr "Geen invloedrijke gevallen gevonden."
 
 msgid "Multicollinearity Diagnostics"
 msgstr "Collineariteitsdiagnostieken"
@@ -596,72 +683,6 @@ msgstr "Odds ratio"
 
 msgid "Ratio"
 msgstr "Verhouding"
-
-msgid ""
-"The full model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"The null model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"Could not find valid starting values. Check feasibility of the model to fit "
-"the data."
-msgstr ""
-
-msgid "Plotting is not possible: %s"
-msgstr "Grafeken maken niet mogelijk: %s"
-
-msgid "There are no predictors to test for multicollinearity"
-msgstr ""
-
-msgid "P-values correspond to test of null hypothesis against %s."
-msgstr "P-waarden komen overeen met de toetsing van de nulhypothese tegen %s."
-
-msgid "Results are averaged over the levels of: %s."
-msgstr "Resultaten zijn gemiddeld over de levels van: %s."
-
-msgid "P-values are not adjusted."
-msgstr "De p-waarden zijn niet bijgesteld."
-
-msgid "Holm"
-msgstr "Holm"
-
-msgid "Homel"
-msgstr "Homel"
-
-msgid "Hochberg"
-msgstr "Hochberg"
-
-msgid "Multivariate-t"
-msgstr "Multivariate-t"
-
-msgid "Tukey"
-msgstr "Tukey"
-
-msgid "Benjamini-Hochberg"
-msgstr "Benjamini-Hochberg"
-
-msgid "Benjamini-Yekutieli"
-msgstr "Benjamini-Yekutieli"
-
-msgid "Scheffé"
-msgstr "Scheffé"
-
-msgid "Sidak"
-msgstr "Sidak"
-
-msgid "Dunnett"
-msgstr "Dunnett"
-
-msgid "Bonferroni"
-msgstr "Bonferroni"
-
-msgid "P-values are adjusted using %s adjustment."
-msgstr "P-waarden worden aangepast met %s aanpassing."
 
 msgid "trying + %s"
 msgstr "proberen + %s"
@@ -838,27 +859,6 @@ msgstr ""
 "Sommige collineariteitsdiagnoses konden niet worden berekend. Dit is te "
 "verwachten als het model singulariteiten bevat."
 
-msgid "Casewise Diagnostics"
-msgstr "Gevalswijze Diagnostieken"
-
-msgid "Std. Residual"
-msgstr "Std. Residu"
-
-msgid "Predicted Value"
-msgstr "Voorspelde Waarde"
-
-msgid "Cook's Distance"
-msgstr "Cook's Afstand"
-
-msgid "No cases where |Cook's distance| > %s"
-msgstr ""
-
-msgid "No cases where |Standard residual| > %s"
-msgstr ""
-
-msgid "No cases to show"
-msgstr ""
-
 msgid "Residuals Statistics"
 msgstr "Residuen Statistiek"
 
@@ -924,17 +924,18 @@ msgstr "Residuen %s"
 msgid "Descriptives"
 msgstr "Beschrijvende statistiek"
 
-msgid "H%s"
-msgstr "H%s"
+#, fuzzy
+msgid "M%s"
+msgstr "R%s"
+
+msgid "title"
+msgstr ""
 
 msgid "Std. Predicted Value"
 msgstr "Std. Voorspelde Waarde"
 
 msgid "Standardized Residuals"
 msgstr "Gestandaardiseerde Residuen"
-
-msgid "Theoretical Quantiles"
-msgstr "Theoretische Kwantielen"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -1186,6 +1187,9 @@ msgstr ""
 "Coëfficiëntschatting en robuuste standaardfout zijn gebaseerd op de mediaan "
 "van de bootstrapverdeling."
 
+msgid "Casewise Diagnostics"
+msgstr "Gevalswijze Diagnostieken"
+
 msgid "Observed"
 msgstr "Geobserveerd"
 
@@ -1194,6 +1198,9 @@ msgstr "Voorspelde Groep"
 
 msgid "Studentized Residual"
 msgstr "Gestudentiseerd Residu"
+
+msgid "Cook's Distance"
+msgstr "Cook's Afstand"
 
 msgid "Factor Descriptives"
 msgstr "Factorbeschrijvingen"
@@ -1318,6 +1325,15 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Partiële Regressiegrafiek"
 msgstr[1] "Partiële Regressiegrafieken"
+
+#~ msgid "Normal Q-Q Plots: Standardized Residuals"
+#~ msgstr "Normale Q-Q Plots: Gestandaardiseerde Residuals"
+
+#~ msgid "H%s"
+#~ msgstr "H%s"
+
+#~ msgid "Theoretical Quantiles"
+#~ msgstr "Theoretische Kwantielen"
 
 #~ msgid ""
 #~ "Standardized coefficients and collinearity statistics can only be "

@@ -208,10 +208,6 @@ msgctxt "RegressionLogistic|"
 msgid "Brier score"
 msgstr "Puntuación Brier"
 
-msgctxt "RegressionLinear|"
-msgid "Cook's distance >"
-msgstr "Distancia de Cook >"
-
 msgctxt "RegressionLogistic|"
 msgid "Sensitivity / Recall"
 msgstr "Sensibilidade/Exhaustividade"
@@ -279,10 +275,6 @@ msgstr "Paso de punto de corte"
 msgctxt "RegressionLinear|"
 msgid "Forward"
 msgstr "Cara adiante"
-
-msgctxt "RegressionLinear|"
-msgid "Standard residual >"
-msgstr "Erro típico >"
 
 msgctxt "RegressionLogistic|"
 msgid "Add cutoff labels"
@@ -717,10 +709,6 @@ msgid "Model"
 msgstr "Modelo"
 
 msgctxt "RegressionLinear|"
-msgid "Components"
-msgstr "Compoñentes"
-
-msgctxt "RegressionLinear|"
 msgid "Include intercept"
 msgstr "Incluír a constante"
 
@@ -745,28 +733,12 @@ msgid "Confidence intervals"
 msgstr "Intervalos de confianza"
 
 msgctxt "RegressionLinear|"
-msgid "Covariance matrix"
-msgstr "Matriz de covarianzas"
-
-msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr "Cociente p máximo de Vovk-Sellke"
 
 msgctxt "RegressionLinear|"
 msgid "Descriptives"
 msgstr "Descritivos"
-
-msgctxt "RegressionLinear|"
-msgid "Residuals"
-msgstr "Erros"
-
-msgctxt "RegressionLinear|"
-msgid "Casewise diagnostics"
-msgstr "Diagnósticos caso a caso"
-
-msgctxt "RegressionLinear|"
-msgid "All"
-msgstr "Todo"
 
 msgctxt "RegressionLinear|"
 msgid "Missing Values"
@@ -1041,10 +1013,6 @@ msgid "Marginal effects plots"
 msgstr "Gráficas dos efectos marxinais"
 
 msgctxt "RegressionLogistic|"
-msgid "Multicollinearity Diagnostics"
-msgstr "Diagnósticos de Multicolinearidade"
-
-msgctxt "RegressionLogistic|"
 msgid "Accuracy"
 msgstr "Precisión"
 
@@ -1273,40 +1241,12 @@ msgid "Show Outliers"
 msgstr "Amosar os Valores Atípicos"
 
 msgctxt "GeneralizedLinearModel|"
-msgid "Standardized quantile residuals: top"
-msgstr "Erros con cuantís tipificados: maior"
-
-msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
 msgstr "Erros con desviación tipificada: maior"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
 msgstr "Erros con desviación \"studentizada\": maior"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Show Influential Cases"
-msgstr "Amosar os Casos Influentes"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "DFBETAS"
-msgstr "GLBETAS"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "DFFITS"
-msgstr "GLFITS"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Covariance ratio"
-msgstr "Razón das covarianzas"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Cook's distance"
-msgstr "Distancia de Cook"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Leverages"
-msgstr "Pancamentos"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
@@ -1691,3 +1631,103 @@ msgstr "DP"
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
 msgstr "Magnitude do efecto (z de Fisher)"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Residuals"
+msgstr "Erros"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Statistics"
+msgstr "Estatísticos"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Casewise diagnostics"
+msgstr "Diagnósticos caso a caso"
+
+msgctxt "OutlierComponent|"
+msgid "Std. residual >"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Cook's dist. >"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "All"
+msgstr "Todo"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "DFBETAS"
+msgstr "GLBETAS"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "DFFITS"
+msgstr "GLFITS"
+
+msgctxt "OutlierComponent|"
+msgid "Cov ratio"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Leverage"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Mahalanobis"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Append residuals to data"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Column name"
+msgstr "Nome de columna"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "e.g., residuals"
+msgstr "p.e. erros"
+
+msgctxt "Correlation|"
+msgid "Covariance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized quantile residuals : top"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Model Summary"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "F change"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "AIC and BIC"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Tolerance and VIF"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Display"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Coefficients covariance matrix"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Multicollinearity diagnostics"
+msgstr ""

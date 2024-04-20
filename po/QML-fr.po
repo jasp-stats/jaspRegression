@@ -392,10 +392,6 @@ msgid "Model"
 msgstr "Modèle"
 
 msgctxt "RegressionLinear|"
-msgid "Components"
-msgstr "Composantes"
-
-msgctxt "RegressionLinear|"
 msgid "Include intercept"
 msgstr "Inclure l'intercept"
 
@@ -418,10 +414,6 @@ msgstr "bootstraps"
 msgctxt "RegressionLinear|"
 msgid "Confidence intervals"
 msgstr "Intervalles de confiance"
-
-msgctxt "RegressionLinear|"
-msgid "Covariance matrix"
-msgstr "Matrice de covariance"
 
 msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
@@ -449,28 +441,8 @@ msgid "Collinearity diagnostics"
 msgstr "Diagnostics de colinéarité"
 
 msgctxt "RegressionLinear|"
-msgid "Residuals"
-msgstr "Résidus"
-
-msgctxt "RegressionLinear|"
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
-
-msgctxt "RegressionLinear|"
-msgid "Casewise diagnostics"
-msgstr "Diagnostic au cas par cas"
-
-msgctxt "RegressionLinear|"
-msgid "Standard residual >"
-msgstr "Résidu standard >"
-
-msgctxt "RegressionLinear|"
-msgid "Cook's distance >"
-msgstr "Distance de Cook >"
-
-msgctxt "RegressionLinear|"
-msgid "All"
-msgstr "Tout"
 
 msgctxt "RegressionLinear|"
 msgid "Method Specification"
@@ -930,10 +902,6 @@ msgid "Vovk-Sellke maximum p-ratio"
 msgstr "Ratio p maximal de Vovk-Sellke"
 
 msgctxt "RegressionLogistic|"
-msgid "Multicollinearity Diagnostics"
-msgstr "Diagnostics de colinéarité"
-
-msgctxt "RegressionLogistic|"
 msgid "Performance Metrics"
 msgstr "Indicateurs de performance"
 
@@ -1287,39 +1255,11 @@ msgid "Show Outliers"
 msgstr "Montrer les scores aberrants"
 
 msgctxt "GeneralizedLinearModel|"
-msgid "Standardized quantile residuals: top"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
 msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Show Influential Cases"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "DFBETAS"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "DFFITS"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Covariance ratio"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Cook's distance"
-msgstr "Distance de Cook"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Leverages"
 msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
@@ -1744,4 +1684,101 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Residuals"
+msgstr "Résidus"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Statistics"
+msgstr "Statistiques"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Casewise diagnostics"
+msgstr "Diagnostic au cas par cas"
+
+msgctxt "OutlierComponent|"
+msgid "Std. residual >"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Cook's dist. >"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "All"
+msgstr "Tout"
+
+msgctxt "OutlierComponent|"
+msgid "DFBETAS"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "DFFITS"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Cov ratio"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Leverage"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Mahalanobis"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Append residuals to data"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Column name"
+msgstr "Nom de la colonne"
+
+msgctxt "OutlierComponent|"
+msgid "e.g., residuals"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Covariance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized quantile residuals : top"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Model Summary"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "F change"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "AIC and BIC"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Tolerance and VIF"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Display"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Coefficients covariance matrix"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Multicollinearity diagnostics"
 msgstr ""

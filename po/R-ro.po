@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2024-03-02 02:46\n"
+"POT-Creation-Date: 2024-04-20 02:42\n"
 "PO-Revision-Date: 2024-01-11 18:06+0000\n"
 "Last-Translator: fiscuteancom <vladfiscutean@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/jasp/"
@@ -120,10 +120,115 @@ msgstr ""
 msgid "Ranks of %s"
 msgstr ""
 
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
+
+msgid "Plotting is not possible: %s"
+msgstr ""
+
+msgid "Q-Q Plots"
+msgstr ""
+
+msgid "Q-Q plot: Standardized %1s residuals"
+msgstr ""
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr "Holm"
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr "Scheffé"
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr "Dunnett"
+
+msgid "Bonferroni"
+msgstr "Bonferroni"
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "Predicted"
 msgstr ""
 
 msgid "(Intercept)"
+msgstr ""
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "Std. Residual"
+msgstr ""
+
+msgid "Predicted Value"
+msgstr ""
+
+msgid "Residual"
+msgstr ""
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+msgid ""
+"Potentially influential case, according to the selected influence measure."
+msgstr ""
+
+msgid ""
+"Influence measures could not be computed for some cases due to extreme "
+"values, try another measure."
 msgstr ""
 
 msgid "VS-MPR%s"
@@ -189,6 +294,9 @@ msgid "Effect size (Fisher's z)"
 msgstr ""
 
 msgid "SE Effect size"
+msgstr ""
+
+msgid "Covariance"
 msgstr ""
 
 msgid "r"
@@ -455,12 +563,6 @@ msgstr ""
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr ""
 
-msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr ""
-
-msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr ""
-
 msgid "Partial Residual Plots"
 msgstr ""
 
@@ -483,24 +585,6 @@ msgid "Table: Top n outliers based on %1s residuals"
 msgstr ""
 
 msgid "Case Number"
-msgstr ""
-
-msgid "Residual"
-msgstr ""
-
-msgid "Table: Influential Cases"
-msgstr ""
-
-msgid "DFBETAS_%1s"
-msgstr ""
-
-msgid "DFBETAS:Intercept"
-msgstr ""
-
-msgid "DFBETAS:%1s"
-msgstr ""
-
-msgid "No influential cases found."
 msgstr ""
 
 msgid "Multicollinearity Diagnostics"
@@ -549,72 +633,6 @@ msgid "Odds Ratio"
 msgstr ""
 
 msgid "Ratio"
-msgstr ""
-
-msgid ""
-"The full model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"The null model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"Could not find valid starting values. Check feasibility of the model to fit "
-"the data."
-msgstr ""
-
-msgid "Plotting is not possible: %s"
-msgstr ""
-
-msgid "There are no predictors to test for multicollinearity"
-msgstr ""
-
-msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
-
-msgid "Results are averaged over the levels of: %s."
-msgstr ""
-
-msgid "P-values are not adjusted."
-msgstr ""
-
-msgid "Holm"
-msgstr "Holm"
-
-msgid "Homel"
-msgstr ""
-
-msgid "Hochberg"
-msgstr ""
-
-msgid "Multivariate-t"
-msgstr ""
-
-msgid "Tukey"
-msgstr ""
-
-msgid "Benjamini-Hochberg"
-msgstr ""
-
-msgid "Benjamini-Yekutieli"
-msgstr ""
-
-msgid "Scheffé"
-msgstr "Scheffé"
-
-msgid "Sidak"
-msgstr ""
-
-msgid "Dunnett"
-msgstr "Dunnett"
-
-msgid "Bonferroni"
-msgstr "Bonferroni"
-
-msgid "P-values are adjusted using %s adjustment."
 msgstr ""
 
 msgid "trying + %s"
@@ -775,27 +793,6 @@ msgid ""
 "model contains singularities."
 msgstr ""
 
-msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Std. Residual"
-msgstr ""
-
-msgid "Predicted Value"
-msgstr ""
-
-msgid "Cook's Distance"
-msgstr ""
-
-msgid "No cases where |Cook's distance| > %s"
-msgstr ""
-
-msgid "No cases where |Standard residual| > %s"
-msgstr ""
-
-msgid "No cases to show"
-msgstr ""
-
 msgid "Residuals Statistics"
 msgstr ""
 
@@ -859,16 +856,16 @@ msgstr ""
 msgid "Descriptives"
 msgstr "Descriptive"
 
-msgid "H%s"
+msgid "M%s"
+msgstr ""
+
+msgid "title"
 msgstr ""
 
 msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
-msgstr ""
-
-msgid "Theoretical Quantiles"
 msgstr ""
 
 msgid ""
@@ -1088,6 +1085,9 @@ msgid ""
 "the bootstrap distribution."
 msgstr ""
 
+msgid "Casewise Diagnostics"
+msgstr ""
+
 msgid "Observed"
 msgstr ""
 
@@ -1095,6 +1095,9 @@ msgid "Predicted Group"
 msgstr ""
 
 msgid "Studentized Residual"
+msgstr ""
+
+msgid "Cook's Distance"
 msgstr ""
 
 msgid "Factor Descriptives"

@@ -375,10 +375,6 @@ msgid "Model"
 msgstr "模式"
 
 msgctxt "RegressionLinear|"
-msgid "Components"
-msgstr "成分"
-
-msgctxt "RegressionLinear|"
 msgid "Include intercept"
 msgstr "納入截距"
 
@@ -401,10 +397,6 @@ msgstr "拔靴法"
 msgctxt "RegressionLinear|"
 msgid "Confidence intervals"
 msgstr "信賴區間"
-
-msgctxt "RegressionLinear|"
-msgid "Covariance matrix"
-msgstr "共變數矩陣"
 
 msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
@@ -431,28 +423,8 @@ msgid "Collinearity diagnostics"
 msgstr "共線性診斷"
 
 msgctxt "RegressionLinear|"
-msgid "Residuals"
-msgstr "殘差"
-
-msgctxt "RegressionLinear|"
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
-
-msgctxt "RegressionLinear|"
-msgid "Casewise diagnostics"
-msgstr "個別資料診斷"
-
-msgctxt "RegressionLinear|"
-msgid "Standard residual >"
-msgstr "標準化殘差"
-
-msgctxt "RegressionLinear|"
-msgid "Cook's distance >"
-msgstr "Cook's 距離"
-
-msgctxt "RegressionLinear|"
-msgid "All"
-msgstr "所有"
 
 msgctxt "RegressionLinear|"
 msgid "Method Specification"
@@ -1308,40 +1280,12 @@ msgid "Show Outliers"
 msgstr "顯示離群值"
 
 msgctxt "GeneralizedLinearModel|"
-msgid "Standardized quantile residuals: top"
-msgstr "標準化四分位數殘差:頂標"
-
-msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
 msgstr "標準化離差量數殘差:頂標"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
 msgstr "t 標準化離差量數殘差:頂標"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Show Influential Cases"
-msgstr "顯示有影響的數值"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "DFBETAS"
-msgstr "DFBETAS"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "DFFITS"
-msgstr "DFFITS"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Covariance ratio"
-msgstr "共變數比率"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Cook's distance"
-msgstr "Cook's 距離"
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Leverages"
-msgstr "槓桿量"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
@@ -1395,10 +1339,6 @@ msgstr "例如，殘差SD"
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
 msgstr "係數"
-
-msgctxt "RegressionLogistic|"
-msgid "Multicollinearity Diagnostics"
-msgstr "多元共線性診斷指標"
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
@@ -1776,4 +1716,103 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Residuals"
+msgstr "殘差"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Statistics"
+msgstr "統計數"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Casewise diagnostics"
+msgstr "個別資料診斷"
+
+msgctxt "OutlierComponent|"
+msgid "Std. residual >"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Cook's dist. >"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "All"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "DFBETAS"
+msgstr "DFBETAS"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "DFFITS"
+msgstr "DFFITS"
+
+msgctxt "OutlierComponent|"
+msgid "Cov ratio"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Leverage"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Mahalanobis"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Append residuals to data"
+msgstr ""
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "Column name"
+msgstr "直行名"
+
+#, fuzzy
+msgctxt "OutlierComponent|"
+msgid "e.g., residuals"
+msgstr "例如，殘差"
+
+msgctxt "Correlation|"
+msgid "Covariance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized quantile residuals : top"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Model Summary"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "F change"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "AIC and BIC"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Tolerance and VIF"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Display"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Coefficients covariance matrix"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Multicollinearity diagnostics"
 msgstr ""

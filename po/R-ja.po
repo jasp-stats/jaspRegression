@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2024-03-02 02:46\n"
+"POT-Creation-Date: 2024-04-20 02:42\n"
 "PO-Revision-Date: 2023-04-21 17:51+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -118,10 +118,117 @@ msgstr "下側 %s%% CI"
 msgid "Ranks of %s"
 msgstr "%sのランク"
 
+msgid ""
+"The full model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"The null model could not be fitted to the data, with the following error "
+"message: '%s'"
+msgstr ""
+
+msgid ""
+"Could not find valid starting values. Check feasibility of the model to fit "
+"the data."
+msgstr ""
+
+msgid "Plotting is not possible: %s"
+msgstr "プロットができません: %s"
+
+#, fuzzy
+msgid "Q-Q Plots"
+msgstr "Q-Qプロット"
+
+#, fuzzy
+msgid "Q-Q plot: Standardized %1s residuals"
+msgstr "Q-Qプロット 標準化された残差"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr ""
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr ""
+
+msgid "Results are averaged over the levels of: %s."
+msgstr ""
+
+msgid "P-values are not adjusted."
+msgstr ""
+
+msgid "Holm"
+msgstr ""
+
+msgid "Homel"
+msgstr ""
+
+msgid "Hochberg"
+msgstr ""
+
+msgid "Multivariate-t"
+msgstr ""
+
+msgid "Tukey"
+msgstr ""
+
+msgid "Benjamini-Hochberg"
+msgstr ""
+
+msgid "Benjamini-Yekutieli"
+msgstr ""
+
+msgid "Scheffé"
+msgstr ""
+
+msgid "Sidak"
+msgstr ""
+
+msgid "Dunnett"
+msgstr ""
+
+msgid "Bonferroni"
+msgstr ""
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr ""
+
 msgid "Predicted"
 msgstr "予測"
 
 msgid "(Intercept)"
+msgstr ""
+
+msgid "Table: Influential Cases"
+msgstr ""
+
+msgid "Std. Residual"
+msgstr "標準的な残差"
+
+msgid "Predicted Value"
+msgstr "予測値"
+
+msgid "Residual"
+msgstr "残差"
+
+msgid "DFBETAS_%1s"
+msgstr ""
+
+msgid "DFBETAS:Intercept"
+msgstr ""
+
+msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "No influential cases found."
+msgstr ""
+
+msgid ""
+"Potentially influential case, according to the selected influence measure."
+msgstr ""
+
+msgid ""
+"Influence measures could not be computed for some cases due to extreme "
+"values, try another measure."
 msgstr ""
 
 msgid "VS-MPR%s"
@@ -199,6 +306,10 @@ msgstr ""
 
 msgid "SE Effect size"
 msgstr ""
+
+#, fuzzy
+msgid "Covariance"
+msgstr "デビアンス"
 
 msgid "r"
 msgstr "r"
@@ -485,14 +596,6 @@ msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "標準化された残差"
 
 #, fuzzy
-msgid "Normal Q-Q Plots: Standardized Residuals"
-msgstr "Q-Qプロット 標準化された残差"
-
-#, fuzzy
-msgid "Normal Q-Q plot: Standardized %1s residuals"
-msgstr "Q-Qプロット 標準化された残差"
-
-#, fuzzy
 msgid "Partial Residual Plots"
 msgstr "偏回帰プロット"
 
@@ -517,24 +620,6 @@ msgstr ""
 
 msgid "Case Number"
 msgstr "ケース番号"
-
-msgid "Residual"
-msgstr "残差"
-
-msgid "Table: Influential Cases"
-msgstr ""
-
-msgid "DFBETAS_%1s"
-msgstr ""
-
-msgid "DFBETAS:Intercept"
-msgstr ""
-
-msgid "DFBETAS:%1s"
-msgstr ""
-
-msgid "No influential cases found."
-msgstr ""
 
 #, fuzzy
 msgid "Multicollinearity Diagnostics"
@@ -586,72 +671,6 @@ msgstr "オッズ比"
 #, fuzzy
 msgid "Ratio"
 msgstr "オッズ比"
-
-msgid ""
-"The full model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"The null model could not be fitted to the data, with the following error "
-"message: '%s'"
-msgstr ""
-
-msgid ""
-"Could not find valid starting values. Check feasibility of the model to fit "
-"the data."
-msgstr ""
-
-msgid "Plotting is not possible: %s"
-msgstr "プロットができません: %s"
-
-msgid "There are no predictors to test for multicollinearity"
-msgstr ""
-
-msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
-
-msgid "Results are averaged over the levels of: %s."
-msgstr ""
-
-msgid "P-values are not adjusted."
-msgstr ""
-
-msgid "Holm"
-msgstr ""
-
-msgid "Homel"
-msgstr ""
-
-msgid "Hochberg"
-msgstr ""
-
-msgid "Multivariate-t"
-msgstr ""
-
-msgid "Tukey"
-msgstr ""
-
-msgid "Benjamini-Hochberg"
-msgstr ""
-
-msgid "Benjamini-Yekutieli"
-msgstr ""
-
-msgid "Scheffé"
-msgstr ""
-
-msgid "Sidak"
-msgstr ""
-
-msgid "Dunnett"
-msgstr ""
-
-msgid "Bonferroni"
-msgstr ""
-
-msgid "P-values are adjusted using %s adjustment."
-msgstr ""
 
 msgid "trying + %s"
 msgstr "試行回数 + %s"
@@ -821,27 +840,6 @@ msgstr ""
 "一部の共線性診断が計算できませんでした。これは、モデルが特異点である場合に起"
 "こります。"
 
-msgid "Casewise Diagnostics"
-msgstr "ケースワイズ診断"
-
-msgid "Std. Residual"
-msgstr "標準的な残差"
-
-msgid "Predicted Value"
-msgstr "予測値"
-
-msgid "Cook's Distance"
-msgstr "クックの距離"
-
-msgid "No cases where |Cook's distance| > %s"
-msgstr ""
-
-msgid "No cases where |Standard residual| > %s"
-msgstr ""
-
-msgid "No cases to show"
-msgstr ""
-
 msgid "Residuals Statistics"
 msgstr "残差統計"
 
@@ -905,17 +903,18 @@ msgstr "残差 %s"
 msgid "Descriptives"
 msgstr "記述統計量"
 
-msgid "H%s"
-msgstr "H%s"
+#, fuzzy
+msgid "M%s"
+msgstr "R%s"
+
+msgid "title"
+msgstr ""
 
 msgid "Std. Predicted Value"
 msgstr "標準化された予測値"
 
 msgid "Standardized Residuals"
 msgstr "標準化された残差"
-
-msgid "Theoretical Quantiles"
-msgstr "理論上の分位数"
 
 msgid ""
 "Unknown value provided for modelType, possible values: `alternative`, `null`"
@@ -1158,6 +1157,9 @@ msgstr ""
 "係数推定値とロバスト標準誤差は、ブートストラップ分布の中央値に基づいていま"
 "す。"
 
+msgid "Casewise Diagnostics"
+msgstr "ケースワイズ診断"
+
 msgid "Observed"
 msgstr "観測された"
 
@@ -1166,6 +1168,9 @@ msgstr "予想されるグループ"
 
 msgid "Studentized Residual"
 msgstr "スチューデント化残差"
+
+msgid "Cook's Distance"
+msgstr "クックの距離"
 
 msgid "Factor Descriptives"
 msgstr "要因の記述"
@@ -1287,6 +1292,16 @@ msgstr[0] "次の共変量が考慮されましたが、含まれていません
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏回帰プロット"
+
+#, fuzzy
+#~ msgid "Normal Q-Q Plots: Standardized Residuals"
+#~ msgstr "Q-Qプロット 標準化された残差"
+
+#~ msgid "H%s"
+#~ msgstr "H%s"
+
+#~ msgid "Theoretical Quantiles"
+#~ msgstr "理論上の分位数"
 
 #~ msgid ""
 #~ "Standardized coefficients and collinearity statistics can only be "
