@@ -1826,7 +1826,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (length(modelTerms) > 0) {
     predictorsInModel <- .linregGetPredictors(modelTerms)
     modelName <- gettextf("M%s", intToUtf8(0x2080 + modelIndex - 1, multiple = FALSE))
-    jaspTable$addFootnote(message = gettextf("%s includes %s", modelName, paste0(predictorsInModel, collapse = ", ")))
+    jaspTable$addFootnote(message = gettextf("%1$s includes %2$s", modelName, paste0(predictorsInModel, collapse = ", ")))
   }
 }
 
