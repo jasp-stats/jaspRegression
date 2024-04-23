@@ -8,12 +8,16 @@ test_that("Fields Book - Chapter 10 results match", {
   options$dependent <- "delivered"
   options$factors <- c("treat")
   options$modelTerms <- list(
-    list(components="treat", isNuisance=FALSE)
+    options$modelTerms <- list(
+      list(components= NULL, name="model0", title = "Model 0"),
+      list(components=c("treat"), name="model1", title = "Model 1")
+    )
   )
   options$descriptives <- TRUE
   options$oddsRatio <- TRUE
   options$coefficientCi <- TRUE
   options$coefficientCiAsOddsRatio <- TRUE
+  options$residualCasewiseDiagnostic <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
   output1 <- results[["results"]][["factorDescriptives"]][["data"]]
   jaspTools::expect_equal_tables(output1,
@@ -46,6 +50,7 @@ test_that("Fields Book - Chapter 10 results match", {
     list(components="quantity", isNuisance=FALSE),
     list(components=list("treat", "quantity"), isNuisance=FALSE)
   )
+  options$residualCasewiseDiagnostic <- FALSE
   options$oddsRatio <- TRUE
   options$coefficientCi <- TRUE
   options$coefficientCiAsOddsRatio <- TRUE
@@ -77,6 +82,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$coefficientCiAsOddsRatio <- TRUE
   options$conditionalEstimatePlot <- TRUE
   options$conditionalEstimatePlotPoints <- FALSE
+  options$residualCasewiseDiagnostic <- FALSE
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log_subset_treat0.csv", options)
   output6 <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(output6,
@@ -97,6 +103,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$coefficientCiAsOddsRatio <- TRUE
   options$conditionalEstimatePlot <- TRUE
   options$conditionalEstimatePlotPoints <- FALSE
+  options$residualCasewiseDiagnostic <- FALSE
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log_subset_treat1.csv", options)
   output7 <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(output7,
@@ -172,10 +179,13 @@ test_that("Fields Book - Chapter 10 results match", {
 
 # test the methods for entering predictors
 options <- jaspTools::analysisOptions("RegressionLogistic")
+options$residualCasewiseDiagnostic <- FALSE
 options$covariates <- list("contNormal")
 options$dependent <- "contBinom"
-options$modelTerms <- list(list(components = list("contNormal"), isNuisance = FALSE))
-
+options$modelTerms <- options$modelTerms <- list(
+  list(components= NULL, name="model0", title = "Model 0"),
+  list(components=c("contNormal"), name="model1", title = "Model 1")
+)
 #backward
 test_that("Method=backward model summary table results match", {
   options$method <- "backward"
@@ -209,13 +219,15 @@ test_that("Method=stepwise model summary table results match", {
 
 test_that("Confusion Matrix Table Matches", {
   options <- jaspTools::analysisOptions("RegressionLogistic")
+  options$residualCasewiseDiagnostic <- FALSE
+  
   options$covariates <- c("contNormal", "contOutlier")
   options$dependent  <- "facGender"
-  options$modelTerms <- list(
-    list(components="contNormal",    isNuisance=FALSE),
-    list(components="contOutlier", isNuisance=FALSE)
+  options$modelTerms <- options$modelTerms <- list(
+    list(components= NULL, name="model0", title = "Model 0"),
+    list(components=c("contNormal", "contOutlier"), name="model1", title = "Model 1")
   )
-
+  options$residualCasewiseDiagnostic <- FALSE
   options$confusionMatrix <- TRUE
   results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
   table <- results[["results"]][["perfDiag"]][["collection"]][["perfDiag_confusionMatrix"]][["data"]]
@@ -229,9 +241,11 @@ test_that("Performance Metrics Table Matches", {
   options <- jaspTools::analysisOptions("RegressionLogistic")
   options$covariates <- list("contNormal")
   options$dependent  <- "contBinom"
-  options$modelTerms <- list(
-    list(components="contNormal", isNuisance=FALSE)
+  options$modelTerms <- options$modelTerms <- list(
+    list(components= NULL, name="model0", title = "Model 0"),
+    list(components=c("contNormal"), name="model1", title = "Model 1")
   )
+  options$residualCasewiseDiagnostic <- FALSE
   options$accuracy  <- TRUE
   options$auc  <- TRUE
   options$sensitivity <- TRUE
@@ -254,11 +268,10 @@ test_that("Confusion Matrix Table Matches", {
   options$covariates <- c("contNormal", "contOutlier")
   options$factors <- c("facFive")
   options$dependent <- "facGender"
-
-  options$modelTerms <- list(
-    list(components="contNormal",    isNuisance=FALSE),
-    list(components="contOutlier",   isNuisance=FALSE),
-    list(components="facFive", isNuisance=FALSE)
+  options$residualCasewiseDiagnostic <- FALSE
+  options$modelTerms <- options$modelTerms <- list(
+    list(components= NULL, name="model0", title = "Model 0"),
+    list(components=c("contNormal", "contOutlier", "facFive"), name="model1", title = "Model 1")
   )
 
   options$multicollinearity <- TRUE
@@ -271,7 +284,7 @@ test_that("Confusion Matrix Table Matches", {
   options <- jaspTools::analysisOptions("RegressionLogistic")
   options$covariates <- c("contNormal", "contOutlier")
   options$dependent <- "facGender"
-
+  options$residualCasewiseDiagnostic <- FALSE
   options$modelTerms <- list(
     list(components="contNormal",    isNuisance=FALSE),
     list(components="contOutlier",   isNuisance=FALSE)
@@ -342,12 +355,11 @@ test_that("Pseudo R-squared are correct", {
   options$dependent  <- "low"
   options$covariates <- c("age", "lwt")
   options$factors    <- c("race", "smoke")
-  options$modelTerms <- list(list(components = "age",   isNuisance = FALSE),
-                             list(components = "lwt",   isNuisance = FALSE),
-                             list(components = "race",  isNuisance = FALSE),
-                             list(components = "smoke", isNuisance = FALSE)
+  options$modelTerms <- options$modelTerms <- list(
+    list(components= NULL, name="model0", title = "Model 0"),
+    list(components=c("age", "lwt", "race", "smoke"), name="model1", title = "Model 1")
   )
-
+  options$residualCasewiseDiagnostic <- FALSE
   results <- jaspTools::runAnalysis("RegressionLogistic", "lowbwt.csv", options)
   r_squared <- results$results$modelSummary$data[[2]][c("fad", "nag", "tju", "cas")]
   jaspTools::expect_equal_tables(r_squared,
@@ -376,8 +388,11 @@ test_that("Pseudo R-squared are correct", {
   options <- jaspTools::analysisOptions("RegressionLogistic")
   options$dependent <- "y"
   options$covariates <- "x"
-  options$modelTerms <- list(list(components = "x", isNuisance = FALSE))
-
+  options$modelTerms <-   options$modelTerms <- options$modelTerms <- list(
+    list(components= NULL, name="model0", title = "Model 0"),
+    list(components=c("x"), name="model1", title = "Model 1")
+  )
+  options$residualCasewiseDiagnostic <- FALSE
   results <- jaspTools::runAnalysis("RegressionLogistic", df, options)
   r_squared <- results$results$modelSummary$data[[2]][c("fad", "nag", "tju", "cas")]
   jaspTools::expect_equal_tables(r_squared,
@@ -390,12 +405,12 @@ test_that("Performance plots match", {
   options$dependent  <- "low"
   options$covariates <- c("age", "lwt")
   options$factors    <- c("race", "smoke")
-  options$modelTerms <- list(list(components = "age",   isNuisance = FALSE),
-                             list(components = "lwt",   isNuisance = FALSE),
-                             list(components = "race",  isNuisance = FALSE),
-                             list(components = "smoke", isNuisance = FALSE)
+  options$modelTerms <- options$modelTerms <- list(
+    list(components= NULL, name="model0", title = "Model 0"),
+    list(components=c("age", "lwt", "race", "smoke"), name="model1", title = "Model 1")
   )
-
+  options$residualCasewiseDiagnostic <- FALSE
+  
   options$rocPlot <- TRUE
   options$precisionRecallPlot  <- TRUE
 

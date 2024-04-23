@@ -10,9 +10,8 @@ options$factors <- c("PClass", "Sex")
 options$covariates <- "Age"
 
 options$modelTerms <- list(
-  list(components=c("Age"), isNuisance=FALSE),
-  list(components=c("PClass"), isNuisance=FALSE),
-  list(components=c("Sex"), isNuisance=FALSE)
+  list(components= NULL, name="model0", title = "Model 0"),
+  list(components=c("Age", "PClass", "Sex"), name="model1", title = "Model 1")
 )
 
 options$method <- "enter"

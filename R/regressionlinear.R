@@ -52,7 +52,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   finalModel <- model[[length(model)]]
 
   if (options$residualCasewiseDiagnostic && is.null(modelContainer[["influenceTable"]])) 
-    .glmInfluenceTable(modelContainer, finalModel$fit, dataset, options, ready = ready, position = 9, linRegAnalysis = TRUE)
+    .glmInfluenceTable(modelContainer, finalModel$fit, dataset, options, ready = ready, position = 9)
   .regressionExportResiduals(modelContainer, finalModel$fit, dataset, options, ready = ready)
   
   

@@ -18,6 +18,7 @@
 import QtQuick
 import JASP
 import JASP.Controls
+import "./common"		as Common
 
 Form
 {
@@ -54,23 +55,34 @@ Form
 	Section
 	{
 		title: qsTr("Model")
-		
-		VariablesForm
+
+		FactorsForm
 		{
-			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-			
-			AvailableVariablesList
-			{
-				name: "availableTerms"
-				title: qsTr("Components")
-				source: ['covariates', 'factors']
-				width: parent.width / 4
-			}
-			ModelTermsList { width: parent.width * 5 / 9 }
+			id:					factors
+			name:				"modelTerms"
+			allowAll:			true
+			nested:				nested.checked
+			allowInteraction:	true
+			initNumberFactors:	2
+			baseName:			"model"
+			baseTitle:			"Model"
+			availableVariablesList.source: ['covariates', 'factors']
+			startIndex:			0
+			availableVariablesListName: "availableTerms"
 		}
-		
+
+		CheckBox
+		{
+			id:			nested
+			label:		"Nested"
+			name:		"nested"
+			checked:	true
+			visible: 	false
+		}
+
 		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }
 	}
+
 	
 	Section
 	{
@@ -138,31 +150,9 @@ Form
             CheckBox { name: "brierScore";	label: qsTr("Brier score")			}
 			CheckBox { name: "hMeasure";		label: qsTr("H-measure")			}
         }
+	
+		Common.OutlierComponent { id: outlierComponentt}
 
-        Group
-        {   title: qsTr("Residuals")
-            CheckBox
-            {
-                name: "residualCasewiseDiagnostic";	label: qsTr("Casewise diagnostics")
-                RadioButtonGroup
-                {
-                    name: "residualCasewiseDiagnosticType"
-                    RadioButton
-                    {
-                        value: "residualZ"; label: qsTr("Standard residual >"); checked: true
-                        childrenOnSameRow: true
-                        DoubleField { name: "residualCasewiseDiagnosticZThreshold"; defaultValue: 3	}
-                    }
-                    RadioButton
-                    {
-                        value: "cooksDistance";	label: qsTr("Cook's distance >")
-                        childrenOnSameRow: true
-                        DoubleField { name: "residualCasewiseDiagnosticCooksDistanceThreshold";	defaultValue: 1	}
-                    }
-                    RadioButton { value: "allCases"; label: qsTr("All")										}
-                }
-            }
-        }
 
 	}
 	

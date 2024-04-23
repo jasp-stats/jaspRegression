@@ -79,6 +79,7 @@ Form
 			label:		"Nested"
 			name:		"nested"
 			checked:	true
+			visible: 	false
 		}
 
 		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); checked: true }

@@ -1,20 +1,33 @@
 # Compute Model
-.reglogisticComputeModel <- function(jaspResults, dataset, options) {
-  if(!is.null(jaspResults[["glmRes"]]))
-    return(jaspResults[["glmRes"]]$object)
-  type <- "binomial"
-  if (type == "binomial") {
+.reglogisticComputeModel <- function(jaspResults, dataset, options, ready) {
+  if(!is.null(jaspResults[["glmRes"]]) || isFALSE(ready))
+    return()
+
     # Logistic regression
-    ff <- .createLogisticRegFormula(options)
-    nf <- .createNullFormula(options)
-    # calculate null and full models
-    nullMod <- glm(nf, family = "binomial", data = dataset)
-    fullMod <- glm(ff, family = "binomial", data = dataset)
+  modelTerms <- options[["modelTerms"]]
+  dependent <- options[["dependent"]]
+  interceptTerm <- options[["interceptTerm"]]
+  if (options[["method"]] == "enter") {
+    
+    glmRes <- list()
+    for (modelIndex in seq_along(modelTerms)) {
+
+      model <- glm(.createLogisticRegFormula(modelTerms[[modelIndex]], dependent, interceptTerm), 
+                  family = "binomial", dataset)
+      glmRes[[modelIndex]] <- model
+      
+    }
+    
+  } else if (options[["method"]] != "enter") {
+    nullMod <- glm(.createLogisticRegFormula(modelTerms[[1]], dependent, interceptTerm), 
+                   family = "binomial", dataset)
+    fullMod <- glm(.createLogisticRegFormula(modelTerms[[length(modelTerms)]], dependent, interceptTerm), 
+                   family = "binomial", dataset)
     glmRes  <- .glmStep(nullMod, fullMod, dataset, method = options$method)
-  } else
-    .quitAnalysis("GLM type not supported")
+  }
+
   jaspResults[["glmRes"]] <- createJaspState(glmRes)
-  jaspResults[["glmRes"]]$dependOn(optionsFromObject = jaspResults[["modelSummary"]])
+  jaspResults[["glmRes"]]$dependOn( c("dependent", "method", "modelTerms", "interceptTerm"))
   return(glmRes)
 }
 
@@ -64,34 +77,33 @@
   return(f)
 }
 
-.createLogisticRegFormula <- function(options) {
+.createLogisticRegFormula <- function(modelOptions, dependent, interceptTerm) {
   # this function outputs a formula name with base64 values as varnames
   f <- NULL
 
-  dependent <- options$dependent
   if (dependent == "")
     f <- 0~1 # mock formula, always works
 
-  modelTerms <- options$modelTerms
-  interceptTerm <- options$interceptTerm
+  modelTerms <- modelOptions$components
+  interceptTerm <- interceptTerm
   if (length(modelTerms) == 0) {
     if (interceptTerm)
-      f <- formula(paste(.v(dependent), "~ 1"))
+      f <- formula(paste(dependent, "~ 1"))
     else
-      f <- formula(paste(.v(dependent), "~ 0"))
+      f <- formula(paste(dependent, "~ 0"))
   } else {
     if (interceptTerm)
       t <- character(0)
     else
       t <- "0"
     for (i in seq_along(modelTerms)) {
-      term <- modelTerms[[i]][["components"]]
+      term <- modelTerms[[i]]
       if (length(term) == 1)
-        t <- c(t, .v(term))
+        t <- c(t, term)
       else
-        t <- c(t, paste(.v(unlist(term)), collapse = ":"))
+        t <- c(t, paste(unlist(term), collapse = ":"))
     }
-    f <- formula(paste(.v(dependent), "~", paste(t, collapse = "+")))
+    f <- formula(paste(dependent, "~", paste(t, collapse = "+")))
   }
   return(f)
 }
@@ -114,7 +126,7 @@
       if (length(term) == 1)
         t <- c(t, .v(term))
       else
-        t <- c(t, paste(.v(unlist(term)), collapse = ":"))
+        t <- c(t, paste(unlist(term), collapse = ":"))
     }
   }
   if (!interceptTerm)
@@ -122,7 +134,7 @@
   else
     t <- c(t, "1")
 
-  return(formula(paste(.v(dependent), "~", paste(t, collapse = "+"))))
+  return(formula(paste(dependent, "~", paste(t, collapse = "+"))))
 }
 
 .glmStep <- function(nullModel, fullModel, dataset, method = "enter") {
@@ -737,8 +749,8 @@
 
 
 # Table: Influential cases
-.glmInfluenceTable <- function(jaspResults, model, dataset, options, ready, position, linRegAnalysis = FALSE) {
-  
+.glmInfluenceTable <- function(jaspResults, model, dataset, options, ready, position, logisticRegression = FALSE) {
+
   tableOptionsOn <- c(options[["dfbetas"]],
                       options[["dffits"]],
                       options[["covarianceRatio"]],
@@ -756,16 +768,16 @@
   tableOptionsClicked <- c("cooksDistance", tableOptionsClicked)
   
   if (is.null(jaspResults[["influenceTable"]])) {
-    influenceTable <- createJaspTable(gettext("Table: Influential Cases"))
-    influenceTable$dependOn(optionsFromObject   = jaspResults[["modelSummary"]],
-                            options             = tableOptions)
-    influenceTable$dependOn(c("residualCasewiseDiagnostic", "residualCasewiseDiagnosticType",
-                              "residualCasewiseDiagnosticZThreshold", "residualCasewiseDiagnosticCooksDistanceThreshold"))
+    influenceTable <- createJaspTable(gettext("Influential Cases"))
+    influenceTable$dependOn(c(tableOptions, "dependent", "method", "modelTerms", "interceptTerm", 
+                              "residualCasewiseDiagnostic", "residualCasewiseDiagnosticType",
+                              "residualCasewiseDiagnosticZThreshold", 
+                              "residualCasewiseDiagnosticCooksDistanceThreshold"))
     influenceTable$position <- position
     influenceTable$showSpecifiedColumnsOnly <- TRUE
     jaspResults[["influenceTable"]] <- influenceTable
   }
-  
+
   tableOptionToColName <- function(x) {
     switch(x,
            "dfbetas"  = "DFBETAS",
@@ -783,13 +795,15 @@
     }
   } else {
     
-    colNameList  <- c()
+    
+    depType <- if (isFALSE(logisticRegression))  "number" else "string"
     influenceTable$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
     influenceTable$addColumnInfo(name = "stdResidual", title = gettext("Std. Residual"),   type = "number", format = "dp:3")
-    influenceTable$addColumnInfo(name = "dependent",   title = options$dependent,          type = "number")
+    influenceTable$addColumnInfo(name = "dependent",   title = options$dependent,          type = depType)
     influenceTable$addColumnInfo(name = "predicted",   title = gettext("Predicted Value"), type = "number")
     influenceTable$addColumnInfo(name = "residual", title = gettext("Residual"),   type = "number", format = "dp:3")
     
+    colNameList  <- c()
     alwaysPresent <- c("caseN", "stdResidual", "dependent", "predicted", "residual")
     for (option in tableOptionsClicked) {
       if (option == "dfbetas") {
@@ -809,6 +823,7 @@
         influenceTable$addColumnInfo(name = option, title = gettext(colTitle), type = "number")
       }
     }
+
     .glmInfluenceTableFill(influenceTable, dataset, options, ready, 
                            model = model, 
                            influenceMeasures = tableOptionsClicked, 
@@ -817,7 +832,7 @@
 }
 
 .glmInfluenceTableFill <- function(influenceTable, dataset, options, ready, model, influenceMeasures, colNames) {
-  
+
   influenceRes <- influence.measures(model)
   nDFBETAS     <- length(names(model$coefficients))
   
@@ -845,7 +860,7 @@
   influenceResData[["dependent"]] <- model.frame(model)[[options$dependent]]
   influenceResData[["predicted"]] <- model$fitted.values
   influenceResData[["residual"]] <- model$residual
-  # browser()
+
   modelMatrix <- as.data.frame(model.matrix(model))
   modelMatrix <- modelMatrix[colnames(modelMatrix) != "(Intercept)"]
   influenceResData[["mahalanobis"]] <- mahalanobis(modelMatrix, center = colMeans(modelMatrix), cov = cov(modelMatrix))
@@ -856,7 +871,7 @@
     index <- which(abs(influenceResData[["stdResidual"]]) > options$residualCasewiseDiagnosticZThreshold)
   else # all
     index <- seq.int(nrow(influenceResData))
-  
+
   # funky statement to ensure a df even if only 1 row
   influenceResSig       <- subset(influenceRes[["is.inf"]], 1:nrow(influenceResData) %in% index, select = colInd)
   colnames(influenceResSig) <- colNames[1:length(colInd)]
@@ -885,56 +900,6 @@
       )
     }
   }
-}
-
-.casewiseDiagnosticsLogisticRegression <- function(dataset, model, options) {
-  last <- length(model)
-
-  # Values for all cases
-  dependentAll        <- dataset[[.v(options$dependent)]]
-  dependentAllNumeric <- rep(0, nrow(dataset))
-  dependentAllNumeric[dependentAll == levels(dataset[[.v(options$dependent)]])[2]] <- 1
-  predictedAll      <- predict(model[[last]], dataset, type = "response")
-  predictedGroupAll <- rep(levels(dataset[[.v(options$dependent)]])[1], nrow(dataset))
-  predictedGroupAll[predictedAll >= 0.5] <- levels(dataset[[.v(options$dependent)]])[2]
-  residualAll  <- resid(model[[last]], type = "response")
-  residualZAll <- resid(model[[last]], type = "pearson")
-  cooksDAll    <- cooks.distance(model[[last]])
-
-  # These will be the variables for the return object
-  dependent      <- NA
-  predicted      <- NA
-  predictedGroup <- NA
-  residual       <- NA
-  residualZ      <- NA
-  cooksD         <- NA
-
-
-  if (options$residualCasewiseDiagnosticType == "residualZ")
-    index <- which(abs(residualZAll) > options$residualCasewiseDiagnosticZThreshold)
-  else if (options$residualCasewiseDiagnosticType == "cooksDistance")
-    index <- which(abs(cooksDAll) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
-  else
-    index <- seq_along(cooksDAll)
-
-  if (length(index) == 0)
-    index <- NA
-  else {
-    dependent      <- dependentAll[index]
-    predicted      <- predictedAll[index]
-    predictedGroup <- predictedGroupAll[index]
-    residual       <- residualAll[index]
-    residualZ      <- residualZAll[index]
-    cooksD         <- cooksDAll[index]
-  }
-  casewiseDiag <- list(index          = unname(index),
-                       dependent      = as.character(dependent),
-                       predicted      = unname(predicted),
-                       predictedGroup = as.character(predictedGroup),
-                       residual       = unname(residual),
-                       residualZ      = unname(residualZ),
-                       cooksD         = unname(cooksD))
-  return(casewiseDiag)
 }
 
 .reglogisticVovkSellke <- function(table, options) {
