@@ -858,7 +858,7 @@
   colnames(influenceResData)[1:length(colInd)] <- colNames[1:length(colInd)]
   
   influenceResData[["caseN"]] <- seq.int(nrow(influenceResData))
-  influenceResData[["stdResidual"]] <- rstandard(model, type = "deviance")
+  influenceResData[["stdResidual"]] <- rstandard(model)
   influenceResData[["dependent"]] <- model.frame(model)[[options$dependent]]
   influenceResData[["predicted"]] <- model$fitted.values
   influenceResData[["residual"]] <- model$residual
