@@ -386,7 +386,9 @@
   if (isFALSE(options[["residualsSavedToData"]]))
     return()
   
-  if (is.null(container[["residualsSavedToDataColumn"]]) && options[["residualsSavedToDataColumn"]] != "") {
+  if (is.null(container[["residualsSavedToDataColumn"]]) && 
+      isFALSE(is.null(options[["residualsSavedToDataColumn"]])) &&
+      options[["residualsSavedToDataColumn"]] != "") {
     
     residuals <- model[["residuals"]] # extract residuals
     
@@ -856,7 +858,7 @@
   colnames(influenceResData)[1:length(colInd)] <- colNames[1:length(colInd)]
   
   influenceResData[["caseN"]] <- seq.int(nrow(influenceResData))
-  influenceResData[["stdResidual"]] <- rstandard(model)
+  influenceResData[["stdResidual"]] <- rstandard(model, type = "deviance")
   influenceResData[["dependent"]] <- model.frame(model)[[options$dependent]]
   influenceResData[["predicted"]] <- model$fitted.values
   influenceResData[["residual"]] <- model$residual

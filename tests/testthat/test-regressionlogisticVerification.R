@@ -4,7 +4,7 @@ context("Logistic Regression -- Verification project")
 
 ## Testing Titanice
 
-options <- jaspTools::analysisOptions("RegressionLogistic")
+options <- initClassicalRegressionOptions("RegressionLogistic")
 options$dependent <- "Survived"
 options$factors <- c("PClass", "Sex")
 options$covariates <- "Age"

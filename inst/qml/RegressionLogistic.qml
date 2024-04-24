@@ -151,7 +151,7 @@ Form
 			CheckBox { name: "hMeasure";		label: qsTr("H-measure")			}
         }
 	
-		Common.OutlierComponent { id: outlierComponentt}
+		Common.OutlierComponent { id: outlierComponent}
 
 
 	}

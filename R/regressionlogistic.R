@@ -359,7 +359,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
         mObj <- glmObj[[midx]]
         if (midx > 1) {
           if (options$method == "forward" ||
-              options$method == "stepwise") {
+              options$method == "stepwise" ||
+              options$method == "enter") {
             fadden <- .mcFadden(mObj, glmObj[[1]])
             nagel  <- .nagelkerke(mObj, glmObj[[1]])
             coxSn  <- .coxSnell(mObj, glmObj[[1]])
