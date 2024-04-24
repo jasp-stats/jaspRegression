@@ -22,12 +22,19 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     .reglogisticCheckErrors(dataset, options)
   }
   # Output tables
+  model <- .reglogisticComputeModel(   jaspResults, dataset, options, ready)
   .reglogisticModelSummaryTable(       jaspResults, dataset, options, ready)
   .reglogisticEstimatesTable(          jaspResults, dataset, options, ready)
   .reglogisticEstimatesTableBootstrap( jaspResults, dataset, options, ready)
   .reglogisticMulticolliTable(         jaspResults, dataset, options, ready)
-  .reglogisticFactorDescriptivesTable( jaspResults, dataset, options)
-  .reglogisticCasewiseDiagnosticsTable(jaspResults, dataset, options, ready)
+  .reglogisticFactorDescriptivesTable( jaspResults, dataset, options, ready)
+
+  if (options$residualCasewiseDiagnostic && is.null(jaspResults[["influenceTable"]])) {
+    finalModel <- model[[length(options[["modelTerms"]])]]
+    .glmInfluenceTable(jaspResults, finalModel, dataset, options, ready, position = 5, logisticRegression = TRUE)
+    .regressionExportResiduals(jaspResults, finalModel, dataset, options, ready = ready)
+  }
+
   .reglogisticConfusionMatrixTable(    jaspResults, dataset, options, ready)
   .reglogisticPerformanceMetricsTable( jaspResults, dataset, options, ready)
 
@@ -100,18 +107,12 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   modelSummary$position <- 1
   modelSummary$showSpecifiedColumnsOnly <- TRUE
 
-  if(options$method == "enter")
-    chiName <- "\u03A7\u00B2"
-  else
-    chiName <- "\u0394\u03A7\u00B2"
-
-
   modelSummary$addColumnInfo(name = "mod", title = gettext("Model"),    type = "string")
   modelSummary$addColumnInfo(name = "dev", title = gettext("Deviance"), type = "number")
   modelSummary$addColumnInfo(name = "aic", title = gettext("AIC"),      type = "number", format="dp:3")
   modelSummary$addColumnInfo(name = "bic", title = gettext("BIC"),      type = "number", format="dp:3")
   modelSummary$addColumnInfo(name = "dof", title = gettext("df"),       type = "integer")
-  modelSummary$addColumnInfo(name = "chi", title = chiName,             type = "number", format="dp:3")
+  modelSummary$addColumnInfo(name = "chi", title = "\u0394\u03A7\u00B2",type = "number", format="dp:3")
   modelSummary$addColumnInfo(name = "pvl", title = gettext("p"),        type = "pvalue")
   modelSummary$addColumnInfo(name = "fad", title = gettextf("McFadden R%s","\u00B2"),    type = "number")
   modelSummary$addColumnInfo(name = "nag", title = gettextf("Nagelkerke R%s","\u00B2"),  type = "number")
@@ -140,11 +141,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   tmp <- .reglogisticEstimatesInfo(options)
   ciTitle    <- tmp[["ciTitle"]]
   seTitle    <- tmp[["seTitle"]]
-  multimod   <- tmp[["multimod"]]
   paramtitle <- tmp[["paramtitle"]]
 
-  if(options$method != "enter")
-    estimatesTable$addColumnInfo(name = "model", title = gettext("Model"), type = "string", combine = TRUE)
+  estimatesTable$addColumnInfo(name = "model", title = gettext("Model"), type = "string", combine = TRUE)
   estimatesTable$addColumnInfo(name = "param",   title = paramtitle, type = "string")
   estimatesTable$addColumnInfo(name = "est",     title = gettext("Estimate"), type = "number", format="dp:3")
   estimatesTable$addColumnInfo(name = "se",      title = seTitle, type = "number", format="dp:3")
@@ -171,7 +170,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   jaspResults[["estimatesTable"]] <- estimatesTable
 
   if(!ready) return()
-  res <- try(.reglogisticEstimatesFill(jaspResults, dataset, options, multimod))
+  res <- try(.reglogisticEstimatesFill(jaspResults, dataset, options))
 
   .reglogisticSetError(res, estimatesTable)
 }
@@ -194,7 +193,6 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   tmp <- .reglogisticEstimatesInfo(options, addBCA = TRUE)
   ciTitle    <- tmp[["ciTitle"]]
   seTitle    <- tmp[["seTitle"]]
-  multimod   <- tmp[["multimod"]]
   paramtitle <- tmp[["paramtitle"]]
 
   if(options$method != "enter")
@@ -218,7 +216,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   jaspResults[["estimatesTableBootstrapping"]] <- estimatesTableBootstrap
 
   if(!ready) return()
-  res <- try(.reglogisticEstimatesBootstrapFill(jaspResults, dataset, options, multimod))
+  res <- try(.reglogisticEstimatesBootstrapFill(jaspResults, dataset, options))
 
   .reglogisticSetError(res, estimatesTableBootstrap)
 
@@ -241,7 +239,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   multicolliTable$addColumnInfo(name = "var", title = "", type = "string")
 
   if (ready) {
-    glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+    glmObj <- jaspResults[["glmRes"]][["object"]]
   } else {
     glmObj <- NULL
   }
@@ -256,38 +254,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   .reglogisticSetError(res, multicolliTable)
 }
 
-.reglogisticCasewiseDiagnosticsTable <- function(jaspResults, dataset, options, ready){
-  if(!options$residualCasewiseDiagnostic || !is.null(jaspResults[["casewiseDiagnosticsTable"]]))
-    return()
-
-  casDiag <- createJaspTable(gettext("Casewise Diagnostics"))
-  casDiag$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
-                               options = c("residualCasewiseDiagnostic",
-                                           "residualCasewiseDiagnosticZThreshold",
-                                           "residualCasewiseDiagnosticCooksDistanceThreshold",
-                                           "residualCasewiseDiagnosticType"))
-  casDiag$position <- 5
-  casDiag$showSpecifiedColumnsOnly <- TRUE
-
-  casDiag$addColumnInfo(name = "caseNumber", title = gettext("Case Number"),          type = "integer")
-  casDiag$addColumnInfo(name = "observed",   title = gettext("Observed"),             type = "string")
-  casDiag$addColumnInfo(name = "predicted",  title = gettext("Predicted"),            type = "number")
-  casDiag$addColumnInfo(name = "predGroup",  title = gettext("Predicted Group"),      type = "string")
-  casDiag$addColumnInfo(name = "residual",   title = gettext("Residual"),             type = "number")
-  casDiag$addColumnInfo(name = "residualZ",  title = gettext("Studentized Residual"), type = "number")
-  casDiag$addColumnInfo(name = "cooksD",     title = gettext("Cook's Distance"),      type = "number")
-
-  jaspResults[["casewiseDiagnosticsTable"]] <- casDiag
-
-  if(!ready) return()
-  res <- try(.reglogisticCasewiseDiagnosticsFill(jaspResults, dataset, options))
-
-  .reglogisticSetError(res, casDiag)
-}
-
-.reglogisticFactorDescriptivesTable <- function(jaspResults, dataset, options){
+.reglogisticFactorDescriptivesTable <- function(jaspResults, dataset, options, ready){
   if(!options$descriptives ||
-     !is.null(jaspResults[["factorDescriptives"]]))
+     !is.null(jaspResults[["factorDescriptives"]]) || isFALSE(ready))
     return()
   if(is.null(dataset))
     dataset <- .reglogisticReadData(dataset, options)
@@ -329,7 +298,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   confusionMatrix$addColumnInfo(name = "obs", title = gettext("Observed"), type = "string")
   if (ready) {
     # Compute/Get Model
-    glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+    glmObj <- jaspResults[["glmRes"]][["object"]]
     #modelTerms <- c()
     #for(i in seq_along(options$modelTerms))
     #  modelTerms <- c(modelTerms, options$modelTerms[[i]]$components)
@@ -379,56 +348,19 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 .reglogisticModelSummaryFill <- function(jaspResults, dataset, options, ready) {
   if(ready) {
     # Compute/Get Model
-    glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
-    hasNuisance <- .hasNuisance(options)
-    if (hasNuisance) {
-      terms <- rownames(summary(glmObj[[1]])[["coefficients"]])
-      terms <- sapply(terms[terms!="(Intercept)"], .formatTerm,
-                      glmModel=glmObj[[1]])
-      message <- gettextf("Null model contains nuisance parameters: %s",
-                        paste(terms, collapse = ", "))
-      jaspResults[["modelSummary"]]$addFootnote(message)
-    }
-    if (options$method == "enter") {
-      # Two rows: h0 and h1
-      lr <- .lrtest(glmObj[[1]], glmObj[[2]])
+    glmObj <- jaspResults[["glmRes"]][["object"]]
 
-      rows <- list(
-        list(mod = "H\u2080",
-             dev = glmObj[[1]][["deviance"]],
-             aic = glmObj[[1]][["aic"]],
-             bic = .bic(glmObj[[1]]),
-             dof = glmObj[[1]][["df.residual"]],
-             chi = "",
-             pvl = "",
-             fad = "",
-             nag = "",
-             tju = "",
-             cas = ""),
-        list(mod = "H\u2081",
-             dev = glmObj[[2]][["deviance"]],
-             aic = glmObj[[2]][["aic"]],
-             bic = .bic(glmObj[[2]]),
-             dof = glmObj[[2]][["df.residual"]],
-             chi = lr[["stat"]],
-             pvl = lr[["pval"]],
-             fad = .mcFadden(  glmObj[[2]], glmObj[[1]]),
-             nag = .nagelkerke(glmObj[[2]], glmObj[[1]]),
-             tju = .tjur(glmObj[[2]]),
-             cas = .coxSnell(glmObj[[2]], glmObj[[1]])
-        )
-      )
-
-
-    } else {
       # multiple rows: m1 - mk
       rows <- vector("list", length(glmObj))
 
-      for (midx in 1:length(glmObj)) {
+      for (midx in seq_along(glmObj)) {
+        .linregAddPredictorsInModelFootnote(jaspResults[["modelSummary"]], 
+                                            options[["modelTerms"]][[midx]][["components"]], midx)
         mObj <- glmObj[[midx]]
         if (midx > 1) {
           if (options$method == "forward" ||
-              options$method == "stepwise") {
+              options$method == "stepwise" ||
+              options$method == "enter") {
             fadden <- .mcFadden(mObj, glmObj[[1]])
             nagel  <- .nagelkerke(mObj, glmObj[[1]])
             coxSn  <- .coxSnell(mObj, glmObj[[1]])
@@ -438,9 +370,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
             coxSn  <- -1*.coxSnell(glmObj[[1]], mObj)
           }
 
-          lr <- .lrtest(glmObj[[midx]], glmObj[[midx-1]])
+          lr <- .lrtest(glmObj[[midx-1]], mObj)
           rows[[midx]] <- list(
-            mod = as.character(midx),
+            mod = gettextf("M%s", intToUtf8(0x2080 + midx - 1, multiple = FALSE)),
             dev = mObj[["deviance"]],
             aic = mObj[["aic"]],
             bic = .bic(mObj),
@@ -454,7 +386,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
           )
         } else {
           rows[[midx]] <- list(
-            mod = as.character(midx),
+            mod = gettextf("M%s", intToUtf8(0x2080, multiple = FALSE)),
             dev = mObj[["deviance"]],
             aic = mObj[["aic"]],
             bic = .bic(mObj),
@@ -467,7 +399,6 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
             cas = .coxSnell(mObj, mObj)
           )
         }
-      }
 
     }
   } else {
@@ -481,16 +412,18 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   jaspResults[["modelSummary"]]$addRows(rows)
 }
 
-.reglogisticEstimatesFill <- function(jaspResults, dataset, options, multimod) {
+.reglogisticEstimatesFill <- function(jaspResults, dataset, options) {
   # Compute/Get Model
-  glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+  glmObj <- jaspResults[["glmRes"]][["object"]]
   alpha  <- qnorm(1 - (1 - options$coefficientCiLevel) / 2)
 
-  if (!multimod) {
-    s  <- summary(glmObj[[2]])[["coefficients"]]
-    rn <- rownames(s)
+
+  for (midx in seq_along(glmObj)) {
+    mObj <- glmObj[[midx]]
+    s    <- summary(mObj)[["coefficients"]]
+    rn   <- rownames(s)
     rn[which(rn == "(Intercept)")] <- gettext("(Intercept)")
-    beta  <- .stdEst(glmObj[[2]], type = "X") # stand. X continuous vars
+    beta <- .stdEst(mObj, type = "X") # stand. X continuous vars
 
     # Confidence intervals on the odds ratio scale
     if (options$coefficientCiAsOddsRatio)
@@ -498,119 +431,57 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     else
       expon <- function(x) x
 
+
     if (length(rn) == 1) {
       s <- unname(s)
       if (options$robustSe) {
-        s[2] <- unname(.glmRobustSE(glmObj[[2]])) # new se
+        s[2] <- unname(.glmRobustSE(mObj)) # new se
         s[3] <- s[1]/s[2] # new z
         s[4] <- 2*pnorm(-abs(s[3])) # new p
       }
-      waldtest  <- .waldTest(glmObj[[2]], term = 1)
-      jaspResults[["estimatesTable"]]$addRows(
-        list(           param   = .formatTerm(rn, glmObj[[2]]),
-                        est     = s[1],
-                        se      = s[2],
-                        std     = as.numeric(beta),
-                        or      = exp(s[1]),
-                        zval    = s[3],
-                        pval    = s[4],
-                        waldsta = as.numeric(waldtest),
-                        walddf  = as.numeric(1),
-                        vsmpr   = VovkSellkeMPR(s[4]),
-                        cilo    = expon(s[1] - alpha * s[2]),
-                        ciup    = expon(s[1] + alpha * s[2])))
+      waldtest <- .waldTest(mObj, term = 1)
 
+      jaspResults[["estimatesTable"]]$addRows(list(
+        model   = gettextf("M%s", intToUtf8(0x2080 + midx - 1, multiple = FALSE)),
+        param   = .formatTerm(rn, mObj),
+        est     = s[1],
+        se      = s[2],
+        std     = as.numeric(beta),
+        or      = exp(s[1]),
+        zval    = s[3],
+        pval    = s[4],
+        waldsta = as.numeric(waldtest),
+        walddf  = as.numeric(1),
+        vsmpr   = VovkSellkeMPR(s[4]),
+        cilo    = expon(s[1] - alpha * s[2]),
+        ciup    = expon(s[1] + alpha * s[2]),
+        .isNewGroup = TRUE
+      ))
     } else {
       if (options$robustSe) {
-        s[,2] <- unname(.glmRobustSE(glmObj[[2]])) # new se
+        s[,2] <- unname(.glmRobustSE(mObj)) # new se
         s[,3] <- s[,1]/s[,2] # new z
         s[,4] <- 2*pnorm(-abs(s[,3])) # new p
       }
       for (i in seq_along(rn)) {
 
-        waldtest <- .waldTest(glmObj[[2]], term = i)
-
+        waldtest <- .waldTest(mObj, term = i)
         jaspResults[["estimatesTable"]]$addRows(list(
-                          param   = .formatTerm(rn[i], glmObj[[2]]),
-                          est     = s[i,1],
-                          se      = s[i,2],
-                          std     = as.numeric(beta[i]),
-                          or      = exp(s[i,1]),
-                          zval    = s[i,3],
-                          pval    = s[i,4],
-                          waldsta = as.numeric(waldtest),
-                          walddf  = as.numeric(1),
-                          vsmpr   = VovkSellkeMPR(s[i,4]),
-                          cilo    = expon(s[i,1] - alpha * s[i,2]),
-                          ciup    = expon(s[i,1] + alpha * s[i,2])))
-      }
-    }
-  } else {
-    for (midx in 1:length(glmObj)) {
-      mObj <- glmObj[[midx]]
-      s    <- summary(mObj)[["coefficients"]]
-      rn   <- rownames(s)
-      rn[which(rn == "(Intercept)")] <- gettext("(Intercept)")
-      beta <- .stdEst(mObj, type = "X") # stand. X continuous vars
-
-      # Confidence intervals on the odds ratio scale
-      if (options$coefficientCiAsOddsRatio)
-        expon <- function(x) exp(x)
-      else
-        expon <- function(x) x
-
-
-      if (length(rn) == 1) {
-        s <- unname(s)
-        if (options$robustSe) {
-          s[2] <- unname(.glmRobustSE(mObj)) # new se
-          s[3] <- s[1]/s[2] # new z
-          s[4] <- 2*pnorm(-abs(s[3])) # new p
-        }
-        waldtest <- .waldTest(mObj, term = 1)
-
-        jaspResults[["estimatesTable"]]$addRows(list(
-          model   = as.character(midx),
-          param   = .formatTerm(rn, mObj),
-          est     = s[1],
-          se      = s[2],
-          std     = as.numeric(beta),
-          or      = exp(s[1]),
-          zval    = s[3],
-          pval    = s[4],
+          model   = gettextf("M%s", intToUtf8(0x2080 + midx - 1, multiple = FALSE)),
+          param   = .formatTerm(rn[i], mObj),
+          est     = s[i,1],
+          se      = s[i,2],
+          std     = as.numeric(beta[i]),
+          or      = exp(s[i,1]),
+          zval    = s[i,3],
+          pval    = s[i,4],
           waldsta = as.numeric(waldtest),
           walddf  = as.numeric(1),
-          vsmpr   = VovkSellkeMPR(s[4]),
-          cilo    = expon(s[1] - alpha * s[2]),
-          ciup    = expon(s[1] + alpha * s[2]),
-          .isNewGroup = TRUE
+          vsmpr   = VovkSellkeMPR(s[i,4]),
+          cilo    = expon(s[i,1] - alpha * s[i,2]),
+          ciup    = expon(s[i,1] + alpha * s[i,2]),
+          .isNewGroup = (i == 1)
         ))
-      } else {
-        if (options$robustSe) {
-          s[,2] <- unname(.glmRobustSE(mObj)) # new se
-          s[,3] <- s[,1]/s[,2] # new z
-          s[,4] <- 2*pnorm(-abs(s[,3])) # new p
-        }
-        for (i in seq_along(rn)) {
-
-          waldtest <- .waldTest(mObj, term = i)
-          jaspResults[["estimatesTable"]]$addRows(list(
-            model   = as.character(midx),
-            param   = .formatTerm(rn[i], mObj),
-            est     = s[i,1],
-            se      = s[i,2],
-            std     = as.numeric(beta[i]),
-            or      = exp(s[i,1]),
-            zval    = s[i,3],
-            pval    = s[i,4],
-            waldsta = as.numeric(waldtest),
-            walddf  = as.numeric(1),
-            vsmpr   = VovkSellkeMPR(s[i,4]),
-            cilo    = expon(s[i,1] - alpha * s[i,2]),
-            ciup    = expon(s[i,1] + alpha * s[i,2]),
-            .isNewGroup = (i == 1)
-          ))
-        }
       }
     }
   }
@@ -621,9 +492,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s level '%2$s' coded as class 1.", .unv(predVar), predLevel))
 }
 
-.reglogisticEstimatesBootstrapFill <- function(jaspResults, dataset, options, multimod){
+.reglogisticEstimatesBootstrapFill <- function(jaspResults, dataset, options){
   # Compute/Get Model
-  glmObj     <- .reglogisticComputeModel(jaspResults, dataset, options)
+  glmObj     <- jaspResults[["glmRes"]][["object"]]
   ci.fails   <- FALSE
 
   if (is.null(jaspResults[["bootstrapResults"]])) {
@@ -636,10 +507,10 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     expon <- if (options$coefficientCiAsOddsRatio) function(x) exp(x) else identity
 
     startProgressbar(options$coefficientBootstrapSamples *
-                     if (multimod) length(glmObj) else 1)
+                     length(glmObj))
 
     for (i in 1:length(glmObj)) {
-      if (!multimod && i != 2)
+      if (i != 2)
         next
 
         rn <- rownames(summary(glmObj[[i]])[["coefficients"]])
@@ -754,32 +625,6 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   }
 }
 
-.reglogisticCasewiseDiagnosticsFill <- function(jaspResults, dataset, options){
-  # Compute/Get Model
-  glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
-  if (is.null(glmObj))
-    return()
-  else {
-    casewiseDiag <- .casewiseDiagnosticsLogisticRegression(dataset, glmObj, options)
-    caseNumbers  <- casewiseDiag$index
-    if (length(caseNumbers) == 1L && is.na(caseNumbers)) # .casewiseDiagnosticsLogisticRegression returns NA if there are no cases.
-      return()
-    else {
-      for (case in seq_along(caseNumbers))
-        jaspResults[["casewiseDiagnosticsTable"]]$addRows(
-          list(caseNumber = caseNumbers[case],
-               observed   = casewiseDiag$dependent[case],
-               predicted  = casewiseDiag$predicted[case],
-               predGroup  = casewiseDiag$predictedGroup[case],
-               residual   = casewiseDiag$residual[case],
-               residualZ  = casewiseDiag$residualZ[case],
-               cooksD     = casewiseDiag$cooksD[case]
-          )
-        )
-    }
-  }
-}
-
 .reglogisticFactorDescriptivesFill <- function(jaspResults, dataset, options){
 
   if (length(options$factors) > 0) {
@@ -878,7 +723,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 .reglogisticPerformanceMetricsFill <- function(jaspResults, container, dataset, options, ready){
   if(ready) {
     # Compute/Get Model
-    glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+    glmObj <- jaspResults[["glmRes"]][["object"]]
     mObj   <- glmObj[[length(glmObj)]]
     m <- .confusionMatrix(mObj, cutoff = 0.5)[["matrix"]]
     n = sum(m)
@@ -938,7 +783,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     return()
   }
   # Compute/Get Model
-  glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+  glmObj <- jaspResults[["glmRes"]][["object"]]
   mObj   <- glmObj[[length(glmObj)]]
   predictors <- character(0)
 
@@ -977,7 +822,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 
   if(ready){
     # Compute/Get Model
-    glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+    glmObj <- jaspResults[["glmRes"]][["object"]]
     mObj   <- glmObj[[length(glmObj)]]
     p      <- try(.reglogisticResidPlotFill(options, mObj))
     if(isTryError(p))
@@ -1001,7 +846,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     return()
   }
   # Compute/Get Model
-  glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+  glmObj <- jaspResults[["glmRes"]][["object"]]
   mObj   <- glmObj[[length(glmObj)]]
 
   predictors <- character(0)
@@ -1038,7 +883,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 
   if(ready){
     # Compute/Get Model
-    glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+    glmObj <- jaspResults[["glmRes"]][["object"]]
     mObj   <- glmObj[[length(glmObj)]]
     p      <- try(.reglogisticSquaredPearsonResidualsFill(mObj))
     if(isTryError(p))
@@ -1064,7 +909,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     rocPlot$dependOn(c("rocPlot", "rocPlotCutoffStep"))
 
     if (ready) {
-      glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+      glmObj <- jaspResults[["glmRes"]][["object"]]
       mObj   <- glmObj[[length(glmObj)]]
 
       cutoffInt <- seq(0, 1, by = options$rocPlotCutoffStep)
@@ -1090,7 +935,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     prPlot$dependOn(c("precisionRecallPlot", "precisionRecallPlotCutoffStep"))
 
     if (ready) {
-      glmObj <- .reglogisticComputeModel(jaspResults, dataset, options)
+      glmObj <- jaspResults[["glmRes"]][["object"]]
       mObj   <- glmObj[[length(glmObj)]]
 
       cutoffInt <- seq(0, 1, by = options$precisionRecallPlotCutoffStep)
@@ -1374,13 +1219,11 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     seTitle <- gettextf("Robust <br> %s", seTitle)
 
   if (options$method == "enter") {
-    multimod   <- FALSE
     paramtitle <- ""
   } else {
-    multimod   <- TRUE
     paramtitle <- gettext("Parameter")
   }
-  return(list(ciTitle = ciTitle, seTitle = seTitle, multimod = multimod, paramtitle = paramtitle))
+  return(list(ciTitle = ciTitle, seTitle = seTitle, paramtitle = paramtitle))
 }
 
 # wrapper for wald test

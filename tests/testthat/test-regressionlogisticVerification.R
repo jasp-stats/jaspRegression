@@ -4,15 +4,14 @@ context("Logistic Regression -- Verification project")
 
 ## Testing Titanice
 
-options <- jaspTools::analysisOptions("RegressionLogistic")
+options <- initClassicalRegressionOptions("RegressionLogistic")
 options$dependent <- "Survived"
 options$factors <- c("PClass", "Sex")
 options$covariates <- "Age"
 
 options$modelTerms <- list(
-  list(components=c("Age"), isNuisance=FALSE),
-  list(components=c("PClass"), isNuisance=FALSE),
-  list(components=c("Sex"), isNuisance=FALSE)
+  list(components= NULL, name="model0", title = "Model 0"),
+  list(components=c("Age", "PClass", "Sex"), name="model1", title = "Model 1")
 )
 
 options$method <- "enter"
@@ -26,10 +25,10 @@ test_that("Main table results match R, SPSS, SAS and MiniTab", {
   
   jaspTools::expect_equal_tables(
     "test"=resultTable,
-    "ref"=list(1027.57254724533, 1032.20058862151, "", "", 1025.57254724533,
-               755, "", "H<unicode>", "", "", "", 705.140778094395, 728.280984975293,
-               0.354079636893354, 330.431769150933, 695.140778094395, 751,
-               0.322192486566131, "H<unicode>", 0.476901084612013, 0, 0.393957934297113)
+    "ref"=list(1027.57254724532, 1032.2005886215, 1025.57254724532, 755, 0, "M<unicode>",
+               0, 705.140778094396, 728.280984975294, 0.354079636893343, 330.431769150921,
+               695.140778094396, 751, 0.322192486566122, "M<unicode>", 0.476901084612001,
+               0, 0.393957934297112)
   )
 })
 
@@ -40,13 +39,16 @@ test_that("Estimates table results match R, SPSS, SAS and MiniTab", {
   
   jaspTools::expect_equal_tables(
     "test"=resultTable,
-    "ref"=list(3.75966210120454, "(Intercept)", 3.17912938532242e-21, 0.397567324274317,
-               1, 89.4285652804951, 9.45666776832598, -0.0391768149758485,
-               "Age", 2.69139209369272e-07, 0.0076162175667569, 1, 26.4593741560195,
-               -5.14386762621471, -1.29196239983359, "PClass (2nd)", 6.77732368246485e-07,
-               0.260075781079861, 1, 24.6774298532547, -4.96763825708504, -2.52141915270095,
-               "PClass (3rd)", 7.94813113283019e-20, 0.276656805343585, 1,
-               83.0629554227781, -9.11388805191166, -2.63135683476562, "Sex (male)",
-               5.68409321426263e-39, 0.201505378991115, 1, 170.524272319145,
-               -13.0584942592607))
+    "ref"=list("TRUE", -0.347366579504982, "M<unicode>", "(Intercept)", 2.54655183336123e-06,
+               0.0738391799970593, 1, 22.1310660444386, -4.70436669961416,
+               "TRUE", 3.75966210120455, "M<unicode>", "(Intercept)", 3.1791293853215e-21,
+               0.397567324274317, 1, 89.4285652804962, 9.45666776832601, "FALSE",
+               -0.0391768149758488, "M<unicode>", "Age", 2.6913920936924e-07,
+               0.00761621756675692, 1, 26.45937415602, -5.14386762621473, "FALSE",
+               -1.2919623998336, "M<unicode>", "PClass (2nd)", 6.77732368246352e-07,
+               0.260075781079861, 1, 24.6774298532553, -4.96763825708507, "FALSE",
+               -2.52141915270095, "M<unicode>", "PClass (3rd)", 7.94813113282811e-20,
+               0.276656805343584, 1, 83.0629554227789, -9.11388805191169, "FALSE",
+               -2.63135683476561, "M<unicode>", "Sex (male)", 5.68409321426302e-39,
+               0.201505378991114, 1, 170.524272319145, -13.0584942592607))
 })

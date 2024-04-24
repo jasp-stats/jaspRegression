@@ -30,11 +30,14 @@ Group
 		name: "residualStatistic"     
 		label: qsTr("Statistics") 
 		visible: analysis === Type.Analysis.LinearRegression
+		value: false
 	}
 	
 	CheckBox
 	{
-		name: "residualCasewiseDiagnostic";	label: qsTr("Casewise diagnostics")
+		name: "residualCasewiseDiagnostic"
+		label: qsTr("Casewise diagnostics")
+		value: false
 		columns: 2
 		RadioButtonGroup
 		{
@@ -71,6 +74,7 @@ Group
 		id:							residualsSavedToData
 		name:						"residualsSavedToData"
 		text:						qsTr("Append residuals to data")
+		value:                      false
 
 		ComputedColumnField
 		{
