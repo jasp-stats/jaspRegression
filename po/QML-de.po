@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-04-20 14:01+0000\n"
+"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
+"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/de/>\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.5-dev\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1632,24 +1638,22 @@ msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
 msgstr "Effektstärke (Fishers z)"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Residuals"
 msgstr "Residuen"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Statistics"
 msgstr "Statistiken"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
 msgstr "Fallweise Diagnostiken"
 
+#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
-msgstr ""
+msgstr "Std.-Residuum >"
 
 msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
@@ -1686,48 +1690,48 @@ msgctxt "OutlierComponent|"
 msgid "Append residuals to data"
 msgstr ""
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Column name"
 msgstr "Spaltenname"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "e.g., residuals"
 msgstr "z.B. Residuen"
 
 msgctxt "Correlation|"
 msgid "Covariance"
-msgstr ""
+msgstr "Kovarianz"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals : top"
-msgstr ""
+msgstr "Standardisierte Quantil-Residuen: oben"
 
 msgctxt "RegressionLinear|"
 msgid "Model Summary"
-msgstr ""
+msgstr "Modell-Zusammenfassung"
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "F change"
-msgstr ""
+msgstr "F-Änderung"
 
 msgctxt "RegressionLinear|"
 msgid "AIC and BIC"
-msgstr ""
+msgstr "AIC und BIC"
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Tolerance and VIF"
-msgstr ""
+msgstr "Toleranz und VIF"
 
 msgctxt "RegressionLinear|"
 msgid "Display"
-msgstr ""
+msgstr "Anzeigen"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients covariance matrix"
-msgstr ""
+msgstr "Kovarianzmatrix-Koeffizienten"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
-msgstr ""
+msgstr "Multikollinearitätsdiagnostiken"
