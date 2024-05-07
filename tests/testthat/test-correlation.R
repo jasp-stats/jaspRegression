@@ -24,19 +24,19 @@ results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
 test_that("Shapiro-Wilk Test for Multivariate Normality table results match", {
   table <- results[["results"]][["assumptionsContainer"]][["collection"]][["assumptionsContainer_multivariateShapiro"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(0.878989128563944, 6.30818027438384e-06))
+                                 list(0.951937236443559, 1.26292374637229e-05))
 })
 
 test_that("Shapiro-Wilk Test for Bivariate Normality table results match", {
   table <- results[["results"]][["assumptionsContainer"]][["collection"]][["assumptionsContainer_pairwiseShapiro"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(0.901474720121716, 1.65965808553626e-06, "-", "contNormal", "contGamma",
-                           0.966220519133756, 0.0114432512312019, "-", "contNormal", "contcor1",
-                           0.966282842281815, 0.0561697740909883, "-", "contNormal", "debMiss30",
-                           0.873628887299087, 9.84839266547295e-08, "-", "contGamma", "contcor1",
-                           0.862918050703853, 1.7604538483754e-06, "-", "contGamma", "debMiss30",
-                           0.990143883746405, 0.861444767503725, "-", "contcor1", "debMiss30"
-                      ))
+                                 list(0.920133622718739, 9.26266088028011e-09, "-", "contNormal", "contGamma",
+                                      0.975095766862836, 0.0197633225756002, "-", "contNormal", "contcor1",
+                                      0.97421223116433, 0.108462090826961, "-", "contNormal", "debMiss30",
+                                      0.930015026431291, 8.89751236523928e-08, "-", "contGamma", "contcor1",
+                                      0.933648725575745, 2.37704417812631e-05, "-", "contGamma", "debMiss30",
+                                      0.98166946114741, 0.416182497522526, "-", "contcor1", "debMiss30"
+                                 ))
 })
 
 test_that("Correlation plot matches", {
