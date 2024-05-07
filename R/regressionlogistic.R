@@ -22,16 +22,16 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     .reglogisticCheckErrors(dataset, options)
   }
   # Output tables
-  model <- .reglogisticComputeModel(   jaspResults, dataset, options, ready)
+  .reglogisticComputeModel(            jaspResults, dataset, options, ready)
   .reglogisticModelSummaryTable(       jaspResults, dataset, options, ready)
   .reglogisticEstimatesTable(          jaspResults, dataset, options, ready)
   .reglogisticEstimatesTableBootstrap( jaspResults, dataset, options, ready)
   .reglogisticMulticolliTable(         jaspResults, dataset, options, ready)
   .reglogisticFactorDescriptivesTable( jaspResults, dataset, options, ready)
 
-  if (options$residualCasewiseDiagnostic && is.null(jaspResults[["influenceTable"]])) {
-    finalModel <- model[[length(options[["modelTerms"]])]]
-    .glmInfluenceTable(jaspResults, finalModel, dataset, options, ready, position = 5, logisticRegression = TRUE)
+  if (options$residualCasewiseDiagnostic) {
+    finalModel <- jaspResults[["glmRes"]][["object"]][[length(options[["modelTerms"]])]]
+    .glmInfluenceTable(jaspResults, finalModel, dataset, options, ready, position = 5)
     .regressionExportResiduals(jaspResults, finalModel, dataset, options, ready = ready)
   }
 
