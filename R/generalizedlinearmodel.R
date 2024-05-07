@@ -102,7 +102,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
                limits.min = 0,
                limits.max = Inf,
                exitAnalysisIfErrors = TRUE)
-
+  
+  if (length(options$factors) != 0)
+    .hasErrors(dataset,
+               type = "factorLevels",
+               factorLevels.target  = options$factors,
+               factorLevels.amount  = '< 2',
+               exitAnalysisIfErrors = TRUE)
+  
   if (options[["family"]] == "bernoulli") {
 
     if (length(levels(dataset[, options[["dependent"]]])) != 2)

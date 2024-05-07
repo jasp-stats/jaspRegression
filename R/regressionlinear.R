@@ -165,7 +165,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     .hasErrors(dataset, type = c("infinity", "limits", "observations"),
                all.target = options$weights, limits.min = 0, observations.amount = "< 2",
                exitAnalysisIfErrors = TRUE)
-
+    if (length(options$factors) != 0)
+      .hasErrors(dataset,
+                 type = "factorLevels",
+                 factorLevels.target  = options$factors,
+                 factorLevels.amount  = '< 2',
+                 exitAnalysisIfErrors = TRUE)
     covwt <- function(...) return(stats::cov.wt(..., wt = dataset[[.v(options[["weights"]])]])$cov)
     .hasErrors(dataset[, -which(colnames(dataset) %in% c(.v(options$weights)))],  type = "varCovData", varCovData.corFun = covwt,
                exitAnalysisIfErrors = TRUE)
