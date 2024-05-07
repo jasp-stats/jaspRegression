@@ -24,7 +24,7 @@ results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
 test_that("Shapiro-Wilk Test for Multivariate Normality table results match", {
   table <- results[["results"]][["assumptionsContainer"]][["collection"]][["assumptionsContainer_multivariateShapiro"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(0.878989128563944, 6.30818027438384e-06))
+                                 list(0.951937236443559, 1.26292374637229e-05))
 })
 
 test_that("Shapiro-Wilk Test for Bivariate Normality table results match", {

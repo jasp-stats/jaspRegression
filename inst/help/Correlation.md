@@ -54,7 +54,7 @@ The Correlation analysis allows estimation of the population correlation, as wel
 #### Assumption checks
 
 - Multivariate normality
-  - Shapiro: Computes the Shapiro-Wilk statistic to test the null hypothesis that the selected variables have multivariate normal distribution.
+  - Shapiro:  Generalized Shapiro-Wilk test for multivariate normality by Villasenor-Alva and Gonzalez-Estrada (2009), using the mvShapiroTest package.
 
 - Pairwise normality
   - Shapiro: For each possible combination of the selected variables, computes the Shapiro-Wilk statistic to test the null hypothesis that the variable pair has a bivariate normal distribution.
@@ -108,6 +108,7 @@ The Correlation analysis allows estimation of the population correlation, as wel
 - Whitlock, M. C., & Schluter, D. (2015). *The analysis of biological data (2nd ed.)*. Greenwood Village, Colorado: Roberts and Company Publishers.
 - Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of *p* values for testing precise null hypotheses. *The American Statistician, 55*(1), 62-71.
 - Caruso, J.C., & Cliff, N. (1997). Empirical Size, Coverage, and Power of Confidence Intervals for Spearman's Rho. *Educational and Psychological Measurement, 57*(4), 637-654.
+-	Villasenor-Alva, J.A. and Gonzalez-Estrada, E. (2009). A generalization of Shapiro-Wilk's test for multivariate normality. *Communications in Statistics: Theory and Methods*, 38, 1870-1883.
 - Xu, W., Hou, Y., Hung, Y.S., & Zou, Y. (2013). A comparative analysis of Spearman’s rho and Kendall’s tau in normal and contaminated normal models. *Signal Processing, 93*, 261-276.
 
 ### R Packages
