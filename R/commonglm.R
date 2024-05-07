@@ -798,7 +798,7 @@
   } else {
     
     
-    depType <- if (isFALSE(logisticRegression))  "number" else "string"
+    depType <- if (is.numeric(dataset[[options[["dependent"]]]]))  "number" else "string"
     influenceTable$addColumnInfo(name = "caseN", title = "Case Number", type = "integer")
     influenceTable$addColumnInfo(name = "stdResidual", title = gettext("Std. Residual"),   type = "number", format = "dp:3")
     influenceTable$addColumnInfo(name = "dependent",   title = options$dependent,          type = depType)
