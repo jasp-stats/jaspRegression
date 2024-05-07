@@ -778,6 +778,8 @@
     influenceTable$position <- position
     influenceTable$showSpecifiedColumnsOnly <- TRUE
     jaspResults[["influenceTable"]] <- influenceTable
+  } else {
+    return()
   }
 
   tableOptionToColName <- function(x) {
