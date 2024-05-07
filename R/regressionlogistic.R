@@ -81,6 +81,12 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
                all.target = options$covariates,
                observations.amount  = "< 2",
                exitAnalysisIfErrors = TRUE)
+  if (length(options$factors) != 0)
+    .hasErrors(dataset,
+               type = "factorLevels",
+               factorLevels.target  = options$factors,
+               factorLevels.amount  = '< 2',
+               exitAnalysisIfErrors = TRUE)
 }
 
 # Performance Diagnostics Container
