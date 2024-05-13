@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-04-20 14:01+0000\n"
+"PO-Revision-Date: 2024-05-13 15:26+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.5.5\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1650,16 +1650,14 @@ msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
 msgstr "Fallweise Diagnostiken"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
 msgstr "Std.-Residuum >"
 
 msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
-msgstr ""
+msgstr "Cooks Dist. >"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "All"
 msgstr "Alle"
@@ -1684,11 +1682,11 @@ msgstr ""
 
 msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
-msgstr ""
+msgstr "Mahalanobis"
 
 msgctxt "OutlierComponent|"
 msgid "Append residuals to data"
-msgstr ""
+msgstr "Residuen zu Daten hinzufügen"
 
 msgctxt "OutlierComponent|"
 msgid "Column name"
@@ -1710,7 +1708,6 @@ msgctxt "RegressionLinear|"
 msgid "Model Summary"
 msgstr "Modell-Zusammenfassung"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "F change"
 msgstr "F-Änderung"
@@ -1719,7 +1716,6 @@ msgctxt "RegressionLinear|"
 msgid "AIC and BIC"
 msgstr "AIC und BIC"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Tolerance and VIF"
 msgstr "Toleranz und VIF"
