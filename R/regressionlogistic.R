@@ -795,10 +795,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   mObj   <- glmObj[[length(glmObj)]]
   predictors <- character(0)
 
-  for (term in options$modelTerms)
-    if (length(term$components) == 1 &&
-        (is.null(term$isNuisance) || !term$isNuisance))
-      predictors <- c(predictors, term$components)
+  mComponents <- options$modelTerms[[length(glmObj)]][["components"]]
+  predictors <- unlist(sapply(mComponents, function(x) if(length(x) == 1) x))
 
   if (length(predictors) > 0 && !is.null(glmObj)) {
     # plot only predictors selected in the final model
