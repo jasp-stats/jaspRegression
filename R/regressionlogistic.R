@@ -853,18 +853,12 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     subcontainer[["placeholder"]] <- createJaspPlot(width = 320, height = 320, dependencies = "residualVsPredictorPlot")
     return()
   }
-  # Compute/Get Model
+  # Compute/Get final Model
   glmObj <- jaspResults[["glmRes"]][["object"]]
   mObj   <- glmObj[[length(glmObj)]]
+  mComponents <- options$modelTerms[[length(glmObj)]][["components"]]
+  predictors <- unlist(sapply(mComponents, function(x) if(length(x) == 1) x))
 
-  predictors <- character(0)
-  for (term in options$modelTerms)
-    if (length(term$components) == 1 &&
-        (is.null(term$isNuisance) || !term$isNuisance))
-      predictors <- c(predictors, term$components)
-  # plot only predictors selected in the final model
-  predictors <- predictors[.v(predictors) %in% attr(mObj[["terms"]],
-                                                    "term.labels")]
   for(pred in predictors) {
     predictorPlot <- createJaspPlot(title = pred, width = 480, height = 320)
     predictorPlot$dependOn("residualVsPredictorPlot")
