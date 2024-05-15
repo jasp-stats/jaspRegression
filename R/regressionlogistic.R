@@ -43,6 +43,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   .reglogisticPredictedResidualsPlot(     jaspResults, dataset, options, ready)
   .reglogisticPredictorResidualsPlot(     jaspResults, dataset, options, ready)
   .reglogisticSquaredPearsonResidualsPlot(jaspResults, dataset, options, ready)
+  .reglogisticIndependentPredictedPlot(   jaspResults, dataset, options, ready)
   .reglogisticPerformancePlot(            jaspResults, dataset, options, ready)
   return()
 }
@@ -767,15 +768,15 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 }
 
 # Plots
-.reglogisticResidualPlotContainer <- function(jaspResults, options){
+.reglogisticDiagnosticPlotContainer <- function(jaspResults, options){
   if(!options$residualVsFittedPlot && !options$residualVsPredictorPlot &&
-     !options$squaredPearsonResidualVsFittedPlot)
+     !options$squaredPearsonResidualVsFittedPlot && !options$independentVsPredictedPlot)
     return()
-  if (is.null(jaspResults[["residualPlots"]])) {
-    container <- createJaspContainer(gettext("Residual plots"))
+  if (is.null(jaspResults[["diagnosticPlots"]])) {
+    container <- createJaspContainer(gettext("Diagnostic plots"))
     container$dependOn(optionsFromObject = jaspResults[["modelSummary"]],
                        options           = c("residualType"))
-    jaspResults[["residualPlots"]] <- container
+    jaspResults[["diagnosticPlots"]] <- container
   }
 }
 
@@ -819,8 +820,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 .reglogisticPredictedResidualsPlot <- function(jaspResults, dataset, options, ready){
   if(!options$residualVsFittedPlot)
     return()
-  .reglogisticResidualPlotContainer(jaspResults, options)
-  container <- jaspResults[["residualPlots"]]
+  .reglogisticDiagnosticPlotContainer(jaspResults, options)
+  container <- jaspResults[["diagnosticPlots"]]
 
   title <- gettext("Predicted - residuals plot")
   predictedPlot <- createJaspPlot(title = title, width = 480, height = 320)
@@ -843,8 +844,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 .reglogisticPredictorResidualsPlot <- function(jaspResults, dataset, options, ready){
   if(!options$residualVsPredictorPlot)
     return()
-  .reglogisticResidualPlotContainer(jaspResults, options)
-  container    <- jaspResults[["residualPlots"]]
+  .reglogisticDiagnosticPlotContainer(jaspResults, options)
+  container    <- jaspResults[["diagnosticPlots"]]
   container[["subContainer"]] <- createJaspContainer(gettext("Predictor - residuals plots"))
    subcontainer <- container[["subContainer"]]
   if(!ready){
@@ -874,8 +875,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 .reglogisticSquaredPearsonResidualsPlot <- function(jaspResults, dataset, options, ready){
   if(!options$squaredPearsonResidualVsFittedPlot)
     return()
-  .reglogisticResidualPlotContainer(jaspResults, options)
-  container <- jaspResults[["residualPlots"]]
+  .reglogisticDiagnosticPlotContainer(jaspResults, options)
+  container <- jaspResults[["diagnosticPlots"]]
 
   title <- gettext("Squared Pearson residuals plot")
   squaredPearsonPlot <- createJaspPlot(title = title, width = 480, height = 320)
@@ -892,6 +893,86 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
       squaredPearsonPlot$plotObject <- p
   }
   container[["squaredPearson"]] <- squaredPearsonPlot
+  return()
+}
+
+.reglogisticIndependentPredictedPlot <- function(jaspResults, dataset, options, ready){
+  if(!options$independentVsPredictedPlot)
+    return()
+  .reglogisticDiagnosticPlotContainer(jaspResults, options)
+  container    <- jaspResults[["diagnosticPlots"]]
+  container[["subContainer"]] <- createJaspContainer(gettext("Independent - predicted plots"))
+  subcontainer <- container[["subContainer"]]
+  if(!ready){
+    subcontainer[["placeholder"]] <- createJaspPlot(dependencies = c("independentVsPredictedPlot", 
+                                                                     "independentVsPredictedPlotIncludeInteractions"))
+    return()
+  }
+
+  # Compute/Get final Model
+  glmObj <- jaspResults[["glmRes"]][["object"]]
+  mObj   <- glmObj[[length(glmObj)]]
+  mComponents <- options$modelTerms[[length(glmObj)]][["components"]]
+  
+  if (options[["independentVsPredictedPlotIncludeInteractions"]]) {
+    predictors <- sapply(mComponents, function(x) if(length(x) < 3) x)
+  } else {
+    predictors <- sapply(mComponents, function(x) if(length(x) == 1) x)
+  }
+  
+  predictedProbs <- predict(mObj, type = "response")
+  predictedLogits <- log(predictedProbs / (1 - predictedProbs))
+  
+  for (pred in predictors) {
+    
+    facPredictorIndex <- which(pred %in% options[["factors"]])
+    
+    for (i in seq_along(pred)) {
+      
+    predictorLogitPlot <- createJaspPlot(title =  paste(c(pred[i], pred[-i]), collapse = " \u273B "))
+    predictorLogitPlot$dependOn(c("independentVsPredictedPlot", "independentVsPredictedPlotIncludeInteractions"))
+    
+    if (length(pred) == 1) {
+      groupVar <- groupName <- NULL
+      indepVar <- pred
+    } else if (length(facPredictorIndex) == 0) { # no factor variables, so use cut for 2nd variable
+      indepVar <- pred[i]
+      groupName<- pred[-i]
+      groupVar <- dataset[[groupName]]
+      groupVar <- if (length(unique(groupVar)) > 5) cut(groupVar, 4) else groupVar
+    } else if (length(facPredictorIndex) == 1) { # one factor var, so use that as grouping variable
+      indepVar <- pred[-facPredictorIndex]
+      groupName<- pred[facPredictorIndex]
+      groupVar <- dataset[[groupName]]
+    } else { # both are factors, so convert first one into numeric
+      indepVar <- pred[i]
+      groupName<- pred[-1]
+      groupVar <- dataset[[groupName]]
+    }
+
+    p <- try(jaspGraphs::JASPScatterPlot(as.numeric(dataset[[indepVar]]),
+                                         predictedLogits,
+                                         group = groupVar,
+                                         xName = indepVar,
+                                         yName = "Logit of Predicted Probability",
+                                         addSmooth = TRUE,
+                                         addSmoothCI = TRUE,
+                                         plotAbove = "none", 
+                                         plotRight = "none",
+                                         showLegend = length(pred) > 1,
+                                         legendTitle = groupName,
+                                         smoothCIValue = 0.95,
+                                         forceLinearSmooth = TRUE))
+
+    if(isTryError(p))
+      predictorLogitPlot$setError(.extractErrorMessage(p))
+    else
+      predictorLogitPlot$plotObject <- p
+    subcontainer[[paste0(indepVar, groupName)]] <- predictorLogitPlot
+    
+    }
+  }
+  
   return()
 }
 

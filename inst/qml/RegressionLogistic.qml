@@ -173,10 +173,17 @@ Form
 
 		Group
 		{
-			title: qsTr("Residual Plots")
+			title: qsTr("Diagnostic Plots")
 			CheckBox { name: "residualVsFittedPlot";		label: qsTr("Predicted - residual plot")		}
 			CheckBox { name: "residualVsPredictorPlot";		label: qsTr("Predictor - residual plots")		}
 			CheckBox { name: "squaredPearsonResidualVsFittedPlot";	label: qsTr("Squared Pearson residuals plot")	}
+			CheckBox 
+			{ 
+				name: "independentVsPredictedPlot"
+				label: qsTr("Independent - logit(predicted) plot")	
+				CheckBox { name: "independentVsPredictedPlotIncludeInteractions";	label: qsTr("Include interactions")	}
+			}
+
 		}
 
 		RadioButtonGroup
