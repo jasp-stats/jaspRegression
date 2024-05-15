@@ -904,8 +904,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   container[["subContainer"]] <- createJaspContainer(gettext("Independent - predicted plots"))
   subcontainer <- container[["subContainer"]]
   if(!ready){
-    subcontainer[["placeholder"]] <- createJaspPlot(dependencies = c("independentVsPredictedPlot", 
-                                                                     "independentVsPredictedPlotIncludeInteractions"))
+    subcontainer[["placeholder"]] <- createJaspPlot(width = 480, height = 320, dependencies = c("independentVsPredictedPlot", 
+                                                                                                "independentVsPredictedPlotIncludeInteractions"))
     return()
   }
 
@@ -929,7 +929,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     
     for (i in seq_along(pred)) {
       
-    predictorLogitPlot <- createJaspPlot(title =  paste(c(pred[i], pred[-i]), collapse = " \u273B "))
+    predictorLogitPlot <- createJaspPlot(title =  paste(c(pred[i], pred[-i]), collapse = " \u273B "), width = 480, height = 320)
     predictorLogitPlot$dependOn(c("independentVsPredictedPlot", "independentVsPredictedPlotIncludeInteractions"))
     
     if (length(pred) == 1) {

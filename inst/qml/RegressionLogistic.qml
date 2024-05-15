@@ -181,7 +181,7 @@ Form
 			{ 
 				name: "independentVsPredictedPlot"
 				label: qsTr("Independent - logit(predicted) plot")	
-				CheckBox { name: "independentVsPredictedPlotIncludeInteractions";	label: qsTr("Include interactions")	}
+				CheckBox { name: "independentVsPredictedPlotIncludeInteractions";	label: qsTr("Include interactions"); checked: true}
 			}
 
 		}
