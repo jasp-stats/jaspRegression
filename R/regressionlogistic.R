@@ -932,21 +932,23 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     predictorLogitPlot <- createJaspPlot(title =  paste(c(pred[i], pred[-i]), collapse = " \u273B "), width = 480, height = 320)
     predictorLogitPlot$dependOn(c("independentVsPredictedPlot", "independentVsPredictedPlotIncludeInteractions"))
     
+    binContVar <- FALSE
     if (length(pred) == 1) {
       groupVar <- groupName <- NULL
       indepVar <- pred
-    } else if (length(facPredictorIndex) == 0) { # no factor variables, so use cut for 2nd variable
+    } else if (length(facPredictorIndex) == 0) { # no factor variables, so give both versions
       indepVar <- pred[i]
       groupName<- pred[-i]
       groupVar <- dataset[[groupName]]
-      groupVar <- if (length(unique(groupVar)) > 5) cut(groupVar, 4) else groupVar
+      binContVar <- length(unique(groupVar)) > 5
+      groupVar <- if (binContVar) cut(groupVar, 4) else groupVar
     } else if (length(facPredictorIndex) == 1) { # one factor var, so use that as grouping variable
       indepVar <- pred[-facPredictorIndex]
       groupName<- pred[facPredictorIndex]
       groupVar <- dataset[[groupName]]
-    } else { # both are factors, so convert first one into numeric
+    } else { # both are factors, so give both versions
       indepVar <- pred[i]
-      groupName<- pred[-1]
+      groupName<- pred[-i]
       groupVar <- dataset[[groupName]]
     }
 
@@ -954,20 +956,23 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
                                          predictedLogits,
                                          group = groupVar,
                                          xName = indepVar,
-                                         yName = "Logit of Predicted Probability",
+                                         yName = "Logit Predicted Probability",
                                          addSmooth = TRUE,
                                          addSmoothCI = TRUE,
                                          plotAbove = "none", 
                                          plotRight = "none",
                                          showLegend = length(pred) > 1,
-                                         legendTitle = groupName,
+                                         legendTitle = if (binContVar) paste0(groupName,"_binned") else groupName,
                                          smoothCIValue = 0.95,
                                          forceLinearSmooth = TRUE))
-
+    
     if(isTryError(p))
       predictorLogitPlot$setError(.extractErrorMessage(p))
-    else
+    else {
+      if (length(pred) > 1)
+        p <- p$subplots$mainPlot #+ ggplot2::theme(legend.position="bottom")
       predictorLogitPlot$plotObject <- p
+    }
     subcontainer[[paste0(indepVar, groupName)]] <- predictorLogitPlot
     
     }
@@ -1044,14 +1049,14 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   if (points) {
     mf <- model.frame(mObj)
     factors <- names(mObj[["xlevels"]])
-    if (.v(pred) %in% factors)
-      vd <- as.factor(mObj[["data"]][[.v(pred)]])
+    if (pred %in% factors)
+      vd <- as.factor(mObj[["data"]][[pred]])
     else
-      vd <- mf[,.v(pred)]
+      vd <- mf[, pred]
     ggdat <- data.frame(x = vd, y = mObj$y)
   }
   # Calculate ribbon & main line
-  ribdat <- .glmLogRegRibbon(mObj, .v(pred), options$conditionalEstimatePlotCi)
+  ribdat <- .glmLogRegRibbon(mObj, pred, options$conditionalEstimatePlotCi)
   # Find predicted level
   predVar   <- as.character(mObj[["terms"]])[2]
   predLevel <- levels(mObj[["data"]][[predVar]])[2]
