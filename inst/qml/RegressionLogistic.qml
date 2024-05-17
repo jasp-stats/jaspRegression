@@ -180,8 +180,10 @@ Form
 			CheckBox 
 			{ 
 				name: "independentVsPredictedPlot"
-				label: qsTr("Independent - logit(predicted) plot")	
+				label: qsTr("Independent - predicted plot")	
 				CheckBox { name: "independentVsPredictedPlotIncludeInteractions";	label: qsTr("Include interactions"); checked: true}
+				CheckBox { name: "independentVsPredictedPlotUseLogit";	label: qsTr("Use logit scale"); checked: true}
+
 			}
 
 		}
