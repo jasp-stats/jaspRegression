@@ -123,17 +123,19 @@ Multicollinearity diagnostics:
 - VIF: Variance Inflation Factor; large values indicate multicollinearity. Calculated as VIF = det(R<sub>11</sub>) * det(R<sub>22</sub>) / det(R), where R is the covariance matrix of the regression coefficients (excluding intercept), R<sub>11</sub> is a submatrix of R of the predictor for which VIF is calculated, and R<sub>22</sub> is a submatrix of R of the other predictors (Fox & Monette, 1992; Fox, 2016).
 
 
-Casewise Diagnostics:
-- Case number: Identification of the case being inspected.  
-- Observed: The observed value of the outcome.
-- Predicted: The predicted value of the outcome.
-- Predicted Group: The predicted dependent value of the outcome.
-- Residual: The difference between the observed and the predicted value.
-- Standardized Residual: The standardized difference between the observed and the predicted value.
-- Cook’s Distance: The value of Cook’s distance. 
-- 95% Confidence Interval
-  - [lower]%: Lower bound of the user-defined x% confidence intervals for the bootstrapped regression coefficients.
-  - [upper]%: Upper bound of the user-defined x% confidence intervals for the bootstrapped regression coefficients.
+- Residuals:
+  - Statistics: Display descriptive statistics of the residuals and predicted values.
+  - Casewise diagnostic: Casewise and summarized diagnostics for the residuals.
+    - Standard residual > 3: Outliers outside x standard deviations: Display diagnostics for cases where the absolute value of the standardized residual is larger than x; default is x=3.
+    - Cook's distance > 1 : Display diagnostics for cases where the value of Cook’s distance is larger than x; default is x = 1. 
+    - All cases: Display diagnostics for all cases.
+  - Cases are marked as influential in the table, according to the following thresholds:
+    - DFBETAS: When the absolute value of DFBETAS is greater than 1.      
+    - DFFITS: When the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)) where k refers to the number of parameters in the model and n refers to the sample size.
+    - Covariance ratio: When the covariance ratio is greater than 3 * k/(n-k).
+    - Cook's distance: When Cook's distance exceeds the 50th percentile of the F distribution with (k, n-k) degrees of freedom.
+    - Leverages: When the leverages are greater than 3 * k/n.
+  - Append residuals to data: Save the residuals of the most complex model as a new column in the data file.
 
 Factor Descriptives:
   - The first column displays all levels of the factor.
@@ -149,13 +151,19 @@ Performance metrics:
 #### Estimates Plots
 The conditional estimates plots display the probability of the dependent variable for all levels of the covariate given the reference of all other factors. If a (continues) covariate is added the grey shade around the line represents the 95% confidence intervals.
  
-#### Residual Plots
+#### Diagnostic Plots
 Predicted - residuals plot.
 
 Predictor - residuals plot for predictor. 
 
 Squared Pearson residuals plot:
 - The expected value of the squared residuals is 1 displayed by the dotted gray line. The red line displays the smoother through the residuals (= moving average). If the red line lies mostly near 1, it can be concluded that the model does not suffer much from overdispersion. Some deviation around the tails is to be expected.
+
+Independent - predicted plot: 
+- Plots the model predictions against each independent variable. 
+- Include interactions: also add every two-way interaction (binning continuous variables as necessary)
+- Use logit scale: plot predicted probabilities on the logit scale, to ensure a linear relation
+
 
 ### References
 -------

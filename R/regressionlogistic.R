@@ -921,12 +921,11 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     predictors <- sapply(mComponents, function(x) if(length(x) == 1) x)
   }
   
-  predictedProbs <- predict(mObj, type = "response")
+  predictions <- predict(mObj, type = "response")
   if(options[["independentVsPredictedPlotUseLogit"]]) {
-    predictedLogits <- log(predictedProbs / (1 - predictedProbs)) 
+    predictions <- log(predictions / (1 - predictions)) 
     yName <- "Logit Predicted Probability"
   } else {
-    predictedLogits <- predictedProbs
     yName <- "Predicted Probability"
   }
   
@@ -962,7 +961,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     }
 
     p <- try(jaspGraphs::JASPScatterPlot(as.numeric(dataset[[indepVar]]),
-                                         predictedLogits,
+                                         predictions,
                                          group = groupVar,
                                          xName = indepVar,
                                          yName = yName,
