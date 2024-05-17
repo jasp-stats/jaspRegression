@@ -905,7 +905,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   subcontainer <- container[["subContainer"]]
   if(!ready){
     subcontainer[["placeholder"]] <- createJaspPlot(width = 480, height = 320, dependencies = c("independentVsPredictedPlot", 
-                                                                                                "independentVsPredictedPlotIncludeInteractions"))
+                                                                                                "independentVsPredictedPlotIncludeInteractions",
+                                                                                                "independentVsPredictedPlotUseLogit"))
     return()
   }
 
@@ -920,8 +921,13 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     predictors <- sapply(mComponents, function(x) if(length(x) == 1) x)
   }
   
-  predictedProbs <- predict(mObj, type = "response")
-  predictedLogits <- log(predictedProbs / (1 - predictedProbs))
+  predictions <- predict(mObj, type = "response")
+  if(options[["independentVsPredictedPlotUseLogit"]]) {
+    predictions <- log(predictions / (1 - predictions)) 
+    yName <- "Logit Predicted Probability"
+  } else {
+    yName <- "Predicted Probability"
+  }
   
   for (pred in predictors) {
     
@@ -930,7 +936,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     for (i in seq_along(pred)) {
       
     predictorLogitPlot <- createJaspPlot(title =  paste(c(pred[i], pred[-i]), collapse = " \u273B "), width = 480, height = 320)
-    predictorLogitPlot$dependOn(c("independentVsPredictedPlot", "independentVsPredictedPlotIncludeInteractions"))
+    predictorLogitPlot$dependOn(c("independentVsPredictedPlot", 
+                                  "independentVsPredictedPlotIncludeInteractions",
+                                  "independentVsPredictedPlotUseLogit"))
     
     binContVar <- FALSE
     if (length(pred) == 1) {
@@ -953,10 +961,10 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     }
 
     p <- try(jaspGraphs::JASPScatterPlot(as.numeric(dataset[[indepVar]]),
-                                         predictedLogits,
+                                         predictions,
                                          group = groupVar,
                                          xName = indepVar,
-                                         yName = "Logit Predicted Probability",
+                                         yName = yName,
                                          addSmooth = TRUE,
                                          addSmoothCI = TRUE,
                                          plotAbove = "none", 
@@ -964,7 +972,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
                                          showLegend = length(pred) > 1,
                                          legendTitle = if (binContVar) paste0(groupName,"_binned") else groupName,
                                          smoothCIValue = 0.95,
-                                         forceLinearSmooth = TRUE))
+                                         forceLinearSmooth = options[["independentVsPredictedPlotUseLogit"]]))
     
     if(isTryError(p))
       predictorLogitPlot$setError(.extractErrorMessage(p))
