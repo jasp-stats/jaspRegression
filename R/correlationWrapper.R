@@ -19,7 +19,7 @@
 
 Correlation <- function(
           data = NULL,
-          version = "0.18.2",
+          version = "0.19",
           alternative = "twoSided",
           assumptionCheckMultivariateEnergy = FALSE,
           assumptionCheckMultivariateMardia = FALSE,
@@ -33,6 +33,7 @@ Correlation <- function(
           ciBootstrap = FALSE,
           ciBootstrapSamples = 1000,
           ciLevel = 0.95,
+          covariance = FALSE,
           crossProducts = FALSE,
           effectSize = FALSE,
           heatmapPlot = FALSE,
