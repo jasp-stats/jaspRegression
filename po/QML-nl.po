@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-05-23 16:46+0000\n"
+"PO-Revision-Date: 2024-05-23 17:21+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/nl/>\n"
@@ -1493,273 +1493,239 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals (%1)"
 msgstr "Residuen (%1)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Column name"
 msgstr "Kolomnaam"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "e.g., residuals"
-msgstr "e.g., residuen"
+msgstr "bijv. residuen"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals std. deviations (%1)"
 msgstr "Residuen std. afwijkingen (%1)"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "e.g., residual sd"
-msgstr "e.g., residuen sd"
+msgstr "bijv. residuen sd"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
 msgstr "Prior"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "AIC"
 msgstr "AIC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "EB-local"
 msgstr "EB-lokaal"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
 msgstr "g-prior"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
 msgstr "alfa"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
-msgstr ""
+msgstr "CCH"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
-msgstr ""
+msgstr "Beta-Prime"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Instrinsic"
-msgstr ""
+msgstr "Intrinsiek"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Robust"
-msgstr ""
+msgstr "Robuust"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model Prior"
 msgstr "Model prior"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta binomial"
 msgstr "Beta binomiaal"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "a"
 msgstr "a"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
 msgstr "b"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform"
 msgstr "Uniform"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
 msgstr "λ"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
 msgstr "Castillo"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "u"
 msgstr "u"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli"
 msgstr "Bernoulli"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "p"
 msgstr "p"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Sampling Method"
-msgstr "Steekproefmethode"
+msgstr "Steekproefmethodiek"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "BAS"
 msgstr "BAS"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. models"
 msgstr "Aantal modellen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "MCMC"
 msgstr "MCMC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples"
-msgstr "Aantal steekproeven"
+msgstr "Aantal trekkingen"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Numerical Accuracy"
 msgstr "Numerieke Precisie"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
-msgstr "Steekproeven geloofwaardigheidsinterval"
+msgstr "Aantal trekkingen voor geloofwaardigheidsinterval"
 
 msgctxt "EmmComponent|"
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "Effectgrootte (Fisher's z)"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Residuals"
 msgstr "Residuen"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Statistics"
 msgstr "Statistieken"
 
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
-msgstr ""
+msgstr "Diagnostiek per datapunt"
 
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
-msgstr ""
+msgstr "Std. residu >"
 
 msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
-msgstr ""
+msgstr "Cook's afstand >"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "All"
 msgstr "Alle"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "DFBETAS"
 msgstr "DFBETAS"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "DFFITS"
 msgstr "DFFITS"
 
 msgctxt "OutlierComponent|"
 msgid "Cov ratio"
-msgstr ""
+msgstr "Cov verhouding"
 
 msgctxt "OutlierComponent|"
 msgid "Leverage"
-msgstr ""
+msgstr "Hefboomwerking"
 
 msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
-msgstr ""
+msgstr "Mahalanobis"
 
 msgctxt "OutlierComponent|"
 msgid "Append residuals to data"
-msgstr ""
+msgstr "Voeg residuen toe aan gegevens"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Column name"
 msgstr "Kolomnaam"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "e.g., residuals"
-msgstr "e.g., residuen"
+msgstr "bijv. residuen"
 
 msgctxt "Correlation|"
 msgid "Covariance"
-msgstr ""
+msgstr "Covariantie"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals : top"
-msgstr ""
+msgstr "Gestandaardiseerde kwantielresiduen : top"
 
 msgctxt "RegressionLinear|"
 msgid "Model Summary"
-msgstr ""
+msgstr "Modelsamenvatting"
 
 msgctxt "RegressionLinear|"
 msgid "F change"
-msgstr ""
+msgstr "F verandering"
 
 msgctxt "RegressionLinear|"
 msgid "AIC and BIC"
-msgstr ""
+msgstr "AIC en BIC"
 
 msgctxt "RegressionLinear|"
 msgid "Tolerance and VIF"
-msgstr ""
+msgstr "Tolerantie en VIF"
 
 msgctxt "RegressionLinear|"
 msgid "Display"
-msgstr ""
+msgstr "Weergeven"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients covariance matrix"
-msgstr ""
+msgstr "Covariantie matrix van coëfficiënten"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
-msgstr ""
+msgstr "Multicollineariteitsdiagnostiek"
