@@ -19,7 +19,7 @@
 
 RegressionLogisticBayesian <- function(
           data = NULL,
-          version = "0.18.2",
+          version = "0.19",
           bayesFactorOrder = "bestModelTop",
           bayesFactorType = "BF10",
           bernoulliParam = 0.5,
