@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2024-04-20 02:42\n"
-"PO-Revision-Date: 2023-10-18 15:29+0000\n"
+"PO-Revision-Date: 2024-05-23 16:48+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/nl/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 5.1\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -124,30 +124,34 @@ msgid ""
 "The full model could not be fitted to the data, with the following error "
 "message: '%s'"
 msgstr ""
+"Het volledige model kon niet worden gepast op de gegevens, met de volgende "
+"foutmelding: '%s'"
 
 msgid ""
 "The null model could not be fitted to the data, with the following error "
 "message: '%s'"
 msgstr ""
+"Het nulmodel kon niet worden gepast op de gegevens, met de volgende "
+"foutmelding: '%s'"
 
 msgid ""
 "Could not find valid starting values. Check feasibility of the model to fit "
 "the data."
 msgstr ""
+"Kon geen geldige beginwaarden vinden. Controleer of het model geschikt is "
+"voor de gegevens."
 
 msgid "Plotting is not possible: %s"
 msgstr "Grafeken maken niet mogelijk: %s"
 
-#, fuzzy
 msgid "Q-Q Plots"
-msgstr "Q-Q plot"
+msgstr "Q-Q Figuren"
 
-#, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
-msgstr "Normale Q-Q-plot: Gestandaardiseerde %1s residuen"
+msgstr "Q-Q figuur: Gestandaardiseerde %1s residuen"
 
 msgid "There are no predictors to test for multicollinearity"
-msgstr ""
+msgstr "Er zijn geen predictoren om te testen op multicollineariteit"
 
 msgid "P-values correspond to test of null hypothesis against %s."
 msgstr "P-waarden komen overeen met de toetsing van de nulhypothese tegen %s."
@@ -227,11 +231,14 @@ msgstr "Geen invloedrijke gevallen gevonden."
 msgid ""
 "Potentially influential case, according to the selected influence measure."
 msgstr ""
+"Potentieel invloedrijk datapunt, volgens de geselecteerde invloedsmaatstaf."
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
 "values, try another measure."
 msgstr ""
+"Invloedmaatstaffen konden voor sommige datapunten niet worden berekend "
+"vanwege extreme waarden, probeer een andere maatstaf."
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
@@ -307,9 +314,8 @@ msgstr "Effectgrootte (Fisher's z)"
 msgid "SE Effect size"
 msgstr "SE Effectgrootte"
 
-#, fuzzy
 msgid "Covariance"
-msgstr "Afwijking"
+msgstr "Covariantie"
 
 msgid "r"
 msgstr "r"
@@ -607,7 +613,6 @@ msgstr "Gestandaardiseerd %1s residu"
 msgid "%1s Residuals vs. Predictor Plots"
 msgstr "%1s Residuals vs. Predictor Plots"
 
-#, fuzzy
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "Gestandaardiseerde %1s residuen vs. %2s"
 
@@ -690,20 +695,20 @@ msgstr "proberen + %s"
 msgid "F test assumes 'quasi%s' family"
 msgstr "F toets gaat uit van 'quasi%s' familie"
 
-#, fuzzy
 msgid ""
 "Stepwise procedures are not supported for models containing factors with "
 "more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
-"Stapsgewijze procedures worden niet ondersteund voor modellen die "
-"interactietermen bevatten"
+"Stapsgewijze procedures worden niet ondersteund voor modellen met factoren "
+"met meer dan 2 niveaus; probeer de analyse opnieuw met behulp van "
+"dummyvariabelen"
 
-#, fuzzy
 msgid ""
 "Stepwise procedures are not supported for interactions containing more than "
 "1 factor"
 msgstr ""
-"Stapsgewijze procedures worden niet ondersteund voor modellen met factoren"
+"Stapsgewijze procedures worden niet ondersteund voor interacties die meer "
+"dan 1 factor bevatten"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
@@ -924,12 +929,11 @@ msgstr "Residuen %s"
 msgid "Descriptives"
 msgstr "Beschrijvende statistiek"
 
-#, fuzzy
 msgid "M%s"
-msgstr "R%s"
+msgstr "M%s"
 
 msgid "title"
-msgstr ""
+msgstr "titel"
 
 msgid "Std. Predicted Value"
 msgstr "Std. Voorspelde Waarde"
@@ -1291,25 +1295,24 @@ msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
 "same as the coefficients are always included or excluded together."
 msgstr ""
+"Opname-/uitsluitingsstatistieken voor coëfficiënten binnen factor(en) %s "
+"zijn hetzelfde omdat de coëfficiënten altijd samen worden opgenomen of "
+"uitgesloten."
 
-#, fuzzy
 msgid "DV/Factor Descriptives"
-msgstr "Factorbeschrijvingen"
+msgstr "DV/Factor Beschrijvende Statistieken"
 
-#, fuzzy
 msgid "DV/Factor"
-msgstr "Factor"
+msgstr "DV/Factor"
 
 msgid "Level"
-msgstr ""
+msgstr "Niveau"
 
-#, fuzzy
 msgid "Covariate Descriptives"
-msgstr "Factorbeschrijvingen"
+msgstr "Beschrijvende Statistiek voor Covariaten"
 
-#, fuzzy
 msgid "Intercept"
-msgstr "(Intercept)"
+msgstr "Intercept"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
