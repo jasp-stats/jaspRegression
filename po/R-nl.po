@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2024-05-23 22:04\n"
-"PO-Revision-Date: 2024-05-23 17:21+0000\n"
+"PO-Revision-Date: 2024-05-24 01:16+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/nl/>\n"
@@ -204,9 +204,8 @@ msgstr "Voorspeld"
 msgid "(Intercept)"
 msgstr "(Intercept)"
 
-#, fuzzy
 msgid "Influential Cases"
-msgstr "Tabel: Invloedrijke Gevallen"
+msgstr "Invloedrijke Gevallen"
 
 msgid "Std. Residual"
 msgstr "Std. Residu"
@@ -939,9 +938,8 @@ msgstr "Std. Voorspelde Waarde"
 msgid "Standardized Residuals"
 msgstr "Gestandaardiseerde Residuen"
 
-#, fuzzy
 msgid "%1$s includes %2$s"
-msgstr "%1$s vs. %2$s"
+msgstr "%1$s bevat %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1210,9 +1208,8 @@ msgstr ""
 "Sommige betrouwbaarheidsintervallen konden niet worden berekend. \n"
 "Er zijn mogelijk te weinig bootstrap replicaties."
 
-#, fuzzy
 msgid "Diagnostic plots"
-msgstr "Diagnostieken"
+msgstr "Diagnostische figuren"
 
 msgid "Estimates plots"
 msgstr "Benaderingsgrafieken"
@@ -1227,7 +1224,7 @@ msgid "Squared Pearson residuals plot"
 msgstr "Gekwadrateerde Pearson residuengrafiek"
 
 msgid "Independent - predicted plots"
-msgstr ""
+msgstr "Onafhankelijk - voorspeld figuren"
 
 msgid "Performance plots"
 msgstr "Prestatiegrafieken"
