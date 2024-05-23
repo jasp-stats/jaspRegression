@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2024-05-23 17:21+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -204,7 +204,8 @@ msgstr "Voorspeld"
 msgid "(Intercept)"
 msgstr "(Intercept)"
 
-msgid "Table: Influential Cases"
+#, fuzzy
+msgid "Influential Cases"
 msgstr "Tabel: Invloedrijke Gevallen"
 
 msgid "Std. Residual"
@@ -932,28 +933,15 @@ msgstr "Beschrijvende statistiek"
 msgid "M%s"
 msgstr "M%s"
 
-msgid "title"
-msgstr "titel"
-
 msgid "Std. Predicted Value"
 msgstr "Std. Voorspelde Waarde"
 
 msgid "Standardized Residuals"
 msgstr "Gestandaardiseerde Residuen"
 
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-"Onbekende waarde gegeven voor modelType, mogelijke waarden: `alternatief`, "
-"`null`"
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
-"We hebben minstens één predictor of een intercept nodig om een formule te "
-"maken"
-
-msgid "Null model includes %s"
-msgstr "Nulmodel bevat %s"
+#, fuzzy
+msgid "%1$s includes %2$s"
+msgstr "%1$s vs. %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1191,21 +1179,6 @@ msgstr ""
 "Coëfficiëntschatting en robuuste standaardfout zijn gebaseerd op de mediaan "
 "van de bootstrapverdeling."
 
-msgid "Casewise Diagnostics"
-msgstr "Gevalswijze Diagnostieken"
-
-msgid "Observed"
-msgstr "Geobserveerd"
-
-msgid "Predicted Group"
-msgstr "Voorspelde Groep"
-
-msgid "Studentized Residual"
-msgstr "Gestudentiseerd Residu"
-
-msgid "Cook's Distance"
-msgstr "Cook's Afstand"
-
 msgid "Factor Descriptives"
 msgstr "Factorbeschrijvingen"
 
@@ -1215,6 +1188,9 @@ msgstr "Factor"
 msgid "Confusion matrix"
 msgstr "Verwarringsmatrix"
 
+msgid "Observed"
+msgstr "Geobserveerd"
+
 msgid "%% Correct"
 msgstr "%% Correct"
 
@@ -1223,9 +1199,6 @@ msgstr "Prestatiestatistieken"
 
 msgid "Value"
 msgstr "Waarde"
-
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Nulmodel bevat ruisparameters: %s"
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrapping gebaseerd op %i succesvolle replicaties."
@@ -1237,8 +1210,9 @@ msgstr ""
 "Sommige betrouwbaarheidsintervallen konden niet worden berekend. \n"
 "Er zijn mogelijk te weinig bootstrap replicaties."
 
-msgid "Residual plots"
-msgstr "Residugrafieken"
+#, fuzzy
+msgid "Diagnostic plots"
+msgstr "Diagnostieken"
 
 msgid "Estimates plots"
 msgstr "Benaderingsgrafieken"
@@ -1251,6 +1225,9 @@ msgstr "Voorspeller - residuengrafieken"
 
 msgid "Squared Pearson residuals plot"
 msgstr "Gekwadrateerde Pearson residuengrafiek"
+
+msgid "Independent - predicted plots"
+msgstr ""
 
 msgid "Performance plots"
 msgstr "Prestatiegrafieken"
@@ -1328,6 +1305,42 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Partiële Regressiegrafiek"
 msgstr[1] "Partiële Regressiegrafieken"
+
+#~ msgid "title"
+#~ msgstr "titel"
+
+#~ msgid ""
+#~ "Unknown value provided for modelType, possible values: `alternative`, "
+#~ "`null`"
+#~ msgstr ""
+#~ "Onbekende waarde gegeven voor modelType, mogelijke waarden: "
+#~ "`alternatief`, `null`"
+
+#~ msgid "We need at least one predictor, or an intercept to make a formula"
+#~ msgstr ""
+#~ "We hebben minstens één predictor of een intercept nodig om een formule te "
+#~ "maken"
+
+#~ msgid "Null model includes %s"
+#~ msgstr "Nulmodel bevat %s"
+
+#~ msgid "Casewise Diagnostics"
+#~ msgstr "Gevalswijze Diagnostieken"
+
+#~ msgid "Predicted Group"
+#~ msgstr "Voorspelde Groep"
+
+#~ msgid "Studentized Residual"
+#~ msgstr "Gestudentiseerd Residu"
+
+#~ msgid "Cook's Distance"
+#~ msgstr "Cook's Afstand"
+
+#~ msgid "Null model contains nuisance parameters: %s"
+#~ msgstr "Nulmodel bevat ruisparameters: %s"
+
+#~ msgid "Residual plots"
+#~ msgstr "Residugrafieken"
 
 #~ msgid "Normal Q-Q Plots: Standardized Residuals"
 #~ msgstr "Normale Q-Q Plots: Gestandaardiseerde Residuals"

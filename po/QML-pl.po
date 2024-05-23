@@ -1,16 +1,10 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-05-08 18:04+0000\n"
-"Last-Translator: Tomasz Misiuro <tomaszmisiuro@gmail.com>\n"
-"Language-Team: Polish <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/pl/>\n"
-"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.5.4-rc\n"
 "X-Language: pl\n"
 "X-Qt-Contexts: true\n"
 
@@ -807,10 +801,6 @@ msgid "Model"
 msgstr "Model"
 
 msgctxt "RegressionLogistic|"
-msgid "Components"
-msgstr "Składniki"
-
-msgctxt "RegressionLogistic|"
 msgid "Include intercept"
 msgstr "Uwzględnij wyraz wolny"
 
@@ -907,26 +897,6 @@ msgid "H-measure"
 msgstr "Wartość H"
 
 msgctxt "RegressionLogistic|"
-msgid "Residuals"
-msgstr "Reszty"
-
-msgctxt "RegressionLogistic|"
-msgid "Casewise diagnostics"
-msgstr "Diagnostyka obserwacji"
-
-msgctxt "RegressionLogistic|"
-msgid "Standard residual >"
-msgstr "Reszta standardowa >"
-
-msgctxt "RegressionLogistic|"
-msgid "Cook's distance >"
-msgstr "Dystans Cooka >"
-
-msgctxt "RegressionLogistic|"
-msgid "All"
-msgstr "Wszystko"
-
-msgctxt "RegressionLogistic|"
 msgid "Plots"
 msgstr "Wykresy"
 
@@ -941,10 +911,6 @@ msgstr "Przedział ufności"
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
 msgstr "Pokaż punkty danych"
-
-msgctxt "RegressionLogistic|"
-msgid "Residual Plots"
-msgstr "Wykresy reszt"
 
 msgctxt "RegressionLogistic|"
 msgid "Predicted - residual plot"
@@ -1728,4 +1694,20 @@ msgstr "Macierz kowariancji współczynników"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Diagnostic Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Independent - predicted plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include interactions"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Use logit scale"
 msgstr ""

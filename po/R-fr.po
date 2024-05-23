@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2024-04-09 13:34+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
@@ -200,8 +200,9 @@ msgstr "Prédit"
 msgid "(Intercept)"
 msgstr "(Intercept)"
 
-msgid "Table: Influential Cases"
-msgstr ""
+#, fuzzy
+msgid "Influential Cases"
+msgstr "Analyse séquentielle"
 
 msgid "Std. Residual"
 msgstr ""
@@ -907,27 +908,15 @@ msgstr "Statistiques descriptives"
 msgid "M%s"
 msgstr "R%s"
 
-msgid "title"
-msgstr ""
-
 msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
 msgstr "Résidus standardisés"
 
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-"Valeur inconnue fournie pour modelType, valeurs possibles: `alternative`,"
-"`null`"
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
-"Au moins un prédicteur ou un intercept est requis pour créer une formule"
-
-msgid "Null model includes %s"
-msgstr "Le modèle nul inclus %s"
+#, fuzzy
+msgid "%1$s includes %2$s"
+msgstr "%1$s vs. %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1147,21 +1136,6 @@ msgid ""
 "the bootstrap distribution."
 msgstr ""
 
-msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Observed"
-msgstr "Observé"
-
-msgid "Predicted Group"
-msgstr "Groupe prédit"
-
-msgid "Studentized Residual"
-msgstr "Résidu studentisé"
-
-msgid "Cook's Distance"
-msgstr "Distance de Cook"
-
 msgid "Factor Descriptives"
 msgstr ""
 
@@ -1171,6 +1145,9 @@ msgstr "Facteur"
 msgid "Confusion matrix"
 msgstr ""
 
+msgid "Observed"
+msgstr "Observé"
+
 msgid "%% Correct"
 msgstr "%% Correct"
 
@@ -1179,10 +1156,6 @@ msgstr ""
 
 msgid "Value"
 msgstr "Valeur"
-
-#, fuzzy
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Le modèle nul contient des paramètres nuisibles : %s"
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrapping basé sur %i itérations réussies."
@@ -1194,8 +1167,9 @@ msgstr ""
 "Certains intervalles de confiance ne peuvent pas être calculés.\n"
 "Possiblement qu'il y a trop peu d'itérations bootstrap."
 
-msgid "Residual plots"
-msgstr "Diagramme des résidus"
+#, fuzzy
+msgid "Diagnostic plots"
+msgstr "Diagnostiques"
 
 msgid "Estimates plots"
 msgstr "Diagrammes des estimations"
@@ -1207,6 +1181,9 @@ msgid "Predictor - residuals plots"
 msgstr ""
 
 msgid "Squared Pearson residuals plot"
+msgstr ""
+
+msgid "Independent - predicted plots"
 msgstr ""
 
 msgid "Performance plots"
@@ -1283,6 +1260,36 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] ""
 msgstr[1] ""
+
+#~ msgid ""
+#~ "Unknown value provided for modelType, possible values: `alternative`, "
+#~ "`null`"
+#~ msgstr ""
+#~ "Valeur inconnue fournie pour modelType, valeurs possibles: `alternative`,"
+#~ "`null`"
+
+#~ msgid "We need at least one predictor, or an intercept to make a formula"
+#~ msgstr ""
+#~ "Au moins un prédicteur ou un intercept est requis pour créer une formule"
+
+#~ msgid "Null model includes %s"
+#~ msgstr "Le modèle nul inclus %s"
+
+#~ msgid "Predicted Group"
+#~ msgstr "Groupe prédit"
+
+#~ msgid "Studentized Residual"
+#~ msgstr "Résidu studentisé"
+
+#~ msgid "Cook's Distance"
+#~ msgstr "Distance de Cook"
+
+#, fuzzy
+#~ msgid "Null model contains nuisance parameters: %s"
+#~ msgstr "Le modèle nul contient des paramètres nuisibles : %s"
+
+#~ msgid "Residual plots"
+#~ msgstr "Diagramme des résidus"
 
 #~ msgid "Normal Q-Q Plots: Standardized Residuals"
 #~ msgstr "Diagrammes Q-Q normaux : Valeurs résiduelles standardisées"

@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-05-23 17:21+0000\n"
-"Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
-"Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/nl/>\n"
-"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: nl\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -807,10 +801,6 @@ msgid "Model"
 msgstr "Model"
 
 msgctxt "RegressionLogistic|"
-msgid "Components"
-msgstr "Componenten"
-
-msgctxt "RegressionLogistic|"
 msgid "Include intercept"
 msgstr "Voeg intercept toe"
 
@@ -907,26 +897,6 @@ msgid "H-measure"
 msgstr "H-maat"
 
 msgctxt "RegressionLogistic|"
-msgid "Residuals"
-msgstr "Residuen"
-
-msgctxt "RegressionLogistic|"
-msgid "Casewise diagnostics"
-msgstr "Gevalswijze diagnostiek"
-
-msgctxt "RegressionLogistic|"
-msgid "Standard residual >"
-msgstr "Standaardresidu >"
-
-msgctxt "RegressionLogistic|"
-msgid "Cook's distance >"
-msgstr "Cook's afstand >"
-
-msgctxt "RegressionLogistic|"
-msgid "All"
-msgstr "Alle"
-
-msgctxt "RegressionLogistic|"
 msgid "Plots"
 msgstr "Grafieken"
 
@@ -941,10 +911,6 @@ msgstr "Betrouwbaarheidsinterval"
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
 msgstr "Toon datapunten"
-
-msgctxt "RegressionLogistic|"
-msgid "Residual Plots"
-msgstr "Residugrafieken"
 
 msgctxt "RegressionLogistic|"
 msgid "Predicted - residual plot"
@@ -1729,3 +1695,19 @@ msgstr "Covariantie matrix van coëfficiënten"
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
 msgstr "Multicollineariteitsdiagnostiek"
+
+msgctxt "RegressionLogistic|"
+msgid "Diagnostic Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Independent - predicted plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include interactions"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Use logit scale"
+msgstr ""

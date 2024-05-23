@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspRegression 0.18.3\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"Project-Id-Version: jaspRegression 0.19.0\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -185,7 +185,7 @@ msgstr ""
 msgid "(Intercept)"
 msgstr ""
 
-msgid "Table: Influential Cases"
+msgid "Influential Cases"
 msgstr ""
 
 msgid "Std. Residual"
@@ -788,22 +788,13 @@ msgstr ""
 msgid "M%s"
 msgstr ""
 
-msgid "title"
-msgstr ""
-
 msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
 msgstr ""
 
-msgid "Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
-
-msgid "Null model includes %s"
+msgid "%1$s includes %2$s"
 msgstr ""
 
 msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum\n        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
@@ -989,21 +980,6 @@ msgstr ""
 msgid "Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."
 msgstr ""
 
-msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Observed"
-msgstr ""
-
-msgid "Predicted Group"
-msgstr ""
-
-msgid "Studentized Residual"
-msgstr ""
-
-msgid "Cook's Distance"
-msgstr ""
-
 msgid "Factor Descriptives"
 msgstr ""
 
@@ -1011,6 +987,9 @@ msgid "Factor"
 msgstr ""
 
 msgid "Confusion matrix"
+msgstr ""
+
+msgid "Observed"
 msgstr ""
 
 msgid "%% Correct"
@@ -1022,16 +1001,13 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-msgid "Null model contains nuisance parameters: %s"
-msgstr ""
-
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
 
 msgid "Some confidence intervals could not be computed.\nPossibly too few bootstrap replicates."
 msgstr ""
 
-msgid "Residual plots"
+msgid "Diagnostic plots"
 msgstr ""
 
 msgid "Estimates plots"
@@ -1044,6 +1020,9 @@ msgid "Predictor - residuals plots"
 msgstr ""
 
 msgid "Squared Pearson residuals plot"
+msgstr ""
+
+msgid "Independent - predicted plots"
 msgstr ""
 
 msgid "Performance plots"

@@ -817,10 +817,6 @@ msgid "Model"
 msgstr "模型"
 
 msgctxt "RegressionLogistic|"
-msgid "Components"
-msgstr "成分"
-
-msgctxt "RegressionLogistic|"
 msgid "Include intercept"
 msgstr "納入截距"
 
@@ -918,26 +914,6 @@ msgid "H-measure"
 msgstr "H度量"
 
 msgctxt "RegressionLogistic|"
-msgid "Residuals"
-msgstr "殘差"
-
-msgctxt "RegressionLogistic|"
-msgid "Casewise diagnostics"
-msgstr "個別資料診斷"
-
-msgctxt "RegressionLogistic|"
-msgid "Standard residual >"
-msgstr "標準殘差"
-
-msgctxt "RegressionLogistic|"
-msgid "Cook's distance >"
-msgstr "Cook's 距離"
-
-msgctxt "RegressionLogistic|"
-msgid "All"
-msgstr "全選"
-
-msgctxt "RegressionLogistic|"
 msgid "Plots"
 msgstr "圖"
 
@@ -952,10 +928,6 @@ msgstr "信賴區間"
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
 msgstr "顯示資料點"
-
-msgctxt "RegressionLogistic|"
-msgid "Residual Plots"
-msgstr "殘差圖"
 
 msgctxt "RegressionLogistic|"
 msgid "Predicted - residual plot"
@@ -1741,9 +1713,10 @@ msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
 msgstr ""
 
+#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "All"
-msgstr ""
+msgstr "全選"
 
 #, fuzzy
 msgctxt "OutlierComponent|"
@@ -1815,4 +1788,20 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Diagnostic Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Independent - predicted plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include interactions"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Use logit scale"
 msgstr ""

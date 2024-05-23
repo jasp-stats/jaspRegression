@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2023-04-21 17:51+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -198,8 +198,9 @@ msgstr "予測"
 msgid "(Intercept)"
 msgstr ""
 
-msgid "Table: Influential Cases"
-msgstr ""
+#, fuzzy
+msgid "Influential Cases"
+msgstr "逐次解析"
 
 msgid "Std. Residual"
 msgstr "標準的な残差"
@@ -907,26 +908,15 @@ msgstr "記述統計量"
 msgid "M%s"
 msgstr "R%s"
 
-msgid "title"
-msgstr ""
-
 msgid "Std. Predicted Value"
 msgstr "標準化された予測値"
 
 msgid "Standardized Residuals"
 msgstr "標準化された残差"
 
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-"不明な値が modelType に提供されました。利用可能な値は `null`, `alternative`, "
-"`null` です"
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr "式を作るためには、少なくとも1つの予測変数か切片が必要です"
-
-msgid "Null model includes %s"
-msgstr "ヌルモデルには %s が含まれています"
+#, fuzzy
+msgid "%1$s includes %2$s"
+msgstr "%1$s 対 %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1157,21 +1147,6 @@ msgstr ""
 "係数推定値とロバスト標準誤差は、ブートストラップ分布の中央値に基づいていま"
 "す。"
 
-msgid "Casewise Diagnostics"
-msgstr "ケースワイズ診断"
-
-msgid "Observed"
-msgstr "観測された"
-
-msgid "Predicted Group"
-msgstr "予想されるグループ"
-
-msgid "Studentized Residual"
-msgstr "スチューデント化残差"
-
-msgid "Cook's Distance"
-msgstr "クックの距離"
-
 msgid "Factor Descriptives"
 msgstr "要因の記述"
 
@@ -1180,6 +1155,9 @@ msgstr "要因"
 
 msgid "Confusion matrix"
 msgstr "混同行列"
+
+msgid "Observed"
+msgstr "観測された"
 
 #, fuzzy
 msgid "%% Correct"
@@ -1191,9 +1169,6 @@ msgstr "パフォーマンス・メトリクス"
 msgid "Value"
 msgstr "値"
 
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Nullモデルには妨害パラメータが含まれています: %s"
-
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "%i 回の成功した再現に基づいてブートストラップを実行する."
 
@@ -1204,8 +1179,9 @@ msgstr ""
 "いくつかの信頼区間が計算できませんでした。\n"
 "ブートストラップの再標本が少なすぎる可能性があります。"
 
-msgid "Residual plots"
-msgstr "残差プロット"
+#, fuzzy
+msgid "Diagnostic plots"
+msgstr "ケースワイズ診断"
 
 msgid "Estimates plots"
 msgstr "推定値のプロット"
@@ -1218,6 +1194,9 @@ msgstr "予測変数 - 残差プロット"
 
 msgid "Squared Pearson residuals plot"
 msgstr "二乗ピアソン残差プロット"
+
+msgid "Independent - predicted plots"
+msgstr ""
 
 msgid "Performance plots"
 msgstr "パフォーマンスプロット"
@@ -1292,6 +1271,37 @@ msgstr[0] "次の共変量が考慮されましたが、含まれていません
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏回帰プロット"
+
+#~ msgid ""
+#~ "Unknown value provided for modelType, possible values: `alternative`, "
+#~ "`null`"
+#~ msgstr ""
+#~ "不明な値が modelType に提供されました。利用可能な値は `null`, "
+#~ "`alternative`, `null` です"
+
+#~ msgid "We need at least one predictor, or an intercept to make a formula"
+#~ msgstr "式を作るためには、少なくとも1つの予測変数か切片が必要です"
+
+#~ msgid "Null model includes %s"
+#~ msgstr "ヌルモデルには %s が含まれています"
+
+#~ msgid "Casewise Diagnostics"
+#~ msgstr "ケースワイズ診断"
+
+#~ msgid "Predicted Group"
+#~ msgstr "予想されるグループ"
+
+#~ msgid "Studentized Residual"
+#~ msgstr "スチューデント化残差"
+
+#~ msgid "Cook's Distance"
+#~ msgstr "クックの距離"
+
+#~ msgid "Null model contains nuisance parameters: %s"
+#~ msgstr "Nullモデルには妨害パラメータが含まれています: %s"
+
+#~ msgid "Residual plots"
+#~ msgstr "残差プロット"
 
 #, fuzzy
 #~ msgid "Normal Q-Q Plots: Standardized Residuals"

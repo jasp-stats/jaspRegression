@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2022-08-29 00:19+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -205,8 +205,9 @@ msgstr "Previsto"
 msgid "(Intercept)"
 msgstr ""
 
-msgid "Table: Influential Cases"
-msgstr ""
+#, fuzzy
+msgid "Influential Cases"
+msgstr "Análise sequencial"
 
 msgid "Std. Residual"
 msgstr "Resíduos padrão"
@@ -930,27 +931,15 @@ msgstr "Descritivas"
 msgid "M%s"
 msgstr "R%s"
 
-msgid "title"
-msgstr ""
-
 msgid "Std. Predicted Value"
 msgstr "Valor predito padrão"
 
 msgid "Standardized Residuals"
 msgstr "Resíduos padronizados"
 
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-"Valor desconhecido fornecido para modelType, valores possíveis: "
-"`alternative`, `null`"
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
-"Precisamos de pelo menos um preditor ou um intercepto para fazer uma fórmula"
-
-msgid "Null model includes %s"
-msgstr "O modelo nulo inclui %s"
+#, fuzzy
+msgid "%1$s includes %2$s"
+msgstr "%1$s vs. %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1190,21 +1179,6 @@ msgstr ""
 "A estimativa do coeficiente e o erro padrão robusto são baseados na mediana "
 "da distribuição bootstrap."
 
-msgid "Casewise Diagnostics"
-msgstr "Diagnósticos caso a caso"
-
-msgid "Observed"
-msgstr "Observado"
-
-msgid "Predicted Group"
-msgstr "Grupo predito"
-
-msgid "Studentized Residual"
-msgstr "Resíduo estudantilizado (studentized residual)"
-
-msgid "Cook's Distance"
-msgstr "Distância de Cook"
-
 msgid "Factor Descriptives"
 msgstr "Descritivas do fator"
 
@@ -1213,6 +1187,9 @@ msgstr "Fator"
 
 msgid "Confusion matrix"
 msgstr "Matriz de confusão"
+
+msgid "Observed"
+msgstr "Observado"
 
 #, fuzzy
 msgid "%% Correct"
@@ -1224,9 +1201,6 @@ msgstr "Métricas de performance"
 msgid "Value"
 msgstr "Valor"
 
-msgid "Null model contains nuisance parameters: %s"
-msgstr "O modelo nulo contém parâmetros incômodos: %s"
-
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrapping baseado em %i replicações bem-sucedidas."
 
@@ -1237,8 +1211,9 @@ msgstr ""
 "Alguns intervalos de confiança não puderam ser calculados.\n"
 "Possivelmente, poucas réplicas de bootstrap."
 
-msgid "Residual plots"
-msgstr "Gráficos de resíduos"
+#, fuzzy
+msgid "Diagnostic plots"
+msgstr "Diagnósticos caso a caso"
 
 msgid "Estimates plots"
 msgstr "Estimativas"
@@ -1251,6 +1226,9 @@ msgstr "Preditor - Gráficos de resíduos"
 
 msgid "Squared Pearson residuals plot"
 msgstr "Gráfico de resíduos de Pearson quadrado"
+
+msgid "Independent - predicted plots"
+msgstr ""
 
 msgid "Performance plots"
 msgstr "Gráficos de performance"
@@ -1328,6 +1306,39 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Gráfico de regressão parcial"
 msgstr[1] "Gráficos de regressão parcial"
+
+#~ msgid ""
+#~ "Unknown value provided for modelType, possible values: `alternative`, "
+#~ "`null`"
+#~ msgstr ""
+#~ "Valor desconhecido fornecido para modelType, valores possíveis: "
+#~ "`alternative`, `null`"
+
+#~ msgid "We need at least one predictor, or an intercept to make a formula"
+#~ msgstr ""
+#~ "Precisamos de pelo menos um preditor ou um intercepto para fazer uma "
+#~ "fórmula"
+
+#~ msgid "Null model includes %s"
+#~ msgstr "O modelo nulo inclui %s"
+
+#~ msgid "Casewise Diagnostics"
+#~ msgstr "Diagnósticos caso a caso"
+
+#~ msgid "Predicted Group"
+#~ msgstr "Grupo predito"
+
+#~ msgid "Studentized Residual"
+#~ msgstr "Resíduo estudantilizado (studentized residual)"
+
+#~ msgid "Cook's Distance"
+#~ msgstr "Distância de Cook"
+
+#~ msgid "Null model contains nuisance parameters: %s"
+#~ msgstr "O modelo nulo contém parâmetros incômodos: %s"
+
+#~ msgid "Residual plots"
+#~ msgstr "Gráficos de resíduos"
 
 #, fuzzy
 #~ msgid "Normal Q-Q Plots: Standardized Residuals"

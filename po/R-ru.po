@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2023-06-24 02:58+0000\n"
 "Last-Translator: Borisov Igor Borisovich <borisov_i@pimunn.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -223,7 +223,7 @@ msgid "(Intercept)"
 msgstr "(Интерцепт)"
 
 #, fuzzy
-msgid "Table: Influential Cases"
+msgid "Influential Cases"
 msgstr "Таблица: Влияющие случаи"
 
 #, fuzzy
@@ -1047,9 +1047,6 @@ msgstr "Описательные статистики"
 msgid "M%s"
 msgstr "R%s"
 
-msgid "title"
-msgstr ""
-
 #, fuzzy
 msgid "Std. Predicted Value"
 msgstr "Стд. предсказанное значение"
@@ -1058,19 +1055,8 @@ msgid "Standardized Residuals"
 msgstr "Стандартизированные остатки"
 
 #, fuzzy
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-"Неизвестное значение предназначено для modelType, а возможные значения: "
-"`alternative`, `null`"
-
-#, fuzzy
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr "Нужен хотя бы один предиктор или интерцепт для создания формулы"
-
-#, fuzzy
-msgid "Null model includes %s"
-msgstr "Нулевая модель включает %s"
+msgid "%1$s includes %2$s"
+msgstr "%1$s vs. %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1352,24 +1338,6 @@ msgstr ""
 "Оценка коэффициента и робастная стандартная ошибка основаны на медиане "
 "бутстрэп-распределения."
 
-#, fuzzy
-msgid "Casewise Diagnostics"
-msgstr "Диагностика случаев"
-
-#, fuzzy
-msgid "Observed"
-msgstr "Наблюдаемые"
-
-#, fuzzy
-msgid "Predicted Group"
-msgstr "Предсказанная группа"
-
-msgid "Studentized Residual"
-msgstr "Стьюдентизированные остатки"
-
-msgid "Cook's Distance"
-msgstr "Расстояние Кука"
-
 msgid "Factor Descriptives"
 msgstr "Описательные статистики факторов"
 
@@ -1379,6 +1347,10 @@ msgstr "Фактор"
 #, fuzzy
 msgid "Confusion matrix"
 msgstr "Матрица ошибок I и II родов"
+
+#, fuzzy
+msgid "Observed"
+msgstr "Наблюдаемые"
 
 #, fuzzy
 msgid "%% Correct"
@@ -1392,10 +1364,6 @@ msgid "Value"
 msgstr "Значение"
 
 #, fuzzy
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Нулевая модель содержит мешающие параметры: %s"
-
-#, fuzzy
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Бутстрэппинг основан на %i успешных выборках."
 
@@ -1407,8 +1375,9 @@ msgstr ""
 "Некоторые доверительные интервалы не могут быть рассчитаны.\n"
 "Возможно здесь слишком мало бутстрэп-выборок."
 
-msgid "Residual plots"
-msgstr "Графики остатков"
+#, fuzzy
+msgid "Diagnostic plots"
+msgstr "Диагностика"
 
 #, fuzzy
 msgid "Estimates plots"
@@ -1425,6 +1394,9 @@ msgstr "Значения предиктора - остатки"
 #, fuzzy
 msgid "Squared Pearson residuals plot"
 msgstr "Квадратичные остатки Пирсона"
+
+msgid "Independent - predicted plots"
+msgstr ""
 
 #, fuzzy
 msgid "Performance plots"
@@ -1519,6 +1491,43 @@ msgid_plural "Partial Regression Plots"
 msgstr[0] "Частная регрессия"
 msgstr[1] "Частные регрессии"
 msgstr[2] "Частные регрессии"
+
+#, fuzzy
+#~ msgid ""
+#~ "Unknown value provided for modelType, possible values: `alternative`, "
+#~ "`null`"
+#~ msgstr ""
+#~ "Неизвестное значение предназначено для modelType, а возможные значения: "
+#~ "`alternative`, `null`"
+
+#, fuzzy
+#~ msgid "We need at least one predictor, or an intercept to make a formula"
+#~ msgstr "Нужен хотя бы один предиктор или интерцепт для создания формулы"
+
+#, fuzzy
+#~ msgid "Null model includes %s"
+#~ msgstr "Нулевая модель включает %s"
+
+#, fuzzy
+#~ msgid "Casewise Diagnostics"
+#~ msgstr "Диагностика случаев"
+
+#, fuzzy
+#~ msgid "Predicted Group"
+#~ msgstr "Предсказанная группа"
+
+#~ msgid "Studentized Residual"
+#~ msgstr "Стьюдентизированные остатки"
+
+#~ msgid "Cook's Distance"
+#~ msgstr "Расстояние Кука"
+
+#, fuzzy
+#~ msgid "Null model contains nuisance parameters: %s"
+#~ msgstr "Нулевая модель содержит мешающие параметры: %s"
+
+#~ msgid "Residual plots"
+#~ msgstr "Графики остатков"
 
 #, fuzzy
 #~ msgid "Normal Q-Q Plots: Standardized Residuals"

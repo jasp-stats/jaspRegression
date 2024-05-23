@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2023-12-16 02:41+0000\n"
 "Last-Translator: Ginger Shu-Ying Yeh <gingershuying@gmail.com>\n"
 "Language-Team: Chinese (Traditional) <https://hosted.weblate.org/projects/"
@@ -199,7 +199,7 @@ msgid "(Intercept)"
 msgstr "(截距)"
 
 #, fuzzy
-msgid "Table: Influential Cases"
+msgid "Influential Cases"
 msgstr "表：影響案例"
 
 msgid "Std. Residual"
@@ -890,23 +890,13 @@ msgstr "敘述統計量"
 msgid "M%s"
 msgstr ""
 
-msgid "title"
-msgstr ""
-
 msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
 msgstr "標準化殘差"
 
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
-
-msgid "Null model includes %s"
+msgid "%1$s includes %2$s"
 msgstr ""
 
 msgid ""
@@ -1116,21 +1106,6 @@ msgid ""
 "the bootstrap distribution."
 msgstr ""
 
-msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Observed"
-msgstr ""
-
-msgid "Predicted Group"
-msgstr ""
-
-msgid "Studentized Residual"
-msgstr ""
-
-msgid "Cook's Distance"
-msgstr "庫克距離"
-
 msgid "Factor Descriptives"
 msgstr ""
 
@@ -1139,6 +1114,9 @@ msgstr ""
 
 msgid "Confusion matrix"
 msgstr "誤差矩陣"
+
+msgid "Observed"
+msgstr ""
 
 msgid "%% Correct"
 msgstr ""
@@ -1149,9 +1127,6 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-msgid "Null model contains nuisance parameters: %s"
-msgstr ""
-
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
 
@@ -1160,8 +1135,9 @@ msgid ""
 "Possibly too few bootstrap replicates."
 msgstr ""
 
-msgid "Residual plots"
-msgstr ""
+#, fuzzy
+msgid "Diagnostic plots"
+msgstr "診斷指標"
 
 msgid "Estimates plots"
 msgstr ""
@@ -1174,6 +1150,9 @@ msgstr ""
 
 msgid "Squared Pearson residuals plot"
 msgstr "皮爾森殘差平方圖"
+
+msgid "Independent - predicted plots"
+msgstr ""
 
 #, fuzzy
 msgid "Performance plots"
@@ -1253,6 +1232,9 @@ msgstr[1] ""
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏迴歸圖"
+
+#~ msgid "Cook's Distance"
+#~ msgstr "庫克距離"
 
 #~ msgid "Normal Q-Q Plots: Standardized Residuals"
 #~ msgstr "常態 Q-Q 圖：標準化殘差"

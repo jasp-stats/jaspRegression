@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2024-01-11 18:06+0000\n"
 "Last-Translator: fiscuteancom <vladfiscutean@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/jasp/"
@@ -198,8 +198,9 @@ msgstr ""
 msgid "(Intercept)"
 msgstr ""
 
-msgid "Table: Influential Cases"
-msgstr ""
+#, fuzzy
+msgid "Influential Cases"
+msgstr "Analiză secvențială"
 
 msgid "Std. Residual"
 msgstr ""
@@ -859,23 +860,13 @@ msgstr "Descriptive"
 msgid "M%s"
 msgstr ""
 
-msgid "title"
-msgstr ""
-
 msgid "Std. Predicted Value"
 msgstr ""
 
 msgid "Standardized Residuals"
 msgstr ""
 
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
-
-msgid "Null model includes %s"
+msgid "%1$s includes %2$s"
 msgstr ""
 
 msgid ""
@@ -1085,21 +1076,6 @@ msgid ""
 "the bootstrap distribution."
 msgstr ""
 
-msgid "Casewise Diagnostics"
-msgstr ""
-
-msgid "Observed"
-msgstr ""
-
-msgid "Predicted Group"
-msgstr ""
-
-msgid "Studentized Residual"
-msgstr ""
-
-msgid "Cook's Distance"
-msgstr ""
-
 msgid "Factor Descriptives"
 msgstr ""
 
@@ -1107,6 +1083,9 @@ msgid "Factor"
 msgstr ""
 
 msgid "Confusion matrix"
+msgstr ""
+
+msgid "Observed"
 msgstr ""
 
 msgid "%% Correct"
@@ -1118,9 +1097,6 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-msgid "Null model contains nuisance parameters: %s"
-msgstr ""
-
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
 
@@ -1129,7 +1105,7 @@ msgid ""
 "Possibly too few bootstrap replicates."
 msgstr ""
 
-msgid "Residual plots"
+msgid "Diagnostic plots"
 msgstr ""
 
 msgid "Estimates plots"
@@ -1142,6 +1118,9 @@ msgid "Predictor - residuals plots"
 msgstr ""
 
 msgid "Squared Pearson residuals plot"
+msgstr ""
+
+msgid "Independent - predicted plots"
 msgstr ""
 
 msgid "Performance plots"

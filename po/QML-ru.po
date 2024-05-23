@@ -818,10 +818,6 @@ msgid "Model"
 msgstr "Модель"
 
 msgctxt "RegressionLogistic|"
-msgid "Components"
-msgstr "Компоненты"
-
-msgctxt "RegressionLogistic|"
 msgid "Include intercept"
 msgstr "Учесть свободные коэффициенты"
 
@@ -933,27 +929,6 @@ msgctxt "RegressionLogistic|"
 msgid "H-measure"
 msgstr "Н-статистика"
 
-msgctxt "RegressionLogistic|"
-msgid "Residuals"
-msgstr "Остатки"
-
-msgctxt "RegressionLogistic|"
-msgid "Casewise diagnostics"
-msgstr "Диагностика случаев"
-
-#, fuzzy
-msgctxt "RegressionLogistic|"
-msgid "Standard residual >"
-msgstr "Стандартный остаток >"
-
-msgctxt "RegressionLogistic|"
-msgid "Cook's distance >"
-msgstr "Расстояние Кука >"
-
-msgctxt "RegressionLogistic|"
-msgid "All"
-msgstr "Все"
-
 #, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Plots"
@@ -972,11 +947,6 @@ msgstr "Доверительный интервал"
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
 msgstr "Показать точки данных"
-
-#, fuzzy
-msgctxt "RegressionLogistic|"
-msgid "Residual Plots"
-msgstr "Графики остатков"
 
 #, fuzzy
 msgctxt "RegressionLogistic|"
@@ -1892,4 +1862,20 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Diagnostic Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Independent - predicted plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include interactions"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Use logit scale"
 msgstr ""

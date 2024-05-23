@@ -834,10 +834,6 @@ msgid "Model"
 msgstr "Modèle"
 
 msgctxt "RegressionLogistic|"
-msgid "Components"
-msgstr "Composantes"
-
-msgctxt "RegressionLogistic|"
 msgid "Include intercept"
 msgstr "Inclure l'intercept"
 
@@ -938,26 +934,6 @@ msgid "H-measure"
 msgstr "Mesure H"
 
 msgctxt "RegressionLogistic|"
-msgid "Residuals"
-msgstr "Résidus"
-
-msgctxt "RegressionLogistic|"
-msgid "Casewise diagnostics"
-msgstr "Diagnostic au cas par cas"
-
-msgctxt "RegressionLogistic|"
-msgid "Standard residual >"
-msgstr "Résidu standard >"
-
-msgctxt "RegressionLogistic|"
-msgid "Cook's distance >"
-msgstr "Distance de Cook >"
-
-msgctxt "RegressionLogistic|"
-msgid "All"
-msgstr "Tout"
-
-msgctxt "RegressionLogistic|"
 msgid "Plots"
 msgstr "Graphiques"
 
@@ -976,10 +952,6 @@ msgstr "Intervalle de confiance"
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
 msgstr "Afficher les points de données"
-
-msgctxt "RegressionLogistic|"
-msgid "Residual Plots"
-msgstr "Tracés des résidus"
 
 msgctxt "RegressionLogistic|"
 msgid "Predicted - residual plot"
@@ -1781,4 +1753,20 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Diagnostic Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Independent - predicted plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include interactions"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Use logit scale"
 msgstr ""

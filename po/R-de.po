@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-04-20 02:42\n"
+"POT-Creation-Date: 2024-05-23 22:04\n"
 "PO-Revision-Date: 2024-04-26 11:08+0000\n"
 "Last-Translator: Thomas Langkamp <thomas.lassdiesonnerein@gmx.de>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -204,7 +204,8 @@ msgstr "Vorhergesagt"
 msgid "(Intercept)"
 msgstr "(Konstante)"
 
-msgid "Table: Influential Cases"
+#, fuzzy
+msgid "Influential Cases"
 msgstr "Tabelle: Einflussreiche Fälle"
 
 msgid "Std. Residual"
@@ -230,7 +231,8 @@ msgstr "Keine einflussreichen Fälle gefunden."
 
 msgid ""
 "Potentially influential case, according to the selected influence measure."
-msgstr "Möglicherweise einflussreicher Fall, nach dem ausgewählten Einflussmaß."
+msgstr ""
+"Möglicherweise einflussreicher Fall, nach dem ausgewählten Einflussmaß."
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
@@ -933,26 +935,15 @@ msgstr "Deskriptive Statistiken"
 msgid "M%s"
 msgstr "M%s"
 
-msgid "title"
-msgstr "Titel"
-
 msgid "Std. Predicted Value"
 msgstr "Std. Vorhergesagter Wert"
 
 msgid "Standardized Residuals"
 msgstr "Standardisierte Residuen"
 
-msgid ""
-"Unknown value provided for modelType, possible values: `alternative`, `null`"
-msgstr ""
-"Unbekannter Wert für modelType gegeben, mögliche Werte: `alternativ`, `null`"
-
-msgid "We need at least one predictor, or an intercept to make a formula"
-msgstr ""
-"Für eine Formel brauchen wir mindestens einen Prädiktor oder eine Konstante"
-
-msgid "Null model includes %s"
-msgstr "Nullmodell beinhaltet %s"
+#, fuzzy
+msgid "%1$s includes %2$s"
+msgstr "%1$s vs. %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1191,21 +1182,6 @@ msgstr ""
 "Die Koeffizientenschätzung und der robuste Standardfehler basieren auf dem "
 "Median der Bootstrap-Verteilung."
 
-msgid "Casewise Diagnostics"
-msgstr "Fallweise Diagnostiken"
-
-msgid "Observed"
-msgstr "Beobachtet"
-
-msgid "Predicted Group"
-msgstr "Vorhergesagte Gruppe"
-
-msgid "Studentized Residual"
-msgstr "Studentisierte Residuen"
-
-msgid "Cook's Distance"
-msgstr "Cook-Abstand"
-
 msgid "Factor Descriptives"
 msgstr "Faktorbeschreibungen"
 
@@ -1215,6 +1191,9 @@ msgstr "Faktor"
 msgid "Confusion matrix"
 msgstr "Konfusionsmatrix"
 
+msgid "Observed"
+msgstr "Beobachtet"
+
 msgid "%% Correct"
 msgstr "%% Korrekt"
 
@@ -1223,9 +1202,6 @@ msgstr "Performanz-Metriken"
 
 msgid "Value"
 msgstr "Wert"
-
-msgid "Null model contains nuisance parameters: %s"
-msgstr "Nullmodell enthält Störfaktoren: %s"
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr "Bootstrap basiert auf %i erfolgreichen Wiederholungen."
@@ -1237,8 +1213,9 @@ msgstr ""
 "Einige Konfidenzintervalle konnten nicht berechnet werden.\n"
 "Möglicherweise zu wenige Bootstrap-Wiederholungen."
 
-msgid "Residual plots"
-msgstr "Residuendiagramme"
+#, fuzzy
+msgid "Diagnostic plots"
+msgstr "Diagnostiken"
 
 msgid "Estimates plots"
 msgstr "Schätzer-Diagramme"
@@ -1251,6 +1228,9 @@ msgstr "Prädiktor - Residuendiagramm"
 
 msgid "Squared Pearson residuals plot"
 msgstr "Quadriertes Pearson Residuendiagramm"
+
+msgid "Independent - predicted plots"
+msgstr ""
 
 msgid "Performance plots"
 msgstr "Performanz-Diagramme"
@@ -1331,6 +1311,42 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Partielles Regressionsdiagramm"
 msgstr[1] "Partielle Regressionsdiagramme"
+
+#~ msgid "title"
+#~ msgstr "Titel"
+
+#~ msgid ""
+#~ "Unknown value provided for modelType, possible values: `alternative`, "
+#~ "`null`"
+#~ msgstr ""
+#~ "Unbekannter Wert für modelType gegeben, mögliche Werte: `alternativ`, "
+#~ "`null`"
+
+#~ msgid "We need at least one predictor, or an intercept to make a formula"
+#~ msgstr ""
+#~ "Für eine Formel brauchen wir mindestens einen Prädiktor oder eine "
+#~ "Konstante"
+
+#~ msgid "Null model includes %s"
+#~ msgstr "Nullmodell beinhaltet %s"
+
+#~ msgid "Casewise Diagnostics"
+#~ msgstr "Fallweise Diagnostiken"
+
+#~ msgid "Predicted Group"
+#~ msgstr "Vorhergesagte Gruppe"
+
+#~ msgid "Studentized Residual"
+#~ msgstr "Studentisierte Residuen"
+
+#~ msgid "Cook's Distance"
+#~ msgstr "Cook-Abstand"
+
+#~ msgid "Null model contains nuisance parameters: %s"
+#~ msgstr "Nullmodell enthält Störfaktoren: %s"
+
+#~ msgid "Residual plots"
+#~ msgstr "Residuendiagramme"
 
 #~ msgid "Normal Q-Q Plots: Standardized Residuals"
 #~ msgstr "Normal-Q-Q-Diagramme: Standardisierte Residuen"
