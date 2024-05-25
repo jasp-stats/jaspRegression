@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
 "POT-Creation-Date: 2024-05-23 22:04\n"
-"PO-Revision-Date: 2024-04-20 14:01+0000\n"
+"PO-Revision-Date: 2024-05-24 01:16+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/es/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.6-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -207,9 +207,8 @@ msgstr "Predicho"
 msgid "(Intercept)"
 msgstr "(Constante)"
 
-#, fuzzy
 msgid "Influential Cases"
-msgstr "Tabla: Casos Influyentes"
+msgstr "Casos influyentes"
 
 msgid "Std. Residual"
 msgstr "Error Típico"
@@ -945,9 +944,8 @@ msgstr "Valor Predito Típico"
 msgid "Standardized Residuals"
 msgstr "Errores Tipificados"
 
-#, fuzzy
 msgid "%1$s includes %2$s"
-msgstr "%1$s vs. %2$s"
+msgstr "%1$s incluye %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1219,9 +1217,8 @@ msgstr ""
 "No se pueden calcular algunos intervalos de confianza.\n"
 "Posiblemente por muy pocas repeticiones del bootstrap."
 
-#, fuzzy
 msgid "Diagnostic plots"
-msgstr "Diagnósticos"
+msgstr "Gráficos de diagnóstico"
 
 msgid "Estimates plots"
 msgstr "Gráficos de las estimaciones"
@@ -1236,7 +1233,7 @@ msgid "Squared Pearson residuals plot"
 msgstr "Gráfico de los errores de Pearson al cuadrado"
 
 msgid "Independent - predicted plots"
-msgstr ""
+msgstr "Gráficos independiente - predicho"
 
 msgid "Performance plots"
 msgstr "Gráficos de comportamiento"
