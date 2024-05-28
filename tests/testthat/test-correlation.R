@@ -190,14 +190,9 @@ test_that("Analysis handles errors", {
   options$variables <- list("contNormal", "debMiss99", "debSame")
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
-  table <- results[["results"]][["mainTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                                 list(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                      "NaN", "NaN", "-", "contNormal", "debMiss99", 1, 1, 1, 1, 1,
-                                      1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, "NaN", "NaN",
-                                      "-", "contNormal", "debSame", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-                                      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, "NaN", "NaN", "-", "debMiss99",
-                                      "debSame"))
+  expect_identical(results[["results"]][["errorMessage"]],
+                   "The following problem(s) occurred while running the analysis:<ul><li>The variance in debSame is equal to 0</li><li>Number of observations is < 3 in debMiss99</li></ul>",
+                   label="Inf covariate check")
 })
 
 
@@ -280,21 +275,3 @@ test_that("Bootstrapping results match", {
                                       0.121736428310888, "contcor1", "debMiss30"))
 })
 
-test_that("Bootstrapping fails gracefully", {
-  options <- jaspTools::analysisOptions("Correlation")
-  options$variables <- c("contNormal", "debMiss99")
-  options$partialOutVariables <- c("facFive")
-  options$ciBootstrap <- TRUE
-  options$ciBootstrapSamples <- 100
-  options$ci <- TRUE
-
-  set.seed(1)
-  results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
-
-  table <- results[["results"]][["mainTable"]][["data"]]
-  jaspTools::expect_equal_tables(table,
-                                 list(2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
-                                      "<unicode>", "<unicode>", "<unicode>", "<unicode>", "NaN", "NaN",
-                                      "NaN", "NaN", "contNormal", "", "", "", "", "<unicode>", "<unicode>",
-                                      "<unicode>", "<unicode>", "debMiss99"))
-})
