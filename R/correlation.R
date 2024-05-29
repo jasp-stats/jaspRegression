@@ -17,6 +17,13 @@
 CorrelationInternal <- function(jaspResults, dataset, options){
   dataset <- .corrReadData(dataset, options)
   ready <- length(options$variables) >= 2
+  
+  if (ready)
+    .hasErrors(dataset, type = c("infinity", "variance", "observations"),
+               observations.amount = "< 3",
+               observations.target = options$variables,
+               exitAnalysisIfErrors = TRUE)
+  
 
   corrResults <- .corrMainResults(jaspResults, dataset, options, ready)
 
