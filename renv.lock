@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.3",
+    "Version": "4.4.0",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -26,7 +26,7 @@
     },
     "Hmisc": {
       "Package": "Hmisc",
-      "Version": "5.1-2",
+      "Version": "5.1-3",
       "Source": "Repository"
     },
     "MatrixModels": {
@@ -51,7 +51,7 @@
     },
     "RcppArmadillo": {
       "Package": "RcppArmadillo",
-      "Version": "0.12.8.2.1",
+      "Version": "0.12.8.3.0",
       "Source": "Repository"
     },
     "RcppEigen": {
@@ -61,7 +61,7 @@
     },
     "SparseM": {
       "Package": "SparseM",
-      "Version": "1.81",
+      "Version": "1.82",
       "Source": "Repository"
     },
     "SuppDists": {
@@ -81,7 +81,7 @@
     },
     "VGAM": {
       "Package": "VGAM",
-      "Version": "1.1-10",
+      "Version": "1.1-11",
       "Source": "Repository"
     },
     "abind": {
@@ -101,7 +101,7 @@
     },
     "backports": {
       "Package": "backports",
-      "Version": "1.4.1",
+      "Version": "1.5.0",
       "Source": "Repository"
     },
     "base64enc": {
@@ -126,12 +126,12 @@
     },
     "brio": {
       "Package": "brio",
-      "Version": "1.1.4",
+      "Version": "1.1.5",
       "Source": "Repository"
     },
     "broom": {
       "Package": "broom",
-      "Version": "1.0.5",
+      "Version": "1.0.6",
       "Source": "Repository"
     },
     "bslib": {
@@ -152,7 +152,7 @@
     },
     "cachem": {
       "Package": "cachem",
-      "Version": "1.0.8",
+      "Version": "1.1.0",
       "Source": "Repository"
     },
     "callr": {
@@ -282,12 +282,7 @@
     },
     "effectsize": {
       "Package": "effectsize",
-      "Version": "0.8.7",
-      "Source": "Repository"
-    },
-    "ellipsis": {
-      "Package": "ellipsis",
-      "Version": "0.3.2",
+      "Version": "0.8.8",
       "Source": "Repository"
     },
     "elliptic": {
@@ -297,12 +292,12 @@
     },
     "emmeans": {
       "Package": "emmeans",
-      "Version": "1.10.1",
+      "Version": "1.10.2",
       "Source": "Repository"
     },
     "estimability": {
       "Package": "estimability",
-      "Version": "1.5",
+      "Version": "1.5.1",
       "Source": "Repository"
     },
     "evaluate": {
@@ -317,12 +312,12 @@
     },
     "farver": {
       "Package": "farver",
-      "Version": "2.1.1",
+      "Version": "2.1.2",
       "Source": "Repository"
     },
     "fastmap": {
       "Package": "fastmap",
-      "Version": "1.1.1",
+      "Version": "1.2.0",
       "Source": "Repository"
     },
     "fdrtool": {
@@ -332,14 +327,14 @@
     },
     "flexplot": {
       "Package": "flexplot",
-      "Version": "0.20.3",
+      "Version": "0.21.1",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "dustinfife",
       "RemoteRepo": "flexplot",
       "RemoteRef": "HEAD",
-      "RemoteSha": "4223ad5fb56028018b964d6f9f5aa5bac8710821"
+      "RemoteSha": "303a03968f677e71c99a5e22f6352c0811b7b2fb"
     },
     "fontBitstreamVera": {
       "Package": "fontBitstreamVera",
@@ -388,7 +383,7 @@
     },
     "fs": {
       "Package": "fs",
-      "Version": "1.6.3",
+      "Version": "1.6.4",
       "Source": "Repository"
     },
     "gdtools": {
@@ -406,9 +401,24 @@
       "Version": "0.2.0",
       "Source": "Repository"
     },
+    "gghalves": {
+      "Package": "gghalves",
+      "Version": "0.1.4",
+      "Source": "Repository"
+    },
     "ggplot2": {
       "Package": "ggplot2",
-      "Version": "3.5.0",
+      "Version": "3.5.1",
+      "Source": "Repository"
+    },
+    "ggpp": {
+      "Package": "ggpp",
+      "Version": "0.5.7",
+      "Source": "Repository"
+    },
+    "ggrain": {
+      "Package": "ggrain",
+      "Version": "0.0.4",
       "Source": "Repository"
     },
     "ggrepel": {
@@ -418,7 +428,12 @@
     },
     "ggsci": {
       "Package": "ggsci",
-      "Version": "3.0.3",
+      "Version": "3.1.0",
+      "Source": "Repository"
+    },
+    "ggtext": {
+      "Package": "ggtext",
+      "Version": "0.1.2",
       "Source": "Repository"
     },
     "glasso": {
@@ -446,9 +461,14 @@
       "Version": "0.5-1",
       "Source": "Repository"
     },
+    "gridtext": {
+      "Package": "gridtext",
+      "Version": "0.1.5",
+      "Source": "Repository"
+    },
     "gtable": {
       "Package": "gtable",
-      "Version": "0.3.4",
+      "Version": "0.3.5",
       "Source": "Repository"
     },
     "gtools": {
@@ -463,7 +483,7 @@
     },
     "highr": {
       "Package": "highr",
-      "Version": "0.10",
+      "Version": "0.11",
       "Source": "Repository"
     },
     "hmeasure": {
@@ -518,7 +538,7 @@
     },
     "insight": {
       "Package": "insight",
-      "Version": "0.19.10",
+      "Version": "0.19.11",
       "Source": "Repository"
     },
     "isoband": {
@@ -533,69 +553,58 @@
     },
     "jaspAnova": {
       "Package": "jaspAnova",
-      "Version": "0.18.3_Local_JASP",
-      "Source": "Local",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/sp42/jasp-desktop/Modules/jaspAnova",
-      "Cacheable": true,
-      "Hash": {
-        "jaspAnova": "1036b303f1f7d631b7faedf229162a36"
-      }
+      "Version": "0.19.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspAnova",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "7f125f8c7f64b7ba4de61c0e9a6d0bd40aa1d423"
     },
     "jaspBase": {
       "Package": "jaspBase",
-      "Version": "0.19.0_Local_JASP",
-      "Source": "Local",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/sp42/jasp-desktop/Engine/jaspBase",
-      "Cacheable": true,
-      "Hash": {
-        "jaspBase": "40aff473736156fe2872cbf0606433f5"
-      }
+      "Version": "0.19.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspBase",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "b9c1808d9bc72109359074cfe3b8badde3f0bfdd"
     },
     "jaspDescriptives": {
       "Package": "jaspDescriptives",
-      "Version": "0.18.3_Local_JASP",
-      "Source": "Local",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/sp42/jasp-desktop/Modules/jaspDescriptives",
-      "Cacheable": true,
-      "Hash": {
-        "jaspDescriptives": "485465259215cb9d7301de6db78c10f2"
-      }
+      "Version": "0.19.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspDescriptives",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "35ff35f8de3ef5453b6bf4e89b6115c917635948"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
-      "Version": "0.18.3_Local_JASP",
-      "Source": "Local",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/sp42/jasp-desktop/Engine/jaspGraphs",
-      "Cacheable": true,
-      "Hash": {
-        "jaspGraphs": "e87d6ee3fe9ddd0e28aac07e5272b8bf"
-      }
-    },
-    "jaspRegression": {
-      "Package": "jaspRegression",
-      "Version": "0.18.3_Local_JASP",
-      "Source": "Local",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/sp42/jasp-desktop/Modules/jaspRegression",
-      "Cacheable": true,
-      "Hash": {
-        "jaspRegression": "01dc7da2c3e750ea943c11cbab5ed363"
-      }
+      "Version": "0.19.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspGraphs",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "764f90f6d7781c4087a757254facc8125f5b600b"
     },
     "jaspTTests": {
       "Package": "jaspTTests",
-      "Version": "0.18.3_Local_JASP",
-      "Source": "Local",
-      "RemoteType": "local",
-      "RemoteUrl": "/home/sp42/jasp-desktop/Modules/jaspTTests",
-      "Cacheable": true,
-      "Hash": {
-        "jaspTTests": "aaedfaaee925e8ceaa4c4ac3a1c3c675"
-      }
+      "Version": "0.19.0",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspTTests",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "c1ac60819bb0eeaaba34a75b2ebf88afa8db1642"
     },
     "jomo": {
       "Package": "jomo",
@@ -629,7 +638,7 @@
     },
     "knitr": {
       "Package": "knitr",
-      "Version": "1.46",
+      "Version": "1.47",
       "Source": "Repository"
     },
     "labeling": {
@@ -679,7 +688,7 @@
     },
     "logspline": {
       "Package": "logspline",
-      "Version": "2.1.21",
+      "Version": "2.1.22",
       "Source": "Repository"
     },
     "lpSolve": {
@@ -687,9 +696,19 @@
       "Version": "5.6.20",
       "Source": "Repository"
     },
+    "lubridate": {
+      "Package": "lubridate",
+      "Version": "1.9.3",
+      "Source": "Repository"
+    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "2.0.3",
+      "Source": "Repository"
+    },
+    "markdown": {
+      "Package": "markdown",
+      "Version": "1.12",
       "Source": "Repository"
     },
     "matrixStats": {
@@ -719,7 +738,7 @@
     },
     "minqa": {
       "Package": "minqa",
-      "Version": "1.2.6",
+      "Version": "1.2.7",
       "Source": "Repository"
     },
     "mitml": {
@@ -752,14 +771,24 @@
       "Version": "1.4-25",
       "Source": "Repository"
     },
+    "multcompView": {
+      "Package": "multcompView",
+      "Version": "0.1-10",
+      "Source": "Repository"
+    },
     "munsell": {
       "Package": "munsell",
       "Version": "0.5.1",
       "Source": "Repository"
     },
+    "mvShapiroTest": {
+      "Package": "mvShapiroTest",
+      "Version": "1.0",
+      "Source": "Repository"
+    },
     "mvtnorm": {
       "Package": "mvtnorm",
-      "Version": "1.2-4",
+      "Version": "1.2-5",
       "Source": "Repository"
     },
     "nloptr": {
@@ -779,7 +808,7 @@
     },
     "officer": {
       "Package": "officer",
-      "Version": "0.6.5",
+      "Version": "0.6.6",
       "Source": "Repository"
     },
     "onewaytests": {
@@ -789,7 +818,7 @@
     },
     "openssl": {
       "Package": "openssl",
-      "Version": "2.1.1",
+      "Version": "2.2.0",
       "Source": "Repository"
     },
     "operator.tools": {
@@ -809,12 +838,12 @@
     },
     "parameters": {
       "Package": "parameters",
-      "Version": "0.21.6",
+      "Version": "0.21.7",
       "Source": "Repository"
     },
     "party": {
       "Package": "party",
-      "Version": "1.3-14",
+      "Version": "1.3-15",
       "Source": "Repository"
     },
     "patchwork": {
@@ -875,6 +904,11 @@
     "png": {
       "Package": "png",
       "Version": "0.1-8",
+      "Source": "Repository"
+    },
+    "polynom": {
+      "Package": "polynom",
+      "Version": "1.4-1",
       "Source": "Repository"
     },
     "ppcor": {
@@ -939,12 +973,12 @@
     },
     "quantreg": {
       "Package": "quantreg",
-      "Version": "5.97",
+      "Version": "5.98",
       "Source": "Repository"
     },
     "ragg": {
       "Package": "ragg",
-      "Version": "1.3.0",
+      "Version": "1.3.2",
       "Source": "Repository"
     },
     "rappdirs": {
@@ -995,7 +1029,7 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.26",
+      "Version": "2.27",
       "Source": "Repository"
     },
     "rprojroot": {
@@ -1050,7 +1084,7 @@
     },
     "stringi": {
       "Package": "stringi",
-      "Version": "1.8.3",
+      "Version": "1.8.4",
       "Source": "Repository"
     },
     "stringr": {
@@ -1075,7 +1109,7 @@
     },
     "systemfonts": {
       "Package": "systemfonts",
-      "Version": "1.0.6",
+      "Version": "1.1.0",
       "Source": "Repository"
     },
     "testthat": {
@@ -1085,7 +1119,7 @@
     },
     "textshaping": {
       "Package": "textshaping",
-      "Version": "0.3.7",
+      "Version": "0.4.0",
       "Source": "Repository"
     },
     "tibble": {
@@ -1108,9 +1142,14 @@
       "Version": "4032.109",
       "Source": "Repository"
     },
+    "timechange": {
+      "Package": "timechange",
+      "Version": "0.3.0",
+      "Source": "Repository"
+    },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.50",
+      "Version": "0.51",
       "Source": "Repository"
     },
     "triebeard": {
@@ -1120,7 +1159,7 @@
     },
     "tseries": {
       "Package": "tseries",
-      "Version": "0.10-55",
+      "Version": "0.10-56",
       "Source": "Repository"
     },
     "tzdb": {
@@ -1135,7 +1174,7 @@
     },
     "urca": {
       "Package": "urca",
-      "Version": "1.3-3",
+      "Version": "1.3-4",
       "Source": "Repository"
     },
     "urltools": {
@@ -1190,7 +1229,7 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.43",
+      "Version": "0.44",
       "Source": "Repository"
     },
     "xml2": {
