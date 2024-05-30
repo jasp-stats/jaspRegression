@@ -495,10 +495,10 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     }
   }
 
-  predVar   <- as.character(glmObj[[1]][["terms"]])[2]
-  predLevel <- levels(glmObj[[1]][["data"]][[predVar]])[2]
+  predVar   <- options[["dependent"]]
+  predLevel <- levels(dataset[[predVar]])[2]
 
-  jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s level '%2$s' coded as class 1.", .unv(predVar), predLevel))
+  jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s level '%2$s' coded as class 1.", predVar, predLevel))
 }
 
 .reglogisticEstimatesBootstrapFill <- function(jaspResults, dataset, options){
