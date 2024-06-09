@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2024-06-09 16:09+0000\n"
+"PO-Revision-Date: 2024-06-10 08:29+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/de/>\n"
@@ -1708,7 +1708,7 @@ msgstr "Diagnostische Diagramme"
 
 msgctxt "RegressionLogistic|"
 msgid "Independent - predicted plot"
-msgstr ""
+msgstr "Diagramm Unabhängig - Vorhergesagt"
 
 msgctxt "RegressionLogistic|"
 msgid "Include interactions"
