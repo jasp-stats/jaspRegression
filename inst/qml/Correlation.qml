@@ -27,8 +27,8 @@ Form
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 		AvailableVariablesList{  name: "allVariablesList" }
-		AssignedVariablesList {  name: "variables";				title: qsTr("Variables");	 suggestedColumns: ["ordinal", "scale"] }
-		AssignedVariablesList {  name: "partialOutVariables"; title: qsTr("Partial out"); suggestedColumns: ["ordinal", "scale"] }
+		AssignedVariablesList {  name: "variables";				title: qsTr("Variables"); allowedColumns: ["scale"] }
+		AssignedVariablesList {  name: "partialOutVariables"; title: qsTr("Partial out"); allowedColumns: ["scale"] }
 	}
 
 	Group

@@ -32,9 +32,9 @@ Form {
 	VariablesForm
 	{
 		AvailableVariablesList	{ name: "allVariablesList" }
-		AssignedVariablesList	{ name: "dependent";	title: qsTr("Dependent Variable");		suggestedColumns: ["scale"];	singleVariable: true	}
-		AssignedVariablesList	{ name: "covariates";	title: qsTr("Covariates");				suggestedColumns: ["scale"];	allowedColumns: ["scale"]}
-		AssignedVariablesList	{ name: "weights";		title: qsTr("WLS Weights (optional)");	suggestedColumns: ["scale"];	singleVariable: true	}
+		AssignedVariablesList	{ name: "dependent";	title: qsTr("Dependent Variable");		allowedColumns: ["scale"];	singleVariable: true	}
+		AssignedVariablesList	{ name: "covariates";	title: qsTr("Covariates");				allowedColumns: ["scale"]}
+		AssignedVariablesList	{ name: "weights";		title: qsTr("WLS Weights (optional)");	allowedColumns: ["scale"];	singleVariable: true	}
 	}
 
 	BayesFactorType {}
