@@ -251,7 +251,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   mainTable$transpose <- TRUE
   mainTable$transposeWithOvertitle <- FALSE
 
-  mainTable$addColumnInfo(name = "var1", title = "", type = "string", combine = FALSE, overtitle = "Variable")
+  mainTable$addColumnInfo(name = "var1", title = "", type = "string", combine = FALSE, overtitle = gettext("Variable"))
 
   whichtests <- c(options$pearson, options$spearman, options$kendallsTauB)
 
