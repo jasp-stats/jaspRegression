@@ -45,21 +45,21 @@ Group {
 		{
 			name:				"covariates"
 			title:				qsTr("Covariates")
-			allowedColumns:		["ordinal", "scale"]
+			allowedColumns:		["scale"]
 		}
 
 		AssignedVariablesList
 		{
 			name:				"factors"
 			title:				qsTr("Factors")
-			allowedColumns:		["ordinal", "nominal"]
+			allowedColumns:		["nominal"]
 		}
 
 		AssignedVariablesList
 		{
 			name:              "weights"
 			title:             family.currentValue === "binomial" ? qsTr("Total Number of Trials") : qsTr("Weights")
-			allowedColumns:    ["ordinal", "scale"]
+			allowedColumns:    family.currentValue === "binomial" ? "nominal" : "scale"
 			singleVariable:    true
 		}
 
@@ -67,7 +67,7 @@ Group {
 		{
 			name:              "offset"
 			title:             qsTr("Offset")
-			allowedColumns:    ["ordinal", "scale"]
+			allowedColumns:    ["scale"]
 			singleVariable:    true
 		}
 	}
