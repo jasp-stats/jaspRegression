@@ -2123,7 +2123,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                          mapping = ggplot2::aes(x = x, y = y, group = group),
                          size = 1) +
       ggplot2::xlab(xlab) +
-      ggplot2::ylab(ylab)
+      ggplot2::ylab(ylab) 
 
     factorPoints <- jaspGraphs::geom_point(data = d_factor,
                                            mapping = ggplot2::aes(x = x, y = y))
@@ -2131,19 +2131,21 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 
   } else {
+    xBreaks <- jaspGraphs::getPrettyAxisBreaks(xVar)
+    
     basicMarginalPlot <- ggplot2::ggplot() +
       ggplot2::geom_line(data = d,
                          mapping = ggplot2::aes(x = x, y = y),
                          size = 1) +
       ggplot2::xlab(xlab) +
       ggplot2::ylab(ylab) +
+      # ggplot2::scale_x_continuous(breaks = xBreaks, limits = range(xBreaks)) +
       ggplot2::geom_rug(data = d,
                         mapping = ggplot2::aes(x = x, y = y),
                         sides = "b",
                         alpha = 0.5)
     factorPoints <- NULL
   }
-
 
   if (!is.null(conf_min)) {
     d <- cbind(d, conf_lower = conf_min, conf_upper = conf_max)
@@ -2196,13 +2198,17 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     predictionBounds <- predictionBound1 <- predictionBound2 <- NULL
   }
 
+  # base y-axis breaks on y and the prediction and/or confidence interval
+  yBreaks <- jaspGraphs::getPrettyAxisBreaks(jaspGraphs::getPrettyAxisBreaks(unlist(d[, -1])))
+  
   finalMarginalPlot <- basicMarginalPlot +
     confidenceBounds +
     predictionBound1 +
     predictionBound2 +
     factorPoints +
     jaspGraphs::geom_rangeframe() +
-    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2)
+    jaspGraphs::themeJaspRaw(axis.title.cex = 1.2) +
+    ggplot2::scale_y_continuous(breaks = yBreaks, limits = range(yBreaks))
 
   return(finalMarginalPlot)
 }
