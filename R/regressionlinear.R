@@ -2139,7 +2139,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                          size = 1) +
       ggplot2::xlab(xlab) +
       ggplot2::ylab(ylab) +
-      # ggplot2::scale_x_continuous(breaks = xBreaks, limits = range(xBreaks)) +
+      ggplot2::scale_x_continuous(breaks = xBreaks, limits = range(xBreaks)) +
       ggplot2::geom_rug(data = d,
                         mapping = ggplot2::aes(x = x, y = y),
                         sides = "b",
