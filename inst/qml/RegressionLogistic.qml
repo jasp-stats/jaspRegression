@@ -60,7 +60,6 @@ Form
 		{
 			id:					factors
 			name:				"modelTerms"
-			allowAll:			true
 			nested:				nested.checked
 			allowInteraction:	true
 			initNumberFactors:	2
