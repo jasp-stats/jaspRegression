@@ -48,7 +48,7 @@ Form
 			]
 		}
 		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates");			allowedColumns: ["scale"]											}
-		AssignedVariablesList { name: "factors";	title: qsTr("Factors");				allowedColumns: ["nominal"], minLevels: 2                }
+		AssignedVariablesList { name: "factors";	title: qsTr("Factors");				allowedColumns: ["nominal"]; minLevels: 2                }
 		AssignedVariablesList { name: "weights";	title: qsTr("WLS Weights (optional)"); allowedColumns: ["scale"]; singleVariable: true; debug: true	}
 	}
 	
