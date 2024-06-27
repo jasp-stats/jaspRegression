@@ -89,7 +89,7 @@ Form
 		{
 			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 			AvailableVariablesList		{	name: "allVariablesList2";	source:"variables" }
-            AssignedPairsVariablesList	{	name:  "variablePairs";		alloweddColumns: ["scale", "ordinal"] }
+			AssignedPairsVariablesList	{	name:  "variablePairs";		allowedColumns: ["scale", "ordinal"] }
 		}
 
 		RadioButtonGroup
