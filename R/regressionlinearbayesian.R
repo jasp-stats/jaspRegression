@@ -77,7 +77,7 @@ RegressionLinearBayesianInternal <- function(jaspResults, dataset = NULL, option
     vars <- c(vars, options$weights)
   }
 
-  dataset <- .readDataSetToEnd(columns = vars, exclude.na.listwise = vars)
+  dataset <- .readDataSetToEnd(columns.as.numeric = vars, exclude.na.listwise = vars)
 
   return(dataset)
 }
