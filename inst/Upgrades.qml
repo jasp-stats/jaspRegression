@@ -434,6 +434,37 @@ Upgrades
 
 	Upgrade
 	{
+		functionName:		"RegressionLinear"
+		fromVersion:		"0.18.3"
+		toVersion:			"0.19.0"
+
+		ChangeJS
+		{
+			name:		"modelTerms"
+			jsFunction:	function(options)
+			{
+				let oldModels = options["modelTerms"];
+				let model0 = {components: [], name: "model0", title: "Model 0"}
+				let model1 = {components: [], name: "model1", title: "Model 1"}
+
+				for (let i = 0; i < oldModels.length; i++)
+				{
+					let components = oldModels[i].components
+					let isNuisance = oldModels[i].isNuisance
+
+					if (isNuisance)
+						model0.components.push(components)
+					model1.components.push(components)
+				}
+
+				return [model0, model1]
+			}
+		}
+	}
+
+
+	Upgrade
+	{
 		functionName:		"RegressionLogistic"
 		fromVersion:		"0.18.3"
 		toVersion:			"0.19.0"
