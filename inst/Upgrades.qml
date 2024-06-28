@@ -461,6 +461,18 @@ Upgrades
 			}
 		}
 
+		ChangeJS
+		{
+			name:		"residualCasewiseDiagnosticType"
+			jsFunction:	function(options)
+			{
+				switch(options["residualCasewiseDiagnosticType"])
+				{
+				case "residualZ":		return "outliersOutside";
+				default:				return options["residualCasewiseDiagnosticType"];
+				}
+			}
+		}
 	}
 
 }
