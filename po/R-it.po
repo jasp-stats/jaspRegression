@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2024-05-23 22:04\n"
-"PO-Revision-Date: 2024-04-11 14:02+0000\n"
-"Last-Translator: federicapicogna <picognafederica@gmail.com>\n"
+"PO-Revision-Date: 2024-06-30 10:01+0000\n"
+"Last-Translator: Marco Capozzi <giammarcous@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/it/>\n"
 "Language: it\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.5-dev\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -152,7 +152,7 @@ msgid "P-values correspond to test of null hypothesis against %s."
 msgstr ""
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "I risultati sono mediati sui livelli di: %s."
 
 msgid "P-values are not adjusted."
 msgstr ""
@@ -185,7 +185,7 @@ msgid "Sidak"
 msgstr ""
 
 msgid "Dunnett"
-msgstr ""
+msgstr "Dunnett"
 
 msgid "Bonferroni"
 msgstr ""
@@ -323,7 +323,7 @@ msgid "Kendall's Tau B"
 msgstr "Tau B di Kendall"
 
 msgid "p-value"
-msgstr "p-value"
+msgstr "valore p"
 
 msgid "Number of observations is < %s."
 msgstr "Il numero di osservazioni è inferiore al %s."
@@ -513,13 +513,13 @@ msgid ""
 msgstr ""
 
 msgid "Model Summary"
-msgstr ""
+msgstr "Sommario del Modello"
 
 msgid "Model Summary - %s"
 msgstr ""
 
 msgid "Model"
-msgstr ""
+msgstr "Modello"
 
 msgid "Deviance"
 msgstr ""
@@ -531,7 +531,7 @@ msgid "BIC"
 msgstr ""
 
 msgid "df"
-msgstr "df"
+msgstr "Gradi di libertà"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr ""
@@ -540,10 +540,10 @@ msgid "Model Fit"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Statistica"
 
 msgid "Coefficients"
-msgstr ""
+msgstr "Coefficienti"
 
 msgid "Estimate"
 msgstr "Stima"
@@ -630,13 +630,13 @@ msgid "Lower"
 msgstr "Inferiore"
 
 msgid "%s%% CI"
-msgstr ""
+msgstr "Intervallo di Confidenza %s%%"
 
 msgid "Upper"
 msgstr "Superiore"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
 msgstr ""
@@ -701,10 +701,10 @@ msgid "F Change"
 msgstr ""
 
 msgid "df1"
-msgstr ""
+msgstr "df1"
 
 msgid "df2"
-msgstr ""
+msgstr "df2"
 
 msgid "Autocorrelation"
 msgstr "Autocorrelazione"
@@ -719,16 +719,16 @@ msgid "No covariate could be entered in the model"
 msgstr ""
 
 msgid "ANOVA"
-msgstr ""
+msgstr "ANOVA"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "Somma dei Quadrati"
 
 msgid "Mean Square"
-msgstr ""
+msgstr "Media quadratica"
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr ""
@@ -774,7 +774,7 @@ msgid ""
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "correzione distorsione accelerata."
 
 msgid "Some bootstrap results could not be computed."
 msgstr ""
@@ -830,7 +830,7 @@ msgid "SD"
 msgstr "SD"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
@@ -875,7 +875,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "Descrittive"
 
 msgid "M%s"
 msgstr ""
@@ -920,7 +920,7 @@ msgid "Posterior Summary"
 msgstr ""
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "Confronto Modelli"
 
 msgid "Model Comparison - %s"
 msgstr ""
@@ -941,28 +941,28 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
-msgstr ""
+msgstr "Modelli"
 
 msgid "P(M)"
-msgstr ""
+msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|dati)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
-msgstr ""
+msgstr "Tutti i modelli includono %s."
 
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
@@ -970,10 +970,10 @@ msgid ""
 msgstr ""
 
 msgid "Null model"
-msgstr ""
+msgstr "Modello nullo"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "Modello nullo (incl. %s)"
 
 msgid "Posterior Summaries of Coefficients"
 msgstr ""
@@ -985,22 +985,22 @@ msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "%s%% Intervallo Credibile"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "Coefficiente"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(incl)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(excl)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(incl|data)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(excl|data)"
 
 msgid "<em>Warning.</em>"
 msgstr ""
@@ -1051,7 +1051,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr "Q-Q Plot"
+msgstr "Diagramma Q-Q"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1100,7 +1100,7 @@ msgid "Factor Descriptives"
 msgstr ""
 
 msgid "Factor"
-msgstr ""
+msgstr "Fattore"
 
 msgid "Confusion matrix"
 msgstr ""
@@ -1124,6 +1124,8 @@ msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
 msgstr ""
+"Alcuni intervalli di confidenza non sono stati calcolati. \n"
+"Causa probabile troppo poche repliche di bootstrap."
 
 msgid "Diagnostic plots"
 msgstr ""
@@ -1194,7 +1196,7 @@ msgid "DV/Factor"
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "Livello"
 
 msgid "Covariate Descriptives"
 msgstr ""
