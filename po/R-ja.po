@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2024-05-23 22:04\n"
-"PO-Revision-Date: 2024-06-20 17:09+0000\n"
+"PO-Revision-Date: 2024-07-02 17:09+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -11,16 +11,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.6-rc\n"
+"X-Generator: Weblate 5.7-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr "すべての検定について、対立仮説は%sが正であることを示す."
 
-#, fuzzy
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
-msgstr "すべての検定について、対立仮説は%sが負であることを示す"
+msgstr "すべての検定について、対立仮説は %s が負であることを示す."
 
 msgid "Scatterplot"
 msgstr "散布図"
@@ -139,12 +138,11 @@ msgstr "プロットができません: %s"
 msgid "Q-Q Plots"
 msgstr "Q-Qプロット"
 
-#, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
-msgstr "Q-Qプロット 標準化された残差"
+msgstr "Q-Qプロット: 標準化された%1s 残差"
 
 msgid "There are no predictors to test for multicollinearity"
-msgstr ""
+msgstr "多重共線性の検定をするための予測子がありません"
 
 msgid "P-values correspond to test of null hypothesis against %s."
 msgstr ""
@@ -153,7 +151,7 @@ msgid "Results are averaged over the levels of: %s."
 msgstr "結果は次の水準で平均化されています: %s."
 
 msgid "P-values are not adjusted."
-msgstr ""
+msgstr "P値は調整されていません."
 
 msgid "Holm"
 msgstr ""
@@ -168,7 +166,7 @@ msgid "Multivariate-t"
 msgstr ""
 
 msgid "Tukey"
-msgstr ""
+msgstr "テューキー(Tukey)"
 
 msgid "Benjamini-Hochberg"
 msgstr ""
@@ -177,7 +175,7 @@ msgid "Benjamini-Yekutieli"
 msgstr ""
 
 msgid "Scheffé"
-msgstr ""
+msgstr "シェフェ(Scheffe)"
 
 msgid "Sidak"
 msgstr ""
@@ -262,23 +260,20 @@ msgstr "%s 相関"
 msgid "%s Partial Correlations"
 msgstr "%s 偏相関"
 
-#, fuzzy
 msgid "All tests one-tailed, for positive correlation."
-msgstr "すべての検定は正の相関についての片側検定です"
+msgstr "すべての検定は正の相関についての片側検定です."
 
 msgid ", one-tailed"
 msgstr ",片側"
 
-#, fuzzy
 msgid "All tests one-tailed, for negative correlation."
-msgstr "すべてのテストは負の相関についての片側検定です"
+msgstr "すべてのテストは負の相関についての片側検定です."
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < 0.05, ** p < 0.01, *** p < 0.001%s"
 
-#, fuzzy
 msgid "Conditioned on variables: %s."
-msgstr "変数に対する条件: %s"
+msgstr "変数に対する条件: %s."
 
 msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
@@ -293,7 +288,7 @@ msgstr ""
 "プを使用して取得できます。"
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr "%i ブートストラップに基づく信頼区間が再現されます"
+msgstr "%i ブートストラップ反復に基づく信頼区間."
 
 msgid "p"
 msgstr "p"
@@ -323,9 +318,8 @@ msgstr "ケンドールのタウB"
 msgid "p-value"
 msgstr "p値"
 
-#, fuzzy
 msgid "Number of observations is < %s."
-msgstr "オブザベーションの数は %s 未満です"
+msgstr "観測数は %s 未満です."
 
 msgid "Bootstrapping"
 msgstr "ブートストラップ"
@@ -534,9 +528,8 @@ msgstr "BIC"
 msgid "df"
 msgstr "df"
 
-#, fuzzy
 msgid "Null model contains nuisance parameters: %s."
-msgstr "Nullモデルには妨害パラメータが含まれています: %s"
+msgstr "Nullモデルには局外パラメータが含まれています: %s."
 
 #, fuzzy
 msgid "Model Fit"
@@ -575,33 +568,27 @@ msgstr ""
 msgid "Diagnostics"
 msgstr "ケースワイズ診断"
 
-#, fuzzy
 msgid "Residuals vs. Fitted Plots"
-msgstr "残差対適合"
+msgstr "残差 vs. 適合プロット"
 
-#, fuzzy
 msgid "Standardized %1s residuals vs. fitted values"
-msgstr "標準化された残差"
+msgstr "標準化 %1s 残差 vs. 適合値"
 
-#, fuzzy
 msgid "Standardized %1s residual"
-msgstr "標準化された残差"
+msgstr "標準化 %1s 残差"
 
-#, fuzzy
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr "残差と予測値の比較"
+msgstr "%1s 残差 vs. 予測子プロット"
 
-#, fuzzy
 msgid "Standardized %1$s residuals vs. %2$s"
-msgstr "標準化された残差"
+msgstr "標準化 %1s 残差 vs. %2$s"
 
 #, fuzzy
 msgid "Partial Residual Plots"
 msgstr "偏回帰プロット"
 
-#, fuzzy
 msgid "Partial residual plot for %1s"
-msgstr "予測変数 - 残差プロット"
+msgstr "%1s の偏残差プロット"
 
 msgid "Partial residual for %1s"
 msgstr ""
@@ -621,9 +608,8 @@ msgstr ""
 msgid "Case Number"
 msgstr "ケース番号"
 
-#, fuzzy
 msgid "Multicollinearity Diagnostics"
-msgstr "共線性の診断"
+msgstr "多重共線性診断"
 
 msgid "Tolerance"
 msgstr "許容度"
@@ -635,7 +621,7 @@ msgid "Estimated Marginal Means and Contrast Analysis"
 msgstr ""
 
 msgid "Estimated Marginal Means"
-msgstr ""
+msgstr "推定周辺平均"
 
 msgid "SE"
 msgstr "標準誤差"
