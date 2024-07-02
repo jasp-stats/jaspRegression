@@ -68,6 +68,7 @@ Form
 			availableVariablesList.source: ['covariates', 'factors']
 			startIndex:			0
 			availableVariablesListName: "availableTerms"
+			allowedColumns:		[]
 		}
 
 		CheckBox
