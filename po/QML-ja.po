@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2024-07-02 17:09+0000\n"
+"Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
+"Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/ja/>\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.7-dev\n"
 "X-Language: ja\n"
 "X-Qt-Contexts: true\n"
 
@@ -1171,7 +1177,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr ""
+msgstr "統制(Partial out)"
 
 #, fuzzy
 msgctxt "GeneralizedLinearModel|"
@@ -1233,7 +1239,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "多重共線性"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
@@ -1554,22 +1560,21 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
 msgstr "g事前分布"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
 msgstr "アルファ"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
-msgstr ""
+msgstr "CCH"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
-msgstr ""
+msgstr "ベータ"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
@@ -1618,7 +1623,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
 msgstr "λ"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
 msgstr "Castillo"
@@ -1679,7 +1683,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "効果量 (Fisher's z)"
 
 #, fuzzy
 msgctxt "OutlierComponent|"
@@ -1775,7 +1779,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
-msgstr ""
+msgstr "多重共線性診断"
 
 msgctxt "RegressionLogistic|"
 msgid "Diagnostic Plots"
