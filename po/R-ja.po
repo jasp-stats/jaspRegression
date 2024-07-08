@@ -581,7 +581,7 @@ msgid "%1s Residuals vs. Predictor Plots"
 msgstr "%1s 残差 vs. 予測子プロット"
 
 msgid "Standardized %1$s residuals vs. %2$s"
-msgstr "標準化 %1s 残差 vs. %2$s"
+msgstr "標準化 %1$s 残差 vs. %2$s"
 
 #, fuzzy
 msgid "Partial Residual Plots"
