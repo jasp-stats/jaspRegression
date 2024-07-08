@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2024-05-23 22:04\n"
+"POT-Creation-Date: 2024-07-08 08:31\n"
 "PO-Revision-Date: 2024-06-09 08:09+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -326,6 +326,9 @@ msgstr "r"
 msgid "tau B"
 msgstr "tau B"
 
+msgid "Variable"
+msgstr "Variable"
+
 msgid "Kendall's Tau B"
 msgstr "Tau B de Kendall"
 
@@ -446,9 +449,6 @@ msgstr ""
 
 msgid "Posterior is too peaked"
 msgstr "La parte posterior es demasiado puntiaguda"
-
-msgid "Variable"
-msgstr "Variable"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "Gráfico de la Matriz de Correlación Bayesiana"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2024-05-23 22:04\n"
+"POT-Creation-Date: 2024-07-08 08:31\n"
 "PO-Revision-Date: 2024-04-09 13:34+0000\n"
 "Last-Translator: robachowyk <kaya.robach@gmail.com>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
@@ -316,6 +316,9 @@ msgstr ""
 msgid "tau B"
 msgstr ""
 
+msgid "Variable"
+msgstr "Variable"
+
 msgid "Kendall's Tau B"
 msgstr ""
 
@@ -420,9 +423,6 @@ msgstr ""
 
 msgid "Posterior is too peaked"
 msgstr ""
-
-msgid "Variable"
-msgstr "Variable"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr ""

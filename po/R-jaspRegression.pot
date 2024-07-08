@@ -1,13 +1,13 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.0\n"
-"POT-Creation-Date: 2024-05-23 22:04\n"
+"POT-Creation-Date: 2024-07-08 08:31\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
@@ -281,6 +281,9 @@ msgstr ""
 msgid "tau B"
 msgstr ""
 
+msgid "Variable"
+msgstr ""
+
 msgid "Kendall's Tau B"
 msgstr ""
 
@@ -369,9 +372,6 @@ msgid "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Valu
 msgstr ""
 
 msgid "Posterior is too peaked"
-msgstr ""
-
-msgid "Variable"
 msgstr ""
 
 msgid "Bayesian Correlation Matrix Plot"

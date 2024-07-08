@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2024-05-23 22:04\n"
+"POT-Creation-Date: 2024-07-08 08:31\n"
 "PO-Revision-Date: 2023-06-24 02:58+0000\n"
 "Last-Translator: Borisov Igor Borisovich <borisov_i@pimunn.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -355,6 +355,9 @@ msgstr "r"
 msgid "tau B"
 msgstr "tau B"
 
+msgid "Variable"
+msgstr "Переменная"
+
 #, fuzzy
 msgid "Kendall's Tau B"
 msgstr "Корреляции Кендалла (tau-b)"
@@ -482,9 +485,6 @@ msgstr ""
 #, fuzzy
 msgid "Posterior is too peaked"
 msgstr "Постериор слишком заострен"
-
-msgid "Variable"
-msgstr "Переменная"
 
 #, fuzzy
 msgid "Bayesian Correlation Matrix Plot"

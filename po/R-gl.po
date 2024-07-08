@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-05-23 22:04\n"
+"POT-Creation-Date: 2024-07-08 08:31\n"
 "PO-Revision-Date: 2024-05-24 01:16+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -330,6 +330,9 @@ msgstr "r"
 msgid "tau B"
 msgstr "tau B"
 
+msgid "Variable"
+msgstr "Variable"
+
 msgid "Kendall's Tau B"
 msgstr "Tau B de Kendall"
 
@@ -450,9 +453,6 @@ msgstr ""
 
 msgid "Posterior is too peaked"
 msgstr "O posterior ten demasiado pico"
-
-msgid "Variable"
-msgstr "Variable"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "Gráfica da Matriz de Correlación Baiesiana"

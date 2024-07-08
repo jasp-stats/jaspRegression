@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-05-23 22:04\n"
+"POT-Creation-Date: 2024-07-08 08:31\n"
 "PO-Revision-Date: 2024-05-24 01:16+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -323,6 +323,9 @@ msgstr "r"
 msgid "tau B"
 msgstr "tau B"
 
+msgid "Variable"
+msgstr "Variabele"
+
 msgid "Kendall's Tau B"
 msgstr "Kendall's tau B"
 
@@ -443,9 +446,6 @@ msgstr ""
 
 msgid "Posterior is too peaked"
 msgstr "Posterior is te gepiekt"
-
-msgid "Variable"
-msgstr "Variabele"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "Bayesiaanse Correlatie Matrix Grafiek"

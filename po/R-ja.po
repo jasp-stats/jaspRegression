@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2024-05-23 22:04\n"
+"POT-Creation-Date: 2024-07-08 08:31\n"
 "PO-Revision-Date: 2024-07-02 17:09+0000\n"
 "Last-Translator: Daiki Hojo <dhojo.bayes@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -312,6 +312,9 @@ msgstr "r"
 msgid "tau B"
 msgstr "タウB"
 
+msgid "Variable"
+msgstr "変数"
+
 msgid "Kendall's Tau B"
 msgstr "ケンドールのタウB"
 
@@ -425,9 +428,6 @@ msgstr ""
 
 msgid "Posterior is too peaked"
 msgstr "事後分布はピークに達しすぎています"
-
-msgid "Variable"
-msgstr "変数"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "ベイズ相関行列のプロット"
