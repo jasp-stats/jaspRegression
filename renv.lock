@@ -565,7 +565,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspAnova",
       "RemoteRef": "HEAD",
-      "RemoteSha": "2533c8c96583bd36afaf75a0008edcaa8403c855"
+      "RemoteSha": "fbf77984a58bbf710c2e845ee6e7c0b359a8a8a6"
     },
     "jaspBase": {
       "Package": "jaspBase",
@@ -587,7 +587,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDescriptives",
       "RemoteRef": "HEAD",
-      "RemoteSha": "29e39eee3e792320ca85c0ab05663211093f410d"
+      "RemoteSha": "feaa9a47889074ed02841037c20c07285dd11f07"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -609,7 +609,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
       "RemoteRef": "HEAD",
-      "RemoteSha": "3c60e478508aaa50147895bf7c189c34f9a05c4c"
+      "RemoteSha": "ac388c2cf6fc23a1af6b8c60ce01c7e665f72591"
     },
     "jomo": {
       "Package": "jomo",
