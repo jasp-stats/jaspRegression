@@ -1,19 +1,20 @@
 Logistische Regressie
 ===
- 
+
 Met logistische regressie kan men een lineaire relatie tussen een of meer verklarende variabele(n) (predictoren) en een categorische afhankelijke (respons) variabele.
- 
+
 ### Assumpties
+---
 - De afhankelijke variabele is categorisch.
 - Lineariteit en additiviteit: De responsvariabele is lineair gerelateerd aan alle predictoren en de effecten van de predictoren zijn additief.
 - Onafhankelijkheid van de residuen: De residuen zijn niet gecorreleerd met elkaar.
 - Homoskedasticiteit: De fout variantie van elke predictor is constant over alle waarden van de predictor. 
 - Normaliteit van residuen: De residuen zijn normaal verdeeld met een gemiddelde van 0.
 - De covariaat en het experimentele effect zijn onafhankelijk. 
- 
+
 ### Invoer
 ---
- 
+
 #### Invoerveld: 
 - Afhankelijke variabele: De variabele waarin u geïnteresseerd bent. Dit wordt ook wel de uitkomstvariabele genoemd. Als er meerdere afhankelijke variabelen zijn specificeert u de volgorde waarin de predictoren in het model worden gevoegd. i.e., hiërarchische regressie analyse). Een blok van een of meer predictor(en) representeert een stap in de hiërarchie. 
     - Toevoegen: Alle predictoren worden tegelijk toegevoegd aan het model (forced entry).
@@ -23,8 +24,10 @@ Met logistische regressie kan men een lineaire relatie tussen een of meer verkla
 - Covariaten: Predictor variabele(n).
 - Factoren: De variabelen die worden gemanipuleerd/die de verschillende groepen definiëren. Deze worden ook wel de onafhankelijke variabelen genoemd. 
 
- 
+
 ### Model
+---
+
 - Componenten en model termen:
 	- Componenten: Alle onafhankelijke variabelen die in het model worden meegenomen.
 	- Model termen: De onafhankelijke variabelen en covariaten in het model. De standaardoptie is om de hoofdeffecten en interactie-effecten van de geselecteerde onafhankelijke variabelen mee te nemen in het model, net zoals de covariaten.
@@ -32,11 +35,13 @@ Met logistische regressie kan men een lineaire relatie tussen een of meer verkla
 - Neem intercept mee:
   - Neem het intercept mee in het model.
 
- 
+
 ### Statistieken
+---
+
 - Beschrijvende statistieken: 
   - Factor: De niveaus van de afhankelijke variabele(n) en het aantal observaties per niveau. 
- 
+
 - Regressiecoëfficiënten:
   - Schattingen: Ongestandaardiseerde en gestandaardiseerde schattingen van de coëfficiënten, standaardafwijkingen, t-waarden en de corresponderende p-waarden. 
   - Van `...` bootstraps: Als u deze optie selecteert wordt ge-bootstrapte schatting toegepast. De standaardoptie voor het aantal replicaties is 1000. Dit kan naar behoeven worden aangepast.
@@ -53,11 +58,11 @@ Met logistische regressie kan men een lineaire relatie tussen een of meer verkla
 	- Gestandaardiseerd residu > 3: Uitschieters buiten x standaardafwijkingen: Geef diagnostieken weer voor waarnemingen waar de absolute waarde voor het gestandaardiseerde residu groter is dan x; de standaardoptie is x=3.
     - Cook's afstand > 1: Geef diagnostieken weer voor waarnemingen waar de waarde van Cook's afstand groter is dan x; de standaardoptie is x=1.
     - Alle waarnemingen: Geef diagnostieken voor alle waarnemingen weer.
- 
+
 - Prestatie statistieken:
 - De confusion matrix geeft aan hoe goed het model de uitkomsten voorspelt. In de diagonaal staan de waarnemingen die het model correct identificeerde. Daarbuiten de waarnemingen waar het model een verkeerde uitkomst voorspelde.
  - Proporties: De tabel geeft de proporties voor de echte versus de voorspelde uitkomsten.
- 
+
 - Prestatiestatistieken:
   - AUC: Gebied onder de kromme. 
   - Sensitiviteit: Sensitiviteit beschrijft de proportie ware positieven ("true positives").
@@ -66,7 +71,7 @@ Met logistische regressie kan men een lineaire relatie tussen een of meer verkla
   - F-maat: Dit is gebaseerd op de hoeveelheid systematische variantie gedeeld door de hoeveelheid onsystematische variantie (i.e., de mean squares van het model / de mean squares van de residuen). 
   - Brier score: Nog een maat voor de precisie van de predicties. 
   - H-maat: Een andere maat voor de precisie van predicties. De standaard implementatie in de package hmeasure op CRAN. 
- 
+
 ### Grafieken
 - Inferentiële grafieken:
   - Geef grafieken van de conditionele schattingen: De grafieken zijn conditioneel in de zin dat u de kans op de categorische variabele geeft voor alle niveaus van de predictor variabele gegeven het referentieniveau van alle andere factoren.
@@ -99,7 +104,7 @@ Samenvatting model:
   - Cox & Snell: berekend als 1 min de ratio van de log-likelihoods van het gespecificeerde model en het nul-model, waarbij de ratio verheven wordt tot de macht 2/n (steekproefgrootte). Hogere waarden geven aan dat het gespecificeerde model relatief beter op de data past dan het nul-model. De Cox & Snell index heeft echter als limiet 1 min de likelihood van het nul-model, verheven tot de macht 2/n, en kan zelfs onder ideale omstandigheden niet hoger zijn dan 0.75.
   - Nagelkerke: dit is een correctie op de methode van Cox & Snell, zodat het als limiet 1 heeft. Deze index wordt berekend als de Cox & Snell R2, gedeeld door 1 min de likelihood van het nul-model verheven tot de macht 2/n. Waarden in de buurt van 1 geven aan dat het gespecificeerde model beter op de data past dan het nul-model.
   - Tjur: berekend als de absolute waarde van het verschil tussen de gemiddelde voorspelde waarde voor alle gevallen waar de afhankelijke variabele gelijk is aan 0, en de gemiddelde voorspelde waarde voor alle gevallen waar de afhankelijke variabele gelijk is aan 1. In tegenstelling tot de andere pseudo R2 indices, is Tjur's R2 niet relatief aan het nul-model.
- 
+
 Coëfficiënten
 - Schatting: Regressiecoëfficiënten.
 - (Robuuste) standaardfout: Standaardfout van de regressiecoëfficiënten.
@@ -114,7 +119,7 @@ Coëfficiënten
 - % BI: Het betrouwbaarheidsinterval (odds-ratio schaal). Standaard is 95%. 
   - Onder: De ondergrens van het betrouwbaarheidsinterval.
   - Boven: De bovengrens van het betrouwbaarheidsinterval.
-   
+
 Bootstrap Coëfficiënten.
 - Schatting: ge-bootstrapte regressiecoëfficiënten.
 - Bias: Schatting van de bias.
@@ -142,17 +147,17 @@ Factor beschrijvingende statistieken:
   - De eerste kolom geeft alle niveaus van de factor.
   - N: Het aantal observaties per niveau van de factor.
 
-   
+
 #### Prestatie statistieken
 Confusion Matrix:
 - De confusion matrix geeft aan hoe goed het model de uitkomsten voorspelt. In de diagonaal staan de waarnemingen die het model correct identificeerde. Daarbuiten de waarnemingen waar het model een verkeerde uitkomst voorspelde.
- 
+
 Prestatie Matrix:
 - Alle geselecteerde prestatiestatistieken en hun waarden staan in deze tabel.
- 
+
 #### Geschatte grafieken
 De conditionele schattings grafieken geven de kans weer op de afhankelijke variabele voor alle niveaus van de covariaat gegeven de referentie over alle andere factoren. Als een continue covariaat wordt toegevoegd wordt er een grijze waas rond de lijn aangebracht die een 95% betrouwbaarheid interval aangeeft.
- 
+
 #### Residu grafieken 
 Voorspeld - residu grafiek.
 
