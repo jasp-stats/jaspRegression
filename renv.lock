@@ -81,7 +81,7 @@
     },
     "RcppEigen": {
       "Package": "RcppEigen",
-      "Version": "0.3.4.0.0",
+      "Version": "0.3.4.0.2",
       "Source": "Repository"
     },
     "SparseM": {
@@ -161,7 +161,7 @@
     },
     "bslib": {
       "Package": "bslib",
-      "Version": "0.7.0",
+      "Version": "0.8.0",
       "Source": "Repository"
     },
     "bstats": {
@@ -197,7 +197,7 @@
     },
     "checkmate": {
       "Package": "checkmate",
-      "Version": "2.3.1",
+      "Version": "2.3.2",
       "Source": "Repository"
     },
     "cli": {
@@ -232,7 +232,7 @@
     },
     "colorspace": {
       "Package": "colorspace",
-      "Version": "2.1-0",
+      "Version": "2.1-1",
       "Source": "Repository"
     },
     "combinat": {
@@ -262,7 +262,7 @@
     },
     "cpp11": {
       "Package": "cpp11",
-      "Version": "0.4.7",
+      "Version": "0.5.0",
       "Source": "Repository"
     },
     "crayon": {
@@ -277,12 +277,12 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "5.2.1",
+      "Version": "5.2.2",
       "Source": "Repository"
     },
     "data.table": {
       "Package": "data.table",
-      "Version": "1.15.4",
+      "Version": "1.16.0",
       "Source": "Repository"
     },
     "datawizard": {
@@ -302,7 +302,7 @@
     },
     "digest": {
       "Package": "digest",
-      "Version": "0.6.36",
+      "Version": "0.6.37",
       "Source": "Repository"
     },
     "doBy": {
@@ -327,7 +327,7 @@
     },
     "emmeans": {
       "Package": "emmeans",
-      "Version": "1.10.3",
+      "Version": "1.10.4",
       "Source": "Repository"
     },
     "estimability": {
@@ -357,7 +357,7 @@
     },
     "fdrtool": {
       "Package": "fdrtool",
-      "Version": "1.2.17",
+      "Version": "1.2.18",
       "Source": "Repository"
     },
     "flexplot": {
@@ -578,7 +578,7 @@
     },
     "insight": {
       "Package": "insight",
-      "Version": "0.20.2",
+      "Version": "0.20.3",
       "Source": "Repository"
     },
     "isoband": {
@@ -600,7 +600,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspAnova",
       "RemoteRef": "HEAD",
-      "RemoteSha": "1308943d40b1ff6de43f0546eb3357d61f180f7c"
+      "RemoteSha": "6d9c6ba1918637ce8246ce2ef92ad53f3ad4fc39"
     },
     "jaspBase": {
       "Package": "jaspBase",
@@ -622,7 +622,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDescriptives",
       "RemoteRef": "HEAD",
-      "RemoteSha": "201ae11dd7074a7cab1bacf047d168a018ed58d4"
+      "RemoteSha": "641b5a1fae1fcb3033dbcc38bf0f865d8174f5b4"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -644,7 +644,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
       "RemoteRef": "HEAD",
-      "RemoteSha": "27877d4b0d96cbb25279f4b52c4209b536b830c8"
+      "RemoteSha": "bf5e91576bada4b8d98735b816842feeb9d7a8ce"
     },
     "jomo": {
       "Package": "jomo",
@@ -673,7 +673,7 @@
     },
     "kernlab": {
       "Package": "kernlab",
-      "Version": "0.9-32",
+      "Version": "0.9-33",
       "Source": "Repository"
     },
     "knitr": {
@@ -793,7 +793,7 @@
     },
     "minqa": {
       "Package": "minqa",
-      "Version": "1.2.7",
+      "Version": "1.2.8",
       "Source": "Repository"
     },
     "mitml": {
@@ -848,12 +848,12 @@
     },
     "mvtnorm": {
       "Package": "mvtnorm",
-      "Version": "1.2-5",
+      "Version": "1.2-6",
       "Source": "Repository"
     },
     "nlme": {
       "Package": "nlme",
-      "Version": "3.1-165",
+      "Version": "3.1-166",
       "Source": "Repository"
     },
     "nloptr": {
@@ -888,7 +888,7 @@
     },
     "openssl": {
       "Package": "openssl",
-      "Version": "2.2.0",
+      "Version": "2.2.1",
       "Source": "Repository"
     },
     "operator.tools": {
@@ -898,7 +898,7 @@
     },
     "ordinal": {
       "Package": "ordinal",
-      "Version": "2023.12-4",
+      "Version": "2023.12-4.1",
       "Source": "Repository"
     },
     "pan": {
@@ -913,7 +913,7 @@
     },
     "party": {
       "Package": "party",
-      "Version": "1.3-16",
+      "Version": "1.3-17",
       "Source": "Repository"
     },
     "patchwork": {
@@ -1074,7 +1074,7 @@
     },
     "rjson": {
       "Package": "rjson",
-      "Version": "0.2.21",
+      "Version": "0.2.22",
       "Source": "Repository"
     },
     "rlang": {
@@ -1084,7 +1084,7 @@
     },
     "rmarkdown": {
       "Package": "rmarkdown",
-      "Version": "2.27",
+      "Version": "2.28",
       "Source": "Repository"
     },
     "rpart": {
@@ -1124,7 +1124,7 @@
     },
     "shiny": {
       "Package": "shiny",
-      "Version": "1.8.1.1",
+      "Version": "1.9.1",
       "Source": "Repository"
     },
     "sourcetools": {
@@ -1214,7 +1214,7 @@
     },
     "tseries": {
       "Package": "tseries",
-      "Version": "0.10-56",
+      "Version": "0.10-57",
       "Source": "Repository"
     },
     "tzdb": {
@@ -1244,7 +1244,7 @@
     },
     "uuid": {
       "Package": "uuid",
-      "Version": "1.2-0",
+      "Version": "1.2-1",
       "Source": "Repository"
     },
     "vctrs": {
@@ -1274,12 +1274,12 @@
     },
     "withr": {
       "Package": "withr",
-      "Version": "3.0.0",
+      "Version": "3.0.1",
       "Source": "Repository"
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.46",
+      "Version": "0.47",
       "Source": "Repository"
     },
     "xml2": {
