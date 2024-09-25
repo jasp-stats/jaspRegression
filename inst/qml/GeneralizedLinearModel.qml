@@ -36,7 +36,7 @@ Form
 		userMustSpecify: "covariates"
 	}
 
-	Common.GlmInputComponent {}
+	Common.GlmInputComponent {id: input}
 
 	Section
 	{
