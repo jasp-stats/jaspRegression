@@ -121,7 +121,7 @@
     },
     "askpass": {
       "Package": "askpass",
-      "Version": "1.2.0",
+      "Version": "1.2.1",
       "Source": "Repository"
     },
     "backports": {
@@ -141,12 +141,12 @@
     },
     "bit": {
       "Package": "bit",
-      "Version": "4.0.5",
+      "Version": "4.5.0",
       "Source": "Repository"
     },
     "bit64": {
       "Package": "bit64",
-      "Version": "4.0.5",
+      "Version": "4.5.2",
       "Source": "Repository"
     },
     "boot": {
@@ -156,7 +156,7 @@
     },
     "broom": {
       "Package": "broom",
-      "Version": "1.0.6",
+      "Version": "1.0.7",
       "Source": "Repository"
     },
     "bslib": {
@@ -186,7 +186,7 @@
     },
     "car": {
       "Package": "car",
-      "Version": "3.1-2",
+      "Version": "3.1-3",
       "Source": "Repository"
     },
     "carData": {
@@ -241,7 +241,7 @@
     },
     "commonmark": {
       "Package": "commonmark",
-      "Version": "1.9.1",
+      "Version": "1.9.2",
       "Source": "Repository"
     },
     "contfrac": {
@@ -271,7 +271,7 @@
     },
     "curl": {
       "Package": "curl",
-      "Version": "5.2.2",
+      "Version": "5.2.3",
       "Source": "Repository"
     },
     "data.table": {
@@ -281,7 +281,7 @@
     },
     "datawizard": {
       "Package": "datawizard",
-      "Version": "0.12.3",
+      "Version": "0.13.0",
       "Source": "Repository"
     },
     "deSolve": {
@@ -301,7 +301,7 @@
     },
     "doBy": {
       "Package": "doBy",
-      "Version": "4.6.22",
+      "Version": "4.6.24",
       "Source": "Repository"
     },
     "dplyr": {
@@ -476,7 +476,7 @@
     },
     "glue": {
       "Package": "glue",
-      "Version": "1.7.0",
+      "Version": "1.8.0",
       "Source": "Repository"
     },
     "gridExtra": {
@@ -556,7 +556,7 @@
     },
     "insight": {
       "Package": "insight",
-      "Version": "0.20.4",
+      "Version": "0.20.5",
       "Source": "Repository"
     },
     "isoband": {
@@ -577,7 +577,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspAnova",
-      "RemoteSha": "24a7c984788e636d7c18fd9228cf39afade3dbdb"
+      "RemoteSha": "ef8e6d234c3a7e9ae7ba6b480866b08b249416fc"
     },
     "jaspBase": {
       "Package": "jaspBase",
@@ -587,7 +587,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
-      "RemoteSha": "24d4ae8eb2efcaae974b6c900ebf1c64020bb90e"
+      "RemoteSha": "79632a237c7bf6bb9b6c8fdf30cc59abccb923d1"
     },
     "jaspDescriptives": {
       "Package": "jaspDescriptives",
@@ -597,7 +597,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDescriptives",
-      "RemoteSha": "86c666a0687898efd0878d06c09ff56d9d8340f2"
+      "RemoteSha": "c3eb4980f876455238e30c71e240ccdaed0e2f72"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -617,7 +617,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
-      "RemoteSha": "c3c2f40db75637bc3dd82d69fce0684a08c9d2a2"
+      "RemoteSha": "5f1fc0c08770db5e5c01ac83f6ca8325eb376bbc"
     },
     "jomo": {
       "Package": "jomo",
@@ -636,7 +636,7 @@
     },
     "jsonlite": {
       "Package": "jsonlite",
-      "Version": "1.8.8",
+      "Version": "1.8.9",
       "Source": "Repository"
     },
     "kappalab": {
@@ -666,7 +666,7 @@
     },
     "lavaan": {
       "Package": "lavaan",
-      "Version": "0.6-18",
+      "Version": "0.6-19",
       "Source": "Repository"
     },
     "libcoin": {
@@ -846,7 +846,7 @@
     },
     "officer": {
       "Package": "officer",
-      "Version": "0.6.6",
+      "Version": "0.6.7",
       "Source": "Repository"
     },
     "onewaytests": {
@@ -856,7 +856,7 @@
     },
     "openssl": {
       "Package": "openssl",
-      "Version": "2.2.1",
+      "Version": "2.2.2",
       "Source": "Repository"
     },
     "operator.tools": {
@@ -1116,7 +1116,7 @@
     },
     "sys": {
       "Package": "sys",
-      "Version": "3.4.2",
+      "Version": "3.4.3",
       "Source": "Repository"
     },
     "systemfonts": {
@@ -1146,7 +1146,7 @@
     },
     "timeDate": {
       "Package": "timeDate",
-      "Version": "4032.109",
+      "Version": "4041.110",
       "Source": "Repository"
     },
     "timechange": {
@@ -1161,7 +1161,7 @@
     },
     "tseries": {
       "Package": "tseries",
-      "Version": "0.10-57",
+      "Version": "0.10-58",
       "Source": "Repository"
     },
     "tzdb": {
@@ -1221,7 +1221,7 @@
     },
     "xfun": {
       "Package": "xfun",
-      "Version": "0.47",
+      "Version": "0.48",
       "Source": "Repository"
     },
     "xml2": {
