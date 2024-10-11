@@ -21,6 +21,10 @@ The Bayesian Correlation analysis allows for the estimation of the population co
 - Pearson's rho: Pearson's product moment correlation coefficient.
 - Kendall's tau-b: Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables.
 
+###Linearity Test
+-JZS polynomial regression: Fit the data to a linear regression and a second-degree polynomial regression (using JZS polynomial regression) and compare to get the Bayes Factor. The default setting of the JZS model is as following: the prior is set to be 'JZS', the alpha is set to be 0.354^2, the model prior is set to be a beta binomial distribution with alpha = 1 and beta = 1.
+-Gaussian process priors: Test whether the data show linear correlation using Gaussian process priors (Mulder, 2022).
+
 #### Alt. Hypothesis
 - Correlated: Two-sided alternative hypothesis that the population correlation does not equal 0.
 - Correlated positively: One-sided alternative hypothesis that the population correlation is greater than 0.
@@ -112,6 +116,11 @@ The Bayesian Correlation analysis allows for the estimation of the population co
   - Displays the development of the Bayes factor as a function of the number of observations (n) using the user-defined prior.
     - Additional info: Displays the Bayes factor computed with the user-defined prior; displays a probability wheel depicting the odds of the data under the null vs. alternative hypothesis; shows the decisiveness of the evidence in terms of Jeffreys' (1961) evidence categories.
 
+###Linearity Test Table
+-Pair: The name of the pair of two variables that is being tested for linearity
+-BF10: The Bayes Factor representing the evidence for the polynomial model relative to the linear model. A BF10 larger than 1 indicates more evidence in favor of the polynomial model, and a BF10 smaller than 1 indicates more evidence in favor of the linear model.
+-BF01: The Bayes Factor representing the evidence for the linear model relative to the polynomial model. A BF01 larger than 1 indicates more evidence in favor of the linear model, and a BF10 smaller than 1 indicates more evidence in favor of the polynomial model.
+
 ### References
 ---
 - Jeffreys, H. (1961). *Theory of probability (3rd ed.)*. Oxford, UK: Oxford University Press.
@@ -121,6 +130,7 @@ The Bayesian Correlation analysis allows for the estimation of the population co
 - van Doorn, J.B., Ly, A., Marsman, M. & Wagenmakers, E.-J. (2018). Bayesian Inference for Kendall’s Rank Correlation Coefficient. *The American Statistician*,  72, 303-308.
 - Wagenmakers, E.-J., Lodewyckx, T., Kuriyal, H., and Grasman, R. (2010). Bayesian hypothesis testing for psychologists: A tutorial on the Savage-Dickey method. *Cognitive Psychology, 60*, 158-189.
 - Wetzels, R., & Wagenmakers, E.-J. (2012). A default Bayesian hypothesis test for correlations and partial correlations. *Psychonomic Bulletin & Review, 19*, 1057-1064.
+- Mulder, J. (2022). Bayesian Testing of Linear Versus Nonlinear Effects Using Gaussian Process Priors. *The American Statistician, 77*(1), 1-11
 
 ### R Packages
 ---
