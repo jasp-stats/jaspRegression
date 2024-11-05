@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 RegressionLogistic <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           formula = NULL,
           isNuisance = NULL,
           accuracy = FALSE,
@@ -37,13 +37,13 @@ RegressionLogistic <- function(
           conditionalEstimatePlotPoints = FALSE,
           confusionMatrix = FALSE,
           covarianceRatio = FALSE,
-          covariates = list(),
-          dependent = "",
+          covariates = list(types = list(), value = NULL),
+          dependent = list(types = list(), value = ""),
           descriptives = FALSE,
           dfbetas = FALSE,
           dffits = FALSE,
           fMeasure = FALSE,
-          factors = list(),
+          factors = list(types = list(), value = NULL),
           hMeasure = FALSE,
           independentVsPredictedPlot = FALSE,
           independentVsPredictedPlotIncludeInteractions = TRUE,
@@ -52,7 +52,7 @@ RegressionLogistic <- function(
           leverage = FALSE,
           mahalanobis = FALSE,
           method = "enter",
-          modelTerms = list(list(components = list(), name = "model0", title = "Model 0"), list(components = list(), name = "model1", title = "Model 1")),
+          modelTerms = list(list(components = list(), name = "model0", title = "Model 0", types = list()), list(components = list(), name = "model1", title = "Model 1", types = list())),
           multicollinearity = FALSE,
           nested = TRUE,
           oddsRatio = FALSE,
@@ -80,7 +80,7 @@ RegressionLogistic <- function(
           specificity = FALSE,
           squaredPearsonResidualVsFittedPlot = FALSE,
           vovkSellke = FALSE,
-          weights = "") {
+          weights = list(types = list(), value = "")) {
 
    defaultArgCalls <- formals(jaspRegression::RegressionLogistic)
    defaultArgs <- lapply(defaultArgCalls, eval)

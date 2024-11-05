@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 GeneralizedLinearModel <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           formula = NULL,
           isNuisance = NULL,
           coefficientCi = FALSE,
@@ -27,15 +27,15 @@ GeneralizedLinearModel <- function(
           coefficientEstimate = TRUE,
           contrasts = list(),
           covarianceRatio = FALSE,
-          covariates = list(),
-          dependent = "",
+          covariates = list(types = list(), value = NULL),
+          dependent = list(types = list(), value = ""),
           devianceGoodnessOfFit = FALSE,
           devianceResidualQqPlot = FALSE,
           devianceResidualVsFittedPlot = FALSE,
           devianceResidualVsPredictorPlot = FALSE,
           dfbetas = FALSE,
           dffits = FALSE,
-          factors = list(),
+          factors = list(types = list(), value = NULL),
           family = "bernoulli",
           interceptTerm = TRUE,
           leverage = FALSE,
@@ -49,9 +49,9 @@ GeneralizedLinearModel <- function(
           marginalMeansPAdjustment = "holm",
           marginalMeansResponse = TRUE,
           marginalMeansSd = 1,
-          marginalMeansVars = list(),
-          modelTerms = list(),
-          offset = "",
+          marginalMeansVars = list(types = list(), value = NULL),
+          modelTerms = list(optionKey = "components", types = list(), value = list()),
+          offset = list(types = list(), value = ""),
           otherGlmModel = "multinomialLogistic",
           partialResidualPlot = FALSE,
           pearsonGoodnessOfFit = FALSE,
@@ -80,7 +80,7 @@ GeneralizedLinearModel <- function(
           studentizedResidualOutlierTableTopN = 3,
           tolerance = FALSE,
           vif = FALSE,
-          weights = "",
+          weights = list(types = list(), value = ""),
           workingResponseVsLinearPredictorPlot = FALSE) {
 
    defaultArgCalls <- formals(jaspRegression::GeneralizedLinearModel)

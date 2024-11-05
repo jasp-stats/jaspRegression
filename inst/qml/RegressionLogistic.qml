@@ -25,13 +25,6 @@ Form
 	plotWidth: 480
 	plotHeight: 320
 	
-	Formula
-	{
-		lhs: "dependent"
-		rhs: [{ name: "modelTerms", extraOptions: "isNuisance" }]
-		userMustSpecify: "covariates"
-	}
-
 	VariablesForm
 	{
 		AvailableVariablesList { name: "allVariablesList" }		

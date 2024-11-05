@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 RegressionLinear <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           formula = NULL,
           isNuisance = NULL,
           coefficientBootstrap = FALSE,
@@ -31,13 +31,13 @@ RegressionLinear <- function(
           collinearityStatistic = FALSE,
           covarianceMatrix = FALSE,
           covarianceRatio = FALSE,
-          covariates = list(),
-          dependent = "",
+          covariates = list(types = list(), value = NULL),
+          dependent = list(types = list(), value = ""),
           descriptives = FALSE,
           dfbetas = FALSE,
           dffits = FALSE,
           fChange = FALSE,
-          factors = list(),
+          factors = list(types = list(), value = NULL),
           interceptTerm = TRUE,
           leverage = FALSE,
           mahalanobis = FALSE,
@@ -49,7 +49,7 @@ RegressionLinear <- function(
           method = "enter",
           modelAICBIC = FALSE,
           modelFit = TRUE,
-          modelTerms = list(list(components = list(), name = "model0", title = "Model 0"), list(components = list(), name = "model1", title = "Model 1")),
+          modelTerms = list(list(components = list(), name = "model0", title = "Model 0", types = list()), list(components = list(), name = "model1", title = "Model 1", types = list())),
           naAction = "listwise",
           nested = TRUE,
           partAndPartialCorrelation = FALSE,
@@ -81,7 +81,7 @@ RegressionLinear <- function(
           steppingMethodCriteriaPRemoval = 0.1,
           steppingMethodCriteriaType = "pValue",
           vovkSellke = FALSE,
-          weights = "") {
+          weights = list(types = list(), value = "")) {
 
    defaultArgCalls <- formals(jaspRegression::RegressionLinear)
    defaultArgs <- lapply(defaultArgCalls, eval)

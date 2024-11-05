@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 Correlation <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           alternative = "twoSided",
           assumptionCheckMultivariateEnergy = FALSE,
           assumptionCheckMultivariateMardia = FALSE,
@@ -41,7 +41,7 @@ Correlation <- function(
           meansAndSd = FALSE,
           naAction = "pairwise",
           pairwiseDisplay = FALSE,
-          partialOutVariables = list(),
+          partialOutVariables = list(types = list(), value = NULL),
           pearson = TRUE,
           plotHeight = 320,
           plotWidth = 480,
@@ -56,7 +56,7 @@ Correlation <- function(
           significanceFlagged = FALSE,
           significanceReport = TRUE,
           spearman = FALSE,
-          variables = list(),
+          variables = list(types = list(), value = NULL),
           vovkSellke = FALSE) {
 
    defaultArgCalls <- formals(jaspRegression::Correlation)

@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 CorrelationBayesian <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           alternative = "twoSided",
           bayesFactorReport = TRUE,
           bayesFactorType = "BF10",
@@ -52,7 +52,7 @@ CorrelationBayesian <- function(
           spearman = FALSE,
           supportCorrelationFlagged = FALSE,
           variablePairs = list(),
-          variables = list()) {
+          variables = list(types = list(), value = NULL)) {
 
    defaultArgCalls <- formals(jaspRegression::CorrelationBayesian)
    defaultArgs <- lapply(defaultArgCalls, eval)

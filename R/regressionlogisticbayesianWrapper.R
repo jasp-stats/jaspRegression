@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 RegressionLogisticBayesian <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           bayesFactorOrder = "bestModelTop",
           bayesFactorType = "BF10",
           bernoulliParam = 0.5,
@@ -29,11 +29,11 @@ RegressionLogisticBayesian <- function(
           cchPriorAlpha = 0.5,
           cchPriorBeta = 2,
           cchPriorS = 0,
-          covariates = list(),
-          dependent = "",
+          covariates = list(types = list(), value = NULL),
+          dependent = list(types = list(), value = ""),
           descriptives = FALSE,
           effectsType = "allModels",
-          factors = list(),
+          factors = list(types = list(), value = NULL),
           gPriorAlpha = 3,
           inclusionProbabilitiesPlot = FALSE,
           logPosteriorOddsPlot = FALSE,
@@ -41,7 +41,7 @@ RegressionLogisticBayesian <- function(
           modelComplexityPlot = FALSE,
           modelPrior = "betaBinomial",
           modelProbabilitiesPlot = FALSE,
-          modelTerms = list(),
+          modelTerms = list(optionKey = "components", types = list(), value = list()),
           modelsShown = "limited",
           numModelsShown = 10,
           numberOfModels = 0,
@@ -64,7 +64,7 @@ RegressionLogisticBayesian <- function(
           seed = 1,
           setSeed = FALSE,
           summaryType = "averaged",
-          weights = "",
+          weights = list(types = list(), value = ""),
           wilsonParamLambda = 1) {
 
    defaultArgCalls <- formals(jaspRegression::RegressionLogisticBayesian)

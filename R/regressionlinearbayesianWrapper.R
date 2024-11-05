@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2013-2022 University of Amsterdam
+# Copyright (C) 2013-2024 University of Amsterdam
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,7 +19,7 @@
 
 RegressionLinearBayesian <- function(
           data = NULL,
-          version = "0.19",
+          version = "0.19.2",
           formula = NULL,
           isNuisance = NULL,
           bayesFactorOrder = "bestModelTop",
@@ -28,8 +28,8 @@ RegressionLinearBayesian <- function(
           betaBinomialParamA = 1,
           betaBinomialParamB = 1,
           castilloParamU = 1,
-          covariates = list(),
-          dependent = "",
+          covariates = list(types = list(), value = NULL),
+          dependent = list(types = list(), value = ""),
           descriptives = FALSE,
           effectsType = "allModels",
           gPriorAlpha = 3,
@@ -40,7 +40,7 @@ RegressionLinearBayesian <- function(
           modelComplexityPlot = FALSE,
           modelPrior = "betaBinomial",
           modelProbabilitiesPlot = FALSE,
-          modelTerms = list(),
+          modelTerms = list(optionKey = "components", types = list(), value = list()),
           modelsShown = "limited",
           numModelsShown = 10,
           numberOfModels = 0,
@@ -63,7 +63,7 @@ RegressionLinearBayesian <- function(
           seed = 1,
           setSeed = FALSE,
           summaryType = "averaged",
-          weights = "",
+          weights = list(types = list(), value = ""),
           wilsonParamLambda = 1) {
 
    defaultArgCalls <- formals(jaspRegression::RegressionLinearBayesian)
