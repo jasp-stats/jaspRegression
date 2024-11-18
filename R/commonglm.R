@@ -867,7 +867,14 @@
 
   modelMatrix <- as.data.frame(model.matrix(model))
   modelMatrix <- modelMatrix[colnames(modelMatrix) != "(Intercept)"]
-  influenceResData[["mahalanobis"]] <- mahalanobis(modelMatrix, center = colMeans(modelMatrix), cov = cov(modelMatrix))
+
+  if (ncol(modelMatrix) > 0) {
+    influenceResData[["mahalanobis"]] <- mahalanobis(modelMatrix, center = colMeans(modelMatrix), cov = cov(modelMatrix))
+  } else if (options[["mahalanobis"]]) {
+    influenceTable$addFootnote(
+      gettext("Mahalanobis distance cannot be computed for the intercept only model.")
+    )
+  }
 
   if (options$residualCasewiseDiagnosticType == "cooksDistance")
     index <- which(abs(influenceResData[["cooksDistance"]]) > options$residualCasewiseDiagnosticCooksDistanceThreshold)
