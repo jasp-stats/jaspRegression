@@ -419,7 +419,8 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   if (options[["coefficientCi"]]) {
     coefCiSummary <- try(confint(fullModel, level = options[["coefficientCiLevel"]]))
     if (jaspBase::isTryError(coefCiSummary)) {
-      quitAnalysis("Confidence intervals not available for this model, try other predictors, families, or links.")
+      jaspResults[["estimatesTable"]]$setError("Confidence intervals not available for this model, try other predictors, families, or links.")
+      return()
     }
     if (length(rowNames) == 1) coefCiSummary <- matrix(coefCiSummary, ncol = 2)
   } else {
