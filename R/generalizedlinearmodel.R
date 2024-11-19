@@ -102,20 +102,23 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
                limits.min = 0,
                limits.max = Inf,
                exitAnalysisIfErrors = TRUE)
-  
+
   if (length(options$factors) != 0)
     .hasErrors(dataset,
                type = "factorLevels",
                factorLevels.target  = options$factors,
                factorLevels.amount  = '< 2',
                exitAnalysisIfErrors = TRUE)
-  
+
   if (options[["family"]] == "bernoulli") {
 
     if (length(levels(dataset[, options[["dependent"]]])) != 2)
       .quitAnalysis(gettext("The Bernoulli family requires the dependent variable to be a factor with 2 levels."))
 
   } else if (options[["family"]] == "binomial") {
+
+    if (any(dataset[, options[["weights"]]] == 0))
+      .quitAnalysis(gettext("The Binomial family requires the weights variable (i.e. total number of trials) to be non-zero."))
 
     if (any(dataset[, options[["dependent"]]] < 0) || any(dataset[, options[["dependent"]]] > 1))
       .quitAnalysis(gettext("The Binomial family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive)."))
@@ -414,7 +417,11 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   rowNames <- rownames(modelSummary)
 
   if (options[["coefficientCi"]]) {
-    coefCiSummary <- confint(fullModel, level = options[["coefficientCiLevel"]])
+    coefCiSummary <- try(confint(fullModel, level = options[["coefficientCiLevel"]]))
+    if (jaspBase::isTryError(coefCiSummary)) {
+      jaspResults[["estimatesTable"]]$setError("Confidence intervals not available for this model, try other predictors, families, or links.")
+      return()
+    }
     if (length(rowNames) == 1) coefCiSummary <- matrix(coefCiSummary, ncol = 2)
   } else {
     coefCiSummary <- matrix(nrow = length(rowNames),
@@ -477,14 +484,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "standardized deviance")
   .glmOutlierTable(jaspResults, dataset, options, ready, position = 8, residType = "studentized deviance")
 
-  .glmInfluenceTable(jaspResults[["diagnosticsContainer"]], 
+  .glmInfluenceTable(jaspResults[["diagnosticsContainer"]],
                      jaspResults[["glmModels"]][["object"]][["fullModel"]],
                      dataset, options, ready, position = 9)
-  
-  .regressionExportResiduals(jaspResults, 
+
+  .regressionExportResiduals(jaspResults,
                              jaspResults[["glmModels"]][["object"]][["fullModel"]],
                              dataset, options, ready)
-  
+
   .glmMulticolliTable(jaspResults, dataset, options, ready, position = 10)
 
   return()
