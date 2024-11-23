@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
-"POT-Creation-Date: 2024-10-19 02:54\n"
+"POT-Creation-Date: 2024-11-23 02:57\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -206,6 +206,9 @@ msgstr ""
 msgid "DFBETAS:%1s"
 msgstr ""
 
+msgid "Mahalanobis distance cannot be computed for the intercept only model."
+msgstr ""
+
 msgid "No influential cases found."
 msgstr ""
 
@@ -405,6 +408,9 @@ msgid "Stretched beta prior width"
 msgstr ""
 
 msgid "The Bernoulli family requires the dependent variable to be a factor with 2 levels."
+msgstr ""
+
+msgid "The Binomial family requires the weights variable (i.e. total number of trials) to be non-zero."
 msgstr ""
 
 msgid "The Binomial family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive)."

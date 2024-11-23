@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-07-08 08:31\n"
+"POT-Creation-Date: 2024-11-23 02:57\n"
 "PO-Revision-Date: 2024-07-04 17:09+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -224,6 +224,9 @@ msgstr "DFBETAS:Konstante"
 
 msgid "DFBETAS:%1s"
 msgstr "DFBETAS:%1s"
+
+msgid "Mahalanobis distance cannot be computed for the intercept only model."
+msgstr ""
 
 msgid "No influential cases found."
 msgstr "Keine einflussreichen Fälle gefunden."
@@ -483,6 +486,14 @@ msgid ""
 msgstr ""
 "Bei der Bernoulli-Familie muss die abhängige Variable ein Faktor mit 2 "
 "Stufen sein."
+
+#, fuzzy
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be non-zero."
+msgstr ""
+"Bei der Binomial-Familie muss die Gewichtungsvariable (d. h. die Gesamtzahl "
+"der Versuche) eine ganze Zahl sein."
 
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "

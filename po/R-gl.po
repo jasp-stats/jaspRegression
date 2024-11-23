@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2024-07-08 08:31\n"
+"POT-Creation-Date: 2024-11-23 02:57\n"
 "PO-Revision-Date: 2024-11-13 18:38+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -231,6 +231,9 @@ msgstr "DFBETAS: Constante"
 
 msgid "DFBETAS:%1s"
 msgstr "DFBETAS: %1s"
+
+msgid "Mahalanobis distance cannot be computed for the intercept only model."
+msgstr ""
 
 msgid "No influential cases found."
 msgstr "Non se atoparon casos influentes."
@@ -490,6 +493,14 @@ msgid ""
 msgstr ""
 "A familia Bernoulli require que a variable dependente sexa un factor con 2 "
 "niveis."
+
+#, fuzzy
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be non-zero."
+msgstr ""
+"A familia Binomial require que a variable de ponderacións (p.e. o número "
+"total de ensaios) sexa un número enteiro."
 
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "

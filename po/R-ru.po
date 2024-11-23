@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2024-07-08 08:31\n"
+"POT-Creation-Date: 2024-11-23 02:57\n"
 "PO-Revision-Date: 2023-06-24 02:58+0000\n"
 "Last-Translator: Borisov Igor Borisovich <borisov_i@pimunn.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -245,6 +245,9 @@ msgstr "DFBETAS:Интерцепт"
 
 msgid "DFBETAS:%1s"
 msgstr "DFBETAS:%1s"
+
+msgid "Mahalanobis distance cannot be computed for the intercept only model."
+msgstr ""
 
 #, fuzzy
 msgid "No influential cases found."
@@ -531,6 +534,14 @@ msgid ""
 msgstr ""
 "Распределение Бернулли требует, чтобы зависимая переменная была фактором с "
 "двумя уровнями."
+
+#, fuzzy
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be non-zero."
+msgstr ""
+"Биномиальное распределение требует, чтобы весовая переменная (т.е. общее "
+"количество испытаний) была целым числом."
 
 #, fuzzy
 msgid ""

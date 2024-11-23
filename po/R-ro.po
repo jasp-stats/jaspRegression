@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2024-07-08 08:31\n"
+"POT-Creation-Date: 2024-11-23 02:57\n"
 "PO-Revision-Date: 2024-01-11 18:06+0000\n"
 "Last-Translator: fiscuteancom <vladfiscutean@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/jasp/"
@@ -218,6 +218,9 @@ msgid "DFBETAS:Intercept"
 msgstr ""
 
 msgid "DFBETAS:%1s"
+msgstr ""
+
+msgid "Mahalanobis distance cannot be computed for the intercept only model."
 msgstr ""
 
 msgid "No influential cases found."
@@ -447,6 +450,11 @@ msgstr ""
 msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "
 "levels."
+msgstr ""
+
+msgid ""
+"The Binomial family requires the weights variable (i.e. total number of "
+"trials) to be non-zero."
 msgstr ""
 
 msgid ""
