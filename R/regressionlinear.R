@@ -16,7 +16,8 @@
 #
 
 RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
-  ready <- options$dependent != "" && (length(unlist(options$modelTerms)) > 0 || options$interceptTerm)
+  nModels <- length(options[["modelTerms"]])
+  ready <- options$dependent != "" && (length(options[["modelTerms"]][[nModels]][["components"]]) > 0 || options$interceptTerm)
 
   if (ready) {
     dataset <- .linregReadDataset(dataset, options)
@@ -51,11 +52,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   # these output elements show statistics of the "final model" (lm fit with all predictors in enter method and last lm fit in stepping methods)
   finalModel <- model[[length(model)]]
 
-  if (options$residualCasewiseDiagnostic && is.null(modelContainer[["influenceTable"]])) 
+  if (options$residualCasewiseDiagnostic && is.null(modelContainer[["influenceTable"]]))
     .glmInfluenceTable(modelContainer, finalModel$fit, dataset, options, ready = ready, position = 9)
   .regressionExportResiduals(modelContainer, finalModel$fit, dataset, options, ready = ready)
-  
-  
+
+
   if (options$residualStatistic && is.null(modelContainer[["residualsTable"]]))
     .linregCreateResidualsTable(modelContainer, finalModel, options, position = 10)
 
@@ -128,12 +129,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
           return(gettext("Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"))
         }
       },
-      
+
       checkIfFactorInteractions = function() {
         if (any(vapply(options[["modelTerms"]], .linregCheckIfInteractionWithFactors, logical(1L), factorVariables = options[["factors"]]))) {
           return(gettext("Stepwise procedures are not supported for interactions containing more than 1 factor"))
         }
-      },  
+      },
 
       checkIfPEntryIsValid = function() {
         if (options$steppingMethodCriteriaType == "pValue" && options$steppingMethodCriteriaPEntry > options$steppingMethodCriteriaPRemoval)
@@ -171,9 +172,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                  factorLevels.target  = options$factors,
                  factorLevels.amount  = '< 2',
                  exitAnalysisIfErrors = TRUE)
-    covwt <- function(...) return(stats::cov.wt(..., wt = dataset[[.v(options[["weights"]])]])$cov)
-    .hasErrors(dataset[, -which(colnames(dataset) %in% c(.v(options$weights)))],  type = "varCovData", varCovData.corFun = covwt,
-               exitAnalysisIfErrors = TRUE)
+    if (length(c(options$covariates, options$factors)) != 0) {
+      covwt <- function(...) return(stats::cov.wt(..., wt = dataset[[.v(options[["weights"]])]])$cov)
+      .hasErrors(dataset[, -which(colnames(dataset) %in% c(.v(options$weights)))],  type = "varCovData", varCovData.corFun = covwt,
+                 exitAnalysisIfErrors = TRUE)
+    }
   }
 }
 
@@ -209,7 +212,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     summaryTable$addColumnInfo(name = "AIC",      title = gettext("AIC"),                  type = "number", format = "dp:3")
     summaryTable$addColumnInfo(name = "BIC",      title = gettext("BIC"),                  type = "number", format = "dp:3")
   }
-    
+
   if (options$rSquaredChange || options$fChange) {
     if (options$rSquaredChange)
         summaryTable$addColumnInfo(name = "R2c",  title = gettextf("R%s Change", "\u00B2"), type = "number", format = "dp:3")
@@ -572,7 +575,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   collDiagTable$addColumnInfo(name = "condIndex",  title = gettext("Condition Index"), type = "number")
 
   if (!is.null(model)) {
-    .linregAddPredictorsAsColumns(collDiagTable, model, options[["interceptTerm"]], overtitle = gettext("Variance Proportions"), format = "dp:3")
+    .linregAddPredictorsAsColumns(collDiagTable, model, options[["interceptTerm"]], overtitle = gettext("Variance Proportions"), format = "number")
     .linregAddInterceptNotShownFootnote(collDiagTable, model, options)
     .linregFillCollinearityDiagnosticsTable(collDiagTable, model, options)
   }
@@ -714,7 +717,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (!is.null(finalModel) && !is.null(finalModel$fit)) {
     fit <- finalModel$fit
 
-    .linregInsertPlot(residQQPlot, .glmFillPlotResQQ, model = fit, 
+    .linregInsertPlot(residQQPlot, .glmFillPlotResQQ, model = fit,
                       residType = "deviance", options = options)
   }
 }
@@ -807,13 +810,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   predictorsInNull  <- .linregGetPredictors(options$modelTerms[[1]][["components"]])
   predictorsInFull  <- .linregGetPredictors(options$modelTerms[[nModels]][["components"]]) # these include the null terms
-  
-  
+
+
   if (options$weights != "")
     weights <- dataset[[options$weights]]
   else
     weights <- rep(1, length(dataset[[dependent]]))
-  
+
   if (options$method %in% c("backward", "forward", "stepwise") && length(predictorsInFull) > 0)
     model <- .linregGetModelSteppingMethod(dependent, predictorsInFull, predictorsInNull, dataset, options, weights)
   else
@@ -858,10 +861,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     model <- .linregForwardRegression(dependent, predictors, predictorsInNull, dataset, options, weights)
   else # stepwise
     model <- .linregStepwiseRegression(dependent, predictors, predictorsInNull, dataset, options, weights)
-  
+
   for (i in seq_along(model))
-    model[[i]] <- c(model[[i]], number = i) 
-  
+    model[[i]] <- c(model[[i]], number = i)
+
   return(model)
 }
 
@@ -992,8 +995,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     if (grepl(candidatePredictors[i], pattern = ":")) {
       variables <- unlist(strsplit(candidatePredictors[i], ":")) # split up interaction
       permutations <- combinat::permn(variables) # realize all orderings
-      myPattern <- paste(sapply(permutations, 
-                                function(perm) paste(paste0(perm, ".?"), collapse = ":")), 
+      myPattern <- paste(sapply(permutations,
+                                function(perm) paste(paste0(perm, ".?"), collapse = ":")),
                          collapse = "|") # paste together with "|"
     } else {
       myPattern <- candidatePredictors[i]
@@ -1857,7 +1860,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 .linregGetIndicesOfModelsWithPredictors <- function(model, options) {
   predictorsInNull  <- model[[1]]$predictors
   indices           <- seq_along(model)
-  
+
   if (options$method == "enter") {
     if (length(model) >= 1 && options$interceptTerm && length(predictorsInNull) == 0)
       indices <- indices[-1]
@@ -2123,7 +2126,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                          mapping = ggplot2::aes(x = x, y = y, group = group),
                          size = 1) +
       ggplot2::xlab(xlab) +
-      ggplot2::ylab(ylab) 
+      ggplot2::ylab(ylab)
 
     factorPoints <- jaspGraphs::geom_point(data = d_factor,
                                            mapping = ggplot2::aes(x = x, y = y))
@@ -2132,7 +2135,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   } else {
     xBreaks <- jaspGraphs::getPrettyAxisBreaks(xVar)
-    
+
     basicMarginalPlot <- ggplot2::ggplot() +
       ggplot2::geom_line(data = d,
                          mapping = ggplot2::aes(x = x, y = y),
@@ -2200,7 +2203,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   # base y-axis breaks on y and the prediction and/or confidence interval
   yBreaks <- jaspGraphs::getPrettyAxisBreaks(jaspGraphs::getPrettyAxisBreaks(unlist(d[, -1])))
-  
+
   finalMarginalPlot <- basicMarginalPlot +
     confidenceBounds +
     predictionBound1 +
