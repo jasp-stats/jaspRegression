@@ -575,7 +575,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   collDiagTable$addColumnInfo(name = "condIndex",  title = gettext("Condition Index"), type = "number")
 
   if (!is.null(model)) {
-    .linregAddPredictorsAsColumns(collDiagTable, model, options[["interceptTerm"]], overtitle = gettext("Variance Proportions"), format = "dp:3")
+    .linregAddPredictorsAsColumns(collDiagTable, model, options[["interceptTerm"]], overtitle = gettext("Variance Proportions"), format = "number")
     .linregAddInterceptNotShownFootnote(collDiagTable, model, options)
     .linregFillCollinearityDiagnosticsTable(collDiagTable, model, options)
   }
