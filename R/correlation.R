@@ -1593,11 +1593,11 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
 .corValueString <- function(corValue = NULL, testType = NULL, decimals = 3){
     if (testType == "pearson")
-      type <- gettext("italic(r)")
+      type <- "italic(r)"
     else if (testType == "spearman")
-      type <- gettext("italic(rho)")
+      type <- "italic(rho)"
     else #kendall
-      type <- gettext("italic(tau)")
+      type <- "italic(tau)"
 
     formattedValue <- formatC(round(corValue, decimals), format = "f", digits = decimals)
 
