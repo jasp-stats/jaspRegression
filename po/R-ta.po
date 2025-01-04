@@ -2,235 +2,245 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2025-01-04 02:53\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2025-01-04 21:55+0000\n"
+"Last-Translator: தமிழ்நேரம் <anishprabu.t@gmail.com>\n"
+"Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-r/ta/>\n"
 "Language: ta\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
 msgstr ""
+"அனைத்து சோதனைகளுக்கும், மாற்று கருதுகோள் %s நேர்மறையானது என்பதைக் குறிப்பிடுகிறது."
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
+"எல்லா சோதனைகளுக்கும், மாற்று கருதுகோள் %s எதிர்மறையானது என்பதைக் குறிப்பிடுகிறது."
 
 msgid "Scatterplot"
-msgstr ""
+msgstr "சிதறல்"
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "முன் மற்றும் பின்புறம்"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "பேயச் காரணி வலுவான சோதனை"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "தொடர்ச்சியான பகுப்பாய்வு"
 
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "பேய்சியன் பியர்சன் தொடர்புகள்"
 
 msgid "Bayesian Kendall's Tau Correlations"
-msgstr ""
+msgstr "பேய்சியன் கெண்டலின் ட அயு தொடர்புகள்"
 
 msgid "Bayesian Spearman Correlations"
-msgstr ""
+msgstr "பேய்சியன் ச்பியர்மேன் தொடர்புகள்"
 
 msgid "Bayesian Correlation Table"
-msgstr ""
+msgstr "பேய்சியன் தொடர்பு அட்டவணை"
 
 msgid "Pearson Correlations"
-msgstr ""
+msgstr "பியர்சன் தொடர்பு"
 
 msgid "Kendall's Tau Correlations"
-msgstr ""
+msgstr "கெண்டலின் ட அயு தொடர்புகள்"
 
 msgid "Spearman Correlations"
-msgstr ""
+msgstr "ச்பியர்மேன் தொடர்புகள்"
 
 msgid "Correlation Table"
-msgstr ""
+msgstr "தொடர்பு அட்டவணை"
 
 msgid "Pearson's r"
-msgstr ""
+msgstr "பியர்சனின் ஆர்"
 
 msgid "Spearman's rho"
-msgstr ""
+msgstr "ச்பியர்மேனின் ரோ"
 
 msgid "Kendall's tau B"
-msgstr ""
+msgstr "கெண்டலின் த அயு ஆ"
 
 msgid "Pearson"
-msgstr ""
+msgstr "பியர்சன்"
 
 msgid "Spearman"
-msgstr ""
+msgstr "ச்பியர்மேன்"
 
 msgid "Kendall"
-msgstr ""
+msgstr "கெண்டல்"
 
 msgid "Density"
-msgstr ""
+msgstr "அடர்த்தி"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr ""
+msgstr "சூழ்ச்சி செய்ய முடியாது: அவதானிப்புகளின் எண்ணிக்கை <3"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr ""
+msgstr "சூழ்ச்சி செய்ய முடியாது: எல்லையற்ற மதிப்பு (கள்)"
 
 msgid "rho"
-msgstr ""
+msgstr "ரோ"
 
 msgid "tau"
-msgstr ""
+msgstr "பெறுங்கள்"
 
 msgid "rho[s]"
-msgstr ""
+msgstr "ரோ [கள்]"
 
 msgid "Pearson's"
-msgstr ""
+msgstr "பியர்சன்"
 
 msgid "Spearman's"
-msgstr ""
+msgstr "ச்பியர்மேன்ச்"
 
 msgid "Kendall's"
-msgstr ""
+msgstr "கெண்டல்ச்"
 
 msgid "Kendall's tau"
-msgstr ""
+msgstr "கெண்டலின் த அயு"
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
-msgstr ""
+msgstr "மேல்%s %% தொஒ"
 
 msgid "Lower %s%% CI"
-msgstr ""
+msgstr "குறைந்த%s %% தொஒ"
 
 msgid "Ranks of %s"
-msgstr ""
+msgstr "%s அணிகள்"
 
 msgid ""
 "The full model could not be fitted to the data, with the following error "
 "message: '%s'"
 msgstr ""
+"பின்வரும் பிழை செய்தியுடன், முழு மாதிரியை தரவுக்கு பொருத்த முடியவில்லை: '%s'"
 
 msgid ""
 "The null model could not be fitted to the data, with the following error "
 "message: '%s'"
 msgstr ""
+"பின்வரும் பிழை செய்தியுடன் சுழிய மாதிரியை தரவுக்கு பொருத்த முடியவில்லை: '%s'"
 
 msgid ""
 "Could not find valid starting values. Check feasibility of the model to fit "
 "the data."
 msgstr ""
+"செல்லுபடியாகும் தொடக்க மதிப்புகளைக் கண்டுபிடிக்க முடியவில்லை. தரவைப் பொருத்த மாதிரியின் "
+"சாத்தியத்தை சரிபார்க்கவும்."
 
 msgid "Plotting is not possible: %s"
-msgstr ""
+msgstr "சதித்திட்டம் சாத்தியமில்லை: %s"
 
 msgid "Q-Q Plots"
-msgstr ""
+msgstr "Q-Q அடுக்கு"
 
 msgid "Q-Q plot: Standardized %1s residuals"
-msgstr ""
+msgstr "Q-Q சதி: தரப்படுத்தப்பட்ட %1S எச்சங்கள்"
 
 msgid "There are no predictors to test for multicollinearity"
-msgstr ""
+msgstr "மல்டிகோலினரிட்டியை சோதிக்க முன்னறிவிப்பாளர்கள் எதுவும் இல்லை"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
+msgstr "பி-மதிப்புகள் %s க்கு எதிரான சுழிய கருதுகோளின் சோதனைக்கு ஒத்திருக்கும்."
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "முடிவுகள் சராசரியாக உள்ளன: %s."
 
 msgid "P-values are not adjusted."
-msgstr ""
+msgstr "பி-மதிப்புகள் சரிசெய்யப்படவில்லை."
 
 msgid "Holm"
-msgstr ""
+msgstr "ஓல்ம்"
 
 msgid "Homel"
-msgstr ""
+msgstr "வீட்டு"
 
 msgid "Hochberg"
-msgstr ""
+msgstr "ஓட்ச்பெர்க்"
 
 msgid "Multivariate-t"
-msgstr ""
+msgstr "பன்முக-டி"
 
 msgid "Tukey"
-msgstr ""
+msgstr "டுகே"
 
 msgid "Benjamini-Hochberg"
-msgstr ""
+msgstr "பெஞ்சமினி-ஓச்ச்பெர்க்"
 
 msgid "Benjamini-Yekutieli"
-msgstr ""
+msgstr "என்ன"
 
 msgid "Scheffé"
-msgstr ""
+msgstr "ச்கெஃப்"
 
 msgid "Sidak"
-msgstr ""
+msgstr "சிடக்"
 
 msgid "Dunnett"
-msgstr ""
+msgstr "டன்னெட்"
 
 msgid "Bonferroni"
-msgstr ""
+msgstr "போன்பெரோரோனி"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr ""
+msgstr "பி-மதிப்புகள் %s சரிசெய்தலைப் பயன்படுத்தி சரிசெய்யப்படுகின்றன."
 
 msgid "Predicted"
-msgstr ""
+msgstr "கணிக்கப்பட்டுள்ளது"
 
 msgid "(Intercept)"
-msgstr ""
+msgstr "(இடைமறிப்பு)"
 
 msgid "Influential Cases"
-msgstr ""
+msgstr "செல்வாக்குமிக்க வழக்குகள்"
 
 msgid "Std. Residual"
-msgstr ""
+msgstr "Std. மீதமுள்ள"
 
 msgid "Predicted Value"
-msgstr ""
+msgstr "கணிக்கப்பட்ட மதிப்பு"
 
 msgid "Residual"
-msgstr ""
+msgstr "மீதமுள்ள"
 
 msgid "DFBETAS_%1s"
-msgstr ""
+msgstr "Dfbetas_%1s"
 
 msgid "DFBETAS:Intercept"
-msgstr ""
+msgstr "Dfbetas: இடைமறிப்பு"
 
 msgid "DFBETAS:%1s"
-msgstr ""
+msgstr "Dfbetas:%1s"
 
 msgid "Mahalanobis distance cannot be computed for the intercept only model."
-msgstr ""
+msgstr "மஅலானோபிச் தூரத்தை இடைமறிப்புக்கு மட்டும் மாதிரிக்கு கணக்கிட முடியாது."
 
 msgid "No influential cases found."
-msgstr ""
+msgstr "செல்வாக்குமிக்க வழக்குகள் எதுவும் கிடைக்கவில்லை."
 
 msgid ""
 "Potentially influential case, according to the selected influence measure."
-msgstr ""
+msgstr "தேர்ந்தெடுக்கப்பட்ட செல்வாக்கு அளவின்படி, செல்வாக்கு செலுத்தும் வழக்கு."
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
 "values, try another measure."
 msgstr ""
+"தீவிர மதிப்புகள் காரணமாக சில சந்தர்ப்பங்களில் செல்வாக்கு நடவடிக்கைகளை கணக்கிட முடியவில்லை"
+", மற்றொரு அளவை முயற்சிக்கவும்."
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "Vs-mpr%s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -238,629 +248,680 @@ msgid ""
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk -sellke அதிகபட்சம் <em> ப </em> -ரேடியோ: <em> ப </em> -மதிப்பு,\n"
+" H%2$s க்கு மேல் h%1$s க்கு ஆதரவாக அதிகபட்ச முரண்பாடுகள்\n"
+" <em> பி </em> %3$s .37 க்கான 1/(-மற்றும் <em> ப </em> பதிவு (<em> ப </em>))\n"
+" (SELLKE, BAYARRI, & பெர்கர், 2001)."
 
 msgid "Computing Durbin-Watson Statistics"
-msgstr ""
+msgstr "டர்பின்-வாட்சன் புள்ளிவிவரங்களை கணக்கிடுதல்"
 
 msgid "Kendall's Tau"
-msgstr ""
+msgstr "கெண்டலின் த அயு"
 
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "பகுதி தொடர்பு அட்டவணை"
 
 msgid "%s Correlations"
-msgstr ""
+msgstr "%s தொடர்புகள்"
 
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "%s பகுதி தொடர்புகள்"
 
 msgid "All tests one-tailed, for positive correlation."
-msgstr ""
+msgstr "நேர்மறையான தொடர்புக்கு அனைத்து சோதனைகளும் ஒரு வால்."
 
 msgid ", one-tailed"
-msgstr ""
+msgstr ", ஒரு வால்"
 
 msgid "All tests one-tailed, for negative correlation."
-msgstr ""
+msgstr "அனைத்து சோதனைகளும் ஒரு வால், எதிர்மறை தொடர்புக்கு."
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
-msgstr ""
+msgstr "ப <.05, ** ப <.01, *** ப <.001%s"
 
 msgid "Conditioned on variables: %s."
-msgstr ""
+msgstr "மாறிகள் மீது நிபந்தனைக்குட்பட்டது: %s."
 
 msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
 msgstr ""
+"விளைவு அளவின் நிலையான பிழை (ஃபிசரின் இசட்) தற்போது அளவுரு அல்லாத பகுதி "
+"தொடர்புகளுக்கு கிடைக்கவில்லை."
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
 msgstr ""
+"பகுதி தொடர்புகளுக்கான பகுப்பாய்வு நம்பிக்கை இடைவெளிகள் இன்னும் கிடைக்கவில்லை, ஆனால் அதற்கு"
+" பதிலாக பூட்ச்ட்ராப்பிங்கைப் பயன்படுத்தி பெறலாம்."
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr ""
+msgstr "%i தொடக்கவார் பிரதிகளின் அடிப்படையில் நம்பிக்கை இடைவெளிகள்."
 
 msgid "p"
-msgstr ""
+msgstr "ப"
 
 msgid "VS-MPR"
-msgstr ""
+msgstr "Vs -mpr"
 
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "விளைவு அளவு (ஃபிசரின் இசட்)"
 
 msgid "SE Effect size"
-msgstr ""
+msgstr "SE விளைவு அளவு"
 
 msgid "Covariance"
-msgstr ""
+msgstr "கோவரியன்ச்"
 
 msgid "r"
-msgstr ""
+msgstr "r"
 
 msgid "tau B"
-msgstr ""
+msgstr "எண் ஆ"
 
 msgid "Variable"
-msgstr ""
+msgstr "மாறக்கூடிய"
 
 msgid "Kendall's Tau B"
-msgstr ""
+msgstr "கெண்டலின் த அயு ஆ"
 
 msgid "p-value"
-msgstr ""
+msgstr "பி-மதிப்பு"
 
 msgid "Number of observations is < %s."
-msgstr ""
+msgstr "அவதானிப்புகளின் எண்ணிக்கை < %s."
 
 msgid "Bootstrapping"
-msgstr ""
+msgstr "பூட்ச்ட்ராப்பிங்"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
 msgstr ""
+"பகுதி தொடர்பைக் கணக்கிட முடியாது: கோவாரன்ச் மேட்ரிக்ச் கணக்கீட்டு ரீதியாக தனித்துவமானது."
 
 msgid "Assumption checks"
-msgstr ""
+msgstr "அனுமானம் காசோலைகள்"
 
 msgid "Shapiro-Wilk Test for Multivariate Normality"
-msgstr ""
+msgstr "பன்முக இயல்புநிலைக்கான சாபிரோ-வில்க் சோதனை"
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "சாபிரோ-வில்க்"
 
 msgid "Variables"
-msgstr ""
+msgstr "மாறிகள்"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
-msgstr ""
+msgstr "பிவாரேட் இயல்புநிலைக்கான சாபிரோ-வில்க் சோதனை"
 
 msgid "Scatter plots"
-msgstr ""
+msgstr "சிதறல் அடுக்கு"
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "தொடர்பு சூழ்ச்சி"
 
 msgid "Correlation undefined: %s"
-msgstr ""
+msgstr "தொடர்பு வரையறுக்கப்படவில்லை: %s"
 
 msgid "%1$s%% CI: [%2$s, %3$s]"
-msgstr ""
+msgstr "%1$s %% CI: [%2$s,%3$s]"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 3"
 msgstr ""
+"சூழ்ச்சி செய்ய முடியாது:\n"
+" அவதானிப்புகளின் எண்ணிக்கை <3"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 2"
 msgstr ""
+"சூழ்ச்சி செய்ய முடியாது:\n"
+" அவதானிப்புகளின் எண்ணிக்கை <2"
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "சூழ்ச்சி செய்ய முடியாது: %s"
 
 msgid "Partial Pearson's r"
-msgstr ""
+msgstr "பகுதி பியர்சனின் ஆர்"
 
 msgid "Partial Spearman's rho"
-msgstr ""
+msgstr "பகுதி ச்பியர்மேனின் ரோ"
 
 msgid "Partial Kendall's tau B"
-msgstr ""
+msgstr "பகுதி கெண்டலின் த அயு ஆ"
 
 msgid "%s heatmap"
-msgstr ""
+msgstr "%s heatmap"
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "வெப்ப வரைபடங்கள்"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
-msgstr ""
+msgstr "%1$d %% CI: [%2 $ D,%3 $ D]"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk -sellke அதிகபட்சம் <em> ப </em> -ரேடியோ: <em> ப </em> -மதிப்பின் அடிப்படையில்"
+", h%2$s க்கு மேல் h%1$s க்கு ஆதரவாக அதிகபட்ச முரண்பாடுகள் 1/ ."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
 "small sample sizes (< 10), approximation by Fisher's z transformation "
 "becomes less accurate"
 msgstr ""
+"விளைவு அளவு (ஃபிசரின் இசட்): பெரிய தொடர்பு குணகங்கள் (> 0.9) மற்றும் சிறிய மாதிரி "
+"அளவுகள் (<10) ஆகியவற்றிற்கு, ஃபிசரின் சட் உருமாற்றத்தின் தோராயமானது குறைவான "
+"துல்லியமாகிறது"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
 "62-71."
 msgstr ""
+"செல்கே, டி., பேரி, எம். சே., & பெர்கர், சே. ஓ. (2001). துல்லியமான சுழிய "
+"கருதுகோள்களைச் சோதிப்பதற்கான பி மதிப்புகளின் அளவுத்திருத்தம். அமெரிக்க புள்ளிவிவர வல்லுநர்"
+", 55 (1), ப. 62-71."
 
 msgid "Posterior is too peaked"
-msgstr ""
+msgstr "பின்புறம் மிகவும் உயர்ந்தது"
 
 msgid "Bayesian Correlation Matrix Plot"
-msgstr ""
+msgstr "பேய்சியன் தொடர்பு மேட்ரிக்ச் சூழ்ச்சி"
 
 msgid "Could not compute the posteriors"
-msgstr ""
+msgstr "போச்டரியர்களை கணக்கிட முடியவில்லை"
 
 msgid "Prior"
-msgstr ""
+msgstr "முன்"
 
 msgid "Posterior"
-msgstr ""
+msgstr "பின்புறம்"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "%s %% CI:"
 
 msgid "Bayesian Correlation Pairwise Plots"
-msgstr ""
+msgstr "பேய்சியன் தொடர்பு சோடிவரிசை அடுக்கு"
 
 msgid "max %s"
-msgstr ""
+msgstr "அதிகபட்சம் %s"
 
 msgid "%1$s at kappa==%2$s"
-msgstr ""
+msgstr "கப்பாவில்%1$s ==%2$s"
 
 msgid "user prior"
-msgstr ""
+msgstr "பயனர் முன்"
 
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "நீட்டிக்கப்பட்ட பீட்டா முன் அகலம்"
 
 msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "
 "levels."
 msgstr ""
+"பெர்ன lli லி குடும்பத்திற்கு சார்பு மாறி 2 நிலைகளைக் கொண்ட ஒரு காரணியாக இருக்க "
+"வேண்டும்."
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be non-zero."
 msgstr ""
+"பைனோமியல் குடும்பத்திற்கு எடை மாறி (அதாவது மொத்த சோதனைகளின் எண்ணிக்கை) பூச்சியமற்றதாக "
+"இருக்க வேண்டும்."
 
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "
 "successes) to be between 0 and 1 (inclusive)."
 msgstr ""
+"பைனோமியல் குடும்பத்திற்கு சார்பு மாறி (அதாவது வெற்றிகளின் விகிதம்) 0 முதல் 1 வரை "
+"(உள்ளடக்கியது) இருக்க வேண்டும்."
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be an integer."
 msgstr ""
+"பைனோமியல் குடும்பத்திற்கு எடை மாறி (அதாவது மொத்த சோதனைகளின் எண்ணிக்கை) ஒரு முழு எண்ணா"
+"க இருக்க வேண்டும்."
 
 msgid ""
 "The Gamma family and the Inverse Gaussian family require the dependent "
 "variable to be positive."
 msgstr ""
+"காமா குடும்பம் மற்றும் தலைகீழ் காசியன் குடும்பம் சார்பு மாறி நேர்மறையாக இருக்க வேண்டும்."
 
 msgid "The Poisson family requires the dependent variable to be an integer."
-msgstr ""
+msgstr "பாய்சன் குடும்பத்திற்கு சார்பு மாறி ஒரு முழு எண்ணாக இருக்க வேண்டும்."
 
 msgid ""
 "The Gaussian family with the log link requires the dependent variable to be "
 "positive."
 msgstr ""
+"பதிவு இணைப்பைக் கொண்ட காசியன் குடும்பத்திற்கு சார்பு மாறி நேர்மறையாக இருக்க வேண்டும்."
 
 msgid ""
 "The Gaussian family requires the dependent variable to be a numerical "
 "variable."
-msgstr ""
+msgstr "காசியன் குடும்பத்திற்கு சார்பு மாறி ஒரு எண் மாறியாக இருக்க வேண்டும்."
 
 msgid ""
 "Multinomial logistic regression requires the dependent variable to be a "
 "factor with at least 3 levels."
 msgstr ""
+"மல்டினோமியல் லாசிச்டிக் பின்னடைவுக்கு சார்பு மாறி குறைந்தது 3 நிலைகளைக் கொண்ட ஒரு "
+"காரணியாக இருக்க வேண்டும்."
 
 msgid ""
 "Ordinal logistic regression requires the dependent variable to be a factor "
 "with at least 3 levels."
 msgstr ""
+"ஆர்டினல் லாசிச்டிக் பின்னடைவுக்கு சார்பு மாறி குறைந்தது 3 நிலைகளைக் கொண்ட ஒரு காரணியாக "
+"இருக்க வேண்டும்."
 
 msgid ""
 "Firth logistic regression requires the dependent variable to be a factor "
 "with 2 levels."
 msgstr ""
+"ஃபிர்த் லாசிச்டிக் பின்னடைவுக்கு சார்பு மாறி 2 நிலைகளைக் கொண்ட ஒரு காரணியாக இருக்க "
+"வேண்டும்."
 
 msgid "Model Summary"
-msgstr ""
+msgstr "மாதிரி சுருக்கம்"
 
 msgid "Model Summary - %s"
-msgstr ""
+msgstr "மாதிரி சுருக்கம் - %s"
 
 msgid "Model"
-msgstr ""
+msgstr "மாதிரியுரு"
 
 msgid "Deviance"
-msgstr ""
+msgstr "விலகல்"
 
 msgid "AIC"
-msgstr ""
+msgstr "Aic"
 
 msgid "BIC"
-msgstr ""
+msgstr "பிக்"
 
 msgid "df"
-msgstr ""
+msgstr "டி.எஃப்"
 
 msgid "Null model contains nuisance parameters: %s."
-msgstr ""
+msgstr "சுழிய மாதிரியில் தொல்லை அளவுருக்கள் உள்ளன: %s."
 
 msgid "Model Fit"
-msgstr ""
+msgstr "மாதிரி பொருத்தம்"
 
 msgid "Statistic"
-msgstr ""
+msgstr "புள்ளிவிவரம்"
 
 msgid "Coefficients"
-msgstr ""
+msgstr "குணகங்கள்"
 
 msgid "Estimate"
-msgstr ""
+msgstr "மதிப்பீடு"
 
 msgid "Standard Error"
-msgstr ""
+msgstr "நிலையான பிழை"
 
 msgid "Lower Bound"
-msgstr ""
+msgstr "கீழ் எல்லை"
 
 msgid "Upper Bound"
-msgstr ""
+msgstr "மேல் பிணைப்பு"
 
 msgid "%1$s level '%2$s' coded as class 1."
-msgstr ""
+msgstr "%1$s நிலை '%2$s' வகுப்பு 1 ஆக குறியிடப்பட்டுள்ளது."
 
 msgid "%1$s levels: %2$s. '%3$s' is the reference level."
-msgstr ""
+msgstr "%1$s நிலைகள்: %2$s. '%3$s' என்பது குறிப்பு நிலை."
 
 msgid "%1$s levels: %2$s. Linear predictors: %3$s."
-msgstr ""
+msgstr "%1$s நிலைகள்: %2$s. நேரியல் முன்னறிவிப்பாளர்கள்: %3$s."
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "கண்டறிதல்"
 
 msgid "Residuals vs. Fitted Plots"
-msgstr ""
+msgstr "எச்சங்கள் எதிராக பொருத்தப்பட்ட அடுக்குகள்"
 
 msgid "Standardized %1s residuals vs. fitted values"
-msgstr ""
+msgstr "தரப்படுத்தப்பட்ட %1S எச்சங்கள் மற்றும் பொருத்தப்பட்ட மதிப்புகள்"
 
 msgid "Standardized %1s residual"
-msgstr ""
+msgstr "தரப்படுத்தப்பட்ட %1s எஞ்சியவை"
 
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr ""
+msgstr "%1S எச்சங்கள் எதிராக முன்கணிப்பு அடுக்கு"
 
 msgid "Standardized %1$s residuals vs. %2$s"
-msgstr ""
+msgstr "தரப்படுத்தப்பட்ட %1$s எச்சங்கள் Vs. %2$s"
 
 msgid "Partial Residual Plots"
-msgstr ""
+msgstr "பகுதி எஞ்சிய அடுக்கு"
 
 msgid "Partial residual plot for %1s"
-msgstr ""
+msgstr "%1 களுக்கு பகுதி எஞ்சிய சூழ்ச்சி"
 
 msgid "Partial residual for %1s"
-msgstr ""
+msgstr "%1 களுக்கு பகுதி எச்சம்"
 
 msgid "Plot: Working responses vs. linear predictor"
-msgstr ""
+msgstr "சதி: வேலை பதில்கள் எதிராக நேரியல் முன்கணிப்பு"
 
 msgid "Working responses, z"
-msgstr ""
+msgstr "வேலை பதில்கள், சட்"
 
 msgid "Outliers Tables"
-msgstr ""
+msgstr "வெளிநாட்டவர்கள் அட்டவணைகள்"
 
 msgid "Table: Top n outliers based on %1s residuals"
-msgstr ""
+msgstr "அட்டவணை: %1S எச்சங்களை அடிப்படையாகக் கொண்ட சிறந்த n வெளியீட்டாளர்கள்"
 
 msgid "Case Number"
-msgstr ""
+msgstr "வழக்கு எண்"
 
 msgid "Multicollinearity Diagnostics"
-msgstr ""
+msgstr "மல்டிகோலினரிட்டி கண்டறிதல்"
 
 msgid "Tolerance"
-msgstr ""
+msgstr "பொறுமை"
 
 msgid "VIF"
-msgstr ""
+msgstr "Vif"
 
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "மதிப்பிடப்பட்ட விளிம்பு வழிமுறைகள் மற்றும் மாறுபட்ட பகுப்பாய்வு"
 
 msgid "Estimated Marginal Means"
-msgstr ""
+msgstr "மதிப்பிடப்பட்ட விளிம்பு வழிமுறைகள்"
 
 msgid "SE"
-msgstr ""
+msgstr "உடன்"
 
 msgid "Lower"
-msgstr ""
+msgstr "கீழ்"
 
 msgid "%s%% CI"
-msgstr ""
+msgstr "%s %% தொஒ"
 
 msgid "Upper"
-msgstr ""
+msgstr "மேல்"
 
 msgid "t"
-msgstr ""
+msgstr "டி"
 
 msgid "z"
-msgstr ""
+msgstr "சட்"
 
 msgid "Results are on the response scale."
-msgstr ""
+msgstr "முடிவுகள் மறுமொழி அளவில் உள்ளன."
 
 msgid "Results are not on the response scale and might be misleading."
-msgstr ""
+msgstr "முடிவுகள் மறுமொழி அளவில் இல்லை மற்றும் தவறாக வழிநடத்தும்."
 
 msgid "Contrasts"
-msgstr ""
+msgstr "முரண்பாடுகள்"
 
 msgid "Odds Ratio"
-msgstr ""
+msgstr "முரண்பாடுகள் விகிதம்"
 
 msgid "Ratio"
-msgstr ""
+msgstr "விகிதம்"
 
 msgid "trying + %s"
-msgstr ""
+msgstr "முயற்சி + %s"
 
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
+msgstr "எஃப் சோதனை 'அரை%s' குடும்பத்தை ஏற்றுக்கொள்கிறது"
 
 msgid ""
 "Stepwise procedures are not supported for models containing factors with "
 "more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
+"2 நிலைகளுக்கு மேல் காரணிகளைக் கொண்ட மாதிரிகளுக்கு படிப்படியான நடைமுறைகள் "
+"ஆதரிக்கப்படவில்லை; போலி மாறிகளைப் பயன்படுத்தி பகுப்பாய்வை மீண்டும் முயற்சிக்கவும்"
 
 msgid ""
 "Stepwise procedures are not supported for interactions containing more than "
 "1 factor"
 msgstr ""
+"1 க்கும் மேற்பட்ட காரணிகளைக் கொண்ட தொடர்புகளுக்கு படிப்படியான நடைமுறைகள் ஆதரிக்கப்படவில்லை"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
 "removal p-value"
 msgstr ""
+"படிநிலை முறை அளவுகோல்களில் பிழை: நுழைவு பி-மதிப்பு அகற்றுவதை விட சிறியதாக இருக்க "
+"வேண்டும் பி-மதிப்பை"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry F-value needs to be larger than "
 "removal F-value"
 msgstr ""
+"படிநிலை முறை அளவுகோல்களில் பிழை: நுழைவு f- மதிப்பு அகற்றுவதை விட பெரியதாக இருக்க "
+"வேண்டும் f- மதிப்பை"
 
 msgid "R"
-msgstr ""
+msgstr "R"
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
-msgstr ""
+msgstr "சரிசெய்யப்பட்ட r%s"
 
 msgid "RMSE"
-msgstr ""
+msgstr "ஆர்.எம்.எச்.இ."
 
 msgid "R%s Change"
-msgstr ""
+msgstr "R%s மாற்றம்"
 
 msgid "F Change"
-msgstr ""
+msgstr "F மாற்றம்"
 
 msgid "df1"
-msgstr ""
+msgstr "டி.எஃப் 1"
 
 msgid "df2"
-msgstr ""
+msgstr "டி.எஃப் 2"
 
 msgid "Autocorrelation"
-msgstr ""
+msgstr "தன்னொட்டுறவு"
 
 msgid "Durbin-Watson"
-msgstr ""
+msgstr "டர்பின்-வாட்சன்"
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
+"டர்பின்-வாட்சன் சோதனைக்கான பி-மதிப்பு எடையுள்ள பின்னடைவுக்கு கிடைக்கவில்லை."
 
 msgid "No covariate could be entered in the model"
-msgstr ""
+msgstr "மாதிரியில் எந்த கோவாரியட்டையும் உள்ளிட முடியவில்லை"
 
 msgid "ANOVA"
-msgstr ""
+msgstr "அனோவா"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "சதுரங்களின் தொகை"
 
 msgid "Mean Square"
-msgstr ""
+msgstr "சராசரி நாற்கை"
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
-msgstr ""
+msgstr "பின்னடைவு"
 
 msgid "Total"
-msgstr ""
+msgstr "மொத்தம்"
 
 msgid "Unstandardized"
-msgstr ""
+msgstr "தடையில்லா"
 
 msgid "Standardized"
-msgstr ""
+msgstr "தரப்படுத்தப்பட்ட"
 
 msgid "%.0f%% CI"
-msgstr ""
+msgstr "% .0f% தொஒ"
 
 msgid "Collinearity Statistics"
-msgstr ""
+msgstr "கொலைனரிட்டி புள்ளிவிவரங்கள்"
 
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
+"தரப்படுத்தப்பட்ட குணகங்களை தொடர்ச்சியான முன்கணிப்பாளர்களுக்கு மட்டுமே கணக்கிட முடியும்."
 
 msgid ""
 "Missing coefficients are undefined because of singularities. Check the data "
 "for anything out of order!"
 msgstr ""
+"ஒருமைப்பாடு காரணமாக காணாமல் போன குணகங்கள் வரையறுக்கப்படவில்லை. ஆர்டருக்கு வெளியே "
+"எதற்கும் தரவைச் சரிபார்க்கவும்!"
 
 msgid "Bootstrap Coefficients"
-msgstr ""
+msgstr "தொடக்கவார் குணகங்கள்"
 
 msgid "Bias"
-msgstr ""
+msgstr "சார்பு"
 
 msgid "%s%% CI*"
-msgstr ""
+msgstr "%s %% CI*"
 
 msgid "Bootstrapping based on %i replicates."
-msgstr ""
+msgstr "%i பிரதிகளின் அடிப்படையில் பூட்ச்ட்ராப்பிங்."
 
 msgid ""
 "Coefficient estimate is based on the median of the bootstrap distribution."
-msgstr ""
+msgstr "குணக மதிப்பீடு தொடக்கவார் விநியோகத்தின் சராசரியை அடிப்படையாகக் கொண்டது."
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "சார்பு சரி செய்யப்பட்டது."
 
 msgid "Some bootstrap results could not be computed."
-msgstr ""
+msgstr "சில தொடக்கவார் முடிவுகளை கணக்கிட முடியவில்லை."
 
 msgid "expecting both arguments to be data.frames"
-msgstr ""
+msgstr "இரண்டு வாதங்களும் தரவு.பிரேம்களாக இருக்கும் என்று எதிர்பார்க்கிறது"
 
 msgid "Part And Partial Correlations"
-msgstr ""
+msgstr "பகுதி மற்றும் பகுதி தொடர்புகள்"
 
 msgid "Partial"
-msgstr ""
+msgstr "பகுதி"
 
 msgid "Part"
-msgstr ""
+msgstr "பகுதி"
 
 msgid "Coefficients Covariance Matrix"
-msgstr ""
+msgstr "குணகங்கள் கோவாரன்ச் மேட்ரிக்ச்"
 
 msgid "Collinearity Diagnostics"
-msgstr ""
+msgstr "கொலைனரிட்டி கண்டறிதல்"
 
 msgid "Dimension"
-msgstr ""
+msgstr "பரிமாணம்"
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "ஈசென்வெல்யூ"
 
 msgid "Condition Index"
-msgstr ""
+msgstr "நிபந்தனை அட்டவணை"
 
 msgid "Variance Proportions"
-msgstr ""
+msgstr "மாறுபாடு விகிதாச்சாரம்"
 
 msgid ""
 "Some collinearity diagnostics could not be computed. This is expected if the "
 "model contains singularities."
 msgstr ""
+"சில கூட்டு நோயறிதல்களைக் கணக்கிட முடியவில்லை. மாதிரியில் ஒருமைப்பாடு இருந்தால் இது "
+"எதிர்பார்க்கப்படுகிறது."
 
 msgid "Residuals Statistics"
-msgstr ""
+msgstr "மீதமுள்ள புள்ளிவிவரங்கள்"
 
 msgid "Minimum"
-msgstr ""
+msgstr "சிறுமம்"
 
 msgid "Maximum"
-msgstr ""
+msgstr "பெருமம்"
 
 msgid "Mean"
-msgstr ""
+msgstr "இடை, சராசரி"
 
 msgid "SD"
-msgstr ""
+msgstr "எச்.டி."
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
-msgstr ""
+msgstr "எச்சங்கள் எதிராக சார்பு"
 
 msgid "Residuals"
-msgstr ""
+msgstr "எஞ்சியவர்கள்"
 
 msgid "Residuals vs. Covariates"
-msgstr ""
+msgstr "எச்சங்கள் எதிராக கோவாரியட்ச்"
 
 msgid "Residuals vs. %s"
-msgstr ""
+msgstr "எச்சங்கள் Vs. %s"
 
 msgid "Cannot plot residuals versus an interaction with a factor."
-msgstr ""
+msgstr "ஒரு காரணியுடனான தொடர்புக்கு எதிராக எச்சங்களை சூழ்ச்சி செய்ய முடியாது."
 
 msgid "Residuals vs. Predicted"
-msgstr ""
+msgstr "எச்சங்கள் எதிராக கணிக்கப்பட்டவை"
 
 msgid "Predicted Values"
-msgstr ""
+msgstr "கணிக்கப்பட்ட மதிப்புகள்"
 
 msgid "Residuals Histogram"
-msgstr ""
+msgstr "மீதமுள்ள இச்டோகிராம்"
 
 msgid "Standardized %s"
-msgstr ""
+msgstr "தரப்படுத்தப்பட்ட %s"
 
 msgid "Q-Q Plot Standardized Residuals"
-msgstr ""
+msgstr "Q-Q சூழ்ச்சி தரப்படுத்தப்பட்ட எச்சங்கள்"
 
 msgid "Partial plots are not supported for models containing interaction terms"
 msgstr ""
+"தொடர்பு விதிமுறைகளைக் கொண்ட மாதிரிகளுக்கு பகுதி அடுக்குகள் ஆதரிக்கப்படவில்லை"
 
 msgid "%1$s vs. %2$s"
-msgstr ""
+msgstr "%1$s vs. %2$s"
 
 msgid "Partial plots are not supported for factors"
-msgstr ""
+msgstr "காரணிகளுக்கு பகுதி அடுக்குகள் ஆதரிக்கப்படவில்லை"
 
 msgid "Residuals %s"
-msgstr ""
+msgstr "எச்சங்கள் %s"
 
 msgid "Descriptives"
-msgstr ""
+msgstr "விளக்கமான"
 
 msgid "M%s"
-msgstr ""
+msgstr "எம்%s"
 
 msgid "Std. Predicted Value"
-msgstr ""
+msgstr "Std. கணிக்கப்பட்ட மதிப்பு"
 
 msgid "Standardized Residuals"
-msgstr ""
+msgstr "தரப்படுத்தப்பட்ட எச்சங்கள்"
 
 msgid "%1$s includes %2$s"
-msgstr ""
+msgstr "%1$s %2$s ஐ உள்ளடக்கியது"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -868,35 +929,42 @@ msgid ""
 "        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk -sellke அதிகபட்சம் <em> ப </em> -ரேடியோ: <em> ப </em> -மதிப்பு, அதிகபட்சம்\n"
+" H%2$s க்கு மேல் h%1$s க்கு ஆதரவாக சாத்தியமான முரண்பாடுகள் 1/(-மற்றும் <em> p </em> "
+"பதிவு (<em> ப </em>)) <em> ப <>%க்கு சமம் 3 $ எச் .37 (விற்க, பேரி, & பெர்கர், "
+"2001)."
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
 msgstr ""
+"எந்தவொரு அர்த்தமுள்ள தகவல்களையும் காட்ட முடியாததால், இடைமறிப்பு மாதிரி "
+"தவிர்க்கப்பட்டுள்ளது."
 
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
 msgstr ""
+"இடைமறிப்பு மாதிரி மட்டுமே உள்ளது, அர்த்தமுள்ள தகவல்களைக் காட்ட முடியாது."
 
 msgid "Marginal Effects Plots"
-msgstr ""
+msgstr "விளிம்பு விளைவுகள் அடுக்கு"
 
 msgid "Marginal effect of %1$s on %2$s"
-msgstr ""
+msgstr "%2$s இல் %1$s இன் விளிம்பு விளைவு"
 
 msgid "All effects are specified as nuisance"
-msgstr ""
+msgstr "அனைத்து விளைவுகளும் தொல்லை என குறிப்பிடப்படுகின்றன"
 
 msgid "There are nonpositive weights"
-msgstr ""
+msgstr "நேர்மறையான எடைகள் உள்ளன"
 
 msgid "Posterior Summary"
-msgstr ""
+msgstr "பின்புற சுருக்கம்"
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "மாதிரி ஒப்பீடு"
 
 msgid "Model Comparison - %s"
-msgstr ""
+msgstr "மாதிரி ஒப்பீடு - %s"
 
 msgid ""
 "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 "
@@ -905,6 +973,12 @@ msgid ""
 "odds scale for each additional \n"
 "covariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
 msgstr ""
+"வில்சன் மாதிரி முன் பீட்டா பைனோமியலுக்கு முன்னர் %1$s = 1 மற்றும் %2$s = p * %3$s மற்றும்"
+"\n"
+" ஒவ்வொன்றிற்கும் பதிவு-ODDS அளவில் பதிவுக்கு (%3$s + 1) சமமான தோராயமான தண்டனைக்கு "
+"ஒத்திருக்கிறது\n"
+" கோவாரியட் மாதிரியில் சேர்க்கப்பட்டது (கன்சோனி மற்றும் பலர், 2018; வில்சன் மற்றும் பலர்., "
+"2010)."
 
 msgid ""
 "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 "
@@ -912,280 +986,299 @@ msgid ""
 "for sparse regression when there are more covariates than observations "
 "(Castillo et al., 2015)."
 msgstr ""
+"காச்டிலோ மாதிரி முன் %1$s = 1 மற்றும் %2$s = p^u உடன் பீட்டா பைனோமியலுக்கு "
+"ஒத்திருக்கிறது மற்றும் பொருத்தமானது\n"
+" அவதானிப்புகளை விட அதிகமான கோவாரியட்டுகள் இருக்கும்போது சிதறிய பின்னடைவுக்கு "
+"(காச்டிலோ மற்றும் பலர்., 2015)."
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "பி.எஃப் <சப்> 10 </ சப்>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "பி.எஃப் <சப்> 01 </ சப்>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "பதிவு (பி.எஃப் <சப்> 10 </ சப்>)"
 
 msgid "Models"
-msgstr ""
+msgstr "மாதிரிகள்"
 
 msgid "P(M)"
-msgstr ""
+msgstr "பி (மீ)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "பி (எம் | தரவு)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "பி.எஃப் <சப்> எம் </துணை>"
 
 msgid "All models include %s."
-msgstr ""
+msgstr "அனைத்து மாடல்களிலும் %s அடங்கும்."
 
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
 "under \"Limit No. Models Shown\"."
 msgstr ""
+"%நிலையான மாதிரிகளின் துணைக்குழுவை மட்டுமே காண்பிக்கும்; எல்லா மாடல்களையும் காண, "
+"\"வரம்பு எண்\" இன் கீழ் \"இல்லை\" என்பதைத் தேர்ந்தெடுக்கவும்."
 
 msgid "Null model"
-msgstr ""
+msgstr "சுழிய மாதிரி"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "சுழிய மாதிரி (உள்ளிட்ட. %s)"
 
 msgid "Posterior Summaries of Coefficients"
-msgstr ""
+msgstr "குணகங்களின் பின்புற சுருக்கங்கள்"
 
 msgid "BF<sub>inclusion</sub>"
-msgstr ""
+msgstr "பி.எஃப் <சப்> சேர்த்தல் </துணை>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
-msgstr ""
+msgstr "பதிவு (பி.எஃப் <சப்> சேர்த்தல் </துணை>)"
 
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "%s %% நம்பகமான இடைவெளி"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "கெழு"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "பி (உள்ளடக்கியது)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "பி (எக்ச்க்)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "பி (உள்ளிட்ட | தரவு)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "பி (எக்ச்ட் | தரவு)"
 
 msgid "<em>Warning.</em>"
-msgstr ""
+msgstr "<em> எச்சரிக்கை. </em>"
 
 msgid "Posterior Coefficients with %s%% Credible Interval"
-msgstr ""
+msgstr "%s %% நம்பகமான இடைவெளி கொண்ட பின்புற குணகங்கள்"
 
 msgid "Posterior Log Odds"
-msgstr ""
+msgstr "பின்புற பதிவு முரண்பாடுகள்"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
 msgstr ""
+"மாதிரி முறை MCMC ஆக இருக்கும்போது பின்புற பதிவு முரண்பாடுகளைக் காட்ட முடியாது."
 
 msgid "Residuals vs Fitted"
-msgstr ""
+msgstr "எச்சங்கள் Vs பொருத்தப்பட்டவை"
 
 msgid "Predictions under BMA"
-msgstr ""
+msgstr "பி.எம்.ஏ இன் கீழ் கணிப்புகள்"
 
 msgid "Model Probabilities"
-msgstr ""
+msgstr "மாதிரி நிகழ்தகவுகள்"
 
 msgid "Cumulative Probability"
-msgstr ""
+msgstr "ஒட்டுமொத்த நிகழ்தகவு"
 
 msgid "Model Search Order"
-msgstr ""
+msgstr "மாதிரி தேடல் வரிசை"
 
 msgid "Log(P(data|M)) vs. Model Size"
-msgstr ""
+msgstr "பதிவு (பி (தரவு | மீ)) எதிராக மாதிரி அளவு"
 
 msgid "Log(P(data|M))"
-msgstr ""
+msgstr "பதிவு (பி (தரவு | மீ))"
 
 msgid "Model Dimension"
-msgstr ""
+msgstr "மாதிரி பரிமாணம்"
 
 msgid "Inclusion Probabilities"
-msgstr ""
+msgstr "சேர்த்தல் நிகழ்தகவுகள்"
 
 msgid "Marginal Inclusion Probability"
-msgstr ""
+msgstr "விளிம்பு சேர்க்கை நிகழ்தகவு"
 
 msgid ""
 "Prior\n"
 "Inclusion\n"
 "Probabilities"
 msgstr ""
+"முன்\n"
+" சேர்த்தல்\n"
+" நிகழ்தகவுகள்"
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Q-Q சூழ்ச்சி"
 
 msgid "Marginal Posterior Distributions"
-msgstr ""
+msgstr "விளிம்பு பின்புற விநியோகங்கள்"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
 msgstr ""
+"அளவுருக்கள் மதிப்பீடுகள் மற்றும்/அல்லது நம்பகமான இடைவெளிகளை கணக்கிட முடியவில்லை."
 
 msgid "Performance Diagnostics"
-msgstr ""
+msgstr "செயல்திறன் கண்டறிதல்"
 
 msgid "McFadden R%s"
-msgstr ""
+msgstr "மெக்பேடன் ஆர்%s"
 
 msgid "Nagelkerke R%s"
-msgstr ""
+msgstr "நெயிலோர்க் ஆர்%s"
 
 msgid "Tjur R%s"
-msgstr ""
+msgstr "காளை ஆர்%s"
 
 msgid "Cox & Snell R%s"
-msgstr ""
+msgstr "காக்ச் & ச்னெல் ஆர்%s"
 
 msgid "Standardized%s"
-msgstr ""
+msgstr "தரப்படுத்தப்பட்ட%s"
 
 msgid "Wald Statistic"
-msgstr ""
+msgstr "வால்ட் புள்ளிவிவரம்"
 
 msgid "Lower bound"
-msgstr ""
+msgstr "கீழ் எல்லை"
 
 msgid "Upper bound"
-msgstr ""
+msgstr "மேல் பிணைப்பு"
 
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
 "are standardized (X-standardization)."
 msgstr ""
+"தரப்படுத்தப்பட்ட மதிப்பீடுகள் தொடர்ச்சியான முன்னறிவிப்பாளர்கள் தரப்படுத்தப்பட்ட மதிப்பீடுகளைக் "
+"குறிக்கின்றன (எக்ச்-ச்டாண்டார்டிசேசன்)."
 
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
 msgstr ""
+"குணக மதிப்பீடு மற்றும் வலுவான நிலையான பிழை ஆகியவை தொடக்கவார் விநியோகத்தின் சராசரியை "
+"அடிப்படையாகக் கொண்டவை."
 
 msgid "Factor Descriptives"
-msgstr ""
+msgstr "காரணி விளக்கங்கள்"
 
 msgid "Factor"
-msgstr ""
+msgstr "காரணி"
 
 msgid "Confusion matrix"
-msgstr ""
+msgstr "குழப்ப மேட்ரிக்ச்"
 
 msgid "Observed"
-msgstr ""
+msgstr "கவனிக்கப்பட்டது"
 
 msgid "%% Correct"
-msgstr ""
+msgstr "%% சரியானது"
 
 msgid "Performance metrics"
-msgstr ""
+msgstr "செயல்திறன் அளவீடுகள்"
 
 msgid "Value"
-msgstr ""
+msgstr "மதிப்பு"
 
 msgid "Bootstrapping based on %i successful replicates."
-msgstr ""
+msgstr "%i வெற்றிகரமான பிரதிகளின் அடிப்படையில் பூட்ச்ட்ராப்பிங்."
 
 msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
 msgstr ""
+"சில நம்பிக்கை இடைவெளிகளைக் கணக்கிட முடியவில்லை.\n"
+" தொடக்கவார் பிரதிகள் மிகக் குறைவு."
 
 msgid "Diagnostic plots"
-msgstr ""
+msgstr "கண்டறியும் அடுக்கு"
 
 msgid "Estimates plots"
-msgstr ""
+msgstr "மதிப்பீடுகள் அடுக்குகள்"
 
 msgid "Predicted - residuals plot"
-msgstr ""
+msgstr "கணிக்கப்பட்ட - எச்சங்கள் சூழ்ச்சி"
 
 msgid "Predictor - residuals plots"
-msgstr ""
+msgstr "முன்கணிப்பு - எச்சங்கள் அடுக்கு"
 
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "ச்கொயர் பியர்சன் எஞ்சிய சூழ்ச்சி"
 
 msgid "Independent - predicted plots"
-msgstr ""
+msgstr "சுயாதீனமான - கணிக்கப்பட்ட அடுக்கு"
 
 msgid "Performance plots"
-msgstr ""
+msgstr "செயல்திறன் அடுக்கு"
 
 msgid "ROC plot"
-msgstr ""
+msgstr "ரோக் சூழ்ச்சி"
 
 msgid "PR plot"
-msgstr ""
+msgstr "சூழ்ச்சி"
 
 msgid "Predicted Probability"
-msgstr ""
+msgstr "கணிக்கப்பட்ட நிகழ்தகவு"
 
 msgid "Squared Pearson Residual"
-msgstr ""
+msgstr "ச்கொயர் பியர்சன் எஞ்சியவர்"
 
 msgid "False positive rate"
-msgstr ""
+msgstr "தவறான நேர்மறை விகிதம்"
 
 msgid "True positive rate"
-msgstr ""
+msgstr "உண்மையான நேர்மறை வீதம்"
 
 msgid "Positive predictive value"
-msgstr ""
+msgstr "நேர்மறை முன்கணிப்பு மதிப்பு"
 
 msgid "%1$s%% bca%2$s Confidence interval"
-msgstr ""
+msgstr "%1$s %% BCA%2$s நம்பிக்கை இடைவெளி"
 
 msgid "%s%% Confidence interval"
-msgstr ""
+msgstr "%s %% நம்பிக்கை இடைவெளி"
 
 msgid "%s <br> (odds ratio scale)"
-msgstr ""
+msgstr "%s <br> (முரண்பாடுகள் விகித அளவு)"
 
 msgid "Robust <br> %s"
-msgstr ""
+msgstr "வலுவான <br> %s"
 
 msgid "Parameter"
-msgstr ""
+msgstr "கூறளவு"
 
 msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
 "same as the coefficients are always included or excluded together."
 msgstr ""
+"காரணி (கள்) %s க்குள் உள்ள குணகங்களுக்கான சேர்த்தல்/விலக்கு புள்ளிவிவரங்கள் குணகங்கள் "
+"எப்போதும் சேர்க்கப்பட்டுள்ளன அல்லது ஒன்றாக விலக்கப்படுகின்றன."
 
 msgid "DV/Factor Descriptives"
-msgstr ""
+msgstr "டி.வி/காரணி விளக்கங்கள்"
 
 msgid "DV/Factor"
-msgstr ""
+msgstr "டி.வி/காரணி"
 
 msgid "Level"
-msgstr ""
+msgstr "நிலை"
 
 msgid "Covariate Descriptives"
-msgstr ""
+msgstr "கோவாரியேட் விளக்கங்கள்"
 
 msgid "Intercept"
-msgstr ""
+msgstr "இடைமறிப்பு"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/ %2$d வரிசையைப் பயன்படுத்துதல்"
+msgstr[1] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/ %2$d வரிசைகளைப் பயன்படுத்துதல்"
 
 msgid "The following covariate was considered but not included: %s."
 msgid_plural "The following covariates were considered but not included: %s."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "பின்வரும் கோவாரியட் கருதப்பட்டது, ஆனால் சேர்க்கப்படவில்லை: %s."
+msgstr[1] "பின்வரும் கோவாரியட்டுகள் கருதப்பட்டன, ஆனால் சேர்க்கப்படவில்லை: %s."
 
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "பகுதி பின்னடைவு சூழ்ச்சி"
+msgstr[1] "பகுதி பின்னடைவு அடுக்குகள்"
