@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-11-23 02:57\n"
+"POT-Creation-Date: 2025-01-04 02:53\n"
 "PO-Revision-Date: 2024-05-24 01:16+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -409,15 +409,6 @@ msgstr "Warmtekaarten"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr "%1$d%% CI: [%2$d, %3$d]"
-
-msgid "italic(r)"
-msgstr "italic(r)"
-
-msgid "italic(rho)"
-msgstr "italic(rho)"
-
-msgid "italic(tau)"
-msgstr "italic(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1313,6 +1304,15 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Partiële Regressiegrafiek"
 msgstr[1] "Partiële Regressiegrafieken"
+
+#~ msgid "italic(r)"
+#~ msgstr "italic(r)"
+
+#~ msgid "italic(rho)"
+#~ msgstr "italic(rho)"
+
+#~ msgid "italic(tau)"
+#~ msgstr "italic(tau)"
 
 #~ msgid "title"
 #~ msgstr "titel"

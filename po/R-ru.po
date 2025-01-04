@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2024-11-23 02:57\n"
+"POT-Creation-Date: 2025-01-04 02:53\n"
 "PO-Revision-Date: 2023-06-24 02:58+0000\n"
 "Last-Translator: Borisov Igor Borisovich <borisov_i@pimunn.net>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -447,15 +447,6 @@ msgstr "Теплловые карты"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr "%1$d%% ДИ: [%2$d, %3$d]"
-
-msgid "italic(r)"
-msgstr "курсив(r)"
-
-msgid "italic(rho)"
-msgstr "курсив(rho)"
-
-msgid "italic(tau)"
-msgstr "курсив(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1502,6 +1493,15 @@ msgid_plural "Partial Regression Plots"
 msgstr[0] "Частная регрессия"
 msgstr[1] "Частные регрессии"
 msgstr[2] "Частные регрессии"
+
+#~ msgid "italic(r)"
+#~ msgstr "курсив(r)"
+
+#~ msgid "italic(rho)"
+#~ msgstr "курсив(rho)"
+
+#~ msgid "italic(tau)"
+#~ msgstr "курсив(tau)"
 
 #, fuzzy
 #~ msgid ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2024-11-23 02:57\n"
+"POT-Creation-Date: 2025-01-04 02:53\n"
 "PO-Revision-Date: 2024-01-11 18:06+0000\n"
 "Last-Translator: fiscuteancom <vladfiscutean@gmail.com>\n"
 "Language-Team: Romanian <https://hosted.weblate.org/projects/jasp/"
@@ -385,15 +385,6 @@ msgid "Heatmaps"
 msgstr ""
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
-msgstr ""
-
-msgid "italic(r)"
-msgstr ""
-
-msgid "italic(rho)"
-msgstr ""
-
-msgid "italic(tau)"
 msgstr ""
 
 msgid ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2024-11-23 02:57\n"
+"POT-Creation-Date: 2025-01-04 02:53\n"
 "PO-Revision-Date: 2024-10-22 23:15+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -396,15 +396,6 @@ msgstr "ヒートマップ"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr "%1$d%% CI: [%2$d, %3$d]"
-
-msgid "italic(r)"
-msgstr "イタリック(r)"
-
-msgid "italic(rho)"
-msgstr "イタリック(ロー)"
-
-msgid "italic(tau)"
-msgstr "イタリック(タウ)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1263,6 +1254,15 @@ msgstr[0] "次の共変量が考慮されましたが、含まれていません
 msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "偏回帰プロット"
+
+#~ msgid "italic(r)"
+#~ msgstr "イタリック(r)"
+
+#~ msgid "italic(rho)"
+#~ msgstr "イタリック(ロー)"
+
+#~ msgid "italic(tau)"
+#~ msgstr "イタリック(タウ)"
 
 #~ msgid ""
 #~ "Unknown value provided for modelType, possible values: `alternative`, "

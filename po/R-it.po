@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2024-11-23 02:57\n"
+"POT-Creation-Date: 2025-01-04 02:53\n"
 "PO-Revision-Date: 2024-06-30 10:01+0000\n"
 "Last-Translator: Marco Capozzi <giammarcous@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
@@ -402,15 +402,6 @@ msgstr "Mappa di calore"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr "Intervallo di confidenza del %1$d%%: [%2$d, %3$d]"
-
-msgid "italic(r)"
-msgstr "italic(r)"
-
-msgid "italic(rho)"
-msgstr "italic(rho)"
-
-msgid "italic(tau)"
-msgstr "italic(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1226,6 +1217,15 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] ""
 msgstr[1] ""
+
+#~ msgid "italic(r)"
+#~ msgstr "italic(r)"
+
+#~ msgid "italic(rho)"
+#~ msgstr "italic(rho)"
+
+#~ msgid "italic(tau)"
+#~ msgstr "italic(tau)"
 
 #~ msgid "Theoretical Quantiles"
 #~ msgstr "Quantili teorici"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2024-11-23 02:57\n"
+"POT-Creation-Date: 2025-01-04 02:53\n"
 "PO-Revision-Date: 2022-08-29 00:19+0000\n"
 "Last-Translator: Laura Durans <lauraadurans@gmail.com>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -411,15 +411,6 @@ msgstr "Mapas de calor"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr "%1$d%% CI: [%2$d, %3$d]"
-
-msgid "italic(r)"
-msgstr "italic(r)"
-
-msgid "italic(rho)"
-msgstr "italic(rho)"
-
-msgid "italic(tau)"
-msgstr "italic(tau)"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1314,6 +1305,15 @@ msgid "Partial Regression Plot"
 msgid_plural "Partial Regression Plots"
 msgstr[0] "Gráfico de regressão parcial"
 msgstr[1] "Gráficos de regressão parcial"
+
+#~ msgid "italic(r)"
+#~ msgstr "italic(r)"
+
+#~ msgid "italic(rho)"
+#~ msgstr "italic(rho)"
+
+#~ msgid "italic(tau)"
+#~ msgstr "italic(tau)"
 
 #~ msgid ""
 #~ "Unknown value provided for modelType, possible values: `alternative`, "
