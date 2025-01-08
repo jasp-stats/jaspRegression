@@ -63,7 +63,8 @@ Form
 			availableVariablesList.source: ['covariates', 'factors']
 			startIndex:			0
 			availableVariablesListName: "availableTerms"
-			allowedColumns:		[]
+			allowedColumns:		['scale', 'nominal']
+			allowTypeChange:	true
 		}
 
 		CheckBox
