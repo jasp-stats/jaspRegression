@@ -13,9 +13,14 @@
 ## Apply the correct column encoding (including variable type information) to the variable names stored in
 ## 'options$modelTerms'
 .encodeModelTerms <- function(options, dataset) {
-  for(i in seq_along(options$modelTerms))
-    options$modelTerms[[i]]$components <- .harmonizeVariableEncoding(options$modelTerms[[i]]$components, dataset)
-
+  for(i in seq_along(options$modelTerms)) {
+    tmp <- rapply(
+      object  = options$modelTerms[[i]]["components"], 
+      f       = function(varNames, dataset) .harmonizeVariableEncoding(varNames, dataset),
+      how     = "replace",
+      dataset = dataset
+    )
+    options$modelTerms[[i]]$components <- tmp[[1]]
+  }
   options
 }
-

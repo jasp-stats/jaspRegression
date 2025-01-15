@@ -1,5 +1,8 @@
 context("GeneralizedLinearModel")
 
+## Load some typed test data:
+testData <- readRDS("testData.rds")
+
 getOptions <- function(analysisName) {
   options <- jaspTools::analysisOptions(analysisName)
   options <- addCommonQmlOptions(options)
@@ -261,7 +264,7 @@ test_that("Multicollinearity table matches", {
 
   options$tolerance <- TRUE
   options$vif       <- TRUE
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testData, options)
 
   table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_multicolliTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -294,7 +297,7 @@ test_that("Estimated marginal means table matches", {
   options$contrasts <- list(list(isContrast = FALSE, levels = c("1", "2", "3"), name = "contNormal", values = c("-1", "0", "1")),
                             list(isContrast = TRUE,  levels = c("1", "2", "3"), name = "Contrast 1", values = c("1", "0", "-1")))
 
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testData, options)
 
   emmTable <- results[["results"]][["emmContainer"]][["collection"]][["emmContainer_emmSummary"]][["data"]]
   jaspTools::expect_equal_tables(emmTable,
@@ -391,7 +394,7 @@ test_that("Multinomial logistic regression results match", {
   options$family     <- "other"
   options$otherGlmModel <- "multinomialLogistic"
 
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testData, options)
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list(-0.694719007279079, 0.582071603027983, -0.0563237021255478, "(Intercept)<unicode><unicode><unicode>1",
                                              0.862712942200181, 0.325717875526852, -0.172921741044895, -0.717808103822768,
@@ -428,7 +431,7 @@ test_that("Ordinal logistic regression results match", {
   options$family     <- "other"
   options$otherGlmModel <- "ordinalLogistic"
 
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "debug.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testData, options)
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list(-1.92119305349926, -0.925351795497781, -1.42327242449852, "(Intercept)<unicode><unicode><unicode>1",
                                              2.11374210463909e-08, 0.254045805396564, -5.60242442215016,

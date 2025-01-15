@@ -76,7 +76,8 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
 
     result[[pairName]] <- list()
 
-    for (method in c("pearson", "spearman", "kendall")) {
+    requestedMethods <- options[c("pearson", "spearman", "kendall")] |> unlist() |> which() |> names()
+    for (method in requestedMethods) {
 
       errorMsg <- NULL
       dataCheck <- .corBayesCheckPairsErrors(dataset, var1, var2)
