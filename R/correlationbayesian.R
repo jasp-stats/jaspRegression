@@ -22,7 +22,7 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
   options <- .parseAndStoreFormulaOptions(jaspResults, options, "priorWidth")
   # 2. Data retrieval  --------
   #
-  if (ready && is.null(dataset))
+  if (ready )
     dataset <- .corBayesReadData(dataset, options)
 
   corModel <- .computeCorBayes(jaspResults = jaspResults, dataset = dataset, options = options, ready = ready)
@@ -76,7 +76,8 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
 
     result[[pairName]] <- list()
 
-    for (method in c("pearson", "kendall")) {
+    requestedMethods <- options[c("pearson", "spearman", "kendall")] |> unlist() |> which() |> names()
+    for (method in requestedMethods) {
 
       errorMsg <- NULL
       dataCheck <- .corBayesCheckPairsErrors(dataset, var1, var2)
@@ -141,6 +142,7 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
                              twoSided  = "two.sided",
                              greater  = "greater",
                              less = "less")
+
 
   corBayesTable$dependOn(c("pearson", "kendall", "spearman", "alternative", "priorWidth", "variables",
                            "pairwiseDisplay","bayesFactorReport", "naAction",
@@ -410,6 +412,7 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
 }
 
 .fillMatrixTableCorBayes <- function(table, options, corModel) {
+
   nVariables <- length(options[["variables"]])
 
   for (i in 1:nVariables) {
@@ -460,7 +463,6 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
             sidedObject[["bf"]] <- 1/reportBf
           else if (options[["bayesFactorType"]] == "LogBF10")
             sidedObject[["bf"]] <- log(reportBf)
-
 
           # Here add to info to the collection
           #

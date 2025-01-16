@@ -47,28 +47,16 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
 # Function to read data
 .glmReadData <- function(dataset, options) {
-  if (!is.null(dataset)) {
-    return(dataset)
-  }
-  else {
-    numericVars  <- unlist(c(options[["covariates"]], options[["weights"]], options[["offset"]]))
-    numericVars  <- numericVars[numericVars != ""]
-    factorVars   <- options[["factors"]]
-    factorVars   <- factorVars[factorVars != ""]
-    dependentVar <- options[["dependent"]]
-    dependentVar <- dependentVar[dependentVar != ""]
+  numericVars  <- unlist(c(options[["covariates"]], options[["weights"]], options[["offset"]]))
+  numericVars  <- numericVars[numericVars != ""]
+  factorVars   <- options[["factors"]]
+  factorVars   <- factorVars[factorVars != ""]
+  dependentVar <- options[["dependent"]]
+  dependentVar <- dependentVar[dependentVar != ""]
 
-    if (options[["family"]] %in% c("bernoulli", "other")) {
-      return(.readDataSetToEnd(columns.as.numeric  = numericVars,
-                               columns.as.factor   = c(factorVars, dependentVar),
-                               exclude.na.listwise = c(numericVars, factorVars, dependentVar)))
-    }
-    else {
-      return(.readDataSetToEnd(columns.as.numeric  = c(numericVars, dependentVar),
-                               columns.as.factor   = factorVars,
-                               exclude.na.listwise = c(numericVars, factorVars, dependentVar)))
-    }
-  }
+  return(
+    excludeNaListwise(dataset, columns = c(numericVars, factorVars, dependentVar, recursive = TRUE))
+  )
 }
 
 # Function to check errors when reading data

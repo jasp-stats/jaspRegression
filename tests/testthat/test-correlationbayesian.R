@@ -146,23 +146,22 @@ test_that("Scatterplot matches", {
 })
 
 options <- jaspTools::analysisOptions("CorrelationBayesian")
-options$variables <- list("facFive", "contBinom")
+options$variables <- list("Month", "Stress.frequency")
 options$pearson <- FALSE
 options$kendall <- TRUE
 options$pairwiseDisplay <- TRUE
 options$matrixPlot <- TRUE
 options$pairsMethod <- "kendall"
-options$variablePairs <- list(c("facFive", "contBinom"))
+options$variablePairs <- list(c("Month", "Stress.frequency"))
 options$priorWidth <- 1
 set.seed(1)
-results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
-
+results <- jaspTools::runAnalysis("CorrelationBayesian", "Memory of Life Stresses.csv", options)
 
 test_that("Bayesian Kendall's Tau Correlations table results match", {
-	table <- results[["results"]][["corBayesTable"]][["data"]]
-	jaspTools::expect_equal_tables(table,
-		list(0.309897604337613, -0.0896993701844904, "-", "facFive", "contBinom"
-			))
+  table <- results[["results"]][["corBayesTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list(57.6676489893522, -0.580116034811604, "-", "Month", "Stress.frequency")
+  )
 })
 
 test_that("Bayesian Correlation Matrix Plot with ranks matches", {
@@ -172,7 +171,7 @@ test_that("Bayesian Correlation Matrix Plot with ranks matches", {
 })
 
 test_that("Scatterplot with ranks matches", {
-	plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contBinom-facFive"]][["collection"]][["pairsPlotCollection_contBinom-facFive_scatterPlot"]][["data"]]
+	plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_Month-Stress.frequency"]][["collection"]][["pairsPlotCollection_Month-Stress.frequency_scatterPlot"]][["data"]]
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "scatterplot-with-ranks")
 })

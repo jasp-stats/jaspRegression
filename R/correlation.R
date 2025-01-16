@@ -15,15 +15,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 CorrelationInternal <- function(jaspResults, dataset, options){
-  dataset <- .corrReadData(dataset, options)
+
   ready <- length(options$variables) >= 2
-  
-  if (ready)
+
+  if (ready) {
+    dataset <- .corrReadData(dataset, options)
     .hasErrors(dataset, type = c("infinity", "variance", "observations"),
                observations.amount = "< 3",
                observations.target = options$variables,
                exitAnalysisIfErrors = TRUE)
-  
+  }
 
   corrResults <- .corrMainResults(jaspResults, dataset, options, ready)
 
@@ -64,14 +65,12 @@ CorrelationInternal <- function(jaspResults, dataset, options){
     vars <- c(options$variables, options$partialOutVariables)
   }
 
-  if(!is.null(dataset)){
-    return(dataset)
-  } else if(options$naAction == "pairwise"){
-    data <- .readDataSetToEnd(columns.as.numeric = vars)
-    if(cond) data <- data[complete.cases(data[,.v(options$partialOutVariables)]),,drop=FALSE]
+  if(options$naAction == "pairwise"){
+    data <- dataset[vars]
+    if(cond) data <- excludeNaListwise(dataset, columns = options$partialOutVariables)
     return(data)
   } else if(options$naAction == "listwise"){
-    return(.readDataSetToEnd(columns.as.numeric = vars, exclude.na.listwise = vars))
+    return(excludeNaListwise(dataset, columns = vars))
   }
 }
 

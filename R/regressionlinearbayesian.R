@@ -69,17 +69,12 @@ RegressionLinearBayesianInternal <- function(jaspResults, dataset = NULL, option
 }
 
 .basregReadData <- function(dataset, options) {
-  if (!is.null(dataset))
-    return(dataset)
-
   vars <- c(options$dependent, unlist(options$covariates))
   if (options$weights != "") {
     vars <- c(vars, options$weights)
   }
 
-  dataset <- .readDataSetToEnd(columns.as.numeric = vars, exclude.na.listwise = vars)
-
-  return(dataset)
+  return(excludeNaListwise(dataset, columns = vars))
 }
 
 .basregCheckErrors <- function(dataset, options) {

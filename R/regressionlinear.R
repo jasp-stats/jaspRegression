@@ -16,11 +16,13 @@
 #
 
 RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
+
   nModels <- length(options[["modelTerms"]])
   ready <- options$dependent != "" && (length(options[["modelTerms"]][[nModels]][["components"]]) > 0 || options$interceptTerm)
 
   if (ready) {
     dataset <- .linregReadDataset(dataset, options)
+    options <- .encodeModelTerms(options, dataset)
     .linregCheckErrors(dataset, options)
   }
 
@@ -84,16 +86,16 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (options$descriptives && is.null(modelContainer[["descriptivesTable"]]))
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
 }
+
 #TODO: capture crashes with many interactions between factors!
 .linregReadDataset <- function(dataset, options, onlyCompleteCases = TRUE) {
-  if (!is.null(dataset))
-    return(dataset)
 
   numericVariables  <- c(options$dependent, unlist(options$covariates), options$weights)
   numericVariables  <- numericVariables[numericVariables != ""]
   factors           <- unlist(options$factors)
-  excludeNaListwise <- if(onlyCompleteCases) c(factors, numericVariables) else NULL
-  dataset           <- .readDataSetToEnd(columns.as.factor = factors, columns.as.numeric = numericVariables, exclude.na.listwise = excludeNaListwise)
+
+  if (onlyCompleteCases)
+    return(excludeNaListwise(dataset, columns = c(factors, numericVariables)))
 
   return(dataset)
 }
@@ -173,8 +175,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                  factorLevels.amount  = '< 2',
                  exitAnalysisIfErrors = TRUE)
     if (length(c(options$covariates, options$factors)) != 0) {
-      covwt <- function(...) return(stats::cov.wt(..., wt = dataset[[.v(options[["weights"]])]])$cov)
-      .hasErrors(dataset[, -which(colnames(dataset) %in% c(.v(options$weights)))],  type = "varCovData", varCovData.corFun = covwt,
+      covwt <- function(...) return(stats::cov.wt(..., wt = dataset[[options[["weights"]]]])$cov)
+      .hasErrors(dataset[, -which(colnames(dataset) %in% c(options$weights))],  type = "varCovData", varCovData.corFun = covwt,
                  exitAnalysisIfErrors = TRUE)
     }
   }
@@ -764,7 +766,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   ylab      <- gettextf("Residuals %s", options$dependent)
 
   # Compute regresion lines
-  weights <- dataset[[.v(options$weights)]]
+  weights <- dataset[[options$weights]]
   line <- as.list(setNames(lm(residualsDep~residualsPred, data = plotData, weights = weights)$coeff,
                            c("intercept", "slope"))
                   )
@@ -810,7 +812,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   predictorsInNull  <- .linregGetPredictors(options$modelTerms[[1]][["components"]])
   predictorsInFull  <- .linregGetPredictors(options$modelTerms[[nModels]][["components"]]) # these include the null terms
-
 
   if (options$weights != "")
     weights <- dataset[[options$weights]]
@@ -1559,7 +1560,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     descriptives[[i]] <- list()
 
     variable  <- variables[i]
-    data      <- na.omit(dataset[[.v(variable)]])
+    data      <- na.omit(dataset[[variable]])
 
     descriptives[[i]][["var"]]  <- variable
     descriptives[[i]][["N"]]    <- length(data)

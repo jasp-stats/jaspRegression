@@ -7,14 +7,17 @@ context("Linear Regression")
 # - stepwise methods (currently gives an error if I set p entry too high)
 # - plots handle errors
 
+## Load some typed test data:
+testData <- readRDS("testData.rds")
+
 initOptsLinReg <- function() {
   options <-  jaspTools::analysisOptions("RegressionLinear")
   
   options$dependent <- "contNormal"
   options$covariates <- "contGamma"
   options$modelTerms <- list(
-    list(components= NULL, name="model0", title = "Model 0"),
-    list(components=list("contGamma"), name="model1", title = "Model 1")
+    list(components= NULL, name = "model0", title = "Model 0"),
+    list(components= "contGamma", name = "model1", title = "Model 1")
   )
   
   options$rSquaredChange <- TRUE
@@ -372,13 +375,13 @@ test_that("Analysis handles categorical predictors in model summary table", {
   options$covariates <- "contcor1"
   options$factors <- "facFive"
   options$modelTerms <- list(
-    list(components=list("contcor1"), name="model0", title = "Model 0"),
-    list(components=list("contcor1", "facFive"), name="model1", title = "Model 1")
+    list(components = list("contcor1"), name ="model0", title = "Model 0"),
+    list(components = list("contcor1", "facFive"), name="model1", title = "Model 1")
   ) 
   options$rSquaredChange <- TRUE
   options$fChange <- TRUE
 
-  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", testData, options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -426,7 +429,7 @@ test_that("Bootstrapping runs", {
   options$coefficientCi <- TRUE
 
   set.seed(1)
-  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", testData, options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_bootstrapCoeffTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -770,8 +773,9 @@ test_that("VIF is correct when the model contains factors", {
                          list("contcor1", "facFive")),
          name="model1", title = "Model 1")
   ) 
+  testData$contBinom <- as.factor(testData$contBinom)
   set.seed(1)
-  results <- runAnalysis("RegressionLinear", "debug.csv", options)
+  results <- runAnalysis("RegressionLinear", testData, options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
   jaspTools::expect_equal_tables(
@@ -813,7 +817,6 @@ test_that("VIF is correct when the model contains factors", {
          0.918577222183053, 0.102537696840895, 0.0294339466352942, "FALSE",
          0.350057215310513, "H<unicode>", "contcor1 <unicode><unicode><unicode> facFive (5)",
          0.00738001589526162, 2.74673560025106, 0.961514615418135))
-
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_collinearityTable"]][["data"]]
   jaspTools::expect_equal_tables(
