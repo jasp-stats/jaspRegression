@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2025-01-04 02:53\n"
-"PO-Revision-Date: 2025-01-10 21:19+0000\n"
+"PO-Revision-Date: 2025-01-14 01:00+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
-msgstr "所有考驗中，對立假設是 %s為正"
+msgstr "所有檢定中，對立假設是 %s為正。"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
@@ -58,7 +58,7 @@ msgid "Correlation Table"
 msgstr "相關表"
 
 msgid "Pearson's r"
-msgstr "皮爾森r"
+msgstr "Pearson 相關係數(r)"
 
 msgid "Spearman's rho"
 msgstr "Spearman等級相關係數"
@@ -198,12 +198,11 @@ msgstr "預測的"
 msgid "(Intercept)"
 msgstr "(截距)"
 
-#, fuzzy
 msgid "Influential Cases"
-msgstr "表：影響案例"
+msgstr "具影響力的個案"
 
 msgid "Std. Residual"
-msgstr ""
+msgstr "標準化殘差"
 
 msgid "Predicted Value"
 msgstr ""
@@ -278,20 +277,20 @@ msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < .05, ** p < .01, *** p < .001%s"
 
 msgid "Conditioned on variables: %s."
-msgstr "基於變數: %s"
+msgstr "控制變數: %s"
 
 msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
-msgstr "目前無法提供無母數部分相關效果量的標準誤(Fisher's z)"
+msgstr "目前無法提供無母數淨相關效果量的標準誤(Fisher's z)"
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
-msgstr "無法提供部分相關分析的信賴區間。但可以透過拔靴法來估計。"
+msgstr "無法提供淨相關分析的信賴區間。但可以透過拔靴法來估計。"
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr "基於%i 拔靴法樣本的信賴區間"
+msgstr "基於%i 拔靴樣本的信賴區間"
 
 msgid "p"
 msgstr "p"
@@ -348,7 +347,7 @@ msgid "Variables"
 msgstr "變數"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
-msgstr "Shapiro-Wilk 雙變數常態分配考驗"
+msgstr "Shapiro-Wilk 雙變量常態性檢定"
 
 msgid "Scatter plots"
 msgstr "散佈圖"
@@ -376,13 +375,13 @@ msgid "Plotting not possible: %s"
 msgstr "無法繪圖：%s"
 
 msgid "Partial Pearson's r"
-msgstr "皮爾森部分相關"
+msgstr "Pearson淨相關"
 
 msgid "Partial Spearman's rho"
-msgstr "Spearman 部分相關"
+msgstr "Spearman 淨相關"
 
 msgid "Partial Kendall's tau B"
-msgstr "Kendall's 部分相關tau B"
+msgstr "Kendall's tau B 淨相關"
 
 #, fuzzy
 msgid "%s heatmap"
@@ -531,7 +530,7 @@ msgid "Null model contains nuisance parameters: %s."
 msgstr "空模型包含無用的參數：%s。"
 
 msgid "Model Fit"
-msgstr "模型適配度"
+msgstr "線性模型擬合檢驗"
 
 msgid "Statistic"
 msgstr "統計"
@@ -583,17 +582,14 @@ msgstr "%1s 殘差與預測變數圖"
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "標準化 %1s 殘差與 %2s"
 
-#, fuzzy
 msgid "Partial Residual Plots"
-msgstr "部分殘差圖"
+msgstr "淨殘差圖"
 
-#, fuzzy
 msgid "Partial residual plot for %1s"
-msgstr "%1s 的部分殘差圖"
+msgstr "%1s 的淨殘差圖"
 
-#, fuzzy
 msgid "Partial residual for %1s"
-msgstr "%1s 的部分殘差"
+msgstr "%1s 的淨殘差"
 
 msgid "Plot: Working responses vs. linear predictor"
 msgstr "繪圖：工作回應 vs. 線性預測變數"
@@ -617,9 +613,8 @@ msgstr "個案編號"
 msgid "Multicollinearity Diagnostics"
 msgstr "多元共線性診斷指標"
 
-#, fuzzy
 msgid "Tolerance"
-msgstr "容忍度"
+msgstr "允差值"
 
 msgid "VIF"
 msgstr ""
@@ -655,9 +650,8 @@ msgstr ""
 msgid "Results are not on the response scale and might be misleading."
 msgstr ""
 
-#, fuzzy
 msgid "Contrasts"
-msgstr "比較"
+msgstr "對比"
 
 msgid "Odds Ratio"
 msgstr "勝率比"
@@ -699,7 +693,7 @@ msgid "R%s"
 msgstr ""
 
 msgid "Adjusted R%s"
-msgstr ""
+msgstr "調整後的R%s"
 
 msgid "RMSE"
 msgstr ""
@@ -747,7 +741,7 @@ msgid "Total"
 msgstr ""
 
 msgid "Unstandardized"
-msgstr ""
+msgstr "未標準化"
 
 msgid "Standardized"
 msgstr "標準化"
@@ -756,7 +750,7 @@ msgid "%.0f%% CI"
 msgstr ""
 
 msgid "Collinearity Statistics"
-msgstr ""
+msgstr "共線性統計量"
 
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
@@ -784,48 +778,48 @@ msgid ""
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "偏差校正加速法(BCa法)。"
 
 msgid "Some bootstrap results could not be computed."
-msgstr ""
+msgstr "某些拔靴抽樣結果無法計算。"
 
 msgid "expecting both arguments to be data.frames"
 msgstr ""
 
 msgid "Part And Partial Correlations"
-msgstr ""
+msgstr "部分相關與偏相關"
 
 msgid "Partial"
-msgstr ""
+msgstr "偏"
 
 msgid "Part"
-msgstr ""
+msgstr "部分"
 
 msgid "Coefficients Covariance Matrix"
-msgstr ""
+msgstr "係數共變矩陣"
 
 msgid "Collinearity Diagnostics"
-msgstr ""
+msgstr "共線性診斷"
 
 msgid "Dimension"
-msgstr ""
+msgstr "維度"
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "特徵值"
 
 msgid "Condition Index"
-msgstr ""
+msgstr "條件指標"
 
 msgid "Variance Proportions"
-msgstr ""
+msgstr "變異比例"
 
 msgid ""
 "Some collinearity diagnostics could not be computed. This is expected if the "
 "model contains singularities."
-msgstr ""
+msgstr "某些共線性診斷無法計算。如果模型包含奇異性，這是預期的。"
 
 msgid "Residuals Statistics"
-msgstr ""
+msgstr "殘差統計量"
 
 msgid "Minimum"
 msgstr "最小值"
@@ -840,37 +834,37 @@ msgid "SD"
 msgstr "標準差"
 
 msgid "N"
-msgstr "N"
+msgstr "個案數(N)"
 
 msgid "Residuals vs. Dependent"
-msgstr ""
+msgstr "殘差 vs. 依變量"
 
 msgid "Residuals"
 msgstr ""
 
 msgid "Residuals vs. Covariates"
-msgstr ""
+msgstr "殘差 vs. 共變量"
 
 msgid "Residuals vs. %s"
-msgstr ""
+msgstr "殘差 vs. %s"
 
 msgid "Cannot plot residuals versus an interaction with a factor."
-msgstr ""
+msgstr "無法繪製殘差與因子交互作用的圖形。"
 
 msgid "Residuals vs. Predicted"
-msgstr ""
+msgstr "殘差 vs. 預測值"
 
 msgid "Predicted Values"
-msgstr ""
+msgstr "預測值"
 
 msgid "Residuals Histogram"
-msgstr ""
+msgstr "殘差直方圖"
 
 msgid "Standardized %s"
 msgstr "標準化 %s"
 
 msgid "Q-Q Plot Standardized Residuals"
-msgstr "標準化殘差 Q-Q圖"
+msgstr "標準化殘差的常態 Q-Q圖"
 
 msgid "Partial plots are not supported for models containing interaction terms"
 msgstr ""
@@ -891,7 +885,7 @@ msgid "M%s"
 msgstr ""
 
 msgid "Std. Predicted Value"
-msgstr ""
+msgstr "標準化預測值"
 
 msgid "Standardized Residuals"
 msgstr "標準化殘差"
@@ -1184,7 +1178,7 @@ msgid "Positive predictive value"
 msgstr "陽性預測值"
 
 msgid "%1$s%% bca%2$s Confidence interval"
-msgstr "%1$s%% bca%2$s信賴區間"
+msgstr "%1$s%% BCa%2$s信賴區間"
 
 #, fuzzy
 msgid "%s%% Confidence interval"
