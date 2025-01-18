@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-01-13 14:00+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspregression-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.10-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -49,7 +55,7 @@ msgstr "樣本相關係數"
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr "皮爾森相關係數"
+msgstr "Pearson 相關係數(r)"
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
@@ -83,10 +89,9 @@ msgctxt "Correlation|"
 msgid "Interval"
 msgstr "區間"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr "Vovk-Sellke 最大p比率"
+msgstr "Vovk-Sellke 最大 p 比率"
 
 msgctxt "Correlation|"
 msgid "Sample size"
@@ -122,7 +127,7 @@ msgstr "變項密度"
 
 msgctxt "Correlation|"
 msgid "Statistics"
-msgstr "統計數"
+msgstr "統計量"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
@@ -138,11 +143,11 @@ msgstr "前提假設的檢驗"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr "多元常態"
+msgstr "多元常態性"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr "Shapiro 檢驗"
+msgstr "Shapiro 檢定"
 
 msgctxt "Correlation|"
 msgid "Royston"
@@ -158,7 +163,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
-msgstr "成對常態性"
+msgstr "雙變量常態性"
 
 msgctxt "Correlation|"
 msgid "Options"
@@ -336,7 +341,7 @@ msgstr "完全排除法"
 
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
-msgstr "依變數"
+msgstr "依變量"
 
 msgctxt "RegressionLinear|"
 msgid "Method"
@@ -360,7 +365,7 @@ msgstr "逐步"
 
 msgctxt "RegressionLinear|"
 msgid "Covariates"
-msgstr "共變數"
+msgstr "自(共)變量"
 
 msgctxt "RegressionLinear|"
 msgid "Factors"
@@ -380,7 +385,7 @@ msgstr "納入截距"
 
 msgctxt "RegressionLinear|"
 msgid "Statistics"
-msgstr "統計數"
+msgstr "統計量"
 
 msgctxt "RegressionLinear|"
 msgid "Estimates"
@@ -404,7 +409,7 @@ msgstr "Vovk-Sellke 最大 p 比率"
 
 msgctxt "RegressionLinear|"
 msgid "Model fit"
-msgstr "模型適配度"
+msgstr "線性模型擬合檢驗(ANOVA)"
 
 msgctxt "RegressionLinear|"
 msgid "R squared change"
@@ -412,7 +417,7 @@ msgstr "R平方改變量"
 
 msgctxt "RegressionLinear|"
 msgid "Descriptives"
-msgstr "描述統計"
+msgstr "描述性統計"
 
 msgctxt "RegressionLinear|"
 msgid "Part and partial correlations"
@@ -424,19 +429,19 @@ msgstr "共線性診斷"
 
 msgctxt "RegressionLinear|"
 msgid "Durbin-Watson"
-msgstr "Durbin-Watson"
+msgstr "Durbin-Watson 指標"
 
 msgctxt "RegressionLinear|"
 msgid "Method Specification"
-msgstr "模式設定"
+msgstr "模型設定"
 
 msgctxt "RegressionLinear|"
 msgid "Stepping Method Criteria"
-msgstr "逐步迴歸方法條件"
+msgstr "迴歸建模的步進條件"
 
 msgctxt "RegressionLinear|"
 msgid "Use p value"
-msgstr "使用p值"
+msgstr "使用 F 機率值(p)"
 
 msgctxt "RegressionLinear|"
 msgid "Entry"
@@ -448,7 +453,7 @@ msgstr "移除"
 
 msgctxt "RegressionLinear|"
 msgid "Use F value"
-msgstr "使用F值"
+msgstr "使用 F 值"
 
 msgctxt "RegressionLinear|"
 msgid "Missing Values"
@@ -472,11 +477,11 @@ msgstr "殘差圖"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. dependent"
-msgstr "殘差 vs. 依變數"
+msgstr "殘差 vs. 依變量"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. covariates"
-msgstr "殘差 vs. 共變數"
+msgstr "殘差 vs. 共變量"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. predicted"
@@ -492,7 +497,7 @@ msgstr "Q-Q圖標準化殘差"
 
 msgctxt "RegressionLinear|"
 msgid "Partial plots"
-msgstr "偏殘差圖"
+msgstr "淨殘差圖"
 
 msgctxt "RegressionLinear|"
 msgid "Prediction intervals"
@@ -500,11 +505,11 @@ msgstr "預測區間"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr "依變數"
+msgstr "依變量"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
-msgstr "共變數"
+msgstr "共變量"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "WLS Weights (optional)"
@@ -778,7 +783,7 @@ msgstr "計算可信區間的樣本數"
 
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
-msgstr "依變數"
+msgstr "依變量"
 
 msgctxt "RegressionLogistic|"
 msgid "Method"
@@ -802,7 +807,7 @@ msgstr "逐步選取法"
 
 msgctxt "RegressionLogistic|"
 msgid "Covariates"
-msgstr "共變數(為連續變數的預測變數)"
+msgstr "共變量"
 
 msgctxt "RegressionLogistic|"
 msgid "Factors"
@@ -822,7 +827,7 @@ msgstr "納入截距"
 
 msgctxt "RegressionLogistic|"
 msgid "Statistics"
-msgstr "統計數"
+msgstr "統計量"
 
 msgctxt "RegressionLogistic|"
 msgid "Descriptives"
@@ -1055,11 +1060,11 @@ msgstr "無"
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr "依變數"
+msgstr "依變量"
 
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
-msgstr "共變數"
+msgstr "共變量"
 
 msgctxt "GlmInputComponent|"
 msgid "Factors"
@@ -1194,7 +1199,7 @@ msgstr "工作反應 vs. 線性預測變數"
 
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr "排除"
+msgstr "控制的變項"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
@@ -1210,14 +1215,13 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
 msgstr "納入截距"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
-msgstr "統計數"
+msgstr "統計量"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr "模型適配度"
+msgstr "線性模型擬合檢驗"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
@@ -1291,7 +1295,7 @@ msgstr "殘差 （%1）"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Column name"
-msgstr "直行名"
+msgstr "欄位名稱"
 
 #, fuzzy
 msgctxt "RegressionLinearBayesian|"
@@ -1340,14 +1344,13 @@ msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
 msgstr ""
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
-msgstr "依變數"
+msgstr "依變量"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Covariates"
-msgstr ""
+msgstr "共變量"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Factors"
@@ -1688,34 +1691,32 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "效果量 (Fisher's z)"
 
 #, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Residuals"
 msgstr "殘差"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Statistics"
-msgstr "統計數"
+msgstr "統計量"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
-msgstr "個別資料診斷"
+msgstr "個案影響力診斷"
 
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
-msgstr ""
+msgstr "標準化殘差 >"
 
 msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
-msgstr ""
+msgstr "Cook 距離 >"
 
 msgctxt "OutlierComponent|"
 msgid "All"
-msgstr "所有參數"
+msgstr "所有個案"
 
 #, fuzzy
 msgctxt "OutlierComponent|"
@@ -1729,19 +1730,19 @@ msgstr "DFFITS"
 
 msgctxt "OutlierComponent|"
 msgid "Cov ratio"
-msgstr ""
+msgstr "共變比率(Cov ratio)"
 
 msgctxt "OutlierComponent|"
 msgid "Leverage"
-msgstr ""
+msgstr "Leverage 槓桿值"
 
 msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
-msgstr ""
+msgstr "馬氏距離"
 
 msgctxt "OutlierComponent|"
 msgid "Append residuals to data"
-msgstr ""
+msgstr "將殘差附加到資料檔最後一欄"
 
 #, fuzzy
 msgctxt "OutlierComponent|"
@@ -1755,7 +1756,7 @@ msgstr "例如，殘差"
 
 msgctxt "Correlation|"
 msgid "Covariance"
-msgstr ""
+msgstr "共變數"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals : top"
@@ -1767,23 +1768,23 @@ msgstr "模型摘要"
 
 msgctxt "RegressionLinear|"
 msgid "F change"
-msgstr ""
+msgstr "F 改變量"
 
 msgctxt "RegressionLinear|"
 msgid "AIC and BIC"
-msgstr ""
+msgstr "AIC 與 BIC"
 
 msgctxt "RegressionLinear|"
 msgid "Tolerance and VIF"
-msgstr ""
+msgstr "允差值(容忍度)與膨脹係數(VIF)"
 
 msgctxt "RegressionLinear|"
 msgid "Display"
-msgstr ""
+msgstr "顯示"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients covariance matrix"
-msgstr ""
+msgstr "係數共變矩陣"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
