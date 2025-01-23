@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2025-01-04 02:53\n"
-"PO-Revision-Date: 2025-01-23 13:03+0000\n"
+"PO-Revision-Date: 2025-01-23 22:44+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -303,9 +303,8 @@ msgstr "效果量 (Fisher's z)"
 msgid "SE Effect size"
 msgstr "標準誤效果量"
 
-#, fuzzy
 msgid "Covariance"
-msgstr "離差量數"
+msgstr "共變數"
 
 msgid "r"
 msgstr "r"
@@ -886,7 +885,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr "敘述統計量"
+msgstr "描述性統計"
 
 msgid "M%s"
 msgstr ""
@@ -1066,7 +1065,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr "Q-Q 圖"
+msgstr "常態Q-Q 圖"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
