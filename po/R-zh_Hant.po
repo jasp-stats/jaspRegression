@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2025-01-04 02:53\n"
-"PO-Revision-Date: 2025-01-14 01:00+0000\n"
+"PO-Revision-Date: 2025-01-23 22:44+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -19,7 +19,7 @@ msgstr "所有檢定中，對立假設是 %s為正。"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
-msgstr "所有考驗中，對立假設是 %s為負"
+msgstr "所有考驗中，對立假設是 %s為負。"
 
 msgid "Scatterplot"
 msgstr "散佈圖"
@@ -136,9 +136,8 @@ msgstr ""
 msgid "Plotting is not possible: %s"
 msgstr "無法繪圖：%s"
 
-#, fuzzy
 msgid "Q-Q Plots"
-msgstr "Q-Q 圖"
+msgstr "常態Q-Q 圖"
 
 #, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
@@ -178,7 +177,7 @@ msgid "Benjamini-Yekutieli"
 msgstr ""
 
 msgid "Scheffé"
-msgstr "Scheffé檢定"
+msgstr "Scheffé 檢定"
 
 msgid "Sidak"
 msgstr ""
@@ -236,18 +235,18 @@ msgid ""
 msgstr ""
 
 msgid "VS-MPR%s"
-msgstr "VS-MPR (Vovk-Sellke maximum p-ratio) %s"
+msgstr "VS-MPR (Vovk-Sellke最大p-比率) %s"
 
-#, fuzzy
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
 "  the maximum possible odds in favor of H%1$s over H%2$s equals\n"
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
-"Vovk-Sellke Maximum <em>p</em>- 比率: 根據 <em>p</em>-值, H%1$s 對 H%2$s勝率"
-"比為1/(-e <em>p</em> log(<em>p</em>)), 此時 <em>p</em> %3$s .37 (Sellke, "
-"Bayarri, & Berger, 2001)."
+"根據 Sellke、Bayarri 和 Berger（2001）的研究，Vovk-Sellke "
+"最大<em>p</em>-比率是基於雙尾<em>p</em>-值而計算的，在<em>p</em> %3$s "
+".37的情況下，假設 H%1$s 相對於 H%2$s 的最大勝算比為：1/(-e <em>p</em> "
+"log(<em>p</em>))。"
 
 msgid "Computing Durbin-Watson Statistics"
 msgstr "計算Durbin-Watson統計量"
@@ -265,7 +264,7 @@ msgid "%s Partial Correlations"
 msgstr "%s 淨相關"
 
 msgid "All tests one-tailed, for positive correlation."
-msgstr "所有正相關皆為單尾考驗"
+msgstr "所有正相關皆為單尾檢定。"
 
 msgid ", one-tailed"
 msgstr ", 單尾"
@@ -277,12 +276,12 @@ msgid "p < .05, ** p < .01, *** p < .001%s"
 msgstr "p < .05, ** p < .01, *** p < .001%s"
 
 msgid "Conditioned on variables: %s."
-msgstr "控制變數: %s"
+msgstr "控制變數: %s。"
 
 msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
-msgstr "目前無法提供無母數淨相關效果量的標準誤(Fisher's z)"
+msgstr "目前無法提供無母數淨相關效果量的標準誤(Fisher's z)。"
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
@@ -290,7 +289,7 @@ msgid ""
 msgstr "無法提供淨相關分析的信賴區間。但可以透過拔靴法來估計。"
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr "基於%i 拔靴樣本的信賴區間"
+msgstr "基於%i 拔靴樣本的信賴區間。"
 
 msgid "p"
 msgstr "p"
@@ -304,9 +303,8 @@ msgstr "效果量 (Fisher's z)"
 msgid "SE Effect size"
 msgstr "標準誤效果量"
 
-#, fuzzy
 msgid "Covariance"
-msgstr "離差量數"
+msgstr "共變數"
 
 msgid "r"
 msgstr "r"
@@ -324,7 +322,7 @@ msgid "p-value"
 msgstr "p值"
 
 msgid "Number of observations is < %s."
-msgstr "觀察值 < %s"
+msgstr "觀察值 < %s。"
 
 msgid "Bootstrapping"
 msgstr "拔靴法"
@@ -332,7 +330,7 @@ msgstr "拔靴法"
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
-msgstr "無法計算偏相關：共變數陣在計算上是奇異矩陣"
+msgstr "無法計算偏相關：共變數陣在計算上是奇異矩陣。"
 
 msgid "Assumption checks"
 msgstr "前提假設的檢驗"
@@ -344,7 +342,7 @@ msgid "Shapiro-Wilk"
 msgstr "Shapiro-Wilk"
 
 msgid "Variables"
-msgstr "變數"
+msgstr "變項"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Shapiro-Wilk 雙變量常態性檢定"
@@ -364,12 +362,16 @@ msgstr "%1$s%% 信賴區間： [%2$s， %3$s]"
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 3"
-msgstr "無法繪圖：觀測值低於3個"
+msgstr ""
+"無法繪圖： \n"
+" 觀測值低於3個"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 2"
-msgstr "無法繪圖:觀察值少於2"
+msgstr ""
+"無法繪圖： \n"
+" 觀察值少於2"
 
 msgid "Plotting not possible: %s"
 msgstr "無法繪圖：%s"
@@ -398,6 +400,10 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"根據 Sellke、Bayarri 和 Berger（2001）的研究，Vovk-Sellke "
+"最大<em>p</em>-比率是基於雙尾<em>p</em>-值而計算的，在<em>p</em> %3$s "
+".37的情況下，假設 H%1$s 相對於 H%2$s 的最大勝算比為：1/(-e <em>p</em> "
+"log(<em>p</em>))。"
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -530,7 +536,7 @@ msgid "Null model contains nuisance parameters: %s."
 msgstr "空模型包含無用的參數：%s。"
 
 msgid "Model Fit"
-msgstr "線性模型擬合檢驗"
+msgstr "線性模型擬合檢驗(ANOVA)"
 
 msgid "Statistic"
 msgstr "統計"
@@ -617,7 +623,7 @@ msgid "Tolerance"
 msgstr "允差值"
 
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
 msgid "Estimated Marginal Means and Contrast Analysis"
 msgstr "邊際估計平均數和對比分析"
@@ -726,7 +732,7 @@ msgid "ANOVA"
 msgstr ""
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "離差平方和"
 
 msgid "Mean Square"
 msgstr "離均差平方平均值"
@@ -738,7 +744,7 @@ msgid "Regression"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "總數"
 
 msgid "Unstandardized"
 msgstr "未標準化"
@@ -840,7 +846,7 @@ msgid "Residuals vs. Dependent"
 msgstr "殘差 vs. 依變量"
 
 msgid "Residuals"
-msgstr ""
+msgstr "殘差"
 
 msgid "Residuals vs. Covariates"
 msgstr "殘差 vs. 共變量"
@@ -879,7 +885,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr "敘述統計量"
+msgstr "描述性統計"
 
 msgid "M%s"
 msgstr ""
@@ -899,6 +905,10 @@ msgid ""
 "        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"根據 Sellke、Bayarri 和 Berger（2001）的研究，Vovk-Sellke "
+"最大<em>p</em>-比率是基於雙尾<em>p</em>-值而計算的，在<em>p</em> %3$s "
+".37的情況下，假設 H%1$s 相對於 H%2$s 的最大勝算比為：1/(-e <em>p</em> "
+"log(<em>p</em>))。"
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
@@ -927,7 +937,7 @@ msgid "Model Comparison"
 msgstr "模型比較"
 
 msgid "Model Comparison - %s"
-msgstr ""
+msgstr "模型比較 - %s"
 
 msgid ""
 "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 "
@@ -954,7 +964,7 @@ msgid "Log(BF<sub>10</sub>)"
 msgstr ""
 
 msgid "Models"
-msgstr ""
+msgstr "模型"
 
 msgid "P(M)"
 msgstr ""
@@ -966,7 +976,7 @@ msgid "BF<sub>M</sub>"
 msgstr ""
 
 msgid "All models include %s."
-msgstr ""
+msgstr "所有模型都包含 %s。"
 
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
@@ -974,13 +984,13 @@ msgid ""
 msgstr ""
 
 msgid "Null model"
-msgstr ""
+msgstr "虛無模型"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "虛無模型 (包含 %s)"
 
 msgid "Posterior Summaries of Coefficients"
-msgstr ""
+msgstr "係數的後驗摘要"
 
 msgid "BF<sub>inclusion</sub>"
 msgstr ""
@@ -992,7 +1002,7 @@ msgid "%s%% Credible Interval"
 msgstr ""
 
 msgid "Coefficient"
-msgstr ""
+msgstr "係數"
 
 msgid "P(incl)"
 msgstr ""
@@ -1025,7 +1035,7 @@ msgid "Predictions under BMA"
 msgstr ""
 
 msgid "Model Probabilities"
-msgstr ""
+msgstr "模型機率"
 
 msgid "Cumulative Probability"
 msgstr ""
@@ -1040,7 +1050,7 @@ msgid "Log(P(data|M))"
 msgstr ""
 
 msgid "Model Dimension"
-msgstr ""
+msgstr "模型維度"
 
 msgid "Inclusion Probabilities"
 msgstr ""
@@ -1055,7 +1065,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr "Q-Q 圖"
+msgstr "常態Q-Q 圖"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1119,7 +1129,7 @@ msgid "Performance metrics"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "值"
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
@@ -1180,7 +1190,6 @@ msgstr "陽性預測值"
 msgid "%1$s%% bca%2$s Confidence interval"
 msgstr "%1$s%% BCa%2$s信賴區間"
 
-#, fuzzy
 msgid "%s%% Confidence interval"
 msgstr "%s%% 信賴區間"
 
