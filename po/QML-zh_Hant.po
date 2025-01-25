@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-01-23 22:44+0000\n"
-"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
-"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
-"projects/jasp/jaspregression-qml/zh_Hant/>\n"
-"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -1432,9 +1426,10 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Log posterior odds"
 msgstr "對數後驗勝算"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log(P(data|M)) vs. model size"
-msgstr ""
+msgstr "Log(P(data|M)) vs. 模型大小"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model probabilities"
@@ -1444,9 +1439,10 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals"
 msgstr "殘差"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "殘差 vs. 擬合"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Q-Q plot of model averaged residuals"
@@ -1494,17 +1490,20 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "BIC"
 msgstr "BIC"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "EB-local"
-msgstr ""
+msgstr "EB-local"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
-msgstr ""
+msgstr "g-prior"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
-msgstr ""
+msgstr "alpha"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
