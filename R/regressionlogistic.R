@@ -19,6 +19,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   ready <- options$dependent != "" #&& options$weights != ""
   if(ready) {
     dataset <- .reglogisticReadData(dataset, options)
+    options <- .encodeModelTerms(options, dataset)
     .reglogisticCheckErrors(dataset, options)
   }
   # Output tables
@@ -50,17 +51,14 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 
 # Preprocessing functions
 .reglogisticReadData <- function(dataset, options) {
-  if (!is.null(dataset))
-    return(dataset)
-  else {
-    numericVars <- unlist(c(options$covariates, options$weights))
-    numericVars <- numericVars[numericVars != ""]
-    factorVars  <- unlist(c(options$dependent, options$factors))
-    factorVars  <- factorVars[factorVars != ""]
-    return(.readDataSetToEnd(columns.as.numeric  = numericVars,
-                             columns.as.factor   = factorVars,
-                             exclude.na.listwise = c(numericVars, factorVars)))
-  }
+  numericVars <- unlist(c(options$covariates, options$weights))
+  numericVars <- numericVars[numericVars != ""]
+  factorVars  <- unlist(c(options$dependent, options$factors))
+  factorVars  <- factorVars[factorVars != ""]
+
+  return(
+    excludeNaListwise(dataset, columns = c(numericVars, factorVars, recursive = TRUE))
+  )
 }
 
 .reglogisticCheckErrors <- function(dataset, options){
@@ -265,8 +263,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   if(!options$descriptives ||
      !is.null(jaspResults[["factorDescriptives"]]) || isFALSE(ready))
     return()
-  if(is.null(dataset))
-    dataset <- .reglogisticReadData(dataset, options)
+  dataset <- .reglogisticReadData(dataset, options)
   factorDescriptives <- createJaspTable(gettext("Factor Descriptives"))
   factorDescriptives$dependOn(c("descriptives", "factors"))
   factorDescriptives$position <- 6

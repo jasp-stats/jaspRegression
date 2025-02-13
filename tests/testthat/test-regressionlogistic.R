@@ -2,6 +2,11 @@ context("Logistic Regression")
 
 # Below are the unit tests for Andy Field's book
 
+## Get some typed example data
+testData <- readRDS("testData.rds")
+santas_log <- read.csv("santas_log.csv")
+santas_log$treat <- as.factor(santas_log$treat)
+
 # Chapter 10
 test_that("Fields Book - Chapter 10 results match", {
   options <- initClassicalRegressionOptions("RegressionLogistic")
@@ -16,7 +21,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$coefficientCi <- TRUE
   options$coefficientCiAsOddsRatio <- TRUE
   
-  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = santas_log, options)
   output1 <- results[["results"]][["factorDescriptives"]][["data"]]
   jaspTools::expect_equal_tables(output1,
                       list(0, 178, "TRUE",
@@ -55,7 +60,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$oddsRatio <- TRUE
   options$coefficientCi <- TRUE
   options$coefficientCiAsOddsRatio <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = santas_log, options)
   output4 <- results[["results"]][["modelSummary"]][["data"]]
   jaspTools::expect_equal_tables(output4,
                                  list(531.250590526391, 535.242055073499, 529.250590526391, 399, 0,
@@ -153,7 +158,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$coefficientBootstrap <- TRUE
   options$coefficientBootstrapSamples <- 1000
   set.seed(1) # For Bootstrapping Unit Tests
-  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = santas_log, options)
   output9 <- results[["results"]][["influenceTable"]][["data"]]
   # used to output pearson resdual, switched to deviance using rstandard for std residuals
   jaspTools::expect_equal_tables(output9,
@@ -280,7 +285,7 @@ test_that("Confusion Matrix Table Matches", {
   )
 
   options$multicollinearity <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", testData, options)
   table <- results[["results"]][["multicolliTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("contNormal",   0.9536754, 1.048575,
                                              "contOutlier",  0.9742628, 1.026417,

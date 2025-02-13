@@ -48,11 +48,8 @@ gettextf <- function(fmt, ..., domain = NULL)  {
 .corBayesReadData <- function(dataset, options) {
   allVariables <- unlist(options[["variables"]])
 
-  if (options[["naAction"]] == "listwise") {
-    dataset <- .readDataSetToEnd(columns.as.numeric=allVariables, exclude.na.listwise=allVariables)
-  } else {
-    dataset <- .readDataSetToEnd(columns.as.numeric=allVariables)
-  }
+  if (options[["naAction"]] == "listwise")
+    dataset <- excludeNaListwise(dataset, columns = allVariables)
 
   return(dataset)
 }
