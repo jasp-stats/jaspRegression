@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2025-01-04 02:53\n"
-"PO-Revision-Date: 2025-02-07 00:02+0000\n"
-"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"PO-Revision-Date: 2025-02-13 21:02+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
 "Language: zh_Hant\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.10-dev\n"
+"X-Generator: Weblate 5.10-rc\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -144,7 +144,7 @@ msgid "Q-Q plot: Standardized %1s residuals"
 msgstr "常態 Q-Q 圖：標準化 %1s 殘差"
 
 msgid "There are no predictors to test for multicollinearity"
-msgstr ""
+msgstr "沒有預測變數可用於測試多元共線性"
 
 msgid "P-values correspond to test of null hypothesis against %s."
 msgstr "P 值對應於針對 %s 的虛無假設檢驗。"
@@ -153,7 +153,7 @@ msgid "Results are averaged over the levels of: %s."
 msgstr "結果是基於下列水準的平均數：%s。"
 
 msgid "P-values are not adjusted."
-msgstr ""
+msgstr "P值未經調整。"
 
 msgid "Holm"
 msgstr "Holm檢定"
@@ -165,7 +165,7 @@ msgid "Hochberg"
 msgstr ""
 
 msgid "Multivariate-t"
-msgstr ""
+msgstr "多變量 t"
 
 msgid "Tukey"
 msgstr "Tukey"
@@ -189,7 +189,7 @@ msgid "Bonferroni"
 msgstr "Bonferroni校正"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr ""
+msgstr "P值已使用%s調整方法進行調整。"
 
 msgid "Predicted"
 msgstr "預測的"
@@ -204,7 +204,7 @@ msgid "Std. Residual"
 msgstr "標準化殘差"
 
 msgid "Predicted Value"
-msgstr ""
+msgstr "預測值"
 
 #, fuzzy
 msgid "Residual"
@@ -214,28 +214,28 @@ msgid "DFBETAS_%1s"
 msgstr ""
 
 msgid "DFBETAS:Intercept"
-msgstr ""
+msgstr "DFBETAS:截距"
 
 msgid "DFBETAS:%1s"
 msgstr ""
 
 msgid "Mahalanobis distance cannot be computed for the intercept only model."
-msgstr ""
+msgstr "僅含截距的模型無法計算馬氏距離。"
 
 msgid "No influential cases found."
 msgstr "未發現有影響力的個案。"
 
 msgid ""
 "Potentially influential case, according to the selected influence measure."
-msgstr ""
+msgstr "根據所選的影響力測量指標，此案例可能具有影響力。"
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
 "values, try another measure."
-msgstr ""
+msgstr "由於某些案例的極端值，無法計算影響力測量指標，請嘗試使用其他測量方法。"
 
 msgid "VS-MPR%s"
-msgstr "VS-MPR (Vovk-Sellke最大p-比率) %s"
+msgstr "VS-MPR %s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -435,7 +435,7 @@ msgid "Prior"
 msgstr "先驗機率"
 
 msgid "Posterior"
-msgstr "後驗"
+msgstr "後驗機率"
 
 msgid "%s%% CI:"
 msgstr "%s%% 信賴區間："
@@ -784,7 +784,7 @@ msgid ""
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr "偏差校正加速法(BCa法)。"
+msgstr "偏誤加速校正(BCa)。"
 
 msgid "Some bootstrap results could not be computed."
 msgstr "某些拔靴抽樣結果無法計算。"
