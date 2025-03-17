@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2025-01-04 02:53\n"
-"PO-Revision-Date: 2025-03-12 10:48+0000\n"
+"PO-Revision-Date: 2025-03-17 13:06+0000\n"
 "Last-Translator: MikeWinny <winny63@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.10.3-dev\n"
+"X-Generator: Weblate 5.11-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -64,7 +64,7 @@ msgid "Correlation Table"
 msgstr "Корреляционная таблица"
 
 msgid "Pearson's r"
-msgstr "Корреляции Пирсона (r)"
+msgstr "Коэффициент корреляции Пирсона r"
 
 msgid "Spearman's rho"
 msgstr "Корреляция Спирмена (rho)"
@@ -365,7 +365,7 @@ msgid "Kendall's Tau B"
 msgstr "Корреляции Кендалла (tau-b)"
 
 msgid "p-value"
-msgstr "p"
+msgstr "p-уровень значимости"
 
 msgid "Number of observations is < %s."
 msgstr "Количество наблюдений < %s."
@@ -487,13 +487,11 @@ msgstr "График байесовской корреляционной мат�
 msgid "Could not compute the posteriors"
 msgstr "Не удалось вычислить постериоры"
 
-#, fuzzy
 msgid "Prior"
-msgstr "Приор"
+msgstr "Априорное распределение"
 
-#, fuzzy
 msgid "Posterior"
-msgstr "Постериор"
+msgstr "Апостериорное распределение"
 
 msgid "%s%% CI:"
 msgstr "%s%% ДИ:"
@@ -865,7 +863,7 @@ msgid "Regression"
 msgstr "Регрессия"
 
 msgid "Total"
-msgstr "Всего"
+msgstr "Общий"
 
 #, fuzzy
 msgid "Unstandardized"
