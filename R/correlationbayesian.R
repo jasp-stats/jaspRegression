@@ -50,6 +50,10 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
       .fillPairsPlotsCorBayes(jaspResults, pairsPlotCollection, corModel, dataset, options)
     }
   }
+
+  # 6 Linearity Test
+  .createTableLinearityTest(jaspResults, dataset, options, ready, corModel)
+
 }
 
 .computeCorBayes <- function(jaspResults, dataset, options, ready = TRUE) {
@@ -1250,3 +1254,309 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
                                                   "ciValue"=ciLevel))
   }
 }
+
+#linearity test
+.createTableLinearityTest <- function(jaspResults, dataset, options, ready) {
+
+  if (options[["linearityTest"]])
+    return()
+
+  tb <-  jaspResults[["linearityTestTable"]] %setOrRetrieve% .linearityTestTableSetup(jaspResults, dataset, options)
+
+  if (!ready || !jaspBase::isRecomputed())
+    return()
+
+  fits <- jaspResults[["linearityTestState"]] %setOrRetrieve% (
+    .linearityTestComputeBFs(dataset, options) |>
+      createJaspState(dependencies = c("pairs"))
+  )
+
+  if (isTryError(fits))
+    tb$setError(.extractErrorMessage(fits))
+  else
+    .linearityTestFillTable(tb, fits, options)
+
+}
+
+.linearityTestFillTable <- function(tb, fits, options) {
+
+  newBFtype <- options[["bayesFactorType"]]
+  for (i in seq_along(fits)) {
+    pairFit <- fits[[i]]
+    pair <- pairFit[["pair"]]
+
+    if (is.na(pairFit$BF)) {
+      tb$addRows(list(pair = pair, BF = NA), rowNames = pair)
+      if (!is.null(pairFit[["errorMessage"]]))
+        tb$addFootnote(pairFit[["errorMessage"]], rowNames = pair, colNames = "BF")
+    } else {
+      tb$addRows(list(
+        pair = pair,
+        BF   = jaspBase::.recodeBFtype(pairFit$BF, newBFtype = newBFtype, oldBFtype = "BF10")
+      ))
+    }
+  }
+}
+
+
+.linearityTestComputeBFs <- function(dataset, options) {
+
+  #get all the combinations
+  pairs <- combn(options[["variables"]], 2, simplify = FALSE)
+
+  #create an empty list to store the result of each pairs
+  npairs <- length(pairs)
+  results <- data.frame(
+    pair         = character(npairs),
+    BF           = numeric(npairs),
+    errorMessage = character(npairs)
+  )
+
+  # constants for BAS
+  nPreds     <- 1#length(linearTerm)
+  initProbs  <- rep(0.5, 2)#nPreds + 1) # the + 1 is the intercept
+  weights    <- NULL
+  modelPrior <- BAS::beta.binomial(1, 1)
+  n.models   <- NULL
+  # iterations for MCMC
+  MCMC.iterations <- NULL
+
+  # convert QML input to prior value that bas.lm expects
+  prior <- "JZS"
+
+  # parameter for jzs
+  alpha <- 0.354^2
+
+  for (i in seq_along(pairs)) {
+
+    var1 <- pairs[[i]][1]
+    var2 <- pairs[[i]][2]
+
+    results[["pair"]][i] <- sprintf("%s - %s", var2, var1)
+
+    formula <- stats::as.formula(sprintf("%s ~ poly(%s, 2)", var2, var1))
+
+    # Bayesian Adaptive Sampling
+    .setSeedJASP(options)
+    basFit <- try(BAS::bas.lm(
+      formula         = formula,
+      data            = na.omit(dataset),
+      prior           = prior,
+      alpha           = alpha,
+      modelprior      = modelPrior,
+      n.models        = n.models,
+      # method          = toupper(options$samplingMethod),
+      MCMC.iterations = MCMC.iterations,
+      # initprobs       = initProbs,
+      weights         = weights,
+      renormalize     = TRUE
+    ))
+
+    if (isTryError(basFit)) {
+
+      errorMessage <- .extractErrorMessage(basFit)
+      results[["errorMessage"]][i] <- errorMessage
+
+    } else {
+
+      if (basFit$n.models > 1 && nPreds > 1) # can crash without this check
+        basFit <- BAS::force.heredity.bas(basFit)
+
+      logMarg <- basFit[["logmarg"]]
+      idxLinear    <- which(sapply(basFit[["which"]], \(x) isTRUE(all.equal(x, c(0, 1)))))
+      idxQuadratic <- which(sapply(basFit[["which"]], \(x) isTRUE(all.equal(x, c(0, 1, 2)))))
+
+      logBF10 <- logMarg[idxQuadratic] - logMarg[idxLinear]
+
+      results[["BF"]][i] <- logBF10
+    }
+  }
+  return(results)
+}
+
+
+
+.linearityTestFillTable <- function(linearityTestTable, BF10Values, corModel, options) {
+
+  pairs <- names(BF10Values)
+  for (pairName in pairs) {
+    bfObject <- corModel[[pairName]][[1]]
+    errorMessage <- bfObject[["error"]]
+    tempRow <- list(pair = pairName)
+
+    if (!is.null(errorMessage)) {
+      if (options$linearityBF10) tempRow[['BF10']] <- NA
+      if (options$linearityBF01) tempRow[['BF01']] <- NA
+    } else {
+      bf10Value <- BF10Values[[pairName]]
+      bf01Value <- 1 / bf10Value
+
+      if (options$linearityBF10) tempRow[['BF10']] <- bf10Value
+      if (options$linearityBF01) tempRow[['BF01']] <- bf01Value
+    }
+
+    linearityTestTable$addRows(tempRow, rowNames = pairName)
+
+    # Add footnotes conditionally
+    if (options$linearityBF10) {
+      linearityTestTable$addFootnote(
+        "BF₁₀ > 1: more evidence in favor of the polynomial model; BF₁₀ < 1: more evidence in favor of the linear model",
+        colNames = "BF10"
+      )
+    }
+    if (options$linearityBF01) {
+      linearityTestTable$addFootnote(
+        "BF₀₁ > 1: more evidence in favor of the linear model; BF₀₁ < 1: more evidence in favor of the polynomial model",
+        colNames = "BF01"
+      )
+    }
+
+    if (!is.null(errorMessage)) {
+      if (options$linearityBF10) {
+        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF10')
+      }
+      if (options$linearityBF01) {
+        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF01')
+      }
+    }
+  }
+}
+
+.linearityTestTableSetup <- function(jaspResults, dataset, options, ready) {
+
+  linearityTestTable <- createJaspTable(title = "Linearity Test")
+  linearityTestTable$dependOn(c("pairs", "bayesFactorType"))
+
+  variables <- options$variables
+  pairs <- combn(variables, 2, simplify = FALSE)
+
+  linearityTestTable$addColumnInfo(name = "pair", title = gettext("Pair"), type = "string")
+  linearityTestTable$addColumnInfo(name = "BF",   title = "BF₁₀", type = "number")
+
+  # Add columns based on user selections
+  if (options$polynomial) {
+    if (options$linearityBF10) {
+      linearityTestTable$addColumnInfo(name = "BF10", title = "BF₁₀", type = "number")
+    }
+    if (options$linearityBF01) {
+      linearityTestTable$addColumnInfo(name = "BF01", title = "BF₀₁", type = "number")
+    }
+  }
+
+  if (options$gpp) {
+    linearityTestTable$addColumnInfo(name = "gpp", title = "", type = "string")
+  }
+
+  # Add rows
+  for (row in seq_along(pairs)) {
+    rowName <- paste(pairs[[row]], collapse = "_")
+    linearityTestTable$setRowName(row, rowName)
+  }
+  jaspResults[["linearityTestTable"]] <- linearityTestTable
+
+  return(linearityTestTable)
+}
+
+.linearityTestBF10Values <- function(results, options, dataset) {
+  variables <- options$variables
+  pairs <- combn(variables, 2, simplify = FALSE)
+  BF10Values <- list()
+
+  for (pair in pairs) {
+    var1 <- pair[1]
+    var2 <- pair[2]
+    modelKey <- paste(sort(c(var1, var2)), collapse="-")
+
+    bas_lm <- results[[modelKey]]#$object
+
+    logMarg <- bas_lm$logmarg
+    idxLinear <- which(sapply(bas_lm$which, \(x) isTRUE(all.equal(x, c(0, 1)))))
+    idxQuadratic <- which(sapply(bas_lm$which, \(x) isTRUE(all.equal(x, c(0, 1, 2)))))
+    bayesFactors <- exp(logMarg[idxQuadratic] - logMarg[idxLinear])
+    BF10Values[[modelKey]] <- bayesFactors
+  }
+  return(BF10Values)
+}
+
+#.linearityTestFillTable <- function(linearityTestTable, BF10Values,corModel) {
+#   BF10Values <- BF10Values
+#   pairs <- names(BF10Values)
+#
+#   for (pairName in pairs) {
+#
+#     bfObject <- corModel[[pairName]][[1]]
+#
+#
+#     errorMessage <- bfObject[["error"]]
+#
+#     tempRow <- list(pair = pairName)
+#     if (!is.null(errorMessage)) {
+#       tempRow[['BF10']] <- NA
+#       tempRow[['BF01']] <- NA
+#     } else {
+#       #tempRow[['BF10']] <- BF10Values[[pairName]]
+#       bf10ValueFill <- BF10Values[[pairName]]
+#       bf01ValueFill <- 1 / bf10ValueFill
+#       tempRow[['BF10']] <- bf10ValueFill
+#       tempRow[['BF01']] <- bf01ValueFill
+#
+#     }
+#
+#     linearityTestTable$addRows(tempRow, rowNames=pairName)
+#     linearityTestTable$addFootnote("BF10 > 1: more evidence in favor of the polynomial model; BF10 < 1: more evidence in favor of the linear model")
+#     linearityTestTable$addFootnote("BF01 > 1: more evidence in favor of the linear model; BF01 < 1: more evidence in favor of the polynomial model")
+#
+#     if (!is.null(errorMessage)){
+#       linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF10')
+#       linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF01')
+#     }
+#   }
+#
+#
+# }
+.linearityTestFillTable <- function(linearityTestTable, BF10Values, corModel, options) {
+  pairs <- names(BF10Values)
+
+  for (pairName in pairs) {
+    bfObject <- corModel[[pairName]][[1]]
+    errorMessage <- bfObject[["error"]]
+    tempRow <- list(pair = pairName)
+
+    if (!is.null(errorMessage)) {
+      if (options$linearityBF10) tempRow[['BF10']] <- NA
+      if (options$linearityBF01) tempRow[['BF01']] <- NA
+    } else {
+      bf10Value <- BF10Values[[pairName]]
+      bf01Value <- 1 / bf10Value
+
+      if (options$linearityBF10) tempRow[['BF10']] <- bf10Value
+      if (options$linearityBF01) tempRow[['BF01']] <- bf01Value
+    }
+
+    linearityTestTable$addRows(tempRow, rowNames = pairName)
+
+    # Add footnotes conditionally
+    if (options$linearityBF10) {
+      linearityTestTable$addFootnote(
+        "BF₁₀ > 1: more evidence in favor of the polynomial model; BF₁₀ < 1: more evidence in favor of the linear model",
+        colNames = "BF10"
+      )
+    }
+    if (options$linearityBF01) {
+      linearityTestTable$addFootnote(
+        "BF₀₁ > 1: more evidence in favor of the linear model; BF₀₁ < 1: more evidence in favor of the polynomial model",
+        colNames = "BF01"
+      )
+    }
+
+    if (!is.null(errorMessage)) {
+      if (options$linearityBF10) {
+        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF10')
+      }
+      if (options$linearityBF01) {
+        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF01')
+      }
+    }
+  }
+}
+
