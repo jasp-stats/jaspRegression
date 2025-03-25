@@ -37,6 +37,8 @@ The Bayesian Correlation analysis allows for the estimation of the population co
 - Flag supported correlations: Indicate which correlation coefficients yield Bayes factors greater than 10, 30, and 100.
 - Sample size: Report the sample size for each test.
 - Credible intervals: Display central 95% credible intervals for the correlation coefficient.
+- Linearity test: For each pair A - B, tests if A is better predicted as a linear function of B, i.e., l := A ~ 1 + B, or a quadratic function of B, i.e., q := A ~ 1 + B + B^2.
+Uses the default settings for Bayesian regression, i.e., a JZS-prior with alpha set to 0.354 and for the model prior a beta binomial distribution with alpha = 1 and beta = 1. Note that since only two models are considered the model prior is equivalent to a uniform model prior.
 
 #### Plots
 - Correlation matrix: Display a grid of scatterplots for each possible combination of the selected variables. These are placed above the diagonal.

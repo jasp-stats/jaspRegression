@@ -52,7 +52,7 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
   }
 
   # 6 Linearity Test
-  .createTableLinearityTest(jaspResults, dataset, options, ready, corModel)
+  .createTableLinearityTest(jaspResults, dataset, options, ready)
 
 }
 
@@ -1258,7 +1258,7 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
 #linearity test
 .createTableLinearityTest <- function(jaspResults, dataset, options, ready) {
 
-  if (options[["linearityTest"]])
+  if (!options[["linearityTest"]])
     return()
 
   tb <-  jaspResults[["linearityTestTable"]] %setOrRetrieve% .linearityTestTableSetup(jaspResults, dataset, options)
@@ -1268,7 +1268,7 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
 
   fits <- jaspResults[["linearityTestState"]] %setOrRetrieve% (
     .linearityTestComputeBFs(dataset, options) |>
-      createJaspState(dependencies = c("pairs"))
+      createJaspState(dependencies = "variables")
   )
 
   if (isTryError(fits))
@@ -1278,26 +1278,56 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
 
 }
 
+.linearityTestTableSetup <- function(jaspResults, dataset, options, ready) {
+
+  linearityTestTable <- createJaspTable(title = gettext("Linearity Test"))
+  linearityTestTable$dependOn(c("linearityTest", "variables", "bayesFactorType"))
+
+
+  bfTitle <- switch(options[["bayesFactorType"]],
+                   "LogBF10" = "Log(BF<sub>ql</sub>)",
+                   "BF10"    = "BF<sub>ql</sub>",
+                   "BF01"    = "BF<sub>lq</sub>"
+  )
+  linearityTestTable$addColumnInfo(name = "pair", title = gettext("Pair"), type = "string")
+  linearityTestTable$addColumnInfo(name = "BF",   title = bfTitle,         type = "number")
+
+  linearityTestTable$info <- gettext("
+    For each pair A - B, tests if A is better predicted as a linear function of B, i.e., l := A ~ 1 + B, or a quadratic function of B, i.e., q := A ~ 1 + B + B^2.
+    Uses the default settings for Bayesian regression, i.e., a JZS-prior with alpha set to 0.354 and for the model prior a beta binomial distribution with alpha = 1 and beta = 1. Note that since only two models are considered the model prior is equivalent to a uniform model prior.
+  ")
+  linearityTestTable$addFootnote(
+    if (options[["bayesFactorType"]] == "BF01")
+      gettext("Evidence shown in favor of a linear model (l) against a quadratic model (q).")
+    else
+      gettext("Evidence shown in favor of a quadratic model (q) against a linear model (l).")
+  )
+
+  return(linearityTestTable)
+}
+
 .linearityTestFillTable <- function(tb, fits, options) {
 
   newBFtype <- options[["bayesFactorType"]]
-  for (i in seq_along(fits)) {
-    pairFit <- fits[[i]]
-    pair <- pairFit[["pair"]]
+  pairs         <- fits[["pair"]]
+  BFs           <- fits[["BF"]]
+  errorMessages <- fits[["errorMessage"]]
+  print("fits")
+  print(fits)
+  for (i in seq_along(pairs)) {
 
-    if (is.na(pairFit$BF)) {
-      tb$addRows(list(pair = pair, BF = NA), rowNames = pair)
-      if (!is.null(pairFit[["errorMessage"]]))
-        tb$addFootnote(pairFit[["errorMessage"]], rowNames = pair, colNames = "BF")
+    if (is.na(BFs[i])) {
+      tb$addRows(list(pair = pairs[i], BF = NA), rowNames = pairs[i])
+      if (errorMessages[i] != "")
+        tb$addFootnote(errorMessages[i], rowNames = pairs[i], colNames = "BF")
     } else {
       tb$addRows(list(
-        pair = pair,
-        BF   = jaspBase::.recodeBFtype(pairFit$BF, newBFtype = newBFtype, oldBFtype = "BF10")
+        pair = pairs[i],
+        BF   = jaspBase::.recodeBFtype(BFs[i], newBFtype = newBFtype, oldBFtype = "LogBF10")
       ))
     }
   }
 }
-
 
 .linearityTestComputeBFs <- function(dataset, options) {
 
@@ -1373,190 +1403,3 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
   }
   return(results)
 }
-
-
-
-.linearityTestFillTable <- function(linearityTestTable, BF10Values, corModel, options) {
-
-  pairs <- names(BF10Values)
-  for (pairName in pairs) {
-    bfObject <- corModel[[pairName]][[1]]
-    errorMessage <- bfObject[["error"]]
-    tempRow <- list(pair = pairName)
-
-    if (!is.null(errorMessage)) {
-      if (options$linearityBF10) tempRow[['BF10']] <- NA
-      if (options$linearityBF01) tempRow[['BF01']] <- NA
-    } else {
-      bf10Value <- BF10Values[[pairName]]
-      bf01Value <- 1 / bf10Value
-
-      if (options$linearityBF10) tempRow[['BF10']] <- bf10Value
-      if (options$linearityBF01) tempRow[['BF01']] <- bf01Value
-    }
-
-    linearityTestTable$addRows(tempRow, rowNames = pairName)
-
-    # Add footnotes conditionally
-    if (options$linearityBF10) {
-      linearityTestTable$addFootnote(
-        "BF₁₀ > 1: more evidence in favor of the polynomial model; BF₁₀ < 1: more evidence in favor of the linear model",
-        colNames = "BF10"
-      )
-    }
-    if (options$linearityBF01) {
-      linearityTestTable$addFootnote(
-        "BF₀₁ > 1: more evidence in favor of the linear model; BF₀₁ < 1: more evidence in favor of the polynomial model",
-        colNames = "BF01"
-      )
-    }
-
-    if (!is.null(errorMessage)) {
-      if (options$linearityBF10) {
-        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF10')
-      }
-      if (options$linearityBF01) {
-        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF01')
-      }
-    }
-  }
-}
-
-.linearityTestTableSetup <- function(jaspResults, dataset, options, ready) {
-
-  linearityTestTable <- createJaspTable(title = "Linearity Test")
-  linearityTestTable$dependOn(c("pairs", "bayesFactorType"))
-
-  variables <- options$variables
-  pairs <- combn(variables, 2, simplify = FALSE)
-
-  linearityTestTable$addColumnInfo(name = "pair", title = gettext("Pair"), type = "string")
-  linearityTestTable$addColumnInfo(name = "BF",   title = "BF₁₀", type = "number")
-
-  # Add columns based on user selections
-  if (options$polynomial) {
-    if (options$linearityBF10) {
-      linearityTestTable$addColumnInfo(name = "BF10", title = "BF₁₀", type = "number")
-    }
-    if (options$linearityBF01) {
-      linearityTestTable$addColumnInfo(name = "BF01", title = "BF₀₁", type = "number")
-    }
-  }
-
-  if (options$gpp) {
-    linearityTestTable$addColumnInfo(name = "gpp", title = "", type = "string")
-  }
-
-  # Add rows
-  for (row in seq_along(pairs)) {
-    rowName <- paste(pairs[[row]], collapse = "_")
-    linearityTestTable$setRowName(row, rowName)
-  }
-  jaspResults[["linearityTestTable"]] <- linearityTestTable
-
-  return(linearityTestTable)
-}
-
-.linearityTestBF10Values <- function(results, options, dataset) {
-  variables <- options$variables
-  pairs <- combn(variables, 2, simplify = FALSE)
-  BF10Values <- list()
-
-  for (pair in pairs) {
-    var1 <- pair[1]
-    var2 <- pair[2]
-    modelKey <- paste(sort(c(var1, var2)), collapse="-")
-
-    bas_lm <- results[[modelKey]]#$object
-
-    logMarg <- bas_lm$logmarg
-    idxLinear <- which(sapply(bas_lm$which, \(x) isTRUE(all.equal(x, c(0, 1)))))
-    idxQuadratic <- which(sapply(bas_lm$which, \(x) isTRUE(all.equal(x, c(0, 1, 2)))))
-    bayesFactors <- exp(logMarg[idxQuadratic] - logMarg[idxLinear])
-    BF10Values[[modelKey]] <- bayesFactors
-  }
-  return(BF10Values)
-}
-
-#.linearityTestFillTable <- function(linearityTestTable, BF10Values,corModel) {
-#   BF10Values <- BF10Values
-#   pairs <- names(BF10Values)
-#
-#   for (pairName in pairs) {
-#
-#     bfObject <- corModel[[pairName]][[1]]
-#
-#
-#     errorMessage <- bfObject[["error"]]
-#
-#     tempRow <- list(pair = pairName)
-#     if (!is.null(errorMessage)) {
-#       tempRow[['BF10']] <- NA
-#       tempRow[['BF01']] <- NA
-#     } else {
-#       #tempRow[['BF10']] <- BF10Values[[pairName]]
-#       bf10ValueFill <- BF10Values[[pairName]]
-#       bf01ValueFill <- 1 / bf10ValueFill
-#       tempRow[['BF10']] <- bf10ValueFill
-#       tempRow[['BF01']] <- bf01ValueFill
-#
-#     }
-#
-#     linearityTestTable$addRows(tempRow, rowNames=pairName)
-#     linearityTestTable$addFootnote("BF10 > 1: more evidence in favor of the polynomial model; BF10 < 1: more evidence in favor of the linear model")
-#     linearityTestTable$addFootnote("BF01 > 1: more evidence in favor of the linear model; BF01 < 1: more evidence in favor of the polynomial model")
-#
-#     if (!is.null(errorMessage)){
-#       linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF10')
-#       linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF01')
-#     }
-#   }
-#
-#
-# }
-.linearityTestFillTable <- function(linearityTestTable, BF10Values, corModel, options) {
-  pairs <- names(BF10Values)
-
-  for (pairName in pairs) {
-    bfObject <- corModel[[pairName]][[1]]
-    errorMessage <- bfObject[["error"]]
-    tempRow <- list(pair = pairName)
-
-    if (!is.null(errorMessage)) {
-      if (options$linearityBF10) tempRow[['BF10']] <- NA
-      if (options$linearityBF01) tempRow[['BF01']] <- NA
-    } else {
-      bf10Value <- BF10Values[[pairName]]
-      bf01Value <- 1 / bf10Value
-
-      if (options$linearityBF10) tempRow[['BF10']] <- bf10Value
-      if (options$linearityBF01) tempRow[['BF01']] <- bf01Value
-    }
-
-    linearityTestTable$addRows(tempRow, rowNames = pairName)
-
-    # Add footnotes conditionally
-    if (options$linearityBF10) {
-      linearityTestTable$addFootnote(
-        "BF₁₀ > 1: more evidence in favor of the polynomial model; BF₁₀ < 1: more evidence in favor of the linear model",
-        colNames = "BF10"
-      )
-    }
-    if (options$linearityBF01) {
-      linearityTestTable$addFootnote(
-        "BF₀₁ > 1: more evidence in favor of the linear model; BF₀₁ < 1: more evidence in favor of the polynomial model",
-        colNames = "BF01"
-      )
-    }
-
-    if (!is.null(errorMessage)) {
-      if (options$linearityBF10) {
-        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF10')
-      }
-      if (options$linearityBF01) {
-        linearityTestTable$addFootnote(errorMessage, rowNames = pairName, colNames = 'BF01')
-      }
-    }
-  }
-}
-

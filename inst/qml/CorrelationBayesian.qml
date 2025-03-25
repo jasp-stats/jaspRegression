@@ -40,13 +40,6 @@ Form
 
 	Group
 	{
-		title: qsTr("Polynomial Linearity Test")
-		CheckBox {	name: "BF10";		label: qsTr("BF₁₀");	checked: true	}
-		CheckBox {	name: "BF01";		label: qsTr("BF₀₁");	                }
-	}
-
-	Group
-	{
 		title: qsTr("Additional Options")
 		CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table")					}
 		CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors"); checked: true		}
@@ -61,7 +54,7 @@ Form
 		CheckBox
 		{
 			name:  "linearityTest"
-			label: qsTr("Linearity Test")
+			label: qsTr("Linearity test")
 			info:  qsTr("Compute a test for the linearity of the relationship between the two variables by comparing a linear model to a quadratic model.")
 		}
 	}
