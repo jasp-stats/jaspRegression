@@ -1312,8 +1312,6 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
   pairs         <- fits[["pair"]]
   BFs           <- fits[["BF"]]
   errorMessages <- fits[["errorMessage"]]
-  print("fits")
-  print(fits)
   for (i in seq_along(pairs)) {
 
     if (is.na(BFs[i])) {

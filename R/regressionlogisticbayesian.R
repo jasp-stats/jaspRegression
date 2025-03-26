@@ -1050,9 +1050,9 @@ for sparse regression when there are more covariates than observations (Castillo
     "betaPrime"     = BAS::beta.prime(),
     "bic"           = BAS::bic.prior(),
     "ebLocal"       = BAS::EB.local(),
-    "cch"           = BAS::CCH(alpha = options$cchPriorAlpha,
-                               beta  = options$cchPriorBeta,
-                               s     = options$cchPriorS),
+    "cch"           = BAS::CCH(alpha = as.numeric(options$cchPriorAlpha),
+                               beta  = as.numeric(options$cchPriorBeta),
+                               s     = as.numeric(options$cchPriorS)),
     "gPrior"        = BAS::g.prior(g = options$gPriorAlpha),
     "instrinsic"    = BAS::intrinsic(),
     "robust"        = BAS::robust()

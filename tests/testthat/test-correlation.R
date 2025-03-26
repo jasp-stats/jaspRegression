@@ -16,7 +16,7 @@ options$sampleSize <- TRUE
 options$spearman <- TRUE
 options$effectSize <- TRUE
 options$covariance <- TRUE
-options$variables <- list("contNormal", "contGamma", "contcor1", "debMiss30")
+options$variables <- c("contNormal", "contGamma", "contcor1", "debMiss30")
 set.seed(1)
 results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
 
@@ -140,7 +140,7 @@ test_that("Correlation Table hypothesis correlated positively match", {
   options$alternative <- "greater"
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE
-  options$variables <- list("contNormal", "contGamma", "contExpon")
+  options$variables <- c("contNormal", "contGamma", "contExpon")
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
   table <- results[["results"]][["mainTable"]][["data"]]
@@ -165,7 +165,7 @@ test_that("Correlation Table hypothesis correlated negatively match", {
   options$alternative <- "less"
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE
-  options$variables <- list("contNormal", "contGamma", "contExpon")
+  options$variables <- c("contNormal", "contGamma", "contExpon")
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
   table <- results[["results"]][["mainTable"]][["data"]]
@@ -187,7 +187,7 @@ test_that("Correlation Table hypothesis correlated negatively match", {
 test_that("Analysis handles errors", {
   options <- jaspTools::analysisOptions("Correlation")
   options$pairwiseDisplay <- TRUE
-  options$variables <- list("contNormal", "debMiss99", "debSame")
+  options$variables <- c("contNormal", "debMiss99", "debSame")
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
   expect_identical(results[["results"]][["errorMessage"]],
@@ -200,8 +200,8 @@ test_that("Pearson's partial correlation correct", {
   # Validated against Field, A. Discovering Statistics (5th edition). Chapter 8.5
   options <- jaspTools::analysisOptions("Correlation")
   options$pairwiseDisplay <- TRUE
-  options$variables <- list("Exam", "Anxiety")
-  options$partialOutVariables <- list("Revise")
+  options$variables <- c("Exam", "Anxiety")
+  options$partialOutVariables <- c("Revise")
 
   results <- jaspTools::runAnalysis("Correlation", "Exam Anxiety.csv", options)
   table <- results[["results"]][["mainTable"]][["data"]]
@@ -253,8 +253,8 @@ test_that("Bootstrapping results match", {
   options$ciBootstrap <- TRUE
   options$ciBootstrapSamples <- 100
   options$pairwiseDisplay <- TRUE
-  options$variables <- list("contNormal", "contcor1", "debMiss30")
-  options$partialOutVariables <- list("contcor2", "contGamma")
+  options$variables <- c("contNormal", "contcor1", "debMiss30")
+  options$partialOutVariables <- c("contcor2", "contGamma")
 
   set.seed(1)
   results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)

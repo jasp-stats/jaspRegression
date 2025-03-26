@@ -98,7 +98,7 @@ test_that("Analysis handles errors", {
 # Bayesian correlation pairs
 test_that("Bayesian Pearson Correlation PAIRWISE table results match", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
-  options$variables <- list("contcor1", "contcor2")
+  options$variables <- c("contcor1", "contcor2")
   options$pairwiseDisplay <- TRUE
   options$ci <- TRUE
   options$priorWidth <- 2
@@ -112,7 +112,7 @@ test_that("Bayesian Pearson Correlation PAIRWISE table results match", {
 
 # Pairs plot
 options <- jaspTools::analysisOptions("CorrelationBayesian")
-options$variables <- list("contcor1", "contcor2")
+options$variables <- c("contcor1", "contcor2")
 options$variablePairs <- list(c("contcor1", "contcor2"))
 options$priorPosteriorPlot <- TRUE
 options$bfRobustnessPlot <- TRUE
@@ -146,7 +146,7 @@ test_that("Scatterplot matches", {
 })
 
 options <- jaspTools::analysisOptions("CorrelationBayesian")
-options$variables <- list("Month", "Stress.frequency")
+options$variables <- c("Month", "Stress.frequency")
 options$pearson <- FALSE
 options$kendall <- TRUE
 options$pairwiseDisplay <- TRUE
@@ -194,9 +194,7 @@ results <- jaspTools::runAnalysis("CorrelationBayesian", dataset, options)
 test_that("Linearity table results match", {
   table <- results[["results"]][["linearityTestTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(list(BF = 0.296988892811004, pair = "v2 - v1"),
-                                      list(BF = 2.28851038278805,  pair = "v3 - v1"),
-                                      list(BF = 0.354379252914457, pair = "v3 - v2"))
+                                 list(0.296988892811004, "v2 - v1", 2.28851038278805, "v3 - v1", 0.354379252914457, "v3 - v2")
   )
 })
 
