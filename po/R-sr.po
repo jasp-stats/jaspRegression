@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2025-01-04 02:53\n"
-"PO-Revision-Date: 2025-03-26 01:12+0000\n"
+"PO-Revision-Date: 2025-03-28 12:20+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/sr/>\n"
@@ -15,7 +15,7 @@ msgstr ""
 "X-Generator: Weblate 5.11-dev\n"
 
 msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
-msgstr ""
+msgstr "За све тестове, алтернативна хипотеза одређује да је %s позитиван."
 
 msgid "For all tests, the alternative hypothesis specifies that the %s is negative."
 msgstr ""
@@ -223,7 +223,7 @@ msgid "Influence measures could not be computed for some cases due to extreme va
 msgstr ""
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR%s"
 
 msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n  the maximum possible odds in favor of H%1$s over H%2$s equals\n  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
@@ -268,7 +268,7 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "VS-MPR"
 msgstr ""
@@ -295,7 +295,7 @@ msgid "Kendall's Tau B"
 msgstr ""
 
 msgid "p-value"
-msgstr ""
+msgstr "p-вредност"
 
 msgid "Number of observations is < %s."
 msgstr ""
@@ -436,7 +436,7 @@ msgid "Firth logistic regression requires the dependent variable to be a factor 
 msgstr ""
 
 msgid "Model Summary"
-msgstr ""
+msgstr "Резиме модела"
 
 msgid "Model Summary - %s"
 msgstr ""
@@ -448,13 +448,13 @@ msgid "Deviance"
 msgstr "Девијанса"
 
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "df"
-msgstr ""
+msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr ""
@@ -463,13 +463,13 @@ msgid "Model Fit"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Статистика"
 
 msgid "Coefficients"
-msgstr ""
+msgstr "Коефицијенти"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Проценити"
 
 msgid "Standard Error"
 msgstr "Стандардна грешка"
@@ -550,13 +550,13 @@ msgid "SE"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "Ниже"
 
 msgid "%s%% CI"
-msgstr ""
+msgstr "%s%% CI"
 
 msgid "Upper"
-msgstr ""
+msgstr "Горњи"
 
 msgid "t"
 msgstr ""
@@ -634,16 +634,16 @@ msgid "No covariate could be entered in the model"
 msgstr ""
 
 msgid "ANOVA"
-msgstr ""
+msgstr "ANOVA"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "Збир квадрата"
 
 msgid "Mean Square"
-msgstr ""
+msgstr "Средњи квадрат"
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr ""
@@ -733,7 +733,7 @@ msgid "Maximum"
 msgstr ""
 
 msgid "Mean"
-msgstr ""
+msgstr "Аритметичка средина"
 
 msgid "SD"
 msgstr ""
@@ -877,7 +877,7 @@ msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "%s%% веродостојан интервал"
 
 msgid "Coefficient"
 msgstr ""
@@ -940,7 +940,7 @@ msgid "Prior\nInclusion\nProbabilities"
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Q-Q графикон"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1075,13 +1075,13 @@ msgid "DV/Factor"
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "Ниво"
 
 msgid "Covariate Descriptives"
 msgstr ""
 
 msgid "Intercept"
-msgstr ""
+msgstr "Пресек"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
