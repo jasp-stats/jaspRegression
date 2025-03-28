@@ -41,15 +41,21 @@ Form
 	Group
 	{
 		title: qsTr("Additional Options")
-        CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table")					}
-        CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors"); checked: true		}
-        CheckBox {	name: "supportCorrelationFlagged";		label: qsTr("Flag supported correlations")				}
-        CheckBox {	name: "sampleSize";                     label: qsTr("Sample size")								}
-        CheckBox {	name: "posteriorMedian";                label: qsTr("Posterior median"); debug: true			}
+		CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table")					}
+		CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors"); checked: true		}
+		CheckBox {	name: "supportCorrelationFlagged";      label: qsTr("Flag supported correlations")				}
+		CheckBox {	name: "sampleSize";                     label: qsTr("Sample size")								}
+		CheckBox {	name: "posteriorMedian";                label: qsTr("Posterior median"); debug: true			}
 		CheckBox
 		{
 			name: "ci"; label: qsTr("Credible intervals")
-            CIField { name: "ciLevel";	label: qsTr("Interval") }
+			CIField { name: "ciLevel";	label: qsTr("Interval") }
+		}
+		CheckBox
+		{
+			name:  "linearityTest"
+			label: qsTr("Linearity test")
+			info:  qsTr("Compute a test for the linearity of the relationship between the two variables by comparing a linear model to a quadratic model.")
 		}
 	}
 

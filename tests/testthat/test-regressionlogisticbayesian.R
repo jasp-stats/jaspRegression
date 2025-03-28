@@ -6,15 +6,10 @@ context("Bayesian Logistic Regression")
 #jaspTools::runAnalysis("RegressionLogisticBayesian", "tests/testthat/santas_log.csv", options, makeTests = TRUE)
 
 ## Get some typed example data
-santas_log <- read.csv("santas_log.csv")
+santas_log <- read.csv(testthat::test_path("santas_log.csv"))
 santas_log$treat <- as.factor(santas_log$treat)
 
 options <- jaspTools::analysisOptions("RegressionLogisticBayesian")
-options$.meta <- list(covariates = list(shouldEncode = TRUE), dependent = list(
-  shouldEncode = TRUE), factors = list(shouldEncode = TRUE),
-  modelTerms = list(shouldEncode = TRUE), residualSdsSavedToDataColumn = list(
-    shouldEncode = TRUE), residualsSavedToDataColumn = list(
-      shouldEncode = TRUE), weights = list(shouldEncode = TRUE))
 options$covariates <- "quantity"
 options$dependent <- "delivered"
 options$factors <- "treat"

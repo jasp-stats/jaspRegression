@@ -98,7 +98,7 @@ test_that("Analysis handles errors", {
 # Bayesian correlation pairs
 test_that("Bayesian Pearson Correlation PAIRWISE table results match", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
-  options$variables <- list("contcor1", "contcor2")
+  options$variables <- c("contcor1", "contcor2")
   options$pairwiseDisplay <- TRUE
   options$ci <- TRUE
   options$priorWidth <- 2
@@ -112,7 +112,7 @@ test_that("Bayesian Pearson Correlation PAIRWISE table results match", {
 
 # Pairs plot
 options <- jaspTools::analysisOptions("CorrelationBayesian")
-options$variables <- list("contcor1", "contcor2")
+options$variables <- c("contcor1", "contcor2")
 options$variablePairs <- list(c("contcor1", "contcor2"))
 options$priorPosteriorPlot <- TRUE
 options$bfRobustnessPlot <- TRUE
@@ -146,7 +146,7 @@ test_that("Scatterplot matches", {
 })
 
 options <- jaspTools::analysisOptions("CorrelationBayesian")
-options$variables <- list("Month", "Stress.frequency")
+options$variables <- c("Month", "Stress.frequency")
 options$pearson <- FALSE
 options$kendall <- TRUE
 options$pairwiseDisplay <- TRUE
@@ -175,6 +175,29 @@ test_that("Scatterplot with ranks matches", {
 	testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
 	jaspTools::expect_equal_plots(testPlot, "scatterplot-with-ranks")
 })
+
+
+dataset <- local({
+  # https://en.wikipedia.org/wiki/Euler%27s_constant, all digits that R can represent as an integer
+  set.seed(0577215664L)
+  v1 <- rnorm(100)
+  v2 <- 0.25 * v1                 + rnorm(100) # linear w.r.t. v1
+  v3 <- 0.25 * v1 * v1 + .25 * v2 + rnorm(100) # linear w.r.t. v2, quadratic w.r.t v1
+  data.frame(v1 = v1, v2 = v2, v3 = v3)
+})
+options <- jaspTools::analysisOptions("CorrelationBayesian")
+options$variables <- c("v1", "v2", "v3")
+options$linearityTest <- TRUE
+set.seed(1)
+results <- jaspTools::runAnalysis("CorrelationBayesian", dataset, options)
+
+test_that("Linearity table results match", {
+  table <- results[["results"]][["linearityTestTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list(0.296988892811004, "v2 - v1", 2.28851038278805, "v3 - v1", 0.354379252914457, "v3 - v2")
+  )
+})
+
 
 # TODO(Alexander): Solve in  and perhaps in
 #   1. .drawPosteriorPlotCorBayes

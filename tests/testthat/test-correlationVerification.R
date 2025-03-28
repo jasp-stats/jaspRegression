@@ -3,7 +3,7 @@ context("Correlation -- Verification project")
 # https://jasp-stats.github.io/jasp-verification-project/regression.html#correlation
 test_that("Correlation Table results match R, SPSS, SAS and MiniTab", {
   options <- jaspTools::analysisOptions("Correlation")
-  options$variables <- list("X", "Y")
+  options$variables <- c("X", "Y")
   options$pearson <- TRUE
   options$kendallsTauB <- TRUE
   options$spearman <- TRUE

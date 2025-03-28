@@ -50,6 +50,10 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
       .fillPairsPlotsCorBayes(jaspResults, pairsPlotCollection, corModel, dataset, options)
     }
   }
+
+  # 6 Linearity Test
+  .createTableLinearityTest(jaspResults, dataset, options, ready)
+
 }
 
 .computeCorBayes <- function(jaspResults, dataset, options, ready = TRUE) {
@@ -1249,4 +1253,151 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
     return(bstats::computePearsonCredibleInterval("betaA"=bfObject[["betaA"]], "betaB"=bfObject[["betaB"]],
                                                   "ciValue"=ciLevel))
   }
+}
+
+#linearity test
+.createTableLinearityTest <- function(jaspResults, dataset, options, ready) {
+
+  if (!options[["linearityTest"]])
+    return()
+
+  tb <-  jaspResults[["linearityTestTable"]] %setOrRetrieve% .linearityTestTableSetup(jaspResults, dataset, options)
+
+  if (!ready || !jaspBase::isRecomputed())
+    return()
+
+  fits <- jaspResults[["linearityTestState"]] %setOrRetrieve% (
+    .linearityTestComputeBFs(dataset, options) |>
+      createJaspState(dependencies = "variables")
+  )
+
+  if (isTryError(fits))
+    tb$setError(.extractErrorMessage(fits))
+  else
+    .linearityTestFillTable(tb, fits, options)
+
+}
+
+.linearityTestTableSetup <- function(jaspResults, dataset, options, ready) {
+
+  linearityTestTable <- createJaspTable(title = gettext("Linearity Test"))
+  linearityTestTable$dependOn(c("linearityTest", "variables", "bayesFactorType"))
+
+
+  bfTitle <- switch(options[["bayesFactorType"]],
+                   "LogBF10" = "Log(BF<sub>ql</sub>)",
+                   "BF10"    = "BF<sub>ql</sub>",
+                   "BF01"    = "BF<sub>lq</sub>"
+  )
+  linearityTestTable$addColumnInfo(name = "pair", title = gettext("Pair"), type = "string")
+  linearityTestTable$addColumnInfo(name = "BF",   title = bfTitle,         type = "number")
+
+  linearityTestTable$info <- gettext("
+    For each pair A - B, tests if A is better predicted as a linear function of B, i.e., l := A ~ 1 + B, or a quadratic function of B, i.e., q := A ~ 1 + B + B^2.
+    Uses the default settings for Bayesian regression, i.e., a JZS-prior with alpha set to 0.354 and for the model prior a beta binomial distribution with alpha = 1 and beta = 1. Note that since only two models are considered the model prior is equivalent to a uniform model prior.
+  ")
+  linearityTestTable$addFootnote(
+    if (options[["bayesFactorType"]] == "BF01")
+      gettext("Evidence shown in favor of a linear model (l) against a quadratic model (q).")
+    else
+      gettext("Evidence shown in favor of a quadratic model (q) against a linear model (l).")
+  )
+
+  return(linearityTestTable)
+}
+
+.linearityTestFillTable <- function(tb, fits, options) {
+
+  newBFtype <- options[["bayesFactorType"]]
+  pairs         <- fits[["pair"]]
+  BFs           <- fits[["BF"]]
+  errorMessages <- fits[["errorMessage"]]
+  for (i in seq_along(pairs)) {
+
+    if (is.na(BFs[i])) {
+      tb$addRows(list(pair = pairs[i], BF = NA), rowNames = pairs[i])
+      if (errorMessages[i] != "")
+        tb$addFootnote(errorMessages[i], rowNames = pairs[i], colNames = "BF")
+    } else {
+      tb$addRows(list(
+        pair = pairs[i],
+        BF   = jaspBase::.recodeBFtype(BFs[i], newBFtype = newBFtype, oldBFtype = "LogBF10")
+      ))
+    }
+  }
+}
+
+.linearityTestComputeBFs <- function(dataset, options) {
+
+  #get all the combinations
+  pairs <- combn(options[["variables"]], 2, simplify = FALSE)
+
+  #create an empty list to store the result of each pairs
+  npairs <- length(pairs)
+  results <- data.frame(
+    pair         = character(npairs),
+    BF           = numeric(npairs),
+    errorMessage = character(npairs)
+  )
+
+  # constants for BAS
+  nPreds     <- 1#length(linearTerm)
+  initProbs  <- rep(0.5, 2)#nPreds + 1) # the + 1 is the intercept
+  weights    <- NULL
+  modelPrior <- BAS::beta.binomial(1, 1)
+  n.models   <- NULL
+  # iterations for MCMC
+  MCMC.iterations <- NULL
+
+  # convert QML input to prior value that bas.lm expects
+  prior <- "JZS"
+
+  # parameter for jzs
+  alpha <- 0.354^2
+
+  for (i in seq_along(pairs)) {
+
+    var1 <- pairs[[i]][1]
+    var2 <- pairs[[i]][2]
+
+    results[["pair"]][i] <- sprintf("%s - %s", var2, var1)
+
+    formula <- stats::as.formula(sprintf("%s ~ poly(%s, 2)", var2, var1))
+
+    # Bayesian Adaptive Sampling
+    .setSeedJASP(options)
+    basFit <- try(BAS::bas.lm(
+      formula         = formula,
+      data            = na.omit(dataset),
+      prior           = prior,
+      alpha           = alpha,
+      modelprior      = modelPrior,
+      n.models        = n.models,
+      # method          = toupper(options$samplingMethod),
+      MCMC.iterations = MCMC.iterations,
+      # initprobs       = initProbs,
+      weights         = weights,
+      renormalize     = TRUE
+    ))
+
+    if (isTryError(basFit)) {
+
+      errorMessage <- .extractErrorMessage(basFit)
+      results[["errorMessage"]][i] <- errorMessage
+
+    } else {
+
+      if (basFit$n.models > 1 && nPreds > 1) # can crash without this check
+        basFit <- BAS::force.heredity.bas(basFit)
+
+      logMarg <- basFit[["logmarg"]]
+      idxLinear    <- which(sapply(basFit[["which"]], \(x) isTRUE(all.equal(x, c(0, 1)))))
+      idxQuadratic <- which(sapply(basFit[["which"]], \(x) isTRUE(all.equal(x, c(0, 1, 2)))))
+
+      logBF10 <- logMarg[idxQuadratic] - logMarg[idxLinear]
+
+      results[["BF"]][i] <- logBF10
+    }
+  }
+  return(results)
 }
