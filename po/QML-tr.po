@@ -1727,3 +1727,13 @@ msgstr ""
 msgctxt "RegressionLogistic|"
 msgid "Use logit scale"
 msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Linearity test"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid ""
+"Compute a test for the linearity of the relationship between the two "
+"variables by comparing a linear model to a quadratic model."
+msgstr ""

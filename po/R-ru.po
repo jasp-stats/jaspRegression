@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2025-01-04 02:53\n"
+"POT-Creation-Date: 2025-03-29 03:00\n"
 "PO-Revision-Date: 2025-03-17 13:06+0000\n"
 "Last-Translator: MikeWinny <winny63@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -515,6 +515,30 @@ msgstr "пользовательский приор"
 #, fuzzy
 msgid "Stretched beta prior width"
 msgstr "Stretched beta prior width"
+
+msgid "Linearity Test"
+msgstr ""
+
+msgid "Pair"
+msgstr ""
+
+msgid ""
+"For each pair A - B, tests if A is better predicted as a linear function of "
+"B, i.e., l := A ~ 1 + B, or a quadratic function of B, i.e., q := A ~ 1 + B "
+"+ B^2.\n"
+"    Uses the default settings for Bayesian regression, i.e., a JZS-prior "
+"with alpha set to 0.354 and for the model prior a beta binomial distribution "
+"with alpha = 1 and beta = 1. Note that since only two models are considered "
+"the model prior is equivalent to a uniform model prior."
+msgstr ""
+
+msgid ""
+"Evidence shown in favor of a linear model (l) against a quadratic model (q)."
+msgstr ""
+
+msgid ""
+"Evidence shown in favor of a quadratic model (q) against a linear model (l)."
+msgstr ""
 
 msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "

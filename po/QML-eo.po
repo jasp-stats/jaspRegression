@@ -518,6 +518,16 @@ msgid "Interval"
 msgstr ""
 
 msgctxt "CorrelationBayesian|"
+msgid "Linearity test"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid ""
+"Compute a test for the linearity of the relationship between the two "
+"variables by comparing a linear model to a quadratic model."
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
 msgstr ""
 
@@ -1707,14 +1717,4 @@ msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
-msgstr ""
-
-msgctxt "CorrelationBayesian|"
-msgid "Linearity test"
-msgstr ""
-
-msgctxt "CorrelationBayesian|"
-msgid ""
-"Compute a test for the linearity of the relationship between the two "
-"variables by comparing a linear model to a quadratic model."
 msgstr ""
