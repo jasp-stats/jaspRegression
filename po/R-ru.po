@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2025-03-29 03:00\n"
-"PO-Revision-Date: 2025-03-17 13:06+0000\n"
-"Last-Translator: MikeWinny <winny63@gmail.com>\n"
+"PO-Revision-Date: 2025-04-01 15:06+0000\n"
+"Last-Translator: Иван Рудаков <riv@polygene.ru>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ru/>\n"
 "Language: ru\n"
@@ -757,7 +757,6 @@ msgstr "SE"
 msgid "Lower"
 msgstr "Нижний"
 
-#, fuzzy
 msgid "%s%% CI"
 msgstr "%s%% ДИ"
 
