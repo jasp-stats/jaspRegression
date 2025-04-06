@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2025-03-29 03:00\n"
-"PO-Revision-Date: 2025-04-05 14:20+0000\n"
+"PO-Revision-Date: 2025-04-07 02:38+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/sr/>\n"
@@ -77,7 +77,7 @@ msgid "Kendall"
 msgstr ""
 
 msgid "Density"
-msgstr ""
+msgstr "Густина"
 
 msgid "Plotting not possible: Number of observations is < 3"
 msgstr ""
@@ -137,7 +137,7 @@ msgid "Plotting is not possible: %s"
 msgstr ""
 
 msgid "Q-Q Plots"
-msgstr ""
+msgstr "Q-Q дијаграм"
 
 msgid "Q-Q plot: Standardized %1s residuals"
 msgstr ""
@@ -334,7 +334,7 @@ msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "Shapiro-Wilk"
 
 msgid "Variables"
 msgstr ""
@@ -346,7 +346,7 @@ msgid "Scatter plots"
 msgstr ""
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "Корелациони дијаграм"
 
 msgid "Correlation undefined: %s"
 msgstr ""
@@ -365,7 +365,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "Цртање није могуће: %s"
 
 msgid "Partial Pearson's r"
 msgstr ""
@@ -380,7 +380,7 @@ msgid "%s heatmap"
 msgstr ""
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "Топлотне мапе"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr ""
@@ -735,7 +735,7 @@ msgid "Regression"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "Укупно"
 
 msgid "Unstandardized"
 msgstr ""
