@@ -117,7 +117,7 @@ Form
                 }
 
 				CheckBox { name: "coefficientStandardized";		label: qsTr("Standardized coefficients")	}
-				CheckBox { name: "oddsRatio";		label: qsTr("Odds ratios")					}
+				CheckBox { name: "oddsRatio";		label: qsTr("Odds ratios");		checked: true			}
 				CheckBox
 				{
 								name: "coefficientCi";			label: qsTr("Confidence intervals")
