@@ -16,13 +16,16 @@ options$modelTerms <- list(
 
 options$method <- "enter"
 options$coefficientEstimate <- TRUE
+options$oddsRatio <- FALSE
+options$coefficientCiAsOddsRatio <- FALSE
+
 results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "LogReg.csv", options)
 
 # https://jasp-stats.github.io/jasp-verification-project/regression.html#logistic-regression
 test_that("Main table results match R, SPSS, SAS and MiniTab", {
   # Main table
   resultTable <- results$results$modelSummary$data
-  
+
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list(1027.57254724532, 1032.2005886215, 1025.57254724532, 755, 0, "M<unicode>",
@@ -36,7 +39,7 @@ test_that("Main table results match R, SPSS, SAS and MiniTab", {
 test_that("Estimates table results match R, SPSS, SAS and MiniTab", {
   # Main table
   resultTable <- results$results$estimatesTable$data
-  
+
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list("TRUE", -0.347366579504982, "M<unicode>", "(Intercept)", 2.54655183336123e-06,

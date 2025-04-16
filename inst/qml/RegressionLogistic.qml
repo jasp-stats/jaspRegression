@@ -117,12 +117,12 @@ Form
                 }
 
 				CheckBox { name: "coefficientStandardized";		label: qsTr("Standardized coefficients")	}
-				CheckBox { name: "oddsRatio";		label: qsTr("Odds ratios")					}
+				CheckBox { name: "oddsRatio";		label: qsTr("Odds ratios");		checked: true			}
 				CheckBox
 				{
 								name: "coefficientCi";			label: qsTr("Confidence intervals")
 					CIField {	name: "coefficientCiLevel";	label: qsTr("Interval")				}
-					CheckBox {	name: "coefficientCiAsOddsRatio";			label: qsTr("Odds ratio scale")		}
+					CheckBox {	name: "coefficientCiAsOddsRatio";			label: qsTr("Odds ratio scale"); checked:true		}
 				}
 				CheckBox { name: "robustSe";		label: qsTr("Robust standard errors")	}
 				CheckBox { name: "vovkSellke";	label: qsTr("Vovk-Sellke maximum p-ratio")	}

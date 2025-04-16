@@ -20,7 +20,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$oddsRatio <- TRUE
   options$coefficientCi <- TRUE
   options$coefficientCiAsOddsRatio <- TRUE
-  
+
   results <- jaspTools::runAnalysis("RegressionLogistic", dataset = santas_log, options)
   output1 <- results[["results"]][["factorDescriptives"]][["data"]]
   jaspTools::expect_equal_tables(output1,
@@ -154,6 +154,7 @@ test_that("Fields Book - Chapter 10 results match", {
          name="model1", title = "Model 1")
   )
   options$residualCasewiseDiagnostic <- TRUE
+  options$oddsRatio <- FALSE
   options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientBootstrap <- TRUE
   options$coefficientBootstrapSamples <- 1000
@@ -230,7 +231,7 @@ test_that("Method=stepwise model summary table results match", {
 test_that("Confusion Matrix Table Matches", {
     options <- initClassicalRegressionOptions("RegressionLogistic")
   options$residualCasewiseDiagnostic <- FALSE
-  
+
   options$covariates <- c("contNormal", "contOutlier")
   options$dependent  <- "facGender"
   options$modelTerms <- options$modelTerms <- list(
@@ -420,7 +421,7 @@ test_that("Performance plots match", {
     list(components=c("age", "lwt", "race", "smoke"), name="model1", title = "Model 1")
   )
   options$residualCasewiseDiagnostic <- FALSE
-  
+
   options$rocPlot <- TRUE
   options$precisionRecallPlot  <- TRUE
 
