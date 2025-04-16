@@ -98,7 +98,7 @@ Form
 		title: qsTr("Diagnostics")
 		enabled: input.otherFamilyNotSelected
 
-		Common.OutlierComponent { id: outlierComponentt}
+		Common.OutlierComponent { id: outlierComponent}
 
 		Common.GlmResidualAnalysisPlotsComponent {}
 
@@ -146,5 +146,8 @@ Form
 		SetSeed {}
 		enabled: input.otherFamilyNotSelected
 	}
+
+	Common.ExportFreq { id: exportComponent}
+
 }
 
