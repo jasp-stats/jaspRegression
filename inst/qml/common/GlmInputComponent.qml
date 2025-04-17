@@ -59,7 +59,7 @@ Group {
 		{
 			name:              "weights"
 			title:             family.currentValue === "binomial" ? qsTr("Total Number of Trials") : qsTr("Weights")
-			allowedColumns:    family.currentValue === "binomial" ? "nominal" : "scale"
+			allowedColumns:    ["scale"]
 			singleVariable:    true
 		}
 

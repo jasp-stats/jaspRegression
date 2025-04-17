@@ -67,19 +67,4 @@ Group
 
 	}
 
-	CheckBox
-	{
-		id:							residualsSavedToData
-		name:						"residualsSavedToData"
-		text:						qsTr("Append residuals to data")
-
-		ComputedColumnField
-		{
-			name:					"residualsSavedToDataColumn"
-			text:					qsTr("Column name")
-			placeholderText:		qsTr("e.g., residuals")
-			fieldWidth:				120
-			enabled:				residualsSavedToData.checked
-		}
-	}
 }

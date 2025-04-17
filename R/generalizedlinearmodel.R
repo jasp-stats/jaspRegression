@@ -42,6 +42,13 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   #estimated marginal means table and contrast analysis
   .glmEmm(jaspResults, dataset, options, ready, position = 5)
 
+  if (options[["residualsSavedToData"]] && options[["residualsSavedToDataColumn"]] != "" && is.null(jaspResults[["residualsSavedToDataColumn"]]))
+    .regressionExportResiduals(jaspResults, jaspResults[["glmModels"]][["object"]][["fullModel"]], dataset, options)
+
+  if (options[["predictionsSavedToData"]] && options[["predictionsSavedToDataColumn"]] != "" && is.null(jaspResults[["predictionsSavedToDataColumn"]]))
+    .regressionExportPredictions(jaspResults, jaspResults[["glmModels"]][["object"]][["fullModel"]], dataset, options)
+
+
   return()
 }
 
@@ -475,10 +482,6 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   .glmInfluenceTable(jaspResults[["diagnosticsContainer"]],
                      jaspResults[["glmModels"]][["object"]][["fullModel"]],
                      dataset, options, ready, position = 9)
-
-  .regressionExportResiduals(jaspResults,
-                             jaspResults[["glmModels"]][["object"]][["fullModel"]],
-                             dataset, options, ready)
 
   .glmMulticolliTable(jaspResults, dataset, options, ready, position = 10)
 

@@ -19,7 +19,7 @@ import QtQuick
 import QtQuick.Layouts
 import JASP
 import JASP.Controls
-
+import "./common" as Common
 
 Form {
 
@@ -169,43 +169,6 @@ Form {
 	{
 		title: qsTr("Advanced Options")
 
-		Group
-		{
-			title: qsTr("Append columns to data")
-			Layout.columnSpan: 2
-			CheckBox
-			{
-				id:							residualsSavedToData
-				name:						"residualsSavedToData"
-				text:						qsTr("Residuals (%1)").arg(summaryType.currentLabel)
-
-				ComputedColumnField
-				{
-					name:					"residualsSavedToDataColumn"
-					text:					qsTr("Column name")
-					placeholderText:		qsTr("e.g., residuals")
-					fieldWidth:				120
-					enabled:				residualsSavedToData.checked
-				}
-			}
-			CheckBox
-			{
-				id:							residualSdsSavedToData
-				name:						"residualSdsSavedToData"
-				text:						qsTr("Residuals std. deviations (%1)").arg(summaryType.currentLabel)
-
-				ComputedColumnField
-				{
-					name:					"residualSdsSavedToDataColumn"
-					text:					qsTr("Column name")
-					placeholderText:		qsTr("e.g., residual sd")
-					fieldWidth:				120
-					enabled:				residualSdsSavedToData.checked
-				}
-			}
-		}
-
-
 		RadioButtonGroup
 		{
 			name: "priorRegressionCoefficients"
@@ -326,5 +289,10 @@ Form {
 
 		}
 	}
+
+	Common.ExportBayesian 
+	{ 
+		summaryTypeValue: summaryType.currentLabel 
+	}	
 
 }

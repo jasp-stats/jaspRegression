@@ -30,10 +30,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   .reglogisticMulticolliTable(         jaspResults, dataset, options, ready)
   .reglogisticFactorDescriptivesTable( jaspResults, dataset, options, ready)
 
+  finalModel <- jaspResults[["glmRes"]][["object"]][[length(options[["modelTerms"]])]]
   if (options$residualCasewiseDiagnostic) {
-    finalModel <- jaspResults[["glmRes"]][["object"]][[length(options[["modelTerms"]])]]
     .glmInfluenceTable(jaspResults, finalModel, dataset, options, ready, position = 5)
-    .regressionExportResiduals(jaspResults, finalModel, dataset, options, ready = ready)
   }
 
   .reglogisticConfusionMatrixTable(    jaspResults, dataset, options, ready)
@@ -46,6 +45,13 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   .reglogisticSquaredPearsonResidualsPlot(jaspResults, dataset, options, ready)
   .reglogisticIndependentPredictedPlot(   jaspResults, dataset, options, ready)
   .reglogisticPerformancePlot(            jaspResults, dataset, options, ready)
+
+  if (options[["residualsSavedToData"]] && options[["residualsSavedToDataColumn"]] != "" && is.null(jaspResults[["residualsSavedToDataColumn"]]))
+    .regressionExportResiduals(jaspResults, finalModel, dataset, options)
+
+  if (options[["predictionsSavedToData"]] && options[["predictionsSavedToDataColumn"]] != "" && is.null(jaspResults[["predictionsSavedToDataColumn"]]))
+    .regressionExportPredictions(jaspResults, finalModel, dataset, options)
+
   return()
 }
 

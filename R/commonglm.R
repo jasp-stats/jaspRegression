@@ -381,22 +381,25 @@
 }
 
 
-.regressionExportResiduals <- function(container, model, dataset, options, ready) {
+.regressionExportResiduals <- function(container, model, dataset, options) {
 
-  if (isFALSE(options[["residualsSavedToData"]]))
-    return()
+  residuals <- rep(NA, nrow(dataset)) # create vector with MA to account for missinginess
+  residuals[as.numeric(rownames(model[["model"]]))] <- model[["residuals"]] # extract residuals
 
-  if (is.null(container[["residualsSavedToDataColumn"]]) &&
-      isFALSE(is.null(options[["residualsSavedToDataColumn"]])) &&
-      options[["residualsSavedToDataColumn"]] != "") {
+  container[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
+  container[["residualsSavedToDataColumn"]]$dependOn(options = c("residualsSavedToDataColumn", "residualsSavedToData", "modelTerms"))
+  container[["residualsSavedToDataColumn"]]$setScale(residuals)
 
-    residuals <- model[["residuals"]] # extract residuals
+}
 
-    container[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
-    container[["residualsSavedToDataColumn"]]$dependOn(options = c("residualsSavedToDataColumn", "residualsSavedToData"))
-    container[["residualsSavedToDataColumn"]]$setScale(residuals)
+.regressionExportPredictions <- function(container, model, dataset, options) {
 
-  }
+  predictions <- rep(NA, nrow(dataset)) # create vector with MA to account for missinginess
+  predictions[as.numeric(rownames(model[["model"]]))] <- model[["fitted.values"]] # extract predictions
+
+  container[["predictionsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["predictionsSavedToDataColumn"]])
+  container[["predictionsSavedToDataColumn"]]$dependOn(options = c("predictionsSavedToDataColumn", "predictionsSavedToData", "modelTerms"))
+  container[["predictionsSavedToDataColumn"]]$setScale(predictions)
 
 }
 
@@ -751,7 +754,7 @@
 
 
 # Table: Influential cases
-.glmInfluenceTable <- function(jaspResults, model, dataset, options, ready, position, logisticRegression = FALSE) {
+.glmInfluenceTable <- function(jaspResults, model, dataset, options, ready, position) {
 
   tableOptionsOn <- c(options[["dfbetas"]],
                       options[["dffits"]],

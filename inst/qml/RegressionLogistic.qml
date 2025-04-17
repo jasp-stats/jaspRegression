@@ -206,4 +206,7 @@ Form
             }
         }
 	}
+
+	Common.ExportFreq { id: exportComponent}
+
 }
