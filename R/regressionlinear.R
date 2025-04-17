@@ -57,10 +57,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (options$residualCasewiseDiagnostic && is.null(modelContainer[["influenceTable"]]))
     .glmInfluenceTable(modelContainer, finalModel[["fit"]], dataset, options, ready = ready, position = 9)
 
-  if (options[["residualsSavedToData"]] && options[["residualsSavedToDataColumn"]] != "" && is.null(modelContainer[["residualsSavedToDataColumn"]]))
+  if (isTRUE(options[["residualsSavedToData"]]) && isTRUE(options[["residualsSavedToDataColumn"]] != "") && is.null(modelContainer[["residualsSavedToDataColumn"]]))
     .regressionExportResiduals(modelContainer, finalModel[["fit"]], dataset, options)
 
-  if (options[["predictionsSavedToData"]] && options[["predictionsSavedToDataColumn"]] != "" && is.null(modelContainer[["predictionsSavedToDataColumn"]]))
+  if (isTRUE(options[["predictionsSavedToData"]]) && isTRUE(options[["predictionsSavedToDataColumn"]] != "") && is.null(modelContainer[["predictionsSavedToDataColumn"]]))
     .regressionExportPredictions(modelContainer, finalModel[["fit"]], dataset, options)
 
   if (options$residualStatistic && is.null(modelContainer[["residualsTable"]]))
