@@ -432,10 +432,11 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   if (options["family"] == "other" && options[["otherGlmModel"]] == "multinomialLogistic") {
     dv      <- options$dependent
-    dvReferenceLevel <- tail(levels(dataset[[dv]]), 1)
-    dvLevels <- paste(paste(seq(1, length(dv)), levels(dataset[[dv]]), sep = ":"), collapse = ", ")
+    dvLevels <- levels(dataset[[dv]])
+    dvReferenceLevel <- tail(dvLevels, 1)
+    dvLevelsWithNum <- paste(paste(seq(1, length(dvLevels)), dvLevels, sep = ":"), collapse = ", ")
 
-    jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. '%3$s' is the reference level.", dv, dvLevels, dvReferenceLevel))
+    jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. '%3$s' is the reference level.", dv, dvLevelsWithNum, dvReferenceLevel))
   }
 
   if (options["family"] == "other" && options[["otherGlmModel"]] == "ordinalLogistic") {
