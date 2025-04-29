@@ -1376,7 +1376,8 @@ for sparse regression when there are more covariates than observations (Castillo
 
   if (userWantsResiduals) {
 
-    residuals <- c(basregModel[["Y"]] - predictions[["fit"]]) # c to drop attributes
+    residuals <- rep(NA, nrow(dataset)) # create vector with MA to account for missingness
+    residuals[as.numeric(rownames(basregModel[["model"]]))] <- c(basregModel[["Y"]] - predictions[["fit"]]) # c to drop attributes
 
     basregContainer[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
     basregContainer[["residualsSavedToDataColumn"]]$dependOn(options = c("residualsSavedToDataColumn", "residualsSavedToData", "summaryType"))
@@ -1386,7 +1387,8 @@ for sparse regression when there are more covariates than observations (Castillo
 
   if (userWantsResidualSds) {
 
-    residualsSds <- predictions[[if (options[["summaryType"]] == "averaged") "se.bma.pred" else "se.pred"]]
+    residualsSds <- rep(NA, nrow(dataset)) # create vector with MA to account for missingness
+    residualsSds[as.numeric(rownames(basregModel[["model"]]))] <- predictions[[if (options[["summaryType"]] == "averaged") "se.bma.pred" else "se.pred"]]
 
     basregContainer[["residualSdsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualSdsSavedToDataColumn"]])
     basregContainer[["residualSdsSavedToDataColumn"]]$dependOn(options = c("residualSdsSavedToDataColumn", "residualSdsSavedToData", "summaryType"))
