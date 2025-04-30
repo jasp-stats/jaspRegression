@@ -1258,6 +1258,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
     }
 
     plotDat <- data.frame(x = fprate, y = tprate, z = cutoffInt)
+    plotDat <- plotDat[order(plotDat$y), ]
 
   } else {
     precision <- numeric(length(cutoffInt))
