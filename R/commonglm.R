@@ -388,9 +388,9 @@
   if (options[["residualsSavedToDataType"]] == "raw") {
     residuals[as.numeric(rownames(model[["model"]]))] <- model[["residuals"]] # extract residuals
   } else if (options[["residualsSavedToDataType"]] == "standard") {
-    residuals[as.numeric(rownames(model[["model"]]))] <- rstandard(model[["residuals"]]) # extract residuals
-  } (options[["residualsSavedToDataType"]] == "student") {
-    residuals[as.numeric(rownames(model[["model"]]))] <- rstudent(model[["residuals"]]) # extract residuals
+    residuals[as.numeric(rownames(model[["model"]]))] <- rstandard(model)
+  } else if (options[["residualsSavedToDataType"]] == "student") {
+    residuals[as.numeric(rownames(model[["model"]]))] <- rstudent(model)
   }
 
   container[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
