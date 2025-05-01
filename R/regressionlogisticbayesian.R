@@ -1435,7 +1435,8 @@ for sparse regression when there are more covariates than observations (Castillo
 
   if (userWantsResiduals) {
 
-    residuals <- c(bayesianLogisticRegModel[["Y"]] - predictions[["fit"]]) # c to drop attributes
+    residuals <- rep(NA, nrow(dataset)) # create vector with MA to account for missingness
+    residuals[as.numeric(rownames(bayesianLogisticRegModel[["model"]]))] <- c(bayesianLogisticRegModel[["Y"]] - predictions[["fit"]]) # c to drop attributes
 
     bayesianLogisticRegContainer[["residualsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualsSavedToDataColumn"]])
     bayesianLogisticRegContainer[["residualsSavedToDataColumn"]]$dependOn(options = c("residualsSavedToDataColumn", "residualsSavedToData", "summaryType"))
@@ -1445,7 +1446,8 @@ for sparse regression when there are more covariates than observations (Castillo
 
   if (userWantsResidualSds) {
 
-    residualsSds <- predictions[[if (options[["summaryType"]] == "averaged") "se.bma.pred" else "se.pred"]]
+    residualsSds <- rep(NA, nrow(dataset)) # create vector with MA to account for missingness
+    residualsSds[as.numeric(rownames(bayesianLogisticRegModel[["model"]]))] <- predictions[[if (options[["summaryType"]] == "averaged") "se.bma.pred" else "se.pred"]]
 
     bayesianLogisticRegContainer[["residualSdsSavedToDataColumn"]] <- createJaspColumn(columnName = options[["residualSdsSavedToDataColumn"]])
     bayesianLogisticRegContainer[["residualSdsSavedToDataColumn"]]$dependOn(options = c("residualSdsSavedToDataColumn", "residualSdsSavedToData", "summaryType"))
