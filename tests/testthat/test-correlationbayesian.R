@@ -152,8 +152,6 @@ options$pearson <- FALSE
 options$kendall <- TRUE
 options$pairwiseDisplay <- TRUE
 options$matrixPlot <- TRUE
-options$matrixPlotDensity <- TRUE
-options$matrixPlotPosterior <- TRUE
 options$pairsMethod <- "kendall"
 options$variablePairs <- list(c("Month", "Stress.frequency"))
 options$priorWidth <- 1
