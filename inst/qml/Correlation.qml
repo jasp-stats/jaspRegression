@@ -34,17 +34,17 @@ Form
 	Group
 	{
 		title: qsTr("Sample Correlation Coefficient")
-		CheckBox { name: "pearson";			label: qsTr("Pearson's r"); checked: true	}
+		CheckBox { name: "pearson";			label: qsTr("Pearson's r"); 	checked: true	}
 		CheckBox { name: "spearman";		label: qsTr("Spearman's rho")					}
-		CheckBox { name: "kendallsTauB";	label: qsTr("Kendall's tau-b")			}
+		CheckBox { name: "kendallsTauB";	label: qsTr("Kendall's tau-b")					}
 	}
 
 	Group
 	{
 		title: qsTr("Additional Options")
-		CheckBox { name: "pairwiseDisplay";		label: qsTr("Display pairwise")									}
-		CheckBox { name: "significanceReport";	label: qsTr("Report significance");				checked: true	}
-		CheckBox { name: "significanceFlagged";	label: qsTr("Flag significant correlations")					}
+		CheckBox { name: "pairwiseDisplay";		label: qsTr("Display pairwise"); 		checked: true	}
+		CheckBox { name: "significanceReport";	label: qsTr("Report significance");		checked: true	}
+		CheckBox { name: "significanceFlagged";	label: qsTr("Flag significant correlations")			}
 		CheckBox
 		{
 			name: "ci";		label: qsTr("Confidence intervals")
