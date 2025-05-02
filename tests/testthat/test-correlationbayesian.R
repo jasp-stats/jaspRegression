@@ -9,6 +9,7 @@ test_that("Bayesian Correlation Table results match", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
   options$variables <- c("contcor1", "contcor2")
   options$kendall <- TRUE
+  options$pairwiseDisplay <- FALSE
   options$supportCorrelationFlagged <- TRUE
   options$ci <- TRUE
   options$priorWidth <- 1.5
@@ -151,6 +152,8 @@ options$pearson <- FALSE
 options$kendall <- TRUE
 options$pairwiseDisplay <- TRUE
 options$matrixPlot <- TRUE
+options$matrixPlotDensity <- TRUE
+options$matrixPlotPosterior <- TRUE
 options$pairsMethod <- "kendall"
 options$variablePairs <- list(c("Month", "Stress.frequency"))
 options$priorWidth <- 1
