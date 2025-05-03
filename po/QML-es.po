@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-05-03 14:12+0000\n"
+"Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
+"Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/es/>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.12-dev\n"
 "X-Language: es\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1662,61 +1668,54 @@ msgstr ""
 
 msgctxt "ExportBayesian|"
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "Append columns to data"
 msgstr "Añadir columnas a los datos"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals (%1)"
 msgstr "Errores (%1)"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "Column name"
 msgstr "Nombre de columna"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "e.g., residuals"
 msgstr "p.e. errores"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals std. deviations (%1)"
 msgstr "Desviaciones típicas de los errores (%1)"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "e.g., residual sd"
 msgstr "p.e. dt de los errores"
 
 msgctxt "ExportFreq|"
 msgid "Export"
-msgstr ""
+msgstr "Exportar"
 
-#, fuzzy
 msgctxt "ExportFreq|"
 msgid "Append residuals to data"
 msgstr "Añadir los errores a los datos"
 
-#, fuzzy
 msgctxt "ExportFreq|"
 msgid "Column name"
 msgstr "Nombre de columna"
 
-#, fuzzy
 msgctxt "ExportFreq|"
 msgid "e.g., residuals"
 msgstr "p.e. errores"
 
 msgctxt "ExportFreq|"
 msgid "Append predictions to data"
-msgstr ""
+msgstr "Añadir predicciones a los datos"
 
 msgctxt "ExportFreq|"
 msgid "e.g., predictions"
-msgstr ""
+msgstr "p.e. predicciones"
