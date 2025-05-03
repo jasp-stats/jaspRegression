@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-04-26 12:37+0000\n"
-"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/de/>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.12-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -1242,32 +1236,6 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
 msgstr "Weitere Optionen"
 
-msgctxt "RegressionLinearBayesian|"
-msgid "Append columns to data"
-msgstr "Spalten zu Daten hinzufügen"
-
-#, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals (%1)"
-msgstr "Residuen (%1)"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Column name"
-msgstr "Spaltenname"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residuals"
-msgstr "z.B. Residuen"
-
-#, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr "Residuen Std.-Abweichungen (%1)"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residual sd"
-msgstr "z.B. Residuen-SD"
-
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "Koeffizienten"
@@ -1457,32 +1425,6 @@ msgid "Advanced Options"
 msgstr "Weitere Optionen"
 
 msgctxt "RegressionLogisticBayesian|"
-msgid "Append columns to data"
-msgstr "Spalten zu Daten hinzufügen"
-
-#, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals (%1)"
-msgstr "Residuen (%1)"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Column name"
-msgstr "Spaltenname"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residuals"
-msgstr "z.B. Residuen"
-
-#, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr "Residuen Std.-Abweichungen (%1)"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residual sd"
-msgstr "z.B. Residuen-SD"
-
-msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
 msgstr "Prior"
 
@@ -1654,18 +1596,6 @@ msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
 msgstr "Mahalanobis"
 
-msgctxt "OutlierComponent|"
-msgid "Append residuals to data"
-msgstr "Residuen zu Daten hinzufügen"
-
-msgctxt "OutlierComponent|"
-msgid "Column name"
-msgstr "Spaltenname"
-
-msgctxt "OutlierComponent|"
-msgid "e.g., residuals"
-msgstr "z.B. Residuen"
-
 msgctxt "Correlation|"
 msgid "Covariance"
 msgstr "Kovarianz"
@@ -1730,3 +1660,64 @@ msgstr ""
 "Test berechnen für die Linearität der Beziehung zwischen den beiden "
 "Variablen, indem ein lineares Modell mit einem quadratischen Modell "
 "verglichen wird."
+
+msgctxt "ExportBayesian|"
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "Append columns to data"
+msgstr "Spalten zu Daten hinzufügen"
+
+#, fuzzy, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals (%1)"
+msgstr "Residuen (%1)"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "Column name"
+msgstr "Spaltenname"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "e.g., residuals"
+msgstr "z.B. Residuen"
+
+#, fuzzy, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr "Residuen Std.-Abweichungen (%1)"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "e.g., residual sd"
+msgstr "z.B. Residuen-SD"
+
+msgctxt "ExportFreq|"
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "Append residuals to data"
+msgstr "Residuen zu Daten hinzufügen"
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "Column name"
+msgstr "Spaltenname"
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "e.g., residuals"
+msgstr "z.B. Residuen"
+
+msgctxt "ExportFreq|"
+msgid "Append predictions to data"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "e.g., predictions"
+msgstr ""

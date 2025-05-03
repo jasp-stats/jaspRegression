@@ -1235,32 +1235,6 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
 msgstr "高级选项"
 
-msgctxt "RegressionLinearBayesian|"
-msgid "Append columns to data"
-msgstr "向数据中追加列"
-
-#, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals (%1)"
-msgstr "残差 (%1)"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Column name"
-msgstr "列名"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residuals"
-msgstr "例如：残差"
-
-#, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr "残差的标准偏差（%1）"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residual sd"
-msgstr "例如：残差标准差"
-
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "系数"
@@ -1450,32 +1424,6 @@ msgid "Advanced Options"
 msgstr "高级选项"
 
 msgctxt "RegressionLogisticBayesian|"
-msgid "Append columns to data"
-msgstr "向数据中追加列"
-
-#, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals (%1)"
-msgstr "残差 (%1)"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Column name"
-msgstr "列名"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residuals"
-msgstr "例如：残差"
-
-#, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr "残差的标准偏差（%1）"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residual sd"
-msgstr "例如：残差标准差"
-
-msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
 msgstr "先验"
 
@@ -1649,18 +1597,6 @@ msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
 msgstr ""
 
-msgctxt "OutlierComponent|"
-msgid "Append residuals to data"
-msgstr "将残差追加到数据集中"
-
-msgctxt "OutlierComponent|"
-msgid "Column name"
-msgstr "列名"
-
-msgctxt "OutlierComponent|"
-msgid "e.g., residuals"
-msgstr "例如：residuals"
-
 msgctxt "Correlation|"
 msgid "Covariance"
 msgstr ""
@@ -1721,4 +1657,63 @@ msgctxt "CorrelationBayesian|"
 msgid ""
 "Compute a test for the linearity of the relationship between the two "
 "variables by comparing a linear model to a quadratic model."
+msgstr ""
+
+msgctxt "ExportBayesian|"
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "Append columns to data"
+msgstr "向数据中追加列"
+
+#, fuzzy, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals (%1)"
+msgstr "残差 (%1)"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "Column name"
+msgstr "列名"
+
+msgctxt "ExportBayesian|"
+msgid "e.g., residuals"
+msgstr ""
+
+#, fuzzy, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr "残差的标准偏差（%1）"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "e.g., residual sd"
+msgstr "例如：残差标准差"
+
+msgctxt "ExportFreq|"
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "Append residuals to data"
+msgstr "将残差追加到数据集中"
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "Column name"
+msgstr "列名"
+
+msgctxt "ExportFreq|"
+msgid "e.g., residuals"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Append predictions to data"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "e.g., predictions"
 msgstr ""

@@ -1324,35 +1324,6 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
 msgstr "Дополнительные параметры"
 
-#, fuzzy
-msgctxt "RegressionLinearBayesian|"
-msgid "Append columns to data"
-msgstr "Добавить столбцы к данным"
-
-#, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals (%1)"
-msgstr "Остатки (%1)"
-
-#, fuzzy
-msgctxt "RegressionLinearBayesian|"
-msgid "Column name"
-msgstr "Имя столбца"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residuals"
-msgstr "т.е., остатки"
-
-#, fuzzy, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr "Остатки стд. отклонений (%1)"
-
-#, fuzzy
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residual sd"
-msgstr "например, СО остатков"
-
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "Коэффициенты"
@@ -1582,36 +1553,6 @@ msgstr "Дополнительные параметры"
 
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
-msgid "Append columns to data"
-msgstr "Добавить столбцы к данным"
-
-#, fuzzy, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals (%1)"
-msgstr "Остатки (%1)"
-
-#, fuzzy
-msgctxt "RegressionLogisticBayesian|"
-msgid "Column name"
-msgstr "Имя столбца"
-
-#, fuzzy
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residuals"
-msgstr "т.е., остатки"
-
-#, fuzzy, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr "Остатки стд. отклонений (%1)"
-
-#, fuzzy
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residual sd"
-msgstr "например, СО остатков"
-
-#, fuzzy
-msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
 msgstr "Приор"
 
@@ -1812,20 +1753,6 @@ msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
 msgstr ""
 
-msgctxt "OutlierComponent|"
-msgid "Append residuals to data"
-msgstr ""
-
-#, fuzzy
-msgctxt "OutlierComponent|"
-msgid "Column name"
-msgstr "Имя столбца"
-
-#, fuzzy
-msgctxt "OutlierComponent|"
-msgid "e.g., residuals"
-msgstr "т.е., остатки"
-
 msgctxt "Correlation|"
 msgid "Covariance"
 msgstr ""
@@ -1886,4 +1813,64 @@ msgctxt "CorrelationBayesian|"
 msgid ""
 "Compute a test for the linearity of the relationship between the two "
 "variables by comparing a linear model to a quadratic model."
+msgstr ""
+
+msgctxt "ExportBayesian|"
+msgid "Export"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "Append columns to data"
+msgstr "Добавить столбцы к данным"
+
+#, fuzzy, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals (%1)"
+msgstr "Остатки (%1)"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "Column name"
+msgstr "Имя столбца"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "e.g., residuals"
+msgstr "т.е., остатки"
+
+#, fuzzy, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr "Остатки стд. отклонений (%1)"
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "e.g., residual sd"
+msgstr "например, СО остатков"
+
+msgctxt "ExportFreq|"
+msgid "Export"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Append residuals to data"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "Column name"
+msgstr "Имя столбца"
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "e.g., residuals"
+msgstr "т.е., остатки"
+
+msgctxt "ExportFreq|"
+msgid "Append predictions to data"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "e.g., predictions"
 msgstr ""

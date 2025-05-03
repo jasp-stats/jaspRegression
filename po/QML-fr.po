@@ -1250,32 +1250,6 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
 msgstr "Options avancées"
 
-msgctxt "RegressionLinearBayesian|"
-msgid "Append columns to data"
-msgstr ""
-
-#, fuzzy, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals (%1)"
-msgstr "Résidues (%1)"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Column name"
-msgstr "Nom de la colonne"
-
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residuals"
-msgstr ""
-
-#, qt-format
-msgctxt "RegressionLinearBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr ""
-
-msgctxt "RegressionLinearBayesian|"
-msgid "e.g., residual sd"
-msgstr ""
-
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "Coefficients"
@@ -1486,33 +1460,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Advanced Options"
 msgstr "Options avancées"
 
-msgctxt "RegressionLogisticBayesian|"
-msgid "Append columns to data"
-msgstr ""
-
-#, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals (%1)"
-msgstr "Résidus (%1)"
-
-#, fuzzy
-msgctxt "RegressionLogisticBayesian|"
-msgid "Column name"
-msgstr "Nom de la colonne"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residuals"
-msgstr ""
-
-#, qt-format
-msgctxt "RegressionLogisticBayesian|"
-msgid "Residuals std. deviations (%1)"
-msgstr ""
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "e.g., residual sd"
-msgstr ""
-
 #, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
@@ -1706,19 +1653,6 @@ msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
 msgstr ""
 
-msgctxt "OutlierComponent|"
-msgid "Append residuals to data"
-msgstr ""
-
-#, fuzzy
-msgctxt "OutlierComponent|"
-msgid "Column name"
-msgstr "Nom de la colonne"
-
-msgctxt "OutlierComponent|"
-msgid "e.g., residuals"
-msgstr ""
-
 msgctxt "Correlation|"
 msgid "Covariance"
 msgstr ""
@@ -1779,4 +1713,60 @@ msgctxt "CorrelationBayesian|"
 msgid ""
 "Compute a test for the linearity of the relationship between the two "
 "variables by comparing a linear model to a quadratic model."
+msgstr ""
+
+msgctxt "ExportBayesian|"
+msgid "Export"
+msgstr ""
+
+msgctxt "ExportBayesian|"
+msgid "Append columns to data"
+msgstr ""
+
+#, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals (%1)"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportBayesian|"
+msgid "Column name"
+msgstr "Nom de la colonne"
+
+msgctxt "ExportBayesian|"
+msgid "e.g., residuals"
+msgstr ""
+
+#, qt-format
+msgctxt "ExportBayesian|"
+msgid "Residuals std. deviations (%1)"
+msgstr ""
+
+msgctxt "ExportBayesian|"
+msgid "e.g., residual sd"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Export"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Append residuals to data"
+msgstr ""
+
+#, fuzzy
+msgctxt "ExportFreq|"
+msgid "Column name"
+msgstr "Nom de la colonne"
+
+msgctxt "ExportFreq|"
+msgid "e.g., residuals"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Append predictions to data"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "e.g., predictions"
 msgstr ""
