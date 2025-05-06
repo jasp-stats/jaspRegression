@@ -850,7 +850,8 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   if (!ready) return()
   if (isFALSE(options$scatterPlot)) return()
 
-  if (isTRUE(options[["pairwiseDisplay"]]) || isFALSE(options[["scatterPlotDensity"]] || options[["scatterPlotStatistic"]])) {
+  wantsOnlyScatter <-  isFALSE(options[["scatterPlotDensity"]] || options[["scatterPlotStatistic"]])
+  if (isTRUE(options[["pairwiseDisplay"]]) || (wantsOnlyScatter && length(options[["variables"]]) == 2)) {
     .corrPairwisePlot(jaspResults, dataset, options, ready, corrResults)
   } else {
     .corrMatrixPlot(jaspResults, dataset, options, ready, corrResults)
