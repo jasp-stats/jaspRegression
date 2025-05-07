@@ -195,7 +195,7 @@ Form
             CheckBox
             {
                               name: "rocPlot";               label: qsTr("ROC plot")
-                DoubleField { name: "rocPlotCutoffStep";              label: qsTr("Cutoff step"); defaultValue: 0.2; min: 0.05; max: 0.5; decimals: 3     }
+                DoubleField { name: "rocPlotCutoffStep";              label: qsTr("Cutoff step"); defaultValue: 0.2; min: 0.001; max: 0.5; decimals: 3     }
                 CheckBox    { name: "rocPlotCutoffLabel";   label: qsTr("Add cutoff labels")                                                    }
             }
             CheckBox
