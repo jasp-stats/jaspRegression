@@ -6,6 +6,7 @@ options$vovkSellke <- TRUE
 options$ci <- TRUE
 options$significanceFlagged <- TRUE
 options$kendallsTauB <- TRUE
+options$pairwiseDisplay <- FALSE
 options$assumptionCheckMultivariateShapiro <- TRUE
 options$assumptionCheckPairwiseShapiro <- TRUE
 options$scatterPlot <- TRUE

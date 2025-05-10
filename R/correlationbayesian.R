@@ -120,7 +120,8 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
   }
 
   jaspResults[["corModel"]] <- createJaspState(result)
-  jaspResults[["corModel"]]$dependOn(c("naAction", "variables", "priorWidth", "ciLevel", "setSeed", "seed"))
+  jaspResults[["corModel"]]$dependOn(c("naAction", "variables", "priorWidth", "ciLevel", "setSeed", "seed",
+                                       "kendall", "pearson", "spearman"))
 
   return(result)
 }
@@ -660,8 +661,19 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
 
   labels <- if (useRanks) .addRankToVariableName(vars) else vars
 
-  obj <- try(jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = labels, topLabels = labels,
-                                      scaleXYlabels = 0.9, labelPos=labelPos))
+  if (nVariables > 2 || options[["matrixPlotDensity"]] || options[["matrixPlotPosterior"]]) {
+    obj <- try(jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = labels, topLabels = labels,
+                                        scaleXYlabels = 0.9, labelPos=labelPos))
+  } else {
+    obj <- try(jaspGraphs::JASPScatterPlot(x = if (useRanks) rank(dataset[[options[["variables"]][1]]]) else dataset[[options[["variables"]][1]]],
+                                           y = if (useRanks) rank(dataset[[options[["variables"]][2]]]) else dataset[[options[["variables"]][2]]],
+                                           xName = labels[1],
+                                           yName = labels[2],
+                                           forceLinearSmooth = TRUE,
+                                           addSmoothCI = FALSE,
+                                           plotAbove = "none",
+                                           plotRight = "none"))
+  }
 
   if (isTryError(obj)) {
     matrixPlot$setError(.extractErrorMessage(obj))

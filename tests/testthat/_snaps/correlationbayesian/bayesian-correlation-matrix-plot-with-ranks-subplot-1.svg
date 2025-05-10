@@ -18,17 +18,63 @@
   </clipPath>
 </defs>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 0.75; stroke: none;' />
+<rect x='-0.000000000000064' y='0.00' width='720.00' height='576.00' style='stroke-width: 10.67; stroke: none;' />
 </g>
 <defs>
-  <clipPath id='cpMC4wMHw3MjAuMDB8MTcuMzB8NTc2LjAw'>
-    <rect x='0.00' y='17.30' width='720.00' height='558.70' />
+  <clipPath id='cpNjQuNTZ8NzIwLjAwfDIwLjcxfDUxMC4xNA=='>
+    <rect x='64.56' y='20.71' width='655.44' height='489.43' />
   </clipPath>
 </defs>
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8MTcuMzB8NTc2LjAw)'>
-<text transform='translate(366.66,220.47) rotate(-90)' text-anchor='middle' style='font-size: 19.35px; font-family: sans;' textLength='135.53px' lengthAdjust='spacingAndGlyphs'>Ranks of Month</text>
+<g clip-path='url(#cpNjQuNTZ8NzIwLjAwfDIwLjcxfDUxMC4xNA==)'>
+<rect x='64.56' y='20.71' width='655.44' height='489.43' style='stroke-width: 10.67; stroke: none;' />
+<circle cx='124.15' cy='109.70' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='153.94' cy='176.44' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='183.73' cy='131.94' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='213.52' cy='87.45' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='243.32' cy='354.41' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='273.11' cy='176.44' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='302.90' cy='232.05' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='332.70' cy='387.78' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='362.49' cy='287.67' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='392.28' cy='232.05' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='422.07' cy='309.92' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='451.87' cy='265.42' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='481.66' cy='176.44' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='511.45' cy='421.15' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='541.24' cy='332.16' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='571.04' cy='454.52' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='600.83' cy='454.52' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<circle cx='630.62' cy='387.78' r='3.56' style='stroke-width: 0.71; fill: #BEBEBE;' />
+<polyline points='124.15,133.89 130.56,137.51 136.97,141.12 143.38,144.73 149.79,148.34 156.20,151.95 162.61,155.56 169.02,159.17 175.44,162.79 181.85,166.40 188.26,170.01 194.67,173.62 201.08,177.23 207.49,180.84 213.90,184.45 220.31,188.07 226.72,191.68 233.13,195.29 239.55,198.90 245.96,202.51 252.37,206.12 258.78,209.74 265.19,213.35 271.60,216.96 278.01,220.57 284.42,224.18 290.83,227.79 297.25,231.40 303.66,235.02 310.07,238.63 316.48,242.24 322.89,245.85 329.30,249.46 335.71,253.07 342.12,256.68 348.53,260.30 354.95,263.91 361.36,267.52 367.77,271.13 374.18,274.74 380.59,278.35 387.00,281.96 393.41,285.58 399.82,289.19 406.23,292.80 412.65,296.41 419.06,300.02 425.47,303.63 431.88,307.24 438.29,310.86 444.70,314.47 451.11,318.08 457.52,321.69 463.93,325.30 470.34,328.91 476.76,332.53 483.17,336.14 489.58,339.75 495.99,343.36 502.40,346.97 508.81,350.58 515.22,354.19 521.63,357.81 528.04,361.42 534.46,365.03 540.87,368.64 547.28,372.25 553.69,375.86 560.10,379.47 566.51,383.09 572.92,386.70 579.33,390.31 585.74,393.92 592.16,397.53 598.57,401.14 604.98,404.75 611.39,408.37 617.80,411.98 624.21,415.59 630.62,419.20 ' style='stroke-width: 2.13; stroke: #3366FF; stroke-linecap: butt;' />
+<line x1='94.03' y1='510.14' x2='690.53' y2='510.14' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<line x1='64.56' y1='488.21' x2='64.56' y2='42.64' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<rect x='64.56' y='20.71' width='655.44' height='489.43' style='stroke-width: 0.00; stroke: none;' />
 </g>
 <g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-<text x='0.00' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='308.15px' lengthAdjust='spacingAndGlyphs'>bayesian-correlation-matrix-plot-with-ranks-subplot-1</text>
+<polyline points='64.56,510.14 64.56,20.71 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
+<text x='49.08' y='493.74' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='49.08' y='382.51' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>5</text>
+<text x='49.08' y='271.27' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='18.91px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='49.08' y='160.04' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='18.91px' lengthAdjust='spacingAndGlyphs'>15</text>
+<text x='49.08' y='48.80' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='18.91px' lengthAdjust='spacingAndGlyphs'>20</text>
+<polyline points='56.06,487.89 64.56,487.89 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='56.06,376.66 64.56,376.66 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='56.06,265.42 64.56,265.42 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='56.06,154.19 64.56,154.19 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='56.06,42.95 64.56,42.95 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='64.56,510.14 720.00,510.14 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
+<polyline points='94.35,518.64 94.35,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='243.32,518.64 243.32,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='392.28,518.64 392.28,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='541.24,518.64 541.24,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='690.21,518.64 690.21,510.14 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<text x='94.35' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>0</text>
+<text x='243.32' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>5</text>
+<text x='392.28' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='18.91px' lengthAdjust='spacingAndGlyphs'>10</text>
+<text x='541.24' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='18.91px' lengthAdjust='spacingAndGlyphs'>15</text>
+<text x='690.21' y='537.32' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='18.91px' lengthAdjust='spacingAndGlyphs'>20</text>
+<text x='392.28' y='567.49' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='119.09px' lengthAdjust='spacingAndGlyphs'>Ranks of Month</text>
+<text transform='translate(16.68,265.42) rotate(-90)' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='199.42px' lengthAdjust='spacingAndGlyphs'>Ranks of Stress.frequency</text>
+<text x='392.28' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='396.86px' lengthAdjust='spacingAndGlyphs'>bayesian-correlation-matrix-plot-with-ranks-subplot-1</text>
 </g>
 </svg>
