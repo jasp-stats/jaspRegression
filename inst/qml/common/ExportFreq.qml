@@ -42,6 +42,15 @@ Section
 				fieldWidth:				120
 				enabled:				residualsSavedToData.checked
 			}
+			
+			RadioButtonGroup
+			{
+				title: qsTr("Residuals type")
+				name: "residualsSavedToDataType"
+				RadioButton { value: "raw";			label: qsTr("Raw"); checked: true	}
+				RadioButton { value: "standard";	label: qsTr("Studentized")		}
+				RadioButton { value: "student";		label: qsTr("Standardized")		}
+			}
 		}
 
 		CheckBox
