@@ -9,6 +9,7 @@ test_that("Bayesian Correlation Table results match", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
   options$variables <- c("contcor1", "contcor2")
   options$kendall <- TRUE
+  options$pairwiseDisplay <- FALSE
   options$supportCorrelationFlagged <- TRUE
   options$ci <- TRUE
   options$priorWidth <- 1.5

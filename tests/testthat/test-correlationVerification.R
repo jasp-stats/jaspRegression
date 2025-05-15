@@ -9,6 +9,7 @@ test_that("Correlation Table results match R, SPSS, SAS and MiniTab", {
   options$spearman <- TRUE
   options$ci <- TRUE
   options$significanceFlagged <- FALSE
+  options$pairwiseDisplay <- FALSE
 
   results <- jaspTools::runAnalysis("Correlation", "Correlation.csv", options)
 

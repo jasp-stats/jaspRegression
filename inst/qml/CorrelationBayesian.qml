@@ -41,7 +41,7 @@ Form
 	Group
 	{
 		title: qsTr("Additional Options")
-		CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table")					}
+		CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table"); checked: true	}
 		CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors"); checked: true		}
 		CheckBox {	name: "supportCorrelationFlagged";      label: qsTr("Flag supported correlations")				}
 		CheckBox {	name: "sampleSize";                     label: qsTr("Sample size")								}
