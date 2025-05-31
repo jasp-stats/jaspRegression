@@ -1713,3 +1713,19 @@ msgstr "Añadir predicciones a los datos"
 msgctxt "ExportFreq|"
 msgid "e.g., predictions"
 msgstr "p.e. predicciones"
+
+msgctxt "ExportFreq|"
+msgid "Residuals type"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Studentized"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Standardized"
+msgstr ""

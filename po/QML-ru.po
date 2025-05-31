@@ -1874,3 +1874,19 @@ msgstr ""
 msgctxt "ExportFreq|"
 msgid "e.g., predictions"
 msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Residuals type"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Raw"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Studentized"
+msgstr ""
+
+msgctxt "ExportFreq|"
+msgid "Standardized"
+msgstr ""
