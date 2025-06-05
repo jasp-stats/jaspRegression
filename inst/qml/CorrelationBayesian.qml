@@ -45,8 +45,8 @@ Form
 	Group
 	{
 		title: qsTr("Additional Options")
-        CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table"); info: qsTr("Display a table where one row corresponds to one pair of the specified variables. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")					}
-        CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors"); info: qsTr("Report Bayes factor for each test.") ; checked: true		}
+        CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table") ; checked: true; info: qsTr("Display a table where one row corresponds to one pair of the specified variables. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")					}
+        CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors") ; 	checked: true; info: qsTr("Report Bayes factor for each test.")}
         CheckBox {	name: "supportCorrelationFlagged";		label: qsTr("Flag supported correlations"); info: qsTr("Indicate which correlation coefficients yield Bayes factors greater than 10, 30, and 100.")				}
         CheckBox {	name: "sampleSize";                     label: qsTr("Sample size"); info: qsTr("Report the sample size for each test.")								}
         CheckBox {	name: "posteriorMedian";                label: qsTr("Posterior median"); debug: true			}

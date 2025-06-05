@@ -206,7 +206,7 @@ Form
             }
             CheckBox
             {
-                              name: "precisionRecallPlot";                label: qsTr("PR plot"); info: qsTr("Displays the Positive predicitve value on the y axis vs the true positive rate/sensitivity on the x axis. Useful for imbalanced datadets. The cutoff step determines the threshold at which an observation is calssified as positive or negative. ")
+                              name: "precisionRecallPlot";                label: qsTr("PR plot"); info: qsTr("Displays the Positive predicitve value on the y axis vs the true positive rate/sensitivity on the x axis. Useful for imbalanced datadets. The cutoff step determines the threshold at which an observation is classified as positive or negative. ")
                 DoubleField { name: "precisionRecallPlotCutoffStep";               label: qsTr("Cutoff step"); defaultValue: 0.2; min: 0.05; max: 0.5; decimals: 3     }
                 CheckBox    { name: "precisionRecallPlotCutoffLabel";    label: qsTr("Add cutoff labels")                                                    }
             }

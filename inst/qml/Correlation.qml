@@ -45,9 +45,9 @@ Form
 	Group
 	{
 		title: qsTr("Additional Options")
-		CheckBox { name: "pairwiseDisplay";		label: qsTr("Display pairwise"); info: qsTr("Display a table where one row corresponds to one pair of the specified variables, and the scatter plots are shown individually for each pair. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")								}
-		CheckBox { name: "significanceReport";	label: qsTr("Report significance");	info: qsTr("Display the p-value corresponding to the observed correlation."); checked: true	}
-		CheckBox { name: "significanceFlagged";	label: qsTr("Flag significant correlations"); info: qsTr("Mark statistically significant correlations.")					}
+		CheckBox { name: "pairwiseDisplay";		label: qsTr("Display pairwise"); ;  checked: true; 	info: qsTr("Display a table where one row corresponds to one pair of the specified variables, and the scatter plots are shown individually for each pair. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")}
+		CheckBox { name: "significanceReport";	label: qsTr("Report significance"); checked: true;  info: qsTr("Display the p-value corresponding to the observed correlation.")}
+		CheckBox { name: "significanceFlagged";	label: qsTr("Flag significant correlations"); 		info: qsTr("Mark statistically significant correlations.")					}
 		CheckBox
 		{
 			name: "ci";		label: qsTr("Confidence intervals"); info: qsTr("Confidence intervals for the population correlation (only available for the Pearson correlation). By default is set at 95% but the percentage can be changed. There is also an option to set up a bootstrap estimation, set at 1000 by default with the option to change it into the desired number.")
