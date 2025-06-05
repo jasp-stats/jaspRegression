@@ -32,6 +32,7 @@ Section
 		{
 			id:							residualsSavedToData
 			name:						"residualsSavedToData"
+			info: qsTr("Save the residuals of the most complex model as a new column in the data file.")
 			text:						qsTr("Append residuals to data")
 
 			ComputedColumnField
@@ -42,21 +43,13 @@ Section
 				fieldWidth:				120
 				enabled:				residualsSavedToData.checked
 			}
-			
-			RadioButtonGroup
-			{
-				title: qsTr("Residuals type")
-				name: "residualsSavedToDataType"
-				RadioButton { value: "raw";			label: qsTr("Raw"); checked: true	}
-				RadioButton { value: "standard";	label: qsTr("Studentized")		}
-				RadioButton { value: "student";		label: qsTr("Standardized")		}
-			}
 		}
 
 		CheckBox
 		{
 			id:							predictionsSavedToData
 			name:						"predictionsSavedToData"
+			info: qsTr("Save the predictions of the most complex model as a new column in the data file")
 			text:						qsTr("Append predictions to data")
 
 			ComputedColumnField
