@@ -52,8 +52,16 @@ Form
         CheckBox {	name: "posteriorMedian";                label: qsTr("Posterior median"); debug: true			}
 		CheckBox
 		{
-			name: "ci"; label: qsTr("Credible intervals"); info: qsTr("Display central 95% credible intervals for the correlation coefficient. The percentage can be changed.")
+			name: "ci"; 
+			label: qsTr("Credible intervals"); 
+			info: qsTr("Display central 95% credible intervals for the correlation coefficient. The percentage can be changed.")
             CIField { name: "ciLevel";	label: qsTr("Interval") }
+		}
+		CheckBox
+		{
+			name:  "linearityTest"
+			label: qsTr("Linearity test")
+			info:  qsTr("Compute a test for the linearity of the relationship between the two variables by comparing a linear model to a quadratic model.")
 		}
 	}
 

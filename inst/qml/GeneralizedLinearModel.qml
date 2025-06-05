@@ -170,7 +170,10 @@ Form
 		enabled: input.otherFamilyNotSelected
 	}
 
-	Common.ExportFreq { id: exportComponent}
-
+	Common.ExportFreq 
+	{  
+		enabled: input.otherFamilyNotSelected 
+		id: exportComponent
+	}
 }
 
