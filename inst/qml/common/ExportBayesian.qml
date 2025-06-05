@@ -35,6 +35,8 @@ Section
 			id:							residualsSavedToData
 			name:						"residualsSavedToData"
 			text:						qsTr("Residuals (%1)").arg(summaryTypeValue)
+			info: qsTr("The posterior mean of the residuals.")
+
 
 			ComputedColumnField
 			{
@@ -44,12 +46,14 @@ Section
 				fieldWidth:				120
 				enabled:				residualsSavedToData.checked
 			}
-		}
+		} 
 		CheckBox
 		{
 			id:							residualSdsSavedToData
 			name:						"residualSdsSavedToData"
 			text:						qsTr("Residuals std. deviations (%1)").arg(summaryTypeValue)
+			info: qsTr("The posterior standard deviation of the residuals.")
+
 
 			ComputedColumnField
 			{

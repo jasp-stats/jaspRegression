@@ -25,38 +25,38 @@ import JASP.Controls
 
 Group
 {
-	title: qsTr("Analysis of Residuals")
+	title: qsTr("Analysis of Residuals"); info: qsTr("The following options provide visual diagnostics of the model assumptions based on residuals.")
 	Layout.rowSpan: 3
 	Group
 	{
-		title: qsTr("Deviance Residuals")
-		CheckBox { name: "devianceResidualVsFittedPlot";	label: qsTr("Residuals vs. fitted")		}
-		CheckBox { name: "devianceResidualVsPredictorPlot";	label: qsTr("Residuals vs. predictor")	}
-		CheckBox { name: "devianceResidualQqPlot";	label: qsTr("Q-Q plot")					}
+		title: qsTr("Deviance Residuals"); info: qsTr("Provide different types of diagnostic plots based on deviance residuals.")
+		CheckBox { name: "devianceResidualVsFittedPlot";	label: qsTr("Residuals vs. fitted"); info: qsTr("A scatter plot of the standardized deviance residuals against the fitted values (with constant-information scale transformations).")	}
+		CheckBox { name: "devianceResidualVsPredictorPlot";	label: qsTr("Residuals vs. predictor"); info: qsTr("Scatter plots of the standardized deviance residuals against every predictor on its original scale.")	}
+		CheckBox { name: "devianceResidualQqPlot";	label: qsTr("Q-Q plot")		; info: qsTr("Q-Q plot of the standardized deviance residuals.")		}
 	}
 
 	Group
 	{
-		title: qsTr("Pearson Residuals")
-		CheckBox { name: "pearsonResidualVsFittedPlot";	label: qsTr("Residuals vs. fitted") 	}
-		CheckBox { name: "pearsonResidualVsPredictorPlot";	label: qsTr("Residuals vs. predictor")	}
-		CheckBox { name: "pearsonResidualQqPlot";	label: qsTr("Q-Q plot")					}
+		title: qsTr("Pearson Residuals"); info: qsTr("Provide different types of diagnostic plots based on Pearson residuals.")
+		CheckBox { name: "pearsonResidualVsFittedPlot";	label: qsTr("Residuals vs. fitted"); info: qsTr("A scatter plot of the standardized Pearson residuals against the fitted values (with constant-information scale transformations).") 	}
+		CheckBox { name: "pearsonResidualVsPredictorPlot";	label: qsTr("Residuals vs. predictor"); info: qsTr(" Scatter plots of the standardized Pearson residuals against every predictor on its original scale.")	}
+		CheckBox { name: "pearsonResidualQqPlot";	label: qsTr("Q-Q plot"); info: qsTr("Q-Q plot of the standardized Pearson residuals.")			}
 
 	}
 
 	Group
 	{
-		title: qsTr("Quantile Residuals")
-		CheckBox { name: "quantileResidualVsFittedPlot";	label: qsTr("Residuals vs. fitted")		}
-		CheckBox { name: "quantileResidualVsPredictorPlot";	label: qsTr("Residuals vs. predictor")	}
-		CheckBox { name: "quantileResidualQqPlot";	label: qsTr("Q-Q plot")					}
+		title: qsTr("Quantile Residuals"); info: qsTr("Provide different types of diagnostic plots based on quantile residuals. Highly recommended for discrete families (e.g. Bernoulli, Binomial, Poisson)")
+		CheckBox { name: "quantileResidualVsFittedPlot";	label: qsTr("Residuals vs. fitted"); info: qsTr("A scatter plot of the standardized quantile residuals against the fitted values (with constant-information scale transformations).")		}
+		CheckBox { name: "quantileResidualVsPredictorPlot";	label: qsTr("Residuals vs. predictor"); info: qsTr("Scatter plots of the standardized quantile residuals against every predictor on its original scale.")	}
+		CheckBox { name: "quantileResidualQqPlot";	label: qsTr("Q-Q plot"); info: qsTr("Q-Q plot of the standardized quantile residuals.")					}
 	}
 
 	Group
 	{
 		title: qsTr("Other Plots")
-		CheckBox { name: "partialResidualPlot";	label: qsTr("Partial residual plots")					}
-		CheckBox { name: "workingResponseVsLinearPredictorPlot";	label: qsTr("Working responses vs. linear predictor")	}
+		CheckBox { name: "partialResidualPlot";	label: qsTr("Partial residual plots"); info: qsTr("Partial residual plots across predictors.")					}
+		CheckBox { name: "workingResponseVsLinearPredictorPlot";	label: qsTr("Working responses vs. linear predictor"); info: qsTr(" A scatter plot of the model's working responses z against the predicted linear predictor values.")	}
 	}
 }
 

@@ -37,6 +37,7 @@ Group {
 		{
 			name:				"dependent"
 			title:				qsTr("Dependent variable")
+			info: qsTr("The response variable")
 			allowedColumns:		family.currentValue === "poisson" ? "scale" : ["scale", "ordinal", "nominal"]
 			singleVariable:		true
 		}
@@ -45,6 +46,7 @@ Group {
 		{
 			name:				"covariates"
 			title:				qsTr("Covariates")
+			info: qsTr("Quantitative variables, such as age, height and IQ")
 			allowedColumns:		["scale"]
 		}
 
@@ -52,6 +54,7 @@ Group {
 		{
 			name:				"factors"
 			title:				qsTr("Factors")
+			info: qsTr("Qualitative variables, such as gender and group memberships.")
 			allowedColumns:		["nominal"]
 		}
 
@@ -59,6 +62,7 @@ Group {
 		{
 			name:              "weights"
 			title:             family.currentValue === "binomial" ? qsTr("Total Number of Trials") : qsTr("Weights")
+			info: qsTr("Prior weights of the model. Mandatory when the binomial family is selected. In this case, the name changes to total Number of Trials, and the dependent variable now refers to the proportion of success (between 0 and 1).")
 			allowedColumns:    ["scale"]
 			singleVariable:    true
 		}
@@ -79,11 +83,12 @@ Group {
 		{
 			name:				"family"
 			label:				qsTr("Family")
+			info: qsTr("Distribution of the response variable")
 			id:					family
 			indexDefaultValue:	0
 			values:
 				[
-				{ label: qsTr("Bernoulli"),				value: "bernoulli"},
+				{ label: qsTr("Bernoulli"),	     		value: "bernoulli"},
 				{ label: qsTr("Binomial"),	            value: "binomial"},
 				{ label: qsTr("Gaussian"),				value: "gaussian"},
 				{ label: qsTr("Gamma"),					value: "gamma"},

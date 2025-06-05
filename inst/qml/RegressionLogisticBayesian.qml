@@ -23,14 +23,17 @@ import "./common" as Common
 
 
 Form {
-
+	info: qsTr("The Bayesian Linear Regression allows you to model a linear relationship between one or more explanatory variable/s and a continuous dependent variable.\n") +
+	"## " + qsTr("Assumptions") + "\n" + "- The dependent variables are categorical\n" + "- The dependent variable is linearly related to all predictors and the effects of the predictors are additive.\n" +
+	"- The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.\n" +
+	"- The residuals are uncorrelated with each other.\n" + "- The residuals are normally distributed with a mean zero.\n" + "- The covariate and the experiment effect are independent."
 	VariablesForm
 	{
 		AvailableVariablesList	{ name: "allVariablesList" }
-		AssignedVariablesList	{ name: "dependent";	title: qsTr("Dependent Variable");		allowedColumns: ["nominal"];	singleVariable: true		}
-		AssignedVariablesList	{ name: "covariates";	title: qsTr("Covariates");				allowedColumns: ["scale"];   minNumericLevels: 2			}
-		AssignedVariablesList	{ name: "factors";		title: qsTr("Factors");					allowedColumns: ["nominal"]; minLevels: 2  					}
-		AssignedVariablesList	{ name: "weights";		title: qsTr("WLS Weights (optional)");	allowedColumns: ["scale"];					singleVariable: true		}
+		AssignedVariablesList	{ name: "dependent";	title: qsTr("Dependent Variable"); info: qsTr("The variable of interest, also called outcome variable. Needs to be categorical for this analysis.")	;	allowedColumns: ["nominal"];	singleVariable: true		}
+		AssignedVariablesList	{ name: "covariates";	title: qsTr("Covariates");	info: qsTr(" In this box the variables that are covariates can be selected. Covariates are continuous variables that have an influence on the dependent variable but are not part of the experimental manipulation.")	;		allowedColumns: ["scale"];   minNumericLevels: 2			}
+		AssignedVariablesList	{ name: "factors";		title: qsTr("Factors");	 info: qsTr("The variables that are manipulated/define the different groups. These are also called the independent variables.")	;			allowedColumns: ["nominal"]; minLevels: 2  					}
+		AssignedVariablesList	{ name: "weights";		title: qsTr("WLS Weights (optional)"); info: qsTr("The weights used for weighted least square regression.")	; allowedColumns: ["scale"];					singleVariable: true		}
 	}
 
 	BayesFactorType {}
@@ -40,7 +43,7 @@ Form {
 		title: qsTr("Output")
 		columns: 1
 
-		CheckBox{ name: "posteriorSummaryTable"; label: qsTr("Posterior summary"); id: posteriorSummaryTable
+		CheckBox{ name: "posteriorSummaryTable"; label: qsTr("Posterior summary"); info: qsTr(" Output table containing the Marginal Posterior Summaries of Coefficients. Options available to compare across models or across matched models") ; id: posteriorSummaryTable
 			RadioButtonGroup
 			{
 				name: "effectsType"
@@ -53,6 +56,7 @@ Form {
 		{
 			name: "posteriorSummaryPlot"
 			label: qsTr("Plot of coefficients")
+			info: qsTr("Displays plot of the most likely values of the effect size for each predictor with their corresponding credible interval.")
 			id: posteriorSummaryPlot
 			CheckBox { name: "posteriorSummaryPlotWithoutIntercept"; label: qsTr("Omit intercept") }
 
@@ -64,10 +68,10 @@ Form {
 			enabled: posteriorSummaryTable.checked || posteriorSummaryPlot.checked
 			indexDefaultValue: 3
 			values: [
-				{ label: qsTr("Best model"),			value: "best"		},
-				{ label: qsTr("Most complex model"),	value: "complex"	},
-				{ label: qsTr("Median model"),			value: "median"		},
-				{ label: qsTr("Model averaged"),		value: "averaged"	}
+				{ label: qsTr("Best model"), info: qsTr("Displays the best model, meaning the most likely model given the data.")	,		value: "best"		},
+				{ label: qsTr("Most complex model"), info: qsTr("Displays the most complex model, meaning the model which includes all the predictors")	,value: "complex"	},
+				{ label: qsTr("Median model"), info: qsTr("Displays the median model, meaning the smallest model in which all the predictors are more likely to be part of the true model than not given the data. i.e have a posterior inclusion probability equal or greater than 0.5")	,		value: "median"		},
+				{ label: qsTr("Model averaged"), info: qsTr("Displays the model in which the predictor coefficients are avregaded out across all models")	,	value: "averaged"	}
 			]
 			id: summaryType
 		}
@@ -86,15 +90,15 @@ Form {
 	RadioButtonGroup
 	{
 		name: "bayesFactorOrder"
-		title: qsTr("Order")
-		RadioButton { value: "bestModelTop"; label: qsTr("Compare to best model"); checked: true	}
-		RadioButton { value: "nullModelTop"; label: qsTr("Compare to null model")					}
+		title: qsTr("Order"); info: qsTr("Compares each model against the model selected here")
+		RadioButton { value: "bestModelTop"; label: qsTr("Compare to best model"); info: qsTr("All models are compared to the best model") ;checked: true	}
+		RadioButton { value: "nullModelTop"; label: qsTr("Compare to null model"); 	info: qsTr("All models are compared to the null model")				}
 	}
 
 	RadioButtonGroup
 	{
 		name: "modelsShown"
-		title: qsTr("Limit No. Models Shown")
+		title: qsTr("Limit No. Models Shown"); info: qsTr("By default, the output shows all the models computed. There is an option to show the best n models.")
 		RadioButton { value: "unlimited"; label: qsTr("No") }
 		RadioButton { 
 			value: 				"limited"
@@ -109,7 +113,7 @@ Form {
 	Group
 	{
 		title: qsTr("Data")
-		CheckBox { name: "descriptives"; label: qsTr("Descriptives") }
+		CheckBox { name: "descriptives"; label: qsTr("Descriptives"); info: qsTr("Output table containing the mean, standard deviation, and sample size of the variables selected.") }
 	}
 	
 	Section
@@ -124,6 +128,7 @@ Form {
 			{
 				name:	"availableTerms"
 				title:	qsTr("Components")
+				info: qsTr("All the independent variables that can be included in the model.")
 				width:	parent.width / 4
 				source:	['covariates', 'factors']
 			}
@@ -141,23 +146,23 @@ Form {
 		Group
 		{
 			title: qsTr("Coefficients")
-			CheckBox { name: "inclusionProbabilitiesPlot";	label: qsTr("Inclusion probabilities")		}
-			CheckBox { name: "marginalPosteriorPlot";	label: qsTr("Marginal posterior distributions")	}
+			CheckBox { name: "inclusionProbabilitiesPlot";	label: qsTr("Inclusion probabilities"); info: qsTr("Shows a histogram of the posterior inclusion probabilities. The dotted line displays the prior inclusion probabilities.")			}
+			CheckBox { name: "marginalPosteriorPlot";	label: qsTr("Marginal posterior distributions"); info: qsTr("Displays a plot of the marginal posterior distribution for each predictor")	}
 		}
 
 		Group
 		{
 			title: qsTr("Models")
-			CheckBox { name: "logPosteriorOddsPlot";	label: qsTr("Log posterior odds")				}
-			CheckBox { name: "modelComplexityPlot";		label: qsTr("Log(P(data|M)) vs. model size")	}
-			CheckBox { name: "modelProbabilitiesPlot";	label: qsTr("Model probabilities")				}
+			CheckBox { name: "logPosteriorOddsPlot";	label: qsTr("Log posterior odds"); info: qsTr("Shows a heatmap of the log posterior odds against the model rank.")				}
+			CheckBox { name: "modelComplexityPlot";		label: qsTr("Log(P(data|M)) vs. model size"); info: qsTr(" Shows the relation between model fit and complexity.")	}
+			CheckBox { name: "modelProbabilitiesPlot";	label: qsTr("Model probabilities")	;  info: qsTr(" Displays the cumulative distribution function of the model search.")			}
 		}
 
 		Group
 		{
 			title: qsTr("Residuals")
-			CheckBox { name: "residualsVsFittedPlot";	label: qsTr("Residuals vs. fitted")				}
-			CheckBox { name: "qqPlot";				label: qsTr("Q-Q plot of model averaged residuals")	}
+			CheckBox { name: "residualsVsFittedPlot";	label: qsTr("Residuals vs. fitted")	; info: qsTr("Plots the residuals of the model averaged predictions against the residuals.")			}
+			CheckBox { name: "qqPlot";				label: qsTr("Q-Q plot of model averaged residuals"); info: qsTr("Displays a Q-Q plot of the model averaged predictions against the residuals")	}
 		}
 	}
 	
@@ -168,15 +173,16 @@ Form {
 		RadioButtonGroup
 		{
 			name: "priorRegressionCoefficients"
-			title: qsTr("Prior")
+			title: qsTr("Prior"); info: qsTr("Prior distribution for regression coefficients. Several options are available:")
 
-			RadioButton { value: "aic";			label: qsTr("AIC")			}
-			RadioButton { value: "bic";			label: qsTr("BIC")			}
-			RadioButton { value: "ebLocal";		label: qsTr("EB-local")		}
+			RadioButton { value: "aic";			label: qsTr("AIC")	; info: qsTr(" Compare models using the Akaike Information Criterion.")		}
+			RadioButton { value: "bic";			label: qsTr("BIC")	; info: qsTr("Compare models using the Bayesian Information Criterion.")		}
+			RadioButton { value: "ebLocal";		label: qsTr("EB-local")	; info: qsTr(" Uses the MLE of g from the marginal likelihood within each model.")	}
 			RadioButton
 			{ 
 				value: "gPrior";			
 				label: qsTr("g-prior")
+				info: qsTr("Zellner's g-prior. There is an option to change the alpha.")
 				childrenOnSameRow: true
 				childrenArea.columnSpacing: 1
 				DoubleField
@@ -231,20 +237,22 @@ Form {
 			{
 				name: "modelPrior"
 				title: qsTr("Model Prior")
+				info: qsTr("Prior distribution on the models.")
 				RadioButton
 				{
 					checked: true
-					value: "betaBinomial"; label: qsTr("Beta binomial")
+					value: "betaBinomial"; label: qsTr("Beta binomial"); info: qsTr(" Default Beta(a = 1, b = 1).")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
 					DoubleField { name: "betaBinomialParamA"; label: qsTr("a"); defaultValue: 1; inclusive: JASP.MaxOnly}
 					DoubleField { name: "betaBinomialParamB"; label: qsTr("b"); defaultValue: 1; inclusive: JASP.MaxOnly}
 				}
-				RadioButton { value: "uniform"; label: qsTr("Uniform")}
+				RadioButton { value: "uniform"; label: qsTr("Uniform");  info: qsTr("Uniform prior distribution")}
 				RadioButton
 				{
 					value: "wilson"
 					label: qsTr("Wilson")
+					info: qsTr("Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda * p, where p is the number of predictors in the model.")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
 					DoubleField { name: "wilsonParamLambda"; label: qsTr("λ"); defaultValue: 1; inclusive: JASP.None; min: 0}
@@ -253,13 +261,14 @@ Form {
 				{
 					value: "castillo"
 					label: qsTr("Castillo")
+					info: qsTr("Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
 					DoubleField { name: "castilloParamU"; label: qsTr("u"); defaultValue: 1; inclusive: JASP.MinMax; min: 1}
 				}
 				RadioButton
 				{
-					value: "bernoulli"; label: qsTr("Bernoulli")
+					value: "bernoulli"; label: qsTr("Bernoulli"); info: qsTr(" Bernoulli prior. Default p = 0.5.")
 					childrenOnSameRow: true
 					DoubleField { name: "bernoulliParam"; label: qsTr("p"); defaultValue: 0.5; max: 1; inclusive: JASP.None; decimals: 3 }
 				}
@@ -268,16 +277,16 @@ Form {
 			RadioButtonGroup
 			{
 				name: "samplingMethod"
-				title: qsTr("Sampling Method")
+				title: qsTr("Sampling Method"); info: qsTr("Indicates the sampling method to be used. It is recommended to use BAS when the model space can be enumerated.")
 				RadioButton
 				{
-					value: "bas"; label: qsTr("BAS"); checked: true
+					value: "bas"; label: qsTr("BAS"); info: qsTr("Uses Bayesian Adaptive Sampling (without replacement). These can be updated based on estimates of the marginal inclusion. No. models indicates the number of models to sample without replacement. Setting the value to 0 implies the analysis will attempt to enumerate all models.") ;checked: true
 					childrenOnSameRow: true
 					IntegerField { name: "numberOfModels"; label: qsTr("No. models"); defaultValue: 0; max: 100000000 }
 				}
 				RadioButton
 				{
-					value: "mcmc"; label: qsTr("MCMC")
+					value: "mcmc"; label: qsTr("MCMC"); info: qsTr("Samples with replacement via a MCMC algorithm that combines the birth/death random walk with a random swap move to interchange a variable in the model. No. samples indicates the number of MCMC samples to draw. Setting the value to 0 implies the number of MCMC iterations is equal to 10 times the number of models. Sampling stops when min(number of models, MCMC iterations) is reached.")
 					childrenOnSameRow: true
 					IntegerField { name: "samples"; label: qsTr("No. samples"); defaultValue: 0; max: 100000000 }
 				}
@@ -285,7 +294,7 @@ Form {
 
 			Group
 			{
-				title: qsTr("Numerical Accuracy")
+				title: qsTr("Numerical Accuracy"); info: qsTr("Accuracy of credible intervals. There is an option to select the number of samples used to estimate the credible interval. The more samples the more accurate the credible intervals will be.")
 				IntegerField
 				{
 					name: "numericalAccuracy"
