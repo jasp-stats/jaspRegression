@@ -45,7 +45,7 @@ Form
 	Group
 	{
 		title: qsTr("Additional Options")
-		CheckBox { name: "pairwiseDisplay";		label: qsTr("Display pairwise"); ;  checked: true; 	info: qsTr("Display a table where one row corresponds to one pair of the specified variables, and the scatter plots are shown individually for each pair. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")}
+		CheckBox { name: "pairwiseDisplay";		label: qsTr("Display pairwise");   checked: true; 	info: qsTr("Display a table where one row corresponds to one pair of the specified variables, and the scatter plots are shown individually for each pair. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")}
 		CheckBox { name: "significanceReport";	label: qsTr("Report significance"); checked: true;  info: qsTr("Display the p-value corresponding to the observed correlation.")}
 		CheckBox { name: "significanceFlagged";	label: qsTr("Flag significant correlations"); 		info: qsTr("Mark statistically significant correlations.")					}
 		CheckBox
