@@ -35,6 +35,7 @@ Section
 		{
 			name:	"availableModelComponentsMeans"
 			title:	qsTr("Model variables")
+			info: qsTr("Variables that can be used for computing estimated marginal means.")
 			source: [{ name: "covariates", use: "noInteraction" }, { name: "factors", use: "noInteraction" }]
 		}
 
@@ -43,6 +44,7 @@ Section
 			id:		marginalMeansVars
 			name:	"marginalMeansVars"
 			title:	qsTr("Selected variables")
+			info: qsTr("Variables for which the estimated marginal means will be computed.")
 		}
 	}
 
@@ -51,6 +53,7 @@ Section
 	{
 		name: "marginalMeansCi"
 		label: qsTr("Confidence interval")
+		info: qsTr(" Width/level of the confidence interval for the estimated marginal means.") 
 		childrenOnSameRow: true
 		CIField { name: "marginalMeansCiWidth" }
 	}
@@ -75,6 +78,7 @@ Section
 			name:	"marginalMeansComparison"
 			id:		marginalMeansCompare
 			label:	qsTr("Compare marginal means to:")
+			info: qsTr(" Value to which will be the estimated marginal means compared. The default is 0.")
 		}
 
 		DoubleField
@@ -88,6 +92,7 @@ Section
 	{
 		name:		"marginalMeansResponse"
 		label:		qsTr("Use response scale")
+		info: qsTr("Decide whether the estimated marginal means should be computed on the response scale or untransformed linear scale. The former is selected by default.")
 		checked:	true
 	}
 
@@ -96,15 +101,17 @@ Section
 		name:	"marginalMeansContrast"
 		id:		marginalMeansContrast
 		label:	qsTr("Specify contrasts")
+		info: qsTr("Create a table for specifying contrasts based on the estimated marginal means. The row indices correspond to column Level in the estimated marginal means output table. Columns with variable names contain the (combinations of) variables levels for each estimated marginal mean. Columns named Contrast 1, 2, ... are used for specifying the contrasts. To set a contrast between two marginal means, enter -1 and 1 to the corresponding rows. Interactions can be tested by specifying differences between the changes in marginal means of one variable across levels of another variable.")
 	}
 
 	DropDown
 	{
 		name:	"marginalMeansPAdjustment"
 		label:	qsTr("P-value adjustment")
+		info: qsTr("Only available when contrasts are specified. To correct for multiple comparison testing and avoid Type I errors, different methods for correcting the p-value are available:")
 		values:
 			[
-			{ label: "Holm",					value: "holm"},
+			{ label: "Holm",	    			value: "holm"},
 			{ label: qsTr("Multivariate-t"),	value: "mvt"},
 			{ label: "Scheffé",					value: "scheffe"},
 			{ label: "Tukey",					value: "tukey"},

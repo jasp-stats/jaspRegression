@@ -24,11 +24,11 @@ import JASP.Controls
 // All Analysis forms must be built with the From QML item
 Group
 {
-	title: qsTr("Residuals")
+	title: qsTr("Residuals"); 
 	CheckBox 
 	{ 
 		name: "residualStatistic"     
-		label: qsTr("Statistics") 
+		label: qsTr("Statistics") ; info: qsTr("Display descriptive statistics of the residuals and predicted values")
 		visible: analysis === Type.Analysis.LinearRegression
 	}
 	
@@ -39,29 +39,29 @@ Group
 		columns: 2
 		RadioButtonGroup
 		{
-			name: "residualCasewiseDiagnosticType"
+			name: "residualCasewiseDiagnosticType"; info: qsTr("Casewise and sumamrized diagnostics for the residuals. There is an option to display diagnostics for cases where the absolut value of the standardized residual is larger than x (defaultis x=3). There is another option to display diagnostics for cases where the value of Cook’s distance is larger than x (default is x = 1.). And there is also an option to display diagnostics for all cases.")
 			RadioButton
-			{
+			{	
 				value: "outliersOutside"; label: qsTr("Std. residual >"); checked: true
 				childrenOnSameRow: true
 				DoubleField { name: "residualCasewiseDiagnosticZThreshold"; defaultValue: 3	}
 			}
 			RadioButton
-			{
+			{	
 				value: "cooksDistance";	label: qsTr("Cook's dist. >")
 				childrenOnSameRow: true
 				DoubleField { name: "residualCasewiseDiagnosticCooksDistanceThreshold";	defaultValue: 1	}
 			}
-			RadioButton { value: "allCases"; label: qsTr("All")										}
+			RadioButton { value: "allCases"; label: qsTr("All")								}
 		}
 
 		Group
 		{
-			CheckBox { name: "dfbetas"; 		label: qsTr("DFBETAS")		}
-			CheckBox { name: "dffits";   		label: qsTr("DFFITS")		}
-			CheckBox { name: "covarianceRatio"; label: qsTr("Cov ratio")	}
-			CheckBox { name: "leverage"; 		label: qsTr("Leverage")		}
-			CheckBox { name: "mahalanobis"; 	label: qsTr("Mahalanobis")	}
+			CheckBox { name: "dfbetas"; 		label: qsTr("DFBETAS"); info: qsTr("The difference between a parameter estimated using all cases and estimated when one case is excluded. tells when the absolute value of DFBETAS is greater than 1.")		}
+			CheckBox { name: "dffits";   		label: qsTr("DFFITS"); info: qsTr("The difference between the predicted value for a case when the model is estimated including or excluding that case. tells when the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)) ")		}
+			CheckBox { name: "covarianceRatio"; label: qsTr("Cov ratio"); info: qsTr("The degree to which a case influences the variance of the regression parameters. Tells when the covariance ratio is greater than 3 * k/(n-k).")	}
+			CheckBox { name: "leverage"; 		label: qsTr("Leverage"); info: qsTr("The influence of the observed value of the outcome variable over the predicted values. Tells when the leverages are greater than 3 * k/n.")	}
+			CheckBox { name: "mahalanobis"; 	label: qsTr("Mahalanobis"); info: qsTr("Measures the distance of cases from the mean(s) of the predictor variable(s)")	}
 
 		}
 

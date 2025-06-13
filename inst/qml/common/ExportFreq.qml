@@ -32,6 +32,7 @@ Section
 		{
 			id:							residualsSavedToData
 			name:						"residualsSavedToData"
+			info: qsTr("Save the residuals of the most complex model as a new column in the data file.")
 			text:						qsTr("Append residuals to data")
 
 			ComputedColumnField
@@ -42,11 +43,12 @@ Section
 				fieldWidth:				120
 				enabled:				residualsSavedToData.checked
 			}
-			
+
 			RadioButtonGroup
 			{
 				title: qsTr("Residuals type")
 				name: "residualsSavedToDataType"
+				info: qsTr("Choose the type of residual to be appended. Raw residuals are simply the differences between observation and model prediction, standardized residuals divide each residual by an estimate of its standard deviation (using rstandard()), whereas studentized residuals divide each residual by an unbiased estimate of its standard deviation computed by refitting the model without that observation  (using rstudent()).")
 				RadioButton { value: "raw";			label: qsTr("Raw"); checked: true	}
 				RadioButton { value: "standard";	label: qsTr("Studentized")		}
 				RadioButton { value: "student";		label: qsTr("Standardized")		}
@@ -57,6 +59,7 @@ Section
 		{
 			id:							predictionsSavedToData
 			name:						"predictionsSavedToData"
+			info: qsTr("Save the predictions of the most complex model as a new column in the data file")
 			text:						qsTr("Append predictions to data")
 
 			ComputedColumnField
