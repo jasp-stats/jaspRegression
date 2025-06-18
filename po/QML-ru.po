@@ -1,10 +1,16 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-06-19 01:04+0000\n"
+"Last-Translator: Иван Рудаков <riv@polygene.ru>\n"
+"Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/ru/>\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Weblate 5.12.1\n"
 "X-Language: ru\n"
 "X-Qt-Contexts: true\n"
 
@@ -62,7 +68,7 @@ msgstr "Кендалла (tau-b)"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr "Дополнительные опции"
+msgstr "Дополнительные Параметры"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
@@ -202,7 +208,7 @@ msgstr "Кендалла (tau-b)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
-msgstr "Дополнительные параметры"
+msgstr "Дополнительные Параметры"
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
@@ -1322,7 +1328,7 @@ msgstr "VIF"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
-msgstr "Дополнительные параметры"
+msgstr "Дополнительные Параметры"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
