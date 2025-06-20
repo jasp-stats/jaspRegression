@@ -125,5 +125,5 @@ CorrelationBayesian <- function(
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
-   return(jaspBase::runWrappedAnalysis("jaspRegression", "CorrelationBayesian", "CorrelationBayesian.qml", options, version, FALSE))
+   return(jaspBase::runWrappedAnalysis("jaspRegression", "CorrelationBayesian", "CorrelationBayesian.qml", options, version, TRUE))
 }

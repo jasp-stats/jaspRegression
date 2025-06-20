@@ -158,5 +158,5 @@ RegressionLogisticBayesian <- function(
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
-   return(jaspBase::runWrappedAnalysis("jaspRegression", "RegressionLogisticBayesian", "RegressionLogisticBayesian.qml", options, version, FALSE))
+   return(jaspBase::runWrappedAnalysis("jaspRegression", "RegressionLogisticBayesian", "RegressionLogisticBayesian.qml", options, version, TRUE))
 }

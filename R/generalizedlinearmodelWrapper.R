@@ -231,5 +231,5 @@ GeneralizedLinearModel <- function(
    for (name in optionsWithFormula) {
       if ((name %in% optionsWithFormula) && inherits(options[[name]], "formula")) options[[name]] = jaspBase::jaspFormula(options[[name]], data)   }
 
-   return(jaspBase::runWrappedAnalysis("jaspRegression", "GeneralizedLinearModel", "GeneralizedLinearModel.qml", options, version, FALSE))
+   return(jaspBase::runWrappedAnalysis("jaspRegression", "GeneralizedLinearModel", "GeneralizedLinearModel.qml", options, version, TRUE))
 }
