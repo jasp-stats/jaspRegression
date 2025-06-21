@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-06-19 01:04+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspregression-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.12.1\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -1665,11 +1671,11 @@ msgstr ""
 
 msgctxt "ExportBayesian|"
 msgid "Export"
-msgstr ""
+msgstr "匯出"
 
 msgctxt "ExportBayesian|"
 msgid "Append columns to data"
-msgstr ""
+msgstr "在原始資料檔中新增一個變數"
 
 #, fuzzy, qt-format
 msgctxt "ExportBayesian|"
@@ -1678,63 +1684,60 @@ msgstr "殘差 （%1）"
 
 msgctxt "ExportBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "欄位(變數)名稱"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "e.g., residuals"
 msgstr "例如：殘差"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals std. deviations (%1)"
 msgstr "殘差標準差 （%1）"
 
 msgctxt "ExportBayesian|"
 msgid "e.g., residual sd"
-msgstr ""
+msgstr "例如：殘差的sd(標準差)"
 
 msgctxt "ExportFreq|"
 msgid "Export"
-msgstr ""
+msgstr "匯出"
 
-#, fuzzy
 msgctxt "ExportFreq|"
 msgid "Append residuals to data"
 msgstr "將殘差附加到資料檔最後一欄"
 
 msgctxt "ExportFreq|"
 msgid "Column name"
-msgstr ""
+msgstr "欄位(變數)名稱"
 
-#, fuzzy
 msgctxt "ExportFreq|"
 msgid "e.g., residuals"
 msgstr "例如：殘差"
 
 msgctxt "ExportFreq|"
 msgid "Append predictions to data"
-msgstr ""
+msgstr "將預測值附加到資料檔最後一欄"
 
 msgctxt "ExportFreq|"
 msgid "e.g., predictions"
-msgstr ""
+msgstr "例如：預測值"
 
 msgctxt "ExportFreq|"
 msgid "Residuals type"
-msgstr ""
+msgstr "殘差的類型"
 
 msgctxt "ExportFreq|"
 msgid "Raw"
-msgstr ""
+msgstr "原始"
 
 msgctxt "ExportFreq|"
 msgid "Studentized"
-msgstr ""
+msgstr "Student化"
 
 msgctxt "ExportFreq|"
 msgid "Standardized"
-msgstr ""
+msgstr "標準化"
 
 msgctxt "EmmComponent|"
 msgid "Variables that can be used for computing estimated marginal means."
@@ -1783,17 +1786,17 @@ msgstr ""
 
 msgctxt "ExportBayesian|"
 msgid "The posterior mean of the residuals."
-msgstr ""
+msgstr "殘差的後驗平均值。"
 
 msgctxt "ExportBayesian|"
 msgid "The posterior standard deviation of the residuals."
-msgstr ""
+msgstr "殘差的後驗標準差。"
 
 msgctxt "ExportFreq|"
 msgid ""
 "Save the residuals of the most complex model as a new column in the data "
 "file."
-msgstr ""
+msgstr "將最複雜模型的殘差另存為資料檔中的一個新欄位。"
 
 msgctxt "ExportFreq|"
 msgid ""
@@ -1809,7 +1812,7 @@ msgctxt "ExportFreq|"
 msgid ""
 "Save the predictions of the most complex model as a new column in the data "
 "file"
-msgstr ""
+msgstr "將最複雜模型的預測值另存為資料檔中的一個新欄位"
 
 msgctxt "GlmInputComponent|"
 msgid "The response variable"
