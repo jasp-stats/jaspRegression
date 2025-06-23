@@ -20,13 +20,13 @@
 #' Logistic Regression
 #'
 #' Logistic regression allows the user to model a linear relationship between one or more explanatory variable/s and a categorical dependent variable.
-## Assumptions
-- The dependent variables are categorical
-- The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
-- The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
-- The residuals are uncorrelated with each other.
-- The residuals are normally distributed with a mean zero.
-- The covariate and the experiment effect are independent.
+#' ## Assumptions
+#' - The dependent variables are categorical
+#' - The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
+#' - The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
+#' - The residuals are uncorrelated with each other.
+#' - The residuals are normally distributed with a mean zero.
+#' - The covariate and the experiment effect are independent.
 #'
 #' @param accuracy, How often the model's prediction match the actual outcomes
 #'    Defaults to \code{FALSE}.
@@ -87,8 +87,8 @@
 #' @param residualCasewiseDiagnosticType, Casewise and sumamrized diagnostics for the residuals. There is an option to display diagnostics for cases where the absolut value of the standardized residual is larger than x (defaultis x=3). There is another option to display diagnostics for cases where the value of Cook’s distance is larger than x (default is x = 1.). And there is also an option to display diagnostics for all cases.
 #' \itemize{
 #'   \item \code{"allCases"}
-#'   \item \code{"cooksDistance"}
 #'   \item \code{"outliersOutside"}
+#'   \item \code{"cooksDistance"}
 #' }
 #' @param residualStatistic, Display descriptive statistics of the residuals and predicted values
 #'    Defaults to \code{FALSE}.
@@ -100,8 +100,8 @@
 #'    Defaults to \code{FALSE}.
 #' @param residualsSavedToDataType, Choose the type of residual to be appended. Raw residuals are simply the differences between observation and model prediction, standardized residuals divide each residual by an estimate of its standard deviation (using rstandard()), whereas studentized residuals divide each residual by an unbiased estimate of its standard deviation computed by refitting the model without that observation  (using rstudent()).
 #' \itemize{
-#'   \item \code{"raw"}
 #'   \item \code{"student"}
+#'   \item \code{"raw"}
 #'   \item \code{"standard"}
 #' }
 #' @param robustSe, this option controls for errors that are not independent and identically distributed. The use of robust standard errors will not change the coefficient estimates. If this option is not selected the normal standard error will be computed.

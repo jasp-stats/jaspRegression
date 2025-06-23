@@ -20,13 +20,13 @@
 #' Bayesian Logistic Regression
 #'
 #' The Bayesian Linear Regression allows you to model a linear relationship between one or more explanatory variable/s and a continuous dependent variable.
-## Assumptions
-- The dependent variables are categorical
-- The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
-- The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
-- The residuals are uncorrelated with each other.
-- The residuals are normally distributed with a mean zero.
-- The covariate and the experiment effect are independent.
+#' ## Assumptions
+#' - The dependent variables are categorical
+#' - The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
+#' - The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
+#' - The residuals are uncorrelated with each other.
+#' - The residuals are normally distributed with a mean zero.
+#' - The covariate and the experiment effect are independent.
 #'
 #' @param bayesFactorOrder, Compares each model against the model selected here
 #' \itemize{
@@ -48,18 +48,18 @@
 #'    Defaults to \code{FALSE}.
 #' @param modelPrior, Prior distribution on the models.
 #' \itemize{
-#'   \item \code{"uniform"}: Uniform prior distribution
-#'   \item \code{"wilson"}: Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda * p, where p is the number of predictors in the model.
 #'   \item \code{"bernoulli"}:  Bernoulli prior. Default p = 0.5.
-#'   \item \code{"castillo"}: Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.
+#'   \item \code{"wilson"}: Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda * p, where p is the number of predictors in the model.
+#'   \item \code{"uniform"}: Uniform prior distribution
 #'   \item \code{"betaBinomial"}:  Default Beta(a = 1, b = 1).
+#'   \item \code{"castillo"}: Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.
 #' }
 #' @param modelProbabilitiesPlot,  Displays the cumulative distribution function of the model search.
 #'    Defaults to \code{FALSE}.
 #' @param modelsShown, By default, the output shows all the models computed. There is an option to show the best n models.
 #' \itemize{
-#'   \item \code{"limited"}
 #'   \item \code{"unlimited"}
+#'   \item \code{"limited"}
 #' }
 #' @param posteriorSummaryPlot, Displays plot of the most likely values of the effect size for each predictor with their corresponding credible interval.
 #'    Defaults to \code{FALSE}.
@@ -67,13 +67,13 @@
 #'    Defaults to \code{FALSE}.
 #' @param priorRegressionCoefficients, Prior distribution for regression coefficients. Several options are available:
 #' \itemize{
-#'   \item \code{"robust"}
 #'   \item \code{"ebLocal"}:  Uses the MLE of g from the marginal likelihood within each model.
-#'   \item \code{"betaPrime"}
-#'   \item \code{"bic"}: Compare models using the Bayesian Information Criterion.
-#'   \item \code{"cch"}
 #'   \item \code{"instrinsic"}
+#'   \item \code{"robust"}
+#'   \item \code{"bic"}: Compare models using the Bayesian Information Criterion.
 #'   \item \code{"aic"}:  Compare models using the Akaike Information Criterion.
+#'   \item \code{"cch"}
+#'   \item \code{"betaPrime"}
 #'   \item \code{"gPrior"}: Zellner's g-prior. There is an option to change the alpha.
 #' }
 #' @param qqPlot, Displays a Q-Q plot of the model averaged predictions against the residuals
@@ -86,8 +86,8 @@
 #'    Defaults to \code{FALSE}.
 #' @param samplingMethod, Indicates the sampling method to be used. It is recommended to use BAS when the model space can be enumerated.
 #' \itemize{
-#'   \item \code{"mcmc"}: Samples with replacement via a MCMC algorithm that combines the birth/death random walk with a random swap move to interchange a variable in the model. No. samples indicates the number of MCMC samples to draw. Setting the value to 0 implies the number of MCMC iterations is equal to 10 times the number of models. Sampling stops when min(number of models, MCMC iterations) is reached.
 #'   \item \code{"bas"}: Uses Bayesian Adaptive Sampling (without replacement). These can be updated based on estimates of the marginal inclusion. No. models indicates the number of models to sample without replacement. Setting the value to 0 implies the analysis will attempt to enumerate all models.
+#'   \item \code{"mcmc"}: Samples with replacement via a MCMC algorithm that combines the birth/death random walk with a random swap move to interchange a variable in the model. No. samples indicates the number of MCMC samples to draw. Setting the value to 0 implies the number of MCMC iterations is equal to 10 times the number of models. Sampling stops when min(number of models, MCMC iterations) is reached.
 #' }
 #' @param weights, The weights used for weighted least square regression.
 RegressionLogisticBayesian <- function(

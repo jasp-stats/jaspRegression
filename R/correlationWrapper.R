@@ -20,15 +20,15 @@
 #' Correlation
 #'
 #' The Correlation analysis allows estimation of the population correlation, as well as testing the null hypothesis that the population correlation between pairs of variables equals 0. All possible pairs of the specified variables are analyzed.
-## Assumptions (Pearson's rho)
-- The variables are both continuous
-- The data are a random sample from the population
-- The pairs of variables follow a bivariate normal distribution in the population
-- The relationship between the variables is linear
-## Assumptions (Spearman's rho and Kendall's tau)
-- Ordinal or continuous variables
-- The data are a random sample from the population
-- The relationship between the pairs of variables is monotonic
+#' ## Assumptions (Pearson's rho)
+#' - The variables are both continuous
+#' - The data are a random sample from the population
+#' - The pairs of variables follow a bivariate normal distribution in the population
+#' - The relationship between the variables is linear
+#' ## Assumptions (Spearman's rho and Kendall's tau)
+#' - Ordinal or continuous variables
+#' - The data are a random sample from the population
+#' - The relationship between the pairs of variables is monotonic
 #'
 #' @param ci, Confidence intervals for the population correlation (only available for the Pearson correlation). By default is set at 95% but the percentage can be changed. There is also an option to set up a bootstrap estimation, set at 1000 by default with the option to change it into the desired number.
 #'    Defaults to \code{FALSE}.

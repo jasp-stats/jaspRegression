@@ -20,12 +20,12 @@
 #' Linear Regression
 #'
 #' Linear regression allows the user to model a linear relationship between one or more explanatory variable(s) (predictors) and a continuous dependent (response) variable.
-## Assumptions
-- Continuous response variable
-- Linearity and additivity: The response variable is linearly related to all predictors and the effects of the predictors are additive.
-- Independence of residuals: The residuals are uncorrelated with each other.
-- Homoscedasticity: The error variance of each predictor is constant across all values of that predictor.
-- Normality of residuals: The residuals are normally distributed with mean zero.
+#' ## Assumptions
+#' - Continuous response variable
+#' - Linearity and additivity: The response variable is linearly related to all predictors and the effects of the predictors are additive.
+#' - Independence of residuals: The residuals are uncorrelated with each other.
+#' - Homoscedasticity: The error variance of each predictor is constant across all values of that predictor.
+#' - Normality of residuals: The residuals are normally distributed with mean zero.
 #'
 #' @param coefficientBootstrap, By selecting this option, bootstrapped estimation is applied. By default, the number of replications is set to 1000. This can be changed into the desired number.
 #'    Defaults to \code{FALSE}.
@@ -82,9 +82,9 @@
 #'    Defaults to \code{FALSE}.
 #' @param residualCasewiseDiagnosticType, Casewise and sumamrized diagnostics for the residuals. There is an option to display diagnostics for cases where the absolut value of the standardized residual is larger than x (defaultis x=3). There is another option to display diagnostics for cases where the value of Cook’s distance is larger than x (default is x = 1.). And there is also an option to display diagnostics for all cases.
 #' \itemize{
-#'   \item \code{"allCases"}
-#'   \item \code{"outliersOutside"}
 #'   \item \code{"cooksDistance"}
+#'   \item \code{"outliersOutside"}
+#'   \item \code{"allCases"}
 #' }
 #' @param residualDurbinWatson, Durbin-Watson statistic to test the autocorrelation of the residuals.
 #'    Defaults to \code{FALSE}.
@@ -106,9 +106,9 @@
 #'    Defaults to \code{FALSE}.
 #' @param residualsSavedToDataType, Choose the type of residual to be appended. Raw residuals are simply the differences between observation and model prediction, standardized residuals divide each residual by an estimate of its standard deviation (using rstandard()), whereas studentized residuals divide each residual by an unbiased estimate of its standard deviation computed by refitting the model without that observation  (using rstudent()).
 #' \itemize{
-#'   \item \code{"standard"}
 #'   \item \code{"student"}
 #'   \item \code{"raw"}
+#'   \item \code{"standard"}
 #' }
 #' @param vovkSellke, Shows the maximum ratio of the lieklihood of the obtained p value under H1 vs the likelihood of the obtained p value under H0. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H0
 #'    Defaults to \code{FALSE}.

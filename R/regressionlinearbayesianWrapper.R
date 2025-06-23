@@ -20,12 +20,12 @@
 #' Bayesian Linear Regression
 #'
 #' The Bayesian Linear Regression allows you to model a linear relationship between one or more explanatory variable/s and a continuous dependent variable.
-## Assumptions
-- Continuous response variable.
-- Linearity and additivity: The response variable is linearly related to all predictors and the effects of the predictors are additive.
-- Independence of errors: The errors are uncorrelated with each other.
-- Homoscedasticity: The error variance of each predictor is constant across all values of that predictor.
-- Normality of errors: The errors are normally distributed with mean zero.
+#' ## Assumptions
+#' - Continuous response variable.
+#' - Linearity and additivity: The response variable is linearly related to all predictors and the effects of the predictors are additive.
+#' - Independence of errors: The errors are uncorrelated with each other.
+#' - Homoscedasticity: The error variance of each predictor is constant across all values of that predictor.
+#' - Normality of errors: The errors are normally distributed with mean zero.
 #'
 #' @param bayesFactorOrder, Compares each model against the model selected here
 #' \itemize{
@@ -46,18 +46,18 @@
 #'    Defaults to \code{FALSE}.
 #' @param modelPrior, Prior distribution on the models.
 #' \itemize{
-#'   \item \code{"castillo"}: Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.
-#'   \item \code{"uniform"}: Uniform prior distribution
 #'   \item \code{"betaBinomial"}:  Default Beta(a = 1, b = 1).
 #'   \item \code{"wilson"}: Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda * p, where p is the number of predictors in the model.
+#'   \item \code{"castillo"}: Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.
 #'   \item \code{"bernoulli"}:  Bernoulli prior. Default p = 0.5.
+#'   \item \code{"uniform"}: Uniform prior distribution
 #' }
 #' @param modelProbabilitiesPlot,  Displays the cumulative distribution function of the model search.
 #'    Defaults to \code{FALSE}.
 #' @param modelsShown, By default, the output shows all the models computed. There is an option to show the best n models.
 #' \itemize{
-#'   \item \code{"unlimited"}
 #'   \item \code{"limited"}
+#'   \item \code{"unlimited"}
 #' }
 #' @param posteriorSummaryPlot, Displays plot of the most likely values of the effect size for each predictor with their corresponding credible interval.
 #'    Defaults to \code{FALSE}.
@@ -68,14 +68,14 @@
 #' @param priorRegressionCoefficients, Prior distribution for regression coefficients. Several options are available:
 #' \itemize{
 #'   \item \code{"ebGlobal"}: Global Empirical Bayes estimates of g in Zellner-Siow g-prior and model probabilities. Uses an EM algorithm to find a common or global estimate of g, averaged over all models. When it is not possible to enumerate all models, the EM algorithm uses only the models sampled under EB-local.
-#'   \item \code{"ebLocal"}:  Uses the MLE of g from the marginal likelihood within each model.
-#'   \item \code{"bic"}: Compare models using the Bayesian Information Criterion.
-#'   \item \code{"hyperGN"}: A mixture of g-priors that where u = g/n and u Beta(1, alpha/2) to provide consistency when the null model is true.
-#'   \item \code{"hyperG"}: A mixture of g-priors where the prior on g/(1+g) is a Beta(1, alpha/2). This uses the Cephes library for evaluation of the marginal likelihoods and may be numerically unstable for large n or R2 close to 1. Default choice of alpha is 3
-#'   \item \code{"gPrior"}: Zellner's g-prior.
 #'   \item \code{"aic"}:  Compare models using the Akaike Information Criterion.
+#'   \item \code{"hyperGN"}: A mixture of g-priors that where u = g/n and u Beta(1, alpha/2) to provide consistency when the null model is true.
+#'   \item \code{"bic"}: Compare models using the Bayesian Information Criterion.
+#'   \item \code{"gPrior"}: Zellner's g-prior.
 #'   \item \code{"hyperGLaplace"}: Same as Hyper-g but uses a Laplace approximation to integrate over the prior on g.
+#'   \item \code{"hyperG"}: A mixture of g-priors where the prior on g/(1+g) is a Beta(1, alpha/2). This uses the Cephes library for evaluation of the marginal likelihoods and may be numerically unstable for large n or R2 close to 1. Default choice of alpha is 3
 #'   \item \code{"jzs"}: Jeffreys-Zellner-Siow prior which uses the Jeffreys prior on sigma and the Zellner-Siow Cauchy prior on the coefficients. The optional parameter can be used to control the squared scale of the prior.
+#'   \item \code{"ebLocal"}:  Uses the MLE of g from the marginal likelihood within each model.
 #' }
 #' @param qqPlot, Displays a Q-Q plot of the model averaged predictions against the residuals
 #'    Defaults to \code{FALSE}.

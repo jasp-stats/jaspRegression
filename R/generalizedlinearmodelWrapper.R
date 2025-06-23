@@ -20,38 +20,38 @@
 #' Bayesian
 #'
 #' A generalized linear model (GLM) is a flexible extension of ordinary linear regression. A widely used GLM is binary logistic regression. Generally speaking, a GLM consists of a random component and a systematic component:
- The random component specifies an appropriate probability distribution for the response variable. For example, a binomial distribution is appropriate for proportions of a total.
- The systematic component specifies how the explanatory variables relate to the mean of the response. For example, in binary logistic regression, the logit link function is used to map the responses (i.e. probabilities) to the linear combination of predictors (i.e. linear predictor).
-## Family and link
-The following table summarized the available distributions,also called families, and link functions, as well as the suitable type of response data. The asterisk * indicates the canonical/default link function for a specific family.
-
-- Bernoulli
-	- Links: Logit*, Probit, Cauchit, complementary log-log, log
-	- Response type: Proportions, counts
-- Binomial
-	- Links: Logit*, Probit, Cauchit, Complementary Log-Log, Log
-	- Response type: Proportions, counts
-- Gaussian
-	- Links: Identity*, Log, Inverse
-	- Response type: Continuous
-- Gamma
-	- Links: Identity, Log, Inverse*
-	- Response type: Positive continuous
-- Inverse Gausssian
-	- Links: Identity, Log, Inverse, 1/mu^2*
-	- Response type: Positive continuous
-- Poisson
-	- Identity, Log*, Square-root
-	- Response type: Counts
-## Assumptions
-- Lack of outliers: All responses were generated from the same process, so that the same model is appropriate for all the observations.
-- Independence: The responses are independent of each other.
-- Distribution: The responses come from the specified EDM.
-- Link function: The correct link function is used.
-- Linearity: All important explanatory variables are included, and each explanatory variable is included in the linear predictor on the correct scale.
-- Variance function: The correct variance function is used.
-- Dispersion parameter: The dispersion parameter is constant.
-## Input
+#'  The random component specifies an appropriate probability distribution for the response variable. For example, a binomial distribution is appropriate for proportions of a total.
+#'  The systematic component specifies how the explanatory variables relate to the mean of the response. For example, in binary logistic regression, the logit link function is used to map the responses (i.e. probabilities) to the linear combination of predictors (i.e. linear predictor).
+#' ## Family and link
+#' The following table summarized the available distributions,also called families, and link functions, as well as the suitable type of response data. The asterisk * indicates the canonical/default link function for a specific family.
+#' 
+#' - Bernoulli
+#' 	- Links: Logit*, Probit, Cauchit, complementary log-log, log
+#' 	- Response type: Proportions, counts
+#' - Binomial
+#' 	- Links: Logit*, Probit, Cauchit, Complementary Log-Log, Log
+#' 	- Response type: Proportions, counts
+#' - Gaussian
+#' 	- Links: Identity*, Log, Inverse
+#' 	- Response type: Continuous
+#' - Gamma
+#' 	- Links: Identity, Log, Inverse*
+#' 	- Response type: Positive continuous
+#' - Inverse Gausssian
+#' 	- Links: Identity, Log, Inverse, 1/mu^2*
+#' 	- Response type: Positive continuous
+#' - Poisson
+#' 	- Identity, Log*, Square-root
+#' 	- Response type: Counts
+#' ## Assumptions
+#' - Lack of outliers: All responses were generated from the same process, so that the same model is appropriate for all the observations.
+#' - Independence: The responses are independent of each other.
+#' - Distribution: The responses come from the specified EDM.
+#' - Link function: The correct link function is used.
+#' - Linearity: All important explanatory variables are included, and each explanatory variable is included in the linear predictor on the correct scale.
+#' - Variance function: The correct variance function is used.
+#' - Dispersion parameter: The dispersion parameter is constant.
+#' ## Input
 #'
 #' @param coefficientCi, Provide the confidence intervals around the parameter estimates. The level of the confidence intervals can be specified (default is 95%).
 #'    Defaults to \code{FALSE}.
@@ -113,9 +113,9 @@ The following table summarized the available distributions,also called families,
 #'    Defaults to \code{FALSE}.
 #' @param residualCasewiseDiagnosticType, Casewise and sumamrized diagnostics for the residuals. There is an option to display diagnostics for cases where the absolut value of the standardized residual is larger than x (defaultis x=3). There is another option to display diagnostics for cases where the value of Cook’s distance is larger than x (default is x = 1.). And there is also an option to display diagnostics for all cases.
 #' \itemize{
-#'   \item \code{"allCases"}
 #'   \item \code{"cooksDistance"}
 #'   \item \code{"outliersOutside"}
+#'   \item \code{"allCases"}
 #' }
 #' @param residualStatistic, Display descriptive statistics of the residuals and predicted values
 #'    Defaults to \code{FALSE}.
@@ -123,9 +123,9 @@ The following table summarized the available distributions,also called families,
 #'    Defaults to \code{FALSE}.
 #' @param residualsSavedToDataType, Choose the type of residual to be appended. Raw residuals are simply the differences between observation and model prediction, standardized residuals divide each residual by an estimate of its standard deviation (using rstandard()), whereas studentized residuals divide each residual by an unbiased estimate of its standard deviation computed by refitting the model without that observation  (using rstudent()).
 #' \itemize{
-#'   \item \code{"raw"}
-#'   \item \code{"standard"}
 #'   \item \code{"student"}
+#'   \item \code{"standard"}
+#'   \item \code{"raw"}
 #' }
 #' @param standardizedResidualOutlierTable, Top n standardized deviance residuals
 #'    Defaults to \code{FALSE}.
