@@ -39,7 +39,7 @@ Group
 		columns: 2
 		RadioButtonGroup
 		{
-			name: "residualCasewiseDiagnosticType"; info: qsTr("Casewise and sumamrized diagnostics for the residuals. There is an option to display diagnostics for cases where the absolut value of the standardized residual is larger than x (defaultis x=3). There is another option to display diagnostics for cases where the value of Cook’s distance is larger than x (default is x = 1.). And there is also an option to display diagnostics for all cases.")
+			name: "residualCasewiseDiagnosticType"; info: qsTr("Provides casewise diagnostics for residuals. Display cases with standardized residuals above a threshold (default: 3), Cook's distance above a threshold (default: 1), or all cases.")
 			RadioButton
 			{	
 				value: "outliersOutside"; label: qsTr("Std. residual >"); checked: true
