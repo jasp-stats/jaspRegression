@@ -863,7 +863,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
   plotContainer <- createJaspContainer(title = gettext("Scatter plots"))
   plotContainer$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
-                                     "pairwiseDisplay", "ci", "ciLevel", "alternative",
+                                     "pairwiseDisplay", "ci", "ciLevel", "alternative", "ciBootstrap", "ciBootstrapSamples",
                                      "scatterPlot", "scatterPlotDensity", "scatterPlotStatistic", "scatterPlotCi",
                                      "scatterPlotCiLevel", "scatterPlotPredictionIntervalLevel",
                                      "scatterPlotPredictionInterval", "naAction"))
