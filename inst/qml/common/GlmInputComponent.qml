@@ -38,7 +38,7 @@ Group {
 			name:				"dependent"
 			title:				qsTr("Dependent variable")
 			info: qsTr("The response variable")
-			allowedColumns:		family.currentValue === "poisson" ? "scale" : ["scale", "ordinal", "nominal"]
+			allowedColumns:		(family.currentValue !== "other") ? "scale" : ["scale", "ordinal", "nominal"]
 			singleVariable:		true
 		}
 
