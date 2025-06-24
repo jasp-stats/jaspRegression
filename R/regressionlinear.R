@@ -1672,13 +1672,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
         ggplot2::geom_errorbar(
           data = data.frame(x = levels(xVar), ymax = upperConfInt, ymin = lowerConfInt),
           mapping = ggplot2::aes(x = x, ymax = ymax, ymin = ymin),
-          colour = "darkblue", linetype = "dashed"
+          colour = "darkblue", linetype = "dashed", size = 1
         )
       } else {
         ggplot2::geom_line(
           data = data.frame(x = xVar, y = c(upperConfInt, lowerConfInt), g = rep(1:2, c(length(upperConfInt), length(lowerConfInt)))),
           mapping = ggplot2::aes(x = x, y = y, group = g),
-          colour = "darkblue", linetype = "dashed"
+          colour = "darkblue", linetype = "dashed", size = 1
         )
       }
 
@@ -1703,7 +1703,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       } else {
         ggplot2::geom_line(data = data.frame(x = xVar, y = c(upperPredInt, lowerPredInt), g = rep(1:2, c(length(upperPredInt), length(lowerPredInt)))),
                            mapping = ggplot2::aes(x = x, y = y, group = g),
-                           col = "darkblue", linetype = "dashed", size = 1)
+                           col = "darkgreen", linetype = "dashed", size = 1)
       }
     }
 
