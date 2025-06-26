@@ -30,7 +30,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   .reglogisticMulticolliTable(         jaspResults, dataset, options, ready)
   .reglogisticFactorDescriptivesTable( jaspResults, dataset, options, ready)
 
-  finalModel <- jaspResults[["glmRes"]][["object"]][[length(options[["modelTerms"]])]]
+  finalModel <- jaspResults[["glmRes"]][["object"]][[length(jaspResults[["glmRes"]][["object"]])]]
   if (options$residualCasewiseDiagnostic) {
     .glmInfluenceTable(jaspResults, finalModel, dataset, options, ready, position = 5)
   }
