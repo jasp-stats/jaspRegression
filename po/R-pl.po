@@ -622,17 +622,16 @@ msgid "Residuals vs. Fitted Plots"
 msgstr "Wykresy reszty vs. dopasowane"
 
 msgid "Standardized %1s residuals vs. fitted values"
-msgstr "Reszty standaryzowane %1$s vs wartości dopasowane"
+msgstr "Reszty standaryzowane %1s vs wartości dopasowane"
 
 msgid "Standardized %1s residual"
 msgstr "Reszty standaryzowane %1s"
 
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr ""
+msgstr "Wykresy %1s reszty vs. predyktory"
 
-#, fuzzy
 msgid "Standardized %1$s residuals vs. %2$s"
-msgstr "Reszty standaryzowane %1s"
+msgstr "Reszty standaryzowane %1$s vs. %2$s"
 
 msgid "Partial Residual Plots"
 msgstr "Wykres reszt cząstkowych"
