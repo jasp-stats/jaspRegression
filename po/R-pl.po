@@ -628,31 +628,31 @@ msgid "Standardized %1s residual"
 msgstr "Reszty standaryzowane %1s"
 
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr "Wykresy %1s reszty vs. predyktory"
+msgstr "Wykresy %1s reszty vs predyktory"
 
 msgid "Standardized %1$s residuals vs. %2$s"
-msgstr "Reszty standaryzowane %1$s vs. %2$s"
+msgstr "Reszty standaryzowane %1$s vs %2$s"
 
 msgid "Partial Residual Plots"
 msgstr "Wykres reszt cząstkowych"
 
 msgid "Partial residual plot for %1s"
-msgstr ""
+msgstr "Wykres reszt cząstkowych dla %1s"
 
 msgid "Partial residual for %1s"
-msgstr ""
+msgstr "Reszty cząstkowe dla %1s"
 
 msgid "Plot: Working responses vs. linear predictor"
-msgstr ""
+msgstr "Wykres: Odpowiedzi robocze vs predyktor liniowy"
 
 msgid "Working responses, z"
-msgstr ""
+msgstr "Odpowiedzi robocze, z"
 
 msgid "Outliers Tables"
 msgstr "Tabele wartości odstających"
 
 msgid "Table: Top n outliers based on %1s residuals"
-msgstr ""
+msgstr "Tabela: Najwyższe n wartości odstających na podstawie reszt %1s"
 
 msgid "Case Number"
 msgstr "Identyfikator obserwacji"
@@ -667,7 +667,7 @@ msgid "VIF"
 msgstr "VIF"
 
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Oszacowane średnie brzegowe i analiza kontrastu"
 
 msgid "Estimated Marginal Means"
 msgstr "Oszacowane średnie brzegowe"
@@ -707,15 +707,18 @@ msgid "Ratio"
 msgstr "Stosunek"
 
 msgid "trying + %s"
-msgstr ""
+msgstr "próbowanie + %s"
 
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
+msgstr "Test F zakłada analizy typu 'quasi%s'"
 
 msgid ""
 "Stepwise procedures are not supported for models containing factors with "
 "more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
+"Procedury krokowe nie są obsługiwane dla modeli zawierających czynniki z "
+"więcej niż 2 poziomami; spróbuj ponownie przeprowadzić analizę, używając "
+"zmiennych zero-jedynkowych."
 
 msgid ""
 "Stepwise procedures are not supported for interactions containing more than "
