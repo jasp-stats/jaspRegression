@@ -976,17 +976,17 @@ msgstr ""
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
 msgstr ""
-"Model z wyrazem wolnym został pominięty, ponieważ nie można przedstawić "
-"istotnych informacji."
+"Istnieje tylko model z wyrazem wolnym; brak istotnych informacji do "
+"przedstawienia."
 
 msgid "Marginal Effects Plots"
-msgstr ""
+msgstr "Wykres efektów brzegowych"
 
 msgid "Marginal effect of %1$s on %2$s"
-msgstr ""
+msgstr "Efekt brzegowy %1$s na %2$s"
 
 msgid "All effects are specified as nuisance"
-msgstr ""
+msgstr "Wszystkie efekty są określone jako zakłócające."
 
 msgid "There are nonpositive weights"
 msgstr ""
