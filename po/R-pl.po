@@ -929,14 +929,14 @@ msgstr "Wykres K-K reszt standaryzowanych"
 
 msgid "Partial plots are not supported for models containing interaction terms"
 msgstr ""
-"Wykresy cząstkowe nie są obsługiwane dla modeli zawierających składniki "
+"Wykresy cząstkowe nie są dostępne dla modeli zawierających składniki "
 "interakcyjne"
 
 msgid "%1$s vs. %2$s"
 msgstr "%1$s vs. %2$s"
 
 msgid "Partial plots are not supported for factors"
-msgstr "Wykresy cząstkowe są niedostępne dla czynników"
+msgstr "Wykresy cząstkowe nie są dostępne dla czynników"
 
 msgid "Residuals %s"
 msgstr "Reszty %s"
@@ -944,9 +944,8 @@ msgstr "Reszty %s"
 msgid "Descriptives"
 msgstr "Statystyki opisowe"
 
-#, fuzzy
 msgid "M%s"
-msgstr "R%s"
+msgstr "M%s"
 
 msgid "Std. Predicted Value"
 msgstr "Std. wartość przewidywana"
@@ -954,9 +953,8 @@ msgstr "Std. wartość przewidywana"
 msgid "Standardized Residuals"
 msgstr "Reszty standaryzowane"
 
-#, fuzzy
 msgid "%1$s includes %2$s"
-msgstr "%1$s vs. %2$s"
+msgstr "%1$s zawiera %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -972,10 +970,14 @@ msgstr ""
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
 msgstr ""
+"Model z wyrazem wolnym został pominięty, ponieważ nie można przedstawić "
+"istotnych informacji."
 
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
 msgstr ""
+"Model z wyrazem wolnym został pominięty, ponieważ nie można przedstawić "
+"istotnych informacji."
 
 msgid "Marginal Effects Plots"
 msgstr ""
