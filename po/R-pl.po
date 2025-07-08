@@ -898,22 +898,22 @@ msgid "N"
 msgstr "N"
 
 msgid "Residuals vs. Dependent"
-msgstr "Reszty vs zależna"
+msgstr "Reszty vs Zmienna zależna"
 
 msgid "Residuals"
 msgstr "Reszty"
 
 msgid "Residuals vs. Covariates"
-msgstr ""
+msgstr "Reszty vs Współzmienne"
 
 msgid "Residuals vs. %s"
 msgstr "Reszty vs. %s"
 
 msgid "Cannot plot residuals versus an interaction with a factor."
-msgstr ""
+msgstr "Nie można wygenerować wykresu reszt względem interakcji z czynnikiem."
 
 msgid "Residuals vs. Predicted"
-msgstr ""
+msgstr "Reszty vs Oczekiwane"
 
 msgid "Predicted Values"
 msgstr "Wartości przewidywane"
@@ -922,19 +922,21 @@ msgid "Residuals Histogram"
 msgstr "Histogram reszt"
 
 msgid "Standardized %s"
-msgstr ""
+msgstr "Standaryzowane %s"
 
 msgid "Q-Q Plot Standardized Residuals"
-msgstr ""
+msgstr "Wykres K-K reszt standaryzowanych"
 
 msgid "Partial plots are not supported for models containing interaction terms"
 msgstr ""
+"Wykresy cząstkowe nie są obsługiwane dla modeli zawierających składniki "
+"interakcyjne"
 
 msgid "%1$s vs. %2$s"
 msgstr "%1$s vs. %2$s"
 
 msgid "Partial plots are not supported for factors"
-msgstr ""
+msgstr "Wykresy cząstkowe są niedostępne dla czynników"
 
 msgid "Residuals %s"
 msgstr "Reszty %s"
