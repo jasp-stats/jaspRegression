@@ -877,7 +877,7 @@ msgid ""
 "model contains singularities."
 msgstr ""
 "Niektóre wskaźniki współliniowości nie mogły zostać obliczone. Jest to "
-"typowe, jeśli model zawiera osobliwości."
+"typowe dla modeli zawierających osobliwości."
 
 msgid "Residuals Statistics"
 msgstr "Statystyki reszt"
@@ -898,7 +898,7 @@ msgid "N"
 msgstr "N"
 
 msgid "Residuals vs. Dependent"
-msgstr ""
+msgstr "Reszty vs zależna"
 
 msgid "Residuals"
 msgstr "Reszty"
