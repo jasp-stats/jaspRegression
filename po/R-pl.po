@@ -986,7 +986,7 @@ msgid "Marginal effect of %1$s on %2$s"
 msgstr "Efekt brzegowy %1$s na %2$s"
 
 msgid "All effects are specified as nuisance"
-msgstr "Wszystkie efekty są określone jako zakłócające."
+msgstr "Wszystkie efekty są określone jako zakłócające"
 
 msgid "There are nonpositive weights"
 msgstr ""
