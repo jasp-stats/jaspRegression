@@ -22,7 +22,7 @@ import JASP.Controls
 
 Form
 {	info: qsTr("The Correlation analysis allows estimation of the population correlation, as well as testing the null hypothesis that the population correlation between pairs of variables equals 0. All possible pairs of the specified variables are analyzed.\n") +
-	"## " + qsTr("Assumptions (Pearson's rho)") + "\n" + "- The variables are both continuous.\n" + "- The data are a random sample from the population.\n" + "- The pairs of variables follow a bivariate normal distribution in the population.\n" + "- The relationship between the variables is linear.\n" + "## " + qsTr("Assumptions (Spearman's rho and Kendall's tau)") +
+	"## " + qsTr("Assumptions (Pearson's rho)") + "\n" + "- The variables are both continuous. \n" + "- The data are a random sample from the population. \n" + "- The pairs of variables follow a bivariate normal distribution in the population. \n" + "- The relationship between the variables is linear. \n" + "## " + qsTr("Assumptions (Spearman's rho and Kendall's tau).") +
     "\n" + "- Ordinal or continuous variables.\n" + "- The data are a random sample from the population.\n" + "- The relationship between the pairs of variables is monotonic."
    
     VariablesForm
@@ -37,9 +37,9 @@ Form
 	Group
 	{
 		title: qsTr("Sample Correlation Coefficient")
-		CheckBox { name: "pearson";			label: qsTr("Pearson's r"); info: qsTr("Pearson's product moment correlation coefficient. This is the famous r coefficient."); checked: true	}
-		CheckBox { name: "spearman";		label: qsTr("Spearman's rho"); info: qsTr("Spearman's rank-order correlation coefficient to quantify the monotonic association between two variables by ranking the observations. Use when the data is not normally distributed or a linear association cannot be assumed.")				}
-		CheckBox { name: "kendallsTauB";	label: qsTr("Kendall's tau-b"); info: qsTr("Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when the data is not normally distributed.")			}
+		CheckBox { name: "pearson";			label: qsTr("Pearson's r"); info: qsTr("Pearson's product moment correlation coefficient."); checked: true	}
+		CheckBox { name: "spearman";		label: qsTr("Spearman's rho"); info: qsTr("Spearman's rank-order correlation coefficient to quantify the monotonic association between two variables by ranking the observations. Use when the data are not normally distributed.")				}
+		CheckBox { name: "kendallsTauB";	label: qsTr("Kendall's tau-b"); info: qsTr("Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when the data are not normally distributed.")			}
 	}
 
 	Group
@@ -50,7 +50,7 @@ Form
 		CheckBox { name: "significanceFlagged";	label: qsTr("Flag significant correlations"); 		info: qsTr("Marks statistically significant correlations.")					}
 		CheckBox
 		{
-			name: "ci";		label: qsTr("Confidence intervals"); info: qsTr("Confidence intervals for the population correlation (only available for the Pearson correlation). By default it is set at 95% but the percentage can be changed. There is also an option to set up a bootstrap estimation, set at 1000 by default with the option to change it into the desired number.")
+			name: "ci";		label: qsTr("Confidence intervals"); info: qsTr("Confidence intervals for the population correlation (available only for the Pearson correlation). The default is set at 95%, but this percentage can be adjusted. Additionally, you can set up bootstrap estimation, using 1000 replications by default but it can be modified to your desired number.")
 			CIField { name: "ciLevel"; label: qsTr("Interval") }
 			CheckBox
 			{
@@ -90,9 +90,9 @@ Form
 		title: qsTr("Plots")
 		CheckBox
 		{
-			name: "scatterPlot";			label: qsTr("Scatter plots"); info: qsTr("Displays a scatter plot for each possible combination of the selected variables. In a matrix format, these are placed above the diagonal.")
-			CheckBox { name: "scatterPlotDensity";		label: qsTr("Densities for variables"); info: qsTr("Displays a histogram and the corresponding density plot for each variable. In a matrix format, these are placed on the diagonal.")	}
-			CheckBox { name: "scatterPlotStatistic";	label: qsTr("Statistics")	; info: qsTr("Displays the correlation coefficient(s) in the plot. This option also adds the x% confidence interval(s) as specified in the Confidence Intervals option.")			}
+			name: "scatterPlot";			label: qsTr("Scatter plots"); info: qsTr("Display a scatter plot for each pairwise combination of the selected variables. In a matrix format, these are placed above the diagonal.")
+			CheckBox { name: "scatterPlotDensity";		label: qsTr("Densities for variables"); info: qsTr("Display histogram and the corresponding density plot for each variable. In a matrix format, these are placed on the diagonal.")	}
+			CheckBox { name: "scatterPlotStatistic";	label: qsTr("Statistics")	; info: qsTr("Display the correlation coefficient(s) in the plot. This option also adds the x% confidence interval(s) as specified in the Confidence Intervals option.")			}
             CheckBox
             {
 				name: "scatterPlotCi"; label: qsTr("Confidence intervals"); info: qsTr("Displays the specified confidence interval around the regression line on the plot.") ;childrenOnSameRow: true
@@ -140,7 +140,7 @@ Form
 			title: qsTr("Statistics")
 			debug: true
 			CheckBox { name: "meansAndSd";	label: qsTr("Means and standard deviations.")				}
-			CheckBox { name: "crossProducts";	label: qsTr("Cross-product deviations and covariances")		}
+			CheckBox { name: "crossProducts";	label: qsTr("Cross-product deviations and covariances.")		}
 		}
 
 		RadioButtonGroup
