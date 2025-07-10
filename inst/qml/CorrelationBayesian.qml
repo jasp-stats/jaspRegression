@@ -22,39 +22,39 @@ import JASP.Controls
 
 Form
 {
-	info: qsTr("The Bayesian Correlation analysis allows for the estimation of the population correlation, as well as the comparison of hypotheses. The three comparisons are (i) between the null hypothesis (H0) that the correlation between pairs of variables equal 0, and the alternative hypothesis (H1) that the population correlation takes its value between -1 and 1; (ii) between H0 and the alternative hypothesis (H+) that the population correlation is positive; and (iii) between H0 and the alternative hypothesis (H-) that the population correlation is negative. All possible pairs of the specified variables are analyzed.\n") +
-	"## " + qsTr("Assumptions (Pearson's rho)") + "\n" + "- The variables are both continuous\n" + "- The data are a random sample from the population\n" + "The pairs of variables follow a bivariate normal distribution in the population\n" + " - The relationship between the variables is linear\n" + "## " + qsTr("Assumptions (Kendall's tau)") +
-    "\n" + "- Ordinal or continuous variables\n" + "- The data are a random sample from the population\n" + "- The relationship between the pairs of variables is monotonic"
+	info: qsTr("The Bayesian Correlation analysis allows for the estimation of the population correlation, as well as the comparison of hypotheses. The three comparisons are (i) between the null hypothesis (H0) that the correlation between pairs of variables equals 0, and the alternative hypothesis (H1) that the population correlation takes its value between -1 and 1; (ii) between H0 and the alternative hypothesis (H+) that the population correlation is positive; and (iii) between H0 and the alternative hypothesis (H-) that the population correlation is negative. All possible pairs of the specified variables are analyzed.\n") +
+	"## " + qsTr("Assumptions (Pearson's rho)") + "\n" + "- The variables are both continuous.\n" + "- The data are a random sample from the population.\n" + "- The pairs of variables follow a bivariate normal distribution in the population.\n" + " - The relationship between the variables is linear.\n" + "## " + qsTr("Assumptions (Kendall's tau)") +
+    "\n" + "- Ordinal or continuous variables.\n" + "- The data are a random sample from the population.\n" + "- The relationship between the pairs of variables is monotonic."
 
 	VariablesForm
 	{
 		preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
 		infoLabel: qsTr("Input")
 		AvailableVariablesList	{	name: "allVariablesList" }
-		AssignedVariablesList	{	name: "variables"; info: qsTr("- Assigned variables: Variables for which to compute the correlation coefficient") ; allowedColumns: ["scale"]; minNumericLevels: 2 }
+		AssignedVariablesList	{	name: "variables"; info: qsTr("Variables for which to compute the correlation coefficient.") ; allowedColumns: ["scale"]; minNumericLevels: 2 }
 	}
 
 	Group
 	{
 		title: qsTr("Population Correlation Coefficient")
-		CheckBox {	name: "pearson";		label: qsTr("Pearson's rho"); info: qsTr("Pearson's product moment correlation coefficient. This is the famous r value")	;checked: true	}
+		CheckBox {	name: "pearson";		label: qsTr("Pearson's rho"); info: qsTr("Pearson's product moment correlation coefficient. This is the famous r value.")	;checked: true	}
 		CheckBox {	name: "spearman";		label: qsTr("Spearman's rho"); debug: true		}
-		CheckBox {	name: "kendall";		label: qsTr("Kendall's tau-b"); info: qsTr("Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when data is not normally distributed")				}
+		CheckBox {	name: "kendall";		label: qsTr("Kendall's tau-b"); info: qsTr("Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when the data are not normally distributed.")				}
 	}
 
 	Group
 	{
 		title: qsTr("Additional Options")
-        CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table") ; checked: true; info: qsTr("Display a table where one row corresponds to one pair of the specified variables. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")					}
-        CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors") ; 	checked: true; info: qsTr("Report Bayes factor for each test.")}
-        CheckBox {	name: "supportCorrelationFlagged";		label: qsTr("Flag supported correlations"); info: qsTr("Indicate which correlation coefficients yield Bayes factors greater than 10, 30, and 100.")				}
-        CheckBox {	name: "sampleSize";                     label: qsTr("Sample size"); info: qsTr("Report the sample size for each test.")								}
+        CheckBox {	name: "pairwiseDisplay";                label: qsTr("Display pairwise table") ; checked: true; info: qsTr("Displays a table where one row corresponds to one pair of the specified variables. If unticked, the results are presented in matrix format, with variable names in the columns and rows.")					}
+        CheckBox {	name: "bayesFactorReport";              label: qsTr("Report Bayes factors") ; 	checked: true; info: qsTr("Reports Bayes factor for each test.")}
+        CheckBox {	name: "supportCorrelationFlagged";		label: qsTr("Flag supported correlations"); info: qsTr("Indicates which correlation coefficients yield Bayes factors greater than 10, 30, and 100.")				}
+        CheckBox {	name: "sampleSize";                     label: qsTr("Sample size"); info: qsTr("Reports the sample size for each test.")								}
         CheckBox {	name: "posteriorMedian";                label: qsTr("Posterior median"); debug: true			}
 		CheckBox
 		{
 			name: "ci"; 
 			label: qsTr("Credible intervals"); 
-			info: qsTr("Display central 95% credible intervals for the correlation coefficient. The percentage can be changed.")
+			info: qsTr("Displays central 95% credible intervals for the correlation coefficient. The percentage can be changed.")
             CIField { name: "ciLevel";	label: qsTr("Interval") }
 		}
 		CheckBox
@@ -80,9 +80,9 @@ Form
 		title: qsTr("Plots")
 		CheckBox
 		{
-                        name: "matrixPlot";				label: qsTr("Correlation matrix"); info: qsTr("Display a grid of scatterplots for each possible combination of the selected variables. These are placed above the diagonal.")
-            CheckBox {	name: "matrixPlotDensity";      label: qsTr("Densities for variables"); info: qsTr("Display histogram and the corresponding density plot for each variable. These are placed on the diagonal.")	}
-            CheckBox {	name: "matrixPlotPosterior";	label: qsTr("Posteriors under H\u2081"); info: qsTr("Display posterior distribution of the correlation coefficient for each possible combination of the selected variables. These are placed below the diagonal.")	}
+                        name: "matrixPlot";				label: qsTr("Correlation matrix"); info: qsTr("Displays a grid of scatterplots for each possible combination of the selected variables. These are placed above the diagonal.")
+            CheckBox {	name: "matrixPlotDensity";      label: qsTr("Densities for variables"); info: qsTr("Displays a histogram and the corresponding density plot for each variable. These are placed on the diagonal.")	}
+            CheckBox {	name: "matrixPlotPosterior";	label: qsTr("Posteriors under H\u2081"); info: qsTr("Displays posterior distribution of the correlation coefficient for each possible combination of the selected variables. These are placed below the diagonal.")	}
 		}
 	}
 
@@ -90,7 +90,7 @@ Form
 
 	Group
 	{
-		title: qsTr("Prior"); info: qsTr("Stretched beta prior width: Width of the scaled beta distribution on the correlation under the alterative hypothesis; default is 1. The lower this value, the more concentrated the prior density is around 0. Value must be between 0 and 2.")
+		title: qsTr("Prior"); info: qsTr("Stretched beta prior width: Width of the scaled beta distribution on the correlation under the alternative hypothesis; default is 1. The lower this value, the more concentrated the prior density is around 0. Value must be between 0 and 2.")
         FormulaField { name: "priorWidth"; label: qsTr("Stretched beta prior width"); defaultValue: "1.0"; min: 0.003; max: 2}
 	}
 

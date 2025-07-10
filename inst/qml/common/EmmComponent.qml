@@ -53,7 +53,7 @@ Section
 	{
 		name: "marginalMeansCi"
 		label: qsTr("Confidence interval")
-		info: qsTr(" Width/level of the confidence interval for the estimated marginal means.") 
+		info: qsTr("Width/level of the confidence interval for the estimated marginal means.") 
 		childrenOnSameRow: true
 		CIField { name: "marginalMeansCiWidth" }
 	}
@@ -78,7 +78,7 @@ Section
 			name:	"marginalMeansComparison"
 			id:		marginalMeansCompare
 			label:	qsTr("Compare marginal means to:")
-			info: qsTr(" Value to which will be the estimated marginal means compared. The default is 0.")
+			info: qsTr("Value to which the estimated marginal means will be compared to. The default value is set to 0 and can be changed by the user.")
 		}
 
 		DoubleField
@@ -92,7 +92,7 @@ Section
 	{
 		name:		"marginalMeansResponse"
 		label:		qsTr("Use response scale")
-		info: qsTr("Decide whether the estimated marginal means should be computed on the response scale or untransformed linear scale. The former is selected by default.")
+		info: qsTr("Decide whether the estimated marginal means should be computed on the response scale or the untransformed linear scale. The former is selected by default.")
 		checked:	true
 	}
 
@@ -101,7 +101,7 @@ Section
 		name:	"marginalMeansContrast"
 		id:		marginalMeansContrast
 		label:	qsTr("Specify contrasts")
-		info: qsTr("Create a table for specifying contrasts based on the estimated marginal means. The row indices correspond to column Level in the estimated marginal means output table. Columns with variable names contain the (combinations of) variables levels for each estimated marginal mean. Columns named Contrast 1, 2, ... are used for specifying the contrasts. To set a contrast between two marginal means, enter -1 and 1 to the corresponding rows. Interactions can be tested by specifying differences between the changes in marginal means of one variable across levels of another variable.")
+		info: qsTr("Create a table for specifying contrasts based on the estimated marginal means. The row indices correspond to the 'Level' column in the estimated marginal means output table. Columns with variable names contain the (combinations of) variable levels for each estimated marginal mean. Columns named Contrast 1, 2, ... are used for specifying the contrasts. To set a contrast between two marginal means, enter -1 and 1 to the corresponding rows. Interactions can be tested by specifying differences between the changes in marginal means of one variable across levels of another variable.")
 	}
 
 	DropDown
