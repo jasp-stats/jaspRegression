@@ -425,7 +425,7 @@ msgid ""
 msgstr ""
 "Wielkość efektu (z Fishera): Dla dużych współczynników korelacji (> 0,9) i "
 "małych prób (< 10) przybliżenie za pomocą transformacji z Fishera staje się "
-"mniej dokładne."
+"mniej dokładne"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
@@ -437,7 +437,7 @@ msgstr ""
 "62-71."
 
 msgid "Posterior is too peaked"
-msgstr ""
+msgstr "Rozkład a posteriori jest zbyt spiczasty"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "Wykres macierzy korelacji bayesowskiej"
@@ -455,7 +455,7 @@ msgid "%s%% CI:"
 msgstr "%s%% PU:"
 
 msgid "Bayesian Correlation Pairwise Plots"
-msgstr ""
+msgstr "Bayesowskie wykresy par korelacji"
 
 msgid "max %s"
 msgstr "maks. %s"
