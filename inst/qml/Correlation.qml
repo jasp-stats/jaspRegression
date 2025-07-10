@@ -38,8 +38,8 @@ Form
 	{
 		title: qsTr("Sample Correlation Coefficient")
 		CheckBox { name: "pearson";			label: qsTr("Pearson's r"); info: qsTr("Pearson's product moment correlation coefficient."); checked: true	}
-		CheckBox { name: "spearman";		label: qsTr("Spearman's rho"); info: qsTr("Spearman's rank-order correlation coefficient to quantify the monotonic association between two variables by ranking the observations. Use when data are not normally distributed.")				}
-		CheckBox { name: "kendallsTauB";	label: qsTr("Kendall's tau-b"); info: qsTr("Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when data are not normally distributed.")			}
+		CheckBox { name: "spearman";		label: qsTr("Spearman's rho"); info: qsTr("Spearman's rank-order correlation coefficient to quantify the monotonic association between two variables by ranking the observations. Use when the data are not normally distributed.")				}
+		CheckBox { name: "kendallsTauB";	label: qsTr("Kendall's tau-b"); info: qsTr("Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when the data are not normally distributed.")			}
 	}
 
 	Group
@@ -90,7 +90,7 @@ Form
 		title: qsTr("Plots")
 		CheckBox
 		{
-			name: "scatterPlot";			label: qsTr("Scatter plots"); info: qsTr("Display a scatter plots for each possible combination of the selected variables. In a matrix format, these are placed above the diagonal.")
+			name: "scatterPlot";			label: qsTr("Scatter plots"); info: qsTr("Display a scatter plot for each pairwise combination of the selected variables. In a matrix format, these are placed above the diagonal.")
 			CheckBox { name: "scatterPlotDensity";		label: qsTr("Densities for variables"); info: qsTr("Display histogram and the corresponding density plot for each variable. In a matrix format, these are placed on the diagonal.")	}
 			CheckBox { name: "scatterPlotStatistic";	label: qsTr("Statistics")	; info: qsTr("Display the correlation coefficient(s) in the plot. This option also adds the x% confidence interval(s) as specified in the Confidence Intervals option.")			}
             CheckBox
