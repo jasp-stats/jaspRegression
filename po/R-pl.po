@@ -488,7 +488,7 @@ msgstr ""
 "liniowa B, tj. l := A ~ 1 + B, czy jako funkcja kwadratowa B, tj. q := A ~ 1 "
 "+ B + B^2.\n"
 "    Używa domyślnych ustawień regresji bayesowskiej, tj. rozkładu a priori "
-"JZS z parametrem alfa ustawionym na 0,354 oraz rozkładu beta-binomialnego z "
+"JZS z parametrem alfa ustawionym na 0,354 oraz rozkładu beta-dwumianowemu z "
 "alfa = 1 i beta = 1. Należy zauważyć, że ponieważ rozważane są tylko dwa "
 "modele, rozkład a priori modelu jest równoważny rozkładowi jednostajnemu."
 
@@ -1024,7 +1024,7 @@ msgstr ""
 "parametrami %1$s = 1 oraz %2$s = p * %3$s i\n"
 "odpowiada przybliżonym karom równemym log(%3$s + 1) w skali log-szans dla "
 "każdego dodatkowego\n"
-"kowariatu dodanego do modelu (Consonni i in., 2018; Wilson i in., 2010)."
+"kowariantu dodanego do modelu (Consonni i in., 2018; Wilson i in., 2010)."
 
 msgid ""
 "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 "
@@ -1032,7 +1032,7 @@ msgid ""
 "for sparse regression when there are more covariates than observations "
 "(Castillo et al., 2015)."
 msgstr ""
-"Rozkład a priori modelu Castillo odpowiada rozkładowi beta-dwumodalnemu z "
+"Rozkład a priori modelu Castillo odpowiada rozkładowi beta-dwumianowemu z "
 "parametrami %1$s = 1 oraz %2$s = p^u i jest odpowiedni\n"
 "dla regresji, w której liczba kowariantów przewyższa liczbę obserwacji ("
 "Castillo i in., 2015)."
@@ -1065,6 +1065,8 @@ msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
 "under \"Limit No. Models Shown\"."
 msgstr ""
+"%sTabela wyświetla tylko podzbiór modeli; aby zobaczyć wszystkie modele, "
+"wybierz „Nie” przy opcji „Ogranicz liczbę wyświetlanych modeli”."
 
 msgid "Null model"
 msgstr "Model zerowy"
@@ -1076,10 +1078,10 @@ msgid "Posterior Summaries of Coefficients"
 msgstr "Podsumowania a posteriori współczynników"
 
 msgid "BF<sub>inclusion</sub>"
-msgstr ""
+msgstr "BF<sub>włączenia</sub>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
-msgstr ""
+msgstr "Logarytm BF<sub>włączenia</sub>"
 
 msgid "%s%% Credible Interval"
 msgstr "%s%% przedział wiarygodności"
@@ -1103,61 +1105,66 @@ msgid "<em>Warning.</em>"
 msgstr "<em>Ostrzeżenie.</em>"
 
 msgid "Posterior Coefficients with %s%% Credible Interval"
-msgstr ""
+msgstr "Współczynniki a posteriori z %s%% przedziałem wiarygodności"
 
 msgid "Posterior Log Odds"
 msgstr "Log. szans a posteriori"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
 msgstr ""
+"Nie można wyświetlić logarytmu szans a posteriori, gdy metoda próbkowania to "
+"MCMC."
 
 msgid "Residuals vs Fitted"
-msgstr ""
+msgstr "Reszty vs dopasowane"
 
 msgid "Predictions under BMA"
-msgstr ""
+msgstr "Prognozy z uwzględnieniem BMA"
 
 msgid "Model Probabilities"
-msgstr ""
+msgstr "Prawdopodobieństwa modeli"
 
 msgid "Cumulative Probability"
-msgstr ""
+msgstr "Prawdopodobieństwo skumulowane"
 
 msgid "Model Search Order"
-msgstr ""
+msgstr "Kolejność przeszukiwania modeli"
 
 msgid "Log(P(data|M)) vs. Model Size"
-msgstr ""
+msgstr "Logarytm P(danych|M) vs Wielkość modelu"
 
 msgid "Log(P(data|M))"
-msgstr ""
+msgstr "Logarytm P(danych|M)"
 
 msgid "Model Dimension"
 msgstr "Wymiar modelu"
 
 msgid "Inclusion Probabilities"
-msgstr ""
+msgstr "Prawdopodobieństwo włączenia"
 
 msgid "Marginal Inclusion Probability"
-msgstr ""
+msgstr "Prawdopodobieństwo marginalnego włączenia"
 
 msgid ""
 "Prior\n"
 "Inclusion\n"
 "Probabilities"
 msgstr ""
+"Prawdopodobieństwa\n"
+"włączenia\n"
+"a priori"
 
 msgid "Q-Q Plot"
 msgstr "Wykres K-K"
 
 msgid "Marginal Posterior Distributions"
-msgstr ""
+msgstr "Rozkłady a posteriori reszt"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
-msgstr ""
+msgstr "Nie udało się oszacować parametrów i/lub przedziałów wiarygodności."
 
 msgid "Performance Diagnostics"
-msgstr ""
+msgstr "Diagnostyka wydajności"
 
 msgid "McFadden R%s"
 msgstr "R%s McFaddena"
@@ -1187,14 +1194,18 @@ msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
 "are standardized (X-standardization)."
 msgstr ""
+"Oszacowania standaryzowane to oszacowania, w których predyktory ciągłe "
+"zostały wystandaryzowane (standaryzacja X)."
 
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
 msgstr ""
+"Oszacowania współczynnika oraz odporne odchylenie standardowe opierają się "
+"na medianie rozkładu bootstrapowego."
 
 msgid "Factor Descriptives"
-msgstr ""
+msgstr "Statystyki dla czynników"
 
 msgid "Factor"
 msgstr "Czynnik"
@@ -1209,7 +1220,7 @@ msgid "%% Correct"
 msgstr "%% prawidłowych"
 
 msgid "Performance metrics"
-msgstr ""
+msgstr "Wskaźniki wydajności"
 
 msgid "Value"
 msgstr "Wartość"
@@ -1224,27 +1235,26 @@ msgstr ""
 "Niektóre przedziały ufności nie mogły zostać obliczone.\n"
 "Prawdopodobnie zbyt mało replikacji bootstrapowych."
 
-#, fuzzy
 msgid "Diagnostic plots"
-msgstr "Diagnostyka"
+msgstr "Wykresy diagnostyczne"
 
 msgid "Estimates plots"
 msgstr "Wykresy oszacowań"
 
 msgid "Predicted - residuals plot"
-msgstr ""
+msgstr "Przewidywane - wykres reszt"
 
 msgid "Predictor - residuals plots"
-msgstr ""
+msgstr "Predyktor - wykresy reszt"
 
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "Wykres kwadratów reszt Pearsona"
 
 msgid "Independent - predicted plots"
-msgstr ""
+msgstr "Wykres zmiennej niezależnej vs wartości przewidywanych"
 
 msgid "Performance plots"
-msgstr ""
+msgstr "Wykresy wydajności"
 
 msgid "ROC plot"
 msgstr "Wykres ROC"
@@ -1265,7 +1275,7 @@ msgid "True positive rate"
 msgstr "Odsetek wyników prawdziwie dodatnich"
 
 msgid "Positive predictive value"
-msgstr ""
+msgstr "Dodatnia wartość predykcyjna"
 
 msgid "%1$s%% bca%2$s Confidence interval"
 msgstr "%1$s%% bca%2$s Przedział ufności"
@@ -1275,6 +1285,8 @@ msgstr "%s%% Przedział ufności"
 
 msgid "%s <br> (odds ratio scale)"
 msgstr ""
+"ChatGPT powiedział:\n"
+"%s <br> (skala ilorazu szans)"
 
 msgid "Robust <br> %s"
 msgstr "Odporny <br> %s"
