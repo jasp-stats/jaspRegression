@@ -35,7 +35,7 @@ Section
 			id:							residualsSavedToData
 			name:						"residualsSavedToData"
 			text:						qsTr("Residuals (%1)").arg(summaryTypeValue)
-			info: qsTr("The posterior mean of the residuals.")
+			info: qsTr("Appends the posterior mean of the residuals as a new column in the data file.")
 
 
 			ComputedColumnField
@@ -52,7 +52,7 @@ Section
 			id:							residualSdsSavedToData
 			name:						"residualSdsSavedToData"
 			text:						qsTr("Residuals std. deviations (%1)").arg(summaryTypeValue)
-			info: qsTr("The posterior standard deviation of the residuals.")
+			info: qsTr("Appends the posterior standard deviation of the residuals as a new column in the data file.")
 
 
 			ComputedColumnField

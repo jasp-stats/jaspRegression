@@ -28,13 +28,13 @@ Form
 	info: qsTr("A generalized linear model (GLM) is a flexible extension of ordinary linear regression. A widely used GLM is binary logistic regression. Generally speaking, a GLM consists of a random component and a systematic component:\n") +
     " The random component specifies an appropriate probability distribution for the response variable. For example, a binomial distribution is appropriate for proportions of a total.\n" +
     " The systematic component specifies how the explanatory variables relate to the mean of the response. For example, in binary logistic regression, the logit link function is used to map the responses (i.e. probabilities) to the linear combination of predictors (i.e. linear predictor).\n" +
-	"## " + qsTr("Family and link") + "\n" + "The following table summarized the available distributions,also called families, and link functions, as well as the suitable type of response data. The asterisk * indicates the canonical/default link function for a specific family.\n" + "\n" + 
-	"- Bernoulli\n" + "\t" + "- Links: Logit*, Probit, Cauchit, complementary log-log, log\n" + "\t" + "- Response type: Proportions, counts\n" + 
-	"- Binomial\n" + "\t" + "- Links: Logit*, Probit, Cauchit, Complementary Log-Log, Log\n" + "\t" + "- Response type: Proportions, counts\n" +
-	"- Gaussian\n" + "\t" + "- Links: Identity*, Log, Inverse\n" + "\t" + "- Response type: Continuous\n" +
-	"- Gamma\n" + "\t" + "- Links: Identity, Log, Inverse*\n" + "\t" + "- Response type: Positive continuous\n" +
-	"- Inverse Gausssian\n" + "\t" + "- Links: Identity, Log, Inverse, 1/mu^2*\n" + "\t" + "- Response type: Positive continuous\n" +
-	"- Poisson\n" + "\t" + "- Identity, Log*, Square-root\n" + "\t" + "- Response type: Counts\n" +
+	"## " + qsTr("Family and link") + "\n" + "The following table summarizes the available distributions, also called families, and link functions, as well as the suitable type of response data. The asterisk * indicates the canonical/default link function for a specific family.\n" + "\n" + 
+	"- Bernoulli\n" + "\t" + "- Links: Logit*, Probit, Cauchit, Complementary log-log, log.\n" + "\t" + "- Response type: Proportions, counts.\n" + 
+	"- Binomial\n" + "\t" + "- Links: Logit*, Probit, Cauchit, Complementary Log-Log, Log.\n" + "\t" + "- Response type: Proportions, counts.\n" +
+	"- Gaussian\n" + "\t" + "- Links: Identity*, Log, Inverse.\n" + "\t" + "- Response type: Continuous.\n" +
+	"- Gamma\n" + "\t" + "- Links: Identity, Log, Inverse*.\n" + "\t" + "- Response type: Positive continuous.\n" +
+	"- Inverse Gaussian\n" + "\t" + "- Links: Identity, Log, Inverse, 1/mu^2*.\n" + "\t" + "- Response type: Positive continuous.\n" +
+	"- Poisson\n" + "\t" + "- Identity, Log*, Square-root.\n" + "\t" + "- Response type: Counts.\n" +
 	"## " + qsTr("Assumptions") + "\n" + "- Lack of outliers: All responses were generated from the same process, so that the same model is appropriate for all the observations.\n" +
     "- Independence: The responses are independent of each other.\n" + "- Distribution: The responses come from the specified EDM.\n" + "- Link function: The correct link function is used.\n" +
 	"- Linearity: All important explanatory variables are included, and each explanatory variable is included in the linear predictor on the correct scale.\n" + "- Variance function: The correct variance function is used.\n" +
@@ -76,7 +76,7 @@ Form
 		{
 			name:		"interceptTerm"
 			label:		qsTr("Include intercept")
-			info: qsTr(" Selected by default. This adds an intercept term to the model.")
+			info: qsTr("Selected by default. This adds an intercept term to the model.")
 			checked:	true
 		}
 	}
@@ -99,7 +99,7 @@ Form
 			{
 				name:		"coefficientEstimate"
 				label:		qsTr("Estimates")
-				info: qsTr("Ticked by default. This gives a table summarizing the model's parameter estimates, standard error around the parameter estimates, the test statistic (t or z), and the p-value.")
+				info: qsTr("Selected by default. This gives a table summarizing the model's parameter estimates, standard error around the parameter estimates, the test statistic (t or z), and the p-value.")
 				checked:	true
 			}
 			CheckBox {
@@ -123,12 +123,12 @@ Form
 
 		Group
 		{
-			title: qsTr("Show Outliers"); info: qsTr("A table showing the top n cases, ranked descendingly based on the size of the residuals. Note that the shown cases are not necessarily outliers. The column case Number refers to the row number of the observation in the data set.")
+			title: qsTr("Show Outliers"); info: qsTr("A table showing the top n cases, ranked descendingly based on the size of the residuals. Note that the shown cases are not necessarily outliers. The column Case Number refers to the row number of the observation in the data set.")
 			CheckBox
 			{
 				name:				"quantileResidualOutlierTable"
 				label:				qsTr("Standardized quantile residuals : top")
-				info: qsTr("Top n standardized quantile residuals")
+				info: qsTr("Top n standardized quantile residuals.")
 				childrenOnSameRow:	true
 				IntegerField { name: "quantileResidualOutlierTableTopN"; defaultValue: 3	}
 			}
@@ -136,7 +136,7 @@ Form
 			{
 				name:				"standardizedResidualOutlierTable"
 				label:				qsTr("Standardized deviance residuals: top")
-				info: qsTr("Top n standardized deviance residuals")
+				info: qsTr("Top n standardized deviance residuals.")
 				childrenOnSameRow:	true
 				IntegerField { name: "standardizedResidualOutlierTableTopN"; defaultValue: 3		}
 			}
@@ -144,7 +144,7 @@ Form
 			{
 				name:				"studentizedResidualOutlierTable"
 				label:				qsTr("Studentized deviance residuals: top")
-				info: qsTr("Top n studentized deviance residuals")
+				info: qsTr("Top n studentized deviance residuals.")
 				childrenOnSameRow:	true
 				IntegerField { name: "studentizedResidualOutlierTableTopN"; defaultValue: 3		}
 			}
@@ -155,8 +155,8 @@ Form
 		Group
 		{
 			title: qsTr("Multicollinearity"); info: qsTr(" A table showing multicollinearity diagnostics of the model. The choices of measures are as follows.")
-			CheckBox { name: "tolerance";	label: qsTr("Tolerance"); info: qsTr("How much variability of a predictor is not explained by other predictors.")	}
-			CheckBox { name: "vif";			label: qsTr("VIF")	; info: qsTr("Variance inflation factor, meaning how much variance of a predictor is inflated by multicollinearity among the predictor variables")		}
+			CheckBox { name: "tolerance";	label: qsTr("Tolerance"); info: qsTr("Indicates how much of a predictor’s variance is not explained by other predictors.")	}
+			CheckBox { name: "vif";			label: qsTr("VIF")	; info: qsTr("Variance inflation factor, which indicates how much variance of a predictor is inflated by multicollinearity among the predictor variables.")		}
 		}
 	}
 

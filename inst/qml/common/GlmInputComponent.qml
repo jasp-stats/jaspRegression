@@ -37,7 +37,7 @@ Group {
 		{
 			name:				"dependent"
 			title:				qsTr("Dependent variable")
-			info: qsTr("The response variable")
+			info: qsTr("The response variable.")
 			allowedColumns:		(family.currentValue !== "other") ? "scale" : ["scale", "ordinal", "nominal"]
 			singleVariable:		true
 		}
@@ -46,7 +46,7 @@ Group {
 		{
 			name:				"covariates"
 			title:				qsTr("Covariates")
-			info: qsTr("Quantitative variables, such as age, height and IQ")
+			info: qsTr("Quantitative variables, such as age, height and IQ.")
 			allowedColumns:		["scale"]
 		}
 
@@ -83,7 +83,7 @@ Group {
 		{
 			name:				"family"
 			label:				qsTr("Family")
-			info: qsTr("Distribution of the response variable")
+			info: qsTr("Distribution of the response variable:")
 			id:					family
 			indexDefaultValue:	0
 			values:

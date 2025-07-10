@@ -28,7 +28,7 @@ Group
 	CheckBox 
 	{ 
 		name: "residualStatistic"     
-		label: qsTr("Statistics") ; info: qsTr("Display descriptive statistics of the residuals and predicted values.")
+		label: qsTr("Statistics") ; info: qsTr("Displays descriptive statistics of the residuals and predicted values.")
 		visible: analysis === Type.Analysis.LinearRegression
 	}
 	
@@ -59,7 +59,7 @@ Group
 		Group
 		{
 			CheckBox { name: "dfbetas"; 		label: qsTr("DFBETAS"); info: qsTr("The difference between a parameter estimated using all cases and estimated when one case is excluded. Indicated in the table when the absolute value of DFBETAS is greater than 1.")		}
-			CheckBox { name: "dffits";   		label: qsTr("DFFITS"); info: qsTr("The difference between the predicted value for a case when the model is estimated including or excluding that case. Indicated in the table when the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)) ")		}
+			CheckBox { name: "dffits";   		label: qsTr("DFFITS"); info: qsTr("The difference between the predicted value for a case when the model is estimated including or excluding that case. Indicated in the table when the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)).")		}
 			CheckBox { name: "covarianceRatio"; label: qsTr("Cov ratio"); info: qsTr("The degree to which a case influences the variance of the regression parameters. Indicated in the table when the covariance ratio is greater than 3 * k/(n-k).")	}
 			CheckBox { name: "leverage"; 		label: qsTr("Leverage"); info: qsTr("The influence of the observed value of the outcome variable over the predicted values. Indicated in the table when the leverage is greater than 3 * k/n.")	}
 			CheckBox { name: "mahalanobis"; 	label: qsTr("Mahalanobis"); info: qsTr("Measures the distance of cases from the mean(s) of the predictor variable(s).")	}
