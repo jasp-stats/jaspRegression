@@ -144,7 +144,7 @@ Form
             CheckBox { name: "sensitivity";		label: qsTr("Sensitivity / Recall"); info: qsTr("Sensitivity describes the proportion of true positives.")	}
             CheckBox { name: "specificity";		label: qsTr("Specificity"); info: qsTr("Specificity describes the proportion of true negatives.")			}
 			CheckBox { name: "precision";		label: qsTr("Precision")	; info: qsTr("Precision describes the proportion of true positives to all positives. Also called the positive predictive value.")		}
-			CheckBox { name: "fMeasure";		label: qsTr("F-measure"); info: qsTr("Th e F-measure is based on the amount of systematic variance divided by the amount of unsystematic variance i.e., mean squares for the model / the residual mean squares.")			}
+			CheckBox { name: "fMeasure";		label: qsTr("F-measure"); info: qsTr("The F-measure is based on the amount of systematic variance divided by the amount of unsystematic variance i.e., mean squares for the model / the residual mean squares.")			}
             CheckBox { name: "brierScore";	label: qsTr("Brier score")	; info: qsTr("Another measure of the accuracy of predictions. Based on the mean squared difference between predicted probabilities and the binary outcome. Lower scores mean more accuracy.")		}
 			CheckBox { name: "hMeasure";		label: qsTr("H-measure"); info: qsTr("A more theoretically robust and advanced alternative to the AUC.")			}
         }
@@ -171,7 +171,7 @@ Form
 
 		Group
 		{
-			title: qsTr("Diagnostic Plots"); info: qsTr("If the assumptions of the linear regression model are hold, then these residuals should scatter randomly about a horizontal line. Any systematic pattern or clustering of the residuals suggests model violations.")
+			title: qsTr("Diagnostic Plots"); info: qsTr("If the assumptions of the linear regression model hold, then these residuals should scatter randomly about a horizontal line. Any systematic pattern or clustering of the residuals suggests model assumption violations.")
 			CheckBox { name: "residualVsFittedPlot";		label: qsTr("Predicted - residual plot")	; info: qsTr("Scatterplot of the values of the residuals against the predicted values.")	}
 			CheckBox { name: "residualVsPredictorPlot";		label: qsTr("Predictor - residual plots"); info: qsTr("Scatterplot for every independent variable and covariate of the residuals and the levels of the variable of interest.")		}
 			CheckBox { name: "squaredPearsonResidualVsFittedPlot";	label: qsTr("Squared Pearson residuals plot"); info: qsTr("With the Squared Pearson residuals plot one can check for overdispersion of the model. Overdispersion indicates that the actual data show greater variability than the model has predicted.")	}

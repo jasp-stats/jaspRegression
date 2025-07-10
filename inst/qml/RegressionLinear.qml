@@ -195,7 +195,7 @@ Form
 
 		Group
 		{
-			title: qsTr("Residuals Plots"); info: qsTr("If the assumptions of the linear regression model are tenable, then these residuals should scatter randomly about a horizontal line. Any systematic pattern or clustering of the residuals suggests a model violation.")
+			title: qsTr("Residuals Plots"); info: qsTr("If the assumptions of the linear regression model are tenable, then these residuals should scatter randomly about a horizontal line. Any systematic pattern or clustering of the residuals suggests model assumption violations.")
 			CheckBox { name: "residualVsDependentPlot";	label: qsTr("Residuals vs. dependent")	; info: qsTr("Scatterplot of the values of the residuals against the dependent variable.")				}
             CheckBox { name: "residualVsCovariatePlot";	label: qsTr("Residuals vs. covariates")	; info: qsTr("Scatterplot of the values of the residuals against the predictor variables.")				}
 			CheckBox { name: "residualVsFittedPlot";	label: qsTr("Residuals vs. predicted")	; info: qsTr("Scatterplot of the values of the residuals against the predicted values.")				}
