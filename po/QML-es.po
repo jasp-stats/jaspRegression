@@ -2985,7 +2985,7 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "The covariance between each pair of variables."
-msgstr "La covarianza entre cada par de variables"
+msgstr "La covarianza entre cada par de variables."
 
 msgctxt "Correlation|"
 msgid ""
