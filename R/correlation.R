@@ -846,6 +846,36 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   }
 }
 ### Plots ----
+
+# Helper function that, if partial correlation takes place, transforms X and Y variables into residuals X and Y regressed on Z.
+# If no variables Z to partial out are specified, it simply extracts normal X and Y variables from dataset according to col_id.
+# Presence of Z needs to be determine by a boolean "pcor" beforehand.
+.corrPartialResiduals <- function(pcor, col_id, dataset, options){
+  data <- dataset[col_id]
+  data <- data[complete.cases(data), ]
+  if (!pcor) return (data)
+
+  condData <- dataset[,.v(options$partialOutVariables), drop = FALSE]
+  condData <- condData[complete.cases(data),, drop = TRUE]
+
+  # For multiple variables Z, create intermediate data frames to allow regressing either X OR Y on all Z variables
+  if (is.data.frame(condData)) {
+    intermediateXOnZ <- data.frame(X = data[, 1, drop=TRUE], condData)
+    intermediateYOnZ <- data.frame(Y = data[, 2, drop=TRUE], condData)
+    regressXOnZ <- lm(X ~ ., data=intermediateXOnZ)
+    regressYOnZ <- lm(Y ~ ., data=intermediateYOnZ)
+  }
+  else {
+    regressXOnZ <- lm(data[,1, drop=TRUE] ~ condData)
+    regressYOnZ <- lm(data[,2,drop=TRUE] ~ condData)
+  }
+
+  data[,1] <- regressXOnZ$residuals
+  data[,2] <- regressYOnZ$residuals
+
+  return(data)
+}
+
 .corrPlot <- function(jaspResults, dataset, options, ready, corrResults){
   if (!ready) return()
   if (isFALSE(options$scatterPlot)) return()
@@ -878,6 +908,8 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vcomb <- combn(vvars, 2, simplify = FALSE)
   vpairs <- sapply(vcomb, paste, collapse = "_")
 
+  pcor <- length(options$partialOutVariables) != 0
+
   if(options[['scatterPlotDensity']]){
     for(i in seq_along(vcomb)){
       plot <- createJaspPlot(title = pairs[i], width = 550, height = 550)
@@ -885,8 +917,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
       plotMat <- matrix(list(), 2, 2)
 
-      data <- dataset[vcomb[[i]]]
-      data <- data[complete.cases(data),]
+      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
 
       plotMat[[1, 1]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE], varName = comb[[i]][1],
                                                    options = options, yName = NULL)
@@ -917,8 +948,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot <- createJaspPlot(title = pairs[i], width = 600, height = 300)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- dataset[vcomb[[i]]]
-      data <- data[complete.cases(data),]
+      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
 
       plotMat <- matrix(list(), 1, 2)
       plotMat[[1, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
@@ -934,8 +964,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot <- createJaspPlot(title = pairs[i], width = 400, height = 400)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- dataset[vcomb[[i]]]
-      data <- data[complete.cases(data),]
+      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
 
       plot$plotObject <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                                       options = options,
@@ -949,6 +978,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vars <- options$variables
   vvars <- .v(vars)
   len <- length(vars)
+  pcor <- (length(options$partialOutVariables) != 0)
 
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
@@ -977,8 +1007,10 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   plotMat <- matrix(list(), len, len)
   for(row in seq_len(len)){
     for(col in seq_len(len)){
-      data <- dataset[,vvars[c(col,row)],drop=FALSE]
-      data <- data[complete.cases(data),,drop=FALSE]
+
+      data <- .corrPartialResiduals(pcor, vvars[c(col, row)], dataset, options)
+      #data <- dataset[,vvars[c(col,row)],drop=FALSE]
+      #data <- data[complete.cases(data),,drop=FALSE]
 
       if(row == col) {
         plotMat[[row, col]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE],
