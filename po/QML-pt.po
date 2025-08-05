@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-05 15:02+0000\n"
+"PO-Revision-Date: 2025-08-06 07:43+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pt/>\n"
@@ -1246,7 +1246,6 @@ msgctxt "RegressionLinear|"
 msgid "Coefficients"
 msgstr "Coeficientes"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
 msgstr "Coeficientes"
@@ -1479,7 +1478,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Beta binomial"
 msgstr "Beta binomial"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "a"
 msgstr "a"
@@ -1552,17 +1550,14 @@ msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
 msgstr ""
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Residuals"
 msgstr "Resíduos"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
 msgstr "Diagnósticos caso a caso"
@@ -1575,7 +1570,6 @@ msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
 msgstr ""
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "All"
 msgstr "Todos"
