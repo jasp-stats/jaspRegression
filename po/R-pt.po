@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2025-03-29 03:00\n"
-"PO-Revision-Date: 2025-08-04 22:02+0000\n"
+"PO-Revision-Date: 2025-08-05 23:02+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/pt/>\n"
@@ -37,7 +37,7 @@ msgid "Bayes Factor Robustness Check"
 msgstr "Verificação de robustez do fator Bayes"
 
 msgid "Sequential Analysis"
-msgstr "Análise sequencial"
+msgstr "Análise Sequencial"
 
 msgid "Bayesian Pearson Correlations"
 msgstr "Correlações Pearson bayesianas"
@@ -142,13 +142,11 @@ msgstr ""
 msgid "Plotting is not possible: %s"
 msgstr "Não é possível realizar a plotagem: %s"
 
-#, fuzzy
 msgid "Q-Q Plots"
-msgstr "Diagrama Q-Q"
+msgstr "Gráficos Q-Q"
 
-#, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
-msgstr "Gráfico Q-Q dos resíduos"
+msgstr "Gráfico Q-Q: %1s Resíduos Padronizados"
 
 msgid "There are no predictors to test for multicollinearity"
 msgstr ""
@@ -204,9 +202,8 @@ msgstr "Previsto"
 msgid "(Intercept)"
 msgstr ""
 
-#, fuzzy
 msgid "Influential Cases"
-msgstr "Análise sequencial"
+msgstr "Casos Influentes"
 
 msgid "Std. Residual"
 msgstr "Resíduos padrão"
@@ -255,9 +252,8 @@ msgstr ""
 "  1/(-e <em>p</em> log(<em>p</em>)) para <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 
-#, fuzzy
 msgid "Computing Durbin-Watson Statistics"
-msgstr "Estatísticas de colinearidade"
+msgstr "Calculando a estatística de Durbin-Watson"
 
 msgid "Kendall's Tau"
 msgstr "Tau de Kendall"
@@ -313,9 +309,8 @@ msgstr ""
 msgid "SE Effect size"
 msgstr ""
 
-#, fuzzy
 msgid "Covariance"
-msgstr "Desvio"
+msgstr "Covariância"
 
 msgid "r"
 msgstr "r"
@@ -387,7 +382,7 @@ msgstr ""
 "Número de observações inferior a 2"
 
 msgid "Plotting not possible: %s"
-msgstr "Não foi possível efetuar a plotagem: %s"
+msgstr "A plotagem não é possível: %s"
 
 msgid "Partial Pearson's r"
 msgstr "r de Pearson (parcial)"
@@ -567,7 +562,7 @@ msgid "Null model contains nuisance parameters: %s."
 msgstr "O modelo nulo contém parâmetros incômodos: %s."
 
 msgid "Model Fit"
-msgstr "Ajuste do modelo"
+msgstr "Ajuste do Modelo"
 
 msgid "Statistic"
 msgstr "Estatísticas"
@@ -638,9 +633,8 @@ msgstr ""
 msgid "Case Number"
 msgstr "Número do caso"
 
-#, fuzzy
 msgid "Multicollinearity Diagnostics"
-msgstr "Diagnósticos de colinearidade"
+msgstr "Diagnósticos de multicolinearidade"
 
 msgid "Tolerance"
 msgstr "Tolerância"
@@ -684,9 +678,8 @@ msgstr ""
 msgid "Odds Ratio"
 msgstr "Razão de probabilidade"
 
-#, fuzzy
 msgid "Ratio"
-msgstr "Razão de probabilidade"
+msgstr "Razão"
 
 msgid "trying + %s"
 msgstr "tentando + %s"
@@ -694,20 +687,19 @@ msgstr "tentando + %s"
 msgid "F test assumes 'quasi%s' family"
 msgstr "Teste F assume 'quasi%s'"
 
-#, fuzzy
 msgid ""
 "Stepwise procedures are not supported for models containing factors with "
 "more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
-"Procedimentos \"stepwise\" não são suportados em modelos contendo termos de "
-"interação"
+"Procedimentos passo a passo não são suportados em modelos contendo fatores "
+"com mais de 2 níveis; refaça a análise usando variáveis fictícias"
 
-#, fuzzy
 msgid ""
 "Stepwise procedures are not supported for interactions containing more than "
 "1 factor"
 msgstr ""
-"Procedimentos \"stepwise\" não são suportados em modelos contendo fatores"
+"Procedimentos passo a passo não são suportados para interações contendo mais "
+"de 1 fator"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
@@ -823,11 +815,8 @@ msgstr ""
 msgid "Bias corrected accelerated."
 msgstr "Viés corrigido acelerado."
 
-#, fuzzy
 msgid "Some bootstrap results could not be computed."
-msgstr ""
-"Alguns coeficientes de bootstrap ou intervalos de confiança não puderam ser "
-"calculados."
+msgstr "Alguns resultados de bootstrap não puderam ser calculados."
 
 msgid "expecting both arguments to be data.frames"
 msgstr "esperando que ambos os argumentos sejam data.frames"
@@ -931,9 +920,8 @@ msgstr "Resíduos %s"
 msgid "Descriptives"
 msgstr "Descritivas"
 
-#, fuzzy
 msgid "M%s"
-msgstr "R%s"
+msgstr "M%s"
 
 msgid "Std. Predicted Value"
 msgstr "Valor predito padrão"
@@ -941,9 +929,8 @@ msgstr "Valor predito padrão"
 msgid "Standardized Residuals"
 msgstr "Resíduos padronizados"
 
-#, fuzzy
 msgid "%1$s includes %2$s"
-msgstr "%1$s vs. %2$s"
+msgstr "%1$s inclui %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1195,9 +1182,8 @@ msgstr "Matriz de confusão"
 msgid "Observed"
 msgstr "Observado"
 
-#, fuzzy
 msgid "%% Correct"
-msgstr "%% Correlações"
+msgstr "%% Correto"
 
 msgid "Performance metrics"
 msgstr "Métricas de performance"
@@ -1215,9 +1201,8 @@ msgstr ""
 "Alguns intervalos de confiança não puderam ser calculados.\n"
 "Possivelmente, poucas réplicas de bootstrap."
 
-#, fuzzy
 msgid "Diagnostic plots"
-msgstr "Diagnósticos caso a caso"
+msgstr "Gráficos de diagnóstico"
 
 msgid "Estimates plots"
 msgstr "Gráficos de estimativas"
@@ -1262,7 +1247,7 @@ msgid "%1$s%% bca%2$s Confidence interval"
 msgstr "%1$s%% bca%2$s Intervalo de Confiança"
 
 msgid "%s%% Confidence interval"
-msgstr "%s%% Intervalo de Confiança"
+msgstr "%s%% Intervalo de confiança"
 
 msgid "%s <br> (odds ratio scale)"
 msgstr "%s <br> (escala de razão de probabilidades)"
@@ -1278,20 +1263,17 @@ msgid ""
 "same as the coefficients are always included or excluded together."
 msgstr ""
 
-#, fuzzy
 msgid "DV/Factor Descriptives"
-msgstr "Descritivas do fator"
+msgstr "DV/Descritivos do Fator"
 
-#, fuzzy
 msgid "DV/Factor"
-msgstr "Fator"
+msgstr "DV/Fator"
 
 msgid "Level"
 msgstr ""
 
-#, fuzzy
 msgid "Covariate Descriptives"
-msgstr "Descritivas do fator"
+msgstr "Descritivos das Covariáveis"
 
 msgid "Intercept"
 msgstr ""
