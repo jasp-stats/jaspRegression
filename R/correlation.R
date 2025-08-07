@@ -167,6 +167,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   return(mainTable)
 }
 
+
 .corrInitPairwiseTable <- function(mainTable, options, variables){
   pairs <- combn(.v(variables), 2, simplify = FALSE)
   pairTitles <- combn(variables, 2, simplify = FALSE)
@@ -876,6 +877,15 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   return(data)
 }
 
+# Helper function to add captions under plots, borrowed from rainbow plots in jaspDescriptives.
+# Unfortunately it cannot put captions under jasp::ggMatrixPlot objects (yet).
+.corrPlotCaption <- function(plotObject, caption){
+  addCaption      <- ggplot2::labs(caption = caption)
+  captionPosition <- ggplot2::theme(plot.caption = ggtext::element_markdown(hjust = 0))  # Bottom left position
+
+  return(plotObject + addCaption + captionPosition)
+}
+
 .corrPlot <- function(jaspResults, dataset, options, ready, corrResults){
   if (!ready) return()
   if (isFALSE(options$scatterPlot)) return()
@@ -909,6 +919,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vpairs <- sapply(vcomb, paste, collapse = "_")
 
   pcor <- length(options$partialOutVariables) != 0
+  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ", paste0(options$partialOutVariables, collapse = ", "))
 
   if(options[['scatterPlotDensity']]){
     for(i in seq_along(vcomb)){
@@ -937,11 +948,14 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                       xBreaks = var1Breaks,
                                       yBreaks = var2Breaks,
                                       drawAxes = FALSE)
+      if(pcor){
+        plotMat[[2, 1]] <- .corrPlotCaption(plotMat[[2, 1]], pcorCaption)
+      }
 
+    plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat,
+                                                bottomLabels = c(comb[[i]][1],       gettext("Density")),
+                                                leftLabels   = c(gettext("Density"), comb[[i]][2]))
 
-      plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat,
-                                                  bottomLabels = c(comb[[i]][1],       gettext("Density")),
-                                                  leftLabels   = c(gettext("Density"), comb[[i]][2]))
     }
   } else if(options[['scatterPlotStatistic']]){
     for(i in seq_along(vcomb)){
@@ -955,6 +969,11 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                       options = options,
                                       xName = comb[[i]][1], yName = comb[[i]][2],
                                       drawAxes = TRUE)
+
+      if(pcor){
+        plotMat[[1, 1]] <- .corrPlotCaption(plotMat[[1, 1]], pcorCaption)
+      }
+
       plotMat[[1, 2]] <- .corrValuePlot(corrResults[[vpairs[i]]], options = options)
 
       plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
@@ -965,20 +984,25 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plotContainer[[vpairs[i]]] <- plot
 
       data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
-
       plot$plotObject <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
-                                      options = options,
-                                      xName = comb[[i]][1], yName = comb[[i]][2],
-                                      drawAxes = TRUE)
+                        options = options,
+                        xName = comb[[i]][1], yName = comb[[i]][2],
+                        drawAxes = TRUE)
+
+      if(pcor){
+        plot$plotObject <- .corrPlotCaption(plot$plotObject, pcorCaption)
+      }
     }
   }
 }
+
 .corrMatrixPlot <- function(jaspResults, dataset, options, ready, corrResults, errors=NULL){
   if(!is.null(jaspResults[['corrPlot']])) return()
   vars <- options$variables
   vvars <- .v(vars)
   len <- length(vars)
   pcor <- (length(options$partialOutVariables) != 0)
+  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ", paste0(options$partialOutVariables, collapse = ", "))
 
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
@@ -1022,6 +1046,9 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       } else {
         plotMat[[row, col]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                                             options = options)
+        if(pcor){
+          plotMat[[row, col]] <- .corrPlotCaption(plotMat[[row, col]], pcorCaption)
+        }
       }
     }
   }
@@ -1029,6 +1056,8 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   p <- jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = vars, topLabels = vars,
                                 scaleXYlabels = NULL)
   plot$plotObject <- p
+
+
 
 }
 

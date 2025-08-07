@@ -90,8 +90,8 @@ Form
 		title: qsTr("Plots")
 		CheckBox
 		{
-			name: "scatterPlot";			label: qsTr("Scatter plots"); info: qsTr("Display a scatter plot for each pairwise combination of the selected variables. In a matrix format, these are placed above the diagonal.")
-			CheckBox { name: "scatterPlotDensity";		label: qsTr("Densities for variables"); info: qsTr("Display histogram and the corresponding density plot for each variable. In a matrix format, these are placed on the diagonal.")	}
+			name: "scatterPlot"; label: qsTr("Scatter plots"); info: qsTr("Displays scatter plots for all variable pairs. In a matrix format, these are placed above the diagonal. For partial correlations, plots show the relationship between X and Y after removing the effect of Z, and axes then represent residuals from regressing X and Y on Z.")
+			CheckBox { name: "scatterPlotDensity";		label: qsTr("Densities for variables"); info: qsTr("Display histogram and the corresponding density plot for each variable. In a matrix format, these are placed on the diagonal")	}
 			CheckBox { name: "scatterPlotStatistic";	label: qsTr("Statistics")	; info: qsTr("Display the correlation coefficient(s) in the plot. This option also adds the x% confidence interval(s) as specified in the Confidence Intervals option.")			}
             CheckBox
             {
