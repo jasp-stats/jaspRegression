@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-06 07:43+0000\n"
+"PO-Revision-Date: 2025-08-10 14:02+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pt/>\n"
@@ -248,7 +248,7 @@ msgstr "Estimativas"
 
 msgctxt "RegressionLinear|"
 msgid "From"
-msgstr "A partir de"
+msgstr "De"
 
 msgctxt "RegressionLinear|"
 msgid "bootstraps"
@@ -680,7 +680,7 @@ msgstr "Estimativas"
 
 msgctxt "RegressionLogistic|"
 msgid "From"
-msgstr "A partir de"
+msgstr "De"
 
 msgctxt "RegressionLogistic|"
 msgid "bootstraps"
@@ -916,7 +916,7 @@ msgstr "Regressão linear bayesiana"
 
 msgctxt "Correlation|"
 msgid "From"
-msgstr "A partir de"
+msgstr "De"
 
 msgctxt "Correlation|"
 msgid "bootstraps"
@@ -984,7 +984,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
-msgstr ""
+msgstr "Exatidão"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
