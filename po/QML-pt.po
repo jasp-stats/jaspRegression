@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-12 15:01+0000\n"
+"PO-Revision-Date: 2025-08-13 20:02+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pt/>\n"
@@ -96,7 +96,7 @@ msgstr "Verificar pressupostos"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr "Normalidade multivariada"
+msgstr "Normalidade Multivariada"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
