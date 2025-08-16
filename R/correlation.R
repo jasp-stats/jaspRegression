@@ -984,6 +984,10 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat,
                                                 bottomLabels = c(comb[[i]][1],       gettext("Density")),
                                                 leftLabels   = c(gettext("Density"), comb[[i]][2]))
+      if (pcor){
+        plot$plotObject$plotFunction <- .corrRedrawWithCaption
+        plot$plotObject$plotArgs$caption <- pcorCaption
+      }
     }
   } else if(options[['scatterPlotStatistic']]){
     for(i in seq_along(vcomb)){
@@ -1001,6 +1005,11 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plotMat[[1, 2]] <- .corrValuePlot(corrResults[[vpairs[i]]], options = options)
 
       plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat)
+
+      if (pcor){
+        plot$plotObject$plotFunction <- .corrRedrawWithCaption
+        plot$plotObject$plotArgs$caption <- pcorCaption
+      }
     }
   } else{
     for(i in seq_along(vcomb)){
@@ -1015,12 +1024,6 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       if (pcor){
         plot$plotObject <- .corrPlotCaption(plot$plotObject, pcorCaption)
       }
-    }
-  }
-  if (pcor && (options[['scatterPlotStatistic']] || options[['scatterPlotDensity']]) ){
-    for (i in seq_along(vcomb)){
-      plotContainer[[vpairs[i]]]$plotObject$plotFunction <- .corrRedrawWithCaption
-      plotContainer[[vpairs[i]]]$plotObject$plotArgs$caption <- pcorCaption
     }
   }
 }
