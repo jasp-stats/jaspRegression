@@ -851,7 +851,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 # Helper function that, if partial correlation takes place, transforms X and Y variables into residuals X and Y regressed on Z.
 # If no variables Z to partial out are specified, it simply extracts normal X and Y variables from dataset according to col_id.
 # Presence of Z needs to be determine by a boolean "pcor" beforehand.
-.corrPartialResiduals <- function(pcor, col_id, dataset, options){
+.corrExtractVarOrRes <- function(pcor, col_id, dataset, options){
   data <- dataset[col_id]
   data <- data[complete.cases(data), ]
   if (!pcor) return (data)
@@ -886,22 +886,19 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   return(plotObject + addCaption + captionPosition)
 }
 
-
-
 # Wrapper for reDrawJaspGraphsPlot to include optional caption under grob compsite. To use:
 # - Needs to replace member function in plot$plotObject$plotFunction when needed.
 # - Caption argument needs to be created in member list plot$plotObject$plotArgs$caption.
 # NOTE: Currently UNSTABLE since it's using jaspGraphs internals without exporting.
 .corrRedrawWithCaption <- function(subplots, args, grob = FALSE, newpage = TRUE,
                                    decodeplotFun = jaspGraphs:::getDecodeplotFun(), ...) {
+
   # The original grob to wrap around, without rendering
-  grob_mat <- jaspGraphs:::reDrawJaspGraphsPlot(subplots, args, grob = TRUE,
-                                                     newpage = FALSE,
-                                                     decodeplotFun = decodeplotFun,
-                                                     ...)
-  caption <- args[["caption"]]
+  grob_mat <- jaspGraphs:::reDrawJaspGraphsPlot(subplots, args, grob = TRUE, newpage = FALSE,
+                                                decodeplotFun = decodeplotFun, ...)
 
   # New composite grob, with optional caption
+  caption <- args[["caption"]]
   if (!is.null(caption)) {
     bottom_grob <- grid::textGrob(caption)
     modJaspGraphsPlot <- gridExtra::arrangeGrob(grob_mat, bottom = bottom_grob)
@@ -953,7 +950,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vpairs <- sapply(vcomb, paste, collapse = "_")
 
   pcor <- length(options$partialOutVariables) != 0
-  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ",
+  pcorCaption <- sprintf("Axes show residuals conditioned on variables: %s ",
                          paste0(decodeColNames(options$partialOutVariables), collapse = ", "))
 
   if(options[['scatterPlotDensity']]){
@@ -963,7 +960,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
       plotMat <- matrix(list(), 2, 2)
 
-      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
+      data <- .corrExtractVarOrRes(pcor, vcomb[[i]], dataset, options)
 
       plotMat[[1, 1]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE], varName = comb[[i]][1],
                                                    options = options, yName = NULL)
@@ -993,7 +990,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot <- createJaspPlot(title = pairs[i], width = 600, height = 300)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
+      data <- .corrExtractVarOrRes(pcor, vcomb[[i]], dataset, options)
 
       plotMat <- matrix(list(), 1, 2)
       plotMat[[1, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
@@ -1010,7 +1007,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot <- createJaspPlot(title = pairs[i], width = 400, height = 400)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
+      data <- .corrExtractVarOrRes(pcor, vcomb[[i]], dataset, options)
       plot$plotObject <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                         options = options,
                         xName = comb[[i]][1], yName = comb[[i]][2],
@@ -1031,7 +1028,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vvars <- .v(vars)
   len <- length(vars)
   pcor <- (length(options$partialOutVariables) != 0)
-  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ",
+  pcorCaption <- sprintf("Axes show residuals conditioned on variables: %s ",
                          paste0(decodeColNames(options$partialOutVariables), collapse = ", "))
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
@@ -1086,7 +1083,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                 scaleXYlabels = NULL)
   plot$plotObject <- p
 
-  if (pcor){
+  if (pcor && !(options())){
     plot$plotObject$plotFunction <- .corrRedrawWithCaption
     plot$plotObject$plotArgs$caption <- pcorCaption
   }
