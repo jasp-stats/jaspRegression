@@ -886,6 +886,45 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   return(plotObject + addCaption + captionPosition)
 }
 
+
+### EDIT ###
+
+# API-compatible with reDrawJaspGraphsPlot
+.corrRedrawWithCaption <- function(subplots, args, grob = FALSE, newpage = TRUE,
+                                   decodeplotFun = getDecodeplotFun(), ...) {
+
+  # reDrawJaspGraphsPlot is the rendering function for the jaspGraphsPlot objects
+  origJaspGraphsPlot <- jaspGraphs:::reDrawJaspGraphsPlot(subplots, args, grob = FALSE,
+                                                     newpage = TRUE,
+                                                     decodeplotFun = getDecodeplotFun(),
+                                                     ...)
+  # Extract caption argument
+  cap <- args[["caption"]]
+
+  # And put in if caption was provided
+  if (!is.null(cap)) {
+    if (inherits(cap, "grob")){
+      bottom_grob <- cap
+    } else{
+
+      # Default arguments and no formatting for now
+      bottom_grob <- grid::textGrob(cap)
+    }
+    # Compose a new grob object of the original matrix and the caption grob.
+    # If no caption argument, reuse the original.
+    modJaspGraphsPlot <- gridExtra:::arrangeGrob(origJaspGraphsPlot, cap)
+  } else{
+    modJaspGraphsPlot <- origJaspGraphsPlot
+  }
+
+  if (grob){
+    return(modJaspGraphsPlot)
+  }
+  gridExtra::grid.arrange(g, newpage = newpage)
+}
+
+### END ###
+
 .corrPlot <- function(jaspResults, dataset, options, ready, corrResults){
   if (!ready) return()
   if (isFALSE(options$scatterPlot)) return()
