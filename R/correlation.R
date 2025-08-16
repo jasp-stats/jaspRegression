@@ -1012,9 +1012,12 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                         options = options,
                         xName = comb[[i]][1], yName = comb[[i]][2],
                         drawAxes = TRUE)
+      if (pcor){
+        plot$plotObject <- .corrPlotCaption(plot$plotObject, pcorCaption)
+      }
     }
   }
-  if (pcor){
+  if (pcor && (options[['scatterPlotStatistic']] || options[['scatterPlotDensity']]) ){
     for (i in seq_along(vcomb)){
       plotContainer[[vpairs[i]]]$plotObject$plotFunction <- .corrRedrawWithCaption
       plotContainer[[vpairs[i]]]$plotObject$plotArgs$caption <- pcorCaption
@@ -1083,7 +1086,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                 scaleXYlabels = NULL)
   plot$plotObject <- p
 
-  if (pcor && !(options())){
+  if (pcor){
     plot$plotObject$plotFunction <- .corrRedrawWithCaption
     plot$plotObject$plotArgs$caption <- pcorCaption
   }
