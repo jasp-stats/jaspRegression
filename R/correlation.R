@@ -887,43 +887,38 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 }
 
 
-### EDIT ###
 
-# API-compatible with reDrawJaspGraphsPlot
+# Wrapper for reDrawJaspGraphsPlot to include optional caption under grob compsite. To use:
+# - Needs to replace member function in plot$plotObject$plotFunction when needed.
+# - Caption argument needs to be created in member list plot$plotObject$plotArgs$caption.
+# NOTE: Currently UNSTABLE since it's using jaspGraphs internals without exporting.
 .corrRedrawWithCaption <- function(subplots, args, grob = FALSE, newpage = TRUE,
-                                   decodeplotFun = getDecodeplotFun(), ...) {
-
-  # reDrawJaspGraphsPlot is the rendering function for the jaspGraphsPlot objects
-  origJaspGraphsPlot <- jaspGraphs:::reDrawJaspGraphsPlot(subplots, args, grob = FALSE,
-                                                     newpage = TRUE,
-                                                     decodeplotFun = getDecodeplotFun(),
+                                   decodeplotFun = jaspGraphs:::getDecodeplotFun(), ...) {
+  # The original grob to wrap around, without rendering
+  grob_mat <- jaspGraphs:::reDrawJaspGraphsPlot(subplots, args, grob = TRUE,
+                                                     newpage = FALSE,
+                                                     decodeplotFun = decodeplotFun,
                                                      ...)
-  # Extract caption argument
-  cap <- args[["caption"]]
+  caption <- args[["caption"]]
 
-  # And put in if caption was provided
-  if (!is.null(cap)) {
-    if (inherits(cap, "grob")){
-      bottom_grob <- cap
-    } else{
-
-      # Default arguments and no formatting for now
-      bottom_grob <- grid::textGrob(cap)
-    }
-    # Compose a new grob object of the original matrix and the caption grob.
-    # If no caption argument, reuse the original.
-    modJaspGraphsPlot <- gridExtra:::arrangeGrob(origJaspGraphsPlot, cap)
-  } else{
-    modJaspGraphsPlot <- origJaspGraphsPlot
+  # New composite grob, with optional caption
+  if (!is.null(caption)) {
+    bottom_grob <- grid::textGrob(caption)
+    modJaspGraphsPlot <- gridExtra::arrangeGrob(grob_mat, bottom = bottom_grob)
+    print(get0("reDrawJaspGraphsPlot", envir = asNamespace("jaspGraphs")))
+  }
+  else{
+    modJaspGraphsPlot <- grob_mat
   }
 
+  # Return grob and don't render, if desired
   if (grob){
     return(modJaspGraphsPlot)
   }
-  gridExtra::grid.arrange(g, newpage = newpage)
-}
 
-### END ###
+  # Render grob
+  gridExtra::grid.arrange(modJaspGraphsPlot, newpage = newpage)
+}
 
 .corrPlot <- function(jaspResults, dataset, options, ready, corrResults){
   if (!ready) return()
@@ -958,7 +953,8 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vpairs <- sapply(vcomb, paste, collapse = "_")
 
   pcor <- length(options$partialOutVariables) != 0
-  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ", paste0(options$partialOutVariables, collapse = ", "))
+  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ",
+                         paste0(decodeColNames(options$partialOutVariables), collapse = ", "))
 
   if(options[['scatterPlotDensity']]){
     for(i in seq_along(vcomb)){
@@ -987,14 +983,10 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                       xBreaks = var1Breaks,
                                       yBreaks = var2Breaks,
                                       drawAxes = FALSE)
-      if(pcor){
-        plotMat[[2, 1]] <- .corrPlotCaption(plotMat[[2, 1]], pcorCaption)
-      }
 
-    plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat,
+      plot$plotObject <- jaspGraphs::ggMatrixPlot(plotMat,
                                                 bottomLabels = c(comb[[i]][1],       gettext("Density")),
                                                 leftLabels   = c(gettext("Density"), comb[[i]][2]))
-
     }
   } else if(options[['scatterPlotStatistic']]){
     for(i in seq_along(vcomb)){
@@ -1008,10 +1000,6 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                       options = options,
                                       xName = comb[[i]][1], yName = comb[[i]][2],
                                       drawAxes = TRUE)
-
-      if(pcor){
-        plotMat[[1, 1]] <- .corrPlotCaption(plotMat[[1, 1]], pcorCaption)
-      }
 
       plotMat[[1, 2]] <- .corrValuePlot(corrResults[[vpairs[i]]], options = options)
 
@@ -1027,10 +1015,12 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                         options = options,
                         xName = comb[[i]][1], yName = comb[[i]][2],
                         drawAxes = TRUE)
-
-      if(pcor){
-        plot$plotObject <- .corrPlotCaption(plot$plotObject, pcorCaption)
-      }
+    }
+  }
+  if (pcor){
+    for (i in seq_along(vcomb)){
+      plotContainer[[vpairs[i]]]$plotObject$plotFunction <- .corrRedrawWithCaption
+      plotContainer[[vpairs[i]]]$plotObject$plotArgs$caption <- pcorCaption
     }
   }
 }
@@ -1041,8 +1031,8 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vvars <- .v(vars)
   len <- length(vars)
   pcor <- (length(options$partialOutVariables) != 0)
-  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ", paste0(options$partialOutVariables, collapse = ", "))
-
+  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ",
+                         paste0(decodeColNames(options$partialOutVariables), collapse = ", "))
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
   plot$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
@@ -1096,8 +1086,10 @@ CorrelationInternal <- function(jaspResults, dataset, options){
                                 scaleXYlabels = NULL)
   plot$plotObject <- p
 
-
-
+  if (pcor){
+    plot$plotObject$plotFunction <- .corrRedrawWithCaption
+    plot$plotObject$plotArgs$caption <- pcorCaption
+  }
 }
 
 .corrValuePlot <- function(results, cexText= 2.5, cexCI= 1.7, options = options) {
