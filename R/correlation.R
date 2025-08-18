@@ -851,7 +851,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 # Helper function that, if partial correlation takes place, transforms X and Y variables into residuals X and Y regressed on Z.
 # If no variables Z to partial out are specified, it simply extracts normal X and Y variables from dataset according to col_id.
 # Presence of Z needs to be determine by a boolean "pcor" beforehand.
-.corrPartialResiduals <- function(pcor, col_id, dataset, options){
+.corrVarOrRes <- function(pcor, col_id, dataset, options){
   data <- dataset[col_id]
   data <- data[complete.cases(data), ]
   if (!pcor) return (data)
@@ -878,7 +878,6 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 }
 
 # Helper function to add captions under plots, borrowed from rainbow plots in jaspDescriptives.
-# Unfortunately it cannot put captions under jasp::ggMatrixPlot objects (yet).
 .corrPlotCaption <- function(plotObject, caption){
   addCaption      <- ggplot2::labs(caption = caption)
   captionPosition <- ggplot2::theme(plot.caption = ggtext::element_markdown(hjust = 0))  # Bottom left position
@@ -919,7 +918,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vpairs <- sapply(vcomb, paste, collapse = "_")
 
   pcor <- length(options$partialOutVariables) != 0
-  pcorCaption <- sprintf("Axes show residuals after controlling for: %s ", paste0(options$partialOutVariables, collapse = ", "))
+  pcorCaption <- sprintf("Axes show residuals conditioned on: %s ", paste0(options$partialOutVariables, collapse = ", "))
 
   if(options[['scatterPlotDensity']]){
     for(i in seq_along(vcomb)){
@@ -928,7 +927,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
       plotMat <- matrix(list(), 2, 2)
 
-      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
+      data <- .corrVarOrRes(pcor, vcomb[[i]], dataset, options)
 
       plotMat[[1, 1]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE], varName = comb[[i]][1],
                                                    options = options, yName = NULL)
@@ -962,7 +961,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot <- createJaspPlot(title = pairs[i], width = 600, height = 300)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
+      data <- .corrVarOrRes(pcor, vcomb[[i]], dataset, options)
 
       plotMat <- matrix(list(), 1, 2)
       plotMat[[1, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
@@ -983,7 +982,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot <- createJaspPlot(title = pairs[i], width = 400, height = 400)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- .corrPartialResiduals(pcor, vcomb[[i]], dataset, options)
+      data <- .corrVarOrRes(pcor, vcomb[[i]], dataset, options)
       plot$plotObject <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                         options = options,
                         xName = comb[[i]][1], yName = comb[[i]][2],
@@ -1032,7 +1031,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   for(row in seq_len(len)){
     for(col in seq_len(len)){
 
-      data <- .corrPartialResiduals(pcor, vvars[c(col, row)], dataset, options)
+      data <- .corrVarOrRes(pcor, vvars[c(col, row)], dataset, options)
       #data <- dataset[,vvars[c(col,row)],drop=FALSE]
       #data <- data[complete.cases(data),,drop=FALSE]
 
