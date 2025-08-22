@@ -877,11 +877,13 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   return(data)
 }
 
-# Helper function to append a string label given a specified condition is fulfilled
+# Helper function to append a string label given a specified condition is fulfilled. If label is a vector of strings,
+# all elements of the vector will be recursively appended by specified pre- and suffix.
 .corrAppendLabel <- function(condition = FALSE, label, prefix = "", suffix = ""){
   if(!condition) return(label)
-  if (length(label)>1){
+  if(length(prefix)>1 || length(suffix)>1) return()
 
+  if (length(label)>1){
     # Recursive vectorization if list of variable names (f.e. options$variables) so it labels each variable.
     return(lapply(label, .corrAppendLabel, condition = condition, prefix = prefix, suffix = suffix))
   }
