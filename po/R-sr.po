@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2025-03-29 03:00\n"
-"PO-Revision-Date: 2025-04-14 23:01+0000\n"
+"PO-Revision-Date: 2025-08-24 09:02+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/sr/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.11-dev\n"
+"X-Generator: Weblate 5.13\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -20,10 +20,10 @@ msgstr "За све тестове, алтернативна хипотеза о
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
-msgstr ""
+msgstr "За све тестове, алтернативна хипотеза одређује да је %s негативан."
 
 msgid "Scatterplot"
-msgstr ""
+msgstr "Дијаграм расипања"
 
 msgid "Prior and Posterior"
 msgstr ""
@@ -957,11 +957,12 @@ msgstr ""
 msgid "Models"
 msgstr ""
 
+#, fuzzy
 msgid "P(M)"
-msgstr ""
+msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|подаци)"
 
 msgid "BF<sub>M</sub>"
 msgstr ""
