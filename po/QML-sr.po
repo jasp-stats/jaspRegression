@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-24 15:02+0000\n"
+"PO-Revision-Date: 2025-08-25 16:02+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/sr/>\n"
@@ -107,7 +107,7 @@ msgstr ""
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "Зависна варијабла"
 
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
@@ -897,7 +897,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Зависна варијабла"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
