@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-08-26 09:56+0000\n"
+"PO-Revision-Date: 2025-08-27 02:32+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/pt/>\n"
@@ -1112,7 +1112,7 @@ msgstr "Logarítimo"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr "Quadrado"
+msgstr "Quadr"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
