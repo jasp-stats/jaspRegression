@@ -5,6 +5,7 @@
 # Changes:
 #
 # - stripped roxygen2 comments by changing #' into #
+# - `gettextf` -> `sprintf`
 
 
 
@@ -260,7 +261,7 @@ HMeasure <- function(true.class, scores,
 
     # in the case of a matrix, throw a warning if columns (classifiers) > rows (data)
     if (n < k) {
-      warning(gettextf(
+      warning(sprintf(
         'Consider transposing score matrix: number of classifiers (columns) = %d exceeds number %d of datapoints (rows)',
         k, n), domain = NA)
     }
