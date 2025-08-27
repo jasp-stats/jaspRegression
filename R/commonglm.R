@@ -617,7 +617,8 @@
   cMat <- list()
   pred <- predict(glmModel,type = "response")
   obs  <- glmModel$y
-  h    <- hmeasure::HMeasure(obs, pred, threshold = cutoff)
+  # h    <- hmeasure::HMeasure(obs, pred, threshold = cutoff)
+  h    <- HMeasure(obs, pred, threshold = cutoff)
   m    <- matrix(c(h[["metrics"]][["TN"]], h[["metrics"]][["FN"]],
                    h[["metrics"]][["FP"]], h[["metrics"]][["TP"]]), 2)
   dimnames(m) <- list("Observed" = c(0, 1), "Predicted" = c(0, 1))
