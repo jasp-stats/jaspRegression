@@ -1249,14 +1249,6 @@
         "xfun"
       ]
     },
-    "hmeasure": {
-      "Package": "hmeasure",
-      "Version": "1.0-2",
-      "Source": "Repository",
-      "Requirements": [
-        "R"
-      ]
-    },
     "hms": {
       "Package": "hms",
       "Version": "1.1.3",
