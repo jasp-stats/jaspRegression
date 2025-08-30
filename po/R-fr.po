@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2025-03-29 03:00\n"
+"POT-Creation-Date: 2025-08-30 02:59\n"
 "PO-Revision-Date: 2024-07-11 15:09+0000\n"
 "Last-Translator: Florent Michelot <internet@florent.michelot.info>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
@@ -690,6 +690,9 @@ msgstr "Rapport de cotes"
 
 msgid "Ratio"
 msgstr "Rapport"
+
+msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
+msgstr ""
 
 msgid "trying + %s"
 msgstr ""

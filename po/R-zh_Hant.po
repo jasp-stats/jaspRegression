@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2025-03-29 03:00\n"
+"POT-Creation-Date: 2025-08-30 02:59\n"
 "PO-Revision-Date: 2025-06-19 03:01+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -686,6 +686,9 @@ msgstr "勝率比"
 #, fuzzy
 msgid "Ratio"
 msgstr "比率"
+
+msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
+msgstr ""
 
 msgid "trying + %s"
 msgstr ""
