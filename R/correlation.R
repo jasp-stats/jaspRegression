@@ -926,7 +926,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   pcorTitlePreSu <- c(
     "Residuals of ",
     paste(", <i>after controlling for</i> ", paste(options$partialOutVariables, collapse = ", ")))
-  pcorLabelPre <- "(Res) "
+  pcorLabelPre <- "Residuals "
 
   if(options[['scatterPlotDensity']]){
     for(i in seq_along(vcomb)){
@@ -1009,7 +1009,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vvars <- .v(vars)
   len <- length(vars)
   pcor <- (length(options$partialOutVariables) != 0)
-  pcorLabelPrefix <- "RES: "
+  pcorLabelPre <- "Residual "
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
   plot$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",

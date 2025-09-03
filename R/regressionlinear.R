@@ -816,8 +816,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   resid     <- plotData[["residualsDep"]]
   dfResid   <- length(resid) - length(predictors) - 1
 
-  xlab      <- gettextf("(Res) %s", .unvf(predictor))
-  ylab      <- gettextf("(Res) %s", options$dependent)
+  xlab      <- gettextf("Residuals %s", .unvf(predictor))
+  ylab      <- gettextf("Residuals %s", options$dependent)
 
   # Compute regresion lines
   weights <- dataset[[options$weights]]
