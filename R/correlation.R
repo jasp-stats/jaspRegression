@@ -1617,8 +1617,9 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   alternative <- match.arg(alternative)
 
   if (method == "kendall") {
-    concordanceSumsVector <- concordanceVector_cpp(x, y)
-    sigmaHatSq <- 2 * (n-2) * var(concordanceSumsVector) / (n*(n-1))
+
+    concordanceSumsVector <- concordance(x, y)
+    sigmaHatSq <- 2 * (n-2) * var(concordanceSumsVector) / (n*(n - 1))
     sigmaHatSq <- sigmaHatSq + 1 - (obsCor)^2
     sigmaHatSq <- sigmaHatSq * 2 / (n*(n-1))
 
