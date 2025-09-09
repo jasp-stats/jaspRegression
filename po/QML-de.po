@@ -1728,10 +1728,11 @@ msgstr "Standardisiert"
 msgctxt "EmmComponent|"
 msgid "Variables that can be used for computing estimated marginal means."
 msgstr ""
+"Variablen, die zur Berechnung geschätzter Randmittel verwendet werden können."
 
 msgctxt "EmmComponent|"
 msgid "Variables for which the estimated marginal means will be computed."
-msgstr ""
+msgstr "Variablen, für die die geschätzten Randmittel berechnet werden."
 
 msgctxt "EmmComponent|"
 msgid ""

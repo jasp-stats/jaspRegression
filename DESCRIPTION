@@ -17,7 +17,6 @@ Imports:
   emmeans,
   ggplot2,
   ggrepel,
-  hmeasure,
   jaspAnova,
   jaspBase,
   jaspDescriptives,
