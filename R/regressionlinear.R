@@ -796,7 +796,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     return()
   }
 
-  if (options$dependent != "" && length(predictors) > 0) {
+  if(options$dependent != "" && length(predictors) == 1) {
+    .linregCreatePlotPlaceholder(partialPlotContainer, index = "placeholder", title = "")
+    partialPlotContainer$setError(gettext("Partial plots require at least two covariates"))
+  }
+
+  if (options$dependent != "" && length(predictors) > 1) {
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(partialPlotContainer, index = .unvf(predictor), title = gettextf("%1$s vs. %2$s", options$dependent, .unvf(predictor)))
 
