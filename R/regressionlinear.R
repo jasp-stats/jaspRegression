@@ -781,7 +781,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 .linregCreatePartialPlots <- function(modelContainer, dataset, options, position) {
   predictors <- .linregGetPredictors(options$modelTerms)
 
-  title <- ngettext(length(predictors), "Partial Regression Plot", "Partial Regression Plots")
+  title <- ngettext(length(options$covariates) + length(options$factors), "Regression Plot", "Partial Regression Plot")
 
   partialPlotContainer <- createJaspContainer(title)
   partialPlotContainer$dependOn(c("partialResidualPlot", "partialResidualPlotCi", "partialResidualPlotCiLevel",
@@ -796,12 +796,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     return()
   }
 
-  if(options$dependent != "" && length(predictors) == 1) {
-    .linregCreatePlotPlaceholder(partialPlotContainer, index = "placeholder", title = "")
-    partialPlotContainer$setError(gettext("Partial plots require at least two covariates"))
-  }
-
-  if (options$dependent != "" && length(predictors) > 1) {
+  if (options$dependent != "" && length(predictors) > 0) {
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(partialPlotContainer, index = .unvf(predictor), title = gettextf("%1$s vs. %2$s", options$dependent, .unvf(predictor)))
 
@@ -816,6 +811,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregFillPartialPlot <- function(partialPlot, predictor, predictors, dataset, options) {
+
+
   plotData  <- .linregGetPartialPlotData(predictor, predictors, dataset, options)
   xVar      <- plotData[["residualsPred"]]
   resid     <- plotData[["residualsDep"]]
@@ -823,6 +820,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   xlab      <- gettextf("Residuals %s", .unvf(predictor))
   ylab      <- gettextf("Residuals %s", options$dependent)
+
+  # Partial plot only makes sense if there are at least 2 covariates, otherwise it is just a scatterplot of dependent and
+  # independent variable
+  if (length(predictors) == 1) {
+    xlab <- .unvf(predictor)
+    ylab <- options$dependent
+  }
 
   # Compute regresion lines
   weights <- dataset[[options$weights]]
