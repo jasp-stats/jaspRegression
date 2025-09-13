@@ -26,7 +26,6 @@ Group {
 
 	VariablesForm
 	{
-		preferredHeight: 350
 
 		AvailableVariablesList
 		{
@@ -38,7 +37,7 @@ Group {
 			name:				"dependent"
 			title:				qsTr("Dependent variable")
 			info: qsTr("The response variable.")
-			allowedColumns:		(family.currentValue !== "other") ? "scale" : ["scale", "ordinal", "nominal"]
+			allowedColumns:		(family.currentValue !== "other" && family.currentValue !== "bernoulli") ? "scale" : ["scale", "ordinal", "nominal"]
 			singleVariable:		true
 		}
 
