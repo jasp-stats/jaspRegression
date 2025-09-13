@@ -37,7 +37,15 @@ Group {
 			name:				"dependent"
 			title:				qsTr("Dependent variable")
 			info: qsTr("The response variable.")
-			allowedColumns:		(family.currentValue !== "other" && family.currentValue !== "bernoulli") ? "scale" : ["scale", "ordinal", "nominal"]
+			allowedColumns: (family.currentValue === "bernoulli")
+							? "nominal"
+							: (family.currentValue === "gaussian" || family.currentValue === "gamma" 
+								|| family.currentValue === "inverse gaussian"  || family.currentValue === "poisson"
+								|| family.currentValue === "binomial")
+							? "scale"
+							: (family.currentValue === "other" )
+							? ["nominal", "ordinal"]
+							: "scale"
 			singleVariable:		true
 		}
 
