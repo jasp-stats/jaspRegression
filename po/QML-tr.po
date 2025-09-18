@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-14 19:01+0000\n"
-"Last-Translator: hakan dokumuş <dokumushakan@gmail.com>\n"
+"PO-Revision-Date: 2025-09-19 10:01+0000\n"
+"Last-Translator: Tahir Enes Gedik <tegedik@gmail.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/tr/>\n"
 "Language: tr\n"
@@ -83,11 +83,11 @@ msgstr "Anlamlı korelasyonları işaretle"
 
 msgctxt "Correlation|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Güven aralıkları"
 
 msgctxt "Correlation|"
 msgid "Interval"
-msgstr ""
+msgstr "Aralık"
 
 msgctxt "Correlation|"
 msgid "From"
@@ -147,11 +147,11 @@ msgstr ""
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
-msgstr ""
+msgstr "Varsayım Kontrolleri"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr ""
+msgstr "Çok değişkenli normallik"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
@@ -218,7 +218,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr ""
+msgstr "Bayes faktörlerini raporla"
 
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
@@ -345,7 +345,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLinear|"
 msgid "Method"
@@ -459,7 +459,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Use F value"
-msgstr ""
+msgstr "F değerini kullan"
 
 msgctxt "RegressionLinear|"
 msgid "Missing Values"
