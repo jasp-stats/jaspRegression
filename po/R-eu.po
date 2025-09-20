@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.0\n"
 "POT-Creation-Date: 2025-08-30 02:59\n"
-"PO-Revision-Date: 2025-09-19 15:01+0000\n"
+"PO-Revision-Date: 2025-09-21 06:54+0000\n"
 "Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/eu/>\n"
@@ -143,15 +143,15 @@ msgid "There are no predictors to test for multicollinearity"
 msgstr "Ez dago multikolinearitatea probatzeko aurreikuslerik"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr "Emaitzak %s mailen gainean batez beste kalkulatzen dira."
+msgstr "P-balioak hipotesi nuluaren probari dagozkio %s-ren aurka."
 
-#, fuzzy
 msgid "Results are averaged over the levels of: %s."
-msgstr "Emaitzak %s mailen gainean batez beste kalkulatzen dira."
+msgstr "Emaitzak batez bestekoa kalkulatzen dira honako mailen gainean: %s."
 
 msgid "P-values are not adjusted."
-msgstr "P-balioak ez dira doitu."
+msgstr "P-balioak ez daude doituta."
 
+#, fuzzy
 msgid "Holm"
 msgstr "Holm"
 
@@ -162,7 +162,7 @@ msgid "Hochberg"
 msgstr "Hochberg"
 
 msgid "Multivariate-t"
-msgstr "Aldagai anitzeko-t"
+msgstr "Aldagai anitzeko t"
 
 msgid "Tukey"
 msgstr "Tukey"
@@ -186,7 +186,7 @@ msgid "Bonferroni"
 msgstr "Bonferroni"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr "P-balioak %s doikuntza erabiliz doitu dira."
+msgstr "P-balioak %s doikuntza erabiliz doitzen dira."
 
 msgid "Predicted"
 msgstr "Aurreikusitakoa"
@@ -386,10 +386,10 @@ msgstr "%1$d%% KT: [%2$d, %3$d]"
 
 msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
-"Vovk-Sellke gehienezko <em>p</em>-erlazioa: <em>p</em>-balioan oinarrituta, "
-"H%1$s-ren aldeko probabilitate maximoa H%2$s-ren gainetik 1/(-e <em>p</em> "
-"log(<em>p</em>)) da. <em>p</em> %3$s .37rako (Sellke, Bayarri, & Berger, "
-"2001)."
+"Vovk-Sellke-ren gehienezko <em>p</em>-Ratioa: <em>p</em>-balioan "
+"oinarrituta, H%1$s-ren aldeko gehienezko probabilitatea H%2$s-ren gainetik 1/"
+"(-e <em>p</em> log(<em>p</em>)) <em>p</em> %3$s .37rako (Sellke, Bayarri, & "
+"Berger, 2001)."
 
 msgid "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and small sample sizes (< 10), approximation by Fisher's z transformation becomes less accurate"
 msgstr ""
@@ -529,17 +529,14 @@ msgstr "Eredua"
 msgid "Deviance"
 msgstr "Desbideratzea"
 
-#, fuzzy
 msgid "AIC"
 msgstr "AIC"
 
-#, fuzzy
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgid "df"
-msgstr "ag (df)"
+msgstr "ag"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Eredu nuluak parametro gogaikarriak????? ditu: %s."
@@ -631,7 +628,7 @@ msgid "Estimated Marginal Means and Contrast Analysis"
 msgstr "Kalkulatutako Batez besteko Marjinalak eta Kontraste Analisia"
 
 msgid "Estimated Marginal Means"
-msgstr "Kalkulatutako Batez besteko Marjinalak"
+msgstr "Estimatutako Marjina Batez bestekoak"
 
 msgid "SE"
 msgstr "EE"
@@ -640,7 +637,7 @@ msgid "Lower"
 msgstr "Behekoa"
 
 msgid "%s%% CI"
-msgstr "%s%% KT"
+msgstr "%s%% CI"
 
 msgid "Upper"
 msgstr "Goikoa"
@@ -652,12 +649,10 @@ msgid "z"
 msgstr "z"
 
 msgid "Results are on the response scale."
-msgstr "Emaitzak erantzun eskalan daude."
+msgstr "Emaitzak erantzun-eskalan daude."
 
 msgid "Results are not on the response scale and might be misleading."
-msgstr ""
-"Emaitzak ez daude erantzun ¿¿¿emaitza??? eskalan eta engainagarriak izan "
-"daitezke."
+msgstr "Emaitzak ez daude erantzun-eskalan eta engainagarriak izan daitezke."
 
 msgid "Contrasts"
 msgstr "Kontrasteak"
@@ -725,7 +720,7 @@ msgid "df2"
 msgstr "ag2"
 
 msgid "Autocorrelation"
-msgstr "Autokorrelazioa"
+msgstr "Autokorrelazio"
 
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
@@ -746,7 +741,6 @@ msgstr "Karratuen Batura"
 msgid "Mean Square"
 msgstr "Batez besteko Karratua"
 
-#, fuzzy
 msgid "F"
 msgstr "F"
 
