@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-19 10:01+0000\n"
-"Last-Translator: Tahir Enes Gedik <tegedik@gmail.com>\n"
-"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/tr/>\n"
-"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14-dev\n"
 "X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
@@ -237,9 +231,10 @@ msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
 msgstr "Güvenilir aralıklar"
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
-msgstr ""
+msgstr "Aralık"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
@@ -405,9 +400,10 @@ msgctxt "RegressionLinear|"
 msgid "bootstraps"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Güven aralıkları"
 
 msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
@@ -510,9 +506,10 @@ msgctxt "RegressionLinear|"
 msgid "Prediction intervals"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
@@ -777,9 +774,10 @@ msgctxt "RegressionLinearBayesian|"
 msgid "No. samples for credible interval"
 msgstr "Güvenilir aralık için örnek yok"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLogistic|"
 msgid "Method"
@@ -863,13 +861,15 @@ msgctxt "RegressionLogistic|"
 msgid "Odds ratios"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Güven aralıkları"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Interval"
-msgstr ""
+msgstr "Aralık"
 
 msgctxt "RegressionLogistic|"
 msgid "Odds ratio scale"
@@ -1213,9 +1213,10 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
-msgstr ""
+msgstr "Güven aralıkları"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
@@ -1289,9 +1290,10 @@ msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Covariates"
