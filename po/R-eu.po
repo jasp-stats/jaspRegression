@@ -1,0 +1,1260 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspRegression 0.95.0\n"
+"POT-Creation-Date: 2025-08-30 02:59\n"
+"PO-Revision-Date: 2025-09-19 15:01+0000\n"
+"Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
+"Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-r/eu/>\n"
+"Language: eu\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14-dev\n"
+
+msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
+msgstr ""
+"Proba guztietarako, hipotesi alternatiboak %s positiboa dela zehazten du."
+
+msgid "For all tests, the alternative hypothesis specifies that the %s is negative."
+msgstr ""
+"Proba guztietarako, hipotesi alternatiboak %s negatiboa dela zehazten du."
+
+msgid "Scatterplot"
+msgstr "Sakabanaketa grafikoa"
+
+#, fuzzy
+msgid "Prior and Posterior"
+msgstr "Aurreko eta ondorengo"
+
+msgid "Bayes Factor Robustness Check"
+msgstr "Bayes faktorearen sendotasun egiaztapena"
+
+msgid "Sequential Analysis"
+msgstr "Analisi Sekuentziala"
+
+msgid "Bayesian Pearson Correlations"
+msgstr "Bayesiar Pearson korrelazioak"
+
+msgid "Bayesian Kendall's Tau Correlations"
+msgstr "Bayesiar Kendall-en Tau korrelazioak"
+
+msgid "Bayesian Spearman Correlations"
+msgstr "Bayesiar Spearman korrelazioak"
+
+msgid "Bayesian Correlation Table"
+msgstr "Korrelazio Bayesiarraren Taula"
+
+msgid "Pearson Correlations"
+msgstr "Pearson korrelazioak"
+
+msgid "Kendall's Tau Correlations"
+msgstr "Kendall-en Tau korrelazioak"
+
+msgid "Spearman Correlations"
+msgstr "Spearman korrelazioak"
+
+msgid "Correlation Table"
+msgstr "Korrelazio Taula"
+
+msgid "Pearson's r"
+msgstr "Pearsonen r"
+
+msgid "Spearman's rho"
+msgstr "Spearmanen rho"
+
+msgid "Kendall's tau B"
+msgstr "Kendall-en tau B"
+
+msgid "Pearson"
+msgstr "Pearson"
+
+msgid "Spearman"
+msgstr "Spearman"
+
+msgid "Kendall"
+msgstr "Kendall"
+
+msgid "Density"
+msgstr "Dentsitatea"
+
+msgid "Plotting not possible: Number of observations is < 3"
+msgstr "Ezin da grafikoa egin: Behaketa kopurua < 3 da"
+
+msgid "Plotting not possible: Infinite value(s)"
+msgstr "Ezin da grafikoa egin: Balio infinitua(k)"
+
+msgid "rho"
+msgstr "rho"
+
+msgid "tau"
+msgstr "tau"
+
+msgid "rho[s]"
+msgstr "rho[s]"
+
+msgid "Pearson's"
+msgstr "Pearson-en"
+
+msgid "Spearman's"
+msgstr "Spearman-en"
+
+msgid "Kendall's"
+msgstr "Kendall-en"
+
+msgid "Kendall's tau"
+msgstr "Kendall-en tau"
+
+msgid "n"
+msgstr "n"
+
+msgid "Upper %s%% CI"
+msgstr "%s%% KT gorena"
+
+msgid "Lower %s%% CI"
+msgstr "%s%% KT behekoa"
+
+#, fuzzy
+msgid "Ranks of %s"
+msgstr "%s-ren mailak  ???"
+
+msgid "The full model could not be fitted to the data, with the following error message: '%s'"
+msgstr "Eredu osoa ezin izan da datuetara egokitu, errore-mezu honekin: '%s'"
+
+msgid "The null model could not be fitted to the data, with the following error message: '%s'"
+msgstr "Eredu nulua ezin izan da datuetara egokitu, errore-mezu honekin: '%s'"
+
+msgid "Could not find valid starting values. Check feasibility of the model to fit the data."
+msgstr ""
+"Ezin izan dira hasierako balio baliodunak aurkitu. Egiaztatu ereduaren "
+"bideragarritasuna datuak egokitzeko."
+
+msgid "Plotting is not possible: %s"
+msgstr "Ezin da grafikoa egin: %s"
+
+msgid "Q-Q Plots"
+msgstr "Q-Q Grafikoak"
+
+msgid "Q-Q plot: Standardized %1s residuals"
+msgstr "Q-Q grafikoa: %1s hondar estandarizatuak"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr "Ez dago multikolinearitatea probatzeko aurreikuslerik"
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr "Emaitzak %s mailen gainean batez beste kalkulatzen dira."
+
+#, fuzzy
+msgid "Results are averaged over the levels of: %s."
+msgstr "Emaitzak %s mailen gainean batez beste kalkulatzen dira."
+
+msgid "P-values are not adjusted."
+msgstr "P-balioak ez dira doitu."
+
+msgid "Holm"
+msgstr "Holm"
+
+msgid "Homel"
+msgstr "Homel"
+
+msgid "Hochberg"
+msgstr "Hochberg"
+
+msgid "Multivariate-t"
+msgstr "Aldagai anitzeko-t"
+
+msgid "Tukey"
+msgstr "Tukey"
+
+msgid "Benjamini-Hochberg"
+msgstr "Benjamini-Hochberg"
+
+msgid "Benjamini-Yekutieli"
+msgstr "Benjamini-Yekutieli"
+
+msgid "Scheffé"
+msgstr "Scheffé"
+
+msgid "Sidak"
+msgstr "Sidak"
+
+msgid "Dunnett"
+msgstr "Dunnett"
+
+msgid "Bonferroni"
+msgstr "Bonferroni"
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr "P-balioak %s doikuntza erabiliz doitu dira."
+
+msgid "Predicted"
+msgstr "Aurreikusitakoa"
+
+msgid "(Intercept)"
+msgstr "(Ebakidura)  ???"
+
+msgid "Influential Cases"
+msgstr "Kasu Eragingarriak"
+
+msgid "Std. Residual"
+msgstr "Hondar Estandarra"
+
+msgid "Predicted Value"
+msgstr "Aurreikusitako Balioa"
+
+msgid "Residual"
+msgstr "Hondarra"
+
+msgid "DFBETAS_%1s"
+msgstr "DFBETAS_%1s"
+
+#, fuzzy
+msgid "DFBETAS:Intercept"
+msgstr "DFBETAS:Ebakidura"
+
+msgid "DFBETAS:%1s"
+msgstr "DFBETAS:%1s"
+
+msgid "Mahalanobis distance cannot be computed for the intercept only model."
+msgstr ""
+"Mahalanobis distantzia ezin da kalkulatu ebakidura soilik duen ereduarentzat."
+
+msgid "No influential cases found."
+msgstr "Ez da eragin handiko kasurik aurkitu."
+
+msgid "Potentially influential case, according to the selected influence measure."
+msgstr "Eragin handiko kasu potentziala, hautatutako eragin-neurriaren arabera."
+
+msgid "Influence measures could not be computed for some cases due to extreme values, try another measure."
+msgstr ""
+"Eragin-neurriak ezin izan dira kalkulatu kasu batzuetarako, muturreko "
+"balioak direla eta, saiatu beste neurri bat."
+
+msgid "VS-MPR%s"
+msgstr "VS-MPR%s"
+
+msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n  the maximum possible odds in favor of H%1$s over H%2$s equals\n  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n  (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+"Vovk-Sellke Gehienezko <em>p</em>-Ratioa: <em>p</em>-balioan oinarrituta,\n"
+"H%1$s-ren aldeko gehienezko probabilitatea H%2$s-ren gainetik berdina da\n"
+"1/(-e <em>p</em> log(<em>p</em>)) <em>p</em> %3$s-rako .37\n"
+"(Sellke, Bayarri, & Berger, 2001)."
+
+msgid "Computing Durbin-Watson Statistics"
+msgstr "Durbin-Watson estatistikoak kalkulatzen"
+
+msgid "Kendall's Tau"
+msgstr "Kendall-en tau"
+
+msgid "Partial Correlation Table"
+msgstr "Korrelazio Partzialeko Taula"
+
+msgid "%s Correlations"
+msgstr "%s korrelazioak"
+
+msgid "%s Partial Correlations"
+msgstr "%s korrelazio partzialak"
+
+msgid "All tests one-tailed, for positive correlation."
+msgstr "Proba guztiak alde bakarrekoak dira, korrelazio positiboa lortzeko."
+
+msgid ", one-tailed"
+msgstr ", alde bakarrekoak"
+
+msgid "All tests one-tailed, for negative correlation."
+msgstr "Proba guztiak alde bakarrekoak dira, korrelazio negatiboa lortzeko."
+
+msgid "p < .05, ** p < .01, *** p < .001%s"
+msgstr "p < .05, ** p < .01, *** p < .001%s"
+
+msgid "Conditioned on variables: %s."
+msgstr "Aldagaietan baldintzatuta: %s."
+
+msgid "Standard error of effect size (Fisher's z) is currently unavailable for non-parametric partial correlations."
+msgstr ""
+"Efektu-tamainaren errore estandarra (Fisher-en z) ez dago erabilgarri une "
+"honetan korrelazio partzial ez-parametrikoetarako."
+
+msgid "Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."
+msgstr ""
+"Korrelazio partzialen konfiantza-tarte analitikoak ez daude oraindik "
+"eskuragarri, baina bootstrapping bidez lor daitezke."
+
+msgid "Confidence intervals based on %i bootstrap replicates."
+msgstr "Konfiantza-tarteak %i bootstrap errepikapenetan oinarrituta."
+
+msgid "p"
+msgstr "p"
+
+msgid "VS-MPR"
+msgstr "VS-MPR"
+
+msgid "Effect size (Fisher's z)"
+msgstr "Efektuaren tamaina (Fisher-en z)"
+
+#, fuzzy
+msgid "SE Effect size"
+msgstr "EE (SE) Efektu-tamaina"
+
+msgid "Covariance"
+msgstr "Kobariantza"
+
+msgid "r"
+msgstr "r"
+
+msgid "tau B"
+msgstr "tau B"
+
+msgid "Variable"
+msgstr "Aldagaia"
+
+msgid "Kendall's Tau B"
+msgstr "Kendall-en Tau B"
+
+msgid "p-value"
+msgstr "p-balioa"
+
+msgid "Number of observations is < %s."
+msgstr "Behaketa kopurua < %s da."
+
+msgid "Bootstrapping"
+msgstr "Bootstrapping"
+
+msgid "Partial correlation cannot be computed: covariance matrix is computationally singular."
+msgstr ""
+"Ezin da korrelazio partziala kalkulatu: kobariantza-matrizea konputazionalki "
+"singularra da."
+
+msgid "Assumption checks"
+msgstr "Suposizio-egiaztapenak"
+
+msgid "Shapiro-Wilk Test for Multivariate Normality"
+msgstr "Shapiro-Wilk proba normaltasun anitzeko aldagaietarako"
+
+msgid "Shapiro-Wilk"
+msgstr "Shapiro-Wilk"
+
+msgid "Variables"
+msgstr "Aldagaiak"
+
+msgid "Shapiro-Wilk Test for Bivariate Normality"
+msgstr "Shapiro-Wilk testa normaltasun bibariablerako"
+
+msgid "Scatter plots"
+msgstr "Sakabanaketa-grafikoak"
+
+msgid "Correlation plot"
+msgstr "Korrelazio-grafikoa"
+
+msgid "Correlation undefined: %s"
+msgstr "Korrelazioa definitu gabe: %s"
+
+msgid "%1$s%% CI: [%2$s, %3$s]"
+msgstr "%1$s%% KT: [%2$s, %3$s]"
+
+msgid "Plotting not possible:\n Number of observations is < 3"
+msgstr ""
+"Ezin da grafikoa egin:\n"
+"Behaketa kopurua < 3 da"
+
+msgid "Plotting not possible:\n Number of observations is < 2"
+msgstr ""
+"Ezin da grafikoa egin:\n"
+"Behaketa kopurua < 2 da"
+
+msgid "Plotting not possible: %s"
+msgstr "Ezin da grafikoa egin: %s"
+
+msgid "Partial Pearson's r"
+msgstr "Pearsonen r partziala"
+
+msgid "Partial Spearman's rho"
+msgstr "Spearmanen rho partziala"
+
+msgid "Partial Kendall's tau B"
+msgstr "Kendall-en tau B partziala"
+
+msgid "%s heatmap"
+msgstr "%s bero-mapa"
+
+msgid "Heatmaps"
+msgstr "Bero-mapak"
+
+msgid "%1$d%% CI: [%2$d, %3$d]"
+msgstr "%1$d%% KT: [%2$d, %3$d]"
+
+msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+"Vovk-Sellke gehienezko <em>p</em>-erlazioa: <em>p</em>-balioan oinarrituta, "
+"H%1$s-ren aldeko probabilitate maximoa H%2$s-ren gainetik 1/(-e <em>p</em> "
+"log(<em>p</em>)) da. <em>p</em> %3$s .37rako (Sellke, Bayarri, & Berger, "
+"2001)."
+
+msgid "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and small sample sizes (< 10), approximation by Fisher's z transformation becomes less accurate"
+msgstr ""
+"Efektuaren tamaina (Fisher-en z): Korrelazio-koefiziente handietarako (> 0.9)"
+" eta lagin-tamaina txikietarako (< 10), Fisher-en z transformazioaren "
+"bidezko hurbilketa ez da hain zehatza."
+
+msgid "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. 62-71."
+msgstr ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). p Balioen Kalibrazioa "
+"Hipotesi Nulu Zehatzak Probatzeko. The American Statistician, 55(1), 62-71. "
+"or."
+
+#, fuzzy
+msgid "Posterior is too peaked"
+msgstr "Atzekoa gehiegi gailurtuta dago"
+
+msgid "Bayesian Correlation Matrix Plot"
+msgstr "Bayesiar Korrelazio Matrizearen Grafikoa"
+
+msgid "Could not compute the posteriors"
+msgstr "Ezin izan dira atzekoak kalkulatu"
+
+msgid "Prior"
+msgstr "Aurrekoa"
+
+msgid "Posterior"
+msgstr "Atzekoa  ¿edo ondorengoa?"
+
+msgid "%s%% CI:"
+msgstr "%s%% KT:"
+
+msgid "Bayesian Correlation Pairwise Plots"
+msgstr "Bayesiar Korrelazio Bikoteka Grafikoak"
+
+msgid "max %s"
+msgstr "max %s   ???"
+
+msgid "%1$s at kappa==%2$s"
+msgstr "%1$s kappa==%2$s-tan"
+
+#, fuzzy
+msgid "user prior"
+msgstr "Erabiltzailearen aurrekoa"
+
+msgid "Stretched beta prior width"
+msgstr "Beta aurreko zabalera luzatua"
+
+msgid "Linearity Test"
+msgstr "Linealtasun Proba"
+
+msgid "Pair"
+msgstr "Bikotea"
+
+msgid "For each pair A - B, tests if A is better predicted as a linear function of B, i.e., l := A ~ 1 + B, or a quadratic function of B, i.e., q := A ~ 1 + B + B^2.\n    Uses the default settings for Bayesian regression, i.e., a JZS-prior with alpha set to 0.354 and for the model prior a beta binomial distribution with alpha = 1 and beta = 1. Note that since only two models are considered the model prior is equivalent to a uniform model prior."
+msgstr ""
+"A - B bikote bakoitzerako, A hobeto iragartzen den probatzen du B-ren "
+"funtzio lineal gisa, hau da, l := A ~ 1 + B, edo B-ren funtzio koadratiko "
+"gisa, hau da, q := A ~ 1 + B + B^2.\n"
+"\n"
+"Erregresio Bayesiarraren ezarpen lehenetsiak erabiltzen ditu, hau da, JZS-"
+"aurrekoa alfa 0.354-ra ezarrita duena eta aurreko ereduarentzat beta "
+"banaketa binomiala alfa = 1 eta beta = 1 dituena. Kontuan izan bi eredu "
+"bakarrik kontuan hartzen direnez, ereduaren aurrekoa eredu uniformearen "
+"aurreko baten baliokidea dela."
+
+msgid "Evidence shown in favor of a linear model (l) against a quadratic model (q)."
+msgstr ""
+"Ebidentzia eredu lineal baten (l) alde erakusten da eredu koadratiko baten "
+"(q) aurka."
+
+msgid "Evidence shown in favor of a quadratic model (q) against a linear model (l)."
+msgstr ""
+"Eredu koadratiko baten (q) alde erakusten diren frogak, eredu lineal baten "
+"(l) aurka."
+
+msgid "The Bernoulli family requires the dependent variable to be a factor with 2 levels."
+msgstr ""
+"Bernoulli familiak mendeko aldagaia 2 maila dituen faktore bat izatea "
+"eskatzen du."
+
+msgid "The Binomial family requires the weights variable (i.e. total number of trials) to be non-zero."
+msgstr ""
+"Binomial familiak pisu aldagaia (hau da, saiakera kopuru osoa) zero ez "
+"izatea eskatzen du."
+
+msgid "The Binomial family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive)."
+msgstr ""
+"Binomial familiak mendeko aldagaia (hau da, arrakasta proportzioa) 0 eta 1 "
+"artean egotea eskatzen du (biak barne)."
+
+msgid "The Binomial family requires the weights variable (i.e. total number of trials) to be an integer."
+msgstr ""
+"Binomial familiak pisu aldagaia (hau da, saiakera kopuru osoa) zenbaki osoa "
+"izatea eskatzen du."
+
+msgid "The Gamma family and the Inverse Gaussian family require the dependent variable to be positive."
+msgstr ""
+"Gamma familiak eta alderantzizko Gauss familiak mendeko aldagaia positiboa "
+"izatea eskatzen dute."
+
+msgid "The Poisson family requires the dependent variable to be an integer."
+msgstr "Poisson familiak mendeko aldagaia zenbaki osoa izatea eskatzen du."
+
+msgid "The Gaussian family with the log link requires the dependent variable to be positive."
+msgstr ""
+"Lotura logaritmikoa duen Gauss familiak mendeko aldagaia positiboa izatea "
+"eskatzen du."
+
+msgid "The Gaussian family requires the dependent variable to be a numerical variable."
+msgstr "Gauss familiak mendeko aldagaia aldagai numerikoa izatea eskatzen du."
+
+msgid "Multinomial logistic regression requires the dependent variable to be a factor with at least 3 levels."
+msgstr ""
+"Erregresio logistiko multinomialak mendeko aldagaia gutxienez 3 maila dituen "
+"faktore bat izatea eskatzen du."
+
+msgid "Ordinal logistic regression requires the dependent variable to be a factor with at least 3 levels."
+msgstr ""
+"Erregresio logistiko ordinalak mendeko aldagaia gutxienez 3 maila dituen "
+"faktore bat izatea eskatzen du."
+
+msgid "Firth logistic regression requires the dependent variable to be a factor with 2 levels."
+msgstr ""
+"Firth erregresio logistikoek mendeko aldagaia 2 maila dituen faktore bat "
+"izatea eskatzen dute."
+
+msgid "Model Summary"
+msgstr "Ereduaren Laburpena"
+
+msgid "Model Summary - %s"
+msgstr "Ereduaren laburpena - %s"
+
+msgid "Model"
+msgstr "Eredua"
+
+msgid "Deviance"
+msgstr "Desbideratzea"
+
+#, fuzzy
+msgid "AIC"
+msgstr "AIC"
+
+#, fuzzy
+msgid "BIC"
+msgstr "BIC"
+
+#, fuzzy
+msgid "df"
+msgstr "ag (df)"
+
+msgid "Null model contains nuisance parameters: %s."
+msgstr "Eredu nuluak parametro gogaikarriak????? ditu: %s."
+
+#, fuzzy
+msgid "Model Fit"
+msgstr "Ereduaren doikuntza"
+
+msgid "Statistic"
+msgstr "Estatistikoa"
+
+msgid "Coefficients"
+msgstr "Koefizienteak"
+
+msgid "Estimate"
+msgstr "Estimazioa"
+
+msgid "Standard Error"
+msgstr "Errore Estandarra"
+
+msgid "Lower Bound"
+msgstr "Beheko muga"
+
+msgid "Upper Bound"
+msgstr "Goiko muga"
+
+msgid "%1$s level '%2$s' coded as class 1."
+msgstr "%1$s maila '%2$s' 1. klase gisa kodetuta."
+
+msgid "%1$s levels: %2$s. '%3$s' is the reference level."
+msgstr "%1$s mailak: %2$s. '%3$s' erreferentzia maila da."
+
+msgid "%1$s levels: %2$s. Linear predictors: %3$s."
+msgstr "%1$s mailak: %2$s. Aurreikusle linealak: %3$s."
+
+msgid "Diagnostics"
+msgstr "Diagnosiak"
+
+msgid "Residuals vs. Fitted Plots"
+msgstr "Hondakinak vs. Egokitutako grafikoak"
+
+msgid "Standardized %1s residuals vs. fitted values"
+msgstr "Estandarizatutako %1s hondarrak vs. egokitutako balioak"
+
+msgid "Standardized %1s residual"
+msgstr "Estandarizatutako %1s hondarra"
+
+msgid "%1s Residuals vs. Predictor Plots"
+msgstr "%1s Hondarrak vs. Aurreikusle Grafikoak"
+
+msgid "Standardized %1$s residuals vs. %2$s"
+msgstr "Estandarizatutako %1$s hondarrak vs. %2$s"
+
+msgid "Partial Residual Plots"
+msgstr "Hondakin Partzialen Grafikoak"
+
+msgid "Partial residual plot for %1s"
+msgstr "Hondakin partzialen grafikoa %1s-rako"
+
+msgid "Partial residual for %1s"
+msgstr "Hondakin partziala %1s-rako"
+
+msgid "Plot: Working responses vs. linear predictor"
+msgstr "Grafikoa: Laneko erantzunak vs. aurreikusle lineala"
+
+msgid "Working responses, z"
+msgstr "Laneko erantzunak, z"
+
+msgid "Outliers Tables"
+msgstr "Muturreko-balioen Taulak"
+
+msgid "Table: Top n outliers based on %1s residuals"
+msgstr "Taula: %1s hondarretan oinarritutako muturreko-balio nagusiak"
+
+#, fuzzy
+msgid "Case Number"
+msgstr "Kasu Zenbakia"
+
+msgid "Multicollinearity Diagnostics"
+msgstr "Kolinealitate anitzeko Diagnosiak"
+
+msgid "Tolerance"
+msgstr "Tolerantzia"
+
+msgid "VIF"
+msgstr "VIF"
+
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr "Kalkulatutako Batez besteko Marjinalak eta Kontraste Analisia"
+
+msgid "Estimated Marginal Means"
+msgstr "Kalkulatutako Batez besteko Marjinalak"
+
+msgid "SE"
+msgstr "EE"
+
+msgid "Lower"
+msgstr "Behekoa"
+
+msgid "%s%% CI"
+msgstr "%s%% KT"
+
+msgid "Upper"
+msgstr "Goikoa"
+
+msgid "t"
+msgstr "t"
+
+msgid "z"
+msgstr "z"
+
+msgid "Results are on the response scale."
+msgstr "Emaitzak erantzun eskalan daude."
+
+msgid "Results are not on the response scale and might be misleading."
+msgstr ""
+"Emaitzak ez daude erantzun ¿¿¿emaitza??? eskalan eta engainagarriak izan "
+"daitezke."
+
+msgid "Contrasts"
+msgstr "Kontrasteak"
+
+msgid "Odds Ratio"
+msgstr "Odds Ratioa"
+
+msgid "Ratio"
+msgstr "Ratioa"
+
+msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
+msgstr ""
+"%s-ren ROC kurba gehienbat diagonalaren azpian dago. Puntuazioak aldatzen."
+
+msgid "trying + %s"
+msgstr "+ %s saiatzen"
+
+msgid "F test assumes 'quasi%s' family"
+msgstr "F probak 'quasi%s' familia suposatzen du"
+
+#, fuzzy
+msgid "Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"
+msgstr ""
+"Pausoz pausoko prozedurak ez dira onartzen 2 maila baino gehiago dituzten "
+"faktoreak dituzten modeloetarako; saiatu berriro analisia aldagai faltsuak "
+"erabiliz"
+
+msgid "Stepwise procedures are not supported for interactions containing more than 1 factor"
+msgstr ""
+"Pausoz pausoko prozedurak ez dira onartzen faktore bat baino gehiago "
+"dituzten interakzioetarako"
+
+msgid "Error in Stepping Method Criteria: Entry p-value needs to be smaller than removal p-value"
+msgstr ""
+"Pausoz pausoko metodoaren irizpideetan errorea: Sarrerako p-balioa kentzeko "
+"p-balioa baino txikiagoa izan behar da"
+
+msgid "Error in Stepping Method Criteria: Entry F-value needs to be larger than removal F-value"
+msgstr ""
+"Pausoz pausoko Metodoaren Irizpideetan errorea: Sarrerako F-balioa kentzeko "
+"F-balioa baino handiagoa izan behar da"
+
+msgid "R"
+msgstr "R"
+
+msgid "R%s"
+msgstr "R%s"
+
+msgid "Adjusted R%s"
+msgstr "Doitutako R%s"
+
+msgid "RMSE"
+msgstr "RMSE"
+
+msgid "R%s Change"
+msgstr "R%s Aldaketa"
+
+msgid "F Change"
+msgstr "F Aldaketa"
+
+msgid "df1"
+msgstr "ag1"
+
+msgid "df2"
+msgstr "ag2"
+
+msgid "Autocorrelation"
+msgstr "Autokorrelazioa"
+
+msgid "Durbin-Watson"
+msgstr "Durbin-Watson"
+
+msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
+msgstr ""
+"Durbin-Watson testaren p-balioa ez dago erabilgarri erregresio haztaturako."
+
+msgid "No covariate could be entered in the model"
+msgstr "Ezin da kobarianterik sartu ereduan"
+
+msgid "ANOVA"
+msgstr "ANOVA"
+
+msgid "Sum of Squares"
+msgstr "Karratuen Batura"
+
+msgid "Mean Square"
+msgstr "Batez besteko Karratua"
+
+#, fuzzy
+msgid "F"
+msgstr "F"
+
+msgid "Regression"
+msgstr "Erregresioa"
+
+msgid "Total"
+msgstr "Guztira"
+
+msgid "Unstandardized"
+msgstr "Estandarizatu gabea"
+
+msgid "Standardized"
+msgstr "Estandarizatua"
+
+#, fuzzy
+msgid "%.0f%% CI"
+msgstr "%.0f%% KT"
+
+msgid "Collinearity Statistics"
+msgstr "Kolinealtasun Estatistikoak"
+
+msgid "Standardized coefficients can only be computed for continuous predictors."
+msgstr ""
+"Koefiziente estandarizatuak iragarle jarraituetarako bakarrik kalkula "
+"daitezke."
+
+msgid "Missing coefficients are undefined because of singularities. Check the data for anything out of order!"
+msgstr ""
+"Koefiziente faltak definitu gabe daude singularitateengatik. Egiaztatu "
+"datuak ordena desegokian dagoen ezer!"
+
+msgid "Bootstrap Coefficients"
+msgstr "Bootstrap Koefizienteak"
+
+msgid "Bias"
+msgstr "Alborapena"
+
+msgid "%s%% CI*"
+msgstr "%s%% KT*"
+
+msgid "Bootstrapping based on %i replicates."
+msgstr "Bootstrappinga %i errepikapenetan oinarrituta."
+
+msgid "Coefficient estimate is based on the median of the bootstrap distribution."
+msgstr ""
+"Koefizientearen estimazioa bootstrap banaketaren medianan oinarritzen da."
+
+#, fuzzy
+msgid "Bias corrected accelerated."
+msgstr "Alborapen zuzendua azeleratuta."
+
+msgid "Some bootstrap results could not be computed."
+msgstr "Bootstrap emaitza batzuk ezin izan dira kalkulatu."
+
+msgid "expecting both arguments to be data.frames"
+msgstr "bi argumentuak data.frames izatea espero da"
+
+msgid "Part And Partial Correlations"
+msgstr "Zati eta Partzial Korrelazioak"
+
+msgid "Partial"
+msgstr "Partziala"
+
+msgid "Part"
+msgstr "Zati"
+
+msgid "Coefficients Covariance Matrix"
+msgstr "Koefizienteen Kobariantza Matrizea"
+
+msgid "Collinearity Diagnostics"
+msgstr "Kolinealtasun Diagnostikoak"
+
+msgid "Dimension"
+msgstr "Dimentsioa"
+
+msgid "Eigenvalue"
+msgstr "Eigenbalioa"
+
+msgid "Condition Index"
+msgstr "Baldintza Indizea"
+
+msgid "Variance Proportions"
+msgstr "Bariantza Proportzioak"
+
+msgid "Some collinearity diagnostics could not be computed. This is expected if the model contains singularities."
+msgstr ""
+"Kolinealitate diagnostiko batzuk ezin izan dira kalkulatu. Hau espero da "
+"ereduak singularitateak baditu."
+
+msgid "Residuals Statistics"
+msgstr "Hondarren Estatistikoak"
+
+msgid "Minimum"
+msgstr "Minimoa"
+
+msgid "Maximum"
+msgstr "Maximoa"
+
+msgid "Mean"
+msgstr "Batez bestekoa"
+
+msgid "SD"
+msgstr "DE"
+
+msgid "N"
+msgstr "N"
+
+msgid "Residuals vs. Dependent"
+msgstr "Hondarrak vs. Menpekoa"
+
+msgid "Residuals"
+msgstr "Hondarrak"
+
+#, fuzzy
+msgid "Residuals vs. Covariates"
+msgstr "Hondarrak vs. Kobarianteak  ¿edo koaldagaiak?"
+
+msgid "Residuals vs. %s"
+msgstr "Hondarrak vs. %s"
+
+msgid "Cannot plot residuals versus an interaction with a factor."
+msgstr "Ezin dira hondarrak faktore batekin elkarreragin baten aurka irudikatu."
+
+msgid "Residuals vs. Predicted"
+msgstr "Hondarrak vs. Aurreikusitakoa"
+
+msgid "Predicted Values"
+msgstr "Aurreikusitako Balioak"
+
+msgid "Residuals Histogram"
+msgstr "Hondarrak Histograma"
+
+msgid "Standardized %s"
+msgstr "Estandarizatua %s"
+
+msgid "Q-Q Plot Standardized Residuals"
+msgstr "Q-Q Grafikoa Hondar Estandarizatuak"
+
+msgid "Partial plots are not supported for models containing interaction terms"
+msgstr ""
+"Diagrama partzialak ez dira onartzen elkarreragin terminoak dituzten "
+"ereduetarako"
+
+msgid "%1$s vs. %2$s"
+msgstr "%1$s vs. %2$s"
+
+msgid "Partial plots are not supported for factors"
+msgstr "Faktoreentzako ez dira onartzen grafiko partzialak"
+
+msgid "Residuals %s"
+msgstr "%s hondarrak"
+
+#, fuzzy
+msgid "Descriptives"
+msgstr "Deskriptiboak"
+
+msgid "M%s"
+msgstr "M%s"
+
+msgid "Std. Predicted Value"
+msgstr "Aurreikusitako Balio Estandarra"
+
+msgid "Standardized Residuals"
+msgstr "Hondar estandarizatuak"
+
+msgid "%1$s includes %2$s"
+msgstr "%1$s-k %2$s barne hartzen ditu"
+
+msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum\n        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+"Vovk-Sellke gehienezko <em>p</em>-erlazioa: <em>p</em>-balioan oinarrituta, "
+"H%1$s-ren aldeko gehienezko\n"
+"\n"
+"probabilitatea H%2$s-ren aldean 1/(-e <em>p</em> log(<em>p</em>)) <em>p</em> "
+"%3$s .37rako (Sellke, Bayarri, & Berger, 2001)."
+
+#, fuzzy
+msgid "The intercept model is omitted, as no meaningful information can be shown."
+msgstr ""
+"Ebakidura-eredua ezabatzen da, informazio esanguratsurik ezin baita erakutsi."
+
+#, fuzzy
+msgid "There is only an intercept model, no meaningful information can be shown."
+msgstr ""
+"Ebakidura-eredu bat besterik ez dago, ezin da informazio esanguratsurik "
+"erakutsi."
+
+msgid "Marginal Effects Plots"
+msgstr "Efektu Marjinalen Grafikoak"
+
+msgid "Marginal effect of %1$s on %2$s"
+msgstr "%1$s-ren eragin marjinala %2$s-ren gainean"
+
+#, fuzzy
+msgid "All effects are specified as nuisance"
+msgstr "Efektu guztiak eragozpen ???? gisa zehazten dira"
+
+msgid "There are nonpositive weights"
+msgstr "Pisu ez-positiboak daude"
+
+#, fuzzy
+msgid "Posterior Summary"
+msgstr "Atzeko Laburpena"
+
+msgid "Model Comparison"
+msgstr "Ereduen Konparaketa"
+
+msgid "Model Comparison - %s"
+msgstr "Ereduen Konparaketa - %s"
+
+msgid "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p * %3$s and \ncorresponds to an approximate penalization equal to log(%3$s + 1) in log-odds scale for each additional \ncovariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
+msgstr ""
+"Wilsonen ereduaren aurrekoa beta binomial aurreko bati dagokio, %1$s = 1 eta "
+"%2$s = p * %3$s dituena, eta\n"
+"\n"
+"log(%3$s + 1) berdina den gutxi gorabeherako zigor bati dagokio, log-odds "
+"eskalan, ereduari gehitzen zaion kobariante gehigarri bakoitzeko (Consonni "
+"et al., 2018; Wilson et al., 2010)."
+
+msgid "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p^u and is suitable \nfor sparse regression when there are more covariates than observations (Castillo et al., 2015)."
+msgstr ""
+"Castillo ereduaren aurrekoa beta binomial aurreko bati dagokio, %1$s = 1 eta "
+"%2$s = p^u dituena, eta egokia da\n"
+"\n"
+"erregresio sakabanaturako, behaketak baino kobariante gehiago daudenean ("
+"Castillo et al., 2015)."
+
+msgid "BF<sub>10</sub>"
+msgstr "BF<sub>10</sub>"
+
+msgid "BF<sub>01</sub>"
+msgstr "BF<sub>01</sub>"
+
+msgid "Log(BF<sub>10</sub>)"
+msgstr "Log(BF<sub>10</sub>)"
+
+msgid "Models"
+msgstr "Ereduak"
+
+msgid "P(M)"
+msgstr "P(M)"
+
+msgid "P(M|data)"
+msgstr "P(M|datuak)"
+
+msgid "BF<sub>M</sub>"
+msgstr "BF<sub>M</sub>"
+
+msgid "All models include %s."
+msgstr "Modelo guztiek %s barne hartzen dituzte."
+
+msgid "%sTable displays only a subset of models; to see all models, select \"No\" under \"Limit No. Models Shown\"."
+msgstr ""
+"%sTaulak modeloen azpimultzo bat bakarrik erakusten du; modelo guztiak "
+"ikusteko, hautatu \"Ez\" \"Erakutsitako modelo kopuruaren muga\" atalean."
+
+msgid "Null model"
+msgstr "Eredu nulua"
+
+msgid "Null model (incl. %s)"
+msgstr "Modelo nuloa (%s barne)"
+
+msgid "Posterior Summaries of Coefficients"
+msgstr "Koefizienteen ondorengo laburpenak"
+
+msgid "BF<sub>inclusion</sub>"
+msgstr "BF<sub>inklusioa</sub>"
+
+msgid "Log(BF<sub>inclusion</sub>)"
+msgstr "Log(BF<sub>inklusioa</sub>)"
+
+msgid "%s%% Credible Interval"
+msgstr "%s%% Sinesgarritasun tartea"
+
+msgid "Coefficient"
+msgstr "Koefizientea"
+
+msgid "P(incl)"
+msgstr "P(barne)"
+
+msgid "P(excl)"
+msgstr "P(baztertua)"
+
+msgid "P(incl|data)"
+msgstr "P(barne|datuak)"
+
+msgid "P(excl|data)"
+msgstr "P(baztertua|datuak)"
+
+msgid "<em>Warning.</em>"
+msgstr "<em>Abisua.</em>"
+
+msgid "Posterior Coefficients with %s%% Credible Interval"
+msgstr "%s%% Sinesgarritasun-tartearekin Atzeko Koefizienteak"
+
+msgid "Posterior Log Odds"
+msgstr "Atzeko Log Odd-ak"
+
+msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
+msgstr "Ezin dira Atzeko Log Odd-ak bistaratu laginketa-metodoa MCMC denean."
+
+msgid "Residuals vs Fitted"
+msgstr "Hondarrak vs. Egokituak"
+
+msgid "Predictions under BMA"
+msgstr "BMA peko iragarpenak"
+
+msgid "Model Probabilities"
+msgstr "Ereduaren Probabilitateak"
+
+msgid "Cumulative Probability"
+msgstr "Probabilitate Metatua"
+
+msgid "Model Search Order"
+msgstr "Ereduaren Bilaketa Ordena"
+
+msgid "Log(P(data|M)) vs. Model Size"
+msgstr "Log(P(datuak|M)) vs. Ereduaren Tamaina"
+
+msgid "Log(P(data|M))"
+msgstr "Log(P(datuak|M))"
+
+msgid "Model Dimension"
+msgstr "Ereduaren Dimentsioa"
+
+msgid "Inclusion Probabilities"
+msgstr "Inklusio Probabilitateak"
+
+msgid "Marginal Inclusion Probability"
+msgstr "Inklusio Marjinalaren Probabilitatea"
+
+msgid "Prior\nInclusion\nProbabilities"
+msgstr ""
+"Aurrekoa\n"
+"Inklusioa\n"
+"Probabilitateak"
+
+msgid "Q-Q Plot"
+msgstr "Q-Q Grafikoa"
+
+#, fuzzy
+msgid "Marginal Posterior Distributions"
+msgstr "Ondorengo ¿Atzeko? Banaketa Marjinalak"
+
+msgid "Parameters estimates and/or credible intervals could not be calculated."
+msgstr ""
+"Parametroen estimazioak eta/edo sinesgarritasun-tarteak ezin izan dira "
+"kalkulatu."
+
+msgid "Performance Diagnostics"
+msgstr "Errendimendu Diagnostikoak"
+
+msgid "McFadden R%s"
+msgstr "McFadden R%s"
+
+msgid "Nagelkerke R%s"
+msgstr "Nagelkerke R%s"
+
+msgid "Tjur R%s"
+msgstr "Tjur R%s"
+
+msgid "Cox & Snell R%s"
+msgstr "Cox & Snell R%s"
+
+msgid "Standardized%s"
+msgstr "Estandarizatua%s"
+
+msgid "Wald Statistic"
+msgstr "Wald Estatistikoa"
+
+msgid "Lower bound"
+msgstr "Beheko muga"
+
+msgid "Upper bound"
+msgstr "Goiko muga"
+
+msgid "Standardized estimates represent estimates where the continuous predictors are standardized (X-standardization)."
+msgstr ""
+"Estandarazitako estimazioek aurreikusle jarraituak estandarizatuta dauden "
+"estimazioak adierazten dituzte (X-estandarizazioa)."
+
+msgid "Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."
+msgstr ""
+"Koefizientearen estimazioa eta errore estandar sendoa bootstrap banaketaren "
+"medianan oinarritzen dira."
+
+#, fuzzy
+msgid "Factor Descriptives"
+msgstr "Faktoreen Deskribapenak"
+
+msgid "Factor"
+msgstr "Faktorea"
+
+msgid "Confusion matrix"
+msgstr "Nahasmen matrizea"
+
+msgid "Observed"
+msgstr "Behatuta"
+
+msgid "%% Correct"
+msgstr "%% Zuzena"
+
+msgid "Performance metrics"
+msgstr "Errendimendu metrikak"
+
+msgid "Value"
+msgstr "Balioa"
+
+msgid "Bootstrapping based on %i successful replicates."
+msgstr "Bootstrappinga %i erreplika arrakastatsutan oinarrituta."
+
+msgid "Some confidence intervals could not be computed.\nPossibly too few bootstrap replicates."
+msgstr ""
+"Konfiantza tarte batzuk ezin izan dira kalkulatu.\n"
+"Bootstrap erreplika gutxiegi egon daitezke."
+
+msgid "Diagnostic plots"
+msgstr "Diagnosi grafikoak"
+
+msgid "Estimates plots"
+msgstr "Estimazioen grafikoak"
+
+msgid "Predicted - residuals plot"
+msgstr "Aurreikusitako hondarren grafikoa"
+
+msgid "Predictor - residuals plots"
+msgstr "Aurreikusle - hondarren grafikoak"
+
+msgid "Squared Pearson residuals plot"
+msgstr "Pearson hondarren karratuen grafikoa"
+
+msgid "Independent - predicted plots"
+msgstr "Independenteak - iragarritako grafikoak"
+
+msgid "Performance plots"
+msgstr "Errendimendu grafikoak"
+
+msgid "ROC plot"
+msgstr "ROC grafikoa"
+
+msgid "PR plot"
+msgstr "PR grafikoa"
+
+msgid "Predicted Probability"
+msgstr "Aurreikusitako Probabilitatea"
+
+msgid "Squared Pearson Residual"
+msgstr "Pearson Hondar Karratua"
+
+#, fuzzy
+msgid "False positive rate"
+msgstr "Positibo faltsuen tasa"
+
+msgid "True positive rate"
+msgstr "Benetako positiboen tasa"
+
+#, fuzzy
+msgid "Positive predictive value"
+msgstr "Aurreikuspen positiboen balioa"
+
+msgid "%1$s%% bca%2$s Confidence interval"
+msgstr "%1$s%% bca%2$s Konfiantza tartea"
+
+msgid "%s%% Confidence interval"
+msgstr "%s%% Konfiantza tartea"
+
+msgid "%s <br> (odds ratio scale)"
+msgstr "%s <br> (odds-ratio eskala)"
+
+msgid "Robust <br> %s"
+msgstr "Sendoa <br> %s"
+
+msgid "Parameter"
+msgstr "Parametroa"
+
+msgid "Inclusion/exclusion statistics for coefficients within factor(s) %s are the same as the coefficients are always included or excluded together."
+msgstr ""
+"%s faktore(ar)en barruko koefizienteen inklusio/bazterketa estatistikak "
+"berdinak dira, koefizienteak beti batera sartzen edo baztertzen baitira."
+
+msgid "DV/Factor Descriptives"
+msgstr "DV/Faktore Deskribatzaileak"
+
+msgid "DV/Factor"
+msgstr "DV/Faktorea"
+
+msgid "Level"
+msgstr "Maila"
+
+msgid "Covariate Descriptives"
+msgstr "Kobarianteen Deskriptiboak"
+
+#, fuzzy
+msgid "Intercept"
+msgstr "Ebakidura"
+
+msgid "using the %1$d/%2$d row from a combined fit"
+msgid_plural "using the %1$d/%2$d rows from a combined fit"
+msgstr[0] "%1$d/%2$d errenkada erabiliz doikuntza konbinatu batetik"
+msgstr[1] "%1$d/%2$d errenkada erabiliz doikuntza konbinatu batetik"
+
+msgid "The following covariate was considered but not included: %s."
+msgid_plural "The following covariates were considered but not included: %s."
+msgstr[0] "Hurrengo kobariantea kontuan hartu da baina ez da sartu: %s."
+msgstr[1] "Hurrengo kobarianteak kontuan hartu dira baina ez da sartu: %s."
+
+msgid "Partial Regression Plot"
+msgid_plural "Partial Regression Plots"
+msgstr[0] "Erregresio Partzialeko Grafikoa"
+msgstr[1] "Erregresio Partzialeko Grafikoak"
