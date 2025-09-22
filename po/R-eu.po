@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.0\n"
 "POT-Creation-Date: 2025-08-30 02:59\n"
-"PO-Revision-Date: 2025-09-21 06:54+0000\n"
+"PO-Revision-Date: 2025-09-22 10:01+0000\n"
 "Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/eu/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 msgid "Scatterplot"
 msgstr "Sakabanaketa grafikoa"
 
-#, fuzzy
 msgid "Prior and Posterior"
 msgstr "Aurreko eta ondorengo"
 
@@ -417,7 +416,7 @@ msgid "Prior"
 msgstr "Aurrekoa"
 
 msgid "Posterior"
-msgstr "Atzekoa  ¿edo ondorengoa?"
+msgstr "Ondorengoa"
 
 msgid "%s%% CI:"
 msgstr "%s%% KT:"
@@ -431,7 +430,6 @@ msgstr "max %s   ???"
 msgid "%1$s at kappa==%2$s"
 msgstr "%1$s kappa==%2$s-tan"
 
-#, fuzzy
 msgid "user prior"
 msgstr "Erabiltzailearen aurrekoa"
 
@@ -532,6 +530,7 @@ msgstr "Desbideratzea"
 msgid "AIC"
 msgstr "AIC"
 
+#, fuzzy
 msgid "BIC"
 msgstr "BIC"
 
@@ -637,7 +636,7 @@ msgid "Lower"
 msgstr "Behekoa"
 
 msgid "%s%% CI"
-msgstr "%s%% CI"
+msgstr "%s%% KT"
 
 msgid "Upper"
 msgstr "Goikoa"
@@ -894,7 +893,6 @@ msgstr "Faktoreentzako ez dira onartzen grafiko partzialak"
 msgid "Residuals %s"
 msgstr "%s hondarrak"
 
-#, fuzzy
 msgid "Descriptives"
 msgstr "Deskriptiboak"
 
@@ -1014,7 +1012,7 @@ msgid "Log(BF<sub>inclusion</sub>)"
 msgstr "Log(BF<sub>inklusioa</sub>)"
 
 msgid "%s%% Credible Interval"
-msgstr "%s%% Sinesgarritasun tartea"
+msgstr "%s%% Sinesgarritasun Tartea"
 
 msgid "Coefficient"
 msgstr "Koefizientea"
@@ -1191,16 +1189,14 @@ msgstr "Aurreikusitako Probabilitatea"
 msgid "Squared Pearson Residual"
 msgstr "Pearson Hondar Karratua"
 
-#, fuzzy
 msgid "False positive rate"
-msgstr "Positibo faltsuen tasa"
+msgstr "Positibo faltsu ratioa"
 
 msgid "True positive rate"
 msgstr "Benetako positiboen tasa"
 
-#, fuzzy
 msgid "Positive predictive value"
-msgstr "Aurreikuspen positiboen balioa"
+msgstr "Balio iragarle positiboa"
 
 msgid "%1$s%% bca%2$s Confidence interval"
 msgstr "%1$s%% bca%2$s Konfiantza tartea"
