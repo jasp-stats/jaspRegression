@@ -42,6 +42,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (options$coefficientBootstrap && is.null(modelContainer[["bootstrapCoeffTable"]]))
     .linregCreateBootstrapCoefficientsTable(modelContainer, model, dataset, options, position = 4)
 
+  if (options$equationTable && is.null(modelContainer[["equationTable"]]))
+    .linregCreateEquationTable(modelContainer, model, dataset, options, position = 6)
+
   if (options$partAndPartialCorrelation && is.null(modelContainer[["partialCorTable"]]))
     .linregCreatePartialCorrelationsTable(modelContainer, model, dataset, options, position = 6)
 
@@ -400,7 +403,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     footnoteRows <- temp[["footnote"]]
 
     for (j in seq_along(coefficients)) {
-      coefficients[[j]] <- .linregPrettyQuadraticName(coefficients[[j]])
+      coefficients[[j]][["name"]] <- .linregPrettyQuadraticName(coefficients[[j]][["name"]])
       coeffTable$addRows(c(coefficients[[j]], list(.isNewGroup = isNewGroup, model = model[[i]]$title)))
       isNewGroup <- FALSE
     }
@@ -505,6 +508,45 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   return(cbind(meta, data))
 }
+
+.linregCreateEquationTable <- function(modelContainer, model, dataset, options, position = 6) {
+
+  equationTable <- createJaspTable(gettext("Regression Equations"))
+  equationTable$dependOn("equationTable")
+  equationTable$position <- position
+
+  equationTable$addColumnInfo(name = "model",   title = gettext("Model"),   type = "string", combine = TRUE)
+
+  equationTable$addColumnInfo(name = "formula",   title = gettext("Equation"),   type = "string")
+
+  if (!is.null(model)) {
+
+    for (i in seq_along(model)) {
+
+      coefs <- coef(model[[i]][["fit"]])
+      names(coefs) <- sapply(names(coefs), .linregPrettyQuadraticName)
+      coefs <- coefs[order(names(coefs))]
+
+      coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " -"),
+                           round(abs(coefs[-1]), .numDecimals),
+                           names(coefs)[-1],
+                           collapse = "", sep = " ")
+
+      # Now add dependent name and intercept
+      filledFormula <- paste0(options[["dependent"]], " = ",
+                              round(coefs[1], .numDecimals),
+                              coefFormula)
+      equationTable$addRows(list(
+        model = model[[i]]$title,
+        formula = filledFormula
+      ))
+    }
+  }
+
+  modelContainer[["equationTable"]] <- equationTable
+
+}
+
 
 .linregCreatePartialCorrelationsTable <- function(modelContainer, model, dataset, options, position) {
   partPartialTable <- createJaspTable(gettext("Part And Partial Correlations"))
@@ -2005,19 +2047,19 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(title)
 }
 
-.linregPrettyQuadraticName <- function(coefObject) {
+.linregPrettyQuadraticName <- function(coefName) {
 
-  coefName <- coefObject[["name"]]
+  # coefName <- coefObject[["name"]]
 
   if (grepl(pattern = "I\\(([^)]+)\\^2\\)", coefName)) {
     # remove "I(" and the "^2)" parts
     cleanName <- gsub("I\\(([^)]+)\\^2\\)", "\\1", coefName)
     # remove the leftover " (I(^2))"
     cleanName <- gsub("\\s*\\(I\\(\\^2\\)\\)", "", cleanName)
-    coefObject[["name"]] <- paste0(cleanName, "\u00B2")
+    coefName <- paste0(cleanName, "\u00B2")
   }
 
-  return(coefObject)
+  return(coefName)
 }
 
 

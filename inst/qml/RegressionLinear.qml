@@ -148,7 +148,7 @@ Form
 			CheckBox { name: "partAndPartialCorrelation";	label: qsTr("Part and partial correlations"); info: qsTr("Semipartial and partial correlations.")	}
 			CheckBox { name: "covarianceMatrix"; label: qsTr("Coefficients covariance matrix"); info: qsTr("Displays the covariance matrix of the predictor variables, per model.") }
 			CheckBox { name: "collinearityDiagnostic";		label: qsTr("Collinearity diagnostics")	; info: qsTr("Collinearity statistics, eigenvalues, condition indices, and variance proportions.")	}
-
+			CheckBox { name: "displayEquation";		label: qsTr("Regression equation")	; info: qsTr("Displays regression equations for each model.")	}
 		}
 
 		
