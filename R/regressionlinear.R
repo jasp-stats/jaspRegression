@@ -527,7 +527,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       names(coefs) <- sapply(names(coefs), .linregPrettyQuadraticName)
       coefs <- coefs[order(names(coefs))]
 
-      coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " -"),
+      coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " \u2013"),
                            round(abs(coefs[-1]), .numDecimals),
                            names(coefs)[-1],
                            collapse = "", sep = " ")
