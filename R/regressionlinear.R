@@ -516,7 +516,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   equationTable$position <- position
 
   equationTable$addColumnInfo(name = "model",   title = gettext("Model"),   type = "string", combine = TRUE)
-
   equationTable$addColumnInfo(name = "formula",   title = gettext("Equation"),   type = "string")
 
   if (!is.null(model)) {
@@ -524,8 +523,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     for (i in seq_along(model)) {
 
       coefs <- coef(model[[i]][["fit"]])
-      names(coefs) <- sapply(names(coefs), .linregPrettyQuadraticName)
-      coefs <- coefs[order(names(coefs))]
+      names(coefs) <- gsubInteractionSymbol(sapply(names(coefs), .linregPrettyQuadraticName))
+      # coefs <- coefs[order(names(coefs))]
 
       coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " \u2013"),
                            round(abs(coefs[-1]), .numDecimals),
@@ -536,6 +535,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       filledFormula <- paste0(options[["dependent"]], " = ",
                               round(coefs[1], .numDecimals),
                               coefFormula)
+
       equationTable$addRows(list(
         model = model[[i]]$title,
         formula = filledFormula
