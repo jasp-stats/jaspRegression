@@ -403,7 +403,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     footnoteRows <- temp[["footnote"]]
 
     for (j in seq_along(coefficients)) {
-      coefficients[[j]][["name"]] <- .linregPrettyQuadraticName(coefficients[[j]][["name"]])
       coeffTable$addRows(c(coefficients[[j]], list(.isNewGroup = isNewGroup, model = model[[i]]$title)))
       isNewGroup <- FALSE
     }
@@ -523,14 +522,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     for (i in seq_along(model)) {
 
       coefs <- coef(model[[i]][["fit"]])
-      names(coefs) <- gsubInteractionSymbol(sapply(names(coefs), .linregPrettyQuadraticName))
-      # coefs <- coefs[order(names(coefs))]
+      names(coefs) <- .linregMakePrettyNames(model[[i]][["fit"]])
 
       coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " \u2013"),
                            round(abs(coefs[-1]), .numDecimals),
                            names(coefs)[-1],
                            collapse = "", sep = " ")
-
+      .linregGetParametersAndLevels(model[[i]][["fit"]])
       # Now add dependent name and intercept
       filledFormula <- paste0(options[["dependent"]], " = ",
                               round(coefs[1], .numDecimals),
@@ -1986,6 +1984,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   regexAnyPredictor <- paste(orderedPredictors, collapse = "|")
 
   lvls <- gsub(regexAnyPredictor, "", model)
+  lvls <- gsub("I\\(\\^2\\)", "", lvls) # remove squared syntax from lvls
 
   levelsRaw   <- strsplit(lvls, ":")
   levelsRaw[lengths(levelsRaw) == 0] <- list("")
@@ -2004,6 +2003,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   allPredsRegex <- paste0("^(", regexAnyPredictor, ").*")
   paramsRaw <- lapply(splitRnms, gsub, pattern = allPredsRegex, replacement = "\\1")
   paramsClean <- unlist(lapply(paramsRaw, paste, collapse = jaspBase::interactionSymbol), use.names = FALSE)
+
   return(list(
     paramsClean = paramsClean,
     levelsClean = levelsClean,
@@ -2040,7 +2040,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
     ans <- character(length(params))
     for (i in seq_along(params)) {
-      ans[i] <- if (is.na(levels[i]) || levels[i] == "") params[i] else paste0(params[i], " (", levels[i], ")")
+      ans[i] <- if (is.na(levels[i]) || levels[i] == "") .linregPrettyQuadraticName(params[i]) else paste0(params[i], " (", levels[i], ")")
     }
     title[j] <- paste(ans, collapse = " \u2009\u273b\u2009 ")
   }
@@ -2048,8 +2048,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregPrettyQuadraticName <- function(coefName) {
-
-  # coefName <- coefObject[["name"]]
 
   if (grepl(pattern = "I\\(([^)]+)\\^2\\)", coefName)) {
     # remove "I(" and the "^2)" parts
