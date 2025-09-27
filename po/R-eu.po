@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.0\n"
 "POT-Creation-Date: 2025-08-30 02:59\n"
-"PO-Revision-Date: 2025-09-19 15:01+0000\n"
+"PO-Revision-Date: 2025-09-23 14:01+0000\n"
 "Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/eu/>\n"
@@ -24,7 +24,6 @@ msgstr ""
 msgid "Scatterplot"
 msgstr "Sakabanaketa grafikoa"
 
-#, fuzzy
 msgid "Prior and Posterior"
 msgstr "Aurreko eta ondorengo"
 
@@ -143,14 +142,13 @@ msgid "There are no predictors to test for multicollinearity"
 msgstr "Ez dago multikolinearitatea probatzeko aurreikuslerik"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr "Emaitzak %s mailen gainean batez beste kalkulatzen dira."
+msgstr "P-balioak hipotesi nuluaren probari dagozkio %s-ren aurka."
 
-#, fuzzy
 msgid "Results are averaged over the levels of: %s."
-msgstr "Emaitzak %s mailen gainean batez beste kalkulatzen dira."
+msgstr "Emaitzak batez bestekoa kalkulatzen dira honako mailen gainean: %s."
 
 msgid "P-values are not adjusted."
-msgstr "P-balioak ez dira doitu."
+msgstr "P-balioak ez daude doituta."
 
 msgid "Holm"
 msgstr "Holm"
@@ -162,7 +160,7 @@ msgid "Hochberg"
 msgstr "Hochberg"
 
 msgid "Multivariate-t"
-msgstr "Aldagai anitzeko-t"
+msgstr "Aldagai anitzeko t"
 
 msgid "Tukey"
 msgstr "Tukey"
@@ -186,7 +184,7 @@ msgid "Bonferroni"
 msgstr "Bonferroni"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr "P-balioak %s doikuntza erabiliz doitu dira."
+msgstr "P-balioak %s doikuntza erabiliz doitzen dira."
 
 msgid "Predicted"
 msgstr "Aurreikusitakoa"
@@ -293,7 +291,6 @@ msgstr "VS-MPR"
 msgid "Effect size (Fisher's z)"
 msgstr "Efektuaren tamaina (Fisher-en z)"
 
-#, fuzzy
 msgid "SE Effect size"
 msgstr "EE (SE) Efektu-tamaina"
 
@@ -319,7 +316,7 @@ msgid "Number of observations is < %s."
 msgstr "Behaketa kopurua < %s da."
 
 msgid "Bootstrapping"
-msgstr "Bootstrapping"
+msgstr "Bootstrapping-a"
 
 msgid "Partial correlation cannot be computed: covariance matrix is computationally singular."
 msgstr ""
@@ -386,16 +383,16 @@ msgstr "%1$d%% KT: [%2$d, %3$d]"
 
 msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
-"Vovk-Sellke gehienezko <em>p</em>-erlazioa: <em>p</em>-balioan oinarrituta, "
-"H%1$s-ren aldeko probabilitate maximoa H%2$s-ren gainetik 1/(-e <em>p</em> "
-"log(<em>p</em>)) da. <em>p</em> %3$s .37rako (Sellke, Bayarri, & Berger, "
-"2001)."
+"Vovk-Sellke-ren gehienezko <em>p</em>-Ratioa: <em>p</em>-balioan "
+"oinarrituta, H%1$s-ren aldeko gehienezko probabilitatea H%2$s-ren gainetik 1/"
+"(-e <em>p</em> log(<em>p</em>)) <em>p</em> %3$s .37rako (Sellke, Bayarri, & "
+"Berger, 2001)."
 
 msgid "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and small sample sizes (< 10), approximation by Fisher's z transformation becomes less accurate"
 msgstr ""
 "Efektuaren tamaina (Fisher-en z): Korrelazio-koefiziente handietarako (> 0.9)"
 " eta lagin-tamaina txikietarako (< 10), Fisher-en z transformazioaren "
-"bidezko hurbilketa ez da hain zehatza."
+"bidezko hurbilketa ez da hain zehatza"
 
 msgid "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. 62-71."
 msgstr ""
@@ -403,9 +400,8 @@ msgstr ""
 "Hipotesi Nulu Zehatzak Probatzeko. The American Statistician, 55(1), 62-71. "
 "or."
 
-#, fuzzy
 msgid "Posterior is too peaked"
-msgstr "Atzekoa gehiegi gailurtuta dago"
+msgstr "Ondorengoa gehiegi gailurtuta dago"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "Bayesiar Korrelazio Matrizearen Grafikoa"
@@ -417,7 +413,7 @@ msgid "Prior"
 msgstr "Aurrekoa"
 
 msgid "Posterior"
-msgstr "Atzekoa  ¿edo ondorengoa?"
+msgstr "Ondorengoa"
 
 msgid "%s%% CI:"
 msgstr "%s%% KT:"
@@ -426,12 +422,11 @@ msgid "Bayesian Correlation Pairwise Plots"
 msgstr "Bayesiar Korrelazio Bikoteka Grafikoak"
 
 msgid "max %s"
-msgstr "max %s   ???"
+msgstr "max %s"
 
 msgid "%1$s at kappa==%2$s"
 msgstr "%1$s kappa==%2$s-tan"
 
-#, fuzzy
 msgid "user prior"
 msgstr "Erabiltzailearen aurrekoa"
 
@@ -449,9 +444,8 @@ msgstr ""
 "A - B bikote bakoitzerako, A hobeto iragartzen den probatzen du B-ren "
 "funtzio lineal gisa, hau da, l := A ~ 1 + B, edo B-ren funtzio koadratiko "
 "gisa, hau da, q := A ~ 1 + B + B^2.\n"
-"\n"
-"Erregresio Bayesiarraren ezarpen lehenetsiak erabiltzen ditu, hau da, JZS-"
-"aurrekoa alfa 0.354-ra ezarrita duena eta aurreko ereduarentzat beta "
+"       Erregresio Bayesiarraren ezarpen lehenetsiak erabiltzen ditu, hau da, "
+"JZS-aurrekoa alfa 0.354-ra ezarrita duena eta aurreko ereduarentzat beta "
 "banaketa binomiala alfa = 1 eta beta = 1 dituena. Kontuan izan bi eredu "
 "bakarrik kontuan hartzen direnez, ereduaren aurrekoa eredu uniformearen "
 "aurreko baten baliokidea dela."
@@ -529,22 +523,18 @@ msgstr "Eredua"
 msgid "Deviance"
 msgstr "Desbideratzea"
 
-#, fuzzy
 msgid "AIC"
 msgstr "AIC"
 
-#, fuzzy
 msgid "BIC"
 msgstr "BIC"
 
-#, fuzzy
 msgid "df"
-msgstr "ag (df)"
+msgstr "ag"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Eredu nuluak parametro gogaikarriak????? ditu: %s."
 
-#, fuzzy
 msgid "Model Fit"
 msgstr "Ereduaren doikuntza"
 
@@ -614,7 +604,6 @@ msgstr "Muturreko-balioen Taulak"
 msgid "Table: Top n outliers based on %1s residuals"
 msgstr "Taula: %1s hondarretan oinarritutako muturreko-balio nagusiak"
 
-#, fuzzy
 msgid "Case Number"
 msgstr "Kasu Zenbakia"
 
@@ -631,7 +620,7 @@ msgid "Estimated Marginal Means and Contrast Analysis"
 msgstr "Kalkulatutako Batez besteko Marjinalak eta Kontraste Analisia"
 
 msgid "Estimated Marginal Means"
-msgstr "Kalkulatutako Batez besteko Marjinalak"
+msgstr "Estimatutako Marjina Batez bestekoak"
 
 msgid "SE"
 msgstr "EE"
@@ -652,12 +641,10 @@ msgid "z"
 msgstr "z"
 
 msgid "Results are on the response scale."
-msgstr "Emaitzak erantzun eskalan daude."
+msgstr "Emaitzak erantzun-eskalan daude."
 
 msgid "Results are not on the response scale and might be misleading."
-msgstr ""
-"Emaitzak ez daude erantzun ¿¿¿emaitza??? eskalan eta engainagarriak izan "
-"daitezke."
+msgstr "Emaitzak ez daude erantzun-eskalan eta engainagarriak izan daitezke."
 
 msgid "Contrasts"
 msgstr "Kontrasteak"
@@ -678,12 +665,11 @@ msgstr "+ %s saiatzen"
 msgid "F test assumes 'quasi%s' family"
 msgstr "F probak 'quasi%s' familia suposatzen du"
 
-#, fuzzy
 msgid "Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"
 msgstr ""
 "Pausoz pausoko prozedurak ez dira onartzen 2 maila baino gehiago dituzten "
 "faktoreak dituzten modeloetarako; saiatu berriro analisia aldagai faltsuak "
-"erabiliz"
+"(dummies) erabiliz"
 
 msgid "Stepwise procedures are not supported for interactions containing more than 1 factor"
 msgstr ""
@@ -725,7 +711,7 @@ msgid "df2"
 msgstr "ag2"
 
 msgid "Autocorrelation"
-msgstr "Autokorrelazioa"
+msgstr "Autokorrelazio"
 
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
@@ -746,7 +732,6 @@ msgstr "Karratuen Batura"
 msgid "Mean Square"
 msgstr "Batez besteko Karratua"
 
-#, fuzzy
 msgid "F"
 msgstr "F"
 
@@ -900,7 +885,6 @@ msgstr "Faktoreentzako ez dira onartzen grafiko partzialak"
 msgid "Residuals %s"
 msgstr "%s hondarrak"
 
-#, fuzzy
 msgid "Descriptives"
 msgstr "Deskriptiboak"
 
@@ -920,9 +904,8 @@ msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the 
 msgstr ""
 "Vovk-Sellke gehienezko <em>p</em>-erlazioa: <em>p</em>-balioan oinarrituta, "
 "H%1$s-ren aldeko gehienezko\n"
-"\n"
-"probabilitatea H%2$s-ren aldean 1/(-e <em>p</em> log(<em>p</em>)) <em>p</em> "
-"%3$s .37rako (Sellke, Bayarri, & Berger, 2001)."
+"                probabilitatea H%2$s-ren aldean 1/(-e <em>p</em> "
+"log(<em>p</em>)) <em>p</em> %3$s .37rako (Sellke, Bayarri, & Berger, 2001)."
 
 #, fuzzy
 msgid "The intercept model is omitted, as no meaningful information can be shown."
@@ -970,8 +953,7 @@ msgstr ""
 msgid "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p^u and is suitable \nfor sparse regression when there are more covariates than observations (Castillo et al., 2015)."
 msgstr ""
 "Castillo ereduaren aurrekoa beta binomial aurreko bati dagokio, %1$s = 1 eta "
-"%2$s = p^u dituena, eta egokia da\n"
-"\n"
+"%2$s = p^u dituena, eta egokia da \n"
 "erregresio sakabanaturako, behaketak baino kobariante gehiago daudenean ("
 "Castillo et al., 2015)."
 
@@ -1020,7 +1002,7 @@ msgid "Log(BF<sub>inclusion</sub>)"
 msgstr "Log(BF<sub>inklusioa</sub>)"
 
 msgid "%s%% Credible Interval"
-msgstr "%s%% Sinesgarritasun tartea"
+msgstr "%s%% Sinesgarritasun Tartea"
 
 msgid "Coefficient"
 msgstr "Koefizientea"
@@ -1088,9 +1070,8 @@ msgstr ""
 msgid "Q-Q Plot"
 msgstr "Q-Q Grafikoa"
 
-#, fuzzy
 msgid "Marginal Posterior Distributions"
-msgstr "Ondorengo ¿Atzeko? Banaketa Marjinalak"
+msgstr "Ondorengo Banaketa Marjinalak"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
 msgstr ""
@@ -1197,16 +1178,14 @@ msgstr "Aurreikusitako Probabilitatea"
 msgid "Squared Pearson Residual"
 msgstr "Pearson Hondar Karratua"
 
-#, fuzzy
 msgid "False positive rate"
-msgstr "Positibo faltsuen tasa"
+msgstr "Positibo faltsu ratioa"
 
 msgid "True positive rate"
 msgstr "Benetako positiboen tasa"
 
-#, fuzzy
 msgid "Positive predictive value"
-msgstr "Aurreikuspen positiboen balioa"
+msgstr "Balio iragarle positiboa"
 
 msgid "%1$s%% bca%2$s Confidence interval"
 msgstr "%1$s%% bca%2$s Konfiantza tartea"
@@ -1247,7 +1226,7 @@ msgstr "Ebakidura"
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] "%1$d/%2$d errenkada erabiliz doikuntza konbinatu batetik"
-msgstr[1] "%1$d/%2$d errenkada erabiliz doikuntza konbinatu batetik"
+msgstr[1] "%1$d/%2$d errenkadak erabiliz doikuntza konbinatu batetik"
 
 msgid "The following covariate was considered but not included: %s."
 msgid_plural "The following covariates were considered but not included: %s."
