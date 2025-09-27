@@ -1,24 +1,16 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-21 06:54+0000\n"
-"Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
-"Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/sr/>\n"
-"Language: sr\n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: sq\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14-dev\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr "Регресија"
-
-msgctxt "Description|"
-msgid "Evaluate the association between variables"
 msgstr ""
 
 msgctxt "Description|"
@@ -38,10 +30,6 @@ msgid "Logistic Regression"
 msgstr ""
 
 msgctxt "Description|"
-msgid "Generalized Linear Model"
-msgstr ""
-
-msgctxt "Description|"
 msgid "Bayesian"
 msgstr ""
 
@@ -53,260 +41,8 @@ msgctxt "Description|"
 msgid "Bayesian Linear Regression"
 msgstr ""
 
-msgctxt "Description|"
-msgid "Bayesian Logistic Regression"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Model variables"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Selected variables"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Confidence interval"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Levels of covariates at mean +/- "
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "SD"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Compare marginal means to:"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Use response scale"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Specify contrasts"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "P-value adjustment"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "Multivariate-t"
-msgstr ""
-
-msgctxt "EmmComponent|"
-msgid "None"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Dependent variable"
-msgstr "Зависна варијабла"
-
-msgctxt "GlmInputComponent|"
-msgid "Covariates"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Factors"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Total Number of Trials"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Weights"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Offset"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Family"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Bernoulli"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Binomial"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Gaussian"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Gamma"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Inverse Gaussian"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Poisson"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Other"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Link"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Logit"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Probit"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Cauchit"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Complementary LogLog"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Identity"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Log"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Sqrt"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Inverse"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "1/mu^2"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Model"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Multinomial Logistic Regression"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Ordinal Logistic Regression"
-msgstr ""
-
-msgctxt "GlmInputComponent|"
-msgid "Firth Logistic Regression"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Analysis of Residuals"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Deviance Residuals"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Residuals vs. fitted"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Residuals vs. predictor"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Q-Q plot"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Pearson Residuals"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Quantile Residuals"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Other Plots"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Partial residual plots"
-msgstr ""
-
-msgctxt "GlmResidualAnalysisPlotsComponent|"
-msgid "Working responses vs. linear predictor"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Residuals"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Statistics"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Casewise diagnostics"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Std. residual >"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Cook's dist. >"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "All"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "DFBETAS"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "DFFITS"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Cov ratio"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Leverage"
-msgstr ""
-
-msgctxt "OutlierComponent|"
-msgid "Mahalanobis"
-msgstr ""
-
 msgctxt "Correlation|"
 msgid "Variables"
-msgstr ""
-
-msgctxt "Correlation|"
-msgid "Partial out"
 msgstr ""
 
 msgctxt "Correlation|"
@@ -350,27 +86,11 @@ msgid "Interval"
 msgstr ""
 
 msgctxt "Correlation|"
-msgid "From"
-msgstr ""
-
-msgctxt "Correlation|"
-msgid "bootstraps"
-msgstr ""
-
-msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr ""
 
 msgctxt "Correlation|"
-msgid "Effect size (Fisher's z)"
-msgstr ""
-
-msgctxt "Correlation|"
 msgid "Sample size"
-msgstr ""
-
-msgctxt "Correlation|"
-msgid "Covariance"
 msgstr ""
 
 msgctxt "Correlation|"
@@ -506,16 +226,6 @@ msgid "Interval"
 msgstr ""
 
 msgctxt "CorrelationBayesian|"
-msgid "Linearity test"
-msgstr ""
-
-msgctxt "CorrelationBayesian|"
-msgid ""
-"Compute a test for the linearity of the relationship between the two "
-"variables by comparing a linear model to a quadratic model."
-msgstr ""
-
-msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
 msgstr ""
 
@@ -569,7 +279,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
-msgstr "Дијаграм расипања"
+msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Robustness check"
@@ -577,7 +287,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior and posterior"
-msgstr "Претходна и задња"
+msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Estimation info"
@@ -613,82 +323,6 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases listwise"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Model"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Components"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Include intercept"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Statistics"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Model Fit"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Deviance goodness-of-fit test"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Pearson goodness-of-fit test"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Coefficients"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Estimates"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Confidence intervals"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Diagnostics"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Show Outliers"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Standardized quantile residuals : top"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Standardized deviance residuals: top"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Studentized deviance residuals: top"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Multicollinearity"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Tolerance"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "VIF"
-msgstr ""
-
-msgctxt "GeneralizedLinearModel|"
-msgid "Advanced Options"
 msgstr ""
 
 msgctxt "RegressionLinear|"
@@ -740,30 +374,6 @@ msgid "Statistics"
 msgstr ""
 
 msgctxt "RegressionLinear|"
-msgid "Model Summary"
-msgstr ""
-
-msgctxt "RegressionLinear|"
-msgid "R squared change"
-msgstr ""
-
-msgctxt "RegressionLinear|"
-msgid "F change"
-msgstr ""
-
-msgctxt "RegressionLinear|"
-msgid "AIC and BIC"
-msgstr ""
-
-msgctxt "RegressionLinear|"
-msgid "Durbin-Watson"
-msgstr ""
-
-msgctxt "RegressionLinear|"
-msgid "Coefficients"
-msgstr ""
-
-msgctxt "RegressionLinear|"
 msgid "Estimates"
 msgstr ""
 
@@ -780,15 +390,7 @@ msgid "Confidence intervals"
 msgstr ""
 
 msgctxt "RegressionLinear|"
-msgid "Tolerance and VIF"
-msgstr ""
-
-msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr ""
-
-msgctxt "RegressionLinear|"
-msgid "Display"
 msgstr ""
 
 msgctxt "RegressionLinear|"
@@ -796,19 +398,23 @@ msgid "Model fit"
 msgstr ""
 
 msgctxt "RegressionLinear|"
+msgid "R squared change"
+msgstr ""
+
+msgctxt "RegressionLinear|"
 msgid "Descriptives"
-msgstr "Дескриптивна"
+msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Part and partial correlations"
 msgstr ""
 
 msgctxt "RegressionLinear|"
-msgid "Coefficients covariance matrix"
+msgid "Collinearity diagnostics"
 msgstr ""
 
 msgctxt "RegressionLinear|"
-msgid "Collinearity diagnostics"
+msgid "Durbin-Watson"
 msgstr ""
 
 msgctxt "RegressionLinear|"
@@ -868,10 +474,6 @@ msgid "Residuals vs. predicted"
 msgstr ""
 
 msgctxt "RegressionLinear|"
-msgid "Residuals histogram"
-msgstr ""
-
-msgctxt "RegressionLinear|"
 msgid "Standardized residuals"
 msgstr ""
 
@@ -887,17 +489,9 @@ msgctxt "RegressionLinear|"
 msgid "Prediction intervals"
 msgstr ""
 
-msgctxt "RegressionLinear|"
-msgid "Other Plots"
-msgstr ""
-
-msgctxt "RegressionLinear|"
-msgid "Marginal effects plots"
-msgstr ""
-
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
-msgstr "Зависна варијабла"
+msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
@@ -981,7 +575,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Descriptives"
-msgstr "Дескриптивна"
+msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model"
@@ -1209,7 +803,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Descriptives"
-msgstr "Дескриптивна"
+msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Factor descriptives"
@@ -1221,10 +815,6 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
-msgid "Coefficients"
 msgstr ""
 
 msgctxt "RegressionLogistic|"
@@ -1268,15 +858,7 @@ msgid "Vovk-Sellke maximum p-ratio"
 msgstr ""
 
 msgctxt "RegressionLogistic|"
-msgid "Multicollinearity diagnostics"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
 msgid "Performance Metrics"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
-msgid "Accuracy"
 msgstr ""
 
 msgctxt "RegressionLogistic|"
@@ -1316,19 +898,11 @@ msgid "Inferential Plots"
 msgstr ""
 
 msgctxt "RegressionLogistic|"
-msgid "Conditional estimates plots"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
 msgid "Confidence interval"
 msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
-msgid "Diagnostic Plots"
 msgstr ""
 
 msgctxt "RegressionLogistic|"
@@ -1341,18 +915,6 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Squared Pearson residuals plot"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
-msgid "Independent - predicted plot"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
-msgid "Include interactions"
-msgstr ""
-
-msgctxt "RegressionLogistic|"
-msgid "Use logit scale"
 msgstr ""
 
 msgctxt "RegressionLogistic|"
@@ -1385,6 +947,326 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "From"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "bootstraps"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Evaluate the association between variables"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Residuals histogram"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Conditional estimates plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Marginal effects plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Accuracy"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Generalized Linear Model"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Model variables"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Selected variables"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Confidence interval"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Levels of covariates at mean +/- "
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Compare marginal means to:"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Use response scale"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Specify contrasts"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "P-value adjustment"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "Multivariate-t"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "None"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Dependent variable"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Covariates"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Factors"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Total Number of Trials"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Weights"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Family"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Bernoulli"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Binomial"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Gaussian"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Gamma"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Inverse Gaussian"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Poisson"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Link"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Logit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Probit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Cauchit"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Complementary LogLog"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Identity"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Log"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Sqrt"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Inverse"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "1/mu^2"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Analysis of Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Deviance Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Residuals vs. fitted"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Residuals vs. predictor"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Q-Q plot"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Pearson Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Quantile Residuals"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Other Plots"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Partial residual plots"
+msgstr ""
+
+msgctxt "GlmResidualAnalysisPlotsComponent|"
+msgid "Working responses vs. linear predictor"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Partial out"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Model"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Components"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Include intercept"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Statistics"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Model Fit"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Deviance goodness-of-fit test"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Pearson goodness-of-fit test"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Estimates"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Confidence intervals"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Diagnostics"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Show Outliers"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized deviance residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Studentized deviance residuals: top"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Multicollinearity"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Tolerance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "VIF"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Advanced Options"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Coefficients"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Offset"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Coefficients"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Coefficients"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Other"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Model"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Multinomial Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Ordinal Logistic Regression"
+msgstr ""
+
+msgctxt "GlmInputComponent|"
+msgid "Firth Logistic Regression"
+msgstr ""
+
+msgctxt "Description|"
+msgid "Bayesian Logistic Regression"
 msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
@@ -1477,7 +1359,7 @@ msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Descriptives"
-msgstr "Дескриптивна"
+msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model"
@@ -1653,6 +1535,120 @@ msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
+msgstr ""
+
+msgctxt "EmmComponent|"
+msgid "SD"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Effect size (Fisher's z)"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Residuals"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Statistics"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Casewise diagnostics"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Std. residual >"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Cook's dist. >"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "All"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "DFBETAS"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "DFFITS"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Cov ratio"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Leverage"
+msgstr ""
+
+msgctxt "OutlierComponent|"
+msgid "Mahalanobis"
+msgstr ""
+
+msgctxt "Correlation|"
+msgid "Covariance"
+msgstr ""
+
+msgctxt "GeneralizedLinearModel|"
+msgid "Standardized quantile residuals : top"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Model Summary"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "F change"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "AIC and BIC"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Tolerance and VIF"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Display"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Coefficients covariance matrix"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Multicollinearity diagnostics"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Diagnostic Plots"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Independent - predicted plot"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include interactions"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Use logit scale"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid "Linearity test"
+msgstr ""
+
+msgctxt "CorrelationBayesian|"
+msgid ""
+"Compute a test for the linearity of the relationship between the two "
+"variables by comparing a linear model to a quadratic model."
 msgstr ""
 
 msgctxt "ExportBayesian|"
