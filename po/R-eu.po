@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.0\n"
 "POT-Creation-Date: 2025-08-30 02:59\n"
-"PO-Revision-Date: 2025-09-23 14:01+0000\n"
-"Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
+"PO-Revision-Date: 2025-10-01 11:02+0000\n"
+"Last-Translator: Ángel Prieto <angel.prieto.fi@gmail.com>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/eu/>\n"
 "Language: eu\n"
@@ -31,7 +31,7 @@ msgid "Bayes Factor Robustness Check"
 msgstr "Bayes faktorearen sendotasun egiaztapena"
 
 msgid "Sequential Analysis"
-msgstr "Analisi Sekuentziala"
+msgstr "Analisi sekuentziala"
 
 msgid "Bayesian Pearson Correlations"
 msgstr "Bayesiar Pearson korrelazioak"
@@ -283,7 +283,7 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr "Konfiantza-tarteak %i bootstrap errepikapenetan oinarrituta."
 
 msgid "p"
-msgstr "p"
+msgstr "or"
 
 msgid "VS-MPR"
 msgstr "VS-MPR"
@@ -413,7 +413,7 @@ msgid "Prior"
 msgstr "Aurrekoa"
 
 msgid "Posterior"
-msgstr "Ondorengoa"
+msgstr "Atzekoa"
 
 msgid "%s%% CI:"
 msgstr "%s%% KT:"
@@ -512,7 +512,7 @@ msgstr ""
 "izatea eskatzen dute."
 
 msgid "Model Summary"
-msgstr "Ereduaren Laburpena"
+msgstr "Modeloaren laburpena"
 
 msgid "Model Summary - %s"
 msgstr "Ereduaren laburpena - %s"
@@ -530,7 +530,7 @@ msgid "BIC"
 msgstr "BIC"
 
 msgid "df"
-msgstr "ag"
+msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Eredu nuluak parametro gogaikarriak????? ditu: %s."
@@ -539,7 +539,7 @@ msgid "Model Fit"
 msgstr "Ereduaren doikuntza"
 
 msgid "Statistic"
-msgstr "Estatistikoa"
+msgstr "Estatistika"
 
 msgid "Coefficients"
 msgstr "Koefizienteak"
@@ -548,7 +548,7 @@ msgid "Estimate"
 msgstr "Estimazioa"
 
 msgid "Standard Error"
-msgstr "Errore Estandarra"
+msgstr "Errore estandarra"
 
 msgid "Lower Bound"
 msgstr "Beheko muga"
@@ -566,7 +566,7 @@ msgid "%1$s levels: %2$s. Linear predictors: %3$s."
 msgstr "%1$s mailak: %2$s. Aurreikusle linealak: %3$s."
 
 msgid "Diagnostics"
-msgstr "Diagnosiak"
+msgstr "Diagnostikoak"
 
 msgid "Residuals vs. Fitted Plots"
 msgstr "Hondakinak vs. Egokitutako grafikoak"
@@ -620,19 +620,19 @@ msgid "Estimated Marginal Means and Contrast Analysis"
 msgstr "Kalkulatutako Batez besteko Marjinalak eta Kontraste Analisia"
 
 msgid "Estimated Marginal Means"
-msgstr "Estimatutako Marjina Batez bestekoak"
+msgstr "Kalkulatutako batez besteko marjinalak"
 
 msgid "SE"
-msgstr "EE"
+msgstr "SE"
 
 msgid "Lower"
-msgstr "Behekoa"
+msgstr "Beheko"
 
 msgid "%s%% CI"
-msgstr "%s%% KT"
+msgstr "%s%% CI"
 
 msgid "Upper"
-msgstr "Goikoa"
+msgstr "Goiko"
 
 msgid "t"
 msgstr "t"
@@ -711,7 +711,7 @@ msgid "df2"
 msgstr "ag2"
 
 msgid "Autocorrelation"
-msgstr "Autokorrelazio"
+msgstr "Autokorrelazioa"
 
 msgid "Durbin-Watson"
 msgstr "Durbin-Watson"
@@ -826,16 +826,16 @@ msgid "Residuals Statistics"
 msgstr "Hondarren Estatistikoak"
 
 msgid "Minimum"
-msgstr "Minimoa"
+msgstr "Gutxienekoa"
 
 msgid "Maximum"
-msgstr "Maximoa"
+msgstr "Gehienezko"
 
 msgid "Mean"
 msgstr "Batez bestekoa"
 
 msgid "SD"
-msgstr "DE"
+msgstr "SD"
 
 msgid "N"
 msgstr "N"
@@ -886,7 +886,7 @@ msgid "Residuals %s"
 msgstr "%s hondarrak"
 
 msgid "Descriptives"
-msgstr "Deskriptiboak"
+msgstr "Deskribapenak"
 
 msgid "M%s"
 msgstr "M%s"
@@ -967,7 +967,7 @@ msgid "Log(BF<sub>10</sub>)"
 msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
-msgstr "Ereduak"
+msgstr "Modeloak"
 
 msgid "P(M)"
 msgstr "P(M)"
@@ -1038,7 +1038,7 @@ msgid "Predictions under BMA"
 msgstr "BMA peko iragarpenak"
 
 msgid "Model Probabilities"
-msgstr "Ereduaren Probabilitateak"
+msgstr "Ereduaren probabilitateak"
 
 msgid "Cumulative Probability"
 msgstr "Probabilitate Metatua"
@@ -1126,7 +1126,7 @@ msgid "Confusion matrix"
 msgstr "Nahasmen matrizea"
 
 msgid "Observed"
-msgstr "Behatuta"
+msgstr "Behatuak"
 
 msgid "%% Correct"
 msgstr "%% Zuzena"
@@ -1176,7 +1176,7 @@ msgid "Predicted Probability"
 msgstr "Aurreikusitako Probabilitatea"
 
 msgid "Squared Pearson Residual"
-msgstr "Pearson Hondar Karratua"
+msgstr "Pearsonen hondar karratua"
 
 msgid "False positive rate"
 msgstr "Positibo faltsu ratioa"
@@ -1219,9 +1219,8 @@ msgstr "Maila"
 msgid "Covariate Descriptives"
 msgstr "Kobarianteen Deskriptiboak"
 
-#, fuzzy
 msgid "Intercept"
-msgstr "Ebakidura"
+msgstr "Atzeman"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
