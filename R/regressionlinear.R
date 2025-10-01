@@ -360,7 +360,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(model)) {
     .linregAddFootnotePredictorsNeverIncluded(coeffTable, model, options)
-    .linregAddFootnoteFactors(coeffTable, options[["factors"]], options[["collinearityDiagnostic"]])
+    .linregAddFootnoteFactors(coeffTable, options[["factors"]], options[["collinearityDiagnostic"]], options[["quadraticTerms"]])
     .linregFillCoefficientsTable(coeffTable, model, dataset, options)
   }
 
@@ -382,10 +382,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 }
 
-.linregAddFootnoteFactors <- function(table, factors, collinearityDiagnostics = FALSE) {
-  if (length(factors) > 0L) {
+.linregAddFootnoteFactors <- function(table, factors, collinearityDiagnostics = FALSE, quadraticTerms = FALSE) {
+  if (length(factors) > 0L || quadraticTerms) {
     colNames <- "standCoeff"
-    message <- gettext("Standardized coefficients can only be computed for continuous predictors.")
+    if (quadraticTerms)
+      message <- gettext("Standardized coefficients can only be computed for continuous, linear predictors.")
+    else
+      message <- gettext("Standardized coefficients can only be computed for continuous predictors.")
     table$addFootnote(colNames = colNames, message = message)
   }
 }
@@ -1415,8 +1418,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregGetStandardizedCoefficient <- function(dataset, dependent, predictor, unstandCoeff) {
   sdDependent <- sd(dataset[[dependent]])
+
   if (.linregIsInteraction(predictor))
     sdIndependent <- sd(.linregMakeCombinedVariableFromInteraction(predictor, dataset))
+  # else if (grepl(pattern = "I\\(([^)]+)\\^2\\)", predictor))
+  #   # if quadratic term, calculate sd of squared variable
+  #   # this is probably not conventional so for now we omit this calculation and don't present std b's
+  #   sdIndependent <- sd(dataset[[gsub("\u00B2", "", .linregPrettyQuadraticName(predictor))]]^2)
   else
     sdIndependent <- sd(dataset[[predictor]])
 
