@@ -42,6 +42,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (options$coefficientBootstrap && is.null(modelContainer[["bootstrapCoeffTable"]]))
     .linregCreateBootstrapCoefficientsTable(modelContainer, model, dataset, options, position = 4)
 
+  if (options$equationTable && is.null(modelContainer[["equationTable"]]))
+    .linregCreateEquationTable(modelContainer, model, dataset, options, position = 6)
+
   if (options$partAndPartialCorrelation && is.null(modelContainer[["partialCorTable"]]))
     .linregCreatePartialCorrelationsTable(modelContainer, model, dataset, options, position = 6)
 
@@ -191,7 +194,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     modelContainer <- createJaspContainer()
     modelContainer$dependOn(c("dependent", "method", "covariates", "factors", "weights", "modelTerms", "steppingMethodCriteriaType",
                               "steppingMethodCriteriaPEntry", "steppingMethodCriteriaPRemoval", "steppingMethodCriteriaFEntry", "steppingMethodCriteriaFRemoval",
-                              "interceptTerm", "naAction"))
+                              "interceptTerm", "quadraticTerms", "naAction"))
     modelContainer$position <- position
     jaspResults[["modelContainer"]] <- modelContainer
   }
@@ -241,7 +244,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (options[["method"]] == "enter") {
     for (i in seq_along(options$modelTerms))
-      .linregAddPredictorsInModelFootnote(summaryTable, options[["modelTerms"]][[i]][["components"]], i)
+      .linregAddPredictorsInModelFootnote(summaryTable, options[["modelTerms"]][[i]][["components"]], i, options[["covariates"]], options[["quadraticTerms"]])
   }
 
   if (!is.null(model)) {
@@ -296,7 +299,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (options[["method"]] == "enter") {
     for (i in seq_along(options$modelTerms))
-      .linregAddPredictorsInModelFootnote(anovaTable, options[["modelTerms"]][[i]][["components"]], i)
+      .linregAddPredictorsInModelFootnote(anovaTable, options[["modelTerms"]][[i]][["components"]], i, options[["covariates"]], options[["quadraticTerms"]])
   }
 
   .linregAddVovkSellke(anovaTable, options$vovkSellke)
@@ -357,7 +360,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(model)) {
     .linregAddFootnotePredictorsNeverIncluded(coeffTable, model, options)
-    .linregAddFootnoteFactors(coeffTable, options[["factors"]], options[["collinearityDiagnostic"]])
+    .linregAddFootnoteFactors(coeffTable, options[["factors"]], options[["collinearityDiagnostic"]], options[["quadraticTerms"]])
     .linregFillCoefficientsTable(coeffTable, model, dataset, options)
   }
 
@@ -379,10 +382,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 }
 
-.linregAddFootnoteFactors <- function(table, factors, collinearityDiagnostics = FALSE) {
-  if (length(factors) > 0L) {
+.linregAddFootnoteFactors <- function(table, factors, collinearityDiagnostics = FALSE, quadraticTerms = FALSE) {
+  if (length(factors) > 0L || quadraticTerms) {
     colNames <- "standCoeff"
-    message <- gettext("Standardized coefficients can only be computed for continuous predictors.")
+    if (quadraticTerms)
+      message <- gettext("Standardized coefficients can only be computed for continuous, linear predictors.")
+    else
+      message <- gettext("Standardized coefficients can only be computed for continuous predictors.")
     table$addFootnote(colNames = colNames, message = message)
   }
 }
@@ -504,6 +510,44 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   return(cbind(meta, data))
 }
+
+.linregCreateEquationTable <- function(modelContainer, model, dataset, options, position = 6) {
+
+  equationTable <- createJaspTable(gettext("Regression Equations"))
+  equationTable$dependOn("equationTable")
+  equationTable$position <- position
+
+  equationTable$addColumnInfo(name = "model",   title = gettext("Model"),   type = "string", combine = TRUE)
+  equationTable$addColumnInfo(name = "formula",   title = gettext("Equation"),   type = "string")
+
+  if (!is.null(model)) {
+
+    for (i in seq_along(model)) {
+
+      coefs <- coef(model[[i]][["fit"]])
+      names(coefs) <- .linregMakePrettyNames(model[[i]][["fit"]])
+
+      coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " \u2013"),
+                           round(abs(coefs[-1]), .numDecimals),
+                           names(coefs)[-1],
+                           collapse = "", sep = " ")
+      .linregGetParametersAndLevels(model[[i]][["fit"]])
+      # Now add dependent name and intercept
+      filledFormula <- paste0(options[["dependent"]], " = ",
+                              round(coefs[1], .numDecimals),
+                              coefFormula)
+
+      equationTable$addRows(list(
+        model = model[[i]]$title,
+        formula = filledFormula
+      ))
+    }
+  }
+
+  modelContainer[["equationTable"]] <- equationTable
+
+}
+
 
 .linregCreatePartialCorrelationsTable <- function(modelContainer, model, dataset, options, position) {
   partPartialTable <- createJaspTable(gettext("Part And Partial Correlations"))
@@ -878,7 +922,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   for (i in seq_along(modelTerms)) {
     thisModelTerms <- .linregGetPredictors(modelTerms[[i]][["components"]])
-    formula <- .linregGetFormula(dependent, thisModelTerms, options$interceptTerm)
+    formula <- .linregGetFormula(dependent, thisModelTerms, options$interceptTerm, options$covariates, options$quadraticTerms)
     if (!is.null(formula)) {
       fit <- stats::lm(formula, data = dataset, weights = weights, x = TRUE)
       model[[length(model) + 1]] <- list(fit = fit, predictors = thisModelTerms, number = i)
@@ -1374,8 +1418,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregGetStandardizedCoefficient <- function(dataset, dependent, predictor, unstandCoeff) {
   sdDependent <- sd(dataset[[dependent]])
+
   if (.linregIsInteraction(predictor))
     sdIndependent <- sd(.linregMakeCombinedVariableFromInteraction(predictor, dataset))
+  # else if (grepl(pattern = "I\\(([^)]+)\\^2\\)", predictor))
+  #   # if quadratic term, calculate sd of squared variable
+  #   # this is probably not conventional so for now we omit this calculation and don't present std b's
+  #   sdIndependent <- sd(dataset[[gsub("\u00B2", "", .linregPrettyQuadraticName(predictor))]]^2)
   else
     sdIndependent <- sd(dataset[[predictor]])
 
@@ -1776,17 +1825,30 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(FALSE)
 }
 
-.linregGetFormula <- function(dependent, predictors = NULL, includeConstant) {
+.linregGetFormula <- function(dependent, predictors = NULL, includeConstant, covariates = NULL, quadraticTerms = FALSE) {
   if (is.null(predictors) && includeConstant == FALSE)
     return(NULL)
     # stop(gettext("We need at least one predictor, or an intercept to make a formula"))
 
-  if (length(predictors) == 0)
+  if (length(predictors) == 0) {
     formula <- paste(dependent, "~", "1")
-  else if (includeConstant)
-    formula <- paste(dependent, "~", paste(predictors, collapse = "+"))
-  else
-    formula <- paste(dependent, "~", paste(predictors, collapse = "+"), "-1")
+
+  } else {
+
+    if (quadraticTerms) {
+      # select only the model terms that are main effects and covariates
+      quadraticTerms <- predictors[predictors %in% covariates & !.linregIsInteraction(predictors)]
+      if (length(quadraticTerms) > 0) {
+        quadraticTerms <- paste0("I(", quadraticTerms, "^2)")
+        predictors <- c(predictors, quadraticTerms)
+      }
+    }
+
+    if (includeConstant)
+      formula <- paste(dependent, "~", paste(predictors, collapse = "+"))
+    else
+      formula <- paste(dependent, "~", paste(predictors, collapse = "+"), "-1")
+  }
 
   return(as.formula(formula, env = parent.frame(1)))
 }
@@ -1835,9 +1897,17 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 }
 
-.linregAddPredictorsInModelFootnote <- function(jaspTable, modelTerms, modelIndex) {
+.linregAddPredictorsInModelFootnote <- function(jaspTable, modelTerms, modelIndex, covariates, quadraticTerms) {
   if (length(modelTerms) > 0) {
     predictorsInModel <- .linregGetPredictors(modelTerms)
+
+    if (quadraticTerms) {
+      # select only the model terms that are main effects and covariates
+      quadraticTerms <- predictorsInModel[predictorsInModel %in% covariates & !.linregIsInteraction(predictorsInModel)]
+      quadraticTerms <- paste0(quadraticTerms, "\u00B2")
+      predictorsInModel <- c(predictorsInModel, quadraticTerms)
+    }
+
     modelName <- gettextf("M%s", intToUtf8(0x2080 + modelIndex - 1, multiple = FALSE))
     jaspTable$addFootnote(message = gettextf("%1$s includes %2$s", modelName, paste0(predictorsInModel, collapse = ", ")))
   }
@@ -1922,6 +1992,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   regexAnyPredictor <- paste(orderedPredictors, collapse = "|")
 
   lvls <- gsub(regexAnyPredictor, "", model)
+  lvls <- gsub("I\\(\\^2\\)", "", lvls) # remove squared syntax from lvls
 
   levelsRaw   <- strsplit(lvls, ":")
   levelsRaw[lengths(levelsRaw) == 0] <- list("")
@@ -1940,6 +2011,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   allPredsRegex <- paste0("^(", regexAnyPredictor, ").*")
   paramsRaw <- lapply(splitRnms, gsub, pattern = allPredsRegex, replacement = "\\1")
   paramsClean <- unlist(lapply(paramsRaw, paste, collapse = jaspBase::interactionSymbol), use.names = FALSE)
+
   return(list(
     paramsClean = paramsClean,
     levelsClean = levelsClean,
@@ -1976,12 +2048,27 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
     ans <- character(length(params))
     for (i in seq_along(params)) {
-      ans[i] <- if (is.na(levels[i]) || levels[i] == "") params[i] else paste0(params[i], " (", levels[i], ")")
+      ans[i] <- if (is.na(levels[i]) || levels[i] == "") .linregPrettyQuadraticName(params[i]) else paste0(params[i], " (", levels[i], ")")
     }
     title[j] <- paste(ans, collapse = " \u2009\u273b\u2009 ")
   }
   return(title)
 }
+
+.linregPrettyQuadraticName <- function(coefName) {
+
+  if (grepl(pattern = "I\\(([^)]+)\\^2\\)", coefName)) {
+    # remove "I(" and the "^2)" parts
+    cleanName <- gsub("I\\(([^)]+)\\^2\\)", "\\1", coefName)
+    # remove the leftover " (I(^2))"
+    cleanName <- gsub("\\s*\\(I\\(\\^2\\)\\)", "", cleanName)
+    coefName <- paste0(cleanName, "\u00B2")
+  }
+
+  return(coefName)
+}
+
+
 
 .linregRemoveFactors <- function(fit, predictors) {
 

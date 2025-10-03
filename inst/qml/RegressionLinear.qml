@@ -82,6 +82,9 @@ Form
 		}
 
 		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); info: qsTr("Include the intercept in the regression model.") ; checked: true }
+
+		CheckBox { name: "quadraticTerms"; label: qsTr("Include quadratic terms"); info: qsTr("Include quadratic terms for the covariates in each model.") }
+
 	}
 
 	Section
@@ -92,7 +95,7 @@ Form
 		Group
 		{
 			title: qsTr("Model Summary")
-			CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")	; info: qsTr("Change in R squared between the different models, with corresponding significance test.")			}
+			CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")	; info: qsTr("Change in R squared between the different models, with corresponding significance test."); checked: true}
 			CheckBox { name: "fChange";						label: qsTr("F change")	; info: qsTr("Change in F-statistic between the different models, with corresponding significance test.")			}
 			CheckBox { name: "modelAICBIC";					label: qsTr("AIC and BIC")	; info: qsTr("Displays Akaike Information Criterion and Bayesian Information Criterion.")			}
 			CheckBox { name: "residualDurbinWatson";		label: qsTr("Durbin-Watson"); info: qsTr("Durbin-Watson statistic to test the autocorrelation of the residuals.")	}
@@ -145,7 +148,7 @@ Form
 			CheckBox { name: "partAndPartialCorrelation";	label: qsTr("Part and partial correlations"); info: qsTr("Semipartial and partial correlations.")	}
 			CheckBox { name: "covarianceMatrix"; label: qsTr("Coefficients covariance matrix"); info: qsTr("Displays the covariance matrix of the predictor variables, per model.") }
 			CheckBox { name: "collinearityDiagnostic";		label: qsTr("Collinearity diagnostics")	; info: qsTr("Collinearity statistics, eigenvalues, condition indices, and variance proportions.")	}
-
+			CheckBox { name: "equationTable";		label: qsTr("Regression equation")	; info: qsTr("Displays regression equations for each model.")	}
 		}
 
 		
