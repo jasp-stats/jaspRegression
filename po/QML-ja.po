@@ -3485,3 +3485,19 @@ msgid ""
 "of models. Sampling stops when min(number of models, MCMC iterations) is "
 "reached."
 msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Include quadratic terms"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Include quadratic terms for the covariates in each model."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Regression equation"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Displays regression equations for each model."
+msgstr ""

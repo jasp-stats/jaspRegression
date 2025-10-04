@@ -3925,3 +3925,19 @@ msgstr ""
 "amostras MCMC a serem extraídas. Definir o valor como 0 implica que o número "
 "de iterações MCMC é igual a 10 vezes o número de modelos. A amostragem para "
 "quando min(número de modelos, iterações MCMC) é atingido."
+
+msgctxt "RegressionLinear|"
+msgid "Include quadratic terms"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Include quadratic terms for the covariates in each model."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Regression equation"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Displays regression equations for each model."
+msgstr ""
