@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2025-08-30 02:59\n"
-"PO-Revision-Date: 2025-06-19 03:01+0000\n"
+"PO-Revision-Date: 2025-10-05 21:43+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12.1\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -139,7 +139,6 @@ msgstr "無法繪圖：%s"
 msgid "Q-Q Plots"
 msgstr "常態Q-Q 圖"
 
-#, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
 msgstr "常態 Q-Q 圖：標準化 %1s 殘差"
 
@@ -605,7 +604,6 @@ msgstr "標準化 %1s 殘差"
 msgid "%1s Residuals vs. Predictor Plots"
 msgstr "%1s 殘差與預測變數圖"
 
-#, fuzzy
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "標準化 %1s 殘差與 %2s"
 
@@ -906,7 +904,7 @@ msgid "Partial plots are not supported for factors"
 msgstr ""
 
 msgid "Residuals %s"
-msgstr ""
+msgstr "殘差 %s"
 
 msgid "Descriptives"
 msgstr "描述性統計"
