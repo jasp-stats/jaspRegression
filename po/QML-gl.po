@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-10-04 22:15+0000\n"
+"PO-Revision-Date: 2025-10-05 21:43+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/gl/>\n"
@@ -3930,16 +3930,16 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Include quadratic terms"
-msgstr ""
+msgstr "Incluír termos cuadráticos"
 
 msgctxt "RegressionLinear|"
 msgid "Include quadratic terms for the covariates in each model."
-msgstr ""
+msgstr "Incluír termos cuadráticos para as covariantes en cada modelo."
 
 msgctxt "RegressionLinear|"
 msgid "Regression equation"
-msgstr ""
+msgstr "Ecuación de regresión"
 
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
-msgstr ""
+msgstr "Presenta a ecuación de regresión para cada modelo."
