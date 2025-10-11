@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-10-06 22:23+0000\n"
+"Last-Translator: Hamza Yalçin <h.yalcin08@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/tr/>\n"
+"Language: tr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.14-dev\n"
 "X-Language: tr\n"
 "X-Qt-Contexts: true\n"
 
@@ -25,19 +31,19 @@ msgstr "Doğrusal Regresyon"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr "Lojistik regresyon"
+msgstr "Lojistik Regresyon"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr "Bayes"
+msgstr "Bayesçi"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr "Bayes Korelasyonu"
+msgstr "Bayesçi Korelasyon"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr "Bayes Doğrusal(Lineer) Regresyonu"
+msgstr "Bayesçi Doğrusal Regresyon"
 
 msgctxt "Correlation|"
 msgid "Variables"
@@ -61,15 +67,15 @@ msgstr "Kendall'ın tau-b"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
-msgstr "Ekstra seçenekler"
+msgstr "Ek Seçenekler"
 
 msgctxt "Correlation|"
 msgid "Display pairwise"
-msgstr ""
+msgstr "Çiftli göster"
 
 msgctxt "Correlation|"
 msgid "Report significance"
-msgstr "Anlamlılık raporla"
+msgstr "Anlamlılığı raporla"
 
 msgctxt "Correlation|"
 msgid "Flag significant correlations"
@@ -85,15 +91,15 @@ msgstr "Aralık"
 
 msgctxt "Correlation|"
 msgid "From"
-msgstr "İtibaren"
+msgstr "Şuradan:"
 
 msgctxt "Correlation|"
 msgid "bootstraps"
-msgstr ""
+msgstr "önyüklemeler"
 
 msgctxt "Correlation|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr ""
+msgstr "Vovk-Sellke maksimum p-oranı"
 
 msgctxt "Correlation|"
 msgid "Sample size"
@@ -105,15 +111,15 @@ msgstr "Alt. Hipotez"
 
 msgctxt "Correlation|"
 msgid "Correlated"
-msgstr "ilişkili"
+msgstr "İlişkili"
 
 msgctxt "Correlation|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Pozitif ilişkili"
 
 msgctxt "Correlation|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Negatif ilişkili"
 
 msgctxt "Correlation|"
 msgid "Plots"
@@ -121,11 +127,11 @@ msgstr "Grafikler"
 
 msgctxt "Correlation|"
 msgid "Scatter plots"
-msgstr "Serpilme diagramı"
+msgstr "Serpilme Grafiği"
 
 msgctxt "Correlation|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "Değişkenler için yoğunluklar"
 
 msgctxt "Correlation|"
 msgid "Statistics"
@@ -133,11 +139,11 @@ msgstr "İstatistikler"
 
 msgctxt "Correlation|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "Tahmin aralıkları"
 
 msgctxt "Correlation|"
 msgid "Heatmap"
-msgstr ""
+msgstr "Isı Haritası"
 
 msgctxt "Correlation|"
 msgid "Assumption Checks"
@@ -145,31 +151,31 @@ msgstr "Varsayım Kontrolleri"
 
 msgctxt "Correlation|"
 msgid "Multivariate Normality"
-msgstr "Çok değişkenli normallik"
+msgstr "Çok Değişkenli Normallik"
 
 msgctxt "Correlation|"
 msgid "Shapiro"
-msgstr ""
+msgstr "Shapiro"
 
 msgctxt "Correlation|"
 msgid "Royston"
-msgstr ""
+msgstr "Royston"
 
 msgctxt "Correlation|"
 msgid "Mardia"
-msgstr ""
+msgstr "Mardia"
 
 msgctxt "Correlation|"
 msgid "Energy"
-msgstr ""
+msgstr "Enerji"
 
 msgctxt "Correlation|"
 msgid "Pairwise Normality"
-msgstr ""
+msgstr "Çiftli Normallik"
 
 msgctxt "Correlation|"
 msgid "Options"
-msgstr ""
+msgstr "Seçenekler"
 
 msgctxt "Correlation|"
 msgid "Missing Values"
@@ -177,154 +183,147 @@ msgstr "Eksik Değerler"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Gözlemleri çiftli dışla"
 
 msgctxt "Correlation|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Gözlemleri liste bazında dışla"
 
 msgctxt "CorrelationBayesian|"
 msgid "Population Correlation Coefficient"
-msgstr ""
+msgstr "Evren Korelasyon Katsayısı"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
-msgstr ""
+msgstr "Pearson'un rho"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
 msgstr "Spearman'ın rho"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
 msgstr "Kendall'ın tau-b"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
-msgstr "Ekstra seçenekler"
+msgstr "Ek Seçenekler"
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr ""
+msgstr "Çiftli tablo göster"
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
-msgstr "Bayes faktörlerini raporla"
+msgstr "Bayes çarpanlarını raporla"
 
 msgctxt "CorrelationBayesian|"
 msgid "Flag supported correlations"
-msgstr ""
+msgstr "Desteklenen korelasyonları işaretle"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Sample size"
 msgstr "Örneklem büyüklüğü"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posterior median"
-msgstr ""
+msgstr "Sonçul medyan"
 
 msgctxt "CorrelationBayesian|"
 msgid "Credible intervals"
 msgstr "Güvenilir aralıklar"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Interval"
 msgstr "Aralık"
 
 msgctxt "CorrelationBayesian|"
 msgid "Alt. Hypothesis"
-msgstr "Alternatif Hipotez"
+msgstr "Alt. Hipotez"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Correlated"
-msgstr "ilişkili"
+msgstr "İlişkili"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated positively"
-msgstr ""
+msgstr "Pozitif ilişkili"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlated negatively"
-msgstr ""
+msgstr "Negatif ilişkili"
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Plots"
 msgstr "Grafikler"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation matrix"
-msgstr ""
+msgstr "Korelasyon matrisi"
 
 msgctxt "CorrelationBayesian|"
 msgid "Densities for variables"
-msgstr ""
+msgstr "Değişkenler için yoğunluklar"
 
 msgctxt "CorrelationBayesian|"
 msgid "Posteriors under H₁"
-msgstr ""
+msgstr "H₁ altındaki sonçul dağılımlar"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "Önsel"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "Genişletilmiş beta önsel dağılım genişliği"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plot Individual Pairs"
-msgstr ""
+msgstr "Bireysel Çiftleri Çiz"
 
 msgctxt "CorrelationBayesian|"
 msgid "Correlation coefficient to plot"
-msgstr ""
+msgstr "Çizilecek korelasyon katsayısı"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau"
-msgstr ""
+msgstr "Kendall'ın tau"
 
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
-msgstr ""
+msgstr "Serpilme Grafiği"
 
 msgctxt "CorrelationBayesian|"
 msgid "Robustness check"
-msgstr ""
+msgstr "Sağlamlık kontrolü"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior and posterior"
-msgstr ""
+msgstr "Önsel ve sonçul"
 
 msgctxt "CorrelationBayesian|"
 msgid "Estimation info"
-msgstr ""
+msgstr "Kestirim bilgisi"
 
 msgctxt "CorrelationBayesian|"
 msgid "Testing info"
-msgstr ""
+msgstr "Test bilgisi"
 
 msgctxt "CorrelationBayesian|"
 msgid "Bayes factor robustness check"
-msgstr "Bayes faktörü sağlamlık kontrolü"
+msgstr "Bayes çarpanı sağlamlık kontrolü"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional info"
-msgstr ""
+msgstr "Ek bilgi"
 
 msgctxt "CorrelationBayesian|"
 msgid "Sequential analysis"
-msgstr ""
+msgstr "Sıralı analiz"
 
 msgctxt "CorrelationBayesian|"
 msgid "Options"
-msgstr ""
+msgstr "Seçenekler"
 
 msgctxt "CorrelationBayesian|"
 msgid "Missing Values"
@@ -332,11 +331,11 @@ msgstr "Eksik Değerler"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Gözlemleri çiftli dışla"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Gözlemleri liste bazında dışla"
 
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
@@ -344,114 +343,111 @@ msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLinear|"
 msgid "Method"
-msgstr ""
+msgstr "Yöntem"
 
 msgctxt "RegressionLinear|"
 msgid "Enter"
-msgstr ""
+msgstr "Tek Seferde"
 
 msgctxt "RegressionLinear|"
 msgid "Backward"
-msgstr ""
+msgstr "Geriye Doğru"
 
 msgctxt "RegressionLinear|"
 msgid "Forward"
-msgstr ""
+msgstr "İleriye Doğru"
 
 msgctxt "RegressionLinear|"
 msgid "Stepwise"
-msgstr ""
+msgstr "Adımsal"
 
 msgctxt "RegressionLinear|"
 msgid "Covariates"
-msgstr "Ortak Değişkenler"
+msgstr "Kovaryatlar"
 
 msgctxt "RegressionLinear|"
 msgid "Factors"
-msgstr ""
+msgstr "Faktörler"
 
 msgctxt "RegressionLinear|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "WLS Ağırlıkları (isteğe bağlı)"
 
 msgctxt "RegressionLinear|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLinear|"
 msgid "Include intercept"
-msgstr ""
+msgstr "Sabit terimi dahil et"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Statistics"
 msgstr "İstatistikler"
 
 msgctxt "RegressionLinear|"
 msgid "Estimates"
-msgstr ""
+msgstr "Kestirimler"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "From"
-msgstr "İtibaren"
+msgstr "Şuradan:"
 
 msgctxt "RegressionLinear|"
 msgid "bootstraps"
-msgstr ""
+msgstr "önyüklemeler"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Confidence intervals"
 msgstr "Güven aralıkları"
 
 msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr ""
+msgstr "Vovk-Sellke maksimum p-oranı"
 
 msgctxt "RegressionLinear|"
 msgid "Model fit"
-msgstr ""
+msgstr "Model uyumu"
 
 msgctxt "RegressionLinear|"
 msgid "R squared change"
-msgstr ""
+msgstr "R kare değişimi"
 
 msgctxt "RegressionLinear|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Betimleyiciler"
 
 msgctxt "RegressionLinear|"
 msgid "Part and partial correlations"
-msgstr ""
+msgstr "Kısmi ve yarı kısmi korelasyonlar"
 
 msgctxt "RegressionLinear|"
 msgid "Collinearity diagnostics"
-msgstr ""
+msgstr "Eşdoğrusallık tanıları"
 
 msgctxt "RegressionLinear|"
 msgid "Durbin-Watson"
-msgstr ""
+msgstr "Durbin-Watson"
 
 msgctxt "RegressionLinear|"
 msgid "Method Specification"
-msgstr ""
+msgstr "Yöntem Belirtimi"
 
 msgctxt "RegressionLinear|"
 msgid "Stepping Method Criteria"
-msgstr ""
+msgstr "Adımsal Yöntem Kriterleri"
 
 msgctxt "RegressionLinear|"
 msgid "Use p value"
-msgstr ""
+msgstr "p değerini kullan"
 
 msgctxt "RegressionLinear|"
 msgid "Entry"
-msgstr ""
+msgstr "Giriş"
 
 msgctxt "RegressionLinear|"
 msgid "Removal"
-msgstr ""
+msgstr "Çıkarma"
 
 msgctxt "RegressionLinear|"
 msgid "Use F value"
@@ -463,101 +459,99 @@ msgstr "Eksik Değerler"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases listwise"
-msgstr ""
+msgstr "Gözlemleri liste bazında dışla"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases pairwise"
-msgstr ""
+msgstr "Gözlemleri çiftli dışla"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Plots"
 msgstr "Grafikler"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals Plots"
-msgstr ""
+msgstr "Artık Grafikleri"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. dependent"
-msgstr ""
+msgstr "Artıklar - Bağımlı"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. covariates"
-msgstr ""
+msgstr "Artıklar - Kovaryatlar"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals vs. predicted"
-msgstr ""
+msgstr "Artıklar - Tahmin Edilen"
 
 msgctxt "RegressionLinear|"
 msgid "Standardized residuals"
-msgstr ""
+msgstr "Standartlaştırılmış artıklar"
 
 msgctxt "RegressionLinear|"
 msgid "Q-Q plot standardized residuals"
-msgstr ""
+msgstr "Q-Q grafiği standartlaştırılmış artıklar"
 
 msgctxt "RegressionLinear|"
 msgid "Partial plots"
-msgstr ""
+msgstr "Kısmi Grafikler"
 
 msgctxt "RegressionLinear|"
 msgid "Prediction intervals"
-msgstr ""
+msgstr "Tahmin aralıkları"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
 msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
-msgstr "Ortak Değişkenler"
+msgstr "Kovaryatlar"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "WLS Ağırlıkları (isteğe bağlı)"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Output"
-msgstr ""
+msgstr "Çıktı"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Posterior summary"
-msgstr ""
+msgstr "Sonçul özet"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
-msgstr ""
+msgstr "Tüm modeller arasında"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across matched models"
-msgstr ""
+msgstr "Eşleşen modeller arasında"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Plot of coefficients"
-msgstr ""
+msgstr "Katsayıların çizimi"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Omit intercept"
-msgstr ""
+msgstr "Sabit terimi atla"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Best model"
-msgstr ""
+msgstr "En iyi model"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Most complex model"
-msgstr ""
+msgstr "En karmaşık model"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Median model"
-msgstr ""
+msgstr "Medyan model"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model averaged"
-msgstr ""
+msgstr "Ortalama model"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Credible interval"
@@ -565,476 +559,467 @@ msgstr "Güvenilir aralık"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Order"
-msgstr ""
+msgstr "Sıra"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to best model"
-msgstr ""
+msgstr "En iyi model ile karşılaştır"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to null model"
-msgstr ""
+msgstr "Boş model ile karşılaştır"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Limit No. Models Shown"
-msgstr ""
+msgstr "Gösterilen Model Sayısını Sınırla"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Yes, show best"
-msgstr ""
+msgstr "Evet, en iyiyi göster"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Data"
-msgstr ""
+msgstr "Veri"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Betimleyiciler"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Components"
-msgstr ""
+msgstr "Bileşenler"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Plots"
 msgstr "Grafikler"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Katsayılar"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Inclusion probabilities"
-msgstr ""
+msgstr "Dahil etme olasılıkları"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Marginal posterior distributions"
-msgstr ""
+msgstr "Marjinal sonçul dağılımlar"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Models"
-msgstr ""
+msgstr "Modeller"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Log posterior odds"
-msgstr ""
+msgstr "Log sonçul olasılık oranı"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Log(P(data|M)) vs. model size"
-msgstr ""
+msgstr "Log(P(veri|M)) - Model boyutu"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model probabilities"
-msgstr ""
+msgstr "Model olasılıkları"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals"
-msgstr ""
+msgstr "Artıklar"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "Artıklar - Uydurulan"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Q-Q plot of model averaged residuals"
-msgstr ""
+msgstr "Ortalama model artıklarının Q-Q grafiği"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "Gelişmiş Seçenekler"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "Önsel"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "EB-global"
-msgstr ""
+msgstr "EB-küresel"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "EB-local"
-msgstr ""
+msgstr "EB-yerel"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "g-prior"
-msgstr ""
+msgstr "g-önsel"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g"
-msgstr ""
+msgstr "Hiper-g"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g-Laplace"
-msgstr ""
+msgstr "Hiper-g-Laplace"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g-n"
-msgstr ""
+msgstr "Hiper-g-n"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "alpha"
-msgstr ""
+msgstr "alfa"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "JZS"
-msgstr ""
+msgstr "JZS"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "r scale"
-msgstr ""
+msgstr "r ölçeği"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model Prior"
-msgstr ""
+msgstr "Model Önseli"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Beta binomial"
-msgstr ""
+msgstr "Beta binom"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "a"
-msgstr ""
+msgstr "a"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "b"
-msgstr ""
+msgstr "b"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Uniform"
-msgstr ""
+msgstr "Tekdüze"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Wilson"
-msgstr ""
+msgstr "Wilson"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "λ"
-msgstr ""
+msgstr "λ"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Castillo"
-msgstr ""
+msgstr "Castillo"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "u"
-msgstr ""
+msgstr "u"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Sampling Method"
-msgstr ""
+msgstr "Örnekleme Yöntemi"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "BAS"
-msgstr ""
+msgstr "BAS"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "No. models"
-msgstr ""
+msgstr "Model sayısı"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "MCMC"
-msgstr ""
+msgstr "MCMC"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "No. samples"
-msgstr "Örnek yok"
+msgstr "Örnek sayısı"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Numerical Accuracy"
-msgstr ""
+msgstr "Sayısal Doğruluk"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "No. samples for credible interval"
-msgstr "Güvenilir aralık için örnek yok"
+msgstr "Güvenilir aralık için örnek sayısı"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
 msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLogistic|"
 msgid "Method"
-msgstr ""
+msgstr "Yöntem"
 
 msgctxt "RegressionLogistic|"
 msgid "Enter"
-msgstr ""
+msgstr "Tek Seferde"
 
 msgctxt "RegressionLogistic|"
 msgid "Backward"
-msgstr ""
+msgstr "Geriye Doğru"
 
 msgctxt "RegressionLogistic|"
 msgid "Forward"
-msgstr ""
+msgstr "İleriye Doğru"
 
 msgctxt "RegressionLogistic|"
 msgid "Stepwise"
-msgstr ""
+msgstr "Adımsal"
 
 msgctxt "RegressionLogistic|"
 msgid "Covariates"
-msgstr "Ortak Değişkenler"
+msgstr "Kovaryatlar"
 
 msgctxt "RegressionLogistic|"
 msgid "Factors"
-msgstr ""
+msgstr "Faktörler"
 
 msgctxt "RegressionLogistic|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "WLS Ağırlıkları (isteğe bağlı)"
 
 msgctxt "RegressionLogistic|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLogistic|"
 msgid "Include intercept"
-msgstr ""
+msgstr "Sabit terimi dahil et"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Statistics"
 msgstr "İstatistikler"
 
 msgctxt "RegressionLogistic|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Betimleyiciler"
 
 msgctxt "RegressionLogistic|"
 msgid "Factor descriptives"
-msgstr ""
+msgstr "Faktör betimleyicileri"
 
 msgctxt "RegressionLogistic|"
 msgid "Performance Diagnostics"
-msgstr ""
+msgstr "Performans Tanıları"
 
 msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
-msgstr ""
+msgstr "Karmaşıklık Matrisi"
 
 msgctxt "RegressionLogistic|"
 msgid "Estimates"
-msgstr ""
+msgstr "Kestirimler"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "From"
-msgstr "İtibaren"
+msgstr "Şuradan:"
 
 msgctxt "RegressionLogistic|"
 msgid "bootstraps"
-msgstr ""
+msgstr "önyüklemeler"
 
 msgctxt "RegressionLogistic|"
 msgid "Standardized coefficients"
-msgstr ""
+msgstr "Standartlaştırılmış katsayılar"
 
 msgctxt "RegressionLogistic|"
 msgid "Odds ratios"
-msgstr ""
+msgstr "Odds Oranları"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Confidence intervals"
 msgstr "Güven aralıkları"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Interval"
 msgstr "Aralık"
 
 msgctxt "RegressionLogistic|"
 msgid "Odds ratio scale"
-msgstr ""
+msgstr "Odds oranı ölçeği"
 
 msgctxt "RegressionLogistic|"
 msgid "Robust standard errors"
-msgstr ""
+msgstr "Sağlam standart hatalar"
 
 msgctxt "RegressionLogistic|"
 msgid "Vovk-Sellke maximum p-ratio"
-msgstr ""
+msgstr "Vovk-Sellke maksimum p-oranı"
 
 msgctxt "RegressionLogistic|"
 msgid "Performance Metrics"
-msgstr ""
+msgstr "Performans Metrikleri"
 
 msgctxt "RegressionLogistic|"
 msgid "AUC"
-msgstr ""
+msgstr "AUC"
 
 msgctxt "RegressionLogistic|"
 msgid "Sensitivity / Recall"
-msgstr ""
+msgstr "Duyarlılık / Geri Çağırma"
 
 msgctxt "RegressionLogistic|"
 msgid "Specificity"
-msgstr ""
+msgstr "Özgüllük"
 
 msgctxt "RegressionLogistic|"
 msgid "Precision"
-msgstr ""
+msgstr "Kesinlik"
 
 msgctxt "RegressionLogistic|"
 msgid "F-measure"
-msgstr ""
+msgstr "F-ölçütü"
 
 msgctxt "RegressionLogistic|"
 msgid "Brier score"
-msgstr ""
+msgstr "Brier skoru"
 
 msgctxt "RegressionLogistic|"
 msgid "H-measure"
-msgstr ""
+msgstr "H-ölçütü"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Plots"
 msgstr "Grafikler"
 
 msgctxt "RegressionLogistic|"
 msgid "Inferential Plots"
-msgstr ""
+msgstr "Çıkarımsal Grafikler"
 
 msgctxt "RegressionLogistic|"
 msgid "Confidence interval"
-msgstr ""
+msgstr "Güven aralığı"
 
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
-msgstr ""
+msgstr "Veri noktalarını göster"
 
 msgctxt "RegressionLogistic|"
 msgid "Predicted - residual plot"
-msgstr ""
+msgstr "Tahmin - Artık Grafiği"
 
 msgctxt "RegressionLogistic|"
 msgid "Predictor - residual plots"
-msgstr ""
+msgstr "Yordayıcı - Artık Grafikleri"
 
 msgctxt "RegressionLogistic|"
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "Karesi Alınmış Pearson Artıkları Grafiği"
 
 msgctxt "RegressionLogistic|"
 msgid "Residual Type"
-msgstr ""
+msgstr "Artık Türü"
 
 msgctxt "RegressionLogistic|"
 msgid "Deviance"
-msgstr ""
+msgstr "Sapma"
 
 msgctxt "RegressionLogistic|"
 msgid "Pearson"
-msgstr ""
+msgstr "Pearson"
 
 msgctxt "RegressionLogistic|"
 msgid "Performance Plots"
-msgstr ""
+msgstr "Performans Grafikleri"
 
 msgctxt "RegressionLogistic|"
 msgid "ROC plot"
-msgstr ""
+msgstr "ROC Grafiği"
 
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
-msgstr ""
+msgstr "Eşik adımı"
 
 msgctxt "RegressionLogistic|"
 msgid "Add cutoff labels"
-msgstr ""
+msgstr "Eşik etiketlerini ekle"
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
-msgstr ""
+msgstr "KG Grafiği"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
-msgstr ""
+msgstr "Değişkenler arasındaki ilişkiyi değerlendir"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals histogram"
-msgstr ""
+msgstr "Artıklar histogramı"
 
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
-msgstr ""
+msgstr "Koşullu kestirim grafikleri"
 
 msgctxt "RegressionLinear|"
 msgid "Other Plots"
-msgstr ""
+msgstr "Diğer Grafikler"
 
 msgctxt "RegressionLinear|"
 msgid "Marginal effects plots"
-msgstr ""
+msgstr "Marjinal etki grafikleri"
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
-msgstr ""
+msgstr "Doğruluk"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "Genelleştirilmiş Doğrusal Model"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Tahmini Marjinal Ortalamalar ve Kontrast Analizi"
 
 msgctxt "EmmComponent|"
 msgid "Model variables"
-msgstr ""
+msgstr "Model değişkenleri"
 
 msgctxt "EmmComponent|"
 msgid "Selected variables"
-msgstr ""
+msgstr "Seçilen değişkenler"
 
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
-msgstr ""
+msgstr "Güven aralığı"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "Kovaryatların ortalamanın +/- ...'sındaki düzeyleri "
 
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
-msgstr ""
+msgstr "Marjinal ortalamaları şununla karşılaştır:"
 
 msgctxt "EmmComponent|"
 msgid "Use response scale"
-msgstr ""
+msgstr "Yanıt ölçeğini kullan"
 
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "Kontrastları belirle"
 
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
@@ -1054,51 +1039,51 @@ msgstr "Bağımlı değişken"
 
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
-msgstr "Ortak Değişkenler"
+msgstr "Kovaryatlar"
 
 msgctxt "GlmInputComponent|"
 msgid "Factors"
-msgstr ""
+msgstr "Faktörler"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
-msgstr ""
+msgstr "Toplam Deneme Sayısı"
 
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "Ağırlıklar"
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr ""
+msgstr "Aile"
 
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
-msgstr ""
+msgstr "Binom"
 
 msgctxt "GlmInputComponent|"
 msgid "Gaussian"
-msgstr ""
+msgstr "Gauss"
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
-msgstr ""
+msgstr "Ters Gauss"
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "Poisson"
 
 msgctxt "GlmInputComponent|"
 msgid "Link"
-msgstr ""
+msgstr "Bağlantı"
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
@@ -1106,246 +1091,243 @@ msgstr "Logit"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
-msgstr ""
+msgstr "Probit"
 
 msgctxt "GlmInputComponent|"
 msgid "Cauchit"
-msgstr ""
+msgstr "Cauchit"
 
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
-msgstr ""
+msgstr "Tamamlayıcı LogLog"
 
 msgctxt "GlmInputComponent|"
 msgid "Identity"
-msgstr ""
+msgstr "Özdeşlik"
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr ""
+msgstr "Karekök"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
-msgstr ""
+msgstr "Ters"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/mu^2"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
-msgstr ""
+msgstr "Artık Analizi"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Deviance Residuals"
-msgstr ""
+msgstr "Sapma Artıkları"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "Artıklar - Uydurulan"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. predictor"
-msgstr ""
+msgstr "Artıklar - Yordayıcı"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "Q-Q grafiği"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
-msgstr ""
+msgstr "Pearson Artıkları"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Quantile Residuals"
-msgstr ""
+msgstr "Kantil Artıkları"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Other Plots"
-msgstr ""
+msgstr "Diğer Grafikler"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Partial residual plots"
-msgstr ""
+msgstr "Kısmi artık grafikleri"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Working responses vs. linear predictor"
-msgstr ""
+msgstr "Çalışma yanıtları - Doğrusal yordayıcı"
 
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr ""
+msgstr "Kısmi dışlama"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
-msgstr ""
+msgstr "Bileşenler"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
-msgstr ""
+msgstr "Sabit terimi dahil et"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
 msgstr "İstatistikler"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr ""
+msgstr "Model Uyumu"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
-msgstr ""
+msgstr "Sapma uyum iyiliği testi"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
-msgstr ""
+msgstr "Pearson uyum iyiliği testi"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
-msgstr ""
+msgstr "Kestirimler"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
 msgstr "Güven aralıkları"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
-msgstr ""
+msgstr "Tanılar"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "Aykırı Değerleri Göster"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
-msgstr ""
+msgstr "Standartlaştırılmış sapma artıkları: en yüksek"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
-msgstr ""
+msgstr "Öğrencilileştirilmiş sapma artıkları: en yüksek"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "Çoklu Doğrusal Bağlantı"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Tolerans"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "Gelişmiş Seçenekler"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Katsayılar"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
-msgstr ""
+msgstr "Ofset"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Katsayılar"
 
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Katsayılar"
 
 msgctxt "GlmInputComponent|"
 msgid "Other"
-msgstr ""
+msgstr "Diğer"
 
 msgctxt "GlmInputComponent|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "GlmInputComponent|"
 msgid "Multinomial Logistic Regression"
-msgstr ""
+msgstr "Çok Terimli Lojistik Regresyon"
 
 msgctxt "GlmInputComponent|"
 msgid "Ordinal Logistic Regression"
-msgstr ""
+msgstr "Sıralı Lojistik Regresyon"
 
 msgctxt "GlmInputComponent|"
 msgid "Firth Logistic Regression"
-msgstr ""
+msgstr "Firth Lojistik Regresyonu"
 
 msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
-msgstr ""
+msgstr "Bayesçi Lojistik Regresyon"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
 msgstr "Bağımlı Değişken"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Covariates"
-msgstr "Ortak Değişkenler"
+msgstr "Kovaryatlar"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Factors"
-msgstr ""
+msgstr "Faktörler"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "WLS Ağırlıkları (isteğe bağlı)"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Output"
-msgstr ""
+msgstr "Çıktı"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Posterior summary"
-msgstr ""
+msgstr "Sonçul özet"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across all models"
-msgstr ""
+msgstr "Tüm modeller arasında"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across matched models"
-msgstr ""
+msgstr "Eşleşen modeller arasında"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plot of coefficients"
-msgstr ""
+msgstr "Katsayıların çizimi"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Omit intercept"
-msgstr ""
+msgstr "Sabit terimi atla"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Best model"
-msgstr ""
+msgstr "En iyi model"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Most complex model"
-msgstr ""
+msgstr "En karmaşık model"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Median model"
-msgstr ""
+msgstr "Medyan model"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model averaged"
-msgstr ""
+msgstr "Ortalama model"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Credible interval"
@@ -1353,399 +1335,397 @@ msgstr "Güvenilir aralık"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Order"
-msgstr ""
+msgstr "Sıra"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to best model"
-msgstr ""
+msgstr "En iyi model ile karşılaştır"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to null model"
-msgstr ""
+msgstr "Boş model ile karşılaştır"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Limit No. Models Shown"
-msgstr ""
+msgstr "Gösterilen Model Sayısını Sınırla"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "No"
-msgstr ""
+msgstr "Hayır"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Yes, show best"
-msgstr ""
+msgstr "Evet, en iyiyi göster"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Data"
-msgstr ""
+msgstr "Veri"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Betimleyiciler"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Components"
-msgstr ""
+msgstr "Bileşenler"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plots"
 msgstr "Grafikler"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Katsayılar"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Inclusion probabilities"
-msgstr ""
+msgstr "Dahil etme olasılıkları"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Marginal posterior distributions"
-msgstr ""
+msgstr "Marjinal sonçul dağılımlar"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Models"
-msgstr ""
+msgstr "Modeller"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log posterior odds"
-msgstr ""
+msgstr "Log sonçul olasılık oranı"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log(P(data|M)) vs. model size"
-msgstr ""
+msgstr "Log(P(veri|M)) - Model boyutu"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model probabilities"
-msgstr ""
+msgstr "Model olasılıkları"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals"
-msgstr ""
+msgstr "Artıklar"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "Artıklar - Uydurulan"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Q-Q plot of model averaged residuals"
-msgstr ""
+msgstr "Ortalama model artıklarının Q-Q grafiği"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "Gelişmiş Seçenekler"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
-msgstr ""
+msgstr "Önsel"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "EB-local"
-msgstr ""
+msgstr "EB-yerel"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
-msgstr ""
+msgstr "g-önsel"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
-msgstr ""
+msgstr "alfa"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
-msgstr ""
+msgstr "CCH"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
-msgstr ""
+msgstr "Beta-Prime"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Instrinsic"
-msgstr ""
+msgstr "İçsel"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Robust"
-msgstr ""
+msgstr "Sağlam"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model Prior"
-msgstr ""
+msgstr "Model Önseli"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta binomial"
-msgstr ""
+msgstr "Beta binom"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "a"
-msgstr ""
+msgstr "a"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
-msgstr ""
+msgstr "b"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform"
-msgstr ""
+msgstr "Tekdüze"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
-msgstr ""
+msgstr "Wilson"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
-msgstr ""
+msgstr "λ"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
-msgstr ""
+msgstr "Castillo"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "u"
-msgstr ""
+msgstr "u"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Sampling Method"
-msgstr ""
+msgstr "Örnekleme Yöntemi"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "BAS"
-msgstr ""
+msgstr "BAS"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. models"
-msgstr ""
+msgstr "Model sayısı"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "MCMC"
-msgstr ""
+msgstr "MCMC"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples"
-msgstr "Örnek yok"
+msgstr "Örnek sayısı"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Numerical Accuracy"
-msgstr ""
+msgstr "Sayısal Doğruluk"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
-msgstr "Güvenilir aralık için örnek yok"
+msgstr "Güvenilir aralık için örnek sayısı"
 
 msgctxt "EmmComponent|"
 msgid "SD"
-msgstr ""
+msgstr "SS"
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "Etki büyüklüğü (Fisher'ın z)"
 
 msgctxt "OutlierComponent|"
 msgid "Residuals"
-msgstr ""
+msgstr "Artıklar"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Statistics"
 msgstr "İstatistikler"
 
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
-msgstr ""
+msgstr "Gözlem bazında tanılar"
 
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
-msgstr ""
+msgstr "Std. artık >"
 
 msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
-msgstr ""
+msgstr "Cook mes. >"
 
 msgctxt "OutlierComponent|"
 msgid "All"
-msgstr ""
+msgstr "Tümü"
 
 msgctxt "OutlierComponent|"
 msgid "DFBETAS"
-msgstr ""
+msgstr "DFBETAS"
 
 msgctxt "OutlierComponent|"
 msgid "DFFITS"
-msgstr ""
+msgstr "DFFITS"
 
 msgctxt "OutlierComponent|"
 msgid "Cov ratio"
-msgstr ""
+msgstr "Kov oranı"
 
 msgctxt "OutlierComponent|"
 msgid "Leverage"
-msgstr ""
+msgstr "Kaldıraç"
 
 msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
-msgstr ""
+msgstr "Mahalanobis"
 
 msgctxt "Correlation|"
 msgid "Covariance"
-msgstr ""
+msgstr "Kovaryans"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized quantile residuals : top"
-msgstr ""
+msgstr "Standartlaştırılmış kantil artıkları : en yüksek"
 
 msgctxt "RegressionLinear|"
 msgid "Model Summary"
-msgstr ""
+msgstr "Model Özeti"
 
 msgctxt "RegressionLinear|"
 msgid "F change"
-msgstr ""
+msgstr "F değişimi"
 
 msgctxt "RegressionLinear|"
 msgid "AIC and BIC"
-msgstr ""
+msgstr "AIC ve BIC"
 
 msgctxt "RegressionLinear|"
 msgid "Tolerance and VIF"
-msgstr ""
+msgstr "Tolerans ve VIF"
 
 msgctxt "RegressionLinear|"
 msgid "Display"
-msgstr ""
+msgstr "Görünüm"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients covariance matrix"
-msgstr ""
+msgstr "Katsayılar kovaryans matrisi"
 
 msgctxt "RegressionLogistic|"
 msgid "Multicollinearity diagnostics"
-msgstr ""
+msgstr "Çoklu doğrusal bağlantı tanıları"
 
 msgctxt "RegressionLogistic|"
 msgid "Diagnostic Plots"
-msgstr ""
+msgstr "Tanı Grafikleri"
 
 msgctxt "RegressionLogistic|"
 msgid "Independent - predicted plot"
-msgstr ""
+msgstr "Bağımsız - Tahmin Grafiği"
 
 msgctxt "RegressionLogistic|"
 msgid "Include interactions"
-msgstr ""
+msgstr "Etkileşimleri dahil et"
 
 msgctxt "RegressionLogistic|"
 msgid "Use logit scale"
-msgstr ""
+msgstr "Logit ölçeğini kullan"
 
 msgctxt "CorrelationBayesian|"
 msgid "Linearity test"
-msgstr ""
+msgstr "Doğrusallık testi"
 
 msgctxt "CorrelationBayesian|"
 msgid ""
 "Compute a test for the linearity of the relationship between the two "
 "variables by comparing a linear model to a quadratic model."
 msgstr ""
+"İki değişken arasındaki ilişkinin doğrusallığını test etmek için bir "
+"doğrusal modeli ikinci dereceden bir modelle karşılaştır."
 
 msgctxt "ExportBayesian|"
 msgid "Export"
-msgstr ""
+msgstr "Dışa Aktar"
 
 msgctxt "ExportBayesian|"
 msgid "Append columns to data"
-msgstr ""
+msgstr "Sütunları veriye ekle"
 
 #, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals (%1)"
-msgstr ""
+msgstr "Artıklar (%1)"
 
 msgctxt "ExportBayesian|"
 msgid "Column name"
-msgstr ""
+msgstr "Sütun adı"
 
 msgctxt "ExportBayesian|"
 msgid "e.g., residuals"
-msgstr ""
+msgstr "örn., artıklar"
 
 #, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals std. deviations (%1)"
-msgstr ""
+msgstr "Artık std. sapmalar (%1)"
 
 msgctxt "ExportBayesian|"
 msgid "e.g., residual sd"
-msgstr ""
+msgstr "örn., artık ss"
 
 msgctxt "ExportFreq|"
 msgid "Export"
-msgstr ""
+msgstr "Dışa Aktar"
 
 msgctxt "ExportFreq|"
 msgid "Append residuals to data"
-msgstr ""
+msgstr "Artıkları veriye ekle"
 
 msgctxt "ExportFreq|"
 msgid "Column name"
-msgstr ""
+msgstr "Sütun adı"
 
 msgctxt "ExportFreq|"
 msgid "e.g., residuals"
-msgstr ""
+msgstr "örn., artıklar"
 
 msgctxt "ExportFreq|"
 msgid "Append predictions to data"
-msgstr ""
+msgstr "Tahminleri veriye ekle"
 
 msgctxt "ExportFreq|"
 msgid "e.g., predictions"
-msgstr ""
+msgstr "örn., tahminler"
 
 msgctxt "ExportFreq|"
 msgid "Residuals type"
-msgstr ""
+msgstr "Artık türü"
 
 msgctxt "ExportFreq|"
 msgid "Raw"
-msgstr ""
+msgstr "Ham"
 
 msgctxt "ExportFreq|"
 msgid "Studentized"
-msgstr ""
+msgstr "Öğrencilileştirilmiş"
 
 msgctxt "ExportFreq|"
 msgid "Standardized"
-msgstr ""
+msgstr "Standartlaştırılmış"
 
 msgctxt "EmmComponent|"
 msgid "Variables that can be used for computing estimated marginal means."
@@ -3436,16 +3416,16 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Include quadratic terms"
-msgstr ""
+msgstr "İkinci dereceden terimleri dahil et"
 
 msgctxt "RegressionLinear|"
 msgid "Include quadratic terms for the covariates in each model."
-msgstr ""
+msgstr "Her modeldeki kovaryatlar için ikinci dereceden terimleri dahil et."
 
 msgctxt "RegressionLinear|"
 msgid "Regression equation"
-msgstr ""
+msgstr "Regresyon denklemi"
 
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
-msgstr ""
+msgstr "Her model için regresyon denklemlerini göster."
