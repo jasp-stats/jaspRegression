@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
-"POT-Creation-Date: 2025-08-30 02:59\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
 "PO-Revision-Date: 2025-09-15 08:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/"
@@ -407,7 +407,6 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
-""
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -810,6 +809,13 @@ msgstr "%.0f%% தொஒ"
 msgid "Collinearity Statistics"
 msgstr "கொலைனரிட்டி புள்ளிவிவரங்கள்"
 
+#, fuzzy
+msgid ""
+"Standardized coefficients can only be computed for continuous, linear "
+"predictors."
+msgstr ""
+"தரப்படுத்தப்பட்ட குணகங்களை தொடர்ச்சியான முன்கணிப்பாளர்களுக்கு மட்டுமே கணக்கிட முடியும்."
+
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
@@ -846,6 +852,14 @@ msgstr "சில தொடக்கவார் முடிவுகளை க
 
 msgid "expecting both arguments to be data.frames"
 msgstr "இரண்டு வாதங்களும் தரவு.பிரேம்களாக இருக்கும் என்று எதிர்பார்க்கிறது"
+
+#, fuzzy
+msgid "Regression Equations"
+msgstr "பின்னடைவு"
+
+#, fuzzy
+msgid "Equation"
+msgstr "விகிதம்"
 
 msgid "Part And Partial Correlations"
 msgstr "பகுதி மற்றும் பகுதி தொடர்புகள்"
@@ -962,7 +976,6 @@ msgid ""
 "        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
-""
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."

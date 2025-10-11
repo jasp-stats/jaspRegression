@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2025-08-30 02:59\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
 "PO-Revision-Date: 2025-10-07 21:05+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -778,6 +778,11 @@ msgid "Collinearity Statistics"
 msgstr "共線性統計量"
 
 msgid ""
+"Standardized coefficients can only be computed for continuous, linear "
+"predictors."
+msgstr ""
+
+msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
 
@@ -810,6 +815,14 @@ msgstr "某些拔靴抽樣結果無法計算。"
 
 msgid "expecting both arguments to be data.frames"
 msgstr ""
+
+#, fuzzy
+msgid "Regression Equations"
+msgstr "迴歸"
+
+#, fuzzy
+msgid "Equation"
+msgstr "比率"
 
 msgid "Part And Partial Correlations"
 msgstr "部分相關與偏相關"

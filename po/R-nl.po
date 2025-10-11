@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2025-08-30 02:59\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
 "PO-Revision-Date: 2025-05-03 03:00+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/"
@@ -831,6 +831,14 @@ msgstr "%.0f%% CI"
 msgid "Collinearity Statistics"
 msgstr "Collineaire Statistiek"
 
+#, fuzzy
+msgid ""
+"Standardized coefficients can only be computed for continuous, linear "
+"predictors."
+msgstr ""
+"Gestandaardiseerde coëfficiënten kunnen alleen voor continue voorspellers "
+"berekend worden."
+
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
@@ -869,6 +877,14 @@ msgstr "Sommige bootstrapresultaten konden niet worden berekend."
 
 msgid "expecting both arguments to be data.frames"
 msgstr "verwacht dat beide argumenten data.frames zijn"
+
+#, fuzzy
+msgid "Regression Equations"
+msgstr "Regressie"
+
+#, fuzzy
+msgid "Equation"
+msgstr "Ratio"
 
 msgid "Part And Partial Correlations"
 msgstr "Part En Partial Correlaties"

@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2025-08-30 02:59\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
 "PO-Revision-Date: 2025-10-04 22:15+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -841,6 +841,13 @@ msgstr "IC do %.0f%%"
 msgid "Collinearity Statistics"
 msgstr "Estatísticos de Multicolinearidade"
 
+#, fuzzy
+msgid ""
+"Standardized coefficients can only be computed for continuous, linear "
+"predictors."
+msgstr ""
+"Os coeficientes tipificados só poden calcularse para preditores continuos."
+
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
@@ -878,6 +885,14 @@ msgstr "Algúns dos resultados do bootstrap non se poden calcular."
 
 msgid "expecting both arguments to be data.frames"
 msgstr "agárdase que ambos os dous argumentos sexan data.frames"
+
+#, fuzzy
+msgid "Regression Equations"
+msgstr "Regresión"
+
+#, fuzzy
+msgid "Equation"
+msgstr "Proporción"
 
 msgid "Part And Partial Correlations"
 msgstr "Correlacións Parciais e de Compoñentes"

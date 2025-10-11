@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2025-08-30 02:59\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
 "PO-Revision-Date: 2024-10-22 23:15+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -779,6 +779,12 @@ msgstr "%.0f%% CI"
 msgid "Collinearity Statistics"
 msgstr "共線性統計"
 
+#, fuzzy
+msgid ""
+"Standardized coefficients can only be computed for continuous, linear "
+"predictors."
+msgstr "標準化係数は，連続予測変数についてのみ計算されます。"
+
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr "標準化係数は，連続予測変数についてのみ計算されます。"
@@ -816,6 +822,14 @@ msgstr "ブートストラップ係数や信頼区間が計算できないもの
 
 msgid "expecting both arguments to be data.frames"
 msgstr "両方の引数が data.frames であることが想定されます"
+
+#, fuzzy
+msgid "Regression Equations"
+msgstr "回帰"
+
+#, fuzzy
+msgid "Equation"
+msgstr "オッズ比"
 
 msgid "Part And Partial Correlations"
 msgstr "部分相関と偏相関"

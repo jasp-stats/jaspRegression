@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2025-08-30 02:59\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
 "PO-Revision-Date: 2025-04-14 23:01+0000\n"
 "Last-Translator: MikeWinny <winny63@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -906,6 +906,14 @@ msgstr "Статистики коллинеарности"
 
 #, fuzzy
 msgid ""
+"Standardized coefficients can only be computed for continuous, linear "
+"predictors."
+msgstr ""
+"Стандартизированные коэффициенты могут быть рассчитаны только для "
+"непрерывных предикторов."
+
+#, fuzzy
+msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
 "Стандартизированные коэффициенты могут быть рассчитаны только для "
@@ -949,6 +957,14 @@ msgstr "Некоторые результаты бутстрэпа не могу
 #, fuzzy
 msgid "expecting both arguments to be data.frames"
 msgstr "ожидая, что оба аргумента будут data.frames"
+
+#, fuzzy
+msgid "Regression Equations"
+msgstr "Регрессия"
+
+#, fuzzy
+msgid "Equation"
+msgstr "Соотношение"
 
 #, fuzzy
 msgid "Part And Partial Correlations"

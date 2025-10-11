@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2025-08-30 02:59\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
 "PO-Revision-Date: 2024-06-30 10:01+0000\n"
 "Last-Translator: Marco Capozzi <giammarcous@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
@@ -775,6 +775,11 @@ msgid "Collinearity Statistics"
 msgstr ""
 
 msgid ""
+"Standardized coefficients can only be computed for continuous, linear "
+"predictors."
+msgstr ""
+
+msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
 msgstr ""
 
@@ -806,6 +811,13 @@ msgid "Some bootstrap results could not be computed."
 msgstr ""
 
 msgid "expecting both arguments to be data.frames"
+msgstr ""
+
+#, fuzzy
+msgid "Regression Equations"
+msgstr "Correlazioni di Pearson"
+
+msgid "Equation"
 msgstr ""
 
 msgid "Part And Partial Correlations"
