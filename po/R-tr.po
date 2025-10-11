@@ -1,0 +1,1225 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: jaspRegression 0.95.0\n"
+"POT-Creation-Date: 2025-10-04 02:59\n"
+"PO-Revision-Date: 2025-10-07 21:05+0000\n"
+"Last-Translator: Hamza Yalçin <h.yalcin08@gmail.com>\n"
+"Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-r/tr/>\n"
+"Language: tr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.14-dev\n"
+
+msgid "For all tests, the alternative hypothesis specifies that the %s is positive."
+msgstr "Tüm testler için, alternatif hipotez %s'nin pozitif olduğunu belirtir."
+
+msgid "For all tests, the alternative hypothesis specifies that the %s is negative."
+msgstr "Tüm testler için, alternatif hipotez %s'nin negatif olduğunu belirtir."
+
+msgid "Scatterplot"
+msgstr "Saçılım Grafiği"
+
+msgid "Prior and Posterior"
+msgstr "Önsel ve Sonsal"
+
+msgid "Bayes Factor Robustness Check"
+msgstr "Bayes Faktörü Sağlamlık Kontrolü"
+
+msgid "Sequential Analysis"
+msgstr "Sıralı Analiz"
+
+msgid "Bayesian Pearson Correlations"
+msgstr "Bayesci Pearson Korelasyonları"
+
+msgid "Bayesian Kendall's Tau Correlations"
+msgstr "Bayesci Kendall'ın Tau Korelasyonları"
+
+msgid "Bayesian Spearman Correlations"
+msgstr "Bayesci Spearman Korelasyonları"
+
+msgid "Bayesian Correlation Table"
+msgstr "Bayesci Korelasyon Tablosu"
+
+msgid "Pearson Correlations"
+msgstr "Pearson Korelasyonları"
+
+msgid "Kendall's Tau Correlations"
+msgstr "Kendall'ın Tau Korelasyonları"
+
+msgid "Spearman Correlations"
+msgstr "Spearman Korelasyonları"
+
+msgid "Correlation Table"
+msgstr "Korelasyon Tablosu"
+
+msgid "Pearson's r"
+msgstr "Pearson'ın r'si"
+
+msgid "Spearman's rho"
+msgstr "Spearman'ın rho'su"
+
+msgid "Kendall's tau B"
+msgstr "Kendall'ın tau B'si"
+
+msgid "Pearson"
+msgstr "Pearson"
+
+msgid "Spearman"
+msgstr "Spearman"
+
+msgid "Kendall"
+msgstr "Kendall"
+
+msgid "Density"
+msgstr "Yoğunluk"
+
+msgid "Plotting not possible: Number of observations is < 3"
+msgstr "Grafik çizilemiyor: Gözlem sayısı < 3"
+
+msgid "Plotting not possible: Infinite value(s)"
+msgstr "Grafik çizilemiyor: Sonsuz değer(ler)"
+
+msgid "rho"
+msgstr "rho"
+
+msgid "tau"
+msgstr "tau"
+
+msgid "rho[s]"
+msgstr "rho[lar]"
+
+msgid "Pearson's"
+msgstr "Pearson'ın"
+
+msgid "Spearman's"
+msgstr "Spearman'ın"
+
+msgid "Kendall's"
+msgstr "Kendall'ın"
+
+msgid "Kendall's tau"
+msgstr "Kendall'ın tau'su"
+
+msgid "n"
+msgstr "n"
+
+msgid "Upper %s%% CI"
+msgstr "Üst %s%% GA"
+
+msgid "Lower %s%% CI"
+msgstr "Alt %s%% GA"
+
+msgid "Ranks of %s"
+msgstr "%s'in Sıralamaları"
+
+msgid "The full model could not be fitted to the data, with the following error message: '%s'"
+msgstr "Tam model veriye uydurulamadı, hata mesajı: '%s'"
+
+msgid "The null model could not be fitted to the data, with the following error message: '%s'"
+msgstr "Null model veriye uydurulamadı, hata mesajı: '%s'"
+
+msgid "Could not find valid starting values. Check feasibility of the model to fit the data."
+msgstr ""
+"Geçerli başlangıç değerleri bulunamadı. Modelin veriye uyum sağlama "
+"fizibilitesini kontrol edin."
+
+msgid "Plotting is not possible: %s"
+msgstr "Grafik çizilemiyor: %s"
+
+msgid "Q-Q Plots"
+msgstr "Q-Q Grafikleri"
+
+msgid "Q-Q plot: Standardized %1s residuals"
+msgstr "Q-Q grafiği: Standartlaştırılmış %1s artıkları"
+
+msgid "There are no predictors to test for multicollinearity"
+msgstr "Çoklu doğrusallığı test edecek hiçbir yordayıcı yok"
+
+msgid "P-values correspond to test of null hypothesis against %s."
+msgstr "P-değerleri, null hipotezin %s'e karşı test edilmesine karşılık gelir."
+
+msgid "Results are averaged over the levels of: %s."
+msgstr "Sonuçlar şunun düzeyleri üzerinden ortalamalanmıştır: %s."
+
+msgid "P-values are not adjusted."
+msgstr "P-değerleri düzeltilmemiştir."
+
+msgid "Holm"
+msgstr "Holm"
+
+msgid "Homel"
+msgstr "Homel"
+
+msgid "Hochberg"
+msgstr "Hochberg"
+
+msgid "Multivariate-t"
+msgstr "Çok Değişkenli-t"
+
+msgid "Tukey"
+msgstr "Tukey"
+
+msgid "Benjamini-Hochberg"
+msgstr "Benjamini-Hochberg"
+
+msgid "Benjamini-Yekutieli"
+msgstr "Benjamini-Yekutieli"
+
+msgid "Scheffé"
+msgstr "Scheffé"
+
+msgid "Sidak"
+msgstr "Sidak"
+
+msgid "Dunnett"
+msgstr "Dunnett"
+
+msgid "Bonferroni"
+msgstr "Bonferroni"
+
+msgid "P-values are adjusted using %s adjustment."
+msgstr "P-değerleri %s düzeltmesi kullanılarak ayarlanmıştır."
+
+msgid "Predicted"
+msgstr "Tahmin Edilen"
+
+msgid "(Intercept)"
+msgstr "(Kesme Noktası)"
+
+msgid "Influential Cases"
+msgstr "Etkili Vakalar"
+
+msgid "Std. Residual"
+msgstr "Std. Artık"
+
+msgid "Predicted Value"
+msgstr "Tahmin Edilen Değer"
+
+msgid "Residual"
+msgstr "Artık"
+
+msgid "DFBETAS_%1s"
+msgstr "DFBETAS_%1s"
+
+msgid "DFBETAS:Intercept"
+msgstr "DFBETAS:Kesme Noktası"
+
+msgid "DFBETAS:%1s"
+msgstr "DFBETAS:%1s"
+
+msgid "Mahalanobis distance cannot be computed for the intercept only model."
+msgstr ""
+"Mahalanobis mesafesi sadece kesme noktası içeren model için hesaplanamaz."
+
+msgid "No influential cases found."
+msgstr "Hiçbir etkili vaka bulunamadı."
+
+msgid "Potentially influential case, according to the selected influence measure."
+msgstr "Seçilen etki ölçütüne göre potansiyel olarak etkili vaka."
+
+msgid "Influence measures could not be computed for some cases due to extreme values, try another measure."
+msgstr ""
+"Bazı vakalar için aşırı değerler nedeniyle etki ölçütleri hesaplanamadı, "
+"başka bir ölçüt deneyin."
+
+msgid "VS-MPR%s"
+msgstr "VS-MPO%s"
+
+msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n  the maximum possible odds in favor of H%1$s over H%2$s equals\n  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n  (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+"Vovk-Sellke Maksimum <em>p</em>-Oranı: <em>p</em>-değerine dayalı olarak,\n"
+"  H%1$s'in H%2$s'e üstünlüğü lehindeki maksimum olası olasılık,\n"
+"  <em>p</em> %3$s .37 için 1/(-e <em>p</em> log(<em>p</em>))'e eşittir\n"
+"  (Sellke, Bayarri, & Berger, 2001)."
+
+msgid "Computing Durbin-Watson Statistics"
+msgstr "Durbin-Watson İstatistikleri Hesaplanıyor"
+
+msgid "Kendall's Tau"
+msgstr "Kendall'ın Tau'su"
+
+msgid "Partial Correlation Table"
+msgstr "Kısmi Korelasyon Tablosu"
+
+msgid "%s Correlations"
+msgstr "%s Korelasyonları"
+
+msgid "%s Partial Correlations"
+msgstr "%s Kısmi Korelasyonları"
+
+msgid "All tests one-tailed, for positive correlation."
+msgstr "Tüm testler tek yönlü, pozitif korelasyon için."
+
+msgid ", one-tailed"
+msgstr ", tek yönlü"
+
+msgid "All tests one-tailed, for negative correlation."
+msgstr "Tüm testler tek yönlü, negatif korelasyon için."
+
+msgid "p < .05, ** p < .01, *** p < .001%s"
+msgstr "p < .05, ** p < .01, *** p < .001%s"
+
+msgid "Conditioned on variables: %s."
+msgstr "Şu değişkenlere koşullu: %s."
+
+msgid "Standard error of effect size (Fisher's z) is currently unavailable for non-parametric partial correlations."
+msgstr ""
+"Etki büyüklüğünün standart hatası (Fisher'ın z'si) şu anda parametrik "
+"olmayan kısmi korelasyonlar için mevcut değildir."
+
+msgid "Analytic confidence intervals for partial correlations are not yet available, but can be obtained using bootstrapping instead."
+msgstr ""
+"Kısmi korelasyonlar için analitik güven aralıkları henüz mevcut değil, ancak "
+"bunun yerine önyükleme kullanılarak elde edilebilir."
+
+msgid "Confidence intervals based on %i bootstrap replicates."
+msgstr "Güven aralıkları %i önyükleme tekrarına dayanmaktadır."
+
+msgid "p"
+msgstr "p"
+
+msgid "VS-MPR"
+msgstr "VS-MPO"
+
+msgid "Effect size (Fisher's z)"
+msgstr "Etki büyüklüğü (Fisher'ın z'si)"
+
+msgid "SE Effect size"
+msgstr "SE Etki büyüklüğü"
+
+msgid "Covariance"
+msgstr "Kovaryans"
+
+msgid "r"
+msgstr "r"
+
+msgid "tau B"
+msgstr "tau B"
+
+msgid "Variable"
+msgstr "Değişken"
+
+msgid "Kendall's Tau B"
+msgstr "Kendall'ın Tau B'si"
+
+msgid "p-value"
+msgstr "p-değeri"
+
+msgid "Number of observations is < %s."
+msgstr "Gözlem sayısı < %s."
+
+msgid "Bootstrapping"
+msgstr "Önyükleme"
+
+msgid "Partial correlation cannot be computed: covariance matrix is computationally singular."
+msgstr ""
+"Kısmi korelasyon hesaplanamıyor: kovaryans matrisi hesaplamalı olarak tekil."
+
+msgid "Assumption checks"
+msgstr "Varsayım Kontrolleri"
+
+msgid "Shapiro-Wilk Test for Multivariate Normality"
+msgstr "Çok Değişkenli Normallik için Shapiro-Wilk Testi"
+
+msgid "Shapiro-Wilk"
+msgstr "Shapiro-Wilk"
+
+msgid "Variables"
+msgstr "Değişkenler"
+
+msgid "Shapiro-Wilk Test for Bivariate Normality"
+msgstr "İki Değişkenli Normallik için Shapiro-Wilk Testi"
+
+msgid "Scatter plots"
+msgstr "Saçılım Grafikleri"
+
+msgid "Correlation plot"
+msgstr "Korelasyon grafiği"
+
+msgid "Correlation undefined: %s"
+msgstr "Korelasyon tanımsız: %s"
+
+msgid "%1$s%% CI: [%2$s, %3$s]"
+msgstr "%1$s%% GA: [%2$s, %3$s]"
+
+msgid "Plotting not possible:\n Number of observations is < 3"
+msgstr ""
+"Grafik çizilemiyor:\n"
+" Gözlem sayısı < 3"
+
+msgid "Plotting not possible:\n Number of observations is < 2"
+msgstr ""
+"Grafik çizilemiyor:\n"
+" Gözlem sayısı < 2"
+
+msgid "Plotting not possible: %s"
+msgstr "Grafik çizilemiyor: %s"
+
+msgid "Partial Pearson's r"
+msgstr "Kısmi Pearson'ın r'si"
+
+msgid "Partial Spearman's rho"
+msgstr "Kısmi Spearman'ın rho'su"
+
+msgid "Partial Kendall's tau B"
+msgstr "Kısmi Kendall'ın tau B'si"
+
+msgid "%s heatmap"
+msgstr "%s ısı haritası"
+
+msgid "Heatmaps"
+msgstr "Isı Haritaları"
+
+msgid "%1$d%% CI: [%2$d, %3$d]"
+msgstr "%1$d%% GA: [%2$d, %3$d]"
+
+msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+"Vovk-Sellke Maksimum <em>p</em>-Oranı: <em>p</em>-değerine dayalı olarak, "
+"H%1$s'in H%2$s'e üstünlüğü lehindeki maksimum olası olasılık, <em>p</em> %3$"
+"s .37 için 1/(-e <em>p</em> log(<em>p</em>))'e eşittir "
+"(Sellke, Bayarri, & Berger, 2001)."
+
+msgid "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and small sample sizes (< 10), approximation by Fisher's z transformation becomes less accurate"
+msgstr ""
+"Etki büyüklüğü (Fisher'ın z'si): Büyük korelasyon katsayıları (> 0.9) ve "
+"küçük örneklem büyüklükleri (< 10) için, Fisher'ın z dönüşümü ile yaklaşım "
+"daha az doğru hale gelir"
+
+msgid "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. 62-71."
+msgstr ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Kesin Null Hipotezlerini "
+"Test Etmek için p Değerlerinin Kalibrasyonu. The American Statistician, 55(1)"
+", s. 62-71."
+
+msgid "Posterior is too peaked"
+msgstr "Sonsal dağılım çok sivri"
+
+msgid "Bayesian Correlation Matrix Plot"
+msgstr "Bayesci Korelasyon Matrisi Grafiği"
+
+msgid "Could not compute the posteriors"
+msgstr "Sonsal dağılımlar hesaplanamadı"
+
+msgid "Prior"
+msgstr "Önsel"
+
+msgid "Posterior"
+msgstr "Sonsal"
+
+msgid "%s%% CI:"
+msgstr "%s%% GA:"
+
+msgid "Bayesian Correlation Pairwise Plots"
+msgstr "Bayesci İkili Korelasyon Grafikleri"
+
+msgid "max %s"
+msgstr "maks %s"
+
+msgid "%1$s at kappa==%2$s"
+msgstr "%1$s, kappa==%2$s iken"
+
+msgid "user prior"
+msgstr "kullanıcı önseli"
+
+msgid "Stretched beta prior width"
+msgstr "Esnetilmiş beta önsel genişliği"
+
+msgid "Linearity Test"
+msgstr "Doğrusallık Testi"
+
+msgid "Pair"
+msgstr "Çift"
+
+msgid "For each pair A - B, tests if A is better predicted as a linear function of B, i.e., l := A ~ 1 + B, or a quadratic function of B, i.e., q := A ~ 1 + B + B^2.\n    Uses the default settings for Bayesian regression, i.e., a JZS-prior with alpha set to 0.354 and for the model prior a beta binomial distribution with alpha = 1 and beta = 1. Note that since only two models are considered the model prior is equivalent to a uniform model prior."
+msgstr ""
+"Her A - B çifti için, A'nın B'nin bir lineer fonksiyonu olarak mı "
+"(l := A ~ 1 + B), yoksa B'nin bir kuadratik fonksiyonu olarak mı "
+"(q := A ~ 1 + B + B^2) daha iyi tahmin edildiğini test eder.\n"
+"    Bayesci regresyon için varsayılan ayarları kullanır, yani alfa'sı 0.354 "
+"olarak ayarlanmış bir JZS-önseli ve model önseli için alfa = 1 ve beta = 1 "
+"olan bir beta binom dağılımı. Sadece iki model düşünüldüğünden, model "
+"önselinin bir düzgün (uniform) model önseline eşdeğer olduğuna dikkat edin."
+
+msgid "Evidence shown in favor of a linear model (l) against a quadratic model (q)."
+msgstr ""
+"Bir kuadratik modele (q) karşı bir lineer model (l) lehinde gösterilen kanıt."
+
+msgid "Evidence shown in favor of a quadratic model (q) against a linear model (l)."
+msgstr ""
+"Bir lineer modele (l) karşı bir kuadratik model (q) lehinde gösterilen kanıt."
+
+msgid "The Bernoulli family requires the dependent variable to be a factor with 2 levels."
+msgstr ""
+"Bernoulli ailesi, bağımlı değişkenin 2 düzeyi olan bir faktör olmasını "
+"gerektirir."
+
+msgid "The Binomial family requires the weights variable (i.e. total number of trials) to be non-zero."
+msgstr ""
+"Binom ailesi, ağırlık değişkeninin (yani toplam deneme sayısı) sıfırdan "
+"farklı olmasını gerektirir."
+
+msgid "The Binomial family requires the dependent variable (i.e. proportion of successes) to be between 0 and 1 (inclusive)."
+msgstr ""
+"Binom ailesi, bağımlı değişkenin (yani başarı oranı) 0 ile 1 (dahil) "
+"arasında olmasını gerektirir."
+
+msgid "The Binomial family requires the weights variable (i.e. total number of trials) to be an integer."
+msgstr ""
+"Binom ailesi, ağırlık değişkeninin (yani toplam deneme sayısı) bir tamsayı "
+"olmasını gerektirir."
+
+msgid "The Gamma family and the Inverse Gaussian family require the dependent variable to be positive."
+msgstr ""
+"Gama ailesi ve Ters Gauss ailesi, bağımlı değişkenin pozitif olmasını "
+"gerektirir."
+
+msgid "The Poisson family requires the dependent variable to be an integer."
+msgstr "Poisson ailesi, bağımlı değişkenin bir tamsayı olmasını gerektirir."
+
+msgid "The Gaussian family with the log link requires the dependent variable to be positive."
+msgstr ""
+"Log bağlantı fonksiyonlu Gauss ailesi, bağımlı değişkenin pozitif olmasını "
+"gerektirir."
+
+msgid "The Gaussian family requires the dependent variable to be a numerical variable."
+msgstr ""
+"Gauss ailesi, bağımlı değişkenin sayısal bir değişken olmasını gerektirir."
+
+msgid "Multinomial logistic regression requires the dependent variable to be a factor with at least 3 levels."
+msgstr ""
+"Multinomiyal lojistik regresyon, bağımlı değişkenin en az 3 düzeyi olan bir "
+"faktör olmasını gerektirir."
+
+msgid "Ordinal logistic regression requires the dependent variable to be a factor with at least 3 levels."
+msgstr ""
+"Sıralı lojistik regresyon, bağımlı değişkenin en az 3 düzeyi olan bir faktör "
+"olmasını gerektirir."
+
+msgid "Firth logistic regression requires the dependent variable to be a factor with 2 levels."
+msgstr ""
+"Firth lojistik regresyonu, bağımlı değişkenin 2 düzeyi olan bir faktör "
+"olmasını gerektirir."
+
+msgid "Model Summary"
+msgstr "Model Özeti"
+
+msgid "Model Summary - %s"
+msgstr "Model Özeti - %s"
+
+msgid "Model"
+msgstr "Model"
+
+msgid "Deviance"
+msgstr "Sapma"
+
+msgid "AIC"
+msgstr "AIC"
+
+msgid "BIC"
+msgstr "BIC"
+
+msgid "df"
+msgstr "sd"
+
+msgid "Null model contains nuisance parameters: %s."
+msgstr "Null model rahatsızlık parametreleri içerir: %s."
+
+msgid "Model Fit"
+msgstr "Model Uyumu"
+
+msgid "Statistic"
+msgstr "İstatistik"
+
+msgid "Coefficients"
+msgstr "Katsayılar"
+
+msgid "Estimate"
+msgstr "Kestirim"
+
+msgid "Standard Error"
+msgstr "Standart Hata"
+
+msgid "Lower Bound"
+msgstr "Alt Sınır"
+
+msgid "Upper Bound"
+msgstr "Üst Sınır"
+
+msgid "%1$s level '%2$s' coded as class 1."
+msgstr "%1$s düzeyi '%2$s', sınıf 1 olarak kodlandı."
+
+msgid "%1$s levels: %2$s. '%3$s' is the reference level."
+msgstr "%1$s düzeyleri: %2$s. '%3$s' referans düzeyidir."
+
+msgid "%1$s levels: %2$s. Linear predictors: %3$s."
+msgstr "%1$s düzeyleri: %2$s. Lineer yordayıcılar: %3$s."
+
+msgid "Diagnostics"
+msgstr "Tanılamalar"
+
+msgid "Residuals vs. Fitted Plots"
+msgstr "Artıklar - Uydurulan Değerler Grafikleri"
+
+msgid "Standardized %1s residuals vs. fitted values"
+msgstr "Standartlaştırılmış %1s artıkları - uydurulan değerler"
+
+msgid "Standardized %1s residual"
+msgstr "Standartlaştırılmış %1s artık"
+
+msgid "%1s Residuals vs. Predictor Plots"
+msgstr "%1s Artıkları - Yordayıcı Grafikleri"
+
+msgid "Standardized %1$s residuals vs. %2$s"
+msgstr "Standartlaştırılmış %1$s artıkları - %2$s"
+
+msgid "Partial Residual Plots"
+msgstr "Kısmi Artık Grafikleri"
+
+msgid "Partial residual plot for %1s"
+msgstr "%1s için kısmi artık grafiği"
+
+msgid "Partial residual for %1s"
+msgstr "%1s için kısmi artık"
+
+msgid "Plot: Working responses vs. linear predictor"
+msgstr "Grafik: Çalışma yanıtları - lineer yordayıcı"
+
+msgid "Working responses, z"
+msgstr "Çalışma yanıtları, z"
+
+msgid "Outliers Tables"
+msgstr "Aykırı Değer Tabloları"
+
+msgid "Table: Top n outliers based on %1s residuals"
+msgstr "Tablo: %1s artıklarına dayalı ilk n aykırı değer"
+
+msgid "Case Number"
+msgstr "Vaka Numarası"
+
+msgid "Multicollinearity Diagnostics"
+msgstr "Çoklu Doğrusallık Tanılamaları"
+
+msgid "Tolerance"
+msgstr "Tolerans"
+
+msgid "VIF"
+msgstr "VIF"
+
+msgid "Estimated Marginal Means and Contrast Analysis"
+msgstr "Tahmini Marjinal Ortalamalar ve Kontrast Analizi"
+
+msgid "Estimated Marginal Means"
+msgstr "Tahmini Marjinal Ortalamalar"
+
+msgid "SE"
+msgstr "SH"
+
+msgid "Lower"
+msgstr "Alt"
+
+msgid "%s%% CI"
+msgstr "%s%% GA"
+
+msgid "Upper"
+msgstr "Üst"
+
+msgid "t"
+msgstr "t"
+
+msgid "z"
+msgstr "z"
+
+msgid "Results are on the response scale."
+msgstr "Sonuçlar yanıt ölçeğindedir."
+
+msgid "Results are not on the response scale and might be misleading."
+msgstr "Sonuçlar yanıt ölçeğinde değildir ve yanıltıcı olabilir."
+
+msgid "Contrasts"
+msgstr "Kontrastlar"
+
+msgid "Odds Ratio"
+msgstr "Odds Oranı"
+
+msgid "Ratio"
+msgstr "Oran"
+
+msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
+msgstr ""
+"%s'in ROC eğrisi çoğunlukla köşegenin altında kalıyor. Puanlar "
+"değiştiriliyor."
+
+msgid "trying + %s"
+msgstr "deneniyor + %s"
+
+msgid "F test assumes 'quasi%s' family"
+msgstr "F testi 'quasi%s' ailesini varsayar"
+
+msgid "Stepwise procedures are not supported for models containing factors with more than 2 levels; retry the analysis using dummy variables"
+msgstr ""
+"Adımsal yöntemler, 2'den fazla düzeyi olan faktörler içeren modeller için "
+"desteklenmez; kukla değişkenler kullanarak analizi tekrar deneyin"
+
+msgid "Stepwise procedures are not supported for interactions containing more than 1 factor"
+msgstr ""
+"Adımsal yöntemler, 1'den fazla faktör içeren etkileşimler için desteklenmez"
+
+msgid "Error in Stepping Method Criteria: Entry p-value needs to be smaller than removal p-value"
+msgstr ""
+"Adımsal Yöntem Kriterlerinde Hata: Giriş p-değeri, çıkarma p-değerinden "
+"küçük olmalıdır"
+
+msgid "Error in Stepping Method Criteria: Entry F-value needs to be larger than removal F-value"
+msgstr ""
+"Adımsal Yöntem Kriterlerinde Hata: Giriş F-değeri, çıkarma F-değerinden "
+"büyük olmalıdır"
+
+msgid "R"
+msgstr "R"
+
+msgid "R%s"
+msgstr "R%s"
+
+msgid "Adjusted R%s"
+msgstr "Düzeltilmiş R%s"
+
+msgid "RMSE"
+msgstr "RMSE"
+
+msgid "R%s Change"
+msgstr "R%s Değişimi"
+
+msgid "F Change"
+msgstr "F Değişimi"
+
+msgid "df1"
+msgstr "sd1"
+
+msgid "df2"
+msgstr "sd2"
+
+msgid "Autocorrelation"
+msgstr "Otokorelasyon"
+
+msgid "Durbin-Watson"
+msgstr "Durbin-Watson"
+
+msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
+msgstr ""
+"Durbin-Watson testi için p-değeri, ağırlıklı regresyon için mevcut değildir."
+
+msgid "No covariate could be entered in the model"
+msgstr "Modele hiçbir kovaryat girilemedi"
+
+msgid "ANOVA"
+msgstr "ANOVA"
+
+msgid "Sum of Squares"
+msgstr "Kareler Toplamı"
+
+msgid "Mean Square"
+msgstr "Ortalama Kare"
+
+msgid "F"
+msgstr "F"
+
+msgid "Regression"
+msgstr "Regresyon"
+
+msgid "Total"
+msgstr "Toplam"
+
+msgid "Unstandardized"
+msgstr "Standartlaştırılmamış"
+
+msgid "Standardized"
+msgstr "Standartlaştırılmış"
+
+msgid "%.0f%% CI"
+msgstr "%.0f%% GA"
+
+msgid "Collinearity Statistics"
+msgstr "Doğrusallık İstatistikleri"
+
+msgid "Standardized coefficients can only be computed for continuous, linear predictors."
+msgstr ""
+"Standartlaştırılmış katsayılar sadece sürekli, lineer yordayıcılar için "
+"hesaplanabilir."
+
+msgid "Standardized coefficients can only be computed for continuous predictors."
+msgstr ""
+"Standartlaştırılmış katsayılar sadece sürekli yordayıcılar için "
+"hesaplanabilir."
+
+msgid "Missing coefficients are undefined because of singularities. Check the data for anything out of order!"
+msgstr ""
+"Eksik katsayılar, tekil durumlar nedeniyle tanımsızdır. Verilerde sıra dışı "
+"bir şey olup olmadığını kontrol edin!"
+
+msgid "Bootstrap Coefficients"
+msgstr "Önyükleme Katsayıları"
+
+msgid "Bias"
+msgstr "Yanlılık"
+
+msgid "%s%% CI*"
+msgstr "%s%% GA*"
+
+msgid "Bootstrapping based on %i replicates."
+msgstr "Önyükleme %i tekrara dayanmaktadır."
+
+msgid "Coefficient estimate is based on the median of the bootstrap distribution."
+msgstr "Katsayı kestirimi, önyükleme dağılımının medyanına dayanmaktadır."
+
+msgid "Bias corrected accelerated."
+msgstr "Yanlılık düzeltmeli hızlandırılmış."
+
+msgid "Some bootstrap results could not be computed."
+msgstr "Bazı önyükleme sonuçları hesaplanamadı."
+
+msgid "expecting both arguments to be data.frames"
+msgstr "her iki argümanın da data.frame olması bekleniyor"
+
+msgid "Regression Equations"
+msgstr "Regresyon Denklemleri"
+
+msgid "Equation"
+msgstr "Denklem"
+
+msgid "Part And Partial Correlations"
+msgstr "Kısmi ve Yarı Kısmi Korelasyonlar"
+
+msgid "Partial"
+msgstr "Kısmi"
+
+msgid "Part"
+msgstr "Kısım"
+
+msgid "Coefficients Covariance Matrix"
+msgstr "Katsayılar Kovaryans Matrisi"
+
+msgid "Collinearity Diagnostics"
+msgstr "Doğrusallık Tanılamaları"
+
+msgid "Dimension"
+msgstr "Boyut"
+
+msgid "Eigenvalue"
+msgstr "Özdeğer"
+
+msgid "Condition Index"
+msgstr "Koşul İndeksi"
+
+msgid "Variance Proportions"
+msgstr "Varyans Oranları"
+
+msgid "Some collinearity diagnostics could not be computed. This is expected if the model contains singularities."
+msgstr ""
+"Bazı doğrusallık tanılamaları hesaplanamadı. Model tekil durumlar içeriyorsa "
+"bu beklenen bir durumdur."
+
+msgid "Residuals Statistics"
+msgstr "Artık İstatistikleri"
+
+msgid "Minimum"
+msgstr "Minimum"
+
+msgid "Maximum"
+msgstr "Maksimum"
+
+msgid "Mean"
+msgstr "Ortalama"
+
+msgid "SD"
+msgstr "SS"
+
+msgid "N"
+msgstr "N"
+
+msgid "Residuals vs. Dependent"
+msgstr "Artıklar - Bağımlı"
+
+msgid "Residuals"
+msgstr "Artıklar"
+
+msgid "Residuals vs. Covariates"
+msgstr "Artıklar - Kovaryatlar"
+
+msgid "Residuals vs. %s"
+msgstr "Artıklar - %s"
+
+msgid "Cannot plot residuals versus an interaction with a factor."
+msgstr "Artıklar, bir faktörle etkileşime karşı çizilemez."
+
+msgid "Residuals vs. Predicted"
+msgstr "Artıklar - Tahmin Edilen"
+
+msgid "Predicted Values"
+msgstr "Tahmin Edilen Değerler"
+
+msgid "Residuals Histogram"
+msgstr "Artık Histogramı"
+
+msgid "Standardized %s"
+msgstr "Standartlaştırılmış %s"
+
+msgid "Q-Q Plot Standardized Residuals"
+msgstr "Q-Q Grafiği Standartlaştırılmış Artıklar"
+
+msgid "Partial plots are not supported for models containing interaction terms"
+msgstr "Kısmi grafikler, etkileşim terimleri içeren modeller için desteklenmez"
+
+msgid "%1$s vs. %2$s"
+msgstr "%1$s - %2$s"
+
+msgid "Partial plots are not supported for factors"
+msgstr "Kısmi grafikler faktörler için desteklenmez"
+
+msgid "Residuals %s"
+msgstr "Artıklar %s"
+
+msgid "Descriptives"
+msgstr "Betimsel İstatistikler"
+
+msgid "M%s"
+msgstr "O%s"
+
+msgid "Std. Predicted Value"
+msgstr "Std. Tahmin Edilen Değer"
+
+msgid "Standardized Residuals"
+msgstr "Standartlaştırılmış Artıklar"
+
+msgid "%1$s includes %2$s"
+msgstr "%1$s, %2$s'i içerir"
+
+msgid "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the maximum\n        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+msgstr ""
+"Vovk-Sellke Maksimum <em>p</em>-Oranı: <em>p</em>-değerine dayalı olarak, "
+"H%1$s'in H%2$s'e üstünlüğü lehindeki maksimum\n"
+"        olası olasılık, <em>p</em> %3$s .37 için 1/"
+"(-e <em>p</em> log(<em>p</em>))'e eşittir (Sellke, Bayarri, & Berger, 2001)."
+
+msgid "The intercept model is omitted, as no meaningful information can be shown."
+msgstr ""
+"Kesme noktası modeli, anlamlı bir bilgi gösterilemeyeceği için çıkarılmıştır."
+
+msgid "There is only an intercept model, no meaningful information can be shown."
+msgstr "Sadece bir kesme noktası modeli var, anlamlı bir bilgi gösterilemiyor."
+
+msgid "Marginal Effects Plots"
+msgstr "Marjinal Etki Grafikleri"
+
+msgid "Marginal effect of %1$s on %2$s"
+msgstr "%1$s'in %2$s üzerindeki marjinal etkisi"
+
+msgid "All effects are specified as nuisance"
+msgstr "Tüm etkiler rahatsızlık parametresi olarak belirlenmiş"
+
+msgid "There are nonpositive weights"
+msgstr "Pozitif olmayan ağırlıklar var"
+
+msgid "Posterior Summary"
+msgstr "Sonsal Özet"
+
+msgid "Model Comparison"
+msgstr "Model Karşılaştırması"
+
+msgid "Model Comparison - %s"
+msgstr "Model Karşılaştırması - %s"
+
+msgid "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p * %3$s and \ncorresponds to an approximate penalization equal to log(%3$s + 1) in log-odds scale for each additional \ncovariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
+msgstr ""
+"Wilson model önseli, %1$s = 1 ve %2$s = p * %3$s olan bir beta binom "
+"önseline karşılık gelir ve \n"
+"modele eklenen her bir ek kovaryat için log-odds ölçeğinde log(%3$s + 1)'e "
+"eşit yaklaşık bir cezalandırmaya \n"
+"karşılık gelir (Consonni vd., 2018; Wilson vd., 2010)."
+
+msgid "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p^u and is suitable \nfor sparse regression when there are more covariates than observations (Castillo et al., 2015)."
+msgstr ""
+"Castillo model önseli, %1$s = 1 ve %2$s = p^u olan bir beta binom önseline "
+"karşılık gelir ve \n"
+"gözlem sayısından daha fazla kovaryat olduğunda seyrek regresyon için "
+"uygundur (Castillo vd., 2015)."
+
+msgid "BF<sub>10</sub>"
+msgstr "BF<sub>10</sub>"
+
+msgid "BF<sub>01</sub>"
+msgstr "BF<sub>01</sub>"
+
+msgid "Log(BF<sub>10</sub>)"
+msgstr "Log(BF<sub>10</sub>)"
+
+msgid "Models"
+msgstr "Modeller"
+
+msgid "P(M)"
+msgstr "P(M)"
+
+msgid "P(M|data)"
+msgstr "P(M|veri)"
+
+msgid "BF<sub>M</sub>"
+msgstr "BF<sub>M</sub>"
+
+msgid "All models include %s."
+msgstr "Tüm modeller %s'i içerir."
+
+msgid "%sTable displays only a subset of models; to see all models, select \"No\" under \"Limit No. Models Shown\"."
+msgstr ""
+"%sTablo sadece bir model alt kümesini göstermektedir; tüm modelleri görmek "
+"için, \"Gösterilen Model Sayısını Sınırla\" altından \"Hayır\"ı seçin."
+
+msgid "Null model"
+msgstr "Null model"
+
+msgid "Null model (incl. %s)"
+msgstr "Null model (%s dahil)"
+
+msgid "Posterior Summaries of Coefficients"
+msgstr "Katsayıların Sonsal Özetleri"
+
+msgid "BF<sub>inclusion</sub>"
+msgstr "BF<sub>dahil_etme</sub>"
+
+msgid "Log(BF<sub>inclusion</sub>)"
+msgstr "Log(BF<sub>dahil_etme</sub>)"
+
+msgid "%s%% Credible Interval"
+msgstr "%s%% Güvenilir Aralık"
+
+msgid "Coefficient"
+msgstr "Katsayı"
+
+msgid "P(incl)"
+msgstr "P(dahil)"
+
+msgid "P(excl)"
+msgstr "P(haric)"
+
+msgid "P(incl|data)"
+msgstr "P(dahil|veri)"
+
+msgid "P(excl|data)"
+msgstr "P(haric|veri)"
+
+msgid "<em>Warning.</em>"
+msgstr "<em>Uyarı.</em>"
+
+msgid "Posterior Coefficients with %s%% Credible Interval"
+msgstr "%s%% Güvenilir Aralıklı Sonsal Katsayılar"
+
+msgid "Posterior Log Odds"
+msgstr "Sonsal Log Odds"
+
+msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
+msgstr "Örnekleme yöntemi MCMC olduğunda Sonsal Log Odds gösterilemez."
+
+msgid "Residuals vs Fitted"
+msgstr "Artıklar - Uydurulanlar"
+
+msgid "Predictions under BMA"
+msgstr "BMA Altında Tahminler"
+
+msgid "Model Probabilities"
+msgstr "Model Olasılıkları"
+
+msgid "Cumulative Probability"
+msgstr "Kümülatif Olasılık"
+
+msgid "Model Search Order"
+msgstr "Model Arama Sırası"
+
+msgid "Log(P(data|M)) vs. Model Size"
+msgstr "Log(P(veri|M)) - Model Boyutu"
+
+msgid "Log(P(data|M))"
+msgstr "Log(P(veri|M))"
+
+msgid "Model Dimension"
+msgstr "Model Boyutu"
+
+msgid "Inclusion Probabilities"
+msgstr "Dahil Etme Olasılıkları"
+
+msgid "Marginal Inclusion Probability"
+msgstr "Marjinal Dahil Etme Olasılığı"
+
+msgid "Prior\nInclusion\nProbabilities"
+msgstr ""
+"Önsel\n"
+"Dahil Etme\n"
+"Olasılıkları"
+
+msgid "Q-Q Plot"
+msgstr "Q-Q Grafiği"
+
+msgid "Marginal Posterior Distributions"
+msgstr "Marjinal Sonsal Dağılımlar"
+
+msgid "Parameters estimates and/or credible intervals could not be calculated."
+msgstr "Parametre kestirimleri ve/veya güvenilir aralıklar hesaplanamadı."
+
+msgid "Performance Diagnostics"
+msgstr "Performans Tanılamaları"
+
+msgid "McFadden R%s"
+msgstr "McFadden R%s"
+
+msgid "Nagelkerke R%s"
+msgstr "Nagelkerke R%s"
+
+msgid "Tjur R%s"
+msgstr "Tjur R%s"
+
+msgid "Cox & Snell R%s"
+msgstr "Cox & Snell R%s"
+
+msgid "Standardized%s"
+msgstr "Standartlaştırılmış%s"
+
+msgid "Wald Statistic"
+msgstr "Wald İstatistiği"
+
+msgid "Lower bound"
+msgstr "Alt sınır"
+
+msgid "Upper bound"
+msgstr "Üst sınır"
+
+msgid "Standardized estimates represent estimates where the continuous predictors are standardized (X-standardization)."
+msgstr ""
+"Standartlaştırılmış kestirimler, sürekli yordayıcıların standartlaştırıldığı "
+"(X-standartlaştırması) kestirimleri temsil eder."
+
+msgid "Coefficient estimate and robust standard error are based on the median of the bootstrap distribution."
+msgstr ""
+"Katsayı kestirimi ve sağlam standart hata, önyükleme dağılımının medyanına "
+"dayanmaktadır."
+
+msgid "Factor Descriptives"
+msgstr "Faktör Betimsel İstatistikleri"
+
+msgid "Factor"
+msgstr "Faktör"
+
+msgid "Confusion matrix"
+msgstr "Karmaşıklık matrisi"
+
+msgid "Observed"
+msgstr "Gözlemlenen"
+
+msgid "%% Correct"
+msgstr "%% Doğru"
+
+msgid "Performance metrics"
+msgstr "Performans ölçütleri"
+
+msgid "Value"
+msgstr "Değer"
+
+msgid "Bootstrapping based on %i successful replicates."
+msgstr "Önyükleme %i başarılı tekrara dayanmaktadır."
+
+msgid "Some confidence intervals could not be computed.\nPossibly too few bootstrap replicates."
+msgstr ""
+"Bazı güven aralıkları hesaplanamadı.\n"
+"Muhtemelen çok az önyükleme tekrarı."
+
+msgid "Diagnostic plots"
+msgstr "Tanılama grafikleri"
+
+msgid "Estimates plots"
+msgstr "Kestirim grafikleri"
+
+msgid "Predicted - residuals plot"
+msgstr "Tahmin edilen - artıklar grafiği"
+
+msgid "Predictor - residuals plots"
+msgstr "Yordayıcı - artıklar grafikleri"
+
+msgid "Squared Pearson residuals plot"
+msgstr "Karesi alınmış Pearson artıkları grafiği"
+
+msgid "Independent - predicted plots"
+msgstr "Bağımsız - tahmin edilen grafikleri"
+
+msgid "Performance plots"
+msgstr "Performans grafikleri"
+
+msgid "ROC plot"
+msgstr "ROC grafiği"
+
+msgid "PR plot"
+msgstr "KD grafiği"
+
+msgid "Predicted Probability"
+msgstr "Tahmin Edilen Olasılık"
+
+msgid "Squared Pearson Residual"
+msgstr "Karesi Alınmış Pearson Artığı"
+
+msgid "False positive rate"
+msgstr "Yanlış pozitif oranı"
+
+msgid "True positive rate"
+msgstr "Doğru pozitif oranı"
+
+msgid "Positive predictive value"
+msgstr "Pozitif tahmin değeri"
+
+msgid "%1$s%% bca%2$s Confidence interval"
+msgstr "%1$s%% yh%2$s Güven aralığı"
+
+msgid "%s%% Confidence interval"
+msgstr "%s%% Güven aralığı"
+
+msgid "%s <br> (odds ratio scale)"
+msgstr "%s <br> (odds oranı ölçeği)"
+
+msgid "Robust <br> %s"
+msgstr "Sağlam <br> %s"
+
+msgid "Parameter"
+msgstr "Parametre"
+
+msgid "Inclusion/exclusion statistics for coefficients within factor(s) %s are the same as the coefficients are always included or excluded together."
+msgstr ""
+"%s faktör(ler)i içindeki katsayılar için dahil etme/çıkarma istatistikleri "
+"aynıdır, çünkü katsayılar her zaman birlikte dahil edilir veya çıkarılır."
+
+msgid "DV/Factor Descriptives"
+msgstr "BD/Faktör Betimsel İstatistikleri"
+
+msgid "DV/Factor"
+msgstr "BD/Faktör"
+
+msgid "Level"
+msgstr "Düzey"
+
+msgid "Covariate Descriptives"
+msgstr "Kovaryat Betimsel İstatistikleri"
+
+msgid "Intercept"
+msgstr "Kesme Noktası"
+
+msgid "using the %1$d/%2$d row from a combined fit"
+msgid_plural "using the %1$d/%2$d rows from a combined fit"
+msgstr[0] "birleşik bir uydurmadan %1$d/%2$d satır kullanılıyor"
+msgstr[1] "birleşik bir uydurmadan %1$d/%2$d satır kullanılıyor"
+
+msgid "The following covariate was considered but not included: %s."
+msgid_plural "The following covariates were considered but not included: %s."
+msgstr[0] "Aşağıdaki kovaryat düşünüldü ancak dahil edilmedi: %s."
+msgstr[1] "Aşağıdaki kovaryatlar düşünüldü ancak dahil edilmedi: %s."
+
+msgid "Partial Regression Plot"
+msgid_plural "Partial Regression Plots"
+msgstr[0] "Kısmi Regresyon Grafiği"
+msgstr[1] "Kısmi Regresyon Grafikleri"

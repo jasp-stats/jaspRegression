@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2025-08-30 02:59\n"
-"PO-Revision-Date: 2025-06-19 03:01+0000\n"
+"PO-Revision-Date: 2025-10-07 21:05+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.12.1\n"
+"X-Generator: Weblate 5.14-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -139,7 +139,6 @@ msgstr "無法繪圖：%s"
 msgid "Q-Q Plots"
 msgstr "常態Q-Q 圖"
 
-#, fuzzy
 msgid "Q-Q plot: Standardized %1s residuals"
 msgstr "常態 Q-Q 圖：標準化 %1s 殘差"
 
@@ -206,7 +205,6 @@ msgstr "標準化殘差"
 msgid "Predicted Value"
 msgstr "預測值"
 
-#, fuzzy
 msgid "Residual"
 msgstr "殘差"
 
@@ -598,14 +596,12 @@ msgstr "殘差與預測值圖"
 msgid "Standardized %1s residuals vs. fitted values"
 msgstr "標準化 %1s 殘差與預測值"
 
-#, fuzzy
 msgid "Standardized %1s residual"
 msgstr "標準化 %1s 殘差"
 
 msgid "%1s Residuals vs. Predictor Plots"
 msgstr "%1s 殘差與預測變數圖"
 
-#, fuzzy
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "標準化 %1s 殘差與 %2s"
 
@@ -629,7 +625,6 @@ msgstr "工作回應，z"
 msgid "Outliers Tables"
 msgstr "異常值表"
 
-#, fuzzy
 msgid "Table: Top n outliers based on %1s residuals"
 msgstr "表：基於 %1s 殘差的前 n 個異常值"
 
@@ -729,10 +724,10 @@ msgid "RMSE"
 msgstr ""
 
 msgid "R%s Change"
-msgstr ""
+msgstr "R%s 改變量"
 
 msgid "F Change"
-msgstr ""
+msgstr "F 改變量"
 
 msgid "df1"
 msgstr ""
@@ -759,19 +754,19 @@ msgid "Sum of Squares"
 msgstr "離差平方和"
 
 msgid "Mean Square"
-msgstr "離均差平方平均值"
+msgstr "均方和"
 
 msgid "F"
 msgstr ""
 
 msgid "Regression"
-msgstr ""
+msgstr "迴歸"
 
 msgid "Total"
-msgstr "總效果"
+msgstr "總計"
 
 msgid "Unstandardized"
-msgstr "未標準化"
+msgstr "非標準化"
 
 msgid "Standardized"
 msgstr "標準化"
@@ -906,7 +901,7 @@ msgid "Partial plots are not supported for factors"
 msgstr ""
 
 msgid "Residuals %s"
-msgstr ""
+msgstr "殘差 %s"
 
 msgid "Descriptives"
 msgstr "描述性統計"
@@ -1170,10 +1165,10 @@ msgid "Estimates plots"
 msgstr ""
 
 msgid "Predicted - residuals plot"
-msgstr ""
+msgstr "預測值 - 殘差圖"
 
 msgid "Predictor - residuals plots"
-msgstr ""
+msgstr "預測值 - 殘差圖"
 
 msgid "Squared Pearson residuals plot"
 msgstr "皮爾森殘差平方圖"
