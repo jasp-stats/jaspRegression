@@ -3,17 +3,10 @@ import JASP.Module
 
 Description
 {
-	name		: "jaspRegression"
 	title		: qsTr("Regression")
 	description	: qsTr("Evaluate the association between variables")
 	icon		: "analysis-classical-regression.svg"
-	version			: "0.95.0"
-	author		: "JASP Team"
-	maintainer	: "JASP Team <info@jasp-stats.org>"
-	website		: "jasp-stats.org"
-	license		: "GPL (>= 2)"
 	hasWrappers	: true
-	preloadData	: true
 
 	GroupTitle
 	{
