@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2025-10-04 02:59\n"
-"PO-Revision-Date: 2025-10-07 21:05+0000\n"
+"PO-Revision-Date: 2025-10-25 03:00+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -754,7 +754,7 @@ msgid "Sum of Squares"
 msgstr "離差平方和"
 
 msgid "Mean Square"
-msgstr "均方和"
+msgstr "均方"
 
 msgid "F"
 msgstr ""
@@ -772,7 +772,7 @@ msgid "Standardized"
 msgstr "標準化"
 
 msgid "%.0f%% CI"
-msgstr ""
+msgstr "%.0f%% 信賴區間"
 
 msgid "Collinearity Statistics"
 msgstr "共線性統計量"
@@ -798,7 +798,7 @@ msgid "Bias"
 msgstr ""
 
 msgid "%s%% CI*"
-msgstr ""
+msgstr "%s%% 信賴區間*"
 
 msgid "Bootstrapping based on %i replicates."
 msgstr ""
@@ -816,13 +816,11 @@ msgstr "某些拔靴抽樣結果無法計算。"
 msgid "expecting both arguments to be data.frames"
 msgstr ""
 
-#, fuzzy
 msgid "Regression Equations"
-msgstr "迴歸"
+msgstr "迴歸方程"
 
-#, fuzzy
 msgid "Equation"
-msgstr "比率"
+msgstr "方程式"
 
 msgid "Part And Partial Correlations"
 msgstr "部分相關與偏相關"
