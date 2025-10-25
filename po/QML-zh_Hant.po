@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2025-10-25 03:00+0000\n"
+"Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspregression-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.14.1-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -1639,7 +1645,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Include interactions"
-msgstr ""
+msgstr "加入交互作用項"
 
 msgctxt "RegressionLogistic|"
 msgid "Use logit scale"
@@ -2063,7 +2069,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Include the intercept in the regression model."
-msgstr ""
+msgstr "於迴歸模型中加入截距項。"
 
 msgctxt "RegressionLinear|"
 msgid "Durbin-Watson statistic to test the autocorrelation of the residuals."
@@ -3414,7 +3420,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Include quadratic terms"
-msgstr ""
+msgstr "納入二次項"
 
 msgctxt "RegressionLinear|"
 msgid "Include quadratic terms for the covariates in each model."
@@ -3422,8 +3428,8 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Regression equation"
-msgstr ""
+msgstr "迴歸方程式"
 
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
-msgstr ""
+msgstr "顯示各模型的迴歸方程式。"
