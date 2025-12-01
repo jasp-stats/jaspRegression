@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2025-10-04 02:59\n"
-"PO-Revision-Date: 2025-09-29 17:01+0000\n"
+"PO-Revision-Date: 2025-12-01 06:15+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/sr/>\n"
@@ -10,9 +10,10 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
-"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14-dev\n"
+"Plural-Forms: nplurals=3; plural="
+"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
+"1 : 2);\n"
+"X-Generator: Weblate 5.15-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -29,13 +30,13 @@ msgid "Prior and Posterior"
 msgstr "Претходна и задња"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "Провера робусности Бајесовог фактора"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Секвенцијална анализа"
 
 msgid "Bayesian Pearson Correlations"
-msgstr ""
+msgstr "Bayesian Пирсонова корелација"
 
 msgid "Bayesian Kendall's Tau Correlations"
 msgstr ""
@@ -107,7 +108,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -137,7 +138,7 @@ msgid "Plotting is not possible: %s"
 msgstr ""
 
 msgid "Q-Q Plots"
-msgstr "Q-Q дијаграм"
+msgstr "Q-Q плотови"
 
 msgid "Q-Q plot: Standardized %1s residuals"
 msgstr ""
@@ -417,7 +418,7 @@ msgid "Could not compute the posteriors"
 msgstr ""
 
 msgid "Prior"
-msgstr ""
+msgstr "Претходни"
 
 msgid "Posterior"
 msgstr ""
@@ -551,7 +552,7 @@ msgid "Coefficients"
 msgstr "Коефицијенти"
 
 msgid "Estimate"
-msgstr "Проценити"
+msgstr "Процена"
 
 msgid "Standard Error"
 msgstr "Стандардна грешка"
@@ -617,7 +618,7 @@ msgid "Multicollinearity Diagnostics"
 msgstr ""
 
 msgid "Tolerance"
-msgstr ""
+msgstr "Ниво толеранције"
 
 msgid "VIF"
 msgstr ""
@@ -632,13 +633,13 @@ msgid "SE"
 msgstr ""
 
 msgid "Lower"
-msgstr "Ниже"
+msgstr "Нижи"
 
 msgid "%s%% CI"
 msgstr "%s%% CI"
 
 msgid "Upper"
-msgstr "Горњи"
+msgstr "Виши"
 
 msgid "t"
 msgstr ""
@@ -715,7 +716,7 @@ msgid "df2"
 msgstr ""
 
 msgid "Autocorrelation"
-msgstr ""
+msgstr "Аутокорелација"
 
 msgid "Durbin-Watson"
 msgstr ""
@@ -724,7 +725,7 @@ msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr ""
 
 msgid "No covariate could be entered in the model"
-msgstr ""
+msgstr "Није било могуће унети коваријаблу у модел"
 
 msgid "ANOVA"
 msgstr "ANOVA"
@@ -739,7 +740,7 @@ msgid "F"
 msgstr "F"
 
 msgid "Regression"
-msgstr ""
+msgstr "Регресија"
 
 msgid "Total"
 msgstr "Укупно"
@@ -748,13 +749,13 @@ msgid "Unstandardized"
 msgstr ""
 
 msgid "Standardized"
-msgstr ""
+msgstr "Стандардизовани"
 
 msgid "%.0f%% CI"
 msgstr ""
 
 msgid "Collinearity Statistics"
-msgstr ""
+msgstr "Статистика колинеарности"
 
 msgid ""
 "Standardized coefficients can only be computed for continuous, linear "
@@ -774,7 +775,7 @@ msgid "Bootstrap Coefficients"
 msgstr ""
 
 msgid "Bias"
-msgstr ""
+msgstr "Пристрасност"
 
 msgid "%s%% CI*"
 msgstr ""
@@ -969,7 +970,7 @@ msgid "Log(BF<sub>10</sub>)"
 msgstr ""
 
 msgid "Models"
-msgstr ""
+msgstr "Модели"
 
 #, fuzzy
 msgid "P(M)"
@@ -1071,7 +1072,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr "Q-Q графикон"
+msgstr "Q-Q плот"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1123,7 +1124,7 @@ msgid "Factor"
 msgstr "Фактор"
 
 msgid "Confusion matrix"
-msgstr ""
+msgstr "Матрица забуне"
 
 msgid "Observed"
 msgstr ""
