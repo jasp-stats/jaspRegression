@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2025-10-04 02:59\n"
-"PO-Revision-Date: 2025-12-01 06:15+0000\n"
+"PO-Revision-Date: 2025-12-05 21:00+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/sr/>\n"
@@ -10,9 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural="
-"(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? "
-"1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 "X-Generator: Weblate 5.15-dev\n"
 
 msgid ""
@@ -87,10 +86,10 @@ msgid "Plotting not possible: Infinite value(s)"
 msgstr ""
 
 msgid "rho"
-msgstr ""
+msgstr "Ро (ρ)"
 
 msgid "tau"
-msgstr ""
+msgstr "Тау (τ)"
 
 msgid "rho[s]"
 msgstr ""
@@ -303,7 +302,7 @@ msgid "Covariance"
 msgstr ""
 
 msgid "r"
-msgstr ""
+msgstr "r"
 
 msgid "tau B"
 msgstr ""
@@ -436,7 +435,7 @@ msgid "%1$s at kappa==%2$s"
 msgstr ""
 
 msgid "user prior"
-msgstr ""
+msgstr "prior предпоставка"
 
 msgid "Stretched beta prior width"
 msgstr ""
@@ -645,7 +644,7 @@ msgid "t"
 msgstr ""
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
 msgstr ""
@@ -710,10 +709,10 @@ msgid "F Change"
 msgstr ""
 
 msgid "df1"
-msgstr ""
+msgstr "df1"
 
 msgid "df2"
-msgstr ""
+msgstr "df2"
 
 msgid "Autocorrelation"
 msgstr "Аутокорелација"
@@ -736,6 +735,7 @@ msgstr "Збир квадрата"
 msgid "Mean Square"
 msgstr "Средњи квадрат"
 
+#, fuzzy
 msgid "F"
 msgstr "F"
 
@@ -937,7 +937,7 @@ msgid "There are nonpositive weights"
 msgstr ""
 
 msgid "Posterior Summary"
-msgstr ""
+msgstr "Постериорни резиме"
 
 msgid "Model Comparison"
 msgstr "Поређење модела"
@@ -961,18 +961,17 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
 msgstr "Модели"
 
-#, fuzzy
 msgid "P(M)"
 msgstr "P(M)"
 
@@ -980,10 +979,10 @@ msgid "P(M|data)"
 msgstr "P(M|подаци)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
-msgstr ""
+msgstr "Сви модели укључују %s."
 
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
@@ -991,10 +990,10 @@ msgid ""
 msgstr ""
 
 msgid "Null model"
-msgstr ""
+msgstr "Нулти модел"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "Нулти модел (укључујући %s)"
 
 msgid "Posterior Summaries of Coefficients"
 msgstr ""
@@ -1009,19 +1008,19 @@ msgid "%s%% Credible Interval"
 msgstr "%s%% веродостојан интервал"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "Коефицијент"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(incl)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(excl)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(incl|data)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(excl|data)"
 
 msgid "<em>Warning.</em>"
 msgstr ""
