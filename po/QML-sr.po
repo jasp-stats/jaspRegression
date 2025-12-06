@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-21 06:54+0000\n"
+"PO-Revision-Date: 2025-12-05 22:00+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/sr/>\n"
@@ -10,7 +10,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15-dev\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -19,31 +19,31 @@ msgstr "Регресија"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
-msgstr ""
+msgstr "Проценити везу између варијабли"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr ""
+msgstr "Класична"
 
 msgctxt "Description|"
 msgid "Correlation"
-msgstr ""
+msgstr "Корелација"
 
 msgctxt "Description|"
 msgid "Linear Regression"
-msgstr ""
+msgstr "Линеарна регресија"
 
 msgctxt "Description|"
 msgid "Logistic Regression"
-msgstr ""
+msgstr "Логистичка регресија"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "Генерализовани линеарни модел"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr ""
+msgstr "Бејзова"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
@@ -51,11 +51,11 @@ msgstr ""
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr ""
+msgstr "Бејзова линеарна регресија"
 
 msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
-msgstr ""
+msgstr "Бејзова логистичка регресија"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
@@ -479,7 +479,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Display pairwise table"
-msgstr ""
+msgstr "Прикажи табелу са паровима варијабли"
 
 msgctxt "CorrelationBayesian|"
 msgid "Report Bayes factors"
@@ -693,7 +693,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Зависна варијабла"
 
 msgctxt "RegressionLinear|"
 msgid "Method"
@@ -909,11 +909,11 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Output"
-msgstr ""
+msgstr "Излаз"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Posterior summary"
-msgstr ""
+msgstr "Постериорни резиме"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
@@ -1085,7 +1085,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "r scale"
-msgstr ""
+msgstr "r скала"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Model Prior"
@@ -1161,7 +1161,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Зависна варијабла"
 
 msgctxt "RegressionLogistic|"
 msgid "Method"
@@ -1197,7 +1197,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Model"
-msgstr ""
+msgstr "Модел"
 
 msgctxt "RegressionLogistic|"
 msgid "Include intercept"
@@ -1221,7 +1221,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
-msgstr ""
+msgstr "Матрица забуне"
 
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
@@ -1245,7 +1245,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Odds ratios"
-msgstr ""
+msgstr "Количници шансе (Odds ratios)"
 
 msgctxt "RegressionLogistic|"
 msgid "Confidence intervals"
@@ -1257,7 +1257,7 @@ msgstr ""
 
 msgctxt "RegressionLogistic|"
 msgid "Odds ratio scale"
-msgstr ""
+msgstr "Скала количника шанси"
 
 msgctxt "RegressionLogistic|"
 msgid "Robust standard errors"
@@ -1405,11 +1405,11 @@ msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Output"
-msgstr ""
+msgstr "Излаз"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Posterior summary"
-msgstr ""
+msgstr "Постериорни резиме"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across all models"
