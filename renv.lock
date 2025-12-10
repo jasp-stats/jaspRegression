@@ -108,10 +108,10 @@
       "Version": "7.3-65",
       "Source": "Repository",
       "Requirements": [
-        "graphics",
-        "grDevices",
         "methods",
         "R",
+        "grDevices",
+        "graphics",
         "stats",
         "utils"
       ]
@@ -121,14 +121,14 @@
       "Version": "1.7-4",
       "Source": "Repository",
       "Requirements": [
-        "graphics",
         "grDevices",
+        "graphics",
         "grid",
         "lattice",
-        "methods",
-        "R",
         "stats",
-        "utils"
+        "utils",
+        "R",
+        "methods"
       ]
     },
     "MatrixModels": {
@@ -160,11 +160,10 @@
     },
     "Rcpp": {
       "Package": "Rcpp",
-      "Version": "1.1.0.8.1",
+      "Version": "1.1.0",
       "Source": "Repository",
       "Requirements": [
         "methods",
-        "R",
         "utils"
       ]
     },
@@ -367,8 +366,8 @@
       "Version": "1.3-32",
       "Source": "Repository",
       "Requirements": [
-        "graphics",
         "R",
+        "graphics",
         "stats"
       ]
     },
@@ -512,9 +511,9 @@
       "Requirements": [
         "graphics",
         "grDevices",
-        "R",
         "stats",
-        "utils"
+        "utils",
+        "R"
       ]
     },
     "coda": {
@@ -926,9 +925,9 @@
       "Source": "Repository",
       "Requirements": [
         "methods",
-        "R",
+        "utils",
         "stats",
-        "utils"
+        "R"
       ]
     },
     "formula.tools": {
@@ -1392,7 +1391,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspAnova",
-      "RemoteSha": "035ea859478e521e0b7940319ab34c5a4aa5bfd7"
+      "RemoteSha": "120339c647a960e35eb37dd1d1b9aa634510a794"
     },
     "jaspBase": {
       "Package": "jaspBase",
@@ -1450,7 +1449,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspDescriptives",
-      "RemoteSha": "5e5c6ff5e6b8b9ba085f8f1d693ec6fad51b87d9"
+      "RemoteSha": "7b71a843b1db7e7193216f1348998db7af9d0f65"
     },
     "jaspGraphs": {
       "Package": "jaspGraphs",
@@ -1492,7 +1491,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
-      "RemoteSha": "9353f894b5c48923a1037eeddbda4c97c9924c57"
+      "RemoteSha": "cb1856ad4e9c63c2f28f3bcadafaa899760a801d"
     },
     "jomo": {
       "Package": "jomo",
@@ -1583,12 +1582,12 @@
       "Version": "0.22-7",
       "Source": "Repository",
       "Requirements": [
-        "graphics",
-        "grDevices",
         "grid",
-        "R",
+        "grDevices",
+        "graphics",
         "stats",
-        "utils"
+        "utils",
+        "R"
       ]
     },
     "lavaan": {
@@ -1779,22 +1778,22 @@
     },
     "mgcv": {
       "Package": "mgcv",
-      "Version": "1.9-4",
+      "Version": "1.9-3",
       "Source": "Repository",
       "Requirements": [
+        "methods",
+        "stats",
         "graphics",
         "Matrix",
-        "methods",
-        "nlme",
-        "R",
         "splines",
-        "stats",
-        "utils"
+        "utils",
+        "R",
+        "nlme"
       ]
     },
     "mice": {
       "Package": "mice",
-      "Version": "3.18.0",
+      "Version": "3.19.0",
       "Source": "Repository",
       "Requirements": [
         "broom",
@@ -1941,10 +1940,10 @@
       "Source": "Repository",
       "Requirements": [
         "graphics",
-        "lattice",
-        "R",
         "stats",
-        "utils"
+        "utils",
+        "lattice",
+        "R"
       ]
     },
     "nloptr": {
@@ -2446,10 +2445,10 @@
       "Version": "4.1.24",
       "Source": "Repository",
       "Requirements": [
-        "graphics",
-        "grDevices",
         "R",
-        "stats"
+        "graphics",
+        "stats",
+        "grDevices"
       ]
     },
     "rstatix": {
@@ -2602,10 +2601,10 @@
         "graphics",
         "Matrix",
         "methods",
-        "R",
         "splines",
         "stats",
-        "utils"
+        "utils",
+        "R"
       ]
     },
     "svglite": {
@@ -2932,7 +2931,7 @@
     },
     "yaml": {
       "Package": "yaml",
-      "Version": "2.3.11",
+      "Version": "2.3.12",
       "Source": "Repository",
       "Requirements": []
     },
