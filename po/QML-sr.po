@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-12-05 22:00+0000\n"
+"PO-Revision-Date: 2025-12-08 10:00+0000\n"
 "Last-Translator: Marko Bojović <bojovicmarko@outlook.com>\n"
 "Language-Team: Serbian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/sr/>\n"
@@ -589,7 +589,7 @@ msgstr ""
 
 msgctxt "CorrelationBayesian|"
 msgid "Bayes factor robustness check"
-msgstr ""
+msgstr "Провера робусности Бејзовог фактора"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional info"
@@ -633,7 +633,7 @@ msgstr ""
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr ""
+msgstr "Прилагођеност модела"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
@@ -793,7 +793,7 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Model fit"
-msgstr ""
+msgstr "Прилагођеност модела"
 
 msgctxt "RegressionLinear|"
 msgid "Descriptives"
