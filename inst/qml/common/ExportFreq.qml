@@ -50,8 +50,8 @@ Section
 				name: "residualsSavedToDataType"
 				info: qsTr("Choose the type of residual to be appended. Raw residuals are simply the differences between observation and model prediction, standardized residuals divide each residual by an estimate of its standard deviation (using rstandard()), whereas studentized residuals divide each residual by an unbiased estimate of its standard deviation computed by refitting the model without that observation  (using rstudent()).")
 				RadioButton { value: "raw";			label: qsTr("Raw"); checked: true	}
-				RadioButton { value: "standard";	label: qsTr("Studentized")		}
-				RadioButton { value: "student";		label: qsTr("Standardized")		}
+				RadioButton { value: "standard";	label: qsTr("Standardized")		}
+				RadioButton { value: "student";		label: qsTr("Studentized")		}
 			}
 		}
 
