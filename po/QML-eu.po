@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2025-09-19 10:02+0000\n"
+"PO-Revision-Date: 2025-12-23 10:38+0000\n"
 "Last-Translator: Jose Ramon Rueda <joseramon.rueda@ehu.eus>\n"
 "Language-Team: Basque <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/eu/>\n"
@@ -9,7 +9,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 "X-Qt-Contexts: true\n"
 
 msgctxt "Description|"
@@ -34,15 +34,15 @@ msgstr "Erregresio lineala"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr "Bayesiarra"
+msgstr "Bayestarra"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
-msgstr "Korrelazio Bayesiarra"
+msgstr "Korrelazio Bayestarra"
 
 msgctxt "Description|"
 msgid "Bayesian Linear Regression"
-msgstr "Bayesiar Erregresio Lineala"
+msgstr "Erregresio Lineal Bayestarra"
 
 msgctxt "Correlation|"
 msgid "Variables"
@@ -100,7 +100,6 @@ msgctxt "Correlation|"
 msgid "Alt. Hypothesis"
 msgstr "Hipotesi alternatiboa"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Correlated"
 msgstr "Korrelazionatuak"
@@ -353,10 +352,9 @@ msgctxt "RegressionLinear|"
 msgid "Stepwise"
 msgstr "Pausoz pauso"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Covariates"
-msgstr "Kobarianteak"
+msgstr "Koaldagaiak"
 
 msgctxt "RegressionLinear|"
 msgid "Factors"
@@ -370,10 +368,9 @@ msgctxt "RegressionLinear|"
 msgid "Model"
 msgstr "Eredua"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Include intercept"
-msgstr "Ebakidura barne"
+msgstr "Ebakidura (intercept) barne"
 
 msgctxt "RegressionLinear|"
 msgid "Statistics"
@@ -399,7 +396,6 @@ msgctxt "RegressionLinear|"
 msgid "Vovk-Sellke maximum p-ratio"
 msgstr "Vovk-Sellke maximoa den p-ratioa"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Model fit"
 msgstr "Ereduaren doikuntza"
@@ -412,7 +408,6 @@ msgctxt "RegressionLinear|"
 msgid "Descriptives"
 msgstr "Deskribapenak"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Part and partial correlations"
 msgstr "Zati eta korrelazio partzialak"
@@ -437,10 +432,9 @@ msgctxt "RegressionLinear|"
 msgid "Use p value"
 msgstr "p balioa erabili"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Entry"
-msgstr "Sartu edo ¿sarrera?"
+msgstr "Sartu"
 
 msgctxt "RegressionLinear|"
 msgid "Removal"
@@ -488,7 +482,7 @@ msgstr "Hondar estandarizatuak"
 
 msgctxt "RegressionLinear|"
 msgid "Q-Q plot standardized residuals"
-msgstr "Hondar estandarizatuen Q-Q grafikoa."
+msgstr "Hondar estandarizatuen Q-Q grafikoa"
 
 msgctxt "RegressionLinear|"
 msgid "Partial plots"
@@ -502,12 +496,10 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Dependent Variable"
 msgstr "Menpeko Aldagaia"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Covariates"
-msgstr "Ko-aldagaiak  edo kobarianteak?"
+msgstr "Ko-aldagaiak"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "WLS Weights (optional)"
 msgstr "WLS Pisuak (aukerakoa)"
@@ -516,10 +508,9 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Output"
 msgstr "Emaitza"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Posterior summary"
-msgstr "Atzeko laburpena  ¿ondorengoa?"
+msgstr "Atzeko laburpena"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
@@ -533,10 +524,9 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Plot of coefficients"
 msgstr "Koefizienteen grafikoa"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Omit intercept"
-msgstr "Ebakidura??? kendu"
+msgstr "Ebakidura (intercept) ezabatu"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Best model"
@@ -546,10 +536,9 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Most complex model"
 msgstr "Eredu konplexuena"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Median model"
-msgstr "Eredu Medianoa"
+msgstr "Eredu medianoa"
 
 #, fuzzy
 msgctxt "RegressionLinearBayesian|"
@@ -560,7 +549,6 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Credible interval"
 msgstr "Sinesgarritasun tartea"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Order"
 msgstr "Ordena"
@@ -569,12 +557,10 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Compare to best model"
 msgstr "Konparatu modelo onenarekin"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Compare to null model"
 msgstr "Konparatu modelo nuluarekin"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Limit No. Models Shown"
 msgstr "Mugatu Erakusten diren Modelo Kopurua"
@@ -615,21 +601,18 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Inclusion probabilities"
 msgstr "Inklusio probabilitateak"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Marginal posterior distributions"
-msgstr "Marjinako atzeko banaketak"
+msgstr "Atzeko banaketa marjinalak"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Models"
 msgstr "Ereduak"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Log posterior odds"
-msgstr "Log atzeko probabilitateen logaritmoa"
+msgstr "Atzeko oddsaren logaritmoa"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Log(P(data|M)) vs. model size"
 msgstr "Log(P(datuak|M)) vs. ereduaren tamaina"
@@ -650,7 +633,6 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Q-Q plot of model averaged residuals"
 msgstr "Ereduaren batez besteko hondarren Q-Q grafikoa"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Advanced Options"
 msgstr "Aukera aurreratuak"
@@ -675,14 +657,13 @@ msgctxt "RegressionLinearBayesian|"
 msgid "EB-local"
 msgstr "EB-lokala"
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "g-prior"
-msgstr "g-aurrerantzizkoa"
+msgstr "aurreko g-a"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g"
-msgstr "Hyper-g"
+msgstr "Hyper-g-a"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g-Laplace"
@@ -816,7 +797,6 @@ msgctxt "RegressionLogistic|"
 msgid "Model"
 msgstr "Eredua"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Include intercept"
 msgstr "Ebaketa-puntua barne"
@@ -917,7 +897,6 @@ msgctxt "RegressionLogistic|"
 msgid "Plots"
 msgstr "Grafikoak"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Inferential Plots"
 msgstr "Grafiko inferentzialak"
@@ -1022,7 +1001,6 @@ msgctxt "EmmComponent|"
 msgid "Selected variables"
 msgstr "Hautatutako aldagaiak"
 
-#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
 msgstr "Konfiantza tartea"
@@ -1095,10 +1073,9 @@ msgctxt "GlmInputComponent|"
 msgid "Gamma"
 msgstr "Gamma"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
-msgstr "Alderantzizko Gaussiarra"
+msgstr "Alderantzizko Gaustiarra"
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
@@ -1120,7 +1097,6 @@ msgctxt "GlmInputComponent|"
 msgid "Cauchit"
 msgstr "Cauchit"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
 msgstr "LogLog Osagarria"
@@ -1133,12 +1109,10 @@ msgctxt "GlmInputComponent|"
 msgid "Log"
 msgstr "Log"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr "Sqrt ?Square root?"
+msgstr "Erro karratua"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
 msgstr "Alderantzizkoa"
@@ -1187,7 +1161,6 @@ msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Working responses vs. linear predictor"
 msgstr "Laneko erantzunak vs. iragarle lineala"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Partial out"
 msgstr "Partziala kenduta"
@@ -1196,7 +1169,6 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Model"
 msgstr "Eredua"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
 msgstr "Osagaiak"
@@ -1209,20 +1181,17 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
 msgstr "Estatistikoak"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr "Ereduaren Doikuntza  '???"
+msgstr "Ereduaren Doikuntza"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
-msgstr "Desbideratze-egokitasun-proba?"
+msgstr "Desbideratze-egokitasun-proba"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
-msgstr "Pearson-en egokitzapen-proba"
+msgstr "Pearson-en egokitasun-proba"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
@@ -1248,10 +1217,9 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
 msgstr "Studentizatutako desbideratze-hondarrak: goian"
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr "Multikolinearitatea"
+msgstr "Kolinealtasun anizkoitza"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
@@ -1269,10 +1237,9 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
 msgstr "Koefizienteak"
 
-#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Offset"
-msgstr "Desplazamendua???"
+msgstr "Desplazamendua"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
@@ -1395,10 +1362,9 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Data"
 msgstr "Datuak"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Descriptives"
-msgstr "Deskribapenak edo deskribatzaileak??"
+msgstr "Deskribatzaileak"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model"
@@ -1428,10 +1394,9 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Models"
 msgstr "Ereduak"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log posterior odds"
-msgstr "Logaritmiko atzeko probabilitateak"
+msgstr "Atzeko oddsaren logaritmoa"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log(P(data|M)) vs. model size"
@@ -1475,7 +1440,7 @@ msgstr "EB-tokikoa"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
-msgstr "g-aurretiazkoa??"
+msgstr "aurreko g-a"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
@@ -1494,7 +1459,6 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "s"
 msgstr "s??? k???"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
 msgstr "Beta-Prime"
@@ -1595,10 +1559,9 @@ msgctxt "OutlierComponent|"
 msgid "Statistics"
 msgstr "Estatistikoak"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
-msgstr "Kasuka diagnostikoa"
+msgstr "Kasukako diagnostikoa"
 
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
@@ -1620,10 +1583,9 @@ msgctxt "OutlierComponent|"
 msgid "DFFITS"
 msgstr "DFFITS"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Cov ratio"
-msgstr "Estaldura-erlazioa???"
+msgstr "Cob ratioa"
 
 msgctxt "OutlierComponent|"
 msgid "Leverage"
@@ -1673,10 +1635,9 @@ msgctxt "RegressionLogistic|"
 msgid "Diagnostic Plots"
 msgstr "Grafiko Diagnostikoak"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Independent - predicted plot"
-msgstr "Independentea - iragarritako grafikoa"
+msgstr "Independente - iragarritako grafikoa"
 
 msgctxt "RegressionLogistic|"
 msgid "Include interactions"
@@ -1816,7 +1777,7 @@ msgid ""
 "Save the predictions of the most complex model as a new column in the data "
 "file"
 msgstr ""
-"Gorde eredu konplexuenaren iragarpenak datu-fitxategian zutabe berri gisa."
+"Gorde eredu konplexuenaren iragarpenak datu-fitxategian zutabe berri gisa"
 
 msgctxt "GlmInputComponent|"
 msgid "Qualitative variables, such as gender and group memberships."
@@ -1857,10 +1818,9 @@ msgctxt "Correlation|"
 msgid "Assumptions (Pearson's rho)"
 msgstr "Suposizioak (Pearsonen rho)"
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid "Input"
-msgstr "Sarrera???"
+msgstr "Sarrera"
 
 msgctxt "Correlation|"
 msgid "Variables to partial out in order to compute partial correlations."
@@ -1933,7 +1893,7 @@ msgstr "Suposizioak (Kendallen tau)"
 
 msgctxt "CorrelationBayesian|"
 msgid "Input"
-msgstr "Sarrera???"
+msgstr "Sarrera"
 
 msgctxt "CorrelationBayesian|"
 msgid ""
@@ -2017,14 +1977,13 @@ msgstr ""
 "beta luzatuaren zabaleraren funtzio gisa. Kappa aurriaren zabalera 0 eta 2 "
 "artean aldatzen da."
 
-#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid ""
 "Adds the Bayes factor computed with the user-defined prior and the maximum "
 "obtainable Bayes factor."
 msgstr ""
-"Erabiltzaileak definitutako aurriarekin kalkulatutako Bayes faktorea eta lor "
-"daitekeen Bayes faktore maximoa gehitzen ditu."
+"Erabiltzaileak definitutako aurrekoarekin kalkulatutako Bayes faktorea eta "
+"lor daitekeen Bayes faktore maximoa batzen ditu."
 
 msgctxt "CorrelationBayesian|"
 msgid ""
@@ -2075,7 +2034,7 @@ msgstr "Suposizioak"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Input"
-msgstr "Sarrera ??"
+msgstr "Sarrera"
 
 msgctxt "GeneralizedLinearModel|"
 msgid ""
@@ -2145,16 +2104,15 @@ msgstr ""
 "lehenetsia 1 da), ziurtatzen duzu hondar kuantiletan oinarritutako grafiko "
 "eta taula berdin-berdinak lor ditzakezula."
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid ""
 "Linear regression allows the user to model a linear relationship between one "
 "or more explanatory variable(s) (predictors) and a continuous dependent "
 "(response) variable.\n"
 msgstr ""
-"Erregresio linealak erabiltzaileari azalpen-aldagai bat edo gehiagoren ("
-"aurreikusleak?? prediktoreak??) eta menpeko (erantzun) aldagai jarraitu "
-"baten arteko erlazio lineal bat modelatzea ahalbidetzen dio.\n"
+"Erregresio linealak erabiltzaileari aldagai azaltzaile bat edo gehiagoren "
+"(aurreikusleak) eta mendeko aldagai jarraitu baten (erantzunaren) arteko "
+"erlazio lineal bat modelatzeko aukera ematen dio.\n"
 
 msgctxt "RegressionLinear|"
 msgid "Assumptions"
@@ -2334,12 +2292,11 @@ msgstr ""
 "Atzeko inklusio-probabilitateen histograma erakusten du. Puntu-lerroak "
 "aurreko inklusio-probabilitateak erakusten ditu."
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Shows a heatmap of the log posterior odds against the model rank."
 msgstr ""
 "Ereduaren mailaren aurkako atzeko probabilitateen logaritmoaren mapa "
-"termikoa??? erakusten du."
+"termikoa erakusten du."
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -2373,7 +2330,7 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Zellner's g-prior."
-msgstr "Zellnerren g-aurre-maila.????"
+msgstr "Zellnerren g-aurrekoa."
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -2833,7 +2790,6 @@ msgctxt "GlmInputComponent|"
 msgid "Distribution of the response variable:"
 msgstr "Emaitza-aldagaiaren banaketa:"
 
-#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid ""
 "Provides different types of diagnostic plots based on deviance residuals."
@@ -3002,18 +2958,16 @@ msgctxt "Correlation|"
 msgid "Pearson's product moment correlation coefficient."
 msgstr "Pearson-en produktu-momentuaren korrelazio-koefizientea."
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid ""
 "Spearman's rank-order correlation coefficient to quantify the monotonic "
 "association between two variables by ranking the observations. Use when the "
 "data are not normally distributed."
 msgstr ""
-"Spearman-en sailkapen-ordenaren korrelazio-koefizientea bi aldagairen arteko "
+"Spearmanen sailkapen-ordenaren korrelazio-koefizientea bi aldagairen arteko "
 "lotura monotonikoa kuantifikatzeko, behaketak sailkatuz. Erabili datuak "
-"normalean banatuta ez daudenean."
+"banaketa normala ez dutenean."
 
-#, fuzzy
 msgctxt "Correlation|"
 msgid ""
 "Kendall's tau-b rank-order correlation coefficient to quantify the monotonic "
@@ -3271,10 +3225,9 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Top n standardized quantile residuals."
 msgstr "Hondar kuantil estandarizatuen n."
 
-#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Top n standardized deviance residuals."
-msgstr "Top n estandarizatutako desbideratze hondarrak."
+msgstr "Goiko n estandarizatutako desbideratze hondarrak."
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Top n studentized deviance residuals."
@@ -3301,7 +3254,6 @@ msgctxt "RegressionLinear|"
 msgid "All predictors are entered into the model simultaneously."
 msgstr "Aurreikusle guztiak aldi berean sartzen dira ereduan."
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid ""
 "All predictors are entered simultaneously, and then removed sequentially "
@@ -3511,7 +3463,6 @@ msgstr ""
 "Aurreikusle baten aldaketak aurreikusitako emaitzan nola eragiten duen "
 "bistaratzea, beste aldagaiak konstante mantenduz."
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Drag the relevant dependent variable(s) to this box."
 msgstr "Arrastatu menpeko aldagai garrantzitsuak kutxa honetara."
@@ -3529,10 +3480,9 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Compares across matched models."
 msgstr "Parekatutako modeloak alderatzen ditu."
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Omits the intercept in the plot display."
-msgstr "Ebaketa-puntua ezabatzen du grafikoaren bistaratzean."
+msgstr "Ebaketa-puntua (intercept) ezabatzen du grafikoaren bistaratzean."
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -3636,7 +3586,6 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
 msgstr "Bernoulli aurrekoa. Lehenetsia p = 0.5."
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid ""
 "Samples with replacement via an MCMC algorithm that combines the birth/death "
@@ -3646,12 +3595,12 @@ msgid ""
 "of models. Sampling stops when min(number of models, MCMC iterations) is "
 "reached."
 msgstr ""
-"Jaiotza/heriotza????? ausazko ibilaldia ausazko truke mugimendu batekin "
+"Jaiotza/heriotza ausazko ibilaldia ausazko truke mugimendu batekin "
 "konbinatzen duen MCMC algoritmo baten bidezko ordezkapena duten laginak, "
 "ereduko aldagai bat trukatzeko. Lagin kopuruak ateratzeko MCMC laginen "
 "kopurua adierazten du. Balioa 0ra ezartzeak MCMC iterazio kopurua eredu "
-"kopuruaren 10 aldiz berdina dela esan nahi du. Laginketa gelditzen da min("
-"eredu kopurua, MCMC iterazio) iristen denean."
+"kopuruaren 10 aldiz berdina dela esan nahi du. Laginketa gelditzen da min"
+"(eredu kopurua, MCMC iterazio) iristen denean."
 
 msgctxt "RegressionLogistic|"
 msgid ""
@@ -3663,7 +3612,6 @@ msgstr ""
 "aldagaian eragina duten aldagai jarraituak dira, baina ez dira manipulazio "
 "esperimentalaren parte."
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "The weights used for weighted least squares regression."
 msgstr "Karratu txikienen erregresio haztaturako erabilitako pisuak."
@@ -3837,7 +3785,6 @@ msgstr ""
 "jarraituak dira, mendeko aldagaian eragina dutenak, baina manipulazio "
 "esperimentalaren parte ez direnak."
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "The weights used for weighted least squares regression."
 msgstr "Haztatutako gutxieneko karratuen erregresiorako erabilitako pisuak."
@@ -3949,10 +3896,9 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform prior distribution."
 msgstr "Aurre-maila uniformeko banaketa."
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
-msgstr "Bernoulli aurre-maila. p lehenetsia = 0.5."
+msgstr "Bernoulli aurrekoa. p lehenetsia = 0.5."
 
 msgctxt "RegressionLogisticBayesian|"
 msgid ""
