@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2025-10-04 02:59\n"
-"PO-Revision-Date: 2025-09-15 08:01+0000\n"
+"PO-Revision-Date: 2026-01-01 18:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ta/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.14-dev\n"
+"X-Generator: Weblate 5.15.1\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -105,7 +105,7 @@ msgid "Kendall's"
 msgstr "கெண்டல்ச்"
 
 msgid "Kendall's tau"
-msgstr "கெண்டலின் த அயு"
+msgstr "கெண்டலின் டவு"
 
 msgid "n"
 msgstr "n"
@@ -140,7 +140,7 @@ msgid "Plotting is not possible: %s"
 msgstr "சதித்திட்டம் சாத்தியமில்லை: %s"
 
 msgid "Q-Q Plots"
-msgstr "Q-Q அடுக்கு"
+msgstr "Q-Q அடுக்குகள்"
 
 msgid "Q-Q plot: Standardized %1s residuals"
 msgstr "Q-Q சதி: தரப்படுத்தப்பட்ட %1s எச்சங்கள்"
@@ -382,7 +382,7 @@ msgstr ""
 " அவதானிப்புகளின் எண்ணிக்கை <2"
 
 msgid "Plotting not possible: %s"
-msgstr "சூழ்ச்சி செய்ய முடியாது: %s"
+msgstr "திட்டமிடல் சாத்தியமில்லை: %s"
 
 msgid "Partial Pearson's r"
 msgstr "பகுதி பியர்சனின் ஆர்"
@@ -407,6 +407,9 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke அதிகபட்சம் <em>p</em>-விகிதம்: <em>p</em>-மதிப்பின் அடிப்படையில், H%2$s "
+"ஐ விட H%1$sக்கு சாதகமாக உள்ள அதிகபட்ச சாத்தியக்கூறுகள் <em>p</em>P</em> log(<em>p</"
+"em>)) <em>p</em>க்கு சமம் 1/(-e <em>p</em>)). 2001)."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -581,7 +584,7 @@ msgid "BIC"
 msgstr "பிஐசி"
 
 msgid "df"
-msgstr "டி.எஃப்"
+msgstr "டிஎஃப்"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "சுழிய மாதிரியில் தொல்லை அளவுருக்கள் உள்ளன: %s."
@@ -689,7 +692,7 @@ msgid "t"
 msgstr "டி"
 
 msgid "z"
-msgstr "சட்"
+msgstr "ஔ"
 
 msgid "Results are on the response scale."
 msgstr "முடிவுகள் மறுமொழி அளவில் உள்ளன."
@@ -762,10 +765,10 @@ msgid "F Change"
 msgstr "F மாற்றம்"
 
 msgid "df1"
-msgstr "டி.எஃப் 1"
+msgstr "டிஎஃப்1"
 
 msgid "df2"
-msgstr "டி.எஃப் 2"
+msgstr "டிஎஃப்2"
 
 msgid "Autocorrelation"
 msgstr "தன்னொட்டுறவு"
@@ -789,7 +792,7 @@ msgid "Mean Square"
 msgstr "சராசரி நாற்கை"
 
 msgid "F"
-msgstr "F"
+msgstr "எஃப்"
 
 msgid "Regression"
 msgstr "பின்னடைவு"
@@ -809,12 +812,12 @@ msgstr "%.0f%% தொஒ"
 msgid "Collinearity Statistics"
 msgstr "கொலைனரிட்டி புள்ளிவிவரங்கள்"
 
-#, fuzzy
 msgid ""
 "Standardized coefficients can only be computed for continuous, linear "
 "predictors."
 msgstr ""
-"தரப்படுத்தப்பட்ட குணகங்களை தொடர்ச்சியான முன்கணிப்பாளர்களுக்கு மட்டுமே கணக்கிட முடியும்."
+"தரப்படுத்தப்பட்ட குணகங்களை தொடர்ச்சியான, நேரியல் முன்கணிப்பாளர்களுக்கு மட்டுமே கணக்கிட "
+"முடியும்."
 
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
@@ -853,13 +856,11 @@ msgstr "சில தொடக்கவார் முடிவுகளை க
 msgid "expecting both arguments to be data.frames"
 msgstr "இரண்டு வாதங்களும் தரவு.பிரேம்களாக இருக்கும் என்று எதிர்பார்க்கிறது"
 
-#, fuzzy
 msgid "Regression Equations"
-msgstr "பின்னடைவு"
+msgstr "பின்னடைவு சமன்பாடுகள்"
 
-#, fuzzy
 msgid "Equation"
-msgstr "விகிதம்"
+msgstr "சமன்பாடு"
 
 msgid "Part And Partial Correlations"
 msgstr "பகுதி மற்றும் பகுதி தொடர்புகள்"
@@ -911,13 +912,13 @@ msgid "SD"
 msgstr "எச்டி"
 
 msgid "N"
-msgstr "N"
+msgstr "என்"
 
 msgid "Residuals vs. Dependent"
 msgstr "எச்சங்கள் எதிராக சார்பு"
 
 msgid "Residuals"
-msgstr "எஞ்சியவர்கள்"
+msgstr "எச்சங்கள்"
 
 msgid "Residuals vs. Covariates"
 msgstr "எச்சங்கள் எதிராக கோவாரியட்ச்"
@@ -976,6 +977,11 @@ msgid ""
 "        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke அதிகபட்ச <em>p-விகிதம்</em>: <em>p-மதிப்பின்</em> அடிப்படையில், "
+"அதிகபட்சம்\n"
+"        H%1$s க்கு மேல் H%2$s க்கு ஆதரவாகச் சாத்தியமான முரண்பாடுகள் p <em>%</em>3$s .37 "
+"(Sellke, Bayarri, & Berger) க்கு 1/(-e p <em>log</em>(p<em>)</em>) க்கு சமம், "
+"2001)."
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
