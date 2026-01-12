@@ -80,12 +80,17 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
                limits.min = 0,
                limits.max = Inf,
                exitAnalysisIfErrors = TRUE)
-  if (length(options$covariates) != 0)
+  if (length(options$covariates) != 0) {
+    # varCovData check requires 2+ covariates to compute covariance matrix
+    errorTypes <- c("observations", "infinity", "variance")
+    if (length(options$covariates) >= 2)
+      errorTypes <- c(errorTypes, "varCovData")
     .hasErrors(dataset,
-               type = c("observations", "infinity", "variance", "varCovData"),
+               type = errorTypes,
                all.target = options$covariates,
                observations.amount  = "< 2",
                exitAnalysisIfErrors = TRUE)
+  }
   if (length(options$factors) != 0)
     .hasErrors(dataset,
                type = "factorLevels",
@@ -366,8 +371,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
       for (midx in seq_along(glmObj)) {
 
         if (options$method == "enter")
-          .linregAddPredictorsInModelFootnote(jaspResults[["modelSummary"]],
-                                              options[["modelTerms"]][[midx]][["components"]], midx)
+          .linregAddPredictorsInModelFootnote(jaspResults[["modelSummary"]], options[["modelTerms"]][[midx]][["components"]], midx, quadraticTerms = options[["quadraticTerms"]])
         mObj <- glmObj[[midx]]
         if (midx > 1) {
           if (options$method == "forward" ||
@@ -499,9 +503,10 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   }
 
   predVar   <- options[["dependent"]]
-  predLevel <- levels(dataset[[predVar]])[2]
+  predLevel <- levels(as.factor(dataset[[predVar]]))[2]
 
-  jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s level '%2$s' coded as class 1.", predVar, predLevel))
+  if (length(predVar) > 0 && length(predLevel) > 0)
+    jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s level '%2$s' coded as class 1.", predVar, predLevel))
 }
 
 .reglogisticEstimatesBootstrapFill <- function(jaspResults, dataset, options){

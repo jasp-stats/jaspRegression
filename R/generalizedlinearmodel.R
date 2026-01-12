@@ -79,8 +79,12 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   }
   else {
     nCovariateParameters <- length(options[["covariates"]])
+    # varCovData check requires 2+ covariates to compute covariance matrix
+    errorTypes <- c("observations", "infinity", "variance")
+    if (length(options[["covariates"]]) >= 2)
+      errorTypes <- c(errorTypes, "varCovData")
     .hasErrors(dataset,
-               type = c("observations", "infinity", "variance", "varCovData"),
+               type = errorTypes,
                all.target = options[["covariates"]],
                observations.amount  = "< 2",
                exitAnalysisIfErrors = TRUE)

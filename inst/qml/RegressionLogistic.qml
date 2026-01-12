@@ -79,6 +79,9 @@ Form
 		}
 
 		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); info: qsTr("Ticking this box will add a coefficient estimate of the intercept as well. This corresponds to the first level for the independent variable.") ; checked: true }
+
+		// Added hidden `quadraticTerms` term for consistency with linear regression (same R-side processing). Probably should be enabled in the future in teh R code
+		CheckBox { name: "quadraticTerms"; label: qsTr("Include quadratic terms"); info: qsTr("Include quadratic terms for the covariates in each model."); visible: False }
 	}
 
 	
