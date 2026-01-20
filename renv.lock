@@ -4669,10 +4669,10 @@
       "Roxygen": "list(markdown = TRUE)",
       "Author": "Tim de Jong [aut], Don van den Bergh [ctb, cre], František Bartoš [ctb]",
       "RemoteType": "github",
-      "RemoteUsername": "FBartos",
+      "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTools",
-      "RemoteRef": "examples2tests2",
-      "RemoteSha": "d269a21f15473f33b71c4febe795a6b3884740ee",
+      "RemoteRef": "master",
+      "RemoteSha": "f94b6b7437556ddf79f2cc4fc559f6277187b84e",
       "RemoteHost": "api.github.com"
     },
     "jomo": {
