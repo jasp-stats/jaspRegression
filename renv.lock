@@ -4526,7 +4526,7 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
       "RemoteRef": "master",
-      "RemoteSha": "3dfb48bf33cc16bc29628d4ec87a866348bc3d72",
+      "RemoteSha": "2aaba080558d26571bb0454652a81fc8014525f3",
       "Remotes": "jasp-stats/jaspGraphs"
     },
     "jaspDescriptives": {
@@ -4599,10 +4599,10 @@
       "Roxygen": "list(markdown = TRUE)",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "vandenman",
+      "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
-      "RemoteRef": "fix_sequential_analysis_issues",
-      "RemoteSha": "1c34f4164fa7f4775ab96d4fbfe18ff1edc83af5"
+      "RemoteRef": "master",
+      "RemoteSha": "8be6081bc7b1719a70538e563be853e11c4aedbc"
     },
     "jaspTTests": {
       "Package": "jaspTTests",
