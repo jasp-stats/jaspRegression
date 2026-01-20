@@ -17,7 +17,8 @@ test_that("Main tables results match", {
     options$posteriorSummaryTable <- TRUE
     options$descriptives <- TRUE
     options$setSeed <- TRUE
-
+    options$residualsSavedToData   <-  FALSE
+    options$residualSdsSavedToData <-  FALSE
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
     table <- results[["results"]][["basreg"]][["collection"]][["basreg_modelComparisonTable"]][["data"]]
     jaspTools::expect_equal_tables(
@@ -68,6 +69,8 @@ options$modelTerms <- list(list(components = "adverts", isNuisance = FALSE),
                            list(components = c("adverts", "airplay"), isNuisance = FALSE))
 options$posteriorSummaryTable <- TRUE
 options$setSeed <- TRUE
+options$residualsSavedToData   <-  FALSE
+options$residualSdsSavedToData <-  FALSE
 set.seed(1)
 results <- jaspTools::runAnalysis("RegressionLinearBayesian", "Album Sales.csv", options)
 

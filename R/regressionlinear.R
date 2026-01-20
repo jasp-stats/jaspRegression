@@ -159,7 +159,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 
   defaultTarget <- c(options$dependent, unlist(options$covariates))
-  .hasErrors(dataset, type = c("infinity", "variance", "observations", "varCovData"),
+  errorTypes <- c("infinity", "variance", "observations")
+  # varCovData check requires 2+ covariates to compute covariance matrix
+  if (length(options$covariates) >= 2)
+    errorTypes <- c(errorTypes, "varCovData")
+
+  .hasErrors(dataset, type = errorTypes,
              custom = stepwiseProcedureChecks,
              custom.target = defaultTarget,
 
@@ -181,7 +186,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                  factorLevels.target  = options$factors,
                  factorLevels.amount  = '< 2',
                  exitAnalysisIfErrors = TRUE)
-    if (length(c(options$covariates, options$factors)) != 0) {
+    # varCovData check requires 2+ covariates/factors to compute covariance matrix
+    if (length(c(options$covariates, options$factors)) >= 2) {
       covwt <- function(...) return(stats::cov.wt(..., wt = dataset[[options[["weights"]]]])$cov)
       .hasErrors(dataset[, -which(colnames(dataset) %in% c(options$weights))],  type = "varCovData", varCovData.corFun = covwt,
                  exitAnalysisIfErrors = TRUE)

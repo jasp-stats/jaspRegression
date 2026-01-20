@@ -23,14 +23,15 @@ options$residualCasewiseDiagnostic <- FALSE
 options$residualsSavedToData <- FALSE
 options$residualsSavedToDataColumn <- FALSE
 options$residualStatistic <- FALSE
+options$rSquaredChange <- FALSE
 
-results <- jaspTools::runAnalysis("RegressionLinear", "Regression.csv", options)
+results <- jaspTools::runAnalysis("RegressionLinear", test_path("Regression.csv"), options)
 
 # https://jasp-stats.github.io/jasp-verification-project/regression.html#linear-regression
 test_that("Main table results match R, SPSS, SAS and MiniTab", {
   # Main table
   resultTable <- results$results$modelContainer$collection$modelContainer_summaryTable$data
-  
+
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list(0, 0, 11.711593246071, 0, "H<unicode>", 0.806436535963374, 0.650339886536607,
@@ -42,7 +43,7 @@ test_that("Main table results match R, SPSS, SAS and MiniTab", {
 test_that("ANOVA table results match R, SPSS, SAS and MiniTab", {
   # ANOVA table
   resultTable <- results$results$modelContainer$collection$modelContainer_anovaTable$data
-  
+
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list("TRUE", 165.532892294899, 8028.13859583154, 8028.13859583154,
@@ -56,7 +57,7 @@ test_that("ANOVA table results match R, SPSS, SAS and MiniTab", {
 test_that("Coefficient table results match R, SPSS, SAS and MiniTab", {
   # Coefficient table
   resultTable <- results$results$modelContainer$collection$modelContainer_coeffTable$data
-  
+
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list("FALSE", 1.22770856137111, "H<unicode>", "(Intercept)", 6.22465705469213e-34,
@@ -72,7 +73,7 @@ test_that("Coefficient table results match R, SPSS, SAS and MiniTab", {
 test_that("Descriptive table results match R, SPSS, SAS and MiniTab", {
   # Descriptives table
   resultTable <- results$results$modelContainer$collection$modelContainer_descriptivesTable$data
-  
+
   jaspTools::expect_equal_tables(
     "test"=resultTable,
     "ref"=list(91, 11.711593246071, 1.22770856137111, 23.8351648351648, "Y",
