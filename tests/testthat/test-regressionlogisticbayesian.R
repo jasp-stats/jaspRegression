@@ -19,11 +19,12 @@ options$modelTerms <- list(list(components = "treat", isNuisance = FALSE), list(
 options$posteriorSummaryPlot <- TRUE
 options$posteriorSummaryTable <- TRUE
 options$priorRegressionCoefficients <- "cch"
+options$residualsSavedToData <- FALSE
+options$residualSdsSavedToData <- FALSE
 options$residualSdsSavedToDataColumn <- ""
 options$residualsSavedToDataColumn <- ""
 set.seed(1)
 results <- jaspTools::runAnalysis("RegressionLogisticBayesian", santas_log, options)
-
 
 test_that("Model Comparison - delivered table results match", {
   table <- results[["results"]][["bayesianLogisticReg"]][["collection"]][["bayesianLogisticReg_modelComparisonTable"]][["data"]]
