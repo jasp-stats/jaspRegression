@@ -3501,3 +3501,11 @@ msgstr ""
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
 msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms for the covariates in each model."
+msgstr ""
