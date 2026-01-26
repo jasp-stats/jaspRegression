@@ -2328,7 +2328,6 @@ msgstr ""
 "Standardmäßig Lambda = 1. Äquivalent zu Beta-Binomal mit a = 1 und b = "
 "Lambda * p, wobei p die Anzahl der Prädiktoren im Modell ist."
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid ""
 "Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p "
@@ -3578,4 +3577,12 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms"
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms for the covariates in each model."
 msgstr ""

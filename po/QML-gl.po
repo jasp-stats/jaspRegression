@@ -3937,3 +3937,13 @@ msgstr "Ecuación de regresión"
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
 msgstr "Presenta a ecuación de regresión para cada modelo."
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms"
+msgstr "Incluír termos cuadráticos"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms for the covariates in each model."
+msgstr "Incluír termos cuadráticos para as covariantes en cada modelo."

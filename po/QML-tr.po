@@ -3423,3 +3423,13 @@ msgstr "Regresyon denklemi"
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
 msgstr "Her model için regresyon denklemlerini göster."
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms"
+msgstr "İkinci dereceden terimleri dahil et"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms for the covariates in each model."
+msgstr "Her modeldeki kovaryatlar için ikinci dereceden terimleri dahil et."

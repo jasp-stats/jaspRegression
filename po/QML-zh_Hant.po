@@ -3427,3 +3427,12 @@ msgstr "迴歸方程式"
 msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
 msgstr "顯示各模型的迴歸方程式。"
+
+#, fuzzy
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms"
+msgstr "納入二次項"
+
+msgctxt "RegressionLogistic|"
+msgid "Include quadratic terms for the covariates in each model."
+msgstr ""
