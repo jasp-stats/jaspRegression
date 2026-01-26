@@ -980,7 +980,7 @@ msgstr ""
 "Vovk-Sellke அதிகபட்ச <em>p-விகிதம்</em>: <em>p-மதிப்பின்</em> அடிப்படையில், "
 "அதிகபட்சம்\n"
 "        H%1$s க்கு மேல் H%2$s க்கு ஆதரவாகச் சாத்தியமான முரண்பாடுகள் p <em>%</em>3$s .37 "
-"(Sellke, Bayarri, & Berger) க்கு 1/(-e p <em>log</em>(p<em>)</em>) %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
+"(Sellke, Bayarri, & Berger, 2001)."
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
