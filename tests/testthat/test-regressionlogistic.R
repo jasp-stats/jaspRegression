@@ -155,6 +155,7 @@ test_that("Fields Book - Chapter 10 results match", {
   )
   options$residualCasewiseDiagnostic <- TRUE
   options$oddsRatio <- FALSE
+  options$residualCasewiseDiagnosticType <- "outliersOutside"
   options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientBootstrap <- TRUE
   options$coefficientBootstrapSamples <- 1000
