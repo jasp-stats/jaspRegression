@@ -12,13 +12,13 @@ getOptions <- function(analysisName) {
 addCommonQmlOptions <- function(options) {
   # jaspTools doesn't recognize common QML elements so this function adds the defaults manually
   #root <- testthat::test_path(file.path("..", "..", "inst", "qml", "common"))
-  root <- file.path("..", "..", "inst", "qml", "common")
+  root <- testthat::test_path("..", "..", "inst", "qml", "common")
   c(
     options,
-    jaspTools:::readQML(file.path(root, "GlmInputComponent.qml")),
-    jaspTools:::readQML(file.path(root, "GlmResidualAnalysisPlotsComponent.qml")),
-    jaspTools:::readQML(file.path(root, "EmmComponent.qml")),
-    jaspTools:::readQML(file.path(root, "OutlierComponent.qml"))
+    jaspTools:::readQML(testthat::test_path(root, "GlmInputComponent.qml")),
+    jaspTools:::readQML(testthat::test_path(root, "GlmResidualAnalysisPlotsComponent.qml")),
+    jaspTools:::readQML(testthat::test_path(root, "EmmComponent.qml")),
+    jaspTools:::readQML(testthat::test_path(root, "OutlierComponent.qml"))
   )
 }
 
