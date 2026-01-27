@@ -8,7 +8,7 @@ context("Linear Regression")
 # - plots handle errors
 
 ## Load some typed test data:
-testData <- readRDS("testData.rds")
+testData <- readRDS(testthat::test_path("testData.rds"))
 
 initOptsLinReg <- function() {
   options <-  jaspTools::analysisOptions("RegressionLinear")
@@ -405,7 +405,7 @@ test_that("Part And Partial Correlations table results match", {
   ) 
   options$partAndPartialCorrelation <- TRUE
   set.seed(1)
-  results <- jaspTools::runAnalysis("RegressionLinear", "Duncan.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", testthat::test_path("Duncan.csv"), options)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -495,7 +495,7 @@ test_that("Fields Book - Chapter 1 results match", {
   options$fChange <- FALSE
   options$rSquaredChange <- FALSE
   
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("Album Sales.csv"), options)
   output1 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(output1,
                       list(0, 0, 80.698956672563, 0, "H<unicode>", 0.578487741981689, 0.334648067623073,
@@ -523,7 +523,7 @@ test_that("Fields Book - Chapter 1 results match", {
     list(components=list("adverts"), name="model0", title = "Model 0"),
     list(components=list("adverts", "airplay", "attract"), name="model1", title = "Model 1")
   ) 
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("Album Sales.csv"), options)
   output4 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(output4,
                       list("H<unicode>", 0.5784877, 0.3346481, 0.3312877, 65.99144,
@@ -569,7 +569,7 @@ test_that("Fields Book - Chapter 2 results match", {
   options$fChange <- TRUE
   
   options$coefficientCi <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("Album Sales.csv"), options)
   output4 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
   jaspTools::expect_equal_tables(output4,
                       list("H<unicode>", 0.5784877, 0.3346481, 0.3312877, 65.99144, 0.3346481, 99.58687, 1, 198, 2.94198e-19,
@@ -606,7 +606,7 @@ test_that("Fields Book - Chapter 3 results match", {
   options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientCi <- TRUE
 
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("Album Sales.csv"), options)
   figure3 <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
   jaspTools::expect_equal_plots(figure3, "field-residuals-predicted")
   figure4a <- results[["state"]][["figures"]][[4]][["obj"]] # Partial Plot Adverts
@@ -648,7 +648,7 @@ test_that("Fields Book - Chapter 3 results match", {
   options$coefficientBootstrapSamples <- 1000
   set.seed(1) # For Bootstrapping Unit Tests
   options$coefficientCi <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Album Sales.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("Album Sales.csv"), options)
   figure10 <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_influenceTable"]][["data"]]
   figure10 <- list(figure10[[1]]$cooksD, figure10[[2]]$cooksD, figure10[[3]]$cooksD, figure10[[4]]$cooksD,
                    figure10[[5]]$cooksD, figure10[[6]]$cooksD, figure10[[7]]$cooksD, figure10[[8]]$cooksD,
@@ -689,7 +689,7 @@ test_that("Fields Book - Chapter 3 results match", {
   options$partialResidualPlot <- TRUE
   options$residualQqPlot <- TRUE
   set.seed(1)
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "SocialAnxietyRegression.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("SocialAnxietyRegression.csv"), options)
   figure11a <- results[["state"]][["figures"]][[1]][["obj"]] # Residuals vs. Predicted
   jaspTools::expect_equal_plots(figure11a, "socialAnxiety-residuals-vs.-predicted") # This command needs to be updated
   figure11b <- results[["state"]][["figures"]][[3]][["obj"]] # Partial Plot tosca
@@ -711,7 +711,7 @@ test_that("Fields Book - Chapter 4 results match", {
     list(components=list("dummy1", "dummy2"), name="model1", title = "Model 1")
   ) 
   options$coefficientCi <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Dummy.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("Puppies Dummy.csv"), options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(output1a,
                       list("TRUE", 5.11864406779661, 10.0666666666667, 20.1333333333333,
@@ -739,7 +739,7 @@ test_that("Fields Book - Chapter 5 results match", {
     list(components=list("Dummy1", "Dummy2"), name="model1", title = "Model 1")
   ) 
   options$coefficientCi <- TRUE
-  results <- jaspTools::runAnalysis("RegressionLinear", dataset = "Puppies Contrast.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset = testthat::test_path("Puppies Contrast.csv"), options)
   output1a <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(output1a,
                       list("TRUE", 5.11864406779661, 10.0666666666667, 20.1333333333333,
