@@ -3,8 +3,8 @@ context("Logistic Regression")
 # Below are the unit tests for Andy Field's book
 
 ## Get some typed example data
-testData <- readRDS("testData.rds")
-santas_log <- read.csv("santas_log.csv")
+testData <- readRDS(testthat::test_path("testData.rds"))
+santas_log <- read.csv(testthat::test_path("santas_log.csv"))
 santas_log$treat <- as.factor(santas_log$treat)
 
 # Chapter 10
@@ -99,7 +99,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$conditionalEstimatePlot <- TRUE
   options$conditionalEstimatePlotPoints <- FALSE
   options$residualCasewiseDiagnostic <- FALSE
-  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log_subset_treat0.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = testthat::test_path("santas_log_subset_treat0.csv"), options)
   output6 <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(output6,
                                  list("TRUE", 3.57850992169287, 8.01981276525911, 1.6784307832026, "M<unicode>",
@@ -128,7 +128,7 @@ test_that("Fields Book - Chapter 10 results match", {
   options$conditionalEstimatePlot <- TRUE
   options$conditionalEstimatePlotPoints <- FALSE
   options$residualCasewiseDiagnostic <- FALSE
-  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "santas_log_subset_treat1.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = testthat::test_path("santas_log_subset_treat1.csv"), options)
   output7 <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(output7,
                                  list("TRUE", 0.629242023574777, 1.06773288827061, -0.198850858244477,
@@ -155,6 +155,7 @@ test_that("Fields Book - Chapter 10 results match", {
   )
   options$residualCasewiseDiagnostic <- TRUE
   options$oddsRatio <- FALSE
+  options$residualCasewiseDiagnosticType <- "outliersOutside"
   options$residualCasewiseDiagnosticZThreshold <- 2
   options$coefficientBootstrap <- TRUE
   options$coefficientBootstrapSamples <- 1000
@@ -371,7 +372,7 @@ test_that("Pseudo R-squared are correct", {
     list(components=c("age", "lwt", "race", "smoke"), name="model1", title = "Model 1")
   )
   options$residualCasewiseDiagnostic <- FALSE
-  results <- jaspTools::runAnalysis("RegressionLogistic", "lowbwt.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", testthat::test_path("lowbwt.csv"), options)
   r_squared <- results$results$modelSummary$data[[2]][c("fad", "nag", "tju", "cas")]
   jaspTools::expect_equal_tables(r_squared,
                       list(0.0856291418878957, 0.141844242772774, 0.0962310669224921, 0.100864461712579)
@@ -425,7 +426,7 @@ test_that("Performance plots match", {
   options$rocPlot <- TRUE
   options$precisionRecallPlot  <- TRUE
 
-  results <- jaspTools::runAnalysis("RegressionLogistic", "lowbwt.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", testthat::test_path("lowbwt.csv"), options)
 
   plotName <- results[["results"]][["performancePlots"]][["collection"]][["performancePlots_rocPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]

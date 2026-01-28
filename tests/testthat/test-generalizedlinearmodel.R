@@ -1,7 +1,7 @@
 context("GeneralizedLinearModel")
 
 ## Load some typed test data:
-testData <- readRDS("testData.rds")
+testData <- readRDS(testthat::test_path("testData.rds"))
 
 getOptions <- function(analysisName) {
   options <- jaspTools::analysisOptions(analysisName)
@@ -11,8 +11,18 @@ getOptions <- function(analysisName) {
 
 addCommonQmlOptions <- function(options) {
   # jaspTools doesn't recognize common QML elements so this function adds the defaults manually
-  #root <- testthat::test_path(file.path("..", "..", "inst", "qml", "common"))
-  root <- file.path("..", "..", "inst", "qml", "common")
+  # Try development path first (for regular testing)
+  root <- testthat::test_path("..", "..", "inst", "qml", "common")
+
+  # If development path doesn't exist, try installed package path (for coverage testing)
+  if (!dir.exists(root)) {
+    root <- system.file("qml", "common", package = "jaspRegression")
+  }
+
+  if (!dir.exists(root) || root == "") {
+    stop("Could not find QML common directory")
+  }
+
   c(
     options,
     jaspTools:::readQML(file.path(root, "GlmInputComponent.qml")),
@@ -38,21 +48,21 @@ test_that("Binomial regression results match", {
 
   #test logit link
   options$link       <- "logit"
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "turbines.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("turbines.csv"), options)
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("(Intercept)", -3.924, 0.378, -10.381, .000, -4.704, -3.219,
                                              "Hours",       0.001,  0.000, 8.754,   .0001, 0.0008, 0.0012))
 
   #test probit
   options$link       <- "probit"
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "turbines.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("turbines.csv"), options)
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("(Intercept)", -2.276, 0.1974, -11.528, .000, -2.676, -1.901,
                                              "Hours",       0.0006, 0.000,  9.239,   .0001,0.0005,  0.0007))
 
   #test cloglog
   options$link       <- "cloglog"
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "turbines.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("turbines.csv"), options)
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("(Intercept)", -3.603, 0.3247, -11.096,  .000, -4.268, -3.003,
                                              "Hours",       0.0008, 0.0001,  8.992,   .000, 0.0006,  0.001))
@@ -111,7 +121,7 @@ options$leverage <- TRUE
 options$setSeed  <- TRUE
 options$seed     <- 123
 
-results <- jaspTools::runAnalysis("GeneralizedLinearModel", "turbines.csv", options)
+results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("turbines.csv"), options)
 
 # model summary table
 test_that("Model summary table results match", {
@@ -355,7 +365,7 @@ test_that("Gamma regression (with an offset term) results match", {
   options$link       <- "log"
   options$offset     <- "twoTimesLogOfGirth"
 
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "trees.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("trees.csv"), options)
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("(Intercept)", -6.617, 0.7275, -9.096, .000,
                                              "logOfHeight",       1.104,  0.1681, 6.570, .000))
@@ -372,7 +382,7 @@ test_that("Intercept-only binomial regression results match", {
   options$coefficientCiLevel <- 0.95
 
   options$link       <- "logit"
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", "turbines.csv", options)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("turbines.csv"), options)
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table, list("(Intercept)", -1.1235, 0.1118, -10.05, .000, -1.347, -0.9082))
 

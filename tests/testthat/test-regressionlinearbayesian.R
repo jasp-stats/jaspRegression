@@ -72,7 +72,7 @@ options$setSeed <- TRUE
 options$residualsSavedToData   <-  FALSE
 options$residualSdsSavedToData <-  FALSE
 set.seed(1)
-results <- jaspTools::runAnalysis("RegressionLinearBayesian", "Album Sales.csv", options)
+results <- jaspTools::runAnalysis("RegressionLinearBayesian", testthat::test_path("Album Sales.csv"), options)
 
 test_that("Model Comparison - sales table results match", {
   table <- results[["results"]][["basreg"]][["collection"]][["basreg_modelComparisonTable"]][["data"]]
@@ -105,7 +105,7 @@ test_that("Posterior Summaries of Coefficients table (all models) results match"
 
 options$effectsType <- "matchedModels"
 set.seed(1)
-results <- jaspTools::runAnalysis("RegressionLinearBayesian", "Album Sales.csv", options)
+results <- jaspTools::runAnalysis("RegressionLinearBayesian", testthat::test_path("Album Sales.csv"), options)
 
 test_that("Posterior Summaries of Coefficients table (matched models) results match", {
   table <- results[["results"]][["basreg"]][["collection"]][["basreg_postSumContainer"]][["collection"]][["basreg_postSumContainer_postSumTable"]][["data"]]

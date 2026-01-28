@@ -19,7 +19,7 @@ options$coefficientEstimate <- TRUE
 options$oddsRatio <- FALSE
 options$coefficientCiAsOddsRatio <- FALSE
 
-results <- jaspTools::runAnalysis("RegressionLogistic", dataset = "LogReg.csv", options)
+results <- jaspTools::runAnalysis("RegressionLogistic", dataset = testthat::test_path("LogReg.csv"), options)
 
 # https://jasp-stats.github.io/jasp-verification-project/regression.html#logistic-regression
 test_that("Main table results match R, SPSS, SAS and MiniTab", {
