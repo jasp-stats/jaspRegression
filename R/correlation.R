@@ -1127,7 +1127,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 .corrHeatmap <- function(jaspResults, options, corrResults, ready){
   if(isFALSE(options$heatmapPlot)) return()
 
-  hw <- 30 + 80*length(options$variables)
+  hw <- 150 + 80*length(options$variables)
 
   #TODO: The following looks rather familiar and all these defines should, I think, all be put together in one place instead of scattered throughout this file...
   tests <- c("pearson", "spearman", "kendall")
