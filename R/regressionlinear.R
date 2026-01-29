@@ -781,7 +781,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 .linregCreatePartialPlots <- function(modelContainer, dataset, options, position) {
   predictors <- .linregGetPredictors(options$modelTerms)
 
-  title <- ngettext(length(predictors), "Partial Regression Plot", "Partial Regression Plots")
+  title <- ngettext(length(options$covariates) + length(options$factors), "Regression Plot", "Partial Regression Plot")
 
   partialPlotContainer <- createJaspContainer(title)
   partialPlotContainer$dependOn(c("partialResidualPlot", "partialResidualPlotCi", "partialResidualPlotCiLevel",
@@ -811,6 +811,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregFillPartialPlot <- function(partialPlot, predictor, predictors, dataset, options) {
+
+
   plotData  <- .linregGetPartialPlotData(predictor, predictors, dataset, options)
   xVar      <- plotData[["residualsPred"]]
   resid     <- plotData[["residualsDep"]]
@@ -818,6 +820,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   xlab      <- gettextf("Residuals %s", .unvf(predictor))
   ylab      <- gettextf("Residuals %s", options$dependent)
+
+  # Partial plot only makes sense if there are at least 2 covariates, otherwise it is just a scatterplot of dependent and
+  # independent variable
+  if (length(predictors) == 1) {
+    xlab <- .unvf(predictor)
+    ylab <- options$dependent
+  }
 
   # Compute regresion lines
   weights <- dataset[[options$weights]]
