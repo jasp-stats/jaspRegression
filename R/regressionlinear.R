@@ -376,12 +376,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 .linregAddFootnotePredictorsNeverIncluded <- function(coeffTable, model, options) {
   if (options$method %in% c("forward", "stepwise")) {
     includedPredictors <- unlist(lapply(model, "[[", "predictors"))
-    neverIncludedPredictors <- setdiff(unlist(options$covariates), .unv(includedPredictors))
+    neverIncludedPredictors <- setdiff(c(options$covariates, options$factors), includedPredictors)
 
     if (length(neverIncludedPredictors) > 0) {
       message <- sprintf(ngettext(length(neverIncludedPredictors),
-                                  "The following covariate was considered but not included: %s.",
-                                  "The following covariates were considered but not included: %s."),
+                                  "The following predictor was considered but not included: %s.",
+                                  "The following predictors were considered but not included: %s."),
                          paste(neverIncludedPredictors, collapse=", "))
       coeffTable$addFootnote(message)
     }
@@ -1095,17 +1095,19 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     pValues <- pValues[-1]
   }
 
-  tValues <- tValues[!(names(tValues) %in% predictorsInNull)]
-  pValues <- pValues[!(names(pValues) %in% predictorsInNull)]
+  if (!is.null(predictorsInNull)) {
+    tValues <- tValues[!startsWith(names(pValues), predictorsInNull)]
+    pValues <- pValues[!startsWith(names(pValues), predictorsInNull)]
+  }
   fValues <- tValues^2
 
   nextPredictors <- prevModel[["predictors"]]
   if (options$steppingMethodCriteriaType == "fValue" && min(fValues) < options$steppingMethodCriteriaFRemoval) {
       lowestFvaluePredictor <- names(which.min(fValues))
-      nextPredictors        <- prevModel$predictors[prevModel$predictors != lowestFvaluePredictor]
+      nextPredictors        <- prevModel$predictors[!startsWith(lowestFvaluePredictor, prevModel$predictors)]
   } else if (options$steppingMethodCriteriaType == "pValue" && max(pValues) > options$steppingMethodCriteriaPRemoval) {
       highestPvaluePredictor  <- names(which.max(pValues))
-      nextPredictors          <- prevModel$predictors[prevModel$predictors != highestPvaluePredictor]
+      nextPredictors          <- prevModel$predictors[!startsWith(highestPvaluePredictor, prevModel$predictors)]
   }
 
   # no more predictors could be removed, the algorithm is done
