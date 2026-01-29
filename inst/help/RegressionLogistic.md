@@ -16,13 +16,14 @@ Logistic regression allows the user to model a linear relationship between one o
 ---
 
 #### Assignment box
-- Dependent Variable: The variable of interest. This is also called the outcome variable. In case of multiple dependent variables, specify the order in which the predictors are entered into the model (i.e., hierarchical regression analysis). A block of one or more predictor(s) represents one step in the hierarchy.
-  - Enter: All predictors are entered into the model simultaneously (forced entry).
-  - Backward: All predictors are entered simultaneously, and then removed sequentially based on the criterion specified in "Stepping method criteria".
-  - Forward: Predictors are entered sequentially based on the criterion specified in "Stepping method criteria".
-  - Stepwise: Predictors are entered sequentially based on the criterion specified in "Stepping method criteria"; after each step, the least useful predictor is removed.
-- Covariates: In this box the variable that is the covariate can be selected. Covariates are continuous variables that have an influence on the dependent variable but are not part of the experimental manipulation. 
-- Factors: The variables that are manipulated/define the different groups. These are also called the independent variables.
+- Dependent Variable: The variable of interest. This is also called the outcome variable. 
+- Method: Specify the method for entering predictors into the model. For the Enter method, predictors are added as specified in the Model tab. With Forward, Backward, or Stepwise methods, predictors assigned to Model 1 are treated as candidate variables that can be added to or removed from the model based on AIC. Predictors assigned to Model 0 are forced into the model and remain in all steps, regardless of AIC.
+  - Enter: All predictors are entered into the models as specified in the Model tab.
+  - Backward: All predictors are entered simultaneously, and then removed sequentially based on AIC.
+  - Forward: Predictors are entered sequentially based on AIC.
+  - Stepwise: Predictors are entered sequentially based on AIC.
+- Covariates: Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continuous predictor variables.
+- Factors: Categorical predictors variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.
 
 ### Model
 - Components and model terms:
