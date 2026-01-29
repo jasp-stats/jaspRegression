@@ -125,7 +125,17 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregCheckIfInteractionWithFactors <- function(modelTerm, factorVariables) {
   # Custom function to check if interaction contains more than 1 factor
-  return(sum(modelTerm[["components"]] %in% factorVariables) > 1)
+  interactionCheck <- any(sapply(modelTerm[["components"]], function(term) {
+
+    # skip non-interactions
+    if (!grepl(":", term)) return(FALSE)
+
+    vars <- strsplit(term, ":", fixed = TRUE)[[1]]
+
+    # TRUE only if *all* variables in the interaction are factors
+    all(vars %in% factorVars)
+  }))
+  return(interactionCheck)
 }
 
 .linregCheckErrors <- function(dataset, options) {
