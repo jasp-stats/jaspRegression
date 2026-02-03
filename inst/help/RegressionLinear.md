@@ -16,9 +16,8 @@ Linear regression allows the user to model a linear relationship between one or 
 
 #### Assignment Box
 - Dependent: Dependent (response) variable.
-- Method: Specify the order in which the predictors are entered into the model (i.e., hierarchical regression analysis). A block of one or more predictor(s) represents one step in the hierarchy.
-        Note that the present release does not allow for more than one block.
-	- Enter: All predictors are entered into the model simultaneously (forced entry).
+- Method: Specify the method for entering predictors into the model. For the Enter method, predictors are added as specified in the Model tab. With Forward, Backward, or Stepwise methods, predictors listed in Model 1 are treated as candidate variables that can be added to or removed from the model based on statistical criteria (found under Method Specification). Predictors listed in Model 0 are forced into the model and remain in all steps, regardless of their fit.
+	- Enter: All predictors are entered into the models as specified in the Model tab.
 	- Backward: All predictors are entered simultaneously, and then removed sequentially based on the criterion specified in "Stepping method criteria".
 	- Forward: Predictors are entered sequentially based on the criterion specified in "Stepping method criteria".
 	- Stepwise: Predictors are entered sequentially based on the criterion specified in "Stepping method criteria"; after each step, the least useful predictor is removed.
