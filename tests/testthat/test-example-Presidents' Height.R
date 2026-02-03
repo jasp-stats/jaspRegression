@@ -17,7 +17,7 @@ test_that("CorrelationBayesian (analysis 1) results match", {
 
   table <- results[["results"]][["corBayesTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(6.33194472055067, 0.393092363401854, "-", "jaspColumn1", "jaspColumn2"
+    list(6.33194472055065, 0.393092363401853, "-", "jaspColumn1", "jaspColumn2"
     ))
 
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_priorPosteriorPlot"]][["data"]]
@@ -44,7 +44,7 @@ test_that("CorrelationBayesian (analysis 2) results match", {
 
   table <- results[["results"]][["corBayesTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(1.35371131181884, 0.393092363401854, "-", "jaspColumn1", "jaspColumn2"
+    list(1.35371131181883, 0.393092363401853, "-", "jaspColumn1", "jaspColumn2"
     ))
 
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_priorPosteriorPlot"]][["data"]]
