@@ -778,6 +778,17 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 }
 
+# Helper function to add pre- and suffix to a string. Identical function from correlation.R
+.linregAppendLabel <- function(condition = FALSE, label, prefix = "", suffix = ""){
+  if(!condition) return(label)
+  if(length(prefix)>1 || length(suffix)>1) return()
+  if (length(label)>1){
+    # Recursive vectorization if list of variable names (f.e. options$variables) so it labels each variable.
+    return(lapply(label, .corrAppendLabel, condition = condition, prefix = prefix, suffix = suffix))
+  }
+  return(paste0(prefix, label, suffix))
+}
+
 .linregCreatePartialPlots <- function(modelContainer, dataset, options, position) {
   predictors <- .linregGetPredictors(options$modelTerms)
 
@@ -797,8 +808,31 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 
   if (options$dependent != "" && length(predictors) > 0) {
-    for (predictor in predictors)
-      .linregCreatePlotPlaceholder(partialPlotContainer, index = .unvf(predictor), title = gettextf("%1$s vs. %2$s", options$dependent, .unvf(predictor)))
+
+    # Create plot title and append predictors that are controlled for
+    for (predictor in predictors) {
+
+      # Create appropriate title
+      titlestring = gettextf("%1$s vs. %2$s", options$dependent, .unvf(predictor))
+
+      # For multiple predictors, append controlled for variables to title
+      if (length(predictors) > 1) {
+        controlled <- predictors[predictors != predictor]
+        pcorTitlePreSu <- c(
+          "Residuals of ",
+          paste(", <i>after controlling for</i> ", paste(controlled, collapse = ", "))
+          )
+
+        titlestring = .linregAppendLabel(
+          condition = TRUE, # argument has no purpose for this use, hence always TRUE
+          label = titlestring,
+          prefix = pcorTitlePreSu[1],
+          suffix = pcorTitlePreSu[2]
+          )
+      }
+
+      .linregCreatePlotPlaceholder(partialPlotContainer, index = .unvf(predictor), title = titlestring)
+    }
 
     for (predictor in predictors) {
       if (.linregContainsFactor(dataset, predictor)) {
