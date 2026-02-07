@@ -46,7 +46,7 @@ The Correlation analysis allows estimation of the population correlation, as wel
 - Covariance: The covariance between each pair of variables. 
 
 #### Plots
-- Scatter plots: Displays scatter plots for all variable pairs. In a matrix format, these are placed above the diagonal. For partial correlations, plots show the relationship between X and Y after removing the effect of Z. In that case, axes represent residuals from regressing X and Y on and not the raw X and Y variables".
+- Scatter plots: Displays scatter plots for all variable pairs. In a matrix format, these are placed above the diagonal. For partial correlations, plots show the relationship between X and Y after removing the effect of Z. In that case, axes represent the residuals from regressing X and Y on Z, rather than the raw X and Y variables".
   - Densities for variables: Display histogram and the corresponding density plot for each variable. In a matrix format, these are placed on the diagonal.
   - Statistics: Display the correlation coefficient(s) in the plot. This option also adds the x% confidence interval(s) as specified in the "Confidence Intervals" option.
 - Heatmap: Display a correlation heatmap for Pearson, Spearman, and Kendall's tau B coefficients separately.
