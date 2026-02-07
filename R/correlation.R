@@ -850,14 +850,21 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 
 # Helper function that, if partial correlation takes place, transforms X and Y variables into residuals X and Y regressed on Z.
 # If no variables Z to partial out are specified, it simply extracts normal X and Y variables from dataset according to col_id.
-# Presence of Z needs to be determine by a boolean "pcor" beforehand.
-.corrVarOrRes <- function(pcor, col_id, dataset, options){
-  data <- dataset[col_id]
-  data <- data[complete.cases(data), ]
-  if (!pcor) return (data)
+# Presence of Z needs to be determine by a boolean "choosePartial" beforehand.
+.corrVarOrRes <- function(choosePartial, col_id, dataset, options){
 
-  condData <- dataset[,.v(options$partialOutVariables), drop = FALSE]
-  condData <- condData[complete.cases(data),, drop = TRUE]
+  partialCols <- .v(options$partialOutVariables)
+  if (choosePartial) {
+    rowMask <- complete.cases(dataset[, c(col_id, partialCols), drop=FALSE])
+  } else {
+    rowMask <- complete.cases(dataset[, col_id, drop=FALSE])
+  }
+
+  data <- dataset[rowMask, col_id, drop=FALSE]
+  if (!choosePartial){
+    return (data)
+  }
+  condData <- dataset[rowMask, partialCols, drop=TRUE]
 
   # For multiple variables Z, create intermediate data frames to allow regressing either X OR Y on all Z variables
   if (is.data.frame(condData)) {
@@ -877,14 +884,12 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   return(data)
 }
 
-# Helper function to append a string label given a specified condition is fulfilled. If label is a vector of strings,
-# all elements of the vector will be recursively appended by specified pre- and suffix.
+# Helper function to append a string label with prefix and suffix. Iterates through nested lists
 .corrAppendLabel <- function(condition = FALSE, label, prefix = "", suffix = ""){
   if(!condition) return(label)
   if(length(prefix)>1 || length(suffix)>1) return()
 
-  if (length(label)>1){
-    # Recursive vectorization if list of variable names (f.e. options$variables) so it labels each variable.
+  if (is.list(label)) {
     return(lapply(label, .corrAppendLabel, condition = condition, prefix = prefix, suffix = suffix))
   }
   return(paste0(prefix, label, suffix))
@@ -905,7 +910,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 .corrPairwisePlot <- function(jaspResults, dataset, options, ready, corrResults, errors=NULL){
   if(!is.null(jaspResults[['corrPlot']])) return()
 
-  plotContainer <- createJaspContainer(title = gettext("Scatter plots"))
+  plotContainer <- createJaspContainer(title = gettext("Scatter Plots"))
   plotContainer$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
                                      "pairwiseDisplay", "ci", "ciLevel", "alternative", "ciBootstrap", "ciBootstrapSamples",
                                      "scatterPlot", "scatterPlotDensity", "scatterPlotStatistic", "scatterPlotCi",
@@ -922,21 +927,20 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vcomb <- combn(vvars, 2, simplify = FALSE)
   vpairs <- sapply(vcomb, paste, collapse = "_")
 
-  pcor <- length(options$partialOutVariables) != 0
-  pcorTitlePreSu <- c(
-    "Residuals of ",
-    paste(", <i>after controlling for</i> ", paste(options$partialOutVariables, collapse = ", ")))
-  pcorLabelPre <- "Residuals "
+  choosePartial <- length(options$partialOutVariables) != 0
+
+  titleSuffix <-  paste(" (", paste(options$partialOutVariables, collapse = ", "), " <i>partialed out</i> )" )
+  labelPrefix <- "Residuals "
 
   if(options[['scatterPlotDensity']]){
     for(i in seq_along(vcomb)){
-      plot <- createJaspPlot(title = .corrAppendLabel(pcor, pairs[i], pcorTitlePreSu[1], pcorTitlePreSu[2]),
+      plot <- createJaspPlot(title = .corrAppendLabel(choosePartial, pairs[i],suffix = titleSuffix),
                              width = 550, height = 550)
       plotContainer[[vpairs[i]]] <- plot
 
       plotMat <- matrix(list(), 2, 2)
 
-      data <- .corrVarOrRes(pcor, vcomb[[i]], dataset, options)
+      data <- .corrVarOrRes(choosePartial, vcomb[[i]], dataset, options)
 
       plotMat[[1, 1]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE], varName = comb[[i]][1],
                                                    options = options, yName = NULL)
@@ -961,26 +965,26 @@ CorrelationInternal <- function(jaspResults, dataset, options){
       plot$plotObject <- jaspGraphs::ggMatrixPlot(
                                       plotMat,
                                       bottomLabels = c(
-                                        .corrAppendLabel(pcor, comb[[i]][1], prefix = pcorLabelPre),
+                                        .corrAppendLabel(choosePartial, comb[[i]][1], prefix = labelPrefix),
                                         gettext("Density")),
                                       leftLabels   = c(
                                         gettext("Density"),
-                                        .corrAppendLabel(pcor, comb[[i]][2], , prefix = pcorLabelPre))
+                                        .corrAppendLabel(choosePartial, comb[[i]][2], , prefix = labelPrefix))
                                       )
     }
   } else if(options[['scatterPlotStatistic']]){
     for(i in seq_along(vcomb)){
-      plot <- createJaspPlot(title = .corrAppendLabel(pcor, pairs[i], pcorTitlePreSu[1], pcorTitlePreSu[2]),
+      plot <- createJaspPlot(title = .corrAppendLabel(choosePartial, pairs[i], suffix = titleSuffix),
                              width = 600, height = 300)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- .corrVarOrRes(pcor, vcomb[[i]], dataset, options)
+      data <- .corrVarOrRes(choosePartial, vcomb[[i]], dataset, options)
 
       plotMat <- matrix(list(), 1, 2)
       plotMat[[1, 1]] <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                                       options = options,
-                                      xName = .corrAppendLabel(pcor, comb[[i]][1], prefix = pcorLabelPre),
-                                      yName = .corrAppendLabel(pcor, comb[[i]][2], prefix = pcorLabelPre),
+                                      xName = .corrAppendLabel(choosePartial, comb[[i]][1], prefix = labelPrefix),
+                                      yName = .corrAppendLabel(choosePartial, comb[[i]][2], prefix = labelPrefix),
                                       drawAxes = TRUE)
 
       plotMat[[1, 2]] <- .corrValuePlot(corrResults[[vpairs[i]]], options = options)
@@ -989,15 +993,15 @@ CorrelationInternal <- function(jaspResults, dataset, options){
     }
   } else{
     for(i in seq_along(vcomb)){
-      plot <- createJaspPlot(title = .corrAppendLabel(pcor, pairs[i], pcorTitlePreSu[1], pcorTitlePreSu[2]),
+      plot <- createJaspPlot(title = .corrAppendLabel(choosePartial, pairs[i], suffix = titleSuffix),
                              width = 400, height = 400)
       plotContainer[[vpairs[i]]] <- plot
 
-      data <- .corrVarOrRes(pcor, vcomb[[i]], dataset, options)
+      data <- .corrVarOrRes(choosePartial, vcomb[[i]], dataset, options)
       plot$plotObject <- .corrScatter(xVar = data[,1,drop=TRUE], yVar = data[,2,drop=TRUE],
                         options = options,
-                        xName = .corrAppendLabel(pcor, comb[[i]][1], prefix = pcorLabelPre),
-                        yName = .corrAppendLabel(pcor, comb[[i]][2], prefix = pcorLabelPre),
+                        xName = .corrAppendLabel(choosePartial, comb[[i]][1], prefix = labelPrefix),
+                        yName = .corrAppendLabel(choosePartial, comb[[i]][2], prefix = labelPrefix),
                         drawAxes = TRUE)
     }
   }
@@ -1008,8 +1012,8 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   vars <- options$variables
   vvars <- .v(vars)
   len <- length(vars)
-  pcor <- (length(options$partialOutVariables) != 0)
-  pcorLabelPre <- "Residual "
+  choosePartial <- (length(options$partialOutVariables) != 0)
+  labelPrefix <- "Residuals "
 
   plot <- createJaspPlot(title = gettext("Correlation plot"))
   plot$dependOn(options = c("variables", "partialOutVariables", "pearson", "spearman", "kendallsTauB",
@@ -1036,7 +1040,7 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   for(row in seq_len(len)){
     for(col in seq_len(len)){
 
-      data <- .corrVarOrRes(pcor, vvars[c(col, row)], dataset, options)
+      data <- .corrVarOrRes(choosePartial, vvars[c(col, row)], dataset, options)
 
       if(row == col) {
         plotMat[[row, col]] <- .corrMarginalDistribution(variable = data[,1,drop=TRUE],
@@ -1053,8 +1057,8 @@ CorrelationInternal <- function(jaspResults, dataset, options){
   }
 
   p <- jaspGraphs::ggMatrixPlot(plotList = plotMat,
-                                leftLabels = .corrAppendLabel(pcor, vars, pcorLabelPre),
-                                topLabels = .corrAppendLabel(pcor, vars, pcorLabelPre),
+                                leftLabels = .corrAppendLabel(choosePartial, vars, labelPrefix),
+                                topLabels = .corrAppendLabel(choosePartial, vars, labelPrefix),
                                 scaleXYlabels = NULL)
   plot$plotObject <- p
 }

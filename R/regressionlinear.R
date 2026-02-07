@@ -783,8 +783,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if(!condition) return(label)
   if(length(prefix)>1 || length(suffix)>1) return()
   if (length(label)>1){
-    # Recursive vectorization if list of variable names (f.e. options$variables) so it labels each variable.
-    return(lapply(label, .corrAppendLabel, condition = condition, prefix = prefix, suffix = suffix))
+    # Recursive vectorization if list of variable names so it labels each variable.
+    return(lapply(label, .linregAppendLabel, condition = condition, prefix = prefix, suffix = suffix))
   }
   return(paste0(prefix, label, suffix))
 }
