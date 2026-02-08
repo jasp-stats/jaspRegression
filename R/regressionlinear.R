@@ -807,33 +807,30 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     return()
   }
 
+  # Title adjustment depending on single or multiple predictors
   if (options$dependent != "" && length(predictors) > 0) {
-
-    # Create plot title and append predictors that are controlled for
     for (predictor in predictors) {
 
-      # Create appropriate title
-      titlestring = gettextf("%1$s vs. %2$s", options$dependent, .unvf(predictor))
+      # Base case of single predictor partial plot title
+      titleString <- gettextf("%1$s vs. %2$s", options$dependent, .unvf(predictor))
 
-      # For multiple predictors, append controlled for variables to title
+      # Adjust title if variables need to be controlled for partial plot
       if (length(predictors) > 1) {
         controlled <- predictors[predictors != predictor]
-        pcorTitlePreSu <- c(
-          "Residuals of ",
-          paste(", <i>after controlling for</i> ", paste(controlled, collapse = ", "))
-          )
-
-        titlestring = .linregAppendLabel(
-          condition = TRUE, # argument has no purpose for this use, hence always TRUE
-          label = titlestring,
-          prefix = pcorTitlePreSu[1],
-          suffix = pcorTitlePreSu[2]
-          )
+        titleSuffix <-  paste(" (", paste(controlled, collapse = ", "), " <i>partialed out</i> )" )
+        titleString <- .linregAppendLabel(
+          condition = TRUE,
+          label = titleString,
+          prefix = "",
+          suffix = titleSuffix
+        )
       }
 
-      .linregCreatePlotPlaceholder(partialPlotContainer, index = .unvf(predictor), title = titlestring)
+      # Create plot placeholder with appropriate title
+      .linregCreatePlotPlaceholder(partialPlotContainer, index = .unvf(predictor), title = titleString)
     }
 
+    # Error message for factor predictors
     for (predictor in predictors) {
       if (.linregContainsFactor(dataset, predictor)) {
         partialPlotContainer[[.unvf(predictor)]]$setError(gettext("Partial plots are not supported for factors"))
@@ -846,7 +843,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregFillPartialPlot <- function(partialPlot, predictor, predictors, dataset, options) {
 
-
   plotData  <- .linregGetPartialPlotData(predictor, predictors, dataset, options)
   xVar      <- plotData[["residualsPred"]]
   resid     <- plotData[["residualsDep"]]
@@ -854,13 +850,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   xlab      <- gettextf("Residuals %s", .unvf(predictor))
   ylab      <- gettextf("Residuals %s", options$dependent)
-
-  # Partial plot only makes sense if there are at least 2 covariates, otherwise it is just a scatterplot of dependent and
-  # independent variable
-  if (length(predictors) == 1) {
-    xlab <- .unvf(predictor)
-    ylab <- options$dependent
-  }
 
   # Compute regresion lines
   weights <- dataset[[options$weights]]
