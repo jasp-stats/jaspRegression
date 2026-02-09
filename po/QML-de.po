@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-02-09 12:21+0000\n"
-"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/de/>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -2999,9 +2993,10 @@ msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances."
 msgstr ""
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Uses only complete cases across all variables."
-msgstr ""
+msgstr "Verwendet nur vollständige Fälle für alle Variablen."
 
 msgctxt "CorrelationBayesian|"
 msgid ""
@@ -3016,9 +3011,10 @@ msgid ""
 "specified variables are analyzed.\n"
 msgstr ""
 
+#, fuzzy
 msgctxt "CorrelationBayesian|"
 msgid "Variables for which to compute the correlation coefficient."
-msgstr ""
+msgstr "Variablen, für die der Korrelationskoeffizient berechnet wird."
 
 msgctxt "CorrelationBayesian|"
 msgid ""
@@ -3248,9 +3244,10 @@ msgid ""
 "default is x=2.71."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Uses only complete cases across all variables."
-msgstr ""
+msgstr "Verwendet nur vollständige Fälle für alle Variablen."
 
 msgctxt "RegressionLinear|"
 msgid ""
