@@ -91,9 +91,7 @@ For example, if the two-sided *p*-value equals .05, the Vovk-Sellke MPR equals 2
   - Residuals vs. histogram:  Histogram of the values of the residuals. 
     - Standardized residuals: Use standardized residuals instead.
   - Q-Q plot standardized residuals: Checks the validity of the distributional assumption of the data set. Specifically, the plot illustrates whether the residuals are normally distributed.
-  - Partial plots: These plots are scatterplots of the residuals from 2 regressions - regressing the dependent variable on all of the other predictors, and regressing that particular predictor (as dependent variable) on all of the other predictors - then plotting the residuals against each other. 
-
-
+  - Partial plots: Partial plots show the partial correlation between the a independent variable $X$ and a dependent variable $Y$, after removing the effect of control variables $Z_1, Z_2, ..., Z_n$. Axes depict residuals from regressing $X$ and $Y$ on $Z_1, Z_2, ..., Z_n$, rather than the raw $X$ and $Y$ variables". If there are no other predictors to control for then variables $X$ and $Y$ are regressed against their intercepts, resulting in mean-centered variables on the axes.
 
 ### Output
 ---
