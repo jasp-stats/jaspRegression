@@ -209,7 +209,7 @@ Form
 			}
 			CheckBox 
 			{ 
-				name: "qqPlot";		 	label: qsTr("Q-Q plot standardized residuals"); info: qsTr("Displays Q-Q plot of the standardized residuals. The confidence band shows the expected range of residuals under normality; points outside the band suggest deviations from normality.") 
+				name: "residualQqPlot";		 	label: qsTr("Q-Q plot standardized residuals"); info: qsTr("Displays Q-Q plot of the standardized residuals. The confidence band shows the expected range of residuals under normality; points outside the band suggest deviations from normality.") 
 				CheckBox
 				{
 					name:               "qqPlotCi"

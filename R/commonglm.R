@@ -372,7 +372,7 @@
 
 .glmFillPlotResQQ <- function(residType, model, options) {
 
-  ciLevel <- if (options[["qqPlotCi"]])  options[["qqPlotCiLevel"]] else NULL
+  ciLevel <- if (!is.null(options[["qqPlotCi"]]) && options[["qqPlotCi"]])  options[["qqPlotCiLevel"]] else NULL
 
   # compute residuals
   stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
