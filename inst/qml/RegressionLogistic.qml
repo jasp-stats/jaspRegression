@@ -37,15 +37,16 @@ Form
 		{
 			name: "method"
 			label: qsTr("Method")
+			info: qsTr("Specify the method for entering predictors into the model. For the Enter method, predictors are added as specified in the Model tab. With Forward, Backward, or Stepwise methods, predictors assigned to Model 1 are treated as candidate variables that can be added to or removed from the model based on AIC. Predictors assigned to Model 0 are forced into the model and remain in all steps, regardless of AIC.")
 			values: [
-				{ label: qsTr("Enter"),	info: qsTr("All predictors are entered into the model simultaneously. Forced entry.")	, value: "enter"},
-				{ label: qsTr("Backward"), info: qsTr("All predictors are entered simultaneously, and then removed sequentially based on the criterion specified in stepping method criteria.")	, value: "backward"},
-				{ label: qsTr("Forward"), info: qsTr("Predictors are entered sequentially based on the criterion specified in stepping method criteria."), value: "forward"},
-				{ label: qsTr("Stepwise"), info: qsTr("Predictors are entered sequentially based on the criterion specified in stepping method criteria; after each step, the least useful predictor is removed.")	, value: "stepwise"}
+				{ label: qsTr("Enter"),	info: qsTr("All predictors are entered into the models as specified in the Model tab.")	, value: "enter"},
+				{ label: qsTr("Backward"), info: qsTr("All predictors are entered simultaneously, and then removed sequentially based on AIC.")	, value: "backward"},
+				{ label: qsTr("Forward"), info: qsTr("Predictors are entered sequentially based on AIC."), value: "forward"},
+				{ label: qsTr("Stepwise"), info: qsTr("Predictors are entered sequentially based on AIC; after each step, the least useful predictor is removed.")	, value: "stepwise"}
 			]
 		}
-		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates"); info: qsTr("In this box the variable that is the covariate can be selected. Covariates are continuous variables that influence the dependent variable but are not part of the experimental manipulation.")	;		allowedColumns: ["scale"]; 		minNumericLevels: 2			}
-		AssignedVariablesList { name: "factors";	title: qsTr("Factors");	info: qsTr("The variables that are manipulated/define the different groups. These are also called the independent variables.")	;		allowedColumns: ["nominal"]; 	minLevels: 2                }
+		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates"); info: qsTr("Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continuous predictor variables.")	;		allowedColumns: ["scale"]; 		minNumericLevels: 2			}
+		AssignedVariablesList { name: "factors";	title: qsTr("Factors");	info: qsTr("Categorical predictor variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.")	;		allowedColumns: ["nominal"]; 	minLevels: 2                }
 		AssignedVariablesList { name: "weights";	title: qsTr("WLS Weights (optional)"); info: qsTr("The weights used for weighted least squares regression.") ;allowedColumns: ["scale"]; 	singleVariable: true; debug: true	}
 	}
 	
