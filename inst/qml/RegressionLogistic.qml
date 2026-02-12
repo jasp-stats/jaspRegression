@@ -46,7 +46,7 @@ Form
 			]
 		}
 		AssignedVariablesList { name: "covariates";	title: qsTr("Covariates"); info: qsTr("Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continuous predictor variables.")	;		allowedColumns: ["scale"]; 		minNumericLevels: 2			}
-		AssignedVariablesList { name: "factors";	title: qsTr("Factors");	info: qsTr("Categorical predictors variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.")	;		allowedColumns: ["nominal"]; 	minLevels: 2                }
+		AssignedVariablesList { name: "factors";	title: qsTr("Factors");	info: qsTr("Categorical predictor variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.")	;		allowedColumns: ["nominal"]; 	minLevels: 2                }
 		AssignedVariablesList { name: "weights";	title: qsTr("WLS Weights (optional)"); info: qsTr("The weights used for weighted least squares regression.") ;allowedColumns: ["scale"]; 	singleVariable: true; debug: true	}
 	}
 	
