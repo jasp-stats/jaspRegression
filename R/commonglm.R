@@ -372,10 +372,14 @@
 
 .glmFillPlotResQQ <- function(residType, model, options) {
 
+  ciLevel <- if (!is.null(options[["qqPlotCi"]]) && options[["qqPlotCi"]])  options[["qqPlotCiLevel"]] else NULL
+
   # compute residuals
   stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
 
-  p <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "darkred", ablineOrigin = TRUE, identicalAxes = TRUE)
+  p <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "darkred", ablineOrigin = TRUE,
+                              identicalAxes = TRUE,
+                              ciLevel = ciLevel)
 
   return(p)
 }

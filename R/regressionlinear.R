@@ -775,7 +775,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregCreateResidualsQQPlot <- function(modelContainer, finalModel, options, position) {
   residQQPlot <- createJaspPlot(title = gettext("Q-Q Plot Standardized Residuals"), width = 400, height = 400)
-  residQQPlot$dependOn("residualQqPlot")
+  residQQPlot$dependOn(c("residualQqPlot", "qqPlotCi, qqPlotCiLevel"))
   residQQPlot$position <- position
 
   modelContainer[["residualsQQPlot"]] <- residQQPlot

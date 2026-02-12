@@ -207,8 +207,18 @@ Form
                 name: "residualHistogramPlot";	label: qsTr("Residuals histogram"); info: qsTr("Displays a histogram of residual values.")
                 CheckBox { name: "residualHistogramStandardizedPlot";	label: qsTr("Standardized residuals"); info: qsTr("Use standardized residuals instead.") ; checked: true	}
 			}
-			CheckBox { name: "residualQqPlot";			label: qsTr("Q-Q plot standardized residuals")	; info: qsTr("Checks the validity of the distributional assumption of the data set. Specifically, the plot illustrates whether the residuals are normally distributed.")		}
-            CheckBox
+			CheckBox 
+			{ 
+				name: "residualQqPlot";		 	label: qsTr("Q-Q plot standardized residuals"); info: qsTr("Displays Q-Q plot of the standardized residuals. The confidence band shows the expected range of residuals under normality; points outside the band suggest deviations from normality.") 
+				CheckBox
+				{
+					name:               "qqPlotCi"
+					label:              qsTr("Confidence interval")
+					childrenOnSameRow:  true
+					CIField{ name: "qqPlotCiLevel" }
+				}		
+			}            
+			CheckBox
             {
                 name: "partialResidualPlot";	label: qsTr("Partial plots"); info: qsTr("These plots are scatterplots of the residuals from two regressions - regressing the dependent variable on all other predictors, and regressing a particular predictor (i.e., as dependent variable) on all other predictors-then plotting the residuals against each other.")
                 CheckBox
