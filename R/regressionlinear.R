@@ -1106,7 +1106,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 
   if (!is.null(predictorsInNull)) {
-    tValues <- tValues[!startsWith(names(pValues), predictorsInNull)]
+    tValues <- tValues[!startsWith(names(tValues), predictorsInNull)]
     pValues <- pValues[!startsWith(names(pValues), predictorsInNull)]
   }
   fValues <- tValues^2
