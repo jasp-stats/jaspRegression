@@ -21,7 +21,7 @@ Logistic regression allows the user to model a linear relationship between one o
   - Enter: All predictors are entered into the models as specified in the Model tab.
   - Backward: All predictors are entered simultaneously, and then removed sequentially based on AIC.
   - Forward: Predictors are entered sequentially based on AIC.
-  - Stepwise: Predictors are entered sequentially based on AIC.
+  - Stepwise: Predictors are entered sequentially based on AIC, and after each step the least useful predictor can be removed based on AIC.
 - Covariates: Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continuous predictor variables.
 - Factors: Categorical predictor variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.
 
