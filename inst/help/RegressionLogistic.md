@@ -23,7 +23,7 @@ Logistic regression allows the user to model a linear relationship between one o
   - Forward: Predictors are entered sequentially based on AIC.
   - Stepwise: Predictors are entered sequentially based on AIC.
 - Covariates: Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continuous predictor variables.
-- Factors: Categorical predictors variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.
+- Factors: Categorical predictor variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.
 
 ### Model
 - Components and model terms:
