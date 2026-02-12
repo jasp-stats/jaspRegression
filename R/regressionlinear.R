@@ -133,7 +133,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     vars <- strsplit(term, ":", fixed = TRUE)[[1]]
 
     # TRUE only if *all* variables in the interaction are factors
-    all(vars %in% factorVars)
+    all(vars %in% factorVariables)
   }))
   return(interactionCheck)
 }
