@@ -41,7 +41,7 @@ Form
 			label: qsTr("Method")
 			info: qsTr("Specify the method for entering predictors into the model. For the Enter method, predictors are added as specified in the Model tab. With Forward, Backward, or Stepwise methods, predictors listed in Model 1 are treated as candidate variables that can be added to or removed from the model based on statistical criteria (found under Method Specification). Predictors listed in Model 0 are forced into the model and remain in all steps, regardless of their fit.")
 			values: [
-				{ label: qsTr("Enter"),	info: qsTr("All predictors are entered into the models as specified in the Model tab. ")	,value: "enter"},
+				{ label: qsTr("Enter"),	info: qsTr("All predictors are entered into the models as specified in the Model tab.")	,value: "enter"},
 				{ label: qsTr("Backward"), info: qsTr("All predictors are entered simultaneously, and then removed sequentially based on the criterion specified in Stepping method criteria."), value: "backward"},
 				{ label: qsTr("Forward"), info: qsTr("Predictors are entered sequentially based on the criterion specified in Stepping method criteria.")	, value: "forward"},
 				{ label: qsTr("Stepwise"), info: qsTr("Predictors are entered sequentially based on the criterion specified in Stepping method criteria; after each step, the least useful predictor is removed."), value: "stepwise"}
