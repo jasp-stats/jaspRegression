@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2025-10-04 02:59\n"
+"POT-Creation-Date: 2026-02-14 03:29\n"
 "PO-Revision-Date: 2024-10-22 23:15+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -350,7 +350,8 @@ msgstr "変数"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "二変量正規性のシャピロ・ウィルク検定"
 
-msgid "Scatter plots"
+#, fuzzy
+msgid "Scatter Plots"
 msgstr "散布図"
 
 msgid "Correlation plot"
@@ -1288,13 +1289,19 @@ msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] "結合したモデルフィットから %1$d/%2$d行を使います"
 
-msgid "The following covariate was considered but not included: %s."
-msgid_plural "The following covariates were considered but not included: %s."
+#, fuzzy
+msgid "The following predictor was considered but not included: %s."
+msgid_plural "The following predictors were considered but not included: %s."
 msgstr[0] "次の共変量が考慮されましたが、含まれていません。%s."
 
-msgid "Partial Regression Plot"
-msgid_plural "Partial Regression Plots"
-msgstr[0] "偏回帰プロット"
+#, fuzzy
+msgid "Regression Plot"
+msgid_plural "Partial Regression Plot"
+msgstr[0] "回帰"
+
+#~ msgid "Partial Regression Plot"
+#~ msgid_plural "Partial Regression Plots"
+#~ msgstr[0] "偏回帰プロット"
 
 #~ msgid "italic(r)"
 #~ msgstr "イタリック(r)"

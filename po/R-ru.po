@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2025-10-04 02:59\n"
+"POT-Creation-Date: 2026-02-14 03:29\n"
 "PO-Revision-Date: 2025-04-14 23:01+0000\n"
 "Last-Translator: MikeWinny <winny63@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -395,7 +395,7 @@ msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Критерий Шапиро-Уилка для оценки двумерной нормальности"
 
 #, fuzzy
-msgid "Scatter plots"
+msgid "Scatter Plots"
 msgstr "Диаграмма рассеяния"
 
 msgid "Correlation plot"
@@ -1514,17 +1514,24 @@ msgstr[1] "используя %1$d/%2$d строк из комбинирован
 msgstr[2] "используя %1$d/%2$d строк из комбинированной подгонки"
 
 #, fuzzy
-msgid "The following covariate was considered but not included: %s."
-msgid_plural "The following covariates were considered but not included: %s."
+msgid "The following predictor was considered but not included: %s."
+msgid_plural "The following predictors were considered but not included: %s."
 msgstr[0] "Следующая ковариата была рассмотрена, но не включена: %s."
 msgstr[1] "Следующие ковариаты были рассмотрены, но не включены: %s."
 msgstr[2] "Следующие ковариаты были рассмотрены, но не включены: %s."
 
-msgid "Partial Regression Plot"
-msgid_plural "Partial Regression Plots"
-msgstr[0] "Частная регрессия"
-msgstr[1] "Частные регрессии"
-msgstr[2] "Частные регрессии"
+#, fuzzy
+msgid "Regression Plot"
+msgid_plural "Partial Regression Plot"
+msgstr[0] "Регрессия"
+msgstr[1] "Регрессия"
+msgstr[2] "Регрессия"
+
+#~ msgid "Partial Regression Plot"
+#~ msgid_plural "Partial Regression Plots"
+#~ msgstr[0] "Частная регрессия"
+#~ msgstr[1] "Частные регрессии"
+#~ msgstr[2] "Частные регрессии"
 
 #~ msgid "italic(r)"
 #~ msgstr "курсив(r)"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2025-10-04 02:59\n"
+"POT-Creation-Date: 2026-02-14 03:29\n"
 "PO-Revision-Date: 2024-07-11 15:09+0000\n"
 "Last-Translator: Florent Michelot <internet@florent.michelot.info>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
@@ -354,8 +354,9 @@ msgstr ""
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr ""
 
-msgid "Scatter plots"
-msgstr ""
+#, fuzzy
+msgid "Scatter Plots"
+msgstr "Diagramme de dispersion"
 
 msgid "Correlation plot"
 msgstr ""
@@ -1295,16 +1296,18 @@ msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] ""
 msgstr[1] ""
 
-msgid "The following covariate was considered but not included: %s."
-msgid_plural "The following covariates were considered but not included: %s."
+#, fuzzy
+msgid "The following predictor was considered but not included: %s."
+msgid_plural "The following predictors were considered but not included: %s."
 msgstr[0] "La covariable suivante était considérée mais pas incluse : %s."
 msgstr[1] ""
 "Les covariables suivantes étaient considérées mais pas incluses : %s."
 
-msgid "Partial Regression Plot"
-msgid_plural "Partial Regression Plots"
-msgstr[0] ""
-msgstr[1] ""
+#, fuzzy
+msgid "Regression Plot"
+msgid_plural "Partial Regression Plot"
+msgstr[0] "Régression"
+msgstr[1] "Régression"
 
 #~ msgid ""
 #~ "Unknown value provided for modelType, possible values: `alternative`, "

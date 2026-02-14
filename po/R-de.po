@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2025-10-04 02:59\n"
+"POT-Creation-Date: 2026-02-14 03:29\n"
 "PO-Revision-Date: 2025-12-23 10:37+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -365,7 +365,8 @@ msgstr "Variablen"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Shapiro-Wilk-Test auf bivariate Normalverteilung"
 
-msgid "Scatter plots"
+#, fuzzy
+msgid "Scatter Plots"
 msgstr "Streudiagramme"
 
 msgid "Correlation plot"
@@ -1357,15 +1358,22 @@ msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] "benutzt die Zeile %1$d/%2$d aus einer kombinierten Anpassung"
 msgstr[1] "benutzt die Zeilen %1$d/%2$d aus einer kombinierten Anpassung"
 
-msgid "The following covariate was considered but not included: %s."
-msgid_plural "The following covariates were considered but not included: %s."
+#, fuzzy
+msgid "The following predictor was considered but not included: %s."
+msgid_plural "The following predictors were considered but not included: %s."
 msgstr[0] "Die folgende Kovariate wurde erwogen, aber nicht einbezogen: %s."
 msgstr[1] "Die folgenden Kovariaten wurden erwogen, aber nicht einbezogen: %s."
 
-msgid "Partial Regression Plot"
-msgid_plural "Partial Regression Plots"
-msgstr[0] "Partielles Regressionsdiagramm"
-msgstr[1] "Partielle Regressionsdiagramme"
+#, fuzzy
+msgid "Regression Plot"
+msgid_plural "Partial Regression Plot"
+msgstr[0] "Regression"
+msgstr[1] "Regression"
+
+#~ msgid "Partial Regression Plot"
+#~ msgid_plural "Partial Regression Plots"
+#~ msgstr[0] "Partielles Regressionsdiagramm"
+#~ msgstr[1] "Partielle Regressionsdiagramme"
 
 #~ msgid "italic(r)"
 #~ msgstr "italic(r)"

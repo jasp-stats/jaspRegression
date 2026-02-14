@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
-"POT-Creation-Date: 2025-10-04 02:59\n"
+"POT-Creation-Date: 2026-02-14 03:29\n"
 "PO-Revision-Date: 2026-01-01 18:01+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/"
@@ -355,7 +355,8 @@ msgstr "மாறிகள்"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "பிவாரேட் இயல்புநிலைக்கான சாபிரோ-வில்க் சோதனை"
 
-msgid "Scatter plots"
+#, fuzzy
+msgid "Scatter Plots"
 msgstr "சிதறல் அடுக்கு"
 
 msgid "Correlation plot"
@@ -1315,12 +1316,19 @@ msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/ %2$d வரிசையைப் பயன்படுத்துதல்"
 msgstr[1] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/ %2$d வரிசைகளைப் பயன்படுத்துதல்"
 
-msgid "The following covariate was considered but not included: %s."
-msgid_plural "The following covariates were considered but not included: %s."
+#, fuzzy
+msgid "The following predictor was considered but not included: %s."
+msgid_plural "The following predictors were considered but not included: %s."
 msgstr[0] "பின்வரும் கோவாரியட் கருதப்பட்டது, ஆனால் சேர்க்கப்படவில்லை: %s."
 msgstr[1] "பின்வரும் கோவாரியட்டுகள் கருதப்பட்டன, ஆனால் சேர்க்கப்படவில்லை: %s."
 
-msgid "Partial Regression Plot"
-msgid_plural "Partial Regression Plots"
-msgstr[0] "பகுதி பின்னடைவு சூழ்ச்சி"
-msgstr[1] "பகுதி பின்னடைவு அடுக்குகள்"
+#, fuzzy
+msgid "Regression Plot"
+msgid_plural "Partial Regression Plot"
+msgstr[0] "பின்னடைவு"
+msgstr[1] "பின்னடைவு"
+
+#~ msgid "Partial Regression Plot"
+#~ msgid_plural "Partial Regression Plots"
+#~ msgstr[0] "பகுதி பின்னடைவு சூழ்ச்சி"
+#~ msgstr[1] "பகுதி பின்னடைவு அடுக்குகள்"
