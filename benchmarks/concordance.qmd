@@ -1,0 +1,400 @@
+---
+title: "Fast Concordance Vector in R"
+format: 
+  html:
+    embed-resources: true
+standalone: true
+execute:
+  echo: true
+---
+
+```{r, echo=TRUE, include=FALSE}
+library(Rcpp)
+# for benchmarking
+library(bench)
+# for manipulating bench output
+library(dplyr) 
+ # for plotting
+library(patchwork)
+library(ggplot2)
+```
+
+## 1. The problem
+
+We want, for each observation $i$, the sum
+
+$$
+c_i = \sum_{j \ne i} \operatorname{sign}(x_j - x_i)\,\operatorname{sign}(y_j - y_i),
+$$
+
+where `sign` is the usual sign function.
+This is essentially a *per-observation contribution* to Kendall’s tau.  
+
+Naively, this is $\mathcal{O}(n^2)$, which is infeasible for large $n$.
+
+---
+
+## 2. Naive R solution
+
+The naive R implementation uses `outer` to compute all pairwise differences:
+
+```{r}
+#| label: naive_r
+concordance_naive <- function(x, y) {
+  dx <- sign(outer(x, x, `-`))
+  dy <- sign(outer(y, y, `-`))
+  .rowSums(dx * dy, nrow(dx), ncol(dx))
+}
+```
+
+This is simple, and for small $n$ it is actually very fast because everything is vectorized.
+However, both `dx` and `dy` are $n \times n$ matrices, so this is $\mathcal{O}(n^2)$ in memory and time. 
+
+
+## 2b. Naive Rcpp solution 
+
+A straightforward Rcpp solution is:
+
+```{r}
+#| label: naive_cpp
+Rcpp::sourceCpp(code = r"{
+
+#include <Rcpp.h>
+using namespace Rcpp;
+
+int sign(double x){
+	return x == 0 ? 0 : x > 0 ? 1 : -1;
+}
+
+// Defined in Hollander, Wolfe & Chicken, Nonparametric Statistical Methods, 3ed., eq. (8.5), p. 394
+int Q(double a, double b, double c, double d) {
+	return sign((d-b)*(c-a));
+}
+
+// Defined in Hollander, Wolfe & Chicken, Nonparametric Statistical Methods, 3ed., eq. (8.37), p. 415
+// [[Rcpp::export]]
+IntegerVector concordanceVector_cpp(const NumericVector& x, const NumericVector& y){
+	int n = x.size();
+	IntegerVector out(n);
+
+	for(int i = 0; i < n; i++){
+		out[i] = 0;
+		for(int t = 0; t < n; t++){
+			if(i != t) out[i] += Q(x[i], y[i], x[t], y[t]);
+		}
+	}
+
+	return out;
+}
+}"
+)
+```
+
+---
+
+## 3. Optimized solution (Fenwick Tree)
+
+The key optimization is to avoid the $n \times n$ matrix entirely.
+Steps:
+
+1. Sort points by `x`. Then $\operatorname{sign}(x_j - x_i)$ is determined by index order, i.e., $\operatorname{sign}(x_j - x_i) = \operatorname{sign}(j - i)$.
+2. Replace `y` with integer ranks.
+3. Use a **Fenwick Tree** (Binary Indexed Tree) to efficiently count how many larger/smaller `y` values exist to the left and right of each index.
+4. Combine these counts to get the concordance vector in $O(n \log n)$.
+
+This is the same trick used in fast Kendall’s tau algorithms, but adapted to return per-observation contributions.
+
+---
+
+## 4. Implementation of the optimized solution
+
+```{r}
+#| label: fenwick
+# in-place Fenwick (handles ties in x and y; minimal allocations)
+# the code is a bit messy because R does not allow mutation
+concordance_fenwick_inplace <- function(x, y) {
+  n <- length(x)
+  stopifnot(length(y) == n)
+  if (n == 0L) return(integer(0L))
+  if (n == 1L) return(0L)
+
+  # 1) order by x (stable), keep x-ordered copies
+  ord <- order(x, y, method = "radix")
+  xo <- x[ord]
+  yo <- y[ord]
+
+  # 2) compute group runs for equal x (use rle to avoid building big lists)
+  if (anyDuplicated(xo)) {
+    rle_x <- rle(xo)
+    group_lengths <- rle_x$lengths
+    group_starts <- cumsum(c(1L, head(group_lengths, -1L)))
+    group_ends   <- cumsum(group_lengths)
+    G <- length(group_lengths)  # number of groups
+  } else {
+    # fast path
+    rle_x <- rle(xo)
+    group_lengths <- rep.int(1L, n)
+    group_starts <- 1:n
+    group_ends   <- 1:n
+    G <- n  # number of groups
+  }
+
+  # 3) compress y to ranks 1..m (strict ordering of unique y's)
+  uniq_y <- sort(unique(yo))
+  ry <- match(yo, uniq_y)      # integer vector 1..m
+  m <- length(uniq_y)
+
+  # allocate bit and result vectors (integers)
+  bit <- integer(m)            # 1-indexed BIT (positions 1..m)
+  less_right    <- integer(n)
+  greater_right <- integer(n)
+  # originally there were separate vectors, but we can reuse some memory
+  # less_left     <- integer(n)
+  # greater_left  <- integer(n)
+
+  # precompute the results of bitwAnd so we can just do lookup
+  # lowbits <- (1:m) - ((1:m) & ((1:m) - 1L))
+  # lowbits <- (1:m) - bitwAnd((1:m), ((1:m) - 1L))
+  #lowbits <- vapply(1:m, \(i) bitwAnd(i, -i), 0L)# -> lowbits
+  lowbits <- bitwAnd(1:m, -1:-m)
+  
+  # Helper: inline bit_sum and bit_add are implemented as loops below
+  # -------- Right sweep (groups processed from right to left) ----------
+  total_seen <- 0L
+  for (g in G:1L) {
+    i1 <- group_starts[g]
+    i2 <- group_ends[g]
+    # query each index in this group (do NOT add them yet)
+    for (i in i1:i2) {
+      r <- ry[i]
+      # less_right: bit_sum(r-1)
+      j <- r - 1L
+      s_less <- 0L
+      while (j > 0L) {
+        s_less <- s_less + bit[j]
+        j <- j - lowbits[j] #bitwAnd(j, -j)
+      }
+      # leq_count: bit_sum(r)
+      j <- r
+      s_leq <- 0L
+      while (j > 0L) {
+        s_leq <- s_leq + bit[j]
+        j <- j - lowbits[j] #bitwAnd(j, -j)
+      }
+      less_right[i] <- s_less
+      greater_right[i] <- total_seen - s_leq
+    }
+    # now add this entire group into the BIT (so earlier groups see them)
+    for (i in i1:i2) {
+      r <- ry[i]
+      j <- r
+      while (j <= m) {
+        bit[j] <- bit[j] + 1L
+        j <- j + lowbits[j] #bitwAnd(j, -j)
+      }
+      total_seen <- total_seen + 1L
+    }
+  }
+  out_xorder <- (greater_right - less_right)  # partial result
+  # reset for left sweep, these are now less_left and greater_left
+  less_right[] <- 0L
+  greater_right[] <- 0L
+  
+
+  # -------- Left sweep (groups processed from left to right) ----------
+  bit[] <- 0L   # reset BIT in-place (no new allocation)
+  total_seen <- 0L
+  for (g in 1L:G) {
+    i1 <- group_starts[g]
+    i2 <- group_ends[g]
+    # query each index in this group (do NOT add them yet)
+    for (i in i1:i2) {
+      r <- ry[i]
+      # less_left: bit_sum(r-1)
+      j <- r - 1L
+      s_less <- 0L
+      while (j > 0L) {
+        s_less <- s_less + bit[j]
+        j <- j - lowbits[j] #bitwAnd(j, -j)
+      }
+      # leq_count: bit_sum(r)
+      j <- r
+      s_leq <- 0L
+      while (j > 0L) {
+        s_leq <- s_leq + bit[j]
+        j <- j - lowbits[j] #bitwAnd(j, -j)
+      }
+      # less_left[i] <- s_less
+      # greater_left[i] <- total_seen - s_leq
+      less_right[i] <- s_less
+      greater_right[i] <- total_seen - s_leq
+    }
+    # now add this group's ranks to BIT
+    for (i in i1:i2) {
+      r <- ry[i]
+      j <- r
+      while (j <= m) {
+        bit[j] <- bit[j] + 1L
+        j <- j + lowbits[j] #bitwAnd(j, -j)
+      }
+      total_seen <- total_seen + 1L
+    }
+  }
+
+  out_xorder <- out_xorder + (less_right - greater_right)
+  # reuse some memory
+  less_right[] <- 0L
+  less_right[ord] <- out_xorder
+  return(less_right)
+  
+  # combine contributions (in x-sorted order), then restore original order
+  # out_xorder <- (greater_right - less_right) + (less_left - greater_left)
+  # out <- integer(n)
+  # out[ord] <- out_xorder
+  # out
+}
+```
+
+
+---
+
+## 5. Benchmarking
+
+We compare the naive and optimized versions using the `bench` package.
+
+```{r}
+#| label: benchmark
+#| cache: false
+
+# results with ties
+x <- sample(-5:5, 100, TRUE)
+y <- sample(-5:5, 100, TRUE)
+naive     = concordance_naive(x, y)
+naive_cpp = concordanceVector_cpp(x, y)
+fenwick2  = concordance_fenwick_inplace(x, y)
+all(naive == fenwick2) && all(naive_cpp == fenwick2)
+
+# results without ties
+x <- rnorm(10)
+y <- rnorm(10)
+naive     = concordance_naive(x, y)
+naive_cpp = concordanceVector_cpp(x, y)
+fenwick2  = concordance_fenwick_inplace(x, y)
+all(naive == fenwick2) && all(naive_cpp == fenwick2)
+
+# profvis::profvis({
+#   for (i in 1:10000)
+#     concordance_fenwick_inplace(x, y)
+# })
+
+orders <- 3
+ns <- c(sapply(seq_len(orders), \(o) {
+  from <- 10^o
+  to   <- 10^(o+1) - from
+  seq(from, to, by = from) # e.g., 10, 100 - 10, 10
+}), 10^(orders+1))
+res <- suppressWarnings(bench::press(
+  n = ns,
+  {
+    x <- rnorm(n)
+    y <- rnorm(n)
+    bench::mark(
+      naive     = concordance_naive(x, y),
+      naive_cpp = concordanceVector_cpp(x, y),
+      fenwick   = concordance_fenwick_inplace(x, y),
+      check = TRUE, # ensure results are checked for equality
+      iterations = 3
+    )
+  },
+  .quiet = !interactive()
+)) # suppressWarnings to hide the message "Some expressions had a GC in every iteration; so filtering is disabled."
+
+res
+```
+
+---
+
+## 6. Plot of runtime
+
+```{r}
+#| label: plot
+res$algorithm <- as.character(res$expression)
+idx_bad <- res$mem_alloc == 0
+res$mem_alloc[idx_bad] <- min(res$mem_alloc[!idx_bad]) / 100  # to avoid divide by 0
+lm_res <- res |>
+  group_by(algorithm) |>
+  summarize(
+    # Fit the model once and extract coefficients
+    time_fit = list(lm(log10(min) ~ log10(n))),
+    mem_fit = list(lm(log10(mem_alloc) ~ log10(n))),
+    .groups = "drop"
+  ) |>
+  mutate(
+    time_intercept = unname(sapply(time_fit, \(x) coef(x)["(Intercept)"])),
+    time_slope     = unname(sapply(time_fit, \(x) coef(x)["log10(n)"])),
+    mem_intercept  = unname(sapply(mem_fit,  \(x) coef(x)["(Intercept)"])),
+    mem_slope      = unname(sapply(mem_fit,  \(x) coef(x)["log10(n)"])),
+    # Remove the temporary columns if you don't need them
+    .keep = "unused"
+  )
+
+idx <- match(c("fenwick", "naive", "naive_cpp"), lm_res$algorithm)
+i1 <- which(lm_res$algorithm == "fenwick")
+i2 <- seq_along(lm_res$algorithm)[-i1]
+intersection_n_time <- 10^(with(lm_res, (time_intercept[i1] - time_intercept[i2]) / (time_slope[i2] - time_slope[i1])))
+intersection_n_mem  <- 10^(with(lm_res, (mem_intercept[i1] - mem_intercept[i2])   / (mem_slope[i2] - mem_slope[i1])))
+intersection_y_time <- 10^(with(lm_res, (lm_res$time_intercept[i1] + lm_res$time_slope[i1] * log10(intersection_n_time))))
+intersection_y_mem  <- 10^(with(lm_res, (lm_res$mem_intercept[i1] + lm_res$mem_slope[i1] * log10(intersection_n_mem))))
+
+intersection_n_time_rounded <- round(intersection_n_time)
+
+# df_intersect <- data.frame(
+#   n_time = c(intersection_n_time, intersection_n_time),
+#   n_mem  = c(intersection_n_mem, intersection_n_mem),
+#   y_time = c(min(res$min),       as_bench_time(intersection_y_time)),
+#   y_mem  = c(min(res$mem_alloc), as_bench_time(intersection_y_mem))
+# )
+
+idx <- match(c("fenwick", "naive"), lm_res$algorithm)
+ref_lines <- data.frame(
+  order = c("O(n)", "O(n^2)"),
+  slope = c(1, 2),       # Reference slopes for O(n) and O(n^2)
+  time_intercept = lm_res$time_intercept[idx],
+  mem_intercept  = lm_res$mem_intercept[idx]
+)
+
+plt_time <- ggplot(res, aes(x = n, y = min, group = algorithm, color = algorithm)) +
+  # scale_y_log10() +
+  geom_point() +
+  # geom_line(alpha = .4, linetype = "dashed") +
+  scale_x_log10() +
+  # geom_abline(data = lm_res,     mapping = aes(slope = time_slope, intercept = time_intercept, color = algorithm),  linetype = "dashed") +
+  geom_abline(data = ref_lines,  mapping = aes(slope =      slope, intercept = time_intercept, color = order), linetype = "dotted") +
+  # geom_line(data = df_intersect, mapping = aes(x = n_time, y = y_time), alpha = .5, color = "grey", inherit.aes = FALSE) +
+  labs(y = "Minimum runtime") +
+  ggtitle("Time")
+plt_memory <- ggplot(res, aes(x = n, y = mem_alloc, group = algorithm, color = algorithm)) +
+  # scale_y_log10() +
+  geom_point() +
+  # geom_line(alpha = .4, linetype = "dashed") +
+  scale_x_log10() +
+  # geom_abline(data = lm_res,    mapping = aes(slope = mem_slope, intercept = mem_intercept, color = algorithm), linetype = "dashed") +
+  geom_abline(data = ref_lines, mapping = aes(slope =     slope, intercept = mem_intercept, color = order), linetype = "dotted") +
+  # not meaningul, intersection is before n = 10
+  # geom_line(data = df_intersect, mapping = aes(x = n_mem, y = y_mem), alpha = .5, color = "grey", inherit.aes = FALSE) +
+  labs(y = "Allocated Memory") +
+  ggtitle("Memory")
+
+
+# plotly::subplot(plotly::ggplotly(plt_time), plotly::ggplotly(plt_memory), nrows = 1)
+plot(plt_time + plt_memory + plot_layout(guides = "collect"))
+
+
+```
+
+---
+
+## 7. Conclusions
+
+* On my machine, the Fenwick approach outperforms the naive approach around $n=$ `r intersection_n_time_rounded[1]` and the naive C++ approach around $n=$ `r intersection_n_time_rounded[2]`. Theoretically, the naive approach is $\mathcal{O}(n^2)$ in time, while the Fenwick approaches is $\mathcal{O}(n \log n)$.
+* The naive approach always uses more memory than the fenwick approach, which uses more memory than the C++ approach. Theoretically, the naive approach is $\mathcal{O}(n^2)$ in memory, while the Fenwick and C++ approaches are $\mathcal{O}(n)$.
