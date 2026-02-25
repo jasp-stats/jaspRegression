@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' data-engine-version='2.0' width='720.00pt' height='576.00pt' viewBox='0 0 720.00 576.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA='>
+    <rect x='0.00' y='0.00' width='720.00' height='576.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 10.67; stroke: none;' />
+</g>
+<defs>
+  <clipPath id='cpMTQxLjMxfDU3MS42NXwyMC43MXw1MDcuMDk='>
+    <rect x='141.31' y='20.71' width='430.34' height='486.39' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMTQxLjMxfDU3MS42NXwyMC43MXw1MDcuMDk=)'>
+<rect x='141.31' y='20.71' width='430.34' height='486.39' style='stroke-width: 10.67; stroke: none;' />
+<rect x='160.87' y='355.10' width='87.76' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCCCCC;' />
+<rect x='160.87' y='203.10' width='89.73' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCCCCC;' />
+<rect x='160.87' y='51.11' width='96.33' height='121.60' style='stroke-width: 1.07; stroke: none; stroke-linecap: butt; stroke-linejoin: miter; fill: #CCCCCC;' />
+<polyline points='552.09,172.70 552.09,51.11 ' style='stroke-width: 2.67; stroke-dasharray: 14.23,14.23; stroke-linecap: butt;' />
+<polyline points='552.09,324.70 552.09,203.10 ' style='stroke-width: 2.67; stroke-dasharray: 14.23,14.23; stroke-linecap: butt;' />
+<polyline points='552.09,476.69 552.09,355.10 ' style='stroke-width: 2.67; stroke-dasharray: 14.23,14.23; stroke-linecap: butt;' />
+<line x1='160.55' y1='507.09' x2='552.41' y2='507.09' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<line x1='141.31' y1='416.22' x2='141.31' y2='111.59' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<rect x='141.31' y='20.71' width='430.34' height='486.39' style='stroke-width: 0.00; stroke: none;' />
+</g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<polyline points='141.31,507.09 141.31,20.71 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
+<text x='125.83' y='421.75' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='80.34px' lengthAdjust='spacingAndGlyphs'>debCollin1</text>
+<text x='125.83' y='269.75' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='65.22px' lengthAdjust='spacingAndGlyphs'>contcor2</text>
+<text x='125.83' y='117.76' text-anchor='end' style='font-size: 17.00px; font-family: sans;' textLength='92.62px' lengthAdjust='spacingAndGlyphs'>contGamma</text>
+<polyline points='132.81,415.90 141.31,415.90 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='132.81,263.90 141.31,263.90 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='132.81,111.91 141.31,111.91 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='141.31,507.09 571.65,507.09 ' style='stroke-width: 0.00; stroke: none; stroke-linecap: butt;' />
+<polyline points='160.87,515.60 160.87,507.09 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='258.68,515.60 258.68,507.09 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='356.48,515.60 356.48,507.09 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='454.29,515.60 454.29,507.09 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<polyline points='552.09,515.60 552.09,507.09 ' style='stroke-width: 0.64; stroke-linecap: butt;' />
+<text x='160.87' y='534.27' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='42.54px' lengthAdjust='spacingAndGlyphs'>0.000</text>
+<text x='258.68' y='534.27' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='42.54px' lengthAdjust='spacingAndGlyphs'>0.125</text>
+<text x='356.48' y='534.27' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='42.54px' lengthAdjust='spacingAndGlyphs'>0.250</text>
+<text x='454.29' y='534.27' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='42.54px' lengthAdjust='spacingAndGlyphs'>0.375</text>
+<text x='552.09' y='534.27' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='42.54px' lengthAdjust='spacingAndGlyphs'>0.500</text>
+<text x='356.48' y='566.78' text-anchor='middle' style='font-size: 20.40px; font-family: sans;' textLength='265.35px' lengthAdjust='spacingAndGlyphs'>Marginal Inclusion Probability</text>
+<rect x='582.61' y='20.71' width='137.39' height='80.57' style='stroke-width: 0.75; stroke: none;' />
+<rect x='582.61' y='20.71' width='137.39' height='80.57' style='stroke-width: 10.67; stroke: none;' />
+<rect x='588.09' y='43.85' width='28.35' height='51.95' style='stroke-width: 10.67; stroke: none;' />
+<line x1='590.92' y1='69.82' x2='613.60' y2='69.82' style='stroke-width: 2.67; stroke-dasharray: 14.23,14.23; stroke-linecap: butt;' />
+<text x='621.91' y='57.31' style='font-size: 17.00px; font-family: sans;' textLength='35.89px' lengthAdjust='spacingAndGlyphs'>Prior</text>
+<text x='621.91' y='75.67' style='font-size: 17.00px; font-family: sans;' textLength='67.11px' lengthAdjust='spacingAndGlyphs'>Inclusion</text>
+<text x='621.91' y='94.03' style='font-size: 17.00px; font-family: sans;' textLength='92.61px' lengthAdjust='spacingAndGlyphs'>Probabilities</text>
+<text x='356.48' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='158.76px' lengthAdjust='spacingAndGlyphs'>inclusionProbabilities</text>
+</g>
+</svg>

@@ -223,7 +223,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   else
     summaryTable <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
 
-  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange", "fChange", "modelAICBIC"))
+  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange", "fChange", "modelAICBIC", "modelAICBICWeights"))
   summaryTable$position <- position
   summaryTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -236,6 +236,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (options$modelAICBIC) {
     summaryTable$addColumnInfo(name = "AIC",      title = gettext("AIC"),                  type = "number", format = "dp:3")
     summaryTable$addColumnInfo(name = "BIC",      title = gettext("BIC"),                  type = "number", format = "dp:3")
+  }
+
+  if (options$modelAICBIC && options$modelAICBICWeights) {
+    summaryTable$addColumnInfo(name = "AICwt",    title = gettext("AIC Weights"),          type = "number", format = "dp:3")
+    summaryTable$addColumnInfo(name = "BICwt",    title = gettext("BIC Weights"),          type = "number", format = "dp:3")
   }
 
   if (options$rSquaredChange || options$fChange) {
@@ -267,13 +272,30 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     if (length(model) == 1 && length(model[[1]]$predictors) == 0 && !options$interceptTerm)
       summaryTable$addFootnote(gettext("No covariate could be entered in the model"))
     else
-      .linregFillSummaryTable(summaryTable, model)
+      .linregFillSummaryTable(summaryTable, model, options)
   }
 
   modelContainer[["summaryTable"]] <- summaryTable
 }
 
-.linregFillSummaryTable <- function(summaryTable, model) {
+.linregFillSummaryTable <- function(summaryTable, model, options) {
+
+  # Calculate AIC and BIC weights if requested
+  AICwt <- NULL
+  BICwt <- NULL
+  if (isTRUE(options$modelAICBIC && options$modelAICBICWeights)) {
+    AICvalues <- sapply(model, function(m) as.numeric(AIC(m[["fit"]])))
+    BICvalues <- sapply(model, function(m) as.numeric(BIC(m[["fit"]])))
+
+    # Calculate delta (difference from minimum)
+    deltaAIC <- AICvalues - min(AICvalues)
+    deltaBIC <- BICvalues - min(BICvalues)
+
+    # Calculate weights: w_i = exp(-0.5 * delta_i) / sum(exp(-0.5 * delta_j))
+    AICwt <- exp(-0.5 * deltaAIC) / sum(exp(-0.5 * deltaAIC))
+    BICwt <- exp(-0.5 * deltaBIC) / sum(exp(-0.5 * deltaBIC))
+  }
+
   for (i in seq_along(model)) {
     lmSummary     <- model[[i]][["summary"]]
     rSquareChange <- model[[i]][["rSquareChange"]]
@@ -286,6 +308,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       adjR2 = as.numeric(lmSummary$adj.r.squared),
       AIC   = as.numeric(AIC(model[[i]][["fit"]])),
       BIC   = as.numeric(BIC(model[[i]][["fit"]])),
+      AICwt = AICwt[i],
+      BICwt = BICwt[i],
       RMSE  = as.numeric(lmSummary$sigma),
       R2c   = rSquareChange$R2c,
       Fc    = rSquareChange$Fc,
