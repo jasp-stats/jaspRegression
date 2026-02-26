@@ -223,7 +223,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   else
     summaryTable <- createJaspTable(gettextf("Model Summary - %s", options[['dependent']]))
 
-  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange", "fChange", "modelAICBIC", "modelAICBICWeights"))
+  summaryTable$dependOn(c("residualDurbinWatson", "rSquaredChange", "fChange", "modelAICBIC", "modelAicBicWeights"))
   summaryTable$position <- position
   summaryTable$showSpecifiedColumnsOnly <- TRUE
 
@@ -238,7 +238,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     summaryTable$addColumnInfo(name = "BIC",      title = gettext("BIC"),                  type = "number", format = "dp:3")
   }
 
-  if (options$modelAICBIC && options$modelAICBICWeights) {
+  if (options$modelAICBIC && options$modelAicBicWeights) {
     summaryTable$addColumnInfo(name = "AICwt",    title = gettext("AIC Weights"),          type = "number", format = "dp:3")
     summaryTable$addColumnInfo(name = "BICwt",    title = gettext("BIC Weights"),          type = "number", format = "dp:3")
   }
@@ -283,7 +283,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   # Calculate AIC and BIC weights if requested
   AICwt <- NULL
   BICwt <- NULL
-  if (isTRUE(options$modelAICBIC && options$modelAICBICWeights)) {
+  if (isTRUE(options$modelAICBIC && options$modelAicBicWeights)) {
     AICvalues <- sapply(model, function(m) as.numeric(AIC(m[["fit"]])))
     BICvalues <- sapply(model, function(m) as.numeric(BIC(m[["fit"]])))
 
