@@ -147,7 +147,8 @@ RegressionLinearBayesianInternal <- function(jaspResults, dataset = NULL, option
     "Clyde, M. A. (2018). BAS: Bayesian Adaptive Sampling for Bayesian Model Averaging. (Version 1.5.3)[Computer software].",
     "Clyde, M. A., Ghosh, J., & Littman, M. L. (2011). Bayesian adaptive sampling for variable selection and model averaging. Journal of Computational and Graphical Statistics, 20, 80-101.",
     "Consonni, G., Fouskakis, D., Liseo, B., & Ntzoufras, I. (2018). Prior Distributions for Objective Bayesian Analysis. Bayesian Analysis, 13, 627-679.",
-    "Liang, F., Paulo, R., Molina, G., Clyde, M. A., & Berger, J. O. (2008). Mixtures of g Priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103, 410-423."
+    "Liang, F., Paulo, R., Molina, G., Clyde, M. A., & Berger, J. O. (2008). Mixtures of g Priors for Bayesian Variable Selection. Journal of the American Statistical Association, 103, 410-423.",
+    "Scott, S. L., & Berger, J. O. (2010). An objective prior that is robust to posterior sensitivity. Canadian Journal of Statistics, 38(3), 369-385."
   ))
 
   if (options$modelPrior == "wilson") {
