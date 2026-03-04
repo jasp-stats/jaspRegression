@@ -262,30 +262,46 @@ Form
 		title: qsTr("Response Optimizer")
 		columns: 2
 		visible: PRO
+		
 		Group
 		{
-			title: qsTr("Optimization Goal")
+			title: qsTr("Output")
+			columns: 1
 
-			DropDown
+			CheckBox
 			{
-				name:							"responseOptimizerGoal"
-				id:								responseOptimizerGoal
-				label:							qsTr("Goal")
-				indexDefaultValue:				0
-				values: [
-					{ label: qsTr("Maximize"), value: "maximize" },
-					{ label: qsTr("Minimize"), value: "minimize" },
-					{ label: qsTr("Target"), value: "target" }
-				]
+				name:							"optimizationSolutionTable"
+				label:							qsTr("Show optimal solution")
+				checked:						false
 			}
 
-			DoubleField
+			CheckBox
 			{
-				name:							"responseOptimizerWeight"
-				label:							qsTr("Weight")
-				defaultValue:					1
-				min:							0.1
-				max:							10
+				name:							"optimizationPlot"
+				label:							qsTr("Show optimization plot")
+				checked:						false
+
+				CheckBox
+				{
+					name:						"optimizationPlotCustomParameters"
+					id:							optimizationPlotCustomParameters
+					label:						qsTr("Set input parameters manually")
+					checked:					false
+				}
+
+				VariablesList
+				{
+					id:							optimizationPlotCustomParameterValues
+					name:						"optimizationPlotCustomParameterValues"
+					label:						qsTr("Predictors")
+					visible:					optimizationPlotCustomParameters.checked
+					source:						["covariates", "factors"]
+					listViewType:				JASP.AssignedVariables
+					draggable:					false
+					preferredHeight:			jaspTheme.smallDefaultVariablesFormHeight
+					rowComponentTitle:			qsTr("Value")
+					rowComponent:				TextField { name: "value"; fieldWidth: 40; defaultValue: "" }
+				}
 			}
 		}
 
@@ -336,43 +352,28 @@ Form
 
 		Group
 		{
-			title: qsTr("Output")
-			columns: 1
+			title: qsTr("Optimization Goal")
 
-			CheckBox
+			DropDown
 			{
-				name:							"optimizationSolutionTable"
-				label:							qsTr("Show optimal solution")
-				checked:						true
+				name:							"responseOptimizerGoal"
+				id:								responseOptimizerGoal
+				label:							qsTr("Goal")
+				indexDefaultValue:				0
+				values: [
+					{ label: qsTr("Maximize"), value: "maximize" },
+					{ label: qsTr("Minimize"), value: "minimize" },
+					{ label: qsTr("Target"), value: "target" }
+				]
 			}
 
-			CheckBox
+			DoubleField
 			{
-				name:							"optimizationPlot"
-				label:							qsTr("Show optimization plot")
-				checked:						true
-
-				CheckBox
-				{
-					name:						"optimizationPlotCustomParameters"
-					id:							optimizationPlotCustomParameters
-					label:						qsTr("Set input parameters manually")
-					checked:					false
-				}
-
-				VariablesList
-				{
-					id:							optimizationPlotCustomParameterValues
-					name:						"optimizationPlotCustomParameterValues"
-					label:						qsTr("Predictors")
-					visible:					optimizationPlotCustomParameters.checked
-					source:						["covariates", "factors"]
-					listViewType:				JASP.AssignedVariables
-					draggable:					false
-					preferredHeight:			jaspTheme.smallDefaultVariablesFormHeight
-					rowComponentTitle:			qsTr("Value")
-					rowComponent:				TextField { name: "value"; fieldWidth: 40; defaultValue: "" }
-				}
+				name:							"responseOptimizerWeight"
+				label:							qsTr("Weight")
+				defaultValue:					1
+				min:							0.1
+				max:							10
 			}
 		}
 	}
