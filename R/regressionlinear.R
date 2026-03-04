@@ -94,7 +94,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
 
   # Response Optimizer
-  .linregResponseOptimizer(modelContainer, finalModel, dataset, options, ready)
+  if ((options[["optimizationSolutionTable"]] || options[["optimizationPlot"]]) && is.null(modelContainer[["responseOptimizer"]]))
+    .linregResponseOptimizer(modelContainer, finalModel, dataset, options, ready)
 }
 
 #TODO: capture crashes with many interactions between factors!
@@ -2408,10 +2409,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregResponseOptimizer <- function(modelContainer, finalModel, dataset, options, ready) {
   if (!ready || is.null(finalModel) || is.null(finalModel[["fit"]]))
-    return()
-
-  hasOutputRequested <- isTRUE(options[["optimizationSolutionTable"]]) || isTRUE(options[["optimizationPlot"]])
-  if (!hasOutputRequested)
     return()
 
   fit <- finalModel[["fit"]]
