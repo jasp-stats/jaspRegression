@@ -2719,7 +2719,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
         })
 
         currentLevel <- as.character(currentSettings[[pred]])
-        plotDf$color <- ifelse(as.character(plotDf$x) == currentLevel, "red", "blue")
+        plotDf$color <- ifelse(as.character(plotDf$x) == currentLevel, "#E69F00", "#0072B2")
 
         yLimits <- if (outcomeType == "desirability") c(0, 1) else {
           yRange <- range(plotDf$y)
@@ -2774,8 +2774,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
         xBreaks <- jaspGraphs::getPrettyAxisBreaks(plotDf$x)
 
         plot <- ggplot2::ggplot(plotDf, ggplot2::aes(x = x, y = y)) +
-          ggplot2::geom_line(color = "blue", linewidth = 1) +
-          ggplot2::annotate("point", x = currentValue, y = redY, color = "red", size = 3) +
+          ggplot2::geom_line(color = "#0072B2", linewidth = 1) +
+          ggplot2::annotate("point", x = currentValue, y = redY, color = "#E69F00", size = 3) +
           ggplot2::scale_y_continuous(name = yAxisLabel, limits = yLimits, breaks = yBreaks) +
           ggplot2::scale_x_continuous(name = xAxisLabel, breaks = xBreaks) +
           jaspGraphs::themeJaspRaw() +
