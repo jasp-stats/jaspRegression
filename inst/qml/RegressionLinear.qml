@@ -257,6 +257,127 @@ Form
         }
 	}
 
+	Section
+	{
+		title: qsTr("Response Optimizer")
+		columns: 2
+		visible: PRO
+		
+		Group
+		{
+			title: qsTr("Output")
+			columns: 1
+
+			CheckBox
+			{
+				name:							"optimizationSolutionTable"
+				label:							qsTr("Show optimal solution")
+				checked:						false
+			}
+
+			CheckBox
+			{
+				name:							"optimizationPlot"
+				label:							qsTr("Show optimization plot")
+				checked:						false
+
+				CheckBox
+				{
+					name:						"optimizationPlotCustomParameters"
+					id:							optimizationPlotCustomParameters
+					label:						qsTr("Set input parameters manually")
+					checked:					false
+				}
+
+				VariablesList
+				{
+					id:							optimizationPlotCustomParameterValues
+					name:						"optimizationPlotCustomParameterValues"
+					label:						qsTr("Predictors")
+					visible:					optimizationPlotCustomParameters.checked
+					source:						["covariates", "factors"]
+					listViewType:				JASP.AssignedVariables
+					draggable:					false
+					preferredHeight:			jaspTheme.smallDefaultVariablesFormHeight
+					rowComponentTitle:			qsTr("Value")
+					rowComponent:				TextField { name: "value"; fieldWidth: 40; defaultValue: "" }
+				}
+			}
+		}
+
+		Group
+		{
+			title: qsTr("Bounds and Target")
+
+			CheckBox
+			{
+				name:							"responseOptimizerManualBounds"
+				id:								responseOptimizerManualBounds
+				label:							qsTr("Set bounds manually")
+				checked:						false
+
+				DoubleField
+				{
+					name:						"responseOptimizerLowerBound"
+					label:						qsTr("Lower bound")
+					defaultValue:				0
+					enabled:					responseOptimizerGoal.currentValue != "minimize"
+				}
+
+				DoubleField
+				{
+					name:						"responseOptimizerUpperBound"
+					label:						qsTr("Upper bound")
+					defaultValue:				1
+					enabled:					responseOptimizerGoal.currentValue != "maximize"
+				}
+			}
+
+			CheckBox
+			{
+				name:							"responseOptimizerManualTarget"
+				id:								responseOptimizerManualTarget
+				label:							qsTr("Set target manually")
+				checked:						false
+
+				DoubleField
+				{
+					name:						"responseOptimizerTarget"
+					label:						qsTr("Target")
+					defaultValue:				0.5
+					enabled:					responseOptimizerManualTarget.checked || responseOptimizerGoal.currentValue == "target"
+				}
+			}
+		}
+
+		Group
+		{
+			title: qsTr("Optimization Goal")
+
+			DropDown
+			{
+				name:							"responseOptimizerGoal"
+				id:								responseOptimizerGoal
+				label:							qsTr("Goal")
+				indexDefaultValue:				0
+				values: [
+					{ label: qsTr("Maximize"), value: "maximize" },
+					{ label: qsTr("Minimize"), value: "minimize" },
+					{ label: qsTr("Target"), value: "target" }
+				]
+			}
+
+			DoubleField
+			{
+				name:							"responseOptimizerWeight"
+				label:							qsTr("Weight")
+				defaultValue:					1
+				min:							0.1
+				max:							10
+			}
+		}
+	}
+
 	Common.ExportFreq { id: exportComponent}
 
 }

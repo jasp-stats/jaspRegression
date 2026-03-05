@@ -92,6 +92,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     .linregCreatePartialPlots(modelContainer, dataset, options, position = 16)
   if (options$descriptives && is.null(modelContainer[["descriptivesTable"]]))
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
+
+  # Response Optimizer
+  if ((options[["optimizationSolutionTable"]] || options[["optimizationPlot"]]) && is.null(modelContainer[["responseOptimizer"]]))
+    .linregResponseOptimizer(modelContainer, finalModel, dataset, options, ready)
 }
 
 #TODO: capture crashes with many interactions between factors!
@@ -2393,4 +2397,428 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   # Return the p-value:
   return(alpha)
+}
+
+.linregResponseOptimizerDeps <- function() {
+  c("responseOptimizerGoal", "responseOptimizerLowerBound", "responseOptimizerTarget",
+    "responseOptimizerUpperBound", "responseOptimizerWeight",
+    "responseOptimizerManualBounds", "responseOptimizerManualTarget",
+    "optimizationSolutionTable", "optimizationPlot",
+    "optimizationPlotCustomParameters", "optimizationPlotCustomParameterValues")
+}
+
+.linregResponseOptimizer <- function(modelContainer, finalModel, dataset, options, ready) {
+  if (!ready || is.null(finalModel) || is.null(finalModel[["fit"]]))
+    return()
+
+  fit <- finalModel[["fit"]]
+  dependent <- options[["dependent"]]
+  covariates <- unlist(options[["covariates"]])
+  factors <- unlist(options[["factors"]])
+
+  # Need at least one predictor
+  if (length(c(covariates, factors)) == 0)
+    return()
+
+  if (is.null(modelContainer[["responseOptimizer"]])) {
+    roContainer <- createJaspContainer(title = gettext("Response Optimizer"))
+    roContainer$dependOn(.linregResponseOptimizerDeps())
+    roContainer$position <- 20
+    modelContainer[["responseOptimizer"]] <- roContainer
+  }
+  roContainer <- modelContainer[["responseOptimizer"]]
+
+  # Get optimizer settings
+  goal <- options[["responseOptimizerGoal"]]
+  if (is.null(goal) || identical(goal, "")) goal <- "maximize"
+
+  weight <- options[["responseOptimizerWeight"]]
+  if (is.null(weight)) weight <- 1
+
+  depData <- dataset[[dependent]]
+  dataMin <- min(depData, na.rm = TRUE)
+  dataMax <- max(depData, na.rm = TRUE)
+
+  if (isTRUE(options[["responseOptimizerManualBounds"]])) {
+    lb <- as.numeric(options[["responseOptimizerLowerBound"]])
+    ub <- as.numeric(options[["responseOptimizerUpperBound"]])
+  } else {
+    lb <- dataMin
+    ub <- dataMax
+  }
+
+  if (goal == "target") {
+    target <- as.numeric(options[["responseOptimizerTarget"]])
+  } else if (isTRUE(options[["responseOptimizerManualTarget"]])) {
+    target <- as.numeric(options[["responseOptimizerTarget"]])
+  } else {
+    target <- if (goal == "maximize") dataMax else dataMin
+  }
+
+  # Calculate optimal response
+  optResult <- .linregCalculateOptimalResponse(fit, dataset, covariates, factors, goal, lb, ub, target, weight)
+
+  if (isTRUE(options[["optimizationSolutionTable"]]))
+    .linregResponseOptimizerTables(roContainer, fit, dataset, options, dependent, covariates, factors,
+                                   goal, lb, ub, target, weight, optResult)
+
+  if (isTRUE(options[["optimizationPlot"]]))
+    .linregResponseOptimizerPlots(roContainer, fit, dataset, options, dependent, covariates, factors,
+                                  goal, lb, ub, target, weight, optResult)
+}
+
+.linregCalculateDesirability <- function(predicted, goal, lb, ub, target, weight) {
+  # Desirability formulas from: https://support.minitab.com/en-us/minitab/help-and-how-to/statistical-modeling/using-fitted-models/how-to/response-optimizer/methods-and-formulas/individual-desirabilities/
+  if (goal == "maximize") {
+    if (predicted < lb) return(0)
+    if (predicted > target) return(1)
+    denom <- target - lb
+    if (denom == 0) return(1)
+    return(((predicted - lb) / denom)^weight)
+  } else if (goal == "minimize") {
+    if (predicted < target) return(1)
+    if (predicted > ub) return(0)
+    denom <- ub - target
+    if (denom == 0) return(1)
+    return(((ub - predicted) / denom)^weight)
+  } else if (goal == "target") {
+    if (predicted < lb || predicted > ub) return(0)
+    if (predicted <= target) {
+      denom <- target - lb
+      if (denom == 0) return(1)
+      return(((predicted - lb) / denom)^weight)
+    } else {
+      denom <- ub - target
+      if (denom == 0) return(1)
+      return(((ub - predicted) / denom)^weight)
+    }
+  }
+  return(0)
+}
+
+.linregPredictFromSettings <- function(fit, settings, dataset, covariates, factors) {
+  newdata <- data.frame(row.names = 1)
+  for (cov in covariates) {
+    newdata[[cov]] <- as.numeric(settings[[cov]])
+  }
+  for (fac in factors) {
+    newdata[[fac]] <- factor(as.character(settings[[fac]]), levels = levels(dataset[[fac]]))
+  }
+  return(as.numeric(predict(fit, newdata = newdata)))
+}
+
+.linregPredictDesirability <- function(contValues, fit, dataset, covariates, factors,
+                                       currentFactorLevels, goal, lb, ub, target, weight) {
+  settings <- setNames(as.list(contValues), covariates)
+  for (fac in factors) settings[[fac]] <- currentFactorLevels[[fac]]
+  pred <- .linregPredictFromSettings(fit, settings, dataset, covariates, factors)
+  desi <- .linregCalculateDesirability(pred, goal, lb, ub, target, weight)
+  return(-desi)  # negative because optim minimizes
+}
+
+.linregCalculateOptimalResponse <- function(fit, dataset, covariates, factors, goal, lb, ub, target, weight) {
+
+  if (length(factors) > 0) {
+    # Grid search over factor level combinations
+    factorLevelsList <- lapply(factors, function(f) levels(dataset[[f]]))
+    names(factorLevelsList) <- factors
+    gridDf <- expand.grid(factorLevelsList, stringsAsFactors = FALSE)
+
+    bestDesi <- -Inf
+    bestParams <- NULL
+
+    for (i in seq_len(nrow(gridDf))) {
+      currentFactorLevels <- as.list(gridDf[i, , drop = FALSE])
+
+      if (length(covariates) > 0) {
+        initial <- sapply(covariates, function(v) mean(dataset[[v]], na.rm = TRUE))
+        lower   <- sapply(covariates, function(v) min(dataset[[v]], na.rm = TRUE))
+        upper   <- sapply(covariates, function(v) max(dataset[[v]], na.rm = TRUE))
+
+        result <- optim(par = initial, fn = .linregPredictDesirability, method = "L-BFGS-B",
+                        lower = lower, upper = upper,
+                        fit = fit, dataset = dataset, covariates = covariates, factors = factors,
+                        currentFactorLevels = currentFactorLevels, goal = goal,
+                        lb = lb, ub = ub, target = target, weight = weight)
+        desi <- -result$value
+        params <- c(setNames(as.list(result$par), covariates), currentFactorLevels)
+      } else {
+        settings <- currentFactorLevels
+        pred <- .linregPredictFromSettings(fit, settings, dataset, covariates, factors)
+        desi <- .linregCalculateDesirability(pred, goal, lb, ub, target, weight)
+        params <- currentFactorLevels
+      }
+
+      if (desi > bestDesi) {
+        bestDesi <- desi
+        bestParams <- params
+      }
+    }
+  } else {
+    # Only continuous predictors
+    initial <- sapply(covariates, function(v) mean(dataset[[v]], na.rm = TRUE))
+    lower   <- sapply(covariates, function(v) min(dataset[[v]], na.rm = TRUE))
+    upper   <- sapply(covariates, function(v) max(dataset[[v]], na.rm = TRUE))
+    currentFactorLevels <- list()
+
+    result <- optim(par = initial, fn = .linregPredictDesirability, method = "L-BFGS-B",
+                    lower = lower, upper = upper,
+                    fit = fit, dataset = dataset, covariates = covariates, factors = factors,
+                    currentFactorLevels = currentFactorLevels, goal = goal,
+                    lb = lb, ub = ub, target = target, weight = weight)
+    bestDesi <- -result$value
+    bestParams <- setNames(as.list(result$par), covariates)
+  }
+
+  bestDesi <- max(0, min(1, bestDesi))
+  return(list(parameters = bestParams, desirability = bestDesi))
+}
+
+.linregResponseOptimizerTables <- function(roContainer, fit, dataset, options, dependent, covariates, factors,
+                                           goal, lb, ub, target, weight, optResult) {
+  if (!is.null(roContainer[["settingsTable"]]))
+    return()
+
+  roDeps <- .linregResponseOptimizerDeps()
+
+  # Settings table
+  tb1 <- createJaspTable(gettext("Response Optimizer Settings"))
+  tb1$addColumnInfo(name = "response", title = gettext("Response"), type = "string")
+  tb1$addColumnInfo(name = "goal",     title = gettext("Goal"),     type = "string")
+  tb1$addColumnInfo(name = "lb",       title = gettext("Lower"),    type = "number")
+  tb1$addColumnInfo(name = "target",   title = gettext("Target"),   type = "number")
+  tb1$addColumnInfo(name = "ub",       title = gettext("Upper"),    type = "number")
+  tb1$addColumnInfo(name = "weight",   title = gettext("Weight"),   type = "number")
+  tb1$dependOn(roDeps)
+  tb1$position <- 1
+  roContainer[["settingsTable"]] <- tb1
+
+  goalDisplay <- paste0(toupper(substr(goal, 1, 1)), substr(goal, 2, nchar(goal)))
+  displayLb <- if (goal == "minimize") NA else lb
+  displayUb <- if (goal == "maximize") NA else ub
+
+  tb1$addRows(data.frame(response = dependent, goal = goalDisplay,
+                         lb = displayLb, target = target, ub = displayUb, weight = weight))
+
+  if (!isTRUE(options[["responseOptimizerManualBounds"]]) || !isTRUE(options[["responseOptimizerManualTarget"]])) {
+    if (!isTRUE(options[["responseOptimizerManualTarget"]]) && !isTRUE(options[["responseOptimizerManualBounds"]])) {
+      estimationTarget <- gettext("lower and upper bounds and target are")
+    } else if (!isTRUE(options[["responseOptimizerManualBounds"]])) {
+      estimationTarget <- gettext("lower and upper bounds are")
+    } else {
+      estimationTarget <- gettext("target is")
+    }
+    tb1$addFootnote(gettextf("The %s estimated from data.", estimationTarget))
+  }
+
+  # Solution table
+  tb2 <- createJaspTable(gettext("Response Optimizer Solution"))
+  tb2$addColumnInfo(name = "desi", title = gettext("Desirability"), type = "number")
+  for (cov in covariates)
+    tb2$addColumnInfo(name = cov, title = cov, type = "number")
+  for (fac in factors)
+    tb2$addColumnInfo(name = fac, title = fac, type = "string")
+  tb2$addColumnInfo(name = "fit", title = gettextf("%s fit", dependent), type = "number")
+  tb2$dependOn(roDeps)
+  tb2$position <- 2
+  roContainer[["solutionTable"]] <- tb2
+
+  optParams <- optResult$parameters
+  predValue <- .linregPredictFromSettings(fit, optParams, dataset, covariates, factors)
+
+  row <- data.frame(desi = optResult$desirability)
+  for (cov in covariates)
+    row[[cov]] <- round(as.numeric(optParams[[cov]]), 4)
+  for (fac in factors)
+    row[[fac]] <- as.character(optParams[[fac]])
+  row[["fit"]] <- round(predValue, 4)
+
+  tb2$addRows(row)
+}
+
+.linregResponseOptimizerPlots <- function(roContainer, fit, dataset, options, dependent, covariates, factors,
+                                          goal, lb, ub, target, weight, optResult) {
+  if (!is.null(roContainer[["optimizationPlot"]]))
+    return()
+
+  roDeps <- .linregResponseOptimizerDeps()
+  allPredictors <- c(covariates, factors)
+  if (length(allPredictors) == 0)
+    return()
+
+  # Get current settings (either from optimization or custom)
+  if (isTRUE(options[["optimizationPlotCustomParameters"]])) {
+    customParams <- options[["optimizationPlotCustomParameterValues"]]
+    currentSettings <- list()
+    for (param in customParams) {
+      if (is.null(param$value) || identical(param$value, "")) {
+        jaspPlot <- createJaspPlot(title = gettext("Optimization Plot"))
+        jaspPlot$setError(gettext("Enter values for all predictors to create an optimization plot with manual input parameters."))
+        jaspPlot$dependOn(roDeps)
+        roContainer[["optimizationPlot"]] <- jaspPlot
+        return()
+      }
+      currentSettings[[param$variable]] <- param$value
+    }
+    # Convert continuous predictors to numeric
+    for (cov in covariates) {
+      if (!is.null(currentSettings[[cov]])) {
+        val <- suppressWarnings(as.numeric(currentSettings[[cov]]))
+        if (is.na(val)) {
+          jaspPlot <- createJaspPlot(title = gettext("Optimization Plot"))
+          jaspPlot$setError(gettext("Enter plausible numeric values for all continuous predictors."))
+          jaspPlot$dependOn(roDeps)
+          roContainer[["optimizationPlot"]] <- jaspPlot
+          return()
+        }
+        currentSettings[[cov]] <- val
+      }
+    }
+    # Validate factor levels
+    for (fac in factors) {
+      if (!is.null(currentSettings[[fac]])) {
+        if (!currentSettings[[fac]] %in% levels(dataset[[fac]])) {
+          jaspPlot <- createJaspPlot(title = gettext("Optimization Plot"))
+          jaspPlot$setError(gettextf("Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s.",
+                                     currentSettings[[fac]], fac, paste(levels(dataset[[fac]]), collapse = ", ")))
+          jaspPlot$dependOn(roDeps)
+          roContainer[["optimizationPlot"]] <- jaspPlot
+          return()
+        }
+      }
+    }
+  } else {
+    currentSettings <- optResult$parameters
+  }
+
+  ncol <- length(allPredictors)
+  nrow <- 2  # row 1 = desirability, row 2 = response
+  plotMat <- matrix(list(), nrow = nrow, ncol = ncol)
+  extrapolationNoteBol <- FALSE
+
+  for (col in seq_along(allPredictors)) {
+    pred <- allPredictors[col]
+
+    for (row in 1:nrow) {
+      outcomeType <- if (row == 1) "desirability" else "response"
+      yAxisLabel <- if (row == 1) gettext("Desirability") else dependent
+      xAxisLabel <- pred
+
+      if (pred %in% factors) {
+        # Discrete predictor
+        plotDf <- data.frame(x = levels(dataset[[pred]]))
+        plotDf$y <- sapply(plotDf$x, function(val) {
+          tempSettings <- currentSettings
+          tempSettings[[pred]] <- val
+          predValue <- .linregPredictFromSettings(fit, tempSettings, dataset, covariates, factors)
+          if (outcomeType == "desirability") {
+            return(max(0, min(1, .linregCalculateDesirability(predValue, goal, lb, ub, target, weight))))
+          } else {
+            return(predValue)
+          }
+        })
+
+        currentLevel <- as.character(currentSettings[[pred]])
+        plotDf$color <- ifelse(as.character(plotDf$x) == currentLevel, "#E69F00", "#0072B2")
+
+        yLimits <- if (outcomeType == "desirability") c(0, 1) else {
+          yRange <- range(plotDf$y)
+          c(yRange[1] - 0.1 * abs(yRange[1]), yRange[2] + 0.1 * abs(yRange[2]))
+        }
+        yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(plotDf$y, yLimits))
+
+        plot <- ggplot2::ggplot(plotDf, ggplot2::aes(x = x, y = y, color = color)) +
+          ggplot2::scale_y_continuous(name = yAxisLabel, limits = yLimits, breaks = yBreaks) +
+          ggplot2::scale_color_identity() +
+          ggplot2::xlab(xAxisLabel) +
+          ggplot2::geom_point(size = 4) +
+          jaspGraphs::themeJaspRaw() +
+          jaspGraphs::geom_rangeframe()
+
+      } else {
+        # Continuous predictor
+        currentValue <- as.numeric(currentSettings[[pred]])
+        xRange <- range(c(dataset[[pred]], currentValue), na.rm = TRUE)
+        plotDf <- data.frame(x = seq(from = xRange[1], to = xRange[2], length.out = 50))
+
+        plotDf$y <- sapply(plotDf$x, function(val) {
+          tempSettings <- currentSettings
+          tempSettings[[pred]] <- val
+          predValue <- .linregPredictFromSettings(fit, tempSettings, dataset, covariates, factors)
+          if (outcomeType == "desirability") {
+            return(max(0, min(1, .linregCalculateDesirability(predValue, goal, lb, ub, target, weight))))
+          } else {
+            return(predValue)
+          }
+        })
+
+        if (currentValue < min(dataset[[pred]], na.rm = TRUE) || currentValue > max(dataset[[pred]], na.rm = TRUE))
+          extrapolationNoteBol <- TRUE
+
+        redY <- {
+          tempSettings <- currentSettings
+          tempSettings[[pred]] <- currentValue
+          predValue <- .linregPredictFromSettings(fit, tempSettings, dataset, covariates, factors)
+          if (outcomeType == "desirability") {
+            max(0, min(1, .linregCalculateDesirability(predValue, goal, lb, ub, target, weight)))
+          } else {
+            predValue
+          }
+        }
+
+        yLimits <- if (outcomeType == "desirability") c(0, 1) else {
+          yRange <- range(plotDf$y)
+          c(yRange[1] - 0.1 * abs(yRange[1]), yRange[2] + 0.1 * abs(yRange[2]))
+        }
+        yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(plotDf$y, yLimits))
+        xBreaks <- jaspGraphs::getPrettyAxisBreaks(plotDf$x)
+
+        plot <- ggplot2::ggplot(plotDf, ggplot2::aes(x = x, y = y)) +
+          ggplot2::geom_line(color = "#0072B2", linewidth = 1) +
+          ggplot2::annotate("point", x = currentValue, y = redY, color = "#E69F00", size = 3) +
+          ggplot2::scale_y_continuous(name = yAxisLabel, limits = yLimits, breaks = yBreaks) +
+          ggplot2::scale_x_continuous(name = xAxisLabel, breaks = xBreaks) +
+          jaspGraphs::themeJaspRaw() +
+          jaspGraphs::geom_rangeframe()
+      }
+      plotMat[[row, col]] <- plot
+    }
+  }
+
+  jaspPlot <- createJaspPlot(title = gettext("Optimization Plot"), width = 300 * ncol, height = 300 * nrow)
+  jaspPlot$dependOn(roDeps)
+  plotObject <- jaspGraphs::ggMatrixPlot(plotList = plotMat, nr = nrow, nc = ncol)
+  jaspPlot$plotObject <- plotObject
+  roContainer[["optimizationPlot"]] <- jaspPlot
+
+  # Summary table below the plot
+  tbTitle <- if (isTRUE(options[["optimizationPlotCustomParameters"]])) {
+    gettext("Optimization Plot Summary (Manual Predictor Values)")
+  } else {
+    gettext("Optimization Plot Summary")
+  }
+  tb <- createJaspTable(tbTitle)
+  tb$addColumnInfo(name = "desi", title = gettext("Desirability"), type = "number")
+  for (cov in covariates)
+    tb$addColumnInfo(name = cov, title = cov, type = "number")
+  for (fac in factors)
+    tb$addColumnInfo(name = fac, title = fac, type = "string")
+  tb$addColumnInfo(name = "fit", title = gettextf("%s fit", dependent), type = "number")
+  tb$dependOn(roDeps)
+  roContainer[["optimizationPlotTable"]] <- tb
+
+  if (extrapolationNoteBol)
+    tb$addFootnote(gettext("One or more input parameters for continuous predictors are outside of the design space. Extrapolation beyond the design space might not be valid."))
+
+  predValue <- .linregPredictFromSettings(fit, currentSettings, dataset, covariates, factors)
+  desi <- .linregCalculateDesirability(predValue, goal, lb, ub, target, weight)
+  desi <- max(0, min(1, desi))
+
+  row <- data.frame(desi = desi)
+  for (cov in covariates)
+    row[[cov]] <- round(as.numeric(currentSettings[[cov]]), 4)
+  for (fac in factors)
+    row[[fac]] <- as.character(currentSettings[[fac]])
+  row[["fit"]] <- round(predValue, 4)
+  tb$addRows(row)
 }
