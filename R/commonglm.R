@@ -1120,7 +1120,7 @@
       V_total[idx_j, idx_l] <- V_block
 
       # match brant/gofcat packages
-      #do not transpose V_block for the lower triangle (while we technically should, but then results don't match exactly)
+      #do not transpose V_block for the lower triangle (while we technically should, but then results don't match exactly with the brant or gofcat libraries which also implement brant test)
 
       if (j != l) V_total[idx_l, idx_j] <- V_block
     }
