@@ -1069,3 +1069,97 @@
   # test if we have intercept and no other predictors
   return(intercept && length(labels) == 0)
 }
+# Brant Test Computation
+.glmBrantTest <- function(fit, dataset, options) {
+
+  #Extract design matrix
+  X_plus    <- if (is.matrix(fit@x)) fit@x else model.matrix(fit)
+  y_raw     <- dataset[[options[["dependent"]]]]
+  y_numeric <- as.integer(y_raw)
+
+  k         <- length(levels(y_raw))
+  if (is.null(k) || k == 0) k <- length(unique(y_numeric))
+  q         <- k - 1 # thresholds
+
+  X_main    <- X_plus[, -1, drop = FALSE]
+  p         <- ncol(X_main) # predictors
+  var_names <- colnames(X_main)
+  X_glm     <- cbind(1, X_main)
+
+  # Fit Binary GLMs
+  binary_data <- as.data.frame(X_main)
+  models <- lapply(1:q, function(j) {
+    binary_data$y_bin <- as.numeric(y_numeric > j)
+    stats::glm(y_bin ~ ., family = binomial, data = binary_data)
+  })
+  #extract beta's
+  beta_tilde <- as.matrix(unlist(lapply(models, function(m) coef(m)[-1])))
+
+  #extract probabilities from separate binary fits
+  pi_list <- lapply(models, fitted)
+
+  # block covariance mat assembly
+  V_total <- matrix(0, nrow = q * p, ncol = q * p)
+  for(j in 1:q) {
+    w_jj   <- pi_list[[j]] * (1 - pi_list[[j]])
+    inv_Aj <- solve(t(X_glm) %*% (w_jj * X_glm))
+
+    for(l in j:q) {
+      w_jl   <- pi_list[[l]] - (pi_list[[j]] * pi_list[[l]])
+      w_ll   <- pi_list[[l]] * (1 - pi_list[[l]])
+
+      inv_Al <- solve(t(X_glm) %*% (w_ll * X_glm))
+      B_jl   <- t(X_glm) %*% (w_jl * X_glm)
+
+      V_block_full <- inv_Aj %*% B_jl %*% inv_Al
+      V_block <- V_block_full[-1, -1, drop = FALSE]
+
+      idx_j <- ((j-1)*p + 1):(j*p)
+      idx_l <- ((l-1)*p + 1):(l*p)
+
+      V_total[idx_j, idx_l] <- V_block
+
+      # match brant/gofcat packages
+      #do not transpose V_block for the lower triangle (while we technically should, but then results don't match exactly)
+
+      if (j != l) V_total[idx_l, idx_j] <- V_block
+    }
+  }
+
+  # calculate D
+  contrast_layout <- if(q > 1) cbind(rep(1, q - 1), -diag(q - 1)) else matrix(1, 1, 1)
+  D_omnibus       <- kronecker(contrast_layout, diag(p))
+
+  calc_chisq <- function(beta, V, D) {
+    if (nrow(D) == 0 || ncol(D) == 0 || nrow(V) == 0)
+      return(data.frame(ChiSq = NA, df = NA, p = NA))
+
+    stat  <- as.numeric(t(D %*% beta) %*% solve(D %*% V %*% t(D)) %*% (D %*% beta))
+    df    <- nrow(D)
+    p_val <- pchisq(stat, df = df, lower.tail = FALSE)
+
+    # round to 3 decimal places to coincide with standard
+    return(data.frame(
+      ChiSq = round(stat, 3),
+      df    = df,
+      p     = p_val
+    ))
+  }
+
+  # omnibus test
+  omnibus_res <- calc_chisq(beta_tilde, V_total, D_omnibus)
+  rownames(omnibus_res) <- "Omnibus"
+
+  # variable-specific tests
+  var_res <- do.call(rbind, lapply(1:p, function(i) {
+    s  <- seq(from = i, to = (q * p), by = p)
+    Ds <- D_omnibus[, s, drop = FALSE]
+    relevant_rows <- which(rowSums(Ds != 0) > 0)
+    Ds <- Ds[relevant_rows, , drop = FALSE]
+
+    calc_chisq(beta_tilde[s], V_total[s, s], Ds)
+  }))
+  rownames(var_res) <- var_names
+
+  return(rbind(omnibus_res, var_res))
+}

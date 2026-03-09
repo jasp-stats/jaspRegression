@@ -34,6 +34,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   .glmModelSummaryTable(jaspResults, dataset, options, ready, position = 1)
   .glmModelFitTable(    jaspResults, dataset, options, ready, position = 2)
   .glmEstimatesTable(   jaspResults, dataset, options, ready, position = 3)
+
+  #brant-WIP
+  # Only trigger the Brant test for ordinal logistic regression
+  isOrdinal <- options[["family"]] == "other" && options[["otherGlmModel"]] == "ordinalLogistic"
+
+  if (isOrdinal) {
+    .glmBrantTable(jaspResults, dataset, options, ready, position = 3.5)
+  }
   if (options$family == "other") return()
 
   #diagnostic tables and plots
@@ -1196,4 +1204,40 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   return()
 }
+#brant
+.glmBrantTable <- function(jaspResults, dataset, options, ready, position) {
+  if (!ready || !is.null(jaspResults[["brantTable"]]))
+    return()
 
+  brantTable <- createJaspTable(title = gettext("Brant Test for Proportional Odds Assumption"))
+  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel"))
+  brantTable$position <- position
+
+  brantTable$addColumnInfo(name = "variable", title = "",      type = "string")
+  brantTable$addColumnInfo(name = "chiSq",    title = "\u03A7\u00B2",    type = "number")
+  brantTable$addColumnInfo(name = "df",       title = gettext("df"),    type = "integer")
+  brantTable$addColumnInfo(name = "p",        title = gettext("p"),     type = "pvalue")
+
+  jaspResults[["brantTable"]] <- brantTable
+
+  models <- .glmComputeModel(jaspResults, dataset, options)
+  fullModel <- models[["fullModel"]]
+
+
+  brantResults <- try(.glmBrantTest(fullModel, dataset, options))
+
+  if (inherits(brantResults, "try-error")) {
+    # This will print the actual R error in the UI. replace later when ready
+    brantTable$setError(as.character(brantResults))
+    return()
+  }
+
+  for (i in seq_len(nrow(brantResults))) {
+    brantTable$addRows(list(
+      variable = rownames(brantResults)[i],
+      chiSq    = brantResults[i, "ChiSq"], # Fixed: Key now matches column name 'chiSq'
+      df       = brantResults[i, "df"],
+      p        = brantResults[i, "p"]
+    ))
+  }
+}
