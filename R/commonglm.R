@@ -1072,94 +1072,93 @@
 # Brant Test Computation
 .glmBrantTest <- function(fit, dataset, options) {
 
-  #Extract design matrix
-  X_plus    <- if (is.matrix(fit@x)) fit@x else model.matrix(fit)
-  y_raw     <- dataset[[options[["dependent"]]]]
-  y_numeric <- as.integer(y_raw)
+  # Extract design matrix
+  xPlus    <- if (is.matrix(fit@x)) fit@x else model.matrix(fit)
+  yRaw     <- dataset[[options[["dependent"]]]]
+  yNumeric <- as.integer(yRaw)
 
-  k         <- length(levels(y_raw))
-  if (is.null(k) || k == 0) k <- length(unique(y_numeric))
-  q         <- k - 1 # thresholds
+  k <- length(levels(yRaw))
+  if (is.null(k) || k == 0) k <- length(unique(yNumeric))
+  q <- k - 1 # thresholds
 
-  X_main    <- X_plus[, -1, drop = FALSE]
-  p         <- ncol(X_main) # predictors
-  var_names <- colnames(X_main)
-  X_glm     <- cbind(1, X_main)
+  xMain         <- xPlus[, -1, drop = FALSE]
+  p             <- ncol(xMain) # predictors
+  variableNames <- colnames(xMain)
+  xGlm          <- cbind(1, xMain)
 
   # Fit Binary GLMs
-  binary_data <- as.data.frame(X_main)
+  binaryData <- as.data.frame(xMain)
   models <- lapply(1:q, function(j) {
-    binary_data$y_bin <- as.numeric(y_numeric > j)
-    stats::glm(y_bin ~ ., family = binomial, data = binary_data)
+    binaryData$yBin <- as.numeric(yNumeric > j)
+    stats::glm(yBin ~ ., family = binomial, data = binaryData)
   })
-  #extract beta's
-  beta_tilde <- as.matrix(unlist(lapply(models, function(m) coef(m)[-1])))
 
-  #extract probabilities from separate binary fits
-  pi_list <- lapply(models, fitted)
+  # Extract beta's
+  betaTilde <- as.matrix(unlist(lapply(models, function(m) coef(m)[-1])))
 
-  # block covariance mat assembly
-  V_total <- matrix(0, nrow = q * p, ncol = q * p)
+  # Extract probabilities from separate binary fits
+  piList <- lapply(models, fitted)
+
+  # Block covariance matrix assembly
+  covarianceTotal <- matrix(0, nrow = q * p, ncol = q * p)
   for(j in 1:q) {
-    w_jj   <- pi_list[[j]] * (1 - pi_list[[j]])
-    inv_Aj <- solve(t(X_glm) %*% (w_jj * X_glm))
+    weightJj  <- piList[[j]] * (1 - piList[[j]])
+    inverseAj <- solve(t(xGlm) %*% (weightJj * xGlm))
 
     for(l in j:q) {
-      w_jl   <- pi_list[[l]] - (pi_list[[j]] * pi_list[[l]])
-      w_ll   <- pi_list[[l]] * (1 - pi_list[[l]])
+      weightJl  <- piList[[l]] - (piList[[j]] * piList[[l]])
+      weightLl  <- piList[[l]] * (1 - piList[[l]])
 
-      inv_Al <- solve(t(X_glm) %*% (w_ll * X_glm))
-      B_jl   <- t(X_glm) %*% (w_jl * X_glm)
+      inverseAl <- solve(t(xGlm) %*% (weightLl * xGlm))
+      matrixBjl <- t(xGlm) %*% (weightJl * xGlm)
 
-      V_block_full <- inv_Aj %*% B_jl %*% inv_Al
-      V_block <- V_block_full[-1, -1, drop = FALSE]
+      covarianceBlockFull <- inverseAj %*% matrixBjl %*% inverseAl
+      covarianceBlock     <- covarianceBlockFull[-1, -1, drop = FALSE]
 
-      idx_j <- ((j-1)*p + 1):(j*p)
-      idx_l <- ((l-1)*p + 1):(l*p)
+      indexJ <- ((j-1)*p + 1):(j*p)
+      indexL <- ((l-1)*p + 1):(l*p)
 
-      V_total[idx_j, idx_l] <- V_block
+      covarianceTotal[indexJ, indexL] <- covarianceBlock
 
-      # match brant/gofcat packages
-      #do not transpose V_block for the lower triangle (while we technically should, but then results don't match exactly with the brant or gofcat libraries which also implement brant test)
-
-      if (j != l) V_total[idx_l, idx_j] <- V_block
+      # Match brant/gofcat packages:
+      # Do not transpose covarianceBlock for the lower triangle
+      if (j != l) covarianceTotal[indexL, indexJ] <- covarianceBlock
     }
   }
 
-  # calculate D
-  contrast_layout <- if(q > 1) cbind(rep(1, q - 1), -diag(q - 1)) else matrix(1, 1, 1)
-  D_omnibus       <- kronecker(contrast_layout, diag(p))
+  # Calculate D (Contrast Matrix)
+  contrastLayout  <- if(q > 1) cbind(rep(1, q - 1), -diag(q - 1)) else matrix(1, 1, 1)
+  contrastOmnibus <- kronecker(contrastLayout, diag(p))
 
-  calc_chisq <- function(beta, V, D) {
-    if (nrow(D) == 0 || ncol(D) == 0 || nrow(V) == 0)
-      return(data.frame(ChiSq = NA, df = NA, p = NA))
+  calculateChiSq <- function(beta, covariance, contrast) {
+    if (nrow(contrast) == 0 || ncol(contrast) == 0 || nrow(covariance) == 0)
+      return(data.frame(chiSq = NA, df = NA, p = NA))
 
-    stat  <- as.numeric(t(D %*% beta) %*% solve(D %*% V %*% t(D)) %*% (D %*% beta))
-    df    <- nrow(D)
-    p_val <- pchisq(stat, df = df, lower.tail = FALSE)
+    stat   <- as.numeric(t(contrast %*% beta) %*% solve(contrast %*% covariance %*% t(contrast)) %*% (contrast %*% beta))
+    df     <- nrow(contrast)
+    pValue <- pchisq(stat, df = df, lower.tail = FALSE)
 
-    # round to 3 decimal places to coincide with standard
     return(data.frame(
-      ChiSq = round(stat, 3),
+      chiSq = round(stat, 3),
       df    = df,
-      p     = p_val
+      p     = pValue
     ))
   }
 
-  # omnibus test
-  omnibus_res <- calc_chisq(beta_tilde, V_total, D_omnibus)
-  rownames(omnibus_res) <- "Omnibus"
+  # Omnibus test
+  omnibusResult <- calculateChiSq(betaTilde, covarianceTotal, contrastOmnibus)
+  rownames(omnibusResult) <- "Omnibus"
 
-  # variable-specific tests
-  var_res <- do.call(rbind, lapply(1:p, function(i) {
-    s  <- seq(from = i, to = (q * p), by = p)
-    Ds <- D_omnibus[, s, drop = FALSE]
-    relevant_rows <- which(rowSums(Ds != 0) > 0)
-    Ds <- Ds[relevant_rows, , drop = FALSE]
+  # Variable-specific tests
+  variableResult <- do.call(rbind, lapply(1:p, function(i) {
+    sequenceIndex  <- seq(from = i, to = (q * p), by = p)
+    contrastSubset <- contrastOmnibus[, sequenceIndex, drop = FALSE]
+    relevantRows   <- which(rowSums(contrastSubset != 0) > 0)
+    contrastSubset <- contrastSubset[relevantRows, , drop = FALSE]
 
-    calc_chisq(beta_tilde[s], V_total[s, s], Ds)
+    calculateChiSq(betaTilde[sequenceIndex], covarianceTotal[sequenceIndex, sequenceIndex], contrastSubset)
   }))
-  rownames(var_res) <- var_names
+  rownames(variableResult) <- variableNames
 
-  return(rbind(omnibus_res, var_res))
+  return(rbind(omnibusResult, variableResult))
 }
