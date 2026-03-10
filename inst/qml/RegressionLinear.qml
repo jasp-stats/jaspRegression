@@ -98,6 +98,7 @@ Form
 			CheckBox { name: "rSquaredChange";				label: qsTr("R squared change")	; info: qsTr("Change in R squared between the different models, with corresponding significance test."); checked: true}
 			CheckBox { name: "fChange";						label: qsTr("F change")	; info: qsTr("Change in F-statistic between the different models, with corresponding significance test.")			}
 			CheckBox { name: "modelAICBIC";					label: qsTr("AIC and BIC")	; info: qsTr("Displays Akaike Information Criterion and Bayesian Information Criterion.")			}
+			CheckBox { name: "modelAicBicWeights";			label: qsTr("AIC and BIC weights"); info: qsTr("Displays Akaike Information Criterion and Bayesian Information Criterion weights.")	}
 			CheckBox { name: "residualDurbinWatson";		label: qsTr("Durbin-Watson"); info: qsTr("Durbin-Watson statistic to test the autocorrelation of the residuals.")	}
 			
 		}
