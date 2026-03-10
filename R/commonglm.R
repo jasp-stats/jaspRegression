@@ -1134,7 +1134,9 @@
     if (nrow(contrast) == 0 || ncol(contrast) == 0 || nrow(covariance) == 0)
       return(data.frame(chiSq = NA, df = NA, p = NA))
 
-    stat   <- as.numeric(t(contrast %*% beta) %*% solve(contrast %*% covariance %*% t(contrast)) %*% (contrast %*% beta))
+    contrastBeta <- contrast %*% beta
+    contrastCov  <- contrast %*% covariance %*% t(contrast)
+    stat <- as.numeric(t(contrastBeta) %*% solve(contrastCov) %*% contrastBeta)
     df     <- nrow(contrast)
     pValue <- pchisq(stat, df = df, lower.tail = FALSE)
 
