@@ -1210,34 +1210,33 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     return()
 
   brantTable <- createJaspTable(title = gettext("Brant Test for Proportional Odds Assumption"))
-  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel"))
+  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest"))
   brantTable$position <- position
 
   brantTable$addColumnInfo(name = "variable", title = "",      type = "string")
   brantTable$addColumnInfo(name = "chiSq",    title = "\u03A7\u00B2",    type = "number")
   brantTable$addColumnInfo(name = "df",       title = gettext("df"),    type = "integer")
   brantTable$addColumnInfo(name = "p",        title = gettext("p"),     type = "pvalue")
-
+  brantTable$addFootnote(gettext("H0: The parallel lines assumption holds."))
   jaspResults[["brantTable"]] <- brantTable
 
   models <- .glmComputeModel(jaspResults, dataset, options)
   fullModel <- models[["fullModel"]]
 
+  brantResult <- try(.glmBrantTest(fullModel, dataset, options))
 
-  brantResults <- try(.glmBrantTest(fullModel, dataset, options))
-
-  if (inherits(brantResults, "try-error")) {
+  if (inherits(brantResult, "try-error")) {
     # This will print the actual R error in the UI. replace later when ready
-    brantTable$setError(as.character(brantResults))
+    brantTable$setError(as.character(brantResult))
     return()
   }
 
-  for (i in seq_len(nrow(brantResults))) {
+  for (rowIndex in seq_len(nrow(brantResult))) {
     brantTable$addRows(list(
-      variable = rownames(brantResults)[i],
-      chiSq    = brantResults[i, "ChiSq"], # Fixed: Key now matches column name 'chiSq'
-      df       = brantResults[i, "df"],
-      p        = brantResults[i, "p"]
+      variable = rownames(brantResult)[rowIndex],
+      chiSq    = brantResult[rowIndex, "chiSq"],
+      df       = brantResult[rowIndex, "df"],
+      p        = brantResult[rowIndex, "p"]
     ))
   }
 }
