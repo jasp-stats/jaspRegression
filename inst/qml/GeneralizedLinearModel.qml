@@ -110,6 +110,17 @@ Form
 				CIField { name: "coefficientCiLevel" }
 			}
 		}
+        Group
+        {
+            title:   qsTr("Assumption Checks")
+            visible: input.isOrdinalModel;
+
+            CheckBox
+            {
+                name:  "brantTest"
+                label: qsTr("Brant test")
+            }
+        }
 	}
 
 	Section
