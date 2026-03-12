@@ -547,14 +547,15 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       coefs <- coef(model[[i]][["fit"]])
       names(coefs) <- .linregMakePrettyNames(model[[i]][["fit"]])
 
+      fmtCoef <- formatC(abs(coefs[-1]), digits = .numDecimals, format = "g")
       coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " \u2013"),
-                           round(abs(coefs[-1]), .numDecimals),
+                           fmtCoef,
                            names(coefs)[-1],
                            collapse = "", sep = " ")
       .linregGetParametersAndLevels(model[[i]][["fit"]])
       # Now add dependent name and intercept
       filledFormula <- paste0(options[["dependent"]], " = ",
-                              round(coefs[1], .numDecimals),
+                              formatC(coefs[1], digits = .numDecimals, format = "g"),
                               coefFormula)
 
       equationTable$addRows(list(
