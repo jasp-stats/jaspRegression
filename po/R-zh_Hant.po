@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2026-02-14 03:29\n"
+"POT-Creation-Date: 2026-03-14 03:30\n"
 "PO-Revision-Date: 2026-03-06 11:55+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -952,6 +952,72 @@ msgid "Marginal Effects Plots"
 msgstr ""
 
 msgid "Marginal effect of %1$s on %2$s"
+msgstr ""
+
+msgid "Response Optimizer"
+msgstr ""
+
+msgid "Response Optimizer Settings"
+msgstr ""
+
+msgid "Response"
+msgstr ""
+
+msgid "Goal"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "Weight"
+msgstr ""
+
+msgid "lower and upper bounds and target are"
+msgstr ""
+
+msgid "lower and upper bounds are"
+msgstr ""
+
+msgid "target is"
+msgstr ""
+
+msgid "The %s estimated from data."
+msgstr ""
+
+msgid "Response Optimizer Solution"
+msgstr ""
+
+#, fuzzy
+msgid "Desirability"
+msgstr "預測概率"
+
+msgid "%s fit"
+msgstr ""
+
+msgid "Optimization Plot"
+msgstr ""
+
+msgid ""
+"Enter values for all predictors to create an optimization plot with manual "
+"input parameters."
+msgstr ""
+
+msgid "Enter plausible numeric values for all continuous predictors."
+msgstr ""
+
+msgid ""
+"Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
+msgstr ""
+
+msgid "Optimization Plot Summary (Manual Predictor Values)"
+msgstr ""
+
+msgid "Optimization Plot Summary"
+msgstr ""
+
+msgid ""
+"One or more input parameters for continuous predictors are outside of the "
+"design space. Extrapolation beyond the design space might not be valid."
 msgstr ""
 
 msgid "All effects are specified as nuisance"

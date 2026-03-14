@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-03-07 11:35+0000\n"
-"Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
-"Language-Team: German <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/de/>\n"
-"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.17-dev\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Language: de\n"
 "X-Source-Language: American English\n"
 "X-Qt-Contexts: true\n"
@@ -3219,11 +3213,13 @@ msgid ""
 "then plotting the residuals against each other."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid ""
 "Displays the specified confidence interval around the regression line on the "
 "plot."
 msgstr ""
+"Zeigt das angegebene Konfidenzintervall um die Regressionslinie im Diagramm."
 
 msgctxt "RegressionLinear|"
 msgid ""
@@ -3406,11 +3402,13 @@ msgid ""
 "residual mean squares."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid ""
 "Displays the specified confidence interval around the regression line on the "
 "plot."
 msgstr ""
+"Zeigt das angegebene Konfidenzintervall um die Regressionslinie im Diagramm."
 
 msgctxt "RegressionLogistic|"
 msgid "Displays individual data points on the plot."
@@ -3703,4 +3701,77 @@ msgctxt "RegressionLogistic|"
 msgid ""
 "Categorical predictor variable(s). Ordinal variables here are treated as "
 "categorical predictor variables, thus, the ordinal information is ignored."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Response Optimizer"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Output"
+msgstr "Ausgabe"
+
+msgctxt "RegressionLinear|"
+msgid "Show optimal solution"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Show optimization plot"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Set input parameters manually"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Predictors"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Value"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Bounds and Target"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Set bounds manually"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Lower bound"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Upper bound"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Set target manually"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Target"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Optimization Goal"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Goal"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Maximize"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Minimize"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Weight"
 msgstr ""

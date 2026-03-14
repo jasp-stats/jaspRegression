@@ -3456,3 +3456,76 @@ msgid ""
 "Categorical predictor variable(s). Ordinal variables here are treated as "
 "categorical predictor variables, thus, the ordinal information is ignored."
 msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Response Optimizer"
+msgstr ""
+
+#, fuzzy
+msgctxt "RegressionLinear|"
+msgid "Output"
+msgstr "報表"
+
+msgctxt "RegressionLinear|"
+msgid "Show optimal solution"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Show optimization plot"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Set input parameters manually"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Predictors"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Value"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Bounds and Target"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Set bounds manually"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Lower bound"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Upper bound"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Set target manually"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Target"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Optimization Goal"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Goal"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Maximize"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Minimize"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Weight"
+msgstr ""

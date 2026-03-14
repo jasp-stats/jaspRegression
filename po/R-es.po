@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2026-02-14 03:29\n"
+"POT-Creation-Date: 2026-03-14 03:30\n"
 "PO-Revision-Date: 2026-02-24 20:12+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -1034,6 +1034,72 @@ msgstr "Gráficos de los Efectos Marginales"
 msgid "Marginal effect of %1$s on %2$s"
 msgstr "Efecto marginal de %1$s sobre %2$s"
 
+msgid "Response Optimizer"
+msgstr ""
+
+msgid "Response Optimizer Settings"
+msgstr ""
+
+msgid "Response"
+msgstr ""
+
+msgid "Goal"
+msgstr ""
+
+msgid "Target"
+msgstr ""
+
+msgid "Weight"
+msgstr ""
+
+msgid "lower and upper bounds and target are"
+msgstr ""
+
+msgid "lower and upper bounds are"
+msgstr ""
+
+msgid "target is"
+msgstr ""
+
+msgid "The %s estimated from data."
+msgstr ""
+
+msgid "Response Optimizer Solution"
+msgstr ""
+
+#, fuzzy
+msgid "Desirability"
+msgstr "Probabilidad Predicha"
+
+msgid "%s fit"
+msgstr ""
+
+msgid "Optimization Plot"
+msgstr ""
+
+msgid ""
+"Enter values for all predictors to create an optimization plot with manual "
+"input parameters."
+msgstr ""
+
+msgid "Enter plausible numeric values for all continuous predictors."
+msgstr ""
+
+msgid ""
+"Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
+msgstr ""
+
+msgid "Optimization Plot Summary (Manual Predictor Values)"
+msgstr ""
+
+msgid "Optimization Plot Summary"
+msgstr ""
+
+msgid ""
+"One or more input parameters for continuous predictors are outside of the "
+"design space. Extrapolation beyond the design space might not be valid."
+msgstr ""
+
 msgid "All effects are specified as nuisance"
 msgstr "Todos los efectos se indican como molestos"
 
@@ -1362,7 +1428,8 @@ msgstr[1] "utilizando las %1$d/%2$d filas de un ajuste combinado"
 msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
 msgstr[0] "Se consideró el siguiente predictor pero no se incluyó: %s."
-msgstr[1] "Se consideraron los siguientes predictores pero no se incluyeron: %s."
+msgstr[1] ""
+"Se consideraron los siguientes predictores pero no se incluyeron: %s."
 
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
