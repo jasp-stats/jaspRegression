@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2025-12-23 10:37+0000\n"
+"PO-Revision-Date: 2026-03-15 09:09+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/de/>\n"
@@ -12,7 +12,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n==0 ? 0 : n==1 ? 0 : 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -365,7 +365,6 @@ msgstr "Variablen"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Shapiro-Wilk-Test auf bivariate Normalverteilung"
 
-#, fuzzy
 msgid "Scatter Plots"
 msgstr "Streudiagramme"
 
@@ -835,13 +834,12 @@ msgstr "%.0f%% KI"
 msgid "Collinearity Statistics"
 msgstr "Kollineare Statistik"
 
-#, fuzzy
 msgid ""
 "Standardized coefficients can only be computed for continuous, linear "
 "predictors."
 msgstr ""
-"Standardisierte Koeffizienten können nur für kontinuierliche Prädiktoren "
-"berechnet werden."
+"Standardisierte Koeffizienten können nur für kontinuierliche, lineare "
+"Prädiktoren berechnet werden."
 
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
@@ -881,13 +879,11 @@ msgstr "Manche Bootstrap-Ergebnisse konnten nicht berechnet werden."
 msgid "expecting both arguments to be data.frames"
 msgstr "erwarte dass beide Argumente data.frames sind"
 
-#, fuzzy
 msgid "Regression Equations"
-msgstr "Regression"
+msgstr "Regressionsgleichungen"
 
-#, fuzzy
 msgid "Equation"
-msgstr "Verhältnis"
+msgstr "Gleichung"
 
 msgid "Part And Partial Correlations"
 msgstr "Semipartielle und partielle Korrelationen"
@@ -1045,35 +1041,35 @@ msgid "Goal"
 msgstr ""
 
 msgid "Target"
-msgstr ""
+msgstr "Ziel"
 
 msgid "Weight"
-msgstr ""
+msgstr "Gewicht"
 
 msgid "lower and upper bounds and target are"
-msgstr ""
+msgstr "untere und obere Grenzen und Ziel sind"
 
 msgid "lower and upper bounds are"
-msgstr ""
+msgstr "untere und obere Grenzen sind"
 
 msgid "target is"
-msgstr ""
+msgstr "Ziel ist"
 
 msgid "The %s estimated from data."
-msgstr ""
+msgstr "%s geschätzt aus Daten."
 
 msgid "Response Optimizer Solution"
 msgstr ""
 
 #, fuzzy
 msgid "Desirability"
-msgstr "Vorhergesagte Wahrscheinlichkeit"
+msgstr "Erwünschtheit"
 
 msgid "%s fit"
-msgstr ""
+msgstr "%s Anpassung"
 
 msgid "Optimization Plot"
-msgstr ""
+msgstr "Optimierungsdiagramm"
 
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
@@ -1082,10 +1078,12 @@ msgstr ""
 
 msgid "Enter plausible numeric values for all continuous predictors."
 msgstr ""
+"Geben Sie für alle kontinuierlichen Prädiktoren plausible Zahlenwerte ein."
 
 msgid ""
 "Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
 msgstr ""
+"Wert '%1$s' ist keine gültige Stufe für Faktor '%2$s'. Erlaubte Werte: %3$s."
 
 msgid "Optimization Plot Summary (Manual Predictor Values)"
 msgstr ""
@@ -1424,17 +1422,15 @@ msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] "benutzt die Zeile %1$d/%2$d aus einer kombinierten Anpassung"
 msgstr[1] "benutzt die Zeilen %1$d/%2$d aus einer kombinierten Anpassung"
 
-#, fuzzy
 msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
-msgstr[0] "Die folgende Kovariate wurde erwogen, aber nicht einbezogen: %s."
-msgstr[1] "Die folgenden Kovariaten wurden erwogen, aber nicht einbezogen: %s."
+msgstr[0] "Der folgende Prädiktor wurde erwogen, aber nicht einbezogen: %s."
+msgstr[1] "Die folgenden Prädiktoren wurden erwogen, aber nicht einbezogen: %s."
 
-#, fuzzy
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
-msgstr[0] "Regression"
-msgstr[1] "Regression"
+msgstr[0] "Regressionsdiagramm"
+msgstr[1] "Partielles Regressionsdiagramm"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"
