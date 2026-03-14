@@ -118,7 +118,7 @@ Form
             CheckBox
             {
                 name:  "brantTest"
-                label: qsTr("Brant test")
+                label: qsTr("Brant test of proportional odds")
             }
         }
 	}
