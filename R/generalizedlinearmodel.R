@@ -38,17 +38,17 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   #brant-WIP
   # Only trigger the Brant test for ordinal logistic regression
   isOrdinal <- options[["family"]] == "other" && options[["otherGlmModel"]] == "ordinalLogistic"
-
-  if (isOrdinal) {
-    .glmBrantTable(jaspResults, dataset, options, ready, position = 3.5)
+  #note, both checks necessary, switching model hides checkbox but does not reset
+  if (isOrdinal && options[["brantTest"]]) {
+    .glmBrantTable(jaspResults, dataset, options, ready, position = 4)
   }
   if (options$family == "other") return()
 
   #diagnostic tables and plots
-  .glmDiagnostics(jaspResults, dataset, options, ready, position = 4)
+  .glmDiagnostics(jaspResults, dataset, options, ready, position = 5)
 
   #estimated marginal means table and contrast analysis
-  .glmEmm(jaspResults, dataset, options, ready, position = 5)
+  .glmEmm(jaspResults, dataset, options, ready, position = 6)
 
   if (options[["residualsSavedToData"]] && options[["residualsSavedToDataColumn"]] != "" && is.null(jaspResults[["residualsSavedToDataColumn"]]))
     .regressionExportResiduals(jaspResults, jaspResults[["glmModels"]][["object"]][["fullModel"]], dataset, options)
@@ -1205,8 +1205,9 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   return()
 }
 #brant
+
 .glmBrantTable <- function(jaspResults, dataset, options, ready, position) {
-  if (!ready || !is.null(jaspResults[["brantTable"]]))
+  if (!ready || !options[["brantTest"]] || !is.null(jaspResults[["brantTable"]]))
     return()
 
   brantTable <- createJaspTable(title = gettext("Brant Test for Proportional Odds Assumption"))
