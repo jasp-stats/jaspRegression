@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-03-16 09:09+0000\n"
+"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
+"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-qml/id/>\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: id\n"
 "X-Qt-Contexts: true\n"
 
@@ -13,7 +19,7 @@ msgstr "Regresi"
 
 msgctxt "Description|"
 msgid "Classical"
-msgstr "Klasik"
+msgstr "Klasikal"
 
 msgctxt "Description|"
 msgid "Correlation"
@@ -29,7 +35,7 @@ msgstr "Regresi Logistik"
 
 msgctxt "Description|"
 msgid "Bayesian"
-msgstr "Bayesian"
+msgstr "Bayes"
 
 msgctxt "Description|"
 msgid "Bayesian Correlation"
@@ -258,7 +264,7 @@ msgstr "Posterior pada H₁"
 
 msgctxt "CorrelationBayesian|"
 msgid "Prior"
-msgstr "Prior"
+msgstr "Priori"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
@@ -641,10 +647,9 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Advanced Options"
 msgstr ""
 
-#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Prior"
-msgstr "Prior"
+msgstr "Priori"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "AIC"
@@ -852,7 +857,6 @@ msgctxt "RegressionLogistic|"
 msgid "Confidence intervals"
 msgstr "Interval kepercayaan"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Interval"
 msgstr "Interval"
@@ -1434,10 +1438,9 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Advanced Options"
 msgstr ""
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
-msgstr "Prior"
+msgstr "Priori"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "AIC"
