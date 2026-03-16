@@ -1083,7 +1083,7 @@
   q <- k - 1 # thresholds
 
   xMain         <- xPlus[, -1, drop = FALSE]
-  #obsWeights <- if (options[["weights"]] != "") dataset[[options[["weights"]]]] else rep(1, nrow(xMain))
+  obsWeights <- if (options[["weights"]] != "") dataset[[options[["weights"]]]] else rep(1, nrow(xMain))
   p             <- ncol(xMain) # predictors
   variableNames <- colnames(xMain)
   xGlm          <- cbind(1, xMain)
@@ -1092,8 +1092,7 @@
   binaryData <- as.data.frame(xMain)
   models <- lapply(1:q, function(j) {
     binaryData$yBin <- as.numeric(yNumeric > j)
-    #nb, no weights yet.
-    stats::glm(yBin ~ ., family = binomial, data = binaryData)
+    stats::glm(yBin ~ ., family = binomial, data = binaryData, weights=obsWeights)
   })
 
   # Extract beta's
@@ -1105,16 +1104,12 @@
   # Block covariance matrix assembly
   covarianceTotal <- matrix(0, nrow = q * p, ncol = q * p)
   for(j in 1:q) {
-    weightJj  <- piList[[j]] * (1 - piList[[j]])
-    #weightJj  <- obsWeights*(piList[[j]] * (1 - piList[[j]]))
-
+    weightJj  <- obsWeights*(piList[[j]] * (1 - piList[[j]]))
     inverseAj <- solve(t(xGlm) %*% (weightJj * xGlm))
 
     for(l in j:q) {
-      weightJl  <- piList[[l]] - (piList[[j]] * piList[[l]])
-      #weightJl  <- obsWeights*(piList[[l]] - (piList[[j]] * piList[[l]]))
-      weightLl  <- piList[[l]] * (1 - piList[[l]])
-      #weightLl  <- obsWeights*(piList[[l]] * (1 - piList[[l]]))
+      weightJl  <- obsWeights*(piList[[l]] - (piList[[j]] * piList[[l]]))
+      weightLl  <- obsWeights*(piList[[l]] * (1 - piList[[l]]))
 
       inverseAl <- solve(t(xGlm) %*% (weightLl * xGlm))
       matrixBjl <- t(xGlm) %*% (weightJl * xGlm)
