@@ -1211,11 +1211,11 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     return()
 
   brantTable <- createJaspTable(title = gettext("Brant Test for Proportional Odds Assumption"))
-  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest"))
+  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest","weights"))
   brantTable$position <- position
 
   brantTable$addColumnInfo(name = "variable", title = "",      type = "string")
-  brantTable$addColumnInfo(name = "chiSq",    title = "\u03A7\u00B2",    type = "number")
+  brantTable$addColumnInfo(name = "chiSq",    title = "\u03A7\u00B2",    type = "number",format = "dp:3")
   brantTable$addColumnInfo(name = "df",       title = gettext("df"),    type = "integer")
   brantTable$addColumnInfo(name = "p",        title = gettext("p"),     type = "pvalue")
   brantTable$addFootnote(gettext("H0: The proportional odds (parallel lines) assumption holds."))
@@ -1230,6 +1230,17 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     # This will print the actual R error in the UI. replace later when ready
     brantTable$setError(as.character(brantResult))
     return()
+  }
+
+  # Add warning if negative chi-squares detected. This can happen for e.g. very small samples
+  # e.g. MASS::cars dataset, with gear~hp as model.
+  if (any(brantResult$chiSq < 0, na.rm = TRUE)) {
+    brantTable$addFootnote(
+      gettext("Negative \u03A7\u00B2 statistics are computational artifacts.
+              They indicate the estimated covariance matrix is not positive semi-definite
+              or is ill-conditioned, often due to small samples or sparse data.
+              Test results might be misleading.")
+    )
   }
 
   for (rowIndex in seq_len(nrow(brantResult))) {
