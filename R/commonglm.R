@@ -1092,15 +1092,28 @@
   binaryData <- as.data.frame(xMain)
   models <- lapply(1:q, function(j) {
     binaryData$yBin <- as.numeric(yNumeric > j)
-    stats::glm(yBin ~ ., family = binomial, data = binaryData, weights=obsWeights)
+    fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData, weights = obsWeights)
+
+    # untested test1: Collinearity
+    if (any(is.na(VGAM::coef(fitBinary)))) {
+      stop(gettextf("The Brant test cannot be computed.
+                    At least one underlying binary model
+                    is unestimable due to collinearity", j))
+    }
+
+    # check for perfect prediction/separation
+    if (any(VGAM::hdeff(fitBinary))) {
+      stop(gettextf("The Brant test cannot be computed.
+                    At least one of the underlying binary logit models
+                    is unestimable due to perfect prediction or extreme data sparsity.", j))
+    }
+
+    return(fitBinary)
   })
-
   # Extract beta's
-  betaTilde <- as.matrix(unlist(lapply(models, function(m) coef(m)[-1])))
-
+  betaTilde <- as.matrix(unlist(lapply(models, function(m) VGAM::coef(m)[-1])))
   # Extract probabilities from separate binary fits
-  piList <- lapply(models, fitted)
-
+  piList <- lapply(models, VGAM::fitted)
   # Block covariance matrix assembly
   covarianceTotal <- matrix(0, nrow = q * p, ncol = q * p)
   for(j in 1:q) {
@@ -1122,9 +1135,11 @@
 
       covarianceTotal[indexJ, indexL] <- covarianceBlock
 
-      # Match brant/gofcat packages:
-      # Do not transpose covarianceBlock for the lower triangle
-      if (j != l) covarianceTotal[indexL, indexJ] <- covarianceBlock
+      # Note, current R brant implementations (brant::brant, gofcat::gofcat) omit the transpose below,
+      # resulting in very minor numerical discrepancies between their results and this implementation.
+      # this implementation matches results from STATA's oparallel.
+
+      if (j != l) covarianceTotal[indexL, indexJ] <- t(covarianceBlock)
     }
   }
 
