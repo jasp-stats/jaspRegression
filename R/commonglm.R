@@ -1094,26 +1094,23 @@
     binaryData$yBin <- as.numeric(yNumeric > j)
     fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData, weights = obsWeights)
 
-    # untested test1: Collinearity
-    if (any(is.na(VGAM::coef(fitBinary)))) {
-      stop(gettextf("The Brant test cannot be computed.
-                    At least one underlying binary model
-                    is unestimable due to collinearity", j))
-    }
-
     # check for perfect prediction/separation
     if (any(VGAM::hdeff(fitBinary))) {
-      stop(gettextf("The Brant test cannot be computed.
+      stop(gettext("The Brant test cannot be computed.
                     At least one of the underlying binary logit models
-                    is unestimable due to perfect prediction or extreme data sparsity.", j))
+                    is unestimable due to perfect prediction or extreme data sparsity."))
+    }
+    # check for at least 1 predictor added
+    if (.isInterceptOnly(fit)) {
+      stop(gettext("The Brant test requires at least one predictor in the model."))
     }
 
     return(fitBinary)
   })
-  # Extract beta's
+  # Extract betas
   betaTilde <- as.matrix(unlist(lapply(models, function(m) VGAM::coef(m)[-1])))
   # Extract probabilities from separate binary fits
-  piList <- lapply(models, VGAM::fitted)
+  piList <- lapply(models, function(m) as.numeric(VGAM::fitted(m)))
   # Block covariance matrix assembly
   covarianceTotal <- matrix(0, nrow = q * p, ncol = q * p)
   for(j in 1:q) {
@@ -1159,7 +1156,7 @@
 
 
     return(data.frame(
-      chiSq = stat, 3,
+      chiSq = stat,
       df    = df,
       p     = pValue
     ))
