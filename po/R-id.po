@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-03-20 12:46+0000\n"
+"PO-Revision-Date: 2026-03-21 03:25+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/id/>\n"
@@ -285,7 +285,7 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "VS-MPR"
 msgstr "VS-MPR"
@@ -312,7 +312,7 @@ msgid "Kendall's Tau B"
 msgstr ""
 
 msgid "p-value"
-msgstr ""
+msgstr "nilai-p"
 
 msgid "Number of observations is < %s."
 msgstr ""
@@ -516,7 +516,7 @@ msgid ""
 msgstr ""
 
 msgid "Model Summary"
-msgstr ""
+msgstr "Ringkasan Model"
 
 msgid "Model Summary - %s"
 msgstr ""
@@ -528,10 +528,10 @@ msgid "Deviance"
 msgstr ""
 
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "df"
 msgstr "df"
@@ -543,16 +543,16 @@ msgid "Model Fit"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Statistik"
 
 msgid "Coefficients"
-msgstr ""
+msgstr "Koefisien"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimasi"
 
 msgid "Standard Error"
-msgstr ""
+msgstr "Galat Standar"
 
 msgid "Lower Bound"
 msgstr ""
@@ -630,16 +630,16 @@ msgid "SE"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "Bawah"
 
 msgid "%s%% CI"
-msgstr ""
+msgstr "%s%% CI"
 
 msgid "Upper"
-msgstr ""
+msgstr "Atas"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
 msgstr "z"
@@ -1133,7 +1133,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Diagram Q-Q"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1276,13 +1276,13 @@ msgid "DV/Factor"
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "Tingkat"
 
 msgid "Covariate Descriptives"
 msgstr ""
 
 msgid "Intercept"
-msgstr ""
+msgstr "Intersepsi"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
