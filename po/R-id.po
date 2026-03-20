@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-03-18 03:09+0000\n"
+"PO-Revision-Date: 2026-03-20 12:46+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/id/>\n"
@@ -692,13 +692,13 @@ msgid "R"
 msgstr ""
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
 msgstr ""
 
 msgid "RMSE"
-msgstr ""
+msgstr "RMSE"
 
 msgid "R%s Change"
 msgstr ""
@@ -772,7 +772,7 @@ msgid "Bootstrap Coefficients"
 msgstr ""
 
 msgid "Bias"
-msgstr ""
+msgstr "Bias"
 
 msgid "%s%% CI*"
 msgstr ""
@@ -835,10 +835,10 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
 msgid "Maximum"
-msgstr ""
+msgstr "Maksimum"
 
 msgid "Mean"
 msgstr "Rerata"
