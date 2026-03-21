@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-02-25 21:09+0000\n"
-"Last-Translator: Kayla Simorangkir <tatacrea.k@gmail.com>\n"
+"PO-Revision-Date: 2026-03-21 03:25+0000\n"
+"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/id/>\n"
 "Language: id\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -25,13 +25,13 @@ msgid "Scatterplot"
 msgstr "Diagram pencar"
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "Priori dan Posterior"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "Faktor Bayes dan Pemeriksaan Kekuatan"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "Analisis Sekuensial"
 
 msgid "Bayesian Pearson Correlations"
 msgstr ""
@@ -76,7 +76,7 @@ msgid "Kendall"
 msgstr ""
 
 msgid "Density"
-msgstr ""
+msgstr "Kepadatan"
 
 msgid "Plotting not possible: Number of observations is < 3"
 msgstr ""
@@ -285,10 +285,10 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "VS-MPR"
-msgstr ""
+msgstr "VS-MPR"
 
 msgid "Effect size (Fisher's z)"
 msgstr ""
@@ -312,7 +312,7 @@ msgid "Kendall's Tau B"
 msgstr ""
 
 msgid "p-value"
-msgstr ""
+msgstr "nilai-p"
 
 msgid "Number of observations is < %s."
 msgstr ""
@@ -388,6 +388,10 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Rasio <em>p</em> Maksimum Vovk-Sellke: Berdasarkan nilai <em>p</em>, peluang "
+"maksimum yang mungkin menguntungkan H%1$s dibandingkan H%2$s sama dengan 1/(-"
+"e <em>p</em> log(<em>p</em>)) untuk <em>p</em> %3$s 0,37 (Sellke, Bayarri, & "
+"Berger, 2001)."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -411,13 +415,13 @@ msgid "Could not compute the posteriors"
 msgstr ""
 
 msgid "Prior"
-msgstr ""
+msgstr "Priori"
 
 msgid "Posterior"
-msgstr ""
+msgstr "Posterior"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "%s%% CI:"
 
 msgid "Bayesian Correlation Pairwise Plots"
 msgstr ""
@@ -429,7 +433,7 @@ msgid "%1$s at kappa==%2$s"
 msgstr ""
 
 msgid "user prior"
-msgstr ""
+msgstr "priori pengguna"
 
 msgid "Stretched beta prior width"
 msgstr ""
@@ -512,7 +516,7 @@ msgid ""
 msgstr ""
 
 msgid "Model Summary"
-msgstr ""
+msgstr "Ringkasan Model"
 
 msgid "Model Summary - %s"
 msgstr ""
@@ -524,13 +528,13 @@ msgid "Deviance"
 msgstr ""
 
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
 msgid "df"
-msgstr ""
+msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr ""
@@ -539,16 +543,16 @@ msgid "Model Fit"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "Statistik"
 
 msgid "Coefficients"
-msgstr ""
+msgstr "Koefisien"
 
 msgid "Estimate"
-msgstr ""
+msgstr "Estimasi"
 
 msgid "Standard Error"
-msgstr ""
+msgstr "Galat Standar"
 
 msgid "Lower Bound"
 msgstr ""
@@ -626,19 +630,19 @@ msgid "SE"
 msgstr ""
 
 msgid "Lower"
-msgstr ""
+msgstr "Bawah"
 
 msgid "%s%% CI"
-msgstr ""
+msgstr "%s%% CI"
 
 msgid "Upper"
-msgstr ""
+msgstr "Atas"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
 msgstr ""
@@ -688,13 +692,13 @@ msgid "R"
 msgstr ""
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
 msgstr ""
 
 msgid "RMSE"
-msgstr ""
+msgstr "RMSE"
 
 msgid "R%s Change"
 msgstr ""
@@ -730,7 +734,7 @@ msgid "Mean Square"
 msgstr ""
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr "Regresi"
@@ -768,7 +772,7 @@ msgid "Bootstrap Coefficients"
 msgstr ""
 
 msgid "Bias"
-msgstr ""
+msgstr "Bias"
 
 msgid "%s%% CI*"
 msgstr ""
@@ -831,16 +835,16 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "Minimum"
 
 msgid "Maximum"
-msgstr ""
+msgstr "Maksimum"
 
 msgid "Mean"
 msgstr "Rerata"
 
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgid "N"
 msgstr ""
@@ -849,7 +853,7 @@ msgid "Residuals vs. Dependent"
 msgstr ""
 
 msgid "Residuals"
-msgstr ""
+msgstr "Residu"
 
 msgid "Residuals vs. Covariates"
 msgstr ""
@@ -1129,7 +1133,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Diagram Q-Q"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1272,13 +1276,13 @@ msgid "DV/Factor"
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "Tingkat"
 
 msgid "Covariate Descriptives"
 msgstr ""
 
 msgid "Intercept"
-msgstr ""
+msgstr "Intersepsi"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
