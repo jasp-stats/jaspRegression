@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-03-21 03:25+0000\n"
+"PO-Revision-Date: 2026-03-22 14:09+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/id/>\n"
@@ -627,7 +627,7 @@ msgid "Estimated Marginal Means"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "SE"
 
 msgid "Lower"
 msgstr "Bawah"
@@ -713,7 +713,7 @@ msgid "df2"
 msgstr ""
 
 msgid "Autocorrelation"
-msgstr ""
+msgstr "Korelasi Otomatis"
 
 msgid "Durbin-Watson"
 msgstr ""
@@ -847,7 +847,7 @@ msgid "SD"
 msgstr "SD"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
@@ -1061,25 +1061,25 @@ msgid "Posterior Summaries of Coefficients"
 msgstr ""
 
 msgid "BF<sub>inclusion</sub>"
-msgstr ""
+msgstr "BF<sub>inklusi</sub>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "%s%% Interval Kredibel"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "Koefisien"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(inkl)"
 
 msgid "P(excl)"
 msgstr ""
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(inkl|data)"
 
 msgid "P(excl|data)"
 msgstr ""
@@ -1262,7 +1262,7 @@ msgid "Robust <br> %s"
 msgstr ""
 
 msgid "Parameter"
-msgstr ""
+msgstr "Parameter"
 
 msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
