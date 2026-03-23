@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-03-22 14:09+0000\n"
+"PO-Revision-Date: 2026-03-24 13:09+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/id/>\n"
@@ -306,7 +306,7 @@ msgid "tau B"
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "Variabel"
 
 msgid "Kendall's Tau B"
 msgstr ""
@@ -570,7 +570,7 @@ msgid "%1$s levels: %2$s. Linear predictors: %3$s."
 msgstr ""
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnostik"
 
 msgid "Residuals vs. Fitted Plots"
 msgstr ""
@@ -707,10 +707,10 @@ msgid "F Change"
 msgstr ""
 
 msgid "df1"
-msgstr ""
+msgstr "df1"
 
 msgid "df2"
-msgstr ""
+msgstr "df2"
 
 msgid "Autocorrelation"
 msgstr "Korelasi Otomatis"
@@ -731,7 +731,7 @@ msgid "Sum of Squares"
 msgstr ""
 
 msgid "Mean Square"
-msgstr ""
+msgstr "Rerata Kuadrat"
 
 msgid "F"
 msgstr "F"
@@ -1032,13 +1032,13 @@ msgid "Log(BF<sub>10</sub>)"
 msgstr ""
 
 msgid "Models"
-msgstr ""
+msgstr "Model"
 
 msgid "P(M)"
-msgstr ""
+msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|data)"
 
 msgid "BF<sub>M</sub>"
 msgstr ""
@@ -1085,7 +1085,7 @@ msgid "P(excl|data)"
 msgstr ""
 
 msgid "<em>Warning.</em>"
-msgstr ""
+msgstr "<em>Peringatan.</em>"
 
 msgid "Posterior Coefficients with %s%% Credible Interval"
 msgstr ""
@@ -1197,7 +1197,7 @@ msgid "Performance metrics"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "Nilai"
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
