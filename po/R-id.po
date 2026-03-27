@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-03-24 13:09+0000\n"
+"PO-Revision-Date: 2026-03-27 14:11+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/id/>\n"
@@ -148,7 +148,7 @@ msgid "P-values correspond to test of null hypothesis against %s."
 msgstr ""
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "Hasil direratakan pada tingkat: %s."
 
 msgid "P-values are not adjusted."
 msgstr ""
@@ -181,7 +181,7 @@ msgid "Sidak"
 msgstr ""
 
 msgid "Dunnett"
-msgstr ""
+msgstr "Dunnett"
 
 msgid "Bonferroni"
 msgstr ""
@@ -232,7 +232,7 @@ msgid ""
 msgstr ""
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR%s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -522,7 +522,7 @@ msgid "Model Summary - %s"
 msgstr ""
 
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgid "Deviance"
 msgstr ""
@@ -725,10 +725,10 @@ msgid "No covariate could be entered in the model"
 msgstr ""
 
 msgid "ANOVA"
-msgstr ""
+msgstr "ANOVA"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "Jumlah Kuadrat"
 
 msgid "Mean Square"
 msgstr "Rerata Kuadrat"
@@ -785,7 +785,7 @@ msgid ""
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "Bias terkoreksi diakselerasikan."
 
 msgid "Some bootstrap results could not be computed."
 msgstr ""
@@ -892,7 +892,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "Deskriptif"
 
 msgid "M%s"
 msgstr ""
@@ -943,7 +943,7 @@ msgid "Target"
 msgstr ""
 
 msgid "Weight"
-msgstr ""
+msgstr "Berat"
 
 msgid "lower and upper bounds and target are"
 msgstr ""
@@ -1002,7 +1002,7 @@ msgid "Posterior Summary"
 msgstr ""
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "Perbandingan Model"
 
 msgid "Model Comparison - %s"
 msgstr ""
@@ -1023,13 +1023,13 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
 msgstr "Model"
@@ -1041,10 +1041,10 @@ msgid "P(M|data)"
 msgstr "P(M|data)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
-msgstr ""
+msgstr "Semua model mencakup %s."
 
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
@@ -1052,10 +1052,10 @@ msgid ""
 msgstr ""
 
 msgid "Null model"
-msgstr ""
+msgstr "Model null"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "Model null (inkl. %s)"
 
 msgid "Posterior Summaries of Coefficients"
 msgstr ""
@@ -1076,13 +1076,13 @@ msgid "P(incl)"
 msgstr "P(inkl)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(ekskl)"
 
 msgid "P(incl|data)"
 msgstr "P(inkl|data)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(ekskl|data)"
 
 msgid "<em>Warning.</em>"
 msgstr "<em>Peringatan.</em>"
@@ -1182,7 +1182,7 @@ msgid "Factor Descriptives"
 msgstr ""
 
 msgid "Factor"
-msgstr ""
+msgstr "Faktor"
 
 msgid "Confusion matrix"
 msgstr ""
@@ -1206,6 +1206,8 @@ msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
 msgstr ""
+"Beberapa interval kepercayaan tidak dapat dihitung.\n"
+"Kemungkinan terlalu sedikit replikat bootstrap."
 
 msgid "Diagnostic plots"
 msgstr "Diagram diagnostik"
