@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-01-01 18:01+0000\n"
+"PO-Revision-Date: 2026-03-22 14:09+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ta/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.15.1\n"
+"X-Generator: Weblate 5.17-dev\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -314,7 +314,7 @@ msgid "Covariance"
 msgstr "கோவாரன்ச்"
 
 msgid "r"
-msgstr "r"
+msgstr "ஆர்"
 
 msgid "tau B"
 msgstr "எண் ஆ"
@@ -355,9 +355,8 @@ msgstr "மாறிகள்"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "பிவாரேட் இயல்புநிலைக்கான சாபிரோ-வில்க் சோதனை"
 
-#, fuzzy
 msgid "Scatter Plots"
-msgstr "சிதறல் அடுக்கு"
+msgstr "சிதறல் அடுக்குகள்"
 
 msgid "Correlation plot"
 msgstr "தொடர்பு சூழ்ச்சி"
@@ -748,7 +747,7 @@ msgstr ""
 "வேண்டும் f- மதிப்பை"
 
 msgid "R"
-msgstr "R"
+msgstr "ஆர்"
 
 msgid "R%s"
 msgstr "R%s"
@@ -949,7 +948,7 @@ msgid "Partial plots are not supported for models containing interaction terms"
 msgstr "தொடர்பு விதிமுறைகளைக் கொண்ட மாதிரிகளுக்கு பகுதி அடுக்குகள் ஆதரிக்கப்படவில்லை"
 
 msgid "%1$s vs. %2$s"
-msgstr "%1$s vs. %2$s"
+msgstr "%1$s எதிராக %2$s"
 
 msgid "Partial plots are not supported for factors"
 msgstr "காரணிகளுக்கு பகுதி அடுக்குகள் ஆதரிக்கப்படவில்லை"
@@ -978,6 +977,10 @@ msgid ""
 "        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke அதிகபட்சம் <em>p</em>-விகிதம்: <em>p</em>-மதிப்பின் அடிப்படையில், "
+"அதிகபட்சம்\n"
+"H%2$s ஐ விட H%1$sக்கு சாதகமாக சாத்தியமான முரண்பாடுகள் <em>p</em> %3$s க்கு 1/(-e <em>"
+"p</em> log(<em>p</em>)) .37 (Sellke, Bayarri, & Berger, 2001)."
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
@@ -996,70 +999,76 @@ msgid "Marginal effect of %1$s on %2$s"
 msgstr "%2$s இல் %1$s இன் விளிம்பு விளைவு"
 
 msgid "Response Optimizer"
-msgstr ""
+msgstr "ரெச்பான்ச் ஆப்டிமைசர்"
 
 msgid "Response Optimizer Settings"
-msgstr ""
+msgstr "ரெச்பான்ச் ஆப்டிமைசர் அமைப்புகள்"
 
 msgid "Response"
-msgstr ""
+msgstr "பதில்"
 
 msgid "Goal"
-msgstr ""
+msgstr "இலக்கு"
 
 msgid "Target"
-msgstr ""
+msgstr "இலக்கு"
 
 msgid "Weight"
-msgstr ""
+msgstr "எடை"
 
 msgid "lower and upper bounds and target are"
-msgstr ""
+msgstr "கீழ் மற்றும் மேல் எல்லைகள் மற்றும் இலக்கு"
 
 msgid "lower and upper bounds are"
-msgstr ""
+msgstr "கீழ் மற்றும் மேல் எல்லைகள்"
 
 msgid "target is"
-msgstr ""
+msgstr "இலக்கு ஆகும்"
 
 msgid "The %s estimated from data."
-msgstr ""
+msgstr "தரவுகளிலிருந்து %s மதிப்பிடப்பட்டது."
 
 msgid "Response Optimizer Solution"
-msgstr ""
+msgstr "ரெச்பான்ச் ஆப்டிமைசர் தீர்வு"
 
-#, fuzzy
 msgid "Desirability"
-msgstr "கணிக்கப்பட்ட நிகழ்தகவு"
+msgstr "விரும்பக்கூடிய தன்மை"
 
 msgid "%s fit"
-msgstr ""
+msgstr "%s பொருத்தம்"
 
 msgid "Optimization Plot"
-msgstr ""
+msgstr "உகப்பாக்கம் சூழ்ச்சி"
 
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
 "input parameters."
 msgstr ""
+"கையேடு உள்ளீட்டு அளவுருக்கள் மூலம் மேம்படுத்தல் திட்டத்தை உருவாக்க அனைத்து "
+"முன்கணிப்பாளர்களுக்கும் மதிப்புகளை உள்ளிடவும்."
 
 msgid "Enter plausible numeric values for all continuous predictors."
 msgstr ""
+"அனைத்து தொடர்ச்சியான முன்கணிப்பாளர்களுக்கும் நம்பத்தகுந்த எண் மதிப்புகளை உள்ளிடவும்."
 
 msgid ""
 "Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
 msgstr ""
+"'%2$s' காரணிக்கான மதிப்பு '%1$s' சரியான நிலை அல்ல. அனுமதிக்கப்பட்ட மதிப்புகள்: %3$s."
 
 msgid "Optimization Plot Summary (Manual Predictor Values)"
-msgstr ""
+msgstr "உகப்பாக்கம் ப்ளாட் சுருக்கம் (கையேடு முன்கணிப்பு மதிப்புகள்)"
 
 msgid "Optimization Plot Summary"
-msgstr ""
+msgstr "உகப்பாக்கம் சூழ்ச்சி சுருக்கம்"
 
 msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
 msgstr ""
+"தொடர்ச்சியான முன்கணிப்பாளர்களுக்கான ஒன்று அல்லது அதற்கு மேற்பட்ட உள்ளீட்டு அளவுருக்கள் "
+"வடிவமைப்பு இடத்திற்கு வெளியே உள்ளன. டிசைன் ச்பேசுக்கு அப்பாற்பட்ட எக்ச்ட்ராபோலேசன் "
+"செல்லுபடியாகாது."
 
 msgid "All effects are specified as nuisance"
 msgstr "அனைத்து விளைவுகளும் தொல்லை என குறிப்பிடப்படுகின்றன"
@@ -1379,20 +1388,18 @@ msgstr "இடைமறிப்பு"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
-msgstr[0] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/ %2$d வரிசையைப் பயன்படுத்துதல்"
-msgstr[1] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/ %2$d வரிசைகளைப் பயன்படுத்துதல்"
+msgstr[0] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/%2$d வரிசையைப் பயன்படுத்துகிறது"
+msgstr[1] "ஒருங்கிணைந்த பொருத்தத்திலிருந்து %1$d/%2$d வரிசைகளைப் பயன்படுத்துகிறது"
 
-#, fuzzy
 msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
-msgstr[0] "பின்வரும் கோவாரியட் கருதப்பட்டது, ஆனால் சேர்க்கப்படவில்லை: %s."
-msgstr[1] "பின்வரும் கோவாரியட்டுகள் கருதப்பட்டன, ஆனால் சேர்க்கப்படவில்லை: %s."
+msgstr[0] "பின்வரும் கணிப்பான் கருதப்பட்டது ஆனால் சேர்க்கப்படவில்லை: %s."
+msgstr[1] "பின்வரும் கணிப்பாளர்கள் கருதப்பட்டனர் ஆனால் சேர்க்கப்படவில்லை: %s."
 
-#, fuzzy
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
-msgstr[0] "பின்னடைவு"
-msgstr[1] "பின்னடைவு"
+msgstr[0] "பின்னடைவு சூழ்ச்சி"
+msgstr[1] "பகுதி பின்னடைவு சூழ்ச்சி"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"
