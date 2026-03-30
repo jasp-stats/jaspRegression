@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-03-27 14:11+0000\n"
+"PO-Revision-Date: 2026-03-31 02:09+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -146,10 +146,10 @@ msgid "There are no predictors to test for multicollinearity"
 msgstr "沒有預測變數可用於測試多元共線性"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr "P 值對應於針對 %s 的虛無假設檢驗。"
+msgstr "P 值對應於針對 %s 的虛無假設檢定。"
 
 msgid "Results are averaged over the levels of: %s."
-msgstr "結果是基於下列水準的平均數：%s。"
+msgstr "結果已對以下層級取平均：%s"
 
 msgid "P-values are not adjusted."
 msgstr "P值未經調整。"
@@ -541,7 +541,7 @@ msgid "Model"
 msgstr "模型"
 
 msgid "Deviance"
-msgstr "離差量數"
+msgstr "偏離差"
 
 msgid "AIC"
 msgstr "AIC"
@@ -645,9 +645,8 @@ msgstr "VIF"
 msgid "Estimated Marginal Means and Contrast Analysis"
 msgstr "邊際估計平均數和對比分析"
 
-#, fuzzy
 msgid "Estimated Marginal Means"
-msgstr "估計邊際平均值"
+msgstr "估計邊際平均數"
 
 msgid "SE"
 msgstr "標準誤"
@@ -668,18 +667,17 @@ msgid "z"
 msgstr "z"
 
 msgid "Results are on the response scale."
-msgstr ""
+msgstr "結果以反應尺度呈現。"
 
 msgid "Results are not on the response scale and might be misleading."
-msgstr ""
+msgstr "結果未以反應尺度呈現，可能會產生誤導。"
 
 msgid "Contrasts"
 msgstr "對比"
 
 msgid "Odds Ratio"
-msgstr "勝率比"
+msgstr "勝算比"
 
-#, fuzzy
 msgid "Ratio"
 msgstr "比率"
 
@@ -904,13 +902,13 @@ msgid "Q-Q Plot Standardized Residuals"
 msgstr "標準化殘差的常態 Q-Q圖"
 
 msgid "Partial plots are not supported for models containing interaction terms"
-msgstr ""
+msgstr "含有交互作用項的模型不支援偏迴歸圖"
 
 msgid "%1$s vs. %2$s"
 msgstr ""
 
 msgid "Partial plots are not supported for factors"
-msgstr ""
+msgstr "含有因子變數的模型不支援偏迴歸圖"
 
 msgid "Residuals %s"
 msgstr "殘差 %s"
@@ -942,23 +940,23 @@ msgstr ""
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
-msgstr ""
+msgstr "截距模型被省略，因為它無法顯示任何有意義的資訊。"
 
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
-msgstr ""
+msgstr "此模型僅包含截距項，無法顯示任何有意義的資訊。"
 
 msgid "Marginal Effects Plots"
-msgstr ""
+msgstr "邊際效果圖"
 
 msgid "Marginal effect of %1$s on %2$s"
-msgstr ""
+msgstr "%1$s 對 %2$s 的邊際效果"
 
 msgid "Response Optimizer"
-msgstr ""
+msgstr "回應最佳化器"
 
 msgid "Response Optimizer Settings"
-msgstr ""
+msgstr "回應最佳化器設定"
 
 msgid "Response"
 msgstr ""
@@ -973,10 +971,10 @@ msgid "Weight"
 msgstr ""
 
 msgid "lower and upper bounds and target are"
-msgstr ""
+msgstr "下界、上界與目標值為"
 
 msgid "lower and upper bounds are"
-msgstr ""
+msgstr "下界與上界為"
 
 msgid "target is"
 msgstr ""
@@ -1000,34 +998,34 @@ msgstr ""
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
 "input parameters."
-msgstr ""
+msgstr "輸入所有預測變數的數值，以手動設定參數並建立最佳化圖表。"
 
 msgid "Enter plausible numeric values for all continuous predictors."
-msgstr ""
+msgstr "請為所有連續型預測變數輸入合理的數值。"
 
 msgid ""
 "Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
-msgstr ""
+msgstr "值 '%1$s' 不是因子 '%2$s' 的有效層級。允許的值有：%3$s。"
 
 msgid "Optimization Plot Summary (Manual Predictor Values)"
-msgstr ""
+msgstr "最佳化圖表摘要（手動輸入預測變數值）"
 
 msgid "Optimization Plot Summary"
-msgstr ""
+msgstr "最佳化圖表摘要"
 
 msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
-msgstr ""
+msgstr "一或多個連續型預測變數的輸入參數超出設計範圍。超出設計範圍的外推可能不可靠。"
 
 msgid "All effects are specified as nuisance"
-msgstr ""
+msgstr "所有效應皆被指定為干擾效應"
 
 msgid "There are nonpositive weights"
-msgstr ""
+msgstr "存在非正數權重"
 
 msgid "Posterior Summary"
-msgstr ""
+msgstr "後驗摘要"
 
 msgid "Model Comparison"
 msgstr "模型比較"
@@ -1042,6 +1040,9 @@ msgid ""
 "odds scale for each additional \n"
 "covariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
 msgstr ""
+"Wilson 模型先驗對應於 β-二項式先驗，其中 %1$s = 1，%2$s = p × %3$s，\n"
+"並且在對數勝算尺度下，對每增加一個自變數的模型，對應的近似懲罰為 \n"
+"log(%3$s + 1)（Consonni et al., 2018; Wilson et al., 2010）。"
 
 msgid ""
 "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 "
