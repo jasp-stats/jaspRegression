@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-04-01 11:09+0000\n"
+"PO-Revision-Date: 2026-04-02 11:01+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -28,7 +28,7 @@ msgid "Prior and Posterior"
 msgstr "先驗分布與後驗分布"
 
 msgid "Bayes Factor Robustness Check"
-msgstr "貝氏因子穩健性檢查"
+msgstr "貝氏因子穩健性檢核"
 
 msgid "Sequential Analysis"
 msgstr "順序分析"
@@ -468,6 +468,11 @@ msgid ""
 "with alpha = 1 and beta = 1. Note that since only two models are considered "
 "the model prior is equivalent to a uniform model prior."
 msgstr ""
+"針對每一對 A - B，檢定 A 是否較適合以 B 的線性函數來預測，即 l := A ~ 1 + B，"
+"或以 B 的二次函數來預測，即 q := A ~ 1 + B + B^2。\n"
+"    採用貝氏迴歸的預設設定，即 JZS 先驗分配，其 alpha 設為 0.354；模型先驗則"
+"採用 beta 二項分配，alpha = 1 且 beta = 1。請注意，由於僅考慮兩種模型，此模型"
+"先驗等同於均勻模型先驗。"
 
 msgid ""
 "Evidence shown in favor of a linear model (l) against a quadratic model (q)."
@@ -550,7 +555,7 @@ msgid "BIC"
 msgstr "BIC"
 
 msgid "df"
-msgstr "df"
+msgstr "自由度"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "空模型包含無用的參數：%s。"
@@ -965,10 +970,10 @@ msgid "Goal"
 msgstr ""
 
 msgid "Target"
-msgstr ""
+msgstr "目標"
 
 msgid "Weight"
-msgstr ""
+msgstr "權重"
 
 msgid "lower and upper bounds and target are"
 msgstr "下界、上界與目標值為"
@@ -977,23 +982,22 @@ msgid "lower and upper bounds are"
 msgstr "下界與上界為"
 
 msgid "target is"
-msgstr ""
+msgstr "目標是"
 
 msgid "The %s estimated from data."
-msgstr ""
+msgstr "由資料估計之 %s。"
 
 msgid "Response Optimizer Solution"
-msgstr ""
+msgstr "反應變項最佳化解"
 
-#, fuzzy
 msgid "Desirability"
-msgstr "預測概率"
+msgstr "適切性"
 
 msgid "%s fit"
-msgstr ""
+msgstr "%s 適配"
 
 msgid "Optimization Plot"
-msgstr ""
+msgstr "最佳化圖"
 
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
@@ -1050,6 +1054,8 @@ msgid ""
 "for sparse regression when there are more covariates than observations "
 "(Castillo et al., 2015)."
 msgstr ""
+"Castillo 模型先驗對應於 beta 二項先驗，其中 %1$s = 1，%2$s = p^u， \n"
+"適用於共變項數多於觀測數之稀疏迴歸（Castillo 等人，2015）。"
 
 msgid "BF<sub>10</sub>"
 msgstr ""
@@ -1079,6 +1085,8 @@ msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
 "under \"Limit No. Models Shown\"."
 msgstr ""
+"%sTable 僅顯示部分模型；若要查看所有模型，請在「限制顯示模型數」下選擇「否」"
+"。"
 
 msgid "Null model"
 msgstr "虛無模型"
@@ -1093,7 +1101,7 @@ msgid "BF<sub>inclusion</sub>"
 msgstr "BF<sub>納入</sub>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>納入</sub>)"
 
 msgid "%s%% Credible Interval"
 msgstr "%s%% 可信區間"
@@ -1102,43 +1110,43 @@ msgid "Coefficient"
 msgstr "係數"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(包含)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(排除)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P（包含|資料）"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P（排除|資料）"
 
 msgid "<em>Warning.</em>"
-msgstr ""
+msgstr "<em>警告。</em>"
 
 msgid "Posterior Coefficients with %s%% Credible Interval"
-msgstr ""
+msgstr "事後係數與 %s%% 可信區間"
 
 msgid "Posterior Log Odds"
-msgstr ""
+msgstr "後驗對數勝算"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
-msgstr ""
+msgstr "當抽樣方法為 MCMC 時，無法顯示後驗對數勝算。"
 
 msgid "Residuals vs Fitted"
-msgstr ""
+msgstr "殘差 對 配適值"
 
 msgid "Predictions under BMA"
-msgstr ""
+msgstr "BMA 下之預測值"
 
 msgid "Model Probabilities"
 msgstr "模型機率"
 
 msgid "Cumulative Probability"
-msgstr ""
+msgstr "累積機率"
 
 msgid "Model Search Order"
-msgstr ""
+msgstr "模型搜尋順序"
 
 msgid "Log(P(data|M)) vs. Model Size"
 msgstr ""
@@ -1150,28 +1158,31 @@ msgid "Model Dimension"
 msgstr "模型維度"
 
 msgid "Inclusion Probabilities"
-msgstr ""
+msgstr "納入機率"
 
 msgid "Marginal Inclusion Probability"
-msgstr ""
+msgstr "邊際納入機率"
 
 msgid ""
 "Prior\n"
 "Inclusion\n"
 "Probabilities"
 msgstr ""
+"先驗\n"
+"納入\n"
+"機率"
 
 msgid "Q-Q Plot"
 msgstr "常態Q-Q 圖"
 
 msgid "Marginal Posterior Distributions"
-msgstr ""
+msgstr "邊際後驗分配"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
-msgstr ""
+msgstr "無法計算參數估計值及/或可信區間。"
 
 msgid "Performance Diagnostics"
-msgstr ""
+msgstr "效能診斷"
 
 msgid "McFadden R%s"
 msgstr ""
@@ -1189,7 +1200,7 @@ msgid "Standardized%s"
 msgstr "標準化 %s"
 
 msgid "Wald Statistic"
-msgstr ""
+msgstr "Wald 統計量"
 
 msgid "Lower bound"
 msgstr "下界"
@@ -1200,15 +1211,15 @@ msgstr "上界"
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
 "are standardized (X-standardization)."
-msgstr ""
+msgstr "標準化估計值代表將連續預測變項標準化後之估計值（X-標準化）。"
 
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
-msgstr ""
+msgstr "係數估計值與穩健標準誤係基於拔靴分配之中位數。"
 
 msgid "Factor Descriptives"
-msgstr ""
+msgstr "因素描述統計"
 
 msgid "Factor"
 msgstr "因子"
@@ -1220,28 +1231,30 @@ msgid "Observed"
 msgstr "觀察次數"
 
 msgid "%% Correct"
-msgstr ""
+msgstr "正確率 %%"
 
 msgid "Performance metrics"
-msgstr ""
+msgstr "效能指標"
 
 msgid "Value"
 msgstr "值"
 
 msgid "Bootstrapping based on %i successful replicates."
-msgstr ""
+msgstr "拔靴法基於 %i 次成功重複抽樣。"
 
 msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
 msgstr ""
+"部分信賴區間無法計算。\n"
+"可能因拔靴重複抽樣次數不足。"
 
 #, fuzzy
 msgid "Diagnostic plots"
 msgstr "診斷指標"
 
 msgid "Estimates plots"
-msgstr ""
+msgstr "估計值圖"
 
 msgid "Predicted - residuals plot"
 msgstr "預測值 - 殘差圖"
@@ -1253,23 +1266,19 @@ msgid "Squared Pearson residuals plot"
 msgstr "皮爾森殘差平方圖"
 
 msgid "Independent - predicted plots"
-msgstr ""
+msgstr "自變項 - 預測值圖"
 
-#, fuzzy
 msgid "Performance plots"
-msgstr "性能圖"
+msgstr "效能圖"
 
-#, fuzzy
 msgid "ROC plot"
-msgstr "ROC圖"
+msgstr "ROC 圖"
 
-#, fuzzy
 msgid "PR plot"
-msgstr "PR圖"
+msgstr "PR 圖"
 
-#, fuzzy
 msgid "Predicted Probability"
-msgstr "預測概率"
+msgstr "預測機率"
 
 msgid "Squared Pearson Residual"
 msgstr "皮爾森殘差平方"
@@ -1291,10 +1300,10 @@ msgid "%s%% Confidence interval"
 msgstr "%s%% 信賴區間"
 
 msgid "%s <br> (odds ratio scale)"
-msgstr ""
+msgstr "%s<br> （勝算比尺度）"
 
 msgid "Robust <br> %s"
-msgstr ""
+msgstr "穩健 <br> %s"
 
 msgid "Parameter"
 msgstr "參數"
@@ -1302,36 +1311,34 @@ msgstr "參數"
 msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
 "same as the coefficients are always included or excluded together."
-msgstr ""
+msgstr "因素 %s 內係數之納入/排除統計量相同，因其總是被同時納入或同時排除。"
 
 msgid "DV/Factor Descriptives"
-msgstr ""
+msgstr "依變項/因子描述統計"
 
 msgid "DV/Factor"
-msgstr ""
+msgstr "依變項/因子"
 
 msgid "Level"
 msgstr "水準"
 
 msgid "Covariate Descriptives"
-msgstr ""
+msgstr "共變量描述統計"
 
 msgid "Intercept"
 msgstr "截距"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "使用合併配適中之 %1$d/%2$d 列"
 
 msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
-msgstr[0] ""
+msgstr[0] "以下預測變項曾被考慮但未納入：%s。"
 
-#, fuzzy
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
-msgstr[0] "迴歸"
+msgstr[0] "迴歸圖"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"
