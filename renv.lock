@@ -4853,7 +4853,7 @@
       "RemoteUsername": "vandenman",
       "RemoteRepo": "jaspTools",
       "RemoteRef": "feature/ggplot2_fallback_test",
-      "RemoteSha": "9a1f3524c71fd690cb2a02571cc88926c8e2bc9f"
+      "RemoteSha": "a0ffbb72dc162a4571b7cad7598590fdc74466b6"
     },
     "jomo": {
       "Package": "jomo",
