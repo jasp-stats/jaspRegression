@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-03-31 02:09+0000\n"
+"PO-Revision-Date: 2026-04-01 11:09+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -19,7 +19,7 @@ msgstr "所有檢定中，對立假設是 %s為正。"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is negative."
-msgstr "所有考驗中，對立假設是 %s為負。"
+msgstr "所有考驗中，對立假設是 %s 為負。"
 
 msgid "Scatterplot"
 msgstr "散佈圖"
@@ -120,17 +120,17 @@ msgstr "%s序"
 msgid ""
 "The full model could not be fitted to the data, with the following error "
 "message: '%s'"
-msgstr ""
+msgstr "完整模型無法配適資料，錯誤訊息如下：「%s」"
 
 msgid ""
 "The null model could not be fitted to the data, with the following error "
 "message: '%s'"
-msgstr ""
+msgstr "虛無模型無法配適資料，錯誤訊息如下：「%s」"
 
 msgid ""
 "Could not find valid starting values. Check feasibility of the model to fit "
 "the data."
-msgstr ""
+msgstr "無法找到有效之起始值。請檢查模型配適資料之可行性。"
 
 #, fuzzy
 msgid "Plotting is not possible: %s"
@@ -155,7 +155,7 @@ msgid "P-values are not adjusted."
 msgstr "P值未經調整。"
 
 msgid "Holm"
-msgstr "Holm檢定"
+msgstr "Holm 檢定"
 
 msgid "Homel"
 msgstr ""
@@ -420,7 +420,7 @@ msgstr ""
 "62-71."
 
 msgid "Posterior is too peaked"
-msgstr ""
+msgstr "後驗過於陡峭"
 
 msgid "Bayesian Correlation Matrix Plot"
 msgstr "貝氏相關矩陣圖"
@@ -429,10 +429,10 @@ msgid "Could not compute the posteriors"
 msgstr "無法計算後驗機率"
 
 msgid "Prior"
-msgstr "先驗機率"
+msgstr "先驗"
 
 msgid "Posterior"
-msgstr "後驗機率"
+msgstr "後驗"
 
 msgid "%s%% CI:"
 msgstr "%s%% 信賴區間："
@@ -451,13 +451,13 @@ msgid "user prior"
 msgstr "使用者先驗"
 
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "拉伸 Beta 先驗寬度"
 
 msgid "Linearity Test"
-msgstr ""
+msgstr "線性檢定"
 
 msgid "Pair"
-msgstr ""
+msgstr "成對"
 
 msgid ""
 "For each pair A - B, tests if A is better predicted as a linear function of "
@@ -471,16 +471,16 @@ msgstr ""
 
 msgid ""
 "Evidence shown in favor of a linear model (l) against a quadratic model (q)."
-msgstr ""
+msgstr "顯示支持線性模型（l）相較於二次模型（q）之證據。"
 
 msgid ""
 "Evidence shown in favor of a quadratic model (q) against a linear model (l)."
-msgstr ""
+msgstr "顯示支持二次模型（q）相較於線性模型（l）之證據。"
 
 msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "
 "levels."
-msgstr ""
+msgstr "Bernoulli 族要求依變項須為具有 2 個水準之因子。"
 
 #, fuzzy
 msgid ""
@@ -501,35 +501,35 @@ msgstr "二項式類分析的權重變數（即試驗總數）為需要為整數
 msgid ""
 "The Gamma family and the Inverse Gaussian family require the dependent "
 "variable to be positive."
-msgstr ""
+msgstr "Gamma 族與反 Gaussian 族要求依變項須為正值。"
 
 msgid "The Poisson family requires the dependent variable to be an integer."
-msgstr ""
+msgstr "Poisson 族要求依變項須為整數。"
 
 msgid ""
 "The Gaussian family with the log link requires the dependent variable to be "
 "positive."
-msgstr ""
+msgstr "Gaussian 族搭配 log 連結函數時，要求依變項須為正值。"
 
 msgid ""
 "The Gaussian family requires the dependent variable to be a numerical "
 "variable."
-msgstr ""
+msgstr "Gaussian 族要求依變項須為數值變項。"
 
 msgid ""
 "Multinomial logistic regression requires the dependent variable to be a "
 "factor with at least 3 levels."
-msgstr ""
+msgstr "多項式邏輯斯迴歸要求依變項須為具有至少 3 個水準之因子。"
 
 msgid ""
 "Ordinal logistic regression requires the dependent variable to be a factor "
 "with at least 3 levels."
-msgstr ""
+msgstr "次序邏輯斯迴歸要求依變項須為具有至少 3 個水準之因子。"
 
 msgid ""
 "Firth logistic regression requires the dependent variable to be a factor "
 "with 2 levels."
-msgstr ""
+msgstr "Firth 邏輯斯迴歸要求依變項須為具有 2 個水準之因子。"
 
 msgid "Model Summary"
 msgstr "模型摘要"
@@ -682,33 +682,33 @@ msgid "Ratio"
 msgstr "比率"
 
 msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
-msgstr ""
+msgstr "%s 之 ROC 曲線大部分落於對角線下方。將切換分數。"
 
 msgid "trying + %s"
 msgstr ""
 
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
+msgstr "F 檢定假設「準 %s」族"
 
 msgid ""
 "Stepwise procedures are not supported for models containing factors with "
 "more than 2 levels; retry the analysis using dummy variables"
-msgstr ""
+msgstr "逐步程序不適用於包含超過 2 個水準之因子模型；請改用虛擬變項重新進行分析"
 
 msgid ""
 "Stepwise procedures are not supported for interactions containing more than "
 "1 factor"
-msgstr ""
+msgstr "逐步程序不適用於包含超過 1 個因子之交互作用項"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
 "removal p-value"
-msgstr ""
+msgstr "逐步法準則錯誤：進入 p 值須小於移除 p 值"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry F-value needs to be larger than "
 "removal F-value"
-msgstr ""
+msgstr "逐步法準則錯誤：進入 F 值須大於移除 F 值"
 
 msgid "R"
 msgstr ""
@@ -729,10 +729,10 @@ msgid "F Change"
 msgstr "F 改變量"
 
 msgid "df1"
-msgstr ""
+msgstr "自由度1"
 
 msgid "df2"
-msgstr ""
+msgstr "自由度2"
 
 msgid "Autocorrelation"
 msgstr "自相關"
@@ -741,10 +741,10 @@ msgid "Durbin-Watson"
 msgstr ""
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
-msgstr ""
+msgstr "加權迴歸無法提供 Durbin-Watson 檢定之 p 值。"
 
 msgid "No covariate could be entered in the model"
-msgstr ""
+msgstr "無法將任何共變量納入模型中"
 
 msgid "ANOVA"
 msgstr "變異數分析"
@@ -779,32 +779,32 @@ msgstr "共線性統計量"
 msgid ""
 "Standardized coefficients can only be computed for continuous, linear "
 "predictors."
-msgstr ""
+msgstr "標準化係數僅能針對連續型線性預測變項進行計算。"
 
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
-msgstr ""
+msgstr "標準化係數僅能針對連續型線性預測變項進行計算。"
 
 msgid ""
 "Missing coefficients are undefined because of singularities. Check the data "
 "for anything out of order!"
-msgstr ""
+msgstr "因奇異性導致部分係數無法定義。請檢查資料是否存在異常情形！"
 
 msgid "Bootstrap Coefficients"
-msgstr ""
+msgstr "拔靴法係數"
 
 msgid "Bias"
-msgstr ""
+msgstr "偏誤"
 
 msgid "%s%% CI*"
 msgstr "%s%% 信賴區間*"
 
 msgid "Bootstrapping based on %i replicates."
-msgstr ""
+msgstr "基於 %i 次重抽樣之拔靴法。"
 
 msgid ""
 "Coefficient estimate is based on the median of the bootstrap distribution."
-msgstr ""
+msgstr "係數估計值係基於拔靴分配之中位數。"
 
 msgid "Bias corrected accelerated."
 msgstr "偏誤加速校正(BCa)。"
@@ -813,7 +813,7 @@ msgid "Some bootstrap results could not be computed."
 msgstr "某些拔靴抽樣結果無法計算。"
 
 msgid "expecting both arguments to be data.frames"
-msgstr ""
+msgstr "預期兩個引數均為 data.frames"
 
 msgid "Regression Equations"
 msgstr "迴歸方程"
@@ -905,7 +905,7 @@ msgid "Partial plots are not supported for models containing interaction terms"
 msgstr "含有交互作用項的模型不支援偏迴歸圖"
 
 msgid "%1$s vs. %2$s"
-msgstr ""
+msgstr "%1$s 對 %2$s"
 
 msgid "Partial plots are not supported for factors"
 msgstr "含有因子變數的模型不支援偏迴歸圖"
@@ -926,7 +926,7 @@ msgid "Standardized Residuals"
 msgstr "標準化殘差"
 
 msgid "%1$s includes %2$s"
-msgstr ""
+msgstr "%1$s 包含 %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -959,7 +959,7 @@ msgid "Response Optimizer Settings"
 msgstr "回應最佳化器設定"
 
 msgid "Response"
-msgstr ""
+msgstr "反應變項"
 
 msgid "Goal"
 msgstr ""
