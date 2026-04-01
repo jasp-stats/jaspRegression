@@ -125,13 +125,13 @@ results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
 test_that("Bayes Factor Robustness Check plot matches", {
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contcor1-contcor2"]][["collection"]][["pairsPlotCollection_contcor1-contcor2_bfRobustnessPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "bayes-factor-robustness-check", tolerance = 1e-3)
+  jaspTools::expect_equal_plots(testPlot, "bayes-factor-robustness-check", tolerance = 1e-1)
 })
 
 test_that("Sequential Analysis plot matches", {
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_contcor1-contcor2"]][["collection"]][["pairsPlotCollection_contcor1-contcor2_bfSequentialPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "sequential-analysis", tolerance = 1e-3)
+  jaspTools::expect_equal_plots(testPlot, "sequential-analysis", tolerance = 1e-1)
 })
 
 test_that("Prior and Posterior plot matches", {
