@@ -4850,10 +4850,10 @@
       "Author": "Tim de Jong [aut], Don van den Bergh [ctb, cre], František Bartoš [ctb]",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
-      "RemoteUsername": "vandenman",
+      "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTools",
-      "RemoteRef": "feature/ggplot2_fallback_test",
-      "RemoteSha": "b18c1a0cb934bcdb856fa56c8fb557a1cc0e13a8"
+      "RemoteRef": "master",
+      "RemoteSha": "11fb9164426d80543f6a9b2c4a2e8ace4f63d96b"
     },
     "jomo": {
       "Package": "jomo",
