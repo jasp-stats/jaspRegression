@@ -553,7 +553,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     jaspGraphs::geom_point() + #this is prettier: size = 4, shape = 1
     ggplot2::xlab(xlabText) +
     ggplot2::ylab(gettextf("Standardized %1s residual", residType)) +
-    ggplot2::geom_smooth(se = FALSE,
+    ggplot2::geom_smooth(formula = y ~ x, se = FALSE,
                          size = 0.6,
                          method = "loess",
                          method.args = list(degree = 1, family = "symmetric")) +
@@ -641,7 +641,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     thePlot <- ggplot2::ggplot(mapping = ggplot2::aes(x = x, y = y),
                                data = d) +
       jaspGraphs::geom_point() +
-      ggplot2::geom_smooth(se = FALSE,
+      ggplot2::geom_smooth(formula = y ~ x, se = FALSE,
                            size = 0.6,
                            method = "loess",
                            method.args = list(degree = 1, family = "symmetric")) +
@@ -725,7 +725,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     thePlot <- ggplot2::ggplot(mapping = ggplot2::aes(x = x, y = y),
                                data = d) +
       jaspGraphs::geom_point() +
-      ggplot2::geom_smooth(se = FALSE,
+      ggplot2::geom_smooth(formula = y ~ x, se = FALSE,
                            size = 0.6,
                            method = "loess",
                            method.args = list(degree = 1, family = "symmetric")) +
@@ -786,7 +786,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
                              data = data.frame(x = z,
                                                y = eta)) +
     jaspGraphs::geom_point() +
-    ggplot2::geom_smooth(se = FALSE,
+    ggplot2::geom_smooth(formula = y ~ x, se = FALSE,
                          size = 0.6,
                          method = "loess",
                          method.args = list(degree = 1, family = "symmetric")) +

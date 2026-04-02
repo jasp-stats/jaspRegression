@@ -1081,8 +1081,8 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   predLevel <- levels(mObj[["data"]][[predVar]])[2]
 
   # this will become the y-axis title
-  ytitle <- substitute(expr = "P("*x~"="~y*")",
-                       env = list(x = .unv(predVar), y = predLevel))
+  ytitle <- as.expression(substitute(expr = "P("*x~"="~y*")",
+                       env = list(x = jaspBase::decodeColNames(predVar), y = predLevel)))
   if (attr(ribdat, "factor")) {
     # the variable is a factor, plot points with errorbars
     p <- ggplot2::ggplot(ribdat, ggplot2::aes(x = x, y = y))
@@ -1245,7 +1245,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
                        data = plotDat) +
     ggplot2::geom_segment(ggplot2::aes(x = 0, y = 1, xend = 1, yend = 1),
                           linetype = 3, size = 1, colour = "grey") +
-    ggplot2::geom_smooth(se = FALSE, method = "loess", size = 1.2,
+    ggplot2::geom_smooth(formula = y ~ x, se = FALSE, method = "loess", size = 1.2,
                          colour = "darkred") +
     ggplot2::geom_point(size = 3, colour="black", fill = "grey", pch=21) +
     custom_y_axis(plotDat[["pres"]]) + custom_x_axis() +
