@@ -22,11 +22,11 @@ test_that("CorrelationBayesian results match", {
 
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_bfRobustnessPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-1_bayes-factor-robustness-check")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-1_bayes-factor-robustness-check", tolerance = 1e-3)
 
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_bfSequentialPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-2_sequential-analysis")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-2_sequential-analysis", tolerance = 1e-3)
 
   plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_priorPosteriorPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]

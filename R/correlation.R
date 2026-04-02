@@ -1307,8 +1307,10 @@ CorrelationInternal <- function(jaspResults, dataset, options){
 	yLim <- range(yBreaks)
 
   if (isNumeric) {
-  	density <- density(variable)
-  	p <- p + ggplot2::geom_line(data = data.frame(x = density$x, y = density$y),
+  	dens_obj <- density(variable)
+  	dens_df <- data.frame(x = dens_obj$x, y = dens_obj$y)
+  	dens_df <- dens_df[dens_df$x >= min(xBreaks) & dens_df$x <= max(xBreaks), ]
+  	p <- p + ggplot2::geom_line(data = dens_df,
   															mapping = ggplot2::aes(x = x, y = y), lwd = .7, col = "black")
   }
 

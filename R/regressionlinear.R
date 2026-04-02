@@ -129,17 +129,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregCheckIfInteractionWithFactors <- function(modelTerm, factorVariables) {
   # Custom function to check if interaction contains more than 1 factor
-  interactionCheck <- any(sapply(modelTerm[["components"]], function(term) {
+  components <- modelTerm[["components"]]
 
-    # skip non-interactions
-    if (!grepl(":", term)) return(FALSE)
+  # components is a character vector; interactions have length > 1
+  if (length(components) < 2) return(FALSE)
 
-    vars <- strsplit(term, ":", fixed = TRUE)[[1]]
-
-    # TRUE only if *all* variables in the interaction are factors
-    all(vars %in% factorVariables)
-  }))
-  return(interactionCheck)
+  # TRUE only if *all* variables in the interaction are factors
+  return(all(components %in% factorVariables))
 }
 
 .linregCheckErrors <- function(dataset, options) {
@@ -181,6 +177,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   .hasErrors(dataset, type = errorTypes,
              custom = stepwiseProcedureChecks,
              custom.target = defaultTarget,
+
+             variance.target = defaultTarget,
 
              observations.amount = "< 2",
              observations.target = defaultTarget,
@@ -548,13 +546,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       names(coefs) <- .linregMakePrettyNames(model[[i]][["fit"]])
 
       coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " \u2013"),
-                           round(abs(coefs[-1]), .numDecimals),
+                           .formatCoefEquation(abs(coefs[-1]), digits = .numDecimals),
                            names(coefs)[-1],
                            collapse = "", sep = " ")
       .linregGetParametersAndLevels(model[[i]][["fit"]])
       # Now add dependent name and intercept
       filledFormula <- paste0(options[["dependent"]], " = ",
-                              round(coefs[1], .numDecimals),
+                              .formatCoefEquation(coefs[1], digits = .numDecimals),
                               coefFormula)
 
       equationTable$addRows(list(
@@ -568,6 +566,20 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 }
 
+.formatCoefEquation <- function(x, digits = .numDecimals) {
+  vapply(x, function(val) {
+    if (val == 0) return("0")
+    absVal <- abs(val)
+    if (absVal < 1e4) {
+      # avoid e-notation for small-to-moderate numbers
+      mag <- floor(log10(absVal))
+      sigDigits <- max(digits, mag + 1 + digits)
+      trimws(formatC(val, digits = sigDigits, format = "g", drop0trailing = TRUE))
+    } else {
+      trimws(formatC(val, digits = digits, format = "g", drop0trailing = TRUE))
+    }
+  }, character(1))
+}
 
 .linregCreatePartialCorrelationsTable <- function(modelContainer, model, dataset, options, position) {
   partPartialTable <- createJaspTable(gettext("Part And Partial Correlations"))
