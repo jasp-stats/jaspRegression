@@ -3097,7 +3097,7 @@
     },
     "forecast": {
       "Package": "forecast",
-      "Version": "9.0.0",
+      "Version": "9.0.2",
       "Source": "Repository",
       "Title": "Forecasting Functions for Time Series and Linear Models",
       "Description": "Methods and tools for displaying and analysing univariate time series forecasts including exponential smoothing via state space models and automatic ARIMA modelling.",
@@ -9125,7 +9125,7 @@
     },
     "tseries": {
       "Package": "tseries",
-      "Version": "0.10-59",
+      "Version": "0.10-61",
       "Source": "Repository",
       "Title": "Time Series Analysis and Computational Finance",
       "Authors@R": "c(person(\"Adrian\", \"Trapletti\", role = \"aut\", email = \"adrian@trapletti.org\"), person(\"Kurt\", \"Hornik\", role = c(\"aut\", \"cre\"), email = \"Kurt.Hornik@R-project.org\", comment = c(ORCID = \"0000-0003-4198-9911\")), person(\"Blake\", \"LeBaron\", role = \"ctb\", comment = \"BDS test code\"))",
