@@ -40,4 +40,4 @@ Remotes:
   jasp-stats/jaspTTests,
   jasp-stats/jaspTools
 LinkingTo:
-  Rcpp
+  cpp11

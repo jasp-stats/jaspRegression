@@ -1,3 +1,4 @@
+useDynLib(jaspRegression, .registration = TRUE)
 import(jaspBase)
 export(Correlation)
 export(RegressionLinear)

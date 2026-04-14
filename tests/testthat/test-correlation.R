@@ -238,26 +238,29 @@ test_that("Concordance function works", {
     return(concordanceSumsVector)
   }
 
-  # no ties, concordance dispatches to naive algorithm
+  # no ties, concordance dispatches to naive C++ algorithm
   x <- rnorm(10)
   y <- rnorm(10)
   reference <- concordanceVector(x, y)
   testthat::expect_equal(reference, jaspRegression:::concordance(x, y))
-  testthat::expect_equal(reference, jaspRegression:::concordance_fenwick(x, y))
+  testthat::expect_equal(reference, jaspRegression:::concordance_naive_cpp(x, y))
+  testthat::expect_equal(reference, jaspRegression:::concordance_fenwick_cpp(x, y))
 
-  # no ties, concordance dispatches to Fenwick algorithm
+  # no ties, concordance dispatches to Fenwick C++ algorithm
   x <- rnorm(150)
   y <- rnorm(150)
   reference <- concordanceVector(x, y)
   testthat::expect_equal(reference, jaspRegression:::concordance(x, y))
-  testthat::expect_equal(reference, jaspRegression:::concordance_naive(x, y))
+  testthat::expect_equal(reference, jaspRegression:::concordance_naive_cpp(x, y))
+  testthat::expect_equal(reference, jaspRegression:::concordance_fenwick_cpp(x, y))
 
-  # with ties, concordance dispatches to Fenwick algorithm
+  # with ties, concordance dispatches to Fenwick C++ algorithm
   x <- sample(-10:10, 150, TRUE)
   y <- sample(-10:10, 150, TRUE)
   reference <- concordanceVector(x, y)
   testthat::expect_equal(reference, jaspRegression:::concordance(x, y))
-  testthat::expect_equal(reference, jaspRegression:::concordance_naive(x, y))
+  testthat::expect_equal(reference, jaspRegression:::concordance_naive_cpp(x, y))
+  testthat::expect_equal(reference, jaspRegression:::concordance_fenwick_cpp(x, y))
 
 })
 

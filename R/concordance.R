@@ -1,12 +1,6 @@
 concordance <- function(x, y) {
-
-  n <- length(x)
-  stopifnot(length(y) == n)
-  if (n == 0L) return(integer(0L))
-  if (n == 1L) return(0L)
-  if (n <= 130) concordance_naive(x, y)
-  concordance_fenwick(x, y)
-
+  stopifnot(length(x) == length(y))
+  concordance_fenwick_cpp(as.double(x), as.double(y))
 }
 
 concordance_naive <- function(x, y) {

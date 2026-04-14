@@ -9,7 +9,8 @@ execute:
 ---
 
 ```{r, echo=TRUE, include=FALSE}
-library(Rcpp)
+renv::activate(".")
+library(jaspRegression)
 # for benchmarking
 library(bench)
 # for manipulating bench output
@@ -108,10 +109,14 @@ This is the same trick used in fast Kendall’s tau algorithms, but adapted to r
 
 ## 4. Implementation of the optimized solution
 
+The Fenwick tree algorithm is implemented in C++ using `cpp11` in `src/concordance.cpp` and registered as `concordance_fenwick_cpp`.
+For reference, here is the equivalent pure-R implementation:
+
 ```{r}
 #| label: fenwick
-# in-place Fenwick (handles ties in x and y; minimal allocations)
-# the code is a bit messy because R does not allow mutation
+concordance_fenwick_cpp <- jaspRegression:::concordance_fenwick_cpp
+
+# Pure-R reference implementation (kept for documentation)
 concordance_fenwick_inplace <- function(x, y) {
   n <- length(x)
   stopifnot(length(y) == n)
@@ -266,26 +271,24 @@ We compare the naive and optimized versions using the `bench` package.
 #| label: benchmark
 #| cache: false
 
+concordance_naive_cpp <- function(x, y) jaspRegression:::concordance_naive_cpp(as.double(x), as.double(y))
+concordance_fenwick_cpp <-  function(x, y) jaspRegression:::concordance_fenwick_cpp(as.double(x), as.double(y))
+
 # results with ties
 x <- sample(-5:5, 100, TRUE)
 y <- sample(-5:5, 100, TRUE)
 naive     = concordance_naive(x, y)
-naive_cpp = concordanceVector_cpp(x, y)
-fenwick2  = concordance_fenwick_inplace(x, y)
-all(naive == fenwick2) && all(naive_cpp == fenwick2)
+naive_cpp = concordance_naive_cpp(x, y)
+fenwick   = concordance_fenwick_cpp(x, y)
+all(naive == fenwick) && all(naive_cpp == fenwick)
 
 # results without ties
 x <- rnorm(10)
 y <- rnorm(10)
 naive     = concordance_naive(x, y)
-naive_cpp = concordanceVector_cpp(x, y)
-fenwick2  = concordance_fenwick_inplace(x, y)
-all(naive == fenwick2) && all(naive_cpp == fenwick2)
-
-# profvis::profvis({
-#   for (i in 1:10000)
-#     concordance_fenwick_inplace(x, y)
-# })
+naive_cpp = concordance_naive_cpp(x, y)
+fenwick   = concordance_fenwick_cpp(x, y)
+all(naive == fenwick) && all(naive_cpp == fenwick)
 
 orders <- 3
 ns <- c(sapply(seq_len(orders), \(o) {
@@ -300,8 +303,8 @@ res <- suppressWarnings(bench::press(
     y <- rnorm(n)
     bench::mark(
       naive     = concordance_naive(x, y),
-      naive_cpp = concordanceVector_cpp(x, y),
-      fenwick   = concordance_fenwick_inplace(x, y),
+      naive_cpp = concordance_naive_cpp(x, y),
+      fenwick   = concordance_fenwick_cpp(x, y),
       check = TRUE, # ensure results are checked for equality
       iterations = 3
     )
@@ -334,7 +337,7 @@ lm_res <- res |>
     time_slope     = unname(sapply(time_fit, \(x) coef(x)["log10(n)"])),
     mem_intercept  = unname(sapply(mem_fit,  \(x) coef(x)["(Intercept)"])),
     mem_slope      = unname(sapply(mem_fit,  \(x) coef(x)["log10(n)"])),
-    # Remove the temporary columns if you don't need them
+    # Remove the temporary columns
     .keep = "unused"
   )
 
@@ -396,5 +399,6 @@ plot(plt_time + plt_memory + plot_layout(guides = "collect"))
 
 ## 7. Conclusions
 
-* On my machine, the Fenwick approach outperforms the naive approach around $n=$ `r intersection_n_time_rounded[1]` and the naive C++ approach around $n=$ `r intersection_n_time_rounded[2]`. Theoretically, the naive approach is $\mathcal{O}(n^2)$ in time, while the Fenwick approaches is $\mathcal{O}(n \log n)$.
-* The naive approach always uses more memory than the fenwick approach, which uses more memory than the C++ approach. Theoretically, the naive approach is $\mathcal{O}(n^2)$ in memory, while the Fenwick and C++ approaches are $\mathcal{O}(n)$.
+* On my machine, the Fenwick C++ approach outperforms the naive R approach around $n=$ `r intersection_n_time_rounded[1]` and the naive C++ approach around $n=$ `r intersection_n_time_rounded[2]`. Theoretically, the naive approaches are $\mathcal{O}(n^2)$ in time, while the Fenwick approach is $\mathcal{O}(n \log n)$.
+* The naive R approach always uses more memory than the Fenwick and naive C++ approaches. Theoretically, the naive R approach is $\mathcal{O}(n^2)$ in memory, while the Fenwick and naive C++ approaches are $\mathcal{O}(n)$.
+* All C++ implementations use `cpp11` (no Rcpp dependency) for faster compilation.
