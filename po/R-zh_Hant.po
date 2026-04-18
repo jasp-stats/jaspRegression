@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-04-03 15:13+0000\n"
+"PO-Revision-Date: 2026-04-14 16:15+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -79,10 +79,10 @@ msgid "Density"
 msgstr "密度"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr "無法繪圖:觀察值低於3個"
+msgstr "無法繪圖：觀察值低於3個"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr "無法繪圖:有無限個觀察值"
+msgstr "無法繪圖：有無限個觀察值"
 
 msgid "rho"
 msgstr "rho"
@@ -592,9 +592,8 @@ msgstr "%1$s 水準： %2$s. '%3$s' 是參考水準。"
 msgid "%1$s levels: %2$s. Linear predictors: %3$s."
 msgstr "%1$s 水準： %2$s。線性預測變數： %3$s。"
 
-#, fuzzy
 msgid "Diagnostics"
-msgstr "診斷指標"
+msgstr "診斷"
 
 msgid "Residuals vs. Fitted Plots"
 msgstr "殘差與預測值圖"
@@ -1225,7 +1224,7 @@ msgid "Factor"
 msgstr "因子"
 
 msgid "Confusion matrix"
-msgstr "誤差矩陣"
+msgstr "混淆矩陣"
 
 msgid "Observed"
 msgstr "觀察次數"
