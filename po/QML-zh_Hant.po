@@ -1,9 +1,15 @@
 msgid ""
 msgstr ""
+"PO-Revision-Date: 2026-04-14 16:15+0000\n"
+"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspregression-qml/zh_Hant/>\n"
+"Language: zh_Hant\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 5.17-dev\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
 
@@ -862,31 +868,31 @@ msgstr "效能指標"
 
 msgctxt "RegressionLogistic|"
 msgid "AUC"
-msgstr "AUC"
+msgstr "曲線下面積 (AUC)"
 
 msgctxt "RegressionLogistic|"
 msgid "Sensitivity / Recall"
-msgstr "敏感度/查全率"
+msgstr "敏感度 / 召回率 (查全率)"
 
 msgctxt "RegressionLogistic|"
 msgid "Specificity"
-msgstr "明確度"
+msgstr "特異度"
 
 msgctxt "RegressionLogistic|"
 msgid "Precision"
-msgstr "查準率"
+msgstr "精確度 (查準率)"
 
 msgctxt "RegressionLogistic|"
 msgid "F-measure"
-msgstr "F度量"
+msgstr "F 度量"
 
 msgctxt "RegressionLogistic|"
 msgid "Brier score"
-msgstr "Brier分數"
+msgstr "Brier 分數"
 
 msgctxt "RegressionLogistic|"
 msgid "H-measure"
-msgstr "H度量"
+msgstr "H 度量"
 
 msgctxt "RegressionLogistic|"
 msgid "Plots"
@@ -934,7 +940,7 @@ msgstr "效能圖"
 
 msgctxt "RegressionLogistic|"
 msgid "ROC plot"
-msgstr "ROC圖"
+msgstr "ROC 圖"
 
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
