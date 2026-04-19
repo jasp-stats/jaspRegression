@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-02-24 20:12+0000\n"
+"PO-Revision-Date: 2026-04-20 13:09+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/gl/>\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.16.1-dev\n"
+"X-Generator: Weblate 5.17.1-dev\n"
 "X-Virgin-Header: remove this line if you change anything in the header.\n"
 "X-Language: gl_ES\n"
 "X-Source-Language: C\n"
@@ -1033,70 +1033,77 @@ msgid "Marginal effect of %1$s on %2$s"
 msgstr "Efecto marxinal de %1$s sobre %2$s"
 
 msgid "Response Optimizer"
-msgstr ""
+msgstr "Optimizador de respostas"
 
 msgid "Response Optimizer Settings"
-msgstr ""
+msgstr "Configuración do Optimizador de respostas"
 
 msgid "Response"
-msgstr ""
+msgstr "Resposta"
 
 msgid "Goal"
-msgstr ""
+msgstr "Obxectivo"
 
 msgid "Target"
-msgstr ""
+msgstr "Obxectivo"
 
 msgid "Weight"
-msgstr ""
+msgstr "Ponderación"
 
 msgid "lower and upper bounds and target are"
-msgstr ""
+msgstr "Os límites inferior e superior, e o obxectivo son"
 
 msgid "lower and upper bounds are"
-msgstr ""
+msgstr "Os límites inferior e superior son"
 
 msgid "target is"
-msgstr ""
+msgstr "O obxectivo é"
 
 msgid "The %s estimated from data."
-msgstr ""
+msgstr "O %s estimado dos datos."
 
 msgid "Response Optimizer Solution"
-msgstr ""
+msgstr "Solución do Optimizador de respostas"
 
-#, fuzzy
 msgid "Desirability"
-msgstr "Probabilidade Predita"
+msgstr "Conveniencia"
 
 msgid "%s fit"
-msgstr ""
+msgstr "Axuste de %s"
 
 msgid "Optimization Plot"
-msgstr ""
+msgstr "Gráfica de optimización"
 
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
 "input parameters."
 msgstr ""
+"Introducir valores para tódolos preditores para xerar unha Gráfica de "
+"optimización con parámetros manuais de entrada."
 
 msgid "Enter plausible numeric values for all continuous predictors."
 msgstr ""
+"Introducir valores numéricos razoables para tódolos preditores continuos."
 
 msgid ""
 "Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
 msgstr ""
+"O valor '%1$s' non é un nivel válido para o factor '%2$s'. Valores "
+"admitidos: %3$s."
 
 msgid "Optimization Plot Summary (Manual Predictor Values)"
-msgstr ""
+msgstr "Resumo da Gráfica de optimización (Valores manuais de preditores)"
 
 msgid "Optimization Plot Summary"
-msgstr ""
+msgstr "Resumo da Gráfica de optimización"
 
 msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
 msgstr ""
+"Un ou máis parámetros de entrada para os preditores continuos están fora do "
+"espazo de deseño. A extrapolación máis alá do espazo de deseño podería non "
+"ser válida."
 
 msgid "All effects are specified as nuisance"
 msgstr "Todos os efectos se indican como molestos"
