@@ -451,11 +451,12 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   }
 
   if (options["family"] == "other" && options[["otherGlmModel"]] == "ordinalLogistic") {
-    dv      <- options$dependent
-    dvLevels <- paste(paste(seq(1, length(dv)), levels(dataset[[dv]]), sep = ":"), collapse = ", ")
+    dv      <- options[["dependent"]]
+    dvLevel <- levels(dataset[[dv]])
+    dvLevels <- paste(paste(seq_along(dvLevel), dvLevel, sep = ":"), collapse = ", ")
     linearPredictors <- paste(VGAM::summaryvglm(fullModel)@misc$predictors.names, collapse = ", ")
 
-    jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. Linear predictors: %3$s.", dv, dvLevels, linearPredictors))
+    jaspResults[["estimatesTable"]]$addFootnote(gettextf("%1$s levels: %2$s. Linear predictors: %3$s. Parameterization uses cumulative logits logit(P(Y<=k)); positive coefficients indicate higher odds of lower response levels, and negative coefficients indicate higher odds of higher response levels.", dv, dvLevels, linearPredictors))
   }
 }
 
@@ -1196,4 +1197,3 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   return()
 }
-
