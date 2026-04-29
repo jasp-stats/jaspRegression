@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
 "POT-Creation-Date: 2026-03-14 03:30\n"
-"PO-Revision-Date: 2026-04-16 07:37+0000\n"
+"PO-Revision-Date: 2026-04-29 00:22+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/id/>\n"
@@ -106,7 +106,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -190,7 +190,7 @@ msgid "P-values are adjusted using %s adjustment."
 msgstr ""
 
 msgid "Predicted"
-msgstr ""
+msgstr "Terprediksi"
 
 msgid "(Intercept)"
 msgstr ""
@@ -1188,7 +1188,7 @@ msgid "Confusion matrix"
 msgstr ""
 
 msgid "Observed"
-msgstr ""
+msgstr "Terobservasi"
 
 msgid "%% Correct"
 msgstr ""
@@ -1243,10 +1243,10 @@ msgid "Squared Pearson Residual"
 msgstr ""
 
 msgid "False positive rate"
-msgstr ""
+msgstr "Tingkat positif palsu"
 
 msgid "True positive rate"
-msgstr ""
+msgstr "Tingkat positif benar"
 
 msgid "Positive predictive value"
 msgstr ""
