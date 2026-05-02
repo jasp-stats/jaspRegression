@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-04-29 19:46+0000\n"
-"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/id/>\n"
-"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.17.1-dev\n"
 "X-Language: id\n"
 "X-Qt-Contexts: true\n"
 
@@ -577,13 +571,15 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Data"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Deskriptif"
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Components"
@@ -757,57 +753,69 @@ msgctxt "RegressionLinearBayesian|"
 msgid "No. samples for credible interval"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Variabel Dependen"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Method"
-msgstr ""
+msgstr "Metode"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Enter"
-msgstr ""
+msgstr "Masukkan"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Backward"
-msgstr ""
+msgstr "Mundur"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Forward"
-msgstr ""
+msgstr "Maju"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Stepwise"
-msgstr ""
+msgstr "Bertahap"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Covariates"
-msgstr ""
+msgstr "Kovariat"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Factors"
-msgstr ""
+msgstr "Faktor"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "Berat WLS (opsional)"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Include intercept"
-msgstr ""
+msgstr "Sertakan intersep"
 
 msgctxt "RegressionLogistic|"
 msgid "Statistics"
 msgstr "Statistik"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Deskriptif"
 
 msgctxt "RegressionLogistic|"
 msgid "Factor descriptives"
@@ -821,17 +829,20 @@ msgctxt "RegressionLogistic|"
 msgid "Confusion matrix"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Estimates"
-msgstr ""
+msgstr "Estimasi"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "bootstraps"
-msgstr ""
+msgstr "bootstrap"
 
 msgctxt "RegressionLogistic|"
 msgid "Standardized coefficients"
@@ -901,9 +912,10 @@ msgctxt "RegressionLogistic|"
 msgid "Inferential Plots"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Confidence interval"
-msgstr ""
+msgstr "Interval kepercayaan"
 
 msgctxt "RegressionLogistic|"
 msgid "Show data points"
@@ -953,13 +965,15 @@ msgctxt "RegressionLogistic|"
 msgid "PR plot"
 msgstr ""
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "From"
-msgstr ""
+msgstr "Dari"
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "bootstraps"
-msgstr ""
+msgstr "bootstrap"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
@@ -1001,9 +1015,10 @@ msgctxt "EmmComponent|"
 msgid "Selected variables"
 msgstr ""
 
+#, fuzzy
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
-msgstr ""
+msgstr "Interval kepercayaan"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
@@ -1037,13 +1052,15 @@ msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
 msgstr ""
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
-msgstr ""
+msgstr "Kovariat"
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Factors"
-msgstr ""
+msgstr "Faktor"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
@@ -1165,17 +1182,19 @@ msgctxt "Correlation|"
 msgid "Partial out"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
-msgstr ""
+msgstr "Sertakan intersep"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Statistics"
@@ -1193,9 +1212,10 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
-msgstr ""
+msgstr "Estimasi"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Confidence intervals"
@@ -1253,9 +1273,10 @@ msgctxt "GlmInputComponent|"
 msgid "Other"
 msgstr ""
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "GlmInputComponent|"
 msgid "Multinomial Logistic Regression"
@@ -1273,73 +1294,90 @@ msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
-msgstr ""
+msgstr "Variabel Dependen"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Covariates"
-msgstr ""
+msgstr "Kovariat"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Factors"
-msgstr ""
+msgstr "Faktor"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "WLS Weights (optional)"
-msgstr ""
+msgstr "Berat WLS (opsional)"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Output"
-msgstr ""
+msgstr "Luaran"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Posterior summary"
-msgstr ""
+msgstr "Ringkasan posterior"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across all models"
-msgstr ""
+msgstr "Melintasi semua model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Across matched models"
-msgstr ""
+msgstr "Melintasi model cocok"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plot of coefficients"
-msgstr ""
+msgstr "Diagram koefisien"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Omit intercept"
-msgstr ""
+msgstr "Hilangkan intersep"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Best model"
-msgstr ""
+msgstr "Model terbaik"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Most complex model"
-msgstr ""
+msgstr "Model paling kompleks"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Median model"
-msgstr ""
+msgstr "Model median"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model averaged"
-msgstr ""
+msgstr "Model direrata"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Credible interval"
-msgstr ""
+msgstr "Interval kredibel"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Order"
-msgstr ""
+msgstr "Urutan"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to best model"
-msgstr ""
+msgstr "Bandingkan dengan model terbaik"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to null model"
@@ -1361,13 +1399,15 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Data"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Descriptives"
-msgstr ""
+msgstr "Deskriptif"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Components"
@@ -1872,9 +1912,11 @@ msgstr ""
 "menghitung statistik Shapiro-Wilk untuk menguji hipotesis null bahwa "
 "pasangan variabel memiliki distribusi normal bivariat."
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Uses all complete observations for each individual pair of variables."
 msgstr ""
+"Menggunakan semua observasi lengkap untuk setiap pasangan individu variabel."
 
 msgctxt "CorrelationBayesian|"
 msgid "Assumptions (Pearson's rho)"
@@ -2098,12 +2140,16 @@ msgid ""
 "removed."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid ""
 "Continuous predictor variable(s). If ordinal variables are entered it is "
 "assumed that their levels are equidistant. Hence, ordinal variables are "
 "treated as continuous predictor variables."
 msgstr ""
+"Variabel prediktor kontinu. Jika variabel ordinal dimasukkan diasumsikan "
+"bahwa tingkat mereka berjarak sama. Oleh karena itu, variabel ordinal "
+"diperlakukan sebagai variabel prediktor kontinu."
 
 msgctxt "RegressionLinear|"
 msgid ""
@@ -2137,9 +2183,11 @@ msgctxt "RegressionLinear|"
 msgid "Semipartial and partial correlations."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Uses all complete observations for each individual pair of variables."
 msgstr ""
+"Menggunakan semua observasi lengkap untuk setiap pasangan individu variabel."
 
 msgctxt "RegressionLinear|"
 msgid ""
@@ -2171,12 +2219,16 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Assumptions"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid ""
 "Continuous predictor variable(s). If ordinal variables are entered it is "
 "assumed that their levels are equidistant. Hence, ordinal variables are "
 "treated as continuous predictor variables."
 msgstr ""
+"Variabel prediktor kontinu. Jika variabel ordinal dimasukkan diasumsikan "
+"bahwa tingkat mereka berjarak sama. Oleh karena itu, variabel ordinal "
+"diperlakukan sebagai variabel prediktor kontinu."
 
 msgctxt "RegressionLinearBayesian|"
 msgid "The weights used for weighted least square regression."
@@ -2773,9 +2825,10 @@ msgctxt "Correlation|"
 msgid "Cross-product deviations and covariances."
 msgstr ""
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid "Uses only complete cases across all variables."
-msgstr ""
+msgstr "Menggunakan hanya kasus lengkap melintasi semua variabel."
 
 msgctxt "CorrelationBayesian|"
 msgid ""
@@ -2909,11 +2962,14 @@ msgid ""
 "based on the criterion specified in Stepping method criteria."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid ""
 "Categorical predictor variable(s). Ordinal variables here are treated as "
 "categorical predictor variables, thus, the ordinal information is ignored."
 msgstr ""
+"Variabel prediktor kategorikal. Variabel ordinal di sini diperlakukan "
+"sebagai nilai prediktor kategorikal, sehingga, informasi ordinal diabaikan."
 
 msgctxt "RegressionLinear|"
 msgid "The weights used for weighted least squares regression."
@@ -3018,9 +3074,10 @@ msgid ""
 "default is x=2.71."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Uses only complete cases across all variables."
-msgstr ""
+msgstr "Menggunakan hanya kasus lengkap melintasi semua variabel."
 
 msgctxt "RegressionLinear|"
 msgid ""
@@ -3157,6 +3214,7 @@ msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinearBayesian|"
 msgid ""
 "Samples with replacement via an MCMC algorithm that combines the birth/death "
@@ -3166,6 +3224,12 @@ msgid ""
 "of models. Sampling stops when min(number of models, MCMC iterations) is "
 "reached."
 msgstr ""
+"Sampel dengan penggantian melalui algoritma MCMC yang mengombinasikan jalan "
+"acak kelahiran/kematian dengan pindah pertukaran acak untuk mengganti "
+"variabel dalam model. Jml. sampel mengindikasikan jumlah sampel MCMC untuk "
+"digambar. Mengatur nilai ke 0 berarti jumlah iterasi MCMC sama dengan 10 "
+"kali jumlah model. Pensampelan menghentikan ketika min(jumlah model, iterasi "
+"MCMC) tercapai."
 
 msgctxt "RegressionLogistic|"
 msgid "The weights used for weighted least squares regression."
@@ -3557,9 +3621,10 @@ msgctxt "RegressionLinear|"
 msgid "Response Optimizer"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Output"
-msgstr ""
+msgstr "Luaran"
 
 msgctxt "RegressionLinear|"
 msgid "Show optimal solution"
