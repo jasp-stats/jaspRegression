@@ -1094,15 +1094,16 @@
     binaryData$yBin <- as.numeric(yNumeric > j)
     fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData, weights = obsWeights)
 
-    # check for perfect prediction/separation
-    if (any(VGAM::hdeff(fitBinary))) {
-      stop(gettext("The Brant test cannot be computed.
-                    At least one of the underlying binary logit models
-                    is unestimable due to perfect prediction or extreme data sparsity."))
-    }
+
     # check for at least 1 predictor added
     if (.isInterceptOnly(fit)) {
       stop(gettext("The Brant test requires at least one predictor in the model."))
+    }
+
+    # perfect separation check by checking predicted probabilities
+    probs <- as.numeric(VGAM::fitted(fitBinary))
+    if (any(probs < 1e-8 | probs > 1 - 1e-8)) {
+      stop(gettext("The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction."))
     }
 
     return(fitBinary)
@@ -1115,6 +1116,7 @@
   covarianceTotal <- matrix(0, nrow = q * p, ncol = q * p)
   for(j in 1:q) {
     weightJj  <- obsWeights*(piList[[j]] * (1 - piList[[j]]))
+
     inverseAj <- solve(t(xGlm) %*% (weightJj * xGlm))
 
     for(l in j:q) {
@@ -1122,6 +1124,7 @@
       weightLl  <- obsWeights*(piList[[l]] * (1 - piList[[l]]))
 
       inverseAl <- solve(t(xGlm) %*% (weightLl * xGlm))
+
       matrixBjl <- t(xGlm) %*% (weightJl * xGlm)
 
       covarianceBlockFull <- inverseAj %*% matrixBjl %*% inverseAl
@@ -1129,7 +1132,6 @@
 
       indexJ <- ((j-1)*p + 1):(j*p)
       indexL <- ((l-1)*p + 1):(l*p)
-
       covarianceTotal[indexJ, indexL] <- covarianceBlock
 
       # Note, current R brant implementations (brant::brant, gofcat::gofcat) omit the transpose below,
