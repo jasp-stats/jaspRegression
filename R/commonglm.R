@@ -1094,16 +1094,10 @@
     binaryData$yBin <- as.numeric(yNumeric > j)
     fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData, weights = obsWeights)
 
-
-    # check for at least 1 predictor added
-    if (.isInterceptOnly(fit)) {
-      stop(gettext("The Brant test requires at least one predictor in the model."))
-    }
-
     # perfect separation check by checking predicted probabilities
     probs <- as.numeric(VGAM::fitted(fitBinary))
     if (any(probs < 1e-8 | probs > 1 - 1e-8)) {
-      stop(gettext("The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction."))
+      stop(gettext("The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction."), call. = FALSE)
     }
 
     return(fitBinary)
