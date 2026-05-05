@@ -1223,6 +1223,11 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   models <- .glmComputeModel(jaspResults, dataset, options)
   fullModel <- models[["fullModel"]]
+  #error if no variables in model
+  if (.isInterceptOnly(fullModel)) {
+    brantTable$setError(gettext("The Brant test requires at least one predictor in the model."))
+    return()
+  }
 
   brantResult <- try(.glmBrantTest(fullModel, dataset, options))
 

@@ -457,6 +457,79 @@ test_that("Ordinal logistic regression results match", {
 
 })
 
+# tests for the brant test option for ordinal logistic regression
+test_that("Brant test handles intercept-only models gracefully", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "facFive"
+  options$covariates <- character(0) # Empty predictors
+  options$factors <- character(0)
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testData, options)
+
+  tableError <- results[["results"]][["brantTable"]][["error"]][["errorMessage"]]
+
+  expect_identical(
+    tableError,
+    "The Brant test requires at least one predictor in the model.",
+    "Brant test intercept-only check"
+  )
+})
+
+test_that("Brant test runs successfully and matches STATA's brant output", {
+  dataset <- as.data.frame(quakes)
+  dataset$MagLevel <- cut(dataset$mag,
+                          breaks = 3,
+                          labels = c("Weak", "Moderate", "Strong"),
+                          ordered_result = TRUE)
+
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "MagLevel"
+  options$covariates <- c("depth", "stations")
+  options$modelTerms <- list(
+    list(components = "depth",    isNuisance = FALSE),
+    list(components = "stations", isNuisance = FALSE)
+  )
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, options)
+  table <- results[["results"]][["brantTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(
+    "Omnibus",    7.3465, 2, 0.0254,
+    "depth",      0.0241, 1, 0.8765,
+    "stations",   7.2115, 1, 0.0072
+  ))
+})
+
+test_that("Brant test correctly identifies perfect separation in mtcars", {
+  dataset <- as.data.frame(mtcars)
+  dataset$cyl <- as.ordered(dataset$cyl)
+
+  #create a perfect separator
+  dataset$is_8_cyl <- ifelse(dataset$cyl == 8, 1, 0)
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "cyl"
+  options$covariates <- c("is_8_cyl")
+
+  options$modelTerms <- list(
+    list(components = "is_8_cyl", isNuisance = FALSE)
+  )
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, options)
+
+  tableError <- results[["results"]][["brantTable"]][["error"]][["errorMessage"]]
+  expect_identical(
+    tableError,
+    "Error : The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction.\n"
+  )
+})
 
 # test firth logistic regression
 test_that("Firth logistic regression results match", {
