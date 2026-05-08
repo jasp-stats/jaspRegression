@@ -1215,7 +1215,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   brantTable$position <- position
 
   brantTable$addColumnInfo(name = "variable", title = "",      type = "string")
-  brantTable$addColumnInfo(name = "chiSq",    title = "\u03A7\u00B2",    type = "number",format = "dp:3")
+  brantTable$addColumnInfo(name = "chiSq",    title = "\u03A7\u00B2",    type = "number")
   brantTable$addColumnInfo(name = "df",       title = gettext("df"),    type = "integer")
   brantTable$addColumnInfo(name = "p",        title = gettext("p"),     type = "pvalue")
   brantTable$addFootnote(gettext("H0: The proportional odds (parallel lines) assumption holds."))
