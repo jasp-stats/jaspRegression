@@ -1236,11 +1236,18 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   }
 
 
-  brantResult <- try(.glmBrantTest(fullModel, dataset, options))
+  brantResult <- try(.glmBrantTest(fullModel, dataset, options),silent=TRUE)
 
-  if (inherits(brantResult, "try-error")) {
+  #if (inherits(brantResult, "try-error")) {
     # This will print the actual R error in the UI. replace later when ready
-    brantTable$setError(as.character(brantResult))
+   # brantTable$setError(as.character(brantResult))
+    #return()
+  #}
+
+  if (jaspBase::isTryError(brantResult)) {
+    # This will print the actual R error in the UI. replace later when ready
+    #brantTable$setError(as.character(brantResult))
+    brantTable$setError(jaspBase::.extractErrorMessage(brantResult))
     return()
   }
 

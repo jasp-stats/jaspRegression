@@ -527,7 +527,7 @@ test_that("Brant test correctly identifies perfect separation in mtcars", {
   tableError <- results[["results"]][["brantTable"]][["error"]][["errorMessage"]]
   expect_identical(
     tableError,
-    "Error : The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction.\n"
+    "The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction."
   )
 })
 
