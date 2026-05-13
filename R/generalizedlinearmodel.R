@@ -1221,7 +1221,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     return()
 
   brantTable <- createJaspTable(title = gettext("Brant Test for Proportional Odds Assumption"))
-  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest","weights","offset"))
+  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest", "weights", "offset"))
   brantTable$position <- position
 
   brantTable$addColumnInfo(name = "variable", title = "",      type = "string")
@@ -1233,12 +1233,13 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   models <- .glmComputeModel(jaspResults, dataset, options)
   fullModel <- models[["fullModel"]]
-  #error if no variables in model
+
+  # Error if no variables in model
   if (.isInterceptOnly(fullModel)) {
     brantTable$setError(gettext("The Brant test requires at least one predictor in the model."))
     return()
   }
-  #offset calculation not implemented
+  # Offset calculation not implemented
   if (options[["offset"]] != "") {
     brantTable$setError(gettext("The Brant test does not support offset terms."))
     return()
