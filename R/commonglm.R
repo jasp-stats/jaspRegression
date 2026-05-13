@@ -1079,7 +1079,10 @@
 
 
   k <- length(levels(yRaw))
-  if (is.null(k) || k == 0) k <- length(unique(yNumeric))
+  if (is.null(k) || k == 0){
+    k <- length(unique(yNumeric))
+  }
+
   q <- k - 1 # thresholds
 
   xMain         <- xPlus[, -1, drop = FALSE]
@@ -1091,10 +1094,10 @@
   # Fit Binary GLMs
   binaryData <- as.data.frame(xMain)
   models <- lapply(1:q, function(j) {
-    binaryData$yBin <- as.numeric(yNumeric > j)
+    binaryData[["yBin"]] <- as.numeric(yNumeric > j)
     fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData, weights = obsWeights)
 
-    # perfect separation check by checking predicted probabilities
+    # Perfect separation check
     probs <- as.numeric(VGAM::fitted(fitBinary))
     if (any(probs < 1e-8 | probs > 1 - 1e-8)) {
       stop(gettext("The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction."), call. = FALSE)
@@ -1108,14 +1111,14 @@
   piList <- lapply(models, function(m) as.numeric(VGAM::fitted(m)))
   # Block covariance matrix assembly
   covarianceTotal <- matrix(0, nrow = q * p, ncol = q * p)
-  for(j in 1:q) {
-    weightJj  <- obsWeights*(piList[[j]] * (1 - piList[[j]]))
+  for (j in 1:q) {
+    weightJj  <- obsWeights * (piList[[j]] * (1 - piList[[j]]))
 
     inverseAj <- solve(t(xGlm) %*% (weightJj * xGlm))
 
-    for(l in j:q) {
-      weightJl  <- obsWeights*(piList[[l]] - (piList[[j]] * piList[[l]]))
-      weightLl  <- obsWeights*(piList[[l]] * (1 - piList[[l]]))
+    for (l in j:q) {
+      weightJl  <- obsWeights * (piList[[l]] - (piList[[j]] * piList[[l]]))
+      weightLl  <- obsWeights * (piList[[l]] * (1 - piList[[l]]))
 
       inverseAl <- solve(t(xGlm) %*% (weightLl * xGlm))
 
@@ -1129,15 +1132,15 @@
       covarianceTotal[indexJ, indexL] <- covarianceBlock
 
       # Note, current R brant implementations (brant::brant, gofcat::gofcat) omit the transpose below,
-      # resulting in very minor numerical discrepancies between their results and this implementation.
-      # this implementation matches results from STATA's oparallel.
+      # resulting in minor numerical discrepancies.
+      # This implementation matches results from STATA's brant
 
       if (j != l) covarianceTotal[indexL, indexJ] <- t(covarianceBlock)
     }
   }
 
   # Calculate D (Contrast Matrix)
-  contrastLayout  <- if(q > 1) cbind(rep(1, q - 1), -diag(q - 1)) else matrix(1, 1, 1)
+  contrastLayout  <- if (q > 1) cbind(rep(1, q - 1), -diag(q - 1)) else matrix(1, 1, 1)
   contrastOmnibus <- kronecker(contrastLayout, diag(p))
 
   calculateChiSq <- function(beta, covariance, contrast) {
