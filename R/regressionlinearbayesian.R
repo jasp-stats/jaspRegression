@@ -110,7 +110,7 @@ RegressionLinearBayesianInternal <- function(jaspResults, dataset = NULL, option
     basregContainer$position <- position
     basregContainer$dependOn(c(
       "dependent", "covariates", "weights", "modelTerms",
-      "priorRegressionCoefficients", "gPriorAlpha", "jzsRScale",
+      "priorRegressionCoefficients", "gPriorG", "hyperGAlpha", "gPriorAlpha", "jzsRScale",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
       "samplingMethod", "samples", "numberOfModels", "seed", "setSeed"
@@ -1043,13 +1043,17 @@ for sparse regression when there are more covariates than observations (Castillo
     "jzs"           = "JZS"
   )
 
-  # parameter for hyper-g's or jzs (all use same alpha param in bas.lm)
+  legacyAlpha <- options$gPriorAlpha
+  gPriorG     <- if (!is.null(options$gPriorG))     options$gPriorG     else legacyAlpha
+  hyperGAlpha <- if (!is.null(options$hyperGAlpha)) options$hyperGAlpha else legacyAlpha
+
+  # BAS uses the alpha argument for g-prior, hyper-g priors, and JZS.
   alpha <- switch(
     prior,
-    "g-prior"         = options$gPriorAlpha,
-    "hyper-g"         = options$gPriorAlpha,
-    "hyper-g-laplace" = options$gPriorAlpha,
-    "hyper-g-n"       = options$gPriorAlpha,
+    "g-prior"         = gPriorG,
+    "hyper-g"         = hyperGAlpha,
+    "hyper-g-laplace" = hyperGAlpha,
+    "hyper-g-n"       = hyperGAlpha,
     "JZS"             = options$jzsRScale^2,
     NULL
   )
