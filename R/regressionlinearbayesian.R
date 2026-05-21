@@ -305,9 +305,13 @@ for sparse regression when there are more covariates than observations (Castillo
   postSumTable$addColumnInfo(name = "upperCri",    title = gettext("Upper"),         type = "number", overtitle = overtitle)
 
   if (!is.null(basregModel) && !is.null(postSumModel)) {
-    footnote <- postSumModel[["footnotes"]]
+    footnote <- postSumModel[["footnote"]]
     if (!is.null(footnote))
       postSumTable$addFootnote(footnote, symbol = gettext("<em>Warning.</em>"))
+
+    summaryNote <- .basregPosteriorSummaryAveragingNote(options$summaryType)
+    if (!is.null(summaryNote))
+      postSumTable$addFootnote(summaryNote)
 
     .basregFillTablePosteriorSummary(postSumTable, postSumModel, basregModel, options)
   }
@@ -414,6 +418,7 @@ for sparse regression when there are more covariates than observations (Castillo
   loopIdx <- postSumModel[["loopIdx"]]
   coefficients <- postSumModel[["coefficients"]]
   coefficients <- .basregReplaceInteractionUnicodeSymbol(coefficients)
+  summaryCaption <- .basregPosteriorSummaryAveragingNote(options$summaryType, forTable = FALSE)
 
   # exlude intercept if it's not the only predictor?
   if (options[["posteriorSummaryPlotWithoutIntercept"]] && length(loopIdx) > 1)
@@ -434,9 +439,12 @@ for sparse regression when there are more covariates than observations (Castillo
       ggplot2::geom_errorbar(, width = 0.2) +
       ggplot2::scale_x_discrete(name = "") +
       ggplot2::scale_y_continuous(name = expression(beta), breaks = yBreaks, limits = range(yBreaks))
+    if (!is.null(summaryCaption))
+      g <- g + ggplot2::labs(caption = summaryCaption)
     jaspGraphs::themeJasp(g) +
       ggplot2::theme(
-        axis.title.y = ggplot2::element_text(angle = 0, vjust = .5, size = 20)
+        axis.title.y = ggplot2::element_text(angle = 0, vjust = .5, size = 20),
+        plot.caption = ggplot2::element_text(hjust = 1)
       )
   })
 
@@ -941,6 +949,11 @@ for sparse regression when there are more covariates than observations (Castillo
                          hjust = c("right", "left"), inherit.aes = FALSE)
 
     jaspGraphs::themeJasp(g)
+
+    g <- g +
+      ggplot2::labs(caption = gettextf("Credible intervals are computed across all models, including models that exclude the coefficient.")) +
+      ggplot2::theme(plot.caption = ggplot2::element_text(hjust = 1))
+
   })
 
   if (isTryError(p)) {
@@ -1173,6 +1186,14 @@ for sparse regression when there are more covariates than observations (Castillo
                                                "seed", "setSeed"))
 
   return(postSumModel)
+}
+
+.basregPosteriorSummaryAveragingNote <- function(summaryType, forTable = TRUE) {
+  if (!identical(summaryType, "averaged"))
+    return(NULL)
+  if (forTable)
+    return(gettext("For model-averaged summaries, posterior means, SDs, and credible intervals are computed across models, including models that exclude the coefficient."))
+  return(gettext("Posterior means and credible intervals are computed across models, including models that exclude the coefficient. The spike at 0 is not shown."))
 }
 
 .basregOverwritecoefBas <- function (basregModel, n.models, estimator = "BMA", dataset, options, weights = NULL) {
