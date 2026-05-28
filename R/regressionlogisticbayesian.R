@@ -163,6 +163,10 @@ covariate added to the model (Consonni et al., 2018; Wilson et al., 2010).", "\u
     modelComparisonTable$addFootnote(gettextf(
       "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 and %2$s = p^u and is suitable \
 for sparse regression when there are more covariates than observations (Castillo et al., 2015).", "\u03B1", "\u03B2"))
+  } else if (options$modelPrior == "uniform") {
+    modelComparisonTable$addFootnote(gettext(
+      "The uniform model prior assigns equal prior probability to each model. Because there are more models of intermediate size, this prior places more total prior mass on medium-sized models than on very small or very large models."
+    ))
   }
 
   if (options$bayesFactorType == "BF10")      bfTitle <- gettext("BF<sub>10</sub>")
