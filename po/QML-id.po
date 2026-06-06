@@ -1,15 +1,9 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-06-05 11:09+0000\n"
-"Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
-"Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
-"jaspregression-qml/id/>\n"
-"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.6\n"
 "X-Language: id\n"
 "X-Qt-Contexts: true\n"
 
@@ -1057,9 +1051,10 @@ msgctxt "GlmInputComponent|"
 msgid "Family"
 msgstr ""
 
+#, fuzzy
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
@@ -1129,9 +1124,10 @@ msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Deviance Residuals"
 msgstr ""
 
+#, fuzzy
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "Residu vs. disesuaikan"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. predictor"
@@ -1169,9 +1165,10 @@ msgctxt "GeneralizedLinearModel|"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Components"
-msgstr ""
+msgstr "Komponen"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Include intercept"
@@ -1229,25 +1226,29 @@ msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
 msgstr ""
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "Opsi Lanjutan"
 
+#, fuzzy
 msgctxt "GeneralizedLinearModel|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Koefisien"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Koefisien"
 
+#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Koefisien"
 
 msgctxt "GlmInputComponent|"
 msgid "Other"
@@ -1341,25 +1342,30 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to best model"
 msgstr "Bandingkan dengan model terbaik"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Compare to null model"
-msgstr ""
+msgstr "Bandingkan dengan model null"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Limit No. Models Shown"
-msgstr ""
+msgstr "Batas Jml. Model Ditampilkan"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No"
-msgstr ""
+msgstr "Tidak"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Yes, show best"
-msgstr ""
+msgstr "Ya, tampikan terbaik"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Data"
-msgstr ""
+msgstr "Data"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Descriptives"
@@ -1369,81 +1375,98 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Model"
 msgstr "Model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Components"
-msgstr ""
+msgstr "Komponen"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Plots"
 msgstr "Diagram"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Coefficients"
-msgstr ""
+msgstr "Koefisien"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Inclusion probabilities"
-msgstr ""
+msgstr "Probabilitas inklusi"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Marginal posterior distributions"
-msgstr ""
+msgstr "Distribusi posterior margin"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Models"
-msgstr ""
+msgstr "Model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log posterior odds"
-msgstr ""
+msgstr "Ganjil posterior log"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log(P(data|M)) vs. model size"
-msgstr ""
+msgstr "Log(P(data|M)) vs. ukuran model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model probabilities"
-msgstr ""
+msgstr "Probabilitas model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals"
-msgstr ""
+msgstr "Residu"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Residuals vs. fitted"
-msgstr ""
+msgstr "Residu vs. disesuaikan"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Q-Q plot of model averaged residuals"
-msgstr ""
+msgstr "Diagram Q-Q dari residu direrata model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Advanced Options"
-msgstr ""
+msgstr "Opsi Lanjutan"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Prior"
 msgstr "Priori"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "AIC"
-msgstr ""
+msgstr "AIC"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "BIC"
-msgstr ""
+msgstr "BIC"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "EB-local"
-msgstr ""
+msgstr "EB-lokal"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
-msgstr ""
+msgstr "priori-g"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
-msgstr ""
+msgstr "alfa"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
@@ -1469,77 +1492,95 @@ msgctxt "RegressionLogisticBayesian|"
 msgid "Robust"
 msgstr ""
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model Prior"
-msgstr ""
+msgstr "Priori Model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta binomial"
-msgstr ""
+msgstr "Binomial beta"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "a"
-msgstr ""
+msgstr "a"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
-msgstr ""
+msgstr "b"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform"
-msgstr ""
+msgstr "Keseragaman"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
-msgstr ""
+msgstr "Wilson"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "λ"
-msgstr ""
+msgstr "λ"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Castillo"
-msgstr ""
+msgstr "Castillo"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "u"
-msgstr ""
+msgstr "u"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli"
-msgstr ""
+msgstr "Bernoulli"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "p"
-msgstr ""
+msgstr "p"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Sampling Method"
-msgstr ""
+msgstr "Metode Pensampelan"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "BAS"
-msgstr ""
+msgstr "BAS"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. models"
-msgstr ""
+msgstr "Jml. model"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "MCMC"
-msgstr ""
+msgstr "MCMC"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples"
-msgstr ""
+msgstr "Jml. sampel"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "Numerical Accuracy"
-msgstr ""
+msgstr "Akurasi Numerik"
 
+#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "No. samples for credible interval"
-msgstr ""
+msgstr "Jml. sampel untuk interval kredibel"
 
 msgctxt "EmmComponent|"
 msgid "SD"
@@ -1549,9 +1590,10 @@ msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
 msgstr ""
 
+#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "Residuals"
-msgstr ""
+msgstr "Residu"
 
 msgctxt "OutlierComponent|"
 msgid "Statistics"
@@ -2753,6 +2795,7 @@ msgid ""
 "replications by default but it can be modified to your desired number."
 msgstr ""
 
+#, fuzzy
 msgctxt "Correlation|"
 msgid ""
 "Shows the maximum ratio of the likelihood of the obtained p value under H1 "
@@ -2761,6 +2804,11 @@ msgid ""
 "this p-value is at most 2.46 times more likely to occur under H1 than under "
 "H0."
 msgstr ""
+"Menampilkan rasio maksimum dari kemungkinan nilai p terambil di bawah H1 vs "
+"nilai p terambil di bawah H0. Contohnya, jika nilai-p dua sisi sama "
+"dengan .05, MPR Vovk-Sellke sama dengan 2.46, mengindikasikan bahwa nilai-p "
+"ini kemungkinan lebih banyak 2.46 kali lebih besar terjadi di bawah H1 dari "
+"di bawah H0."
 
 msgctxt "Correlation|"
 msgid "The covariance between each pair of variables."
@@ -3191,7 +3239,8 @@ msgstr "Semua model dibandingkan dengan model null."
 msgctxt "RegressionLinearBayesian|"
 msgid ""
 "Displays a plot of the marginal posterior distribution for each predictor."
-msgstr "Menampilkan diagram distribusi posterior margin untuk setiap prediktor."
+msgstr ""
+"Menampilkan diagram distribusi posterior margin untuk setiap prediktor."
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Shows the relation between model fit and complexity."
@@ -3310,10 +3359,10 @@ msgid ""
 "H0."
 msgstr ""
 "Menampilkan rasio maksimum dari kemungkinan nilai p terambil di bawah H1 vs "
-"nilai p terambil di bawah H0. Contohnya, jika nilai-p dua sisi sama dengan "
-".05, MPR Vovk-Sellke sama dengan 2.46, mengindikasikan bahwa nilai-p ini "
-"kemungkinan lebih banyak 2.46 kali lebih besar terjadi di bawah H1 dari di "
-"bawah H0."
+"nilai p terambil di bawah H0. Contohnya, jika nilai-p dua sisi sama "
+"dengan .05, MPR Vovk-Sellke sama dengan 2.46, mengindikasikan bahwa nilai-p "
+"ini kemungkinan lebih banyak 2.46 kali lebih besar terjadi di bawah H1 dari "
+"di bawah H0."
 
 msgctxt "RegressionLogistic|"
 msgid ""
@@ -3502,7 +3551,8 @@ msgstr "Semua model dibandingkan dengan model null."
 msgctxt "RegressionLogisticBayesian|"
 msgid ""
 "Displays a plot of the marginal posterior distribution for each predictor."
-msgstr "Menampilkan diagram distribusi posterior margin untuk setiap prediktor."
+msgstr ""
+"Menampilkan diagram distribusi posterior margin untuk setiap prediktor."
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Shows the relation between model fit and complexity."
