@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2026-06-09 08:15+0000\n"
+"PO-Revision-Date: 2026-06-09 17:58+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-qml/id/>\n"
@@ -919,39 +919,39 @@ msgstr "Prediktor - diagram residu"
 
 msgctxt "RegressionLogistic|"
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "Diagram residu Pearson kuadrat"
 
 msgctxt "RegressionLogistic|"
 msgid "Residual Type"
-msgstr ""
+msgstr "Jenis Residu"
 
 msgctxt "RegressionLogistic|"
 msgid "Deviance"
-msgstr ""
+msgstr "Devians"
 
 msgctxt "RegressionLogistic|"
 msgid "Pearson"
-msgstr ""
+msgstr "Pearson"
 
 msgctxt "RegressionLogistic|"
 msgid "Performance Plots"
-msgstr ""
+msgstr "Diagram Kinerja"
 
 msgctxt "RegressionLogistic|"
 msgid "ROC plot"
-msgstr ""
+msgstr "Diagram ROC"
 
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
-msgstr ""
+msgstr "Langkah pemotongan"
 
 msgctxt "RegressionLogistic|"
 msgid "Add cutoff labels"
-msgstr ""
+msgstr "Tambahkan label pemotongan"
 
 msgctxt "RegressionLogistic|"
 msgid "PR plot"
-msgstr ""
+msgstr "Diagram PR"
 
 msgctxt "Correlation|"
 msgid "From"
@@ -963,43 +963,43 @@ msgstr "bootstrap"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
-msgstr ""
+msgstr "Evaluasikan asosiasi antara variabel"
 
 msgctxt "RegressionLinear|"
 msgid "Residuals histogram"
-msgstr ""
+msgstr "Histogram residu"
 
 msgctxt "RegressionLogistic|"
 msgid "Conditional estimates plots"
-msgstr ""
+msgstr "Diagram estimasi kondisional"
 
 msgctxt "RegressionLinear|"
 msgid "Other Plots"
-msgstr ""
+msgstr "Diagram Lain"
 
 msgctxt "RegressionLinear|"
 msgid "Marginal effects plots"
-msgstr ""
+msgstr "Diagram efek margin"
 
 msgctxt "RegressionLogistic|"
 msgid "Accuracy"
-msgstr ""
+msgstr "Akurasi"
 
 msgctxt "Description|"
 msgid "Generalized Linear Model"
-msgstr ""
+msgstr "Model Linear Dihasilkan"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "Rerata Margin Terestimasi dan Analisis Kontras"
 
 msgctxt "EmmComponent|"
 msgid "Model variables"
-msgstr ""
+msgstr "Variabel model"
 
 msgctxt "EmmComponent|"
 msgid "Selected variables"
-msgstr ""
+msgstr "Variabel terpilih"
 
 msgctxt "EmmComponent|"
 msgid "Confidence interval"
@@ -1007,35 +1007,35 @@ msgstr "Interval kepercayaan"
 
 msgctxt "EmmComponent|"
 msgid "Levels of covariates at mean +/- "
-msgstr ""
+msgstr "Tingkat kovariat di rerata +/- "
 
 msgctxt "EmmComponent|"
 msgid "Compare marginal means to:"
-msgstr ""
+msgstr "Bandingkan rerata margin ke:"
 
 msgctxt "EmmComponent|"
 msgid "Use response scale"
-msgstr ""
+msgstr "Gunakan skala tanggapan"
 
 msgctxt "EmmComponent|"
 msgid "Specify contrasts"
-msgstr ""
+msgstr "Tentukan kontras"
 
 msgctxt "EmmComponent|"
 msgid "P-value adjustment"
-msgstr ""
+msgstr "Penyesuaian nilai-P"
 
 msgctxt "EmmComponent|"
 msgid "Multivariate-t"
-msgstr ""
+msgstr "Multivariat-t"
 
 msgctxt "EmmComponent|"
 msgid "None"
-msgstr ""
+msgstr "Tidak Ada"
 
 msgctxt "GlmInputComponent|"
 msgid "Dependent variable"
-msgstr ""
+msgstr "Variabel dependen"
 
 msgctxt "GlmInputComponent|"
 msgid "Covariates"
@@ -1047,15 +1047,15 @@ msgstr "Faktor"
 
 msgctxt "GlmInputComponent|"
 msgid "Total Number of Trials"
-msgstr ""
+msgstr "Jumlah Total Percobaan"
 
 msgctxt "GlmInputComponent|"
 msgid "Weights"
-msgstr ""
+msgstr "Berat"
 
 msgctxt "GlmInputComponent|"
 msgid "Family"
-msgstr ""
+msgstr "Keluarga"
 
 msgctxt "GlmInputComponent|"
 msgid "Bernoulli"
@@ -1063,71 +1063,71 @@ msgstr "Bernoulli"
 
 msgctxt "GlmInputComponent|"
 msgid "Binomial"
-msgstr ""
+msgstr "Binomial"
 
 msgctxt "GlmInputComponent|"
 msgid "Gaussian"
-msgstr ""
+msgstr "Gauss"
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "Gamma"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
-msgstr ""
+msgstr "Gauss Invers"
 
 msgctxt "GlmInputComponent|"
 msgid "Poisson"
-msgstr ""
+msgstr "Poisson"
 
 msgctxt "GlmInputComponent|"
 msgid "Link"
-msgstr ""
+msgstr "Tautan"
 
 msgctxt "GlmInputComponent|"
 msgid "Logit"
-msgstr ""
+msgstr "Logit"
 
 msgctxt "GlmInputComponent|"
 msgid "Probit"
-msgstr ""
+msgstr "Probit"
 
 msgctxt "GlmInputComponent|"
 msgid "Cauchit"
-msgstr ""
+msgstr "Cauchit"
 
 msgctxt "GlmInputComponent|"
 msgid "Complementary LogLog"
-msgstr ""
+msgstr "LogLog Komplementer"
 
 msgctxt "GlmInputComponent|"
 msgid "Identity"
-msgstr ""
+msgstr "Identitas"
 
 msgctxt "GlmInputComponent|"
 msgid "Log"
-msgstr ""
+msgstr "Log"
 
 msgctxt "GlmInputComponent|"
 msgid "Sqrt"
-msgstr ""
+msgstr "Sqrt"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse"
-msgstr ""
+msgstr "Invers"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/mu^2"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
-msgstr ""
+msgstr "Analisis Residu"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Deviance Residuals"
-msgstr ""
+msgstr "Residu Devians"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. fitted"
@@ -1135,35 +1135,35 @@ msgstr "Residu vs. disesuaikan"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Residuals vs. predictor"
-msgstr ""
+msgstr "Residu vs. prediktor"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Q-Q plot"
-msgstr ""
+msgstr "Diagram Q-Q"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Pearson Residuals"
-msgstr ""
+msgstr "Residu Pearson"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Quantile Residuals"
-msgstr ""
+msgstr "Residu Kuantil"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Other Plots"
-msgstr ""
+msgstr "Diagram Lain"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Partial residual plots"
-msgstr ""
+msgstr "Diagram residu parsial"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Working responses vs. linear predictor"
-msgstr ""
+msgstr "Tanggapan pekerjaan vs. prediktor linear"
 
 msgctxt "Correlation|"
 msgid "Partial out"
-msgstr ""
+msgstr "Parsial dikeluarkan"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model"
@@ -1183,15 +1183,15 @@ msgstr "Statistik"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Model Fit"
-msgstr ""
+msgstr "Penyesuaian Model"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Deviance goodness-of-fit test"
-msgstr ""
+msgstr "Uji kesesuaian devians"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Pearson goodness-of-fit test"
-msgstr ""
+msgstr "Uji kesesuaian Pearson"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Estimates"
@@ -1203,31 +1203,31 @@ msgstr "Interval kepercayaan"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Diagnostics"
-msgstr ""
+msgstr "Diagnostik"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Show Outliers"
-msgstr ""
+msgstr "Tampilkan Outlier"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Standardized deviance residuals: top"
-msgstr ""
+msgstr "Residu devians terstandardisasi: atas"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Studentized deviance residuals: top"
-msgstr ""
+msgstr "Residu devians terstudent: atas"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Multicollinearity"
-msgstr ""
+msgstr "Multikollinearitas"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Tolerance"
-msgstr ""
+msgstr "Toleransi"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr ""
+msgstr "VIF"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
@@ -1239,7 +1239,7 @@ msgstr "Koefisien"
 
 msgctxt "GlmInputComponent|"
 msgid "Offset"
-msgstr ""
+msgstr "Selisih"
 
 msgctxt "RegressionLinear|"
 msgid "Coefficients"
@@ -1251,7 +1251,7 @@ msgstr "Koefisien"
 
 msgctxt "GlmInputComponent|"
 msgid "Other"
-msgstr ""
+msgstr "Lainnya"
 
 msgctxt "GlmInputComponent|"
 msgid "Model"
@@ -1259,19 +1259,19 @@ msgstr "Model"
 
 msgctxt "GlmInputComponent|"
 msgid "Multinomial Logistic Regression"
-msgstr ""
+msgstr "Regreasi Logistik Multinomial"
 
 msgctxt "GlmInputComponent|"
 msgid "Ordinal Logistic Regression"
-msgstr ""
+msgstr "Regreasi Logistik Ordinal"
 
 msgctxt "GlmInputComponent|"
 msgid "Firth Logistic Regression"
-msgstr ""
+msgstr "Regreasi Logistik Firth"
 
 msgctxt "Description|"
 msgid "Bayesian Logistic Regression"
-msgstr ""
+msgstr "Regreasi Logistik Bayes"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Dependent Variable"
@@ -1447,27 +1447,27 @@ msgstr "alfa"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
-msgstr ""
+msgstr "CCH"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
-msgstr ""
+msgstr "beta"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
-msgstr ""
+msgstr "Prima-Beta"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Instrinsic"
-msgstr ""
+msgstr "Instrinsik"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Robust"
-msgstr ""
+msgstr "Kekuatan"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model Prior"
@@ -1543,11 +1543,11 @@ msgstr "Jml. sampel untuk interval kredibel"
 
 msgctxt "EmmComponent|"
 msgid "SD"
-msgstr ""
+msgstr "SD"
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "Ukuran efek (z Fisher)"
 
 msgctxt "OutlierComponent|"
 msgid "Residuals"
@@ -1559,39 +1559,39 @@ msgstr "Statistik"
 
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
-msgstr ""
+msgstr "Diagnostik sebaliknya"
 
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
-msgstr ""
+msgstr "Residu std. >"
 
 msgctxt "OutlierComponent|"
 msgid "Cook's dist. >"
-msgstr ""
+msgstr "Jrk. Cook >"
 
 msgctxt "OutlierComponent|"
 msgid "All"
-msgstr ""
+msgstr "Semua"
 
 msgctxt "OutlierComponent|"
 msgid "DFBETAS"
-msgstr ""
+msgstr "DFBETAS"
 
 msgctxt "OutlierComponent|"
 msgid "DFFITS"
-msgstr ""
+msgstr "DFFITS"
 
 msgctxt "OutlierComponent|"
 msgid "Cov ratio"
-msgstr ""
+msgstr "Rasio kov"
 
 msgctxt "OutlierComponent|"
 msgid "Leverage"
-msgstr ""
+msgstr "Manfaat"
 
 msgctxt "OutlierComponent|"
 msgid "Mahalanobis"
-msgstr ""
+msgstr "Mahalanobis"
 
 msgctxt "Correlation|"
 msgid "Covariance"
