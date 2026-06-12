@@ -1107,21 +1107,20 @@
   })
   # Extract betas
   betaTilde <- as.matrix(unlist(lapply(models, function(m) VGAM::coef(m)[-1])))
+
   # Extract probabilities from separate binary fits
   piList <- lapply(models, function(m) as.numeric(VGAM::fitted(m)))
+
   # Block covariance matrix assembly
   covarianceTotal <- matrix(0, nrow = numThresholds * numPredictors, ncol = numThresholds * numPredictors)
   for (threshRow in 1:numThresholds) {
     weightRow  <- (piList[[threshRow]] * (1 - piList[[threshRow]]))
-
     inverseRow <- solve(t(xGlm) %*% (weightRow * xGlm))
 
     for (threshCol in threshRow:numThresholds) {
       weightCross  <- (piList[[threshCol]] - (piList[[threshRow]] * piList[[threshCol]]))
       weightCol  <- (piList[[threshCol]] * (1 - piList[[threshCol]]))
-
       inverseCol <- solve(t(xGlm) %*% (weightCol * xGlm))
-
       matrixCross <- t(xGlm) %*% (weightCross * xGlm)
 
       covarianceBlockFull <- inverseRow %*% matrixCross %*% inverseCol
@@ -1152,7 +1151,6 @@
     df     <- nrow(contrast)
     pValue <- pchisq(stat, df = df, lower.tail = FALSE)
 
-
     return(data.frame(
       chiSq = stat,
       df    = df,
@@ -1170,7 +1168,6 @@
     contrastSubset <- contrastOmnibus[, sequenceIndex, drop = FALSE]
     relevantRows   <- which(rowSums(contrastSubset != 0) > 0)
     contrastSubset <- contrastSubset[relevantRows, , drop = FALSE]
-
     calculateChiSq(betaTilde[sequenceIndex], covarianceTotal[sequenceIndex, sequenceIndex], contrastSubset)
   }))
   rownames(variableResult) <- variableNames

@@ -1230,6 +1230,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   brantTable$addColumnInfo(name = "df",       title = gettext("df"),    type = "integer")
   brantTable$addColumnInfo(name = "p",        title = gettext("p"),     type = "pvalue")
   brantTable$addFootnote(gettext("H0: The proportional odds (parallel lines) assumption holds."))
+
   jaspResults[["brantTable"]] <- brantTable
 
   models <- .glmComputeModel(jaspResults, dataset, options)
