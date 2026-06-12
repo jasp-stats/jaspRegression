@@ -35,14 +35,16 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   .glmModelFitTable(    jaspResults, dataset, options, ready, position = 2)
   .glmEstimatesTable(   jaspResults, dataset, options, ready, position = 3)
 
-  #brant-WIP
+  #Brant test
   # Only trigger the Brant test for ordinal logistic regression
   isOrdinal <- options[["family"]] == "other" && options[["otherGlmModel"]] == "ordinalLogistic"
-  #note, both checks necessary, switching model hides checkbox but does not reset
+  #both checks below necessary, switching model hides checkbox but does not reset
   if (isOrdinal && options[["brantTest"]]) {
     .glmBrantTable(jaspResults, dataset, options, ready, position = 4)
   }
   if (options$family == "other") return()
+
+
 
   #diagnostic tables and plots
   .glmDiagnostics(jaspResults, dataset, options, ready, position = 5)
@@ -1204,8 +1206,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   return()
 }
-#brant
-
+ #Brant test
 .glmBrantTable <- function(jaspResults, dataset, options, ready, position) {
   if (!ready || !options[["brantTest"]] || !is.null(jaspResults[["brantTable"]]))
     return()
@@ -1234,19 +1235,16 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     brantTable$setError(gettext("The Brant test does not support offset terms."))
     return()
   }
-
+  # Weights calculation not implemented
+  if (options[["weights"]] != "") {
+    brantTable$setError(gettext("The Brant test does not support weighted models."))
+    return()
+  }
 
   brantResult <- try(.glmBrantTest(fullModel, dataset, options),silent=TRUE)
 
-  #if (inherits(brantResult, "try-error")) {
-    # This will print the actual R error in the UI. replace later when ready
-   # brantTable$setError(as.character(brantResult))
-    #return()
-  #}
 
   if (jaspBase::isTryError(brantResult)) {
-    # This will print the actual R error in the UI. replace later when ready
-    #brantTable$setError(as.character(brantResult))
     brantTable$setError(jaspBase::.extractErrorMessage(brantResult))
     return()
   }

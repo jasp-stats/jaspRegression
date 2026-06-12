@@ -1069,38 +1069,38 @@
   # test if we have intercept and no other predictors
   return(intercept && length(labels) == 0)
 }
+
 # Brant Test Computation
 .glmBrantTest <- function(fit, dataset, options) {
 
-  # Extract design matrix
-  xPlus    <- if (is.matrix(fit@x)) fit@x else model.matrix(fit)
+  xPlus    <- model.matrix(fit,type="lm")
   yRaw     <- dataset[[options[["dependent"]]]]
   yNumeric <- as.integer(yRaw)
 
 
-  k <- length(levels(yRaw))
-  if (is.null(k) || k == 0){
-    k <- length(unique(yNumeric))
+  numLevels <- length(levels(yRaw))
+  if (is.null(numLevels) || numLevels == 0){
+    numLevels <- length(unique(yNumeric))
   }
 
-  q <- k - 1 # thresholds
+  numThresholds <- numLevels - 1
 
   xMain         <- xPlus[, -1, drop = FALSE]
-  obsWeights <- if (options[["weights"]] != "") dataset[[options[["weights"]]]] else rep(1, nrow(xMain))
-  p             <- ncol(xMain) # predictors
+  numPredictors <- ncol(xMain)
   variableNames <- colnames(xMain)
   xGlm          <- cbind(1, xMain)
 
   # Fit Binary GLMs
   binaryData <- as.data.frame(xMain)
-  models <- lapply(1:q, function(j) {
-    binaryData[["yBin"]] <- as.numeric(yNumeric > j)
-    fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData, weights = obsWeights)
+  models <- lapply(1:numThresholds, function(thresholdIndex) {
+    binaryData[["yBin"]] <- as.numeric(yNumeric > thresholdIndex)
+    fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData)
 
     # Perfect separation check
     probs <- as.numeric(VGAM::fitted(fitBinary))
     if (any(probs < 1e-8 | probs > 1 - 1e-8)) {
-      stop(gettext("The Brant test cannot be computed. At least one of the underlying binary logit models exhibits perfect or near-perfect prediction."), call. = FALSE)
+      stop(gettext("Brant test failed: An underlying binary model exhibits perfect or near-perfect prediction."),
+           call. = FALSE)
     }
 
     return(fitBinary)
@@ -1110,38 +1110,38 @@
   # Extract probabilities from separate binary fits
   piList <- lapply(models, function(m) as.numeric(VGAM::fitted(m)))
   # Block covariance matrix assembly
-  covarianceTotal <- matrix(0, nrow = q * p, ncol = q * p)
-  for (j in 1:q) {
-    weightJj  <- obsWeights * (piList[[j]] * (1 - piList[[j]]))
+  covarianceTotal <- matrix(0, nrow = numThresholds * numPredictors, ncol = numThresholds * numPredictors)
+  for (threshRow in 1:numThresholds) {
+    weightRow  <- (piList[[threshRow]] * (1 - piList[[threshRow]]))
 
-    inverseAj <- solve(t(xGlm) %*% (weightJj * xGlm))
+    inverseRow <- solve(t(xGlm) %*% (weightRow * xGlm))
 
-    for (l in j:q) {
-      weightJl  <- obsWeights * (piList[[l]] - (piList[[j]] * piList[[l]]))
-      weightLl  <- obsWeights * (piList[[l]] * (1 - piList[[l]]))
+    for (threshCol in threshRow:numThresholds) {
+      weightCross  <- (piList[[threshCol]] - (piList[[threshRow]] * piList[[threshCol]]))
+      weightCol  <- (piList[[threshCol]] * (1 - piList[[threshCol]]))
 
-      inverseAl <- solve(t(xGlm) %*% (weightLl * xGlm))
+      inverseCol <- solve(t(xGlm) %*% (weightCol * xGlm))
 
-      matrixBjl <- t(xGlm) %*% (weightJl * xGlm)
+      matrixCross <- t(xGlm) %*% (weightCross * xGlm)
 
-      covarianceBlockFull <- inverseAj %*% matrixBjl %*% inverseAl
+      covarianceBlockFull <- inverseRow %*% matrixCross %*% inverseCol
       covarianceBlock     <- covarianceBlockFull[-1, -1, drop = FALSE]
 
-      indexJ <- ((j-1)*p + 1):(j*p)
-      indexL <- ((l-1)*p + 1):(l*p)
-      covarianceTotal[indexJ, indexL] <- covarianceBlock
+      indexRow <- ((threshRow-1)*numPredictors + 1):(threshRow*numPredictors)
+      indexCol <- ((threshCol-1)*numPredictors + 1):(threshCol*numPredictors)
+      covarianceTotal[indexRow, indexCol] <- covarianceBlock
 
       # Note, current R brant implementations (brant::brant, gofcat::gofcat) omit the transpose below,
       # resulting in minor numerical discrepancies.
       # This implementation matches results from STATA's brant
 
-      if (j != l) covarianceTotal[indexL, indexJ] <- t(covarianceBlock)
+      if (threshRow != threshCol) covarianceTotal[indexCol, indexRow] <- t(covarianceBlock)
     }
   }
 
   # Calculate D (Contrast Matrix)
-  contrastLayout  <- if (q > 1) cbind(rep(1, q - 1), -diag(q - 1)) else matrix(1, 1, 1)
-  contrastOmnibus <- kronecker(contrastLayout, diag(p))
+  contrastLayout  <- if (numThresholds > 1) cbind(rep(1, numThresholds - 1), -diag(numThresholds - 1)) else matrix(1, 1, 1)
+  contrastOmnibus <- kronecker(contrastLayout, diag(numPredictors))
 
   calculateChiSq <- function(beta, covariance, contrast) {
     if (nrow(contrast) == 0 || ncol(contrast) == 0 || nrow(covariance) == 0)
@@ -1166,8 +1166,8 @@
   rownames(omnibusResult) <- "Omnibus"
 
   # Variable-specific tests
-  variableResult <- do.call(rbind, lapply(1:p, function(i) {
-    sequenceIndex  <- seq(from = i, to = (q * p), by = p)
+  variableResult <- do.call(rbind, lapply(1:numPredictors, function(predictorIndex) {
+    sequenceIndex  <- seq(from = predictorIndex, to = (numThresholds * numPredictors), by = numPredictors)
     contrastSubset <- contrastOmnibus[, sequenceIndex, drop = FALSE]
     relevantRows   <- which(rowSums(contrastSubset != 0) > 0)
     contrastSubset <- contrastSubset[relevantRows, , drop = FALSE]
