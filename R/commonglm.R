@@ -1130,7 +1130,7 @@
       indexCol <- ((threshCol-1)*numPredictors + 1):(threshCol*numPredictors)
       covarianceTotal[indexRow, indexCol] <- covarianceBlock
 
-      # Note, current R brant implementations (brant::brant, gofcat::gofcat) omit the transpose below,
+      # Note, current R brant implementations (brant::brant, gofcat::brant.test) omit the transpose below,
       # resulting in minor numerical discrepancies.
       # This implementation matches results from STATA's brant run on an ologit model
       if (threshRow != threshCol) covarianceTotal[indexCol, indexRow] <- t(covarianceBlock)
