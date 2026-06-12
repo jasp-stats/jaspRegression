@@ -1133,8 +1133,7 @@
 
       # Note, current R brant implementations (brant::brant, gofcat::gofcat) omit the transpose below,
       # resulting in minor numerical discrepancies.
-      # This implementation matches results from STATA's brant
-
+      # This implementation matches results from STATA's brant run on an ologit model
       if (threshRow != threshCol) covarianceTotal[indexCol, indexRow] <- t(covarianceBlock)
     }
   }
