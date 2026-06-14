@@ -594,7 +594,7 @@ test_that("Brant test handles weighted models gracefully", {
   options$modelTerms <- list(
     list(components = "depth", isNuisance = FALSE)
   )
-  options$weights <- "stations" # 'stations' is strictly positive
+  options$weights <- "stations"
   options$brantTest <- TRUE
 
   results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, options)
