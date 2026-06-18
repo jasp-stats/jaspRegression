@@ -189,19 +189,29 @@ Form {
 				columnSpacing: 0
 				Group
 				{
-					RadioButton { value: "gPrior";			label: qsTr("g-prior"); info: qsTr("Zellner's g-prior.")	;			id: gprior			}
-					RadioButton { value: "hyperG";			label: qsTr("Hyper-g"); info: qsTr("A mixture of g-priors where the prior on g/(1+g) is a Beta(1, alpha/2). This uses the Cephes library for evaluation of the marginal likelihoods and may be numerically unstable for large n or R2 close to 1. Default choice of alpha is 3.")	;			id: hyperg			}
+					RadioButton { value: "gPrior";			label: qsTr("g-prior"); info: qsTr("Zellner's g-prior. The parameter g defaults to n, the unit-information prior.")	;			id: gprior			}
+					RadioButton { value: "hyperG";			label: qsTr("Hyper-g"); info: qsTr("A mixture of g-priors where the prior on g/(1+g) is a Beta(1, alpha/2). This uses the Cephes library for evaluation of the marginal likelihoods and may be numerically unstable for large n or R2 close to 1. The default choice of alpha is 3; values between 2 and 4 are often recommended.")	;			id: hyperg			}
 					RadioButton { value: "hyperGLaplace";	label: qsTr("Hyper-g-Laplace"); info: qsTr("Same as Hyper-g but uses a Laplace approximation to integrate over the prior on g.")	;	id: hyperglaplace	}
 					RadioButton { value: "hyperGN";			label: qsTr("Hyper-g-n"); info: qsTr("A mixture of g-priors where u = g/n and u Beta(1, alpha/2) to provide consistency when the null model is true.")	;		id: hypergn			}
 				}
 				DoubleField
 				{
-					name: "gPriorAlpha"
+					name: "gPriorG"
+					label: qsTr("g")
+					info: qsTr("The g parameter for Zellner's g-prior. In BAS, the default is g = n (the unit-information prior). The value must be positive.")
+					enabled: gprior.checked
+					defaultValue: dataSetInfo.dataAvailable ? dataSetInfo.rowCount : 1
+					min: 0
+					inclusive: JASP.None
+				}
+				DoubleField
+				{
+					name: "hyperGAlpha"
 					label: qsTr("alpha")
-					enabled: gprior.checked || hyperg.checked || hyperglaplace.checked || hypergn.checked
+					info: qsTr("The alpha parameter for the Hyper-g family of priors. In BAS, the default is alpha = 3; values between 2 and 4 are commonly recommended, but JASP only enforces that alpha is positive.")
+					enabled: hyperg.checked || hyperglaplace.checked || hypergn.checked
 					defaultValue: 3.0
-					min: 2
-					max: 4
+					min: 0
 					inclusive: JASP.None
 				}
 				RadioButton { value: "jzs"; label: qsTr("JZS"); info: qsTr("Jeffreys-Zellner-Siow prior which uses the Jeffreys prior on sigma and the Zellner-Siow Cauchy prior on the coefficients. The optional parameter can be used to control the squared scale of the prior.") ; checked: true; id: jzs }
