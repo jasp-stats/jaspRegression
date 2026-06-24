@@ -16,7 +16,8 @@
 
 # jaspRegression (development version)
 
-
+## Fixed
+* Removed the incorrect "residuals are normally distributed" assumption from the Logistic Regression help and info text (frequentist and Bayesian); logistic regression has no normality-of-residuals assumption.
 
 ---
 

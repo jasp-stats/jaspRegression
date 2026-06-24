@@ -9,7 +9,6 @@ Logistic regression allows the user to model a linear relationship between one o
 - The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
 - The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
 - The residuals are uncorrelated with each other.
-- The residuals are normally distributed with a mean zero.
 - The covariate and the experiment effect are independent. 
 
 ### Input
