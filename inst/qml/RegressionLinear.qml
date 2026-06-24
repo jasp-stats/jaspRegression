@@ -259,6 +259,102 @@ Form
 
 	Section
 	{
+		title: qsTr("Descriptives Plots")
+		columns: 1
+		info: qsTr("Visualize the relationship between predictors and the dependent variable. Scale predictors can be placed on any axis and will be split into groups; categorical predictors are used directly. Use 'Separate Lines' or 'Separate Plots' to stratify by a second predictor.")
+
+		VariablesForm
+		{
+			preferredHeight: 150 * preferencesModel.uiScale
+			AvailableVariablesList
+			{
+				name:  "descriptivePlotAvailablePredictors"
+				title: qsTr("Predictors")
+				source: ["covariates", "factors"]
+			}
+			AssignedVariablesList
+			{
+				name:         "descriptivePlotHorizontalAxis"
+				title:        qsTr("Horizontal Axis")
+				info:         qsTr("Predictor to display on the horizontal axis. Scale predictors will be split into groups according to the Scale Predictor Grouping settings.")
+				singleVariable: true
+			}
+			AssignedVariablesList
+			{
+				name:         "descriptivePlotSeparateLines"
+				title:        qsTr("Separate Lines")
+				info:         qsTr("Predictor whose levels are shown as separate lines. Scale predictors will be binned into groups.")
+				singleVariable: true
+			}
+			AssignedVariablesList
+			{
+				name:         "descriptivePlotSeparatePlot"
+				title:        qsTr("Separate Plots")
+				info:         qsTr("Predictor whose levels are shown as separate plots. Scale predictors will be binned into groups.")
+				singleVariable: true
+			}
+		}
+
+		Group
+		{
+			title:   qsTr("Scale Predictor Grouping")
+			columns: 2
+			info:    qsTr("Controls how continuous (scale) predictors assigned to Horizontal Axis, Separate Lines, or Separate Plots are divided into discrete groups for plotting.")
+
+			DropDown
+			{
+				name:  "descriptivePlotScaleGroupingMethod"
+				label: qsTr("Grouping method")
+				info:  qsTr("Standard deviation: groups are defined by equal-width intervals around the mean (e.g., Low = below mean−SD, Medium = mean±SD, High = above mean+SD). Percentile: groups are equal-frequency bins based on quantile cut-points.")
+				values: [
+					{ label: qsTr("Standard deviation"), value: "sd"         },
+					{ label: qsTr("Percentile"),          value: "percentile" }
+				]
+			}
+
+			IntegerField
+			{
+				name:         "descriptivePlotScaleGroups"
+				label:        qsTr("Number of groups")
+				info:         qsTr("Number of groups to create for each scale predictor. Minimum 2, maximum 10.")
+				defaultValue: 3
+				min:          2
+				max:          10
+			}
+		}
+
+		Group
+		{
+			title: qsTr("Display")
+			CheckBox
+			{
+				name:    "descriptivePlotErrorBar"
+				label:   qsTr("Error bars")
+				checked: true
+				info:    qsTr("Show error bars on the plot. For scatter plots the shaded band represents the confidence/prediction interval of the regression line.")
+				RadioButtonGroup
+				{
+					name: "descriptivePlotErrorBarType"
+					RadioButton
+					{
+						value:             "ci"
+						label:             qsTr("Confidence interval")
+						checked:           true
+						childrenOnSameRow: true
+						CIField { name: "descriptivePlotCiLevel" }
+					}
+					RadioButton
+					{
+						value: "se"
+						label: qsTr("Standard error")
+					}
+				}
+			}
+		}
+	}
+
+	Section
+	{
 		title: qsTr("Response Optimizer")
 		columns: 2
 		visible: PRO

@@ -93,6 +93,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (options$descriptives && is.null(modelContainer[["descriptivesTable"]]))
     .linregCreateDescriptivesTable(modelContainer, dataset, options, position = 5)
 
+  # Descriptive plots (new tab)
+  if (options[["descriptivePlotHorizontalAxis"]] != "" && is.null(modelContainer[["descriptivePlotsContainer"]]))
+    .linregDescriptivePlots(modelContainer, dataset, options, ready, position = 18)
+
   # Response Optimizer
   if ((options[["optimizationSolutionTable"]] || options[["optimizationPlot"]]) && is.null(modelContainer[["responseOptimizer"]]))
     .linregResponseOptimizer(modelContainer, finalModel, dataset, options, ready)
@@ -2833,4 +2837,267 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     row[[fac]] <- as.character(currentSettings[[fac]])
   row[["fit"]] <- round(predValue, 4)
   tb$addRows(row)
+}
+
+# ---- Descriptives Plots for Linear Regression ----------------------------------
+.linregDescriptivePlots <- function(container, dataset, options, ready, position = 18) {
+
+  horizVar <- options[["descriptivePlotHorizontalAxis"]]
+  if (!ready || horizVar == "")
+    return()
+
+  if (!is.null(container[["descriptivePlotsContainer"]]))
+    return()
+
+  plotContainer <- createJaspContainer(title = gettext("Descriptives Plots"))
+  plotContainer$position <- position
+  plotContainer$dependOn(c(
+    "dependent", "covariates", "factors",
+    "descriptivePlotHorizontalAxis", "descriptivePlotSeparateLines", "descriptivePlotSeparatePlot",
+    "descriptivePlotErrorBar", "descriptivePlotErrorBarType", "descriptivePlotCiLevel",
+    "descriptivePlotScaleGroupingMethod", "descriptivePlotScaleGroups"
+  ))
+  container[["descriptivePlotsContainer"]] <- plotContainer
+
+  dependent  <- options[["dependent"]]
+  covariates <- options[["covariates"]]
+  linesVar   <- options[["descriptivePlotSeparateLines"]]
+  plotsVar   <- options[["descriptivePlotSeparatePlot"]]
+  nGroups    <- options[["descriptivePlotScaleGroups"]]
+  method     <- options[["descriptivePlotScaleGroupingMethod"]]
+  plotErrorBars <- options[["descriptivePlotErrorBar"]]
+  errorBarType  <- options[["descriptivePlotErrorBarType"]]
+  conf.interval <- options[["descriptivePlotCiLevel"]]
+
+  # Work on a copy of the data so we can safely recode variables
+  dat <- as.data.frame(dataset)
+
+  # Determine whether each role's variable is scale (covariate) or categorical
+  horizIsScale <- horizVar %in% covariates
+  linesIsScale <- linesVar != "" && linesVar %in% covariates
+  plotsIsScale <- plotsVar != "" && plotsVar %in% covariates
+
+  # Always bin scale variables in Separate Lines / Separate Plots roles.
+  # The horizontal axis scale variable is never binned — it stays continuous
+  # and is always plotted directly as a scatter plot with regression lines.
+  if (linesIsScale)
+    dat[[linesVar]] <- .linregBinScaleVariable(dat[[linesVar]], method, nGroups)
+  if (plotsIsScale)
+    dat[[plotsVar]] <- .linregBinScaleVariable(dat[[plotsVar]], method, nGroups)
+
+  # Ensure grouping variables (lines / plots) are proper factors
+  for (v in c(linesVar, plotsVar)) {
+    if (v != "" && !is.factor(dat[[v]]))
+      dat[[v]] <- as.factor(dat[[v]])
+  }
+
+  # ---- Path 1: continuous x-axis → scatter + lm regression line(s) ----------
+  # linesVar (if present) has been binned above and is passed as the split/group.
+  if (horizIsScale) {
+
+    splitScatterOptions                                       <- options
+    splitScatterOptions[["colorPalette"]]                     <- "colorblind3"
+    splitScatterOptions[["scatterPlotLegend"]]                <- TRUE
+    splitScatterOptions[["scatterPlotRegressionLine"]]        <- TRUE
+    splitScatterOptions[["scatterPlotRegressionLineCi"]]      <- plotErrorBars
+    splitScatterOptions[["scatterPlotRegressionLineType"]]    <- "linear"
+    splitScatterOptions[["scatterPlotGraphTypeAbove"]]        <- "none"
+    splitScatterOptions[["scatterPlotGraphTypeRight"]]        <- "none"
+    splitScatterOptions[["scatterPlotRegressionLineCiLevel"]] <- conf.interval
+
+    if (plotsVar != "") {
+      for (thisLevel in levels(dat[[plotsVar]])) {
+        subData      <- dat[dat[[plotsVar]] == thisLevel, , drop = FALSE]
+        thisPlotName <- paste0(horizVar, " - ", dependent, ": ", plotsVar, " = ", thisLevel)
+        jaspDescriptives::.descriptivesScatterPlots(
+          plotContainer, subData, c(horizVar, dependent),
+          split = if (linesVar != "") linesVar else NULL,
+          options = splitScatterOptions, name = thisPlotName,
+          dependOnVariables = FALSE
+        )
+      }
+    } else {
+      jaspDescriptives::.descriptivesScatterPlots(
+        plotContainer, dat, c(horizVar, dependent),
+        split = if (linesVar != "") linesVar else NULL,
+        options = splitScatterOptions,
+        dependOnVariables = FALSE
+      )
+    }
+    return()
+  }
+
+  # ---- Path 2: categorical / binned x-axis → group-means line plot ----------
+  groupVars  <- c(horizVar, linesVar, plotsVar)
+  groupVars  <- groupVars[groupVars != ""]
+
+  summaryStat <- jaspTTests::.summarySE(
+    dat,
+    measurevar    = dependent,
+    groupvars     = groupVars,
+    conf.interval = conf.interval,
+    na.rm         = TRUE,
+    .drop         = FALSE,
+    errorBarType  = errorBarType
+  )
+
+  colnames(summaryStat)[colnames(summaryStat) == dependent] <- "dependent"
+  if (horizVar != "")
+    colnames(summaryStat)[colnames(summaryStat) == horizVar] <- "descriptivePlotHorizontalAxis"
+  if (linesVar != "")
+    colnames(summaryStat)[colnames(summaryStat) == linesVar] <- "descriptivePlotSeparateLines"
+  if (plotsVar != "")
+    colnames(summaryStat)[colnames(summaryStat) == plotsVar] <- "descriptivePlotSeparatePlot"
+
+  if (plotsVar != "") {
+    subsetPlots <- levels(summaryStat[, "descriptivePlotSeparatePlot"])
+    nPlots      <- length(subsetPlots)
+  } else {
+    nPlots <- 1L
+  }
+
+  for (i in seq_len(nPlots)) {
+
+    if (nPlots > 1L) {
+      title <- paste0(plotsVar, ": ", subsetPlots[i])
+    } else {
+      title <- ""
+    }
+
+    descriptivesPlot <- createJaspPlot(title = title)
+    plotContainer[[if (title == "") "descriptivesPlot" else title]] <- descriptivesPlot
+
+    descriptivesPlot$height <- 300
+    descriptivesPlot$width  <- if (linesVar != "") 430L else 300L
+
+    if (nPlots > 1L) {
+      summaryStatSubset <- subset(summaryStat, summaryStat[, "descriptivePlotSeparatePlot"] == subsetPlots[i])
+    } else {
+      summaryStatSubset <- summaryStat
+    }
+
+    if (linesVar == "") {
+      p <- ggplot2::ggplot(summaryStatSubset, ggplot2::aes(
+              x = descriptivePlotHorizontalAxis, y = dependent, group = 1))
+    } else {
+      p <- ggplot2::ggplot(summaryStatSubset, ggplot2::aes(
+              x     = descriptivePlotHorizontalAxis,
+              y     = dependent,
+              group = descriptivePlotSeparateLines,
+              shape = descriptivePlotSeparateLines,
+              fill  = descriptivePlotSeparateLines))
+    }
+
+    if (plotErrorBars) {
+      pd <- ggplot2::position_dodge(.2)
+      p  <- p + ggplot2::geom_errorbar(
+        ggplot2::aes(ymin = ciLower, ymax = ciUpper),
+        colour = "black", width = .2, position = pd
+      )
+    } else {
+      pd <- ggplot2::position_dodge(0)
+    }
+
+    guideLegend <- ggplot2::guide_legend(
+      nrow         = min(10, nlevels(summaryStatSubset$descriptivePlotSeparateLines)),
+      title        = linesVar,
+      keywidth     = 0.1,
+      keyheight    = 0.3,
+      default.unit = "inch"
+    )
+
+    line <- ggplot2::geom_line(position = pd, linewidth = .7)
+
+    if (plotErrorBars) {
+      ci.pos  <- c(summaryStatSubset[, "dependent"],
+                   summaryStatSubset[, "dependent"] - summaryStatSubset[, "ci"],
+                   summaryStatSubset[, "dependent"] + summaryStatSubset[, "ci"],
+                   min(summaryStatSubset[, "dependent"]) * 1.1,
+                   max(summaryStatSubset[, "dependent"]) * 1.1)
+      yBreaks <- jaspGraphs::getPrettyAxisBreaks(ci.pos)
+    } else {
+      yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(
+        summaryStatSubset[, "dependent"],
+        min(summaryStatSubset[, "dependent"]) * 1.1,
+        max(summaryStatSubset[, "dependent"]) * 1.1
+      ))
+    }
+
+    ggXaxis <- ggplot2::scale_x_discrete(
+      breaks = levels(summaryStatSubset[, "descriptivePlotHorizontalAxis"])
+    )
+
+    p <- p + line +
+      ggplot2::geom_point(position = pd, size = 4) +
+      ggplot2::scale_fill_manual(
+        name   = linesVar,
+        values = c(rep(c("white", "black"), 5), rep("grey", 100)),
+        guide  = guideLegend
+      ) +
+      ggplot2::scale_shape_manual(
+        name   = linesVar,
+        values = c(rep(c(21:25), each = 2), 21:25, 7:14, 33:112),
+        guide  = guideLegend
+      ) +
+      ggplot2::scale_color_manual(
+        name   = linesVar,
+        values = rep("black", 200),
+        guide  = guideLegend
+      ) +
+      ggplot2::labs(y = dependent, x = horizVar) +
+      ggplot2::scale_y_continuous(breaks = yBreaks, limits = range(yBreaks)) +
+      ggXaxis +
+      jaspGraphs::geom_rangeframe() +
+      jaspGraphs::themeJaspRaw(legend.position = "right")
+
+    descriptivesPlot$plotObject <- p
+  }
+  return()
+}
+
+
+# Bin a continuous variable into a labelled factor with nGroups levels
+.linregBinScaleVariable <- function(x, method, nGroups) {
+  x       <- as.numeric(x)
+  nGroups <- as.integer(nGroups)
+
+  if (method == "sd") {
+    mn  <- mean(x, na.rm = TRUE)
+    sdd <- sd(x, na.rm = TRUE)
+
+    if (sdd == 0 || is.na(sdd))
+      return(factor(rep(mn, length(x))))
+
+    # nGroups-1 internal breakpoints symmetrically around the mean
+    halfRange <- floor(nGroups / 2)
+    rawBreaks <- mn + seq(-halfRange, halfRange, length.out = nGroups - 1) * sdd
+    breaks    <- unique(rawBreaks)
+    nBins     <- length(breaks) + 1
+    labels    <- .linregSdGroupLabels(nBins)
+
+    result <- cut(x, breaks = c(-Inf, breaks, Inf), labels = labels, include.lowest = TRUE)
+
+  } else {  # percentile
+    probs  <- seq(0, 1, length.out = nGroups + 1)
+    breaks <- unique(quantile(x, probs = probs, na.rm = TRUE))
+    nBins  <- length(breaks) - 1
+
+    if (nBins < 1L)
+      return(factor(rep("All", length(x))))
+
+    labels <- paste0("Q", seq_len(nBins))
+    result <- cut(x, breaks = breaks, labels = labels, include.lowest = TRUE)
+  }
+
+  return(result)
+}
+
+.linregSdGroupLabels <- function(nGroups) {
+  switch(as.character(nGroups),
+    "2" = c("Low", "High"),
+    "3" = c("Low", "Medium", "High"),
+    "4" = c("Low", "Med-Low", "Med-High", "High"),
+    "5" = c("Very Low", "Low", "Medium", "High", "Very High"),
+    paste0("G", seq_len(nGroups))
+  )
 }
