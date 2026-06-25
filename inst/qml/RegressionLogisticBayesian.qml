@@ -24,9 +24,11 @@ import "./common" as Common
 
 Form {
 	info: qsTr("The Bayesian Logistic Regression allows you to model a linear relationship between one or more explanatory variable/s and a categorical dependent variable.\n") +
-	"## " + qsTr("Assumptions") + "\n" + "- The dependent variable is binary.\n" + "- The observations are independent of one another.\n" +
-	"- The logit (log-odds) of the outcome is linearly related to the continuous predictors.\n" +
-	"- There is little or no multicollinearity among the predictors."
+	"## " + qsTr("Assumptions") + "\n" +
+	"- " + qsTr("The dependent variable is binary.") + "\n" +
+	"- " + qsTr("The observations are independent of one another.") + "\n" +
+	"- " + qsTr("The logit (log-odds) of the outcome is linearly related to the continuous predictors.") + "\n" +
+	"- " + qsTr("There is little or no multicollinearity among the predictors.")
 	VariablesForm
 	{
 		AvailableVariablesList	{ name: "allVariablesList" }
