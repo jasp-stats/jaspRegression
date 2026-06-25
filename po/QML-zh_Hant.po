@@ -405,7 +405,7 @@ msgstr "描述性統計"
 
 msgctxt "RegressionLinear|"
 msgid "Part and partial correlations"
-msgstr "偏相關與淨相關"
+msgstr "部分(半偏)相關與偏相關"
 
 msgctxt "RegressionLinear|"
 msgid "Collinearity diagnostics"

@@ -23,9 +23,11 @@ import "./common"		as Common
 Form
 {
 	info: qsTr("Logistic regression allows the user to model a linear relationship between one or more explanatory variable/s and a categorical dependent variable.\n") +
-	"## " + qsTr("Assumptions") + "\n" + "- The dependent variables are categorical.\n" + "- The dependent variable is linearly related to all predictors and the effects of the predictors are additive.\n" +
-	"- The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.\n" +
-	"- The residuals are uncorrelated with each other.\n" + "- The residuals are normally distributed with a mean of zero.\n" + "- The covariate and the experiment effect are independent."
+	"## " + qsTr("Assumptions") + "\n" +
+	"- " + qsTr("The dependent variable is binary.") + "\n" +
+	"- " + qsTr("The observations are independent of one another.") + "\n" +
+	"- " + qsTr("The logit (log-odds) of the outcome is linearly related to the continuous predictors.") + "\n" +
+	"- " + qsTr("There is little or no multicollinearity among the predictors.")
 	plotWidth: 480
 	plotHeight: 320
 	

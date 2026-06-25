@@ -574,7 +574,7 @@ msgstr "Opcións"
 
 msgctxt "Correlation|"
 msgid "Missing Values"
-msgstr "Valores Ausentes"
+msgstr "Valores ausentes"
 
 msgctxt "Correlation|"
 msgid "Exclude cases pairwise"
@@ -670,7 +670,7 @@ msgstr "Opcións"
 
 msgctxt "CorrelationBayesian|"
 msgid "Missing Values"
-msgstr "Valores Ausentes"
+msgstr "Valores ausentes"
 
 msgctxt "CorrelationBayesian|"
 msgid "Exclude cases listwise"
@@ -730,7 +730,7 @@ msgstr "Descritivos"
 
 msgctxt "RegressionLinear|"
 msgid "Missing Values"
-msgstr "Valores Ausentes"
+msgstr "Valores ausentes"
 
 msgctxt "RegressionLinear|"
 msgid "Exclude cases listwise"
@@ -3981,73 +3981,72 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Response Optimizer"
-msgstr ""
+msgstr "Optimizador de respostas"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Output"
 msgstr "Saída de resultados"
 
 msgctxt "RegressionLinear|"
 msgid "Show optimal solution"
-msgstr ""
+msgstr "Amosar a solución óptima"
 
 msgctxt "RegressionLinear|"
 msgid "Show optimization plot"
-msgstr ""
+msgstr "Amosar a gráfica de optimización"
 
 msgctxt "RegressionLinear|"
 msgid "Set input parameters manually"
-msgstr ""
+msgstr "Establecer manualmente os parámetros de entrada"
 
 msgctxt "RegressionLinear|"
 msgid "Predictors"
-msgstr ""
+msgstr "Preditores"
 
 msgctxt "RegressionLinear|"
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 msgctxt "RegressionLinear|"
 msgid "Bounds and Target"
-msgstr ""
+msgstr "Límites e obxectivo"
 
 msgctxt "RegressionLinear|"
 msgid "Set bounds manually"
-msgstr ""
+msgstr "Establecer manualmente os límites"
 
 msgctxt "RegressionLinear|"
 msgid "Lower bound"
-msgstr ""
+msgstr "Límite inferior"
 
 msgctxt "RegressionLinear|"
 msgid "Upper bound"
-msgstr ""
+msgstr "Límite superior"
 
 msgctxt "RegressionLinear|"
 msgid "Set target manually"
-msgstr ""
+msgstr "Establecer manualmente o obxectivo"
 
 msgctxt "RegressionLinear|"
 msgid "Target"
-msgstr ""
+msgstr "Obxectivo"
 
 msgctxt "RegressionLinear|"
 msgid "Optimization Goal"
-msgstr ""
+msgstr "Meta da optimización"
 
 msgctxt "RegressionLinear|"
 msgid "Goal"
-msgstr ""
+msgstr "Meta"
 
 msgctxt "RegressionLinear|"
 msgid "Maximize"
-msgstr ""
+msgstr "Maximizar"
 
 msgctxt "RegressionLinear|"
 msgid "Minimize"
-msgstr ""
+msgstr "Minimizar"
 
 msgctxt "RegressionLinear|"
 msgid "Weight"
-msgstr ""
+msgstr "Ponderación"
