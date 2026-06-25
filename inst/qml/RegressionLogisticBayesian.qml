@@ -24,9 +24,9 @@ import "./common" as Common
 
 Form {
 	info: qsTr("The Bayesian Logistic Regression allows you to model a linear relationship between one or more explanatory variable/s and a categorical dependent variable.\n") +
-	"## " + qsTr("Assumptions") + "\n" + "- The dependent variables are categorical.\n" + "- The dependent variable is linearly related to all predictors and the effects of the predictors are additive.\n" +
-	"- The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.\n" +
-	"- The residuals are uncorrelated with each other.\n" + "- The covariate and the experiment effect are independent."
+	"## " + qsTr("Assumptions") + "\n" + "- The dependent variable is binary.\n" + "- The observations are independent of one another.\n" +
+	"- The logit (log-odds) of the outcome is linearly related to the continuous predictors.\n" +
+	"- There is little or no multicollinearity among the predictors."
 	VariablesForm
 	{
 		AvailableVariablesList	{ name: "allVariablesList" }

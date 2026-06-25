@@ -5,11 +5,10 @@ Logistic regression allows the user to model a linear relationship between one o
 
 ### Assumptions
 ---
-- The dependent variables are categorical.
-- The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
-- The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
-- The residuals are uncorrelated with each other.
-- The covariate and the experiment effect are independent. 
+- The dependent variable is binary.
+- The observations are independent of one another.
+- The logit (log-odds) of the outcome is linearly related to the continuous predictors.
+- There is little or no multicollinearity among the predictors.
 
 ### Input
 ---
