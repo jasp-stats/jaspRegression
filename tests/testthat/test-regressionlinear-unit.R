@@ -15,12 +15,19 @@ test_that("Test that .linregSdGroupLabels returns the expected labels", {
 test_that("Test that .linregBinScaleVariable bins by standard deviation", {
   x      <- seq(0, 100, by = 1) # mean 50, breaks at mean +/- 1 SD
   binned <- jaspRegression:::.linregBinScaleVariable(x, method = "sd", nGroups = 3)
+  binned2 <- jaspRegression:::.linregBinScaleVariable(x, method = "sd", nGroups = 2)
 
   expect_s3_class(binned, "factor")
   expect_identical(levels(binned), c("Low", "Medium", "High"))
   expect_identical(as.character(binned[x ==   0]), "Low")
   expect_identical(as.character(binned[x ==  50]), "Medium")
   expect_identical(as.character(binned[x == 100]), "High")
+
+  expect_s3_class(binned2, "factor")
+  expect_identical(levels(binned2), c("Low", "High"))
+  expect_identical(as.character(binned2[x ==   0]), "Low")
+  expect_identical(as.character(binned2[x ==  50]), "Low")
+  expect_identical(as.character(binned2[x == 100]), "High")
 })
 
 test_that("Test that .linregBinScaleVariable bins by percentile", {

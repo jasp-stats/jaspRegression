@@ -3008,18 +3008,22 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
     line <- ggplot2::geom_line(position = pd, linewidth = .7)
 
+    depValues <- summaryStatSubset[, "dependent"]
+    paddedMin <- min(depValues) - 0.1 * abs(min(depValues))
+    paddedMax <- max(depValues) + 0.1 * abs(max(depValues))
+
     if (plotErrorBars) {
       ci.pos  <- c(summaryStatSubset[, "dependent"],
                    summaryStatSubset[, "dependent"] - summaryStatSubset[, "ci"],
                    summaryStatSubset[, "dependent"] + summaryStatSubset[, "ci"],
-                   min(summaryStatSubset[, "dependent"]) * 1.1,
-                   max(summaryStatSubset[, "dependent"]) * 1.1)
+                   paddedMin,
+                   paddedMax)
       yBreaks <- jaspGraphs::getPrettyAxisBreaks(ci.pos)
     } else {
       yBreaks <- jaspGraphs::getPrettyAxisBreaks(c(
-        summaryStatSubset[, "dependent"],
-        min(summaryStatSubset[, "dependent"]) * 1.1,
-        max(summaryStatSubset[, "dependent"]) * 1.1
+        depValues,
+        paddedMin,
+        paddedMax
       ))
     }
 
@@ -3069,8 +3073,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       return(factor(rep(mn, length(x))))
 
     # nGroups-1 internal breakpoints symmetrically around the mean
-    halfRange <- floor(nGroups / 2)
-    rawBreaks <- mn + seq(-halfRange, halfRange, length.out = nGroups - 1) * sdd
+    offsets   <- seq_len(nGroups - 1) - nGroups / 2
+    rawBreaks <- mn + offsets * sdd
     breaks    <- unique(rawBreaks)
     nBins     <- length(breaks) + 1
     labels    <- .linregSdGroupLabels(nBins)
