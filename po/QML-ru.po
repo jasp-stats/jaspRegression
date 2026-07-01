@@ -3686,3 +3686,39 @@ msgstr ""
 msgctxt "RegressionLinear|"
 msgid "Weight"
 msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "The dependent variable is binary."
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "The observations are independent of one another."
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid ""
+"The logit (log-odds) of the outcome is linearly related to the continuous "
+"predictors."
+msgstr ""
+
+msgctxt "RegressionLogistic|"
+msgid "There is little or no multicollinearity among the predictors."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "The dependent variable is binary."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "The observations are independent of one another."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"The logit (log-odds) of the outcome is linearly related to the continuous "
+"predictors."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "There is little or no multicollinearity among the predictors."
+msgstr ""
