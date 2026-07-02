@@ -16,6 +16,9 @@
 
 # jaspRegression (development version)
 
+## Added
+* Added a "Descriptives Plots" section to Linear Regression for visualizing predictor–outcome relationships. Continuous predictors on the horizontal axis are shown as scatter plots with regression lines; categorical (or binned continuous) predictors are shown as group-means line plots, with optional "Separate Lines"/"Separate Plots" stratification, configurable scale-predictor grouping (SD or percentile), and error bars (CI or SE).
+
 ## Fixed
 * Corrected the Logistic Regression assumptions in the help and info text (frequentist and Bayesian). Removed assumptions that do not apply to logistic regression (normality of residuals, homoscedasticity, a linear dependent-variable/predictor relationship) and now state the actual assumptions: binary outcome, independent observations, linearity of the logit in the continuous predictors, and no multicollinearity.
 

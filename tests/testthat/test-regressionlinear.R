@@ -268,6 +268,68 @@ test_that("Marginal effects plot matches", {
   jaspTools::expect_equal_plots(testPlot, "marginal-plot")
 })
 
+test_that("Descriptives plot with categorical predictor matches", {
+  options <- initOptsLinReg()
+
+  options$factors    <- "facGender"
+  options$modelTerms <- list(
+    list(components = NULL,        name = "model0", title = "Model 0"),
+    list(components = "facGender", name = "model1", title = "Model 1")
+  )
+  options$covariates <- list()
+  options$descriptivePlotHorizontalAxis <- "facGender"
+
+  results  <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "descriptives-categorical")
+})
+
+test_that("Descriptives plot with separate lines matches", {
+  options <- initOptsLinReg()
+
+  options$factors    <- c("facGender", "facExperim")
+  options$modelTerms <- list(
+    list(components = NULL,         name = "model0", title = "Model 0"),
+    list(components = "facGender",  name = "model1", title = "Model 1")
+  )
+  options$covariates <- list()
+  options$descriptivePlotHorizontalAxis <- "facGender"
+  options$descriptivePlotSeparateLines  <- "facExperim"
+
+  results  <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "descriptives-separate-lines")
+})
+
+test_that("Descriptives plot with continuous separate lines (binned) matches", {
+  options <- initOptsLinReg()
+
+  options$factors    <- "facGender"
+  options$modelTerms <- list(
+    list(components = NULL,        name = "model0", title = "Model 0"),
+    list(components = "contGamma", name = "model1", title = "Model 1")
+  )
+  # contGamma stays a covariate so it is treated as scale and binned into groups
+  options$descriptivePlotHorizontalAxis      <- "facGender"
+  options$descriptivePlotSeparateLines       <- "contGamma"
+  options$descriptivePlotScaleGroupingMethod <- "sd"
+  options$descriptivePlotScaleGroups         <- 3
+
+  results  <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "descriptives-separate-lines-continuous")
+})
+
+test_that("Descriptives plot with continuous predictor (scatter) matches", {
+  options <- initOptsLinReg()
+
+  options$descriptivePlotHorizontalAxis <- "contGamma"
+
+  results  <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "descriptives-scatter")
+})
+
 test_that("Analysis handles errors", {
   options <- initOptsLinReg()
 
