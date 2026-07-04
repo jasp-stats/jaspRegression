@@ -3562,3 +3562,98 @@ msgstr ""
 msgctxt "RegressionLogisticBayesian|"
 msgid "There is little or no multicollinearity among the predictors."
 msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Descriptives Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Visualize the relationship between predictors and the dependent variable. "
+"Scale predictors can be placed on any axis and will be split into groups; "
+"categorical predictors are used directly. Use 'Separate Lines' or 'Separate "
+"Plots' to stratify by a second predictor."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Horizontal Axis"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Predictor to display on the horizontal axis. Scale predictors will be split "
+"into groups according to the Scale Predictor Grouping settings."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Separate Lines"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Predictor whose levels are shown as separate lines. Scale predictors will be "
+"binned into groups."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Separate Plots"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Predictor whose levels are shown as separate plots. Scale predictors will be "
+"binned into groups."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Scale Predictor Grouping"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Controls how continuous (scale) predictors assigned to Horizontal Axis, "
+"Separate Lines, or Separate Plots are divided into discrete groups for "
+"plotting."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Grouping method"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Standard deviation: groups are defined by equal-width intervals around the "
+"mean (e.g., Low = below mean−SD, Medium = mean±SD, High = above mean+SD). "
+"Percentile: groups are equal-frequency bins based on quantile cut-points."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Standard deviation"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Percentile"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Number of groups"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Number of groups to create for each scale predictor. Minimum 2, maximum 10."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Error bars"
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid ""
+"Show error bars on the plot. For scatter plots the shaded band represents "
+"the confidence/prediction interval of the regression line."
+msgstr ""
+
+msgctxt "RegressionLinear|"
+msgid "Standard error"
+msgstr ""

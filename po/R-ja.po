@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2026-03-14 03:30\n"
+"POT-Creation-Date: 2026-07-04 03:58\n"
 "PO-Revision-Date: 2024-10-22 23:15+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -1033,6 +1033,10 @@ msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
 msgstr ""
+
+#, fuzzy
+msgid "Descriptives Plots"
+msgstr "記述統計量"
 
 msgid "All effects are specified as nuisance"
 msgstr "すべての効果は妨害要因として指定されています"

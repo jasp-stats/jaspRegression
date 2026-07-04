@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2026-03-14 03:30\n"
+"POT-Creation-Date: 2026-07-04 03:58\n"
 "PO-Revision-Date: 2026-07-04 03:55+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -1106,6 +1106,10 @@ msgstr ""
 "Uno o más parámetros de entrada para los predictores continuos están fuera "
 "del espacio de diseño. La extrapolación más allá del espacio de diseño "
 "podría no ser válida."
+
+#, fuzzy
+msgid "Descriptives Plots"
+msgstr "Descriptivos"
 
 msgid "All effects are specified as nuisance"
 msgstr "Todos los efectos se indican como molestos"

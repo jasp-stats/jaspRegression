@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
-"POT-Creation-Date: 2026-03-14 03:30\n"
+"POT-Creation-Date: 2026-07-04 03:58\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -984,6 +984,9 @@ msgstr ""
 msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
+msgstr ""
+
+msgid "Descriptives Plots"
 msgstr ""
 
 msgid "All effects are specified as nuisance"

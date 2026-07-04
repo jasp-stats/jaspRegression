@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
-"POT-Creation-Date: 2026-03-14 03:30\n"
+"POT-Creation-Date: 2026-07-04 03:58\n"
 "PO-Revision-Date: 2026-07-04 03:55+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
@@ -991,6 +991,10 @@ msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
 msgstr ""
+
+#, fuzzy
+msgid "Descriptives Plots"
+msgstr "Deskriptif"
 
 msgid "All effects are specified as nuisance"
 msgstr ""
