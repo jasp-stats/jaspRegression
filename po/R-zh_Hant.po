@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
 "POT-Creation-Date: 2026-07-04 03:58\n"
-"PO-Revision-Date: 2026-06-20 03:58+0000\n"
+"PO-Revision-Date: 2026-07-06 18:01+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hant/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.7.dev0\n"
+"X-Generator: Weblate 2026.7.1.dev0\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -132,7 +132,6 @@ msgid ""
 "the data."
 msgstr "無法找到有效之起始值。請檢查模型配適資料之可行性。"
 
-#, fuzzy
 msgid "Plotting is not possible: %s"
 msgstr "無法繪圖：%s"
 
@@ -344,7 +343,6 @@ msgstr "變項"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "Shapiro-Wilk 雙變量常態性檢定"
 
-#, fuzzy
 msgid "Scatter Plots"
 msgstr "散佈圖"
 
@@ -383,7 +381,6 @@ msgstr "Spearman 淨相關"
 msgid "Partial Kendall's tau B"
 msgstr "Kendall's tau B 淨相關"
 
-#, fuzzy
 msgid "%s heatmap"
 msgstr "%s 熱圖"
 
@@ -440,7 +437,6 @@ msgstr "%s%% 信賴區間："
 msgid "Bayesian Correlation Pairwise Plots"
 msgstr "貝氏相關圖"
 
-#, fuzzy
 msgid "max %s"
 msgstr "最大值 %s"
 
@@ -487,7 +483,6 @@ msgid ""
 "levels."
 msgstr "Bernoulli 族要求依變項須為具有 2 個水準之因子。"
 
-#, fuzzy
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be non-zero."
@@ -575,11 +570,9 @@ msgstr "估計值"
 msgid "Standard Error"
 msgstr "標準誤"
 
-#, fuzzy
 msgid "Lower Bound"
 msgstr "下界"
 
-#, fuzzy
 msgid "Upper Bound"
 msgstr "上界"
 
@@ -622,11 +615,9 @@ msgstr "%1s 的淨殘差"
 msgid "Plot: Working responses vs. linear predictor"
 msgstr "繪圖：工作回應 vs. 線性預測變數"
 
-#, fuzzy
 msgid "Working responses, z"
-msgstr "工作回應，z"
+msgstr "工作反應值，z"
 
-#, fuzzy
 msgid "Outliers Tables"
 msgstr "異常值表"
 
@@ -636,9 +627,8 @@ msgstr "表：基於 %1s 殘差的前 n 個異常值"
 msgid "Case Number"
 msgstr "個案編號"
 
-#, fuzzy
 msgid "Multicollinearity Diagnostics"
-msgstr "多元共線性診斷指標"
+msgstr "多元共線性診斷"
 
 msgid "Tolerance"
 msgstr "允差值"
@@ -967,7 +957,7 @@ msgid "Response"
 msgstr "反應變項"
 
 msgid "Goal"
-msgstr ""
+msgstr "目標"
 
 msgid "Target"
 msgstr "目標"
@@ -1023,9 +1013,8 @@ msgid ""
 msgstr ""
 "一或多個連續型預測變數的輸入參數超出設計範圍。超出設計範圍的外推可能不可靠。"
 
-#, fuzzy
 msgid "Descriptives Plots"
-msgstr "描述性統計"
+msgstr "描述性統計圖"
 
 msgid "All effects are specified as nuisance"
 msgstr "所有效應皆被指定為干擾效應"
@@ -1254,9 +1243,8 @@ msgstr ""
 "部分信賴區間無法計算。\n"
 "可能因拔靴重複抽樣次數不足。"
 
-#, fuzzy
 msgid "Diagnostic plots"
-msgstr "診斷指標"
+msgstr "診斷圖"
 
 msgid "Estimates plots"
 msgstr "估計值圖"
@@ -1294,7 +1282,6 @@ msgstr "偽陽率"
 msgid "True positive rate"
 msgstr "真陽率"
 
-#, fuzzy
 msgid "Positive predictive value"
 msgstr "陽性預測值"
 
