@@ -6,7 +6,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_Hant\n"
 "X-Qt-Contexts: true\n"
-"PO-Revision-Date: 2026-07-04 06:51+0000\n"
+"PO-Revision-Date: 2026-07-06 18:01+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-qml/zh_Hant/>\n"
@@ -1667,7 +1667,7 @@ msgctxt "ExportBayesian|"
 msgid "Append columns to data"
 msgstr "在原始資料檔中新增一個變數"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals (%1)"
 msgstr "殘差 （%1）"
@@ -3522,7 +3522,6 @@ msgctxt "RegressionLinear|"
 msgid "Displays regression equations for each model."
 msgstr "顯示各模型的迴歸方程式。"
 
-#, fuzzy
 msgctxt "RegressionLogistic|"
 msgid "Include quadratic terms"
 msgstr "納入二次項"
@@ -3578,7 +3577,6 @@ msgstr ""
 "顯示標準化殘差之 Q-Q 圖。信賴帶呈現常態分配假設下殘差之預期範圍；落於信賴帶外"
 "之點則表示偏離常態分配。"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Confidence interval"
 msgstr "信賴區間"
@@ -3637,7 +3635,6 @@ msgctxt "RegressionLinear|"
 msgid "Response Optimizer"
 msgstr "回應最佳化器"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Output"
 msgstr "報表"
@@ -3724,7 +3721,6 @@ msgctxt "RegressionLogistic|"
 msgid "There is little or no multicollinearity among the predictors."
 msgstr "預測變數之間幾乎沒有或完全沒有多元共線性。"
 
-#, fuzzy
 msgctxt "RegressionLogisticBayesian|"
 msgid "The dependent variable is binary."
 msgstr "依變數為二元變數。"
@@ -3737,11 +3733,11 @@ msgctxt "RegressionLogisticBayesian|"
 msgid ""
 "The logit (log-odds) of the outcome is linearly related to the continuous "
 "predictors."
-msgstr ""
+msgstr "結果變數的 logit（對數勝算）與連續型預測變數之間呈線性關係。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "There is little or no multicollinearity among the predictors."
-msgstr ""
+msgstr "預測變數之間幾乎不存在或不存在多重共線性。"
 
 msgctxt "RegressionLinear|"
 msgid "Descriptives Plots"
