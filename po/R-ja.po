@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2026-07-04 03:58\n"
-"PO-Revision-Date: 2024-10-22 23:15+0000\n"
+"PO-Revision-Date: 2026-07-28 05:01+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 5.8.2-dev\n"
+"X-Generator: Weblate 2026.8.dev0\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -31,7 +31,7 @@ msgid "Bayes Factor Robustness Check"
 msgstr "ベイズファクターの頑健性チェック"
 
 msgid "Sequential Analysis"
-msgstr "逐次解析"
+msgstr "逐次分析"
 
 msgid "Bayesian Pearson Correlations"
 msgstr "ベイジアンピアソン相関"
@@ -121,16 +121,22 @@ msgid ""
 "The full model could not be fitted to the data, with the following error "
 "message: '%s'"
 msgstr ""
+"次のエラーメッセージにより、フルモデルをデータにあてはめられませんでした: "
+"'%s'"
 
 msgid ""
 "The null model could not be fitted to the data, with the following error "
 "message: '%s'"
 msgstr ""
+"次のエラーメッセージにより、帰無モデルをデータにあてはめられませんでした: "
+"'%s'"
 
 msgid ""
 "Could not find valid starting values. Check feasibility of the model to fit "
 "the data."
 msgstr ""
+"妥当な初期値が見つかりませんでした。そのモデルがデータにあてはまるかどうかを"
+"確認してください。"
 
 msgid "Plotting is not possible: %s"
 msgstr "プロットができません: %s"
@@ -145,7 +151,7 @@ msgid "There are no predictors to test for multicollinearity"
 msgstr "多重共線性の検定をするための予測子がありません"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
+msgstr "p値は %s に対する帰無仮説の検定に対応します。"
 
 msgid "Results are averaged over the levels of: %s."
 msgstr "結果は次の水準で平均化されています: %s."
@@ -154,53 +160,52 @@ msgid "P-values are not adjusted."
 msgstr "P値は調整されていません."
 
 msgid "Holm"
-msgstr ""
+msgstr "ホルム(Holm)"
 
 msgid "Homel"
-msgstr ""
+msgstr "Homel"
 
 msgid "Hochberg"
-msgstr ""
+msgstr "ホッホベルグ(Hochberg)"
 
 msgid "Multivariate-t"
-msgstr ""
+msgstr "多変量-t"
 
 msgid "Tukey"
 msgstr "テューキー(Tukey)"
 
 msgid "Benjamini-Hochberg"
-msgstr ""
+msgstr "Benjamini-Hochberg"
 
 msgid "Benjamini-Yekutieli"
-msgstr ""
+msgstr "Benjamini-Yekutieli"
 
 msgid "Scheffé"
-msgstr "シェフェ(Scheffe)"
+msgstr "シェフェ(Scheffé)"
 
 msgid "Sidak"
-msgstr ""
+msgstr "シダック(Sidak)"
 
 msgid "Dunnett"
-msgstr ""
+msgstr "ダネット(Dunnett)"
 
 msgid "Bonferroni"
-msgstr ""
+msgstr "ボンフェローニ(Bonferroni)"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr ""
+msgstr "p値は %s による調整を行っています。"
 
 msgid "Predicted"
 msgstr "予測"
 
 msgid "(Intercept)"
-msgstr ""
+msgstr "(切片)"
 
-#, fuzzy
 msgid "Influential Cases"
-msgstr "逐次解析"
+msgstr "影響力のあるケース"
 
 msgid "Std. Residual"
-msgstr "標準的な残差"
+msgstr "標準化残差"
 
 msgid "Predicted Value"
 msgstr "予測値"
@@ -209,28 +214,30 @@ msgid "Residual"
 msgstr "残差"
 
 msgid "DFBETAS_%1s"
-msgstr ""
+msgstr "DFBETAS_%1s"
 
 msgid "DFBETAS:Intercept"
-msgstr ""
+msgstr "DFBETAS:切片"
 
 msgid "DFBETAS:%1s"
-msgstr ""
+msgstr "DFBETAS:%1s"
 
 msgid "Mahalanobis distance cannot be computed for the intercept only model."
-msgstr ""
+msgstr "切片のみのモデルではマハラノビス距離を計算できません。"
 
 msgid "No influential cases found."
-msgstr ""
+msgstr "影響の大きいケースは見つかりませんでした。"
 
 msgid ""
 "Potentially influential case, according to the selected influence measure."
-msgstr ""
+msgstr "選択した影響の指標によれば、影響が大きい可能性のあるケースです。"
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
 "values, try another measure."
 msgstr ""
+"極端な値があるため、一部のケースについて影響の指標を計算できませんでした。別"
+"の指標をお試しください。"
 
 msgid "VS-MPR%s"
 msgstr "VS-MPR%s"
@@ -247,9 +254,8 @@ msgstr ""
 "す\n"
 "(Sellke, Bayarri, & Berger, 2001)。"
 
-#, fuzzy
 msgid "Computing Durbin-Watson Statistics"
-msgstr "共線性統計"
+msgstr "ダービン・ワトソン統計量を計算しています"
 
 msgid "Kendall's Tau"
 msgstr "ケンドールのタウ"
@@ -282,6 +288,8 @@ msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
 msgstr ""
+"ノンパラメトリックな偏相関では、効果量(フィッシャーのz)の標準誤差は現在利用で"
+"きません。"
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
@@ -300,14 +308,13 @@ msgid "VS-MPR"
 msgstr "VS-MPR"
 
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "効果量(フィッシャーのz)"
 
 msgid "SE Effect size"
-msgstr ""
+msgstr "効果量のSE"
 
-#, fuzzy
 msgid "Covariance"
-msgstr "デビアンス"
+msgstr "共分散"
 
 msgid "r"
 msgstr "r"
@@ -350,7 +357,6 @@ msgstr "変数"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "二変量正規性のシャピロ・ウィルク検定"
 
-#, fuzzy
 msgid "Scatter Plots"
 msgstr "散布図"
 
@@ -412,6 +418,8 @@ msgid ""
 "small sample sizes (< 10), approximation by Fisher's z transformation "
 "becomes less accurate"
 msgstr ""
+"効果量(フィッシャーのz): 相関係数が大きい場合(> 0.9)やサンプルサイズが小さい"
+"場合(< 10)、フィッシャーのz変換による近似の精度は低くなります"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
@@ -449,16 +457,16 @@ msgid "%1$s at kappa==%2$s"
 msgstr "カッパ係数==%1$s における%2$s"
 
 msgid "user prior"
-msgstr "ユーザー事前分布"
+msgstr "ユーザ指定の事前分布"
 
 msgid "Stretched beta prior width"
 msgstr "拡張ベータ事前分布の幅"
 
 msgid "Linearity Test"
-msgstr ""
+msgstr "線形性の検定"
 
 msgid "Pair"
-msgstr ""
+msgstr "対"
 
 msgid ""
 "For each pair A - B, tests if A is better predicted as a linear function of "
@@ -469,70 +477,78 @@ msgid ""
 "with alpha = 1 and beta = 1. Note that since only two models are considered "
 "the model prior is equivalent to a uniform model prior."
 msgstr ""
+"各対 A - B について、AがBの線形関数として予測される方がよいか、すなわち l := "
+"A ~ 1 + B か、Bの二次関数として予測される方がよいか、すなわち q := A ~ 1 + B "
+"+ B^2 かを検定します。\n"
+"    ベイズ回帰の既定の設定、すなわちalphaを0.354としたJZS事前分布と、モデルの"
+"事前分布としてalpha = 1、beta = 1 のベータ二項分布を使います。考えるモデルが2"
+"つだけなので、このモデルの事前分布は一様なモデル事前分布と等価です。"
 
 msgid ""
 "Evidence shown in favor of a linear model (l) against a quadratic model (q)."
-msgstr ""
+msgstr "二次モデル(q)に対して線形モデル(l)を支持する証拠を示します。"
 
 msgid ""
 "Evidence shown in favor of a quadratic model (q) against a linear model (l)."
-msgstr ""
+msgstr "線形モデル(l)に対して二次モデル(q)を支持する証拠を示します。"
 
 msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "
 "levels."
-msgstr ""
+msgstr "ベルヌーイ分布族では、従属変数が2水準の因子である必要があります。"
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be non-zero."
-msgstr ""
+msgstr "二項分布族では、重みの変数(すなわち試行数の合計)が0でない必要があります。"
 
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "
 "successes) to be between 0 and 1 (inclusive)."
 msgstr ""
+"二項分布族では、従属変数(すなわち成功の割合)が0から1の範囲(両端を含む)にある"
+"必要があります。"
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be an integer."
-msgstr ""
+msgstr "二項分布族では、重みの変数(すなわち試行数の合計)が整数である必要があります。"
 
 msgid ""
 "The Gamma family and the Inverse Gaussian family require the dependent "
 "variable to be positive."
-msgstr ""
+msgstr "ガンマ分布族と逆ガウス分布族では、従属変数が正である必要があります。"
 
 msgid "The Poisson family requires the dependent variable to be an integer."
-msgstr ""
+msgstr "ポアソン分布族では、従属変数が整数である必要があります。"
 
 msgid ""
 "The Gaussian family with the log link requires the dependent variable to be "
 "positive."
-msgstr ""
+msgstr "対数リンクの正規分布族では、従属変数が正である必要があります。"
 
 msgid ""
 "The Gaussian family requires the dependent variable to be a numerical "
 "variable."
-msgstr ""
+msgstr "正規分布族では、従属変数が数値変数である必要があります。"
 
 msgid ""
 "Multinomial logistic regression requires the dependent variable to be a "
 "factor with at least 3 levels."
-msgstr ""
+msgstr "多項ロジスティック回帰では、従属変数が3水準以上の因子である必要があります。"
 
 msgid ""
 "Ordinal logistic regression requires the dependent variable to be a factor "
 "with at least 3 levels."
-msgstr ""
+msgstr "順序ロジスティック回帰では、従属変数が3水準以上の因子である必要があります。"
 
 msgid ""
 "Firth logistic regression requires the dependent variable to be a factor "
 "with 2 levels."
-msgstr ""
+msgstr "Firthのロジスティック回帰では、従属変数が2水準の因子である必要があります。"
 
 msgid "Model Summary"
-msgstr "モデルの概要"
+msgstr "モデルの要約"
 
 msgid "Model Summary - %s"
 msgstr "モデルの概要 - %s"
@@ -541,7 +557,7 @@ msgid "Model"
 msgstr "モデル"
 
 msgid "Deviance"
-msgstr "デビアンス"
+msgstr "逸脱度"
 
 msgid "AIC"
 msgstr "AIC"
@@ -555,9 +571,8 @@ msgstr "df"
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Nullモデルには局外パラメータが含まれています: %s."
 
-#, fuzzy
 msgid "Model Fit"
-msgstr "モデル"
+msgstr "モデルのあてはまり"
 
 msgid "Statistic"
 msgstr "統計量"
@@ -566,16 +581,14 @@ msgid "Coefficients"
 msgstr "係数"
 
 msgid "Estimate"
-msgstr "推定"
+msgstr "推定値"
 
 msgid "Standard Error"
 msgstr "標準誤差"
 
-#, fuzzy
 msgid "Lower Bound"
 msgstr "下限"
 
-#, fuzzy
 msgid "Upper Bound"
 msgstr "上限"
 
@@ -583,14 +596,13 @@ msgid "%1$s level '%2$s' coded as class 1."
 msgstr "%1$s水準の「%2$s」がクラス1としてコード化されています。"
 
 msgid "%1$s levels: %2$s. '%3$s' is the reference level."
-msgstr ""
+msgstr "%1$s の水準: %2$s。'%3$s' が参照水準です。"
 
 msgid "%1$s levels: %2$s. Linear predictors: %3$s."
-msgstr ""
+msgstr "%1$s の水準: %2$s。線形予測子: %3$s。"
 
-#, fuzzy
 msgid "Diagnostics"
-msgstr "ケースワイズ診断"
+msgstr "診断"
 
 msgid "Residuals vs. Fitted Plots"
 msgstr "残差 vs. 適合プロット"
@@ -607,7 +619,6 @@ msgstr "%1s 残差 vs. 予測子プロット"
 msgid "Standardized %1$s residuals vs. %2$s"
 msgstr "標準化 %1$s 残差 vs. %2$s"
 
-#, fuzzy
 msgid "Partial Residual Plots"
 msgstr "偏回帰プロット"
 
@@ -615,19 +626,19 @@ msgid "Partial residual plot for %1s"
 msgstr "%1s の偏残差プロット"
 
 msgid "Partial residual for %1s"
-msgstr ""
+msgstr "%1s の偏残差"
 
 msgid "Plot: Working responses vs. linear predictor"
-msgstr ""
+msgstr "プロット: 作業反応と線形予測子"
 
 msgid "Working responses, z"
-msgstr ""
+msgstr "作業反応 z"
 
 msgid "Outliers Tables"
-msgstr ""
+msgstr "外れ値の表"
 
 msgid "Table: Top n outliers based on %1s residuals"
-msgstr ""
+msgstr "表: %1s 残差に基づく上位n件の外れ値"
 
 msgid "Case Number"
 msgstr "ケース番号"
@@ -636,25 +647,25 @@ msgid "Multicollinearity Diagnostics"
 msgstr "多重共線性診断"
 
 msgid "Tolerance"
-msgstr "許容度"
+msgstr "公差"
 
 msgid "VIF"
 msgstr "VIF"
 
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "推定周辺平均と対比分析"
 
 msgid "Estimated Marginal Means"
 msgstr "推定周辺平均"
 
 msgid "SE"
-msgstr "標準誤差"
+msgstr "SE"
 
 msgid "Lower"
 msgstr "下限"
 
 msgid "%s%% CI"
-msgstr "%s%% CI"
+msgstr "%s%% 信頼区間"
 
 msgid "Upper"
 msgstr "上限"
@@ -666,23 +677,22 @@ msgid "z"
 msgstr "z"
 
 msgid "Results are on the response scale."
-msgstr ""
+msgstr "結果は反応のスケールで示されています。"
 
 msgid "Results are not on the response scale and might be misleading."
-msgstr ""
+msgstr "結果は反応のスケールではないため、誤解を招く可能性があります。"
 
 msgid "Contrasts"
-msgstr ""
+msgstr "対比"
 
 msgid "Odds Ratio"
 msgstr "オッズ比"
 
-#, fuzzy
 msgid "Ratio"
-msgstr "オッズ比"
+msgstr "比"
 
 msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
-msgstr ""
+msgstr "%s のROC曲線がほぼ対角線の下にあります。スコアを反転します。"
 
 msgid "trying + %s"
 msgstr "試行回数 + %s"
@@ -690,17 +700,17 @@ msgstr "試行回数 + %s"
 msgid "F test assumes 'quasi%s' family"
 msgstr "F検定は「準%s」ファミリーを想定しています"
 
-#, fuzzy
 msgid ""
 "Stepwise procedures are not supported for models containing factors with "
 "more than 2 levels; retry the analysis using dummy variables"
-msgstr "交互作用項を含むモデルでは、ステップワイズ法はサポートされていません"
+msgstr ""
+"3水準以上の因子を含むモデルでは、ステップワイズ法はサポートされていません。"
+"ダミー変数を使って分析をやり直してください"
 
-#, fuzzy
 msgid ""
 "Stepwise procedures are not supported for interactions containing more than "
 "1 factor"
-msgstr "ステップワイズ法は、因子を含むモデルには対応していません"
+msgstr "2つ以上の因子を含む交互作用では、ステップワイズ法はサポートされていません"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
@@ -780,7 +790,6 @@ msgstr "%.0f%% CI"
 msgid "Collinearity Statistics"
 msgstr "共線性統計"
 
-#, fuzzy
 msgid ""
 "Standardized coefficients can only be computed for continuous, linear "
 "predictors."
@@ -803,9 +812,8 @@ msgstr "ブートストラップ係数"
 msgid "Bias"
 msgstr "バイアス"
 
-#, fuzzy
 msgid "%s%% CI*"
-msgstr "%s%% CI:"
+msgstr "%s%% CI*"
 
 msgid "Bootstrapping based on %i replicates."
 msgstr "%i の再現に基づくブートストラップ。"
@@ -817,20 +825,17 @@ msgstr "係数の推定値は、ブートストラップ分布の中央値に基
 msgid "Bias corrected accelerated."
 msgstr "バイアス補正を実施した。"
 
-#, fuzzy
 msgid "Some bootstrap results could not be computed."
 msgstr "ブートストラップ係数や信頼区間が計算できないものがありました。"
 
 msgid "expecting both arguments to be data.frames"
 msgstr "両方の引数が data.frames であることが想定されます"
 
-#, fuzzy
 msgid "Regression Equations"
-msgstr "回帰"
+msgstr "回帰式"
 
-#, fuzzy
 msgid "Equation"
-msgstr "オッズ比"
+msgstr "式"
 
 msgid "Part And Partial Correlations"
 msgstr "部分相関と偏相関"
@@ -839,7 +844,7 @@ msgid "Partial"
 msgstr "部分的"
 
 msgid "Part"
-msgstr "部分"
+msgstr "部品"
 
 msgid "Coefficients Covariance Matrix"
 msgstr "係数共分散行列"
@@ -876,10 +881,10 @@ msgid "Maximum"
 msgstr "最大値"
 
 msgid "Mean"
-msgstr "平均値"
+msgstr "平均"
 
 msgid "SD"
-msgstr "標準偏差"
+msgstr "SD"
 
 msgid "N"
 msgstr "N"
@@ -927,21 +932,19 @@ msgid "Residuals %s"
 msgstr "残差 %s"
 
 msgid "Descriptives"
-msgstr "記述統計量"
+msgstr "記述統計"
 
-#, fuzzy
 msgid "M%s"
-msgstr "R%s"
+msgstr "M%s"
 
 msgid "Std. Predicted Value"
 msgstr "標準化された予測値"
 
 msgid "Standardized Residuals"
-msgstr "標準化された残差"
+msgstr "標準化残差"
 
-#, fuzzy
 msgid "%1$s includes %2$s"
-msgstr "%1$s 対 %2$s"
+msgstr "%1$s は %2$s を含む"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -969,74 +972,76 @@ msgid "Marginal effect of %1$s on %2$s"
 msgstr "%2$sに対する%1$sの周辺効果"
 
 msgid "Response Optimizer"
-msgstr ""
+msgstr "反応の最適化"
 
 msgid "Response Optimizer Settings"
-msgstr ""
+msgstr "反応の最適化の設定"
 
 msgid "Response"
-msgstr ""
+msgstr "反応"
 
 msgid "Goal"
-msgstr ""
+msgstr "目標"
 
 msgid "Target"
-msgstr ""
+msgstr "ターゲット"
 
 msgid "Weight"
-msgstr ""
+msgstr "重み"
 
 msgid "lower and upper bounds and target are"
-msgstr ""
+msgstr "下限・上限と目標値は"
 
 msgid "lower and upper bounds are"
-msgstr ""
+msgstr "下限・上限は"
 
 msgid "target is"
-msgstr ""
+msgstr "目標値は"
 
 msgid "The %s estimated from data."
-msgstr ""
+msgstr "%s はデータから推定されました。"
 
 msgid "Response Optimizer Solution"
-msgstr ""
+msgstr "反応の最適化の解"
 
-#, fuzzy
 msgid "Desirability"
-msgstr "予想される確率"
+msgstr "望ましさ"
 
 msgid "%s fit"
-msgstr ""
+msgstr "%s のあてはめ"
 
 msgid "Optimization Plot"
-msgstr ""
+msgstr "最適化のプロット"
 
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
 "input parameters."
 msgstr ""
+"手動で入力したパラメータで最適化のプロットを作るには、すべての予測変数の値を"
+"入力してください。"
 
 msgid "Enter plausible numeric values for all continuous predictors."
-msgstr ""
+msgstr "すべての連続な予測変数について、妥当な数値を入力してください。"
 
 msgid ""
 "Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
-msgstr ""
+msgstr "値 '%1$s' は因子 '%2$s' の水準として妥当ではありません。使える値: %3$s。"
 
 msgid "Optimization Plot Summary (Manual Predictor Values)"
-msgstr ""
+msgstr "最適化のプロットの要約(予測変数の値を手動で指定)"
 
 msgid "Optimization Plot Summary"
-msgstr ""
+msgstr "最適化のプロットの要約"
 
 msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
 msgstr ""
+"連続な予測変数の入力パラメータのうち1つ以上が計画の範囲の外にあります。計画の"
+"範囲を超えた外挿は妥当でない可能性があります。"
 
-#, fuzzy
 msgid "Descriptives Plots"
-msgstr "記述統計量"
+msgstr "記述統計プロット"
 
 msgid "All effects are specified as nuisance"
 msgstr "すべての効果は妨害要因として指定されています"
@@ -1093,10 +1098,10 @@ msgid "P(M)"
 msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr "P(M|データ)"
+msgstr "P(M|data)"
 
 msgid "BF<sub>M</sub>"
-msgstr "BF <sub> M </sub>"
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
 msgstr "すべてのモデルには %s が含まれます."
@@ -1118,7 +1123,7 @@ msgid "Posterior Summaries of Coefficients"
 msgstr "係数の事後分布の要約"
 
 msgid "BF<sub>inclusion</sub>"
-msgstr "BF<sub>含む</sub>"
+msgstr "BF<sub>inclusion</sub>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
 msgstr "Log(BF<sub>含む</sub>)"
@@ -1130,13 +1135,13 @@ msgid "Coefficient"
 msgstr "係数"
 
 msgid "P(incl)"
-msgstr "P(効果を含む)"
+msgstr "P(incl)"
 
 msgid "P(excl)"
 msgstr "P(効果を含まない)"
 
 msgid "P(incl|data)"
-msgstr "P（効果を含む|データ）"
+msgstr "P(incl|data)"
 
 msgid "P(excl|data)"
 msgstr "P(効果を含まない|データ)"
@@ -1246,17 +1251,16 @@ msgid "Factor Descriptives"
 msgstr "要因の記述"
 
 msgid "Factor"
-msgstr "要因"
+msgstr "因子"
 
 msgid "Confusion matrix"
 msgstr "混同行列"
 
 msgid "Observed"
-msgstr "観測された"
+msgstr "観測値"
 
-#, fuzzy
 msgid "%% Correct"
-msgstr "%% 相関"
+msgstr "%% 正解"
 
 msgid "Performance metrics"
 msgstr "パフォーマンス・メトリクス"
@@ -1274,9 +1278,8 @@ msgstr ""
 "いくつかの信頼区間が計算できませんでした。\n"
 "ブートストラップの再標本が少なすぎる可能性があります。"
 
-#, fuzzy
 msgid "Diagnostic plots"
-msgstr "ケースワイズ診断"
+msgstr "診断プロット"
 
 msgid "Estimates plots"
 msgstr "推定値のプロット"
@@ -1291,7 +1294,7 @@ msgid "Squared Pearson residuals plot"
 msgstr "二乗ピアソン残差プロット"
 
 msgid "Independent - predicted plots"
-msgstr ""
+msgstr "独立変数と予測値のプロット"
 
 msgid "Performance plots"
 msgstr "パフォーマンスプロット"
@@ -1306,10 +1309,10 @@ msgid "Predicted Probability"
 msgstr "予想される確率"
 
 msgid "Squared Pearson Residual"
-msgstr "二乗ピアソン残差"
+msgstr "ピアソン残差の二乗"
 
 msgid "False positive rate"
-msgstr "偽陰性率"
+msgstr "偽陽性率"
 
 msgid "True positive rate"
 msgstr "真陽性率"
@@ -1336,38 +1339,35 @@ msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
 "same as the coefficients are always included or excluded together."
 msgstr ""
+"因子 %s に含まれる係数は常にまとめて含められるか除かれるため、それらの係数の"
+"包含・除外の統計量は同じになります。"
 
-#, fuzzy
 msgid "DV/Factor Descriptives"
-msgstr "要因の記述"
+msgstr "従属変数・要因の記述統計"
 
-#, fuzzy
 msgid "DV/Factor"
 msgstr "要因"
 
 msgid "Level"
-msgstr ""
+msgstr "水準"
 
-#, fuzzy
 msgid "Covariate Descriptives"
-msgstr "要因の記述"
+msgstr "共変量の記述統計"
 
 msgid "Intercept"
-msgstr ""
+msgstr "切片"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
 msgstr[0] "結合したモデルフィットから %1$d/%2$d行を使います"
 
-#, fuzzy
 msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
-msgstr[0] "次の共変量が考慮されましたが、含まれていません。%s."
+msgstr[0] "次の予測変数は検討されましたが、含まれませんでした: %s。"
 
-#, fuzzy
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
-msgstr[0] "回帰"
+msgstr[0] "回帰プロット"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"
