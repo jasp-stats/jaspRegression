@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
 "POT-Creation-Date: 2026-07-04 03:58\n"
-"PO-Revision-Date: 2026-07-28 05:01+0000\n"
+"PO-Revision-Date: 2026-08-02 05:01+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/ja/>\n"
@@ -548,7 +548,7 @@ msgid ""
 msgstr "Firthのロジスティック回帰では、従属変数が2水準の因子である必要があります。"
 
 msgid "Model Summary"
-msgstr "モデルの要約"
+msgstr "モデルの概要"
 
 msgid "Model Summary - %s"
 msgstr "モデルの概要 - %s"
@@ -665,7 +665,7 @@ msgid "Lower"
 msgstr "下限"
 
 msgid "%s%% CI"
-msgstr "%s%% 信頼区間"
+msgstr "%s%% CI"
 
 msgid "Upper"
 msgstr "上限"
@@ -881,7 +881,7 @@ msgid "Maximum"
 msgstr "最大値"
 
 msgid "Mean"
-msgstr "平均"
+msgstr "平均値"
 
 msgid "SD"
 msgstr "SD"
@@ -1098,7 +1098,7 @@ msgid "P(M)"
 msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr "P(M|data)"
+msgstr "P(M|データ)"
 
 msgid "BF<sub>M</sub>"
 msgstr "BF<sub>M</sub>"
@@ -1135,13 +1135,13 @@ msgid "Coefficient"
 msgstr "係数"
 
 msgid "P(incl)"
-msgstr "P(incl)"
+msgstr "P(効果を含む)"
 
 msgid "P(excl)"
 msgstr "P(効果を含まない)"
 
 msgid "P(incl|data)"
-msgstr "P(incl|data)"
+msgstr "P（効果を含む|データ）"
 
 msgid "P(excl|data)"
 msgstr "P(効果を含まない|データ)"
