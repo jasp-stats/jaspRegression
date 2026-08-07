@@ -1069,3 +1069,108 @@
   # test if we have intercept and no other predictors
   return(intercept && length(labels) == 0)
 }
+
+# Brant Test Computation
+.glmBrantTest <- function(fit, dataset, options) {
+
+  xPlus    <- model.matrix(fit,type="lm")
+  yRaw     <- dataset[[options[["dependent"]]]]
+  yNumeric <- as.integer(yRaw)
+
+
+  numLevels <- length(levels(yRaw))
+  if (is.null(numLevels) || numLevels == 0){
+    numLevels <- length(unique(yNumeric))
+  }
+
+  numThresholds <- numLevels - 1
+
+  xMain         <- xPlus[, -1, drop = FALSE]
+  numPredictors <- ncol(xMain)
+  variableNames <- colnames(xMain)
+  xGlm          <- cbind(1, xMain)
+
+  # Fit Binary GLMs
+  binaryData <- as.data.frame(xMain)
+  models <- lapply(1:numThresholds, function(thresholdIndex) {
+    binaryData[["yBin"]] <- as.numeric(yNumeric > thresholdIndex)
+    fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData)
+
+    # Perfect separation check
+    probs <- as.numeric(VGAM::fitted(fitBinary))
+    if (any(probs < 1e-8 | probs > 1 - 1e-8)) {
+      stop(gettext("Brant test failed: An underlying binary model exhibits perfect or near-perfect prediction."),
+           call. = FALSE)
+    }
+
+    return(fitBinary)
+  })
+  # Extract betas
+  betaTilde <- as.matrix(unlist(lapply(models, function(m) VGAM::coef(m)[-1])))
+
+  # Extract probabilities from separate binary fits
+  piList <- lapply(models, function(m) as.numeric(VGAM::fitted(m)))
+
+  # Block covariance matrix assembly
+  covarianceTotal <- matrix(0, nrow = numThresholds * numPredictors, ncol = numThresholds * numPredictors)
+  for (threshRow in 1:numThresholds) {
+    weightRow  <- (piList[[threshRow]] * (1 - piList[[threshRow]]))
+    inverseRow <- solve(t(xGlm) %*% (weightRow * xGlm))
+
+    for (threshCol in threshRow:numThresholds) {
+      weightCross  <- (piList[[threshCol]] - (piList[[threshRow]] * piList[[threshCol]]))
+      weightCol  <- (piList[[threshCol]] * (1 - piList[[threshCol]]))
+      inverseCol <- solve(t(xGlm) %*% (weightCol * xGlm))
+      matrixCross <- t(xGlm) %*% (weightCross * xGlm)
+
+      covarianceBlockFull <- inverseRow %*% matrixCross %*% inverseCol
+      covarianceBlock     <- covarianceBlockFull[-1, -1, drop = FALSE]
+
+      indexRow <- ((threshRow-1)*numPredictors + 1):(threshRow*numPredictors)
+      indexCol <- ((threshCol-1)*numPredictors + 1):(threshCol*numPredictors)
+      covarianceTotal[indexRow, indexCol] <- covarianceBlock
+
+      # Note, current R brant implementations (brant::brant, gofcat::brant.test) omit the transpose below,
+      # resulting in minor numerical discrepancies.
+      # This implementation matches results from STATA's brant run on an ologit model
+      if (threshRow != threshCol) covarianceTotal[indexCol, indexRow] <- t(covarianceBlock)
+    }
+  }
+
+  # Calculate D (Contrast Matrix)
+  contrastLayout  <- if (numThresholds > 1) cbind(rep(1, numThresholds - 1), -diag(numThresholds - 1)) else matrix(1, 1, 1)
+  contrastOmnibus <- kronecker(contrastLayout, diag(numPredictors))
+
+  calculateChiSq <- function(beta, covariance, contrast) {
+    if (nrow(contrast) == 0 || ncol(contrast) == 0 || nrow(covariance) == 0)
+      return(data.frame(chiSq = NA, df = NA, p = NA))
+
+    contrastBeta <- contrast %*% beta
+    contrastCov  <- contrast %*% covariance %*% t(contrast)
+    stat <- as.numeric(t(contrastBeta) %*% solve(contrastCov) %*% contrastBeta)
+    df     <- nrow(contrast)
+    pValue <- pchisq(stat, df = df, lower.tail = FALSE)
+
+    return(data.frame(
+      chiSq = stat,
+      df    = df,
+      p     = pValue
+    ))
+  }
+
+  # Omnibus test
+  omnibusResult <- calculateChiSq(betaTilde, covarianceTotal, contrastOmnibus)
+  rownames(omnibusResult) <- "Omnibus"
+
+  # Variable-specific tests
+  variableResult <- do.call(rbind, lapply(1:numPredictors, function(predictorIndex) {
+    sequenceIndex  <- seq(from = predictorIndex, to = (numThresholds * numPredictors), by = numPredictors)
+    contrastSubset <- contrastOmnibus[, sequenceIndex, drop = FALSE]
+    relevantRows   <- which(rowSums(contrastSubset != 0) > 0)
+    contrastSubset <- contrastSubset[relevantRows, , drop = FALSE]
+    calculateChiSq(betaTilde[sequenceIndex], covarianceTotal[sequenceIndex, sequenceIndex], contrastSubset)
+  }))
+  rownames(variableResult) <- variableNames
+
+  return(rbind(omnibusResult, variableResult))
+}
