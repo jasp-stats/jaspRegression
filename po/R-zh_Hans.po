@@ -52,61 +52,61 @@ msgid "Kendall's Tau Correlations"
 msgstr "Kendall's Tau 相关性"
 
 msgid "Spearman Correlations"
-msgstr ""
+msgstr "Spearman 相关性"
 
 msgid "Correlation Table"
-msgstr ""
+msgstr "相关表"
 
 msgid "Pearson's r"
-msgstr ""
+msgstr "Pearson 的 r"
 
 msgid "Spearman's rho"
-msgstr ""
+msgstr "Spearman 的 rho"
 
 msgid "Kendall's tau B"
-msgstr ""
+msgstr "Kendall 的 tau B"
 
 msgid "Pearson"
-msgstr ""
+msgstr "Pearson"
 
 msgid "Spearman"
-msgstr ""
+msgstr "Spearman"
 
 msgid "Kendall"
-msgstr ""
+msgstr "Kendall"
 
 msgid "Density"
-msgstr ""
+msgstr "密度"
 
 msgid "Plotting not possible: Number of observations is < 3"
-msgstr ""
+msgstr "无法绘图：观测数量 < 3"
 
 msgid "Plotting not possible: Infinite value(s)"
-msgstr ""
+msgstr "无法绘图：存在无限值"
 
 msgid "rho"
-msgstr ""
+msgstr "rho"
 
 msgid "tau"
-msgstr ""
+msgstr "tau"
 
 msgid "rho[s]"
-msgstr ""
+msgstr "rho[s]"
 
 msgid "Pearson's"
-msgstr ""
+msgstr "Pearson 的"
 
 msgid "Spearman's"
-msgstr ""
+msgstr "Spearman 的"
 
 msgid "Kendall's"
-msgstr ""
+msgstr "Kendall 的"
 
 msgid "Kendall's tau"
-msgstr ""
+msgstr "Kendall 的 tau"
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr "%s%% CI 上界"
@@ -115,125 +115,125 @@ msgid "Lower %s%% CI"
 msgstr "%s%% CI 下界"
 
 msgid "Ranks of %s"
-msgstr ""
+msgstr "%s 的秩"
 
 msgid ""
 "The full model could not be fitted to the data, with the following error "
 "message: '%s'"
-msgstr ""
+msgstr "无法将完整模型拟合到数据，错误消息：'%s'"
 
 msgid ""
 "The null model could not be fitted to the data, with the following error "
 "message: '%s'"
-msgstr ""
+msgstr "无法将零模型拟合到数据，错误消息：'%s'"
 
 msgid ""
 "Could not find valid starting values. Check feasibility of the model to fit "
 "the data."
-msgstr ""
+msgstr "找不到有效的起始值。请检查模型拟合数据的可行性。"
 
 msgid "Plotting is not possible: %s"
-msgstr ""
+msgstr "无法绘图：%s"
 
 msgid "Q-Q Plots"
 msgstr "Q-Q 图"
 
 msgid "Q-Q plot: Standardized %1s residuals"
-msgstr ""
+msgstr "Q-Q 图：标准化 %1s 残差"
 
 msgid "There are no predictors to test for multicollinearity"
-msgstr ""
+msgstr "没有可测试多重共线性的预测变量"
 
 msgid "P-values correspond to test of null hypothesis against %s."
-msgstr ""
+msgstr "P 值对应于针对 %s 检验零假设。"
 
 msgid "Results are averaged over the levels of: %s."
 msgstr "结果在以下水平上进行平均：%s。"
 
 msgid "P-values are not adjusted."
-msgstr ""
+msgstr "P 值未进行校正。"
 
 msgid "Holm"
-msgstr ""
+msgstr "Holm"
 
 msgid "Homel"
-msgstr ""
+msgstr "Homel"
 
 msgid "Hochberg"
-msgstr ""
+msgstr "Hochberg"
 
 msgid "Multivariate-t"
-msgstr ""
+msgstr "多元 t"
 
 msgid "Tukey"
-msgstr ""
+msgstr "Tukey"
 
 msgid "Benjamini-Hochberg"
-msgstr ""
+msgstr "Benjamini-Hochberg"
 
 msgid "Benjamini-Yekutieli"
-msgstr ""
+msgstr "Benjamini-Yekutieli"
 
 msgid "Scheffé"
-msgstr ""
+msgstr "Scheffé"
 
 msgid "Sidak"
-msgstr ""
+msgstr "Sidak"
 
 msgid "Dunnett"
-msgstr ""
+msgstr "Dunnett"
 
 msgid "Bonferroni"
-msgstr ""
+msgstr "Bonferroni"
 
 msgid "P-values are adjusted using %s adjustment."
-msgstr ""
+msgstr "P 值使用 %s 校正方法进行校正。"
 
 msgid "Predicted"
-msgstr ""
+msgstr "预测"
 
 msgid "(Intercept)"
-msgstr ""
+msgstr "(截距)"
 
 #, fuzzy
 msgid "Influential Cases"
 msgstr "序贯分析"
 
 msgid "Std. Residual"
-msgstr ""
+msgstr "标准化残差"
 
 msgid "Predicted Value"
-msgstr ""
+msgstr "预测值"
 
 msgid "Residual"
-msgstr ""
+msgstr "残差"
 
 msgid "DFBETAS_%1s"
-msgstr ""
+msgstr "DFBETAS_%1s"
 
 msgid "DFBETAS:Intercept"
-msgstr ""
+msgstr "DFBETAS:截距"
 
 msgid "DFBETAS:%1s"
-msgstr ""
+msgstr "DFBETAS:%1s"
 
 msgid "Mahalanobis distance cannot be computed for the intercept only model."
-msgstr ""
+msgstr "无法为仅含截距的模型计算马氏距离。"
 
 msgid "No influential cases found."
-msgstr ""
+msgstr "未找到有影响的个案。"
 
 msgid ""
 "Potentially influential case, according to the selected influence measure."
-msgstr ""
+msgstr "根据所选的影响度量，可能存在有影响的个案。"
 
 msgid ""
 "Influence measures could not be computed for some cases due to extreme "
 "values, try another measure."
-msgstr ""
+msgstr "由于极端值，某些个案的影响度量无法计算，请尝试其他度量。"
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "VS-MPR%s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -241,49 +241,53 @@ msgid ""
 "  1/(-e <em>p</em> log(<em>p</em>)) for <em>p</em> %3$s .37\n"
 "  (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke <em>p</em>-比值：基于 <em>p</em> 值，\n"
+" 支持 H%1$s 相对 H%2$s 的最大可能优势比等于\n"
+"  1/(-e <em>p</em> log(<em>p</em>))，其中 <em>p</em> %3$s .37\n"
+"  (Sellke, Bayarri, & Berger, 2001)。"
 
 msgid "Computing Durbin-Watson Statistics"
-msgstr ""
+msgstr "计算 Durbin-Watson 统计量"
 
 msgid "Kendall's Tau"
 msgstr "Kendall's Tau"
 
 msgid "Partial Correlation Table"
-msgstr ""
+msgstr "偏相关表"
 
 msgid "%s Correlations"
-msgstr ""
+msgstr "%s 相关性"
 
 msgid "%s Partial Correlations"
-msgstr ""
+msgstr "%s 偏相关"
 
 msgid "All tests one-tailed, for positive correlation."
-msgstr ""
+msgstr "所有检验均为单尾，针对正相关。"
 
 msgid ", one-tailed"
-msgstr ""
+msgstr "，单尾"
 
 msgid "All tests one-tailed, for negative correlation."
-msgstr ""
+msgstr "所有检验均为单尾，针对负相关。"
 
 msgid "p < .05, ** p < .01, *** p < .001%s"
-msgstr ""
+msgstr "p < .05, ** p < .01, *** p < .001%s"
 
 msgid "Conditioned on variables: %s."
-msgstr ""
+msgstr "以变量为条件：%s。"
 
 msgid ""
 "Standard error of effect size (Fisher's z) is currently unavailable for non-"
 "parametric partial correlations."
-msgstr ""
+msgstr "非参数偏相关目前无法计算效应量（Fisher 的 z）的标准误。"
 
 msgid ""
 "Analytic confidence intervals for partial correlations are not yet "
 "available, but can be obtained using bootstrapping instead."
-msgstr ""
+msgstr "偏相关的解析置信区间尚不可用，但可通过自助法获得。"
 
 msgid "Confidence intervals based on %i bootstrap replicates."
-msgstr ""
+msgstr "置信区间基于 %i 个自助法重复样本。"
 
 msgid "p"
 msgstr "p"
@@ -292,125 +296,134 @@ msgid "VS-MPR"
 msgstr "VS-MPR"
 
 msgid "Effect size (Fisher's z)"
-msgstr ""
+msgstr "效应量 (Fisher 的 z)"
 
 msgid "SE Effect size"
-msgstr ""
+msgstr "效应量标准误"
 
 msgid "Covariance"
-msgstr ""
+msgstr "协方差"
 
 msgid "r"
-msgstr ""
+msgstr "r"
 
 msgid "tau B"
-msgstr ""
+msgstr "tau B"
 
 msgid "Variable"
 msgstr "变量"
 
 msgid "Kendall's Tau B"
-msgstr ""
+msgstr "Kendall 的 Tau B"
 
 msgid "p-value"
-msgstr ""
+msgstr "p 值"
 
 msgid "Number of observations is < %s."
-msgstr ""
+msgstr "观测数量 < %s。"
 
 msgid "Bootstrapping"
-msgstr ""
+msgstr "自助法"
 
 msgid ""
 "Partial correlation cannot be computed: covariance matrix is computationally "
 "singular."
-msgstr ""
+msgstr "无法计算偏相关：协方差矩阵在计算上奇异。"
 
 msgid "Assumption checks"
-msgstr ""
+msgstr "假设检验"
 
 msgid "Shapiro-Wilk Test for Multivariate Normality"
-msgstr ""
+msgstr "多元正态性的 Shapiro-Wilk 检验"
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "Shapiro-Wilk"
 
 msgid "Variables"
-msgstr ""
+msgstr "变量"
 
 msgid "Shapiro-Wilk Test for Bivariate Normality"
-msgstr ""
+msgstr "双变量正态性的 Shapiro-Wilk 检验"
 
 #, fuzzy
 msgid "Scatter Plots"
 msgstr "散点图"
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "相关图"
 
 msgid "Correlation undefined: %s"
-msgstr ""
+msgstr "相关性未定义：%s"
 
 msgid "%1$s%% CI: [%2$s, %3$s]"
-msgstr ""
+msgstr "%1$s%% 置信区间：[%2$s, %3$s]"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 3"
 msgstr ""
+"无法绘图：\n"
+" 观测数量 < 3"
 
 msgid ""
 "Plotting not possible:\n"
 " Number of observations is < 2"
 msgstr ""
+"无法绘图：\n"
+" 观测数量 < 2"
 
 msgid "Plotting not possible: %s"
 msgstr "无法绘图：%s"
 
 msgid "Partial Pearson's r"
-msgstr ""
+msgstr "偏 Pearson 的 r"
 
 msgid "Partial Spearman's rho"
-msgstr ""
+msgstr "偏 Spearman 的 rho"
 
 msgid "Partial Kendall's tau B"
-msgstr ""
+msgstr "偏 Kendall 的 tau B"
 
 msgid "%s heatmap"
-msgstr ""
+msgstr "%s 热图"
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "热图"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
-msgstr ""
+msgstr "%1$d%% 置信区间：[%2$d, %3$d]"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke <em>p</em>-比值：基于 <em>p</em> 值，支持 H%1$s 相对 H%2$s 的最大可能优势比等于 1/(-e <em>p</em> log(<em>p</em>))，其中 <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)。"
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
 "small sample sizes (< 10), approximation by Fisher's z transformation "
 "becomes less accurate"
 msgstr ""
+"效应量 (Fisher 的 z)：对于较大的相关系数 (> 0.9) 和较小的样本量 (< 10)，Fisher 的 z 变换的近似会变得不那么准确"
 
 msgid ""
 "Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
 "for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
 "62-71."
 msgstr ""
+"Sellke, T., Bayarri, M. J., & Berger, J. O. (2001). Calibration of p Values "
+"for Testing Precise Null Hypotheses. The American Statistician, 55(1), p. "
+"62-71."
 
 msgid "Posterior is too peaked"
-msgstr ""
+msgstr "后验过于陡峭"
 
 msgid "Bayesian Correlation Matrix Plot"
-msgstr ""
+msgstr "贝叶斯相关矩阵图"
 
 msgid "Could not compute the posteriors"
-msgstr ""
+msgstr "无法计算后验"
 
 msgid "Prior"
 msgstr "先验"
@@ -419,28 +432,28 @@ msgid "Posterior"
 msgstr "后验"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "%s%% 置信区间："
 
 msgid "Bayesian Correlation Pairwise Plots"
-msgstr ""
+msgstr "贝叶斯相关成对图"
 
 msgid "max %s"
-msgstr ""
+msgstr "最大 %s"
 
 msgid "%1$s at kappa==%2$s"
-msgstr ""
+msgstr "kappa==%2$s 处的 %1$s"
 
 msgid "user prior"
 msgstr "用户先验"
 
 msgid "Stretched beta prior width"
-msgstr ""
+msgstr "拉伸 Beta 先验宽度"
 
 msgid "Linearity Test"
-msgstr ""
+msgstr "线性检验"
 
 msgid "Pair"
-msgstr ""
+msgstr "配对"
 
 msgid ""
 "For each pair A - B, tests if A is better predicted as a linear function of "
@@ -451,79 +464,81 @@ msgid ""
 "with alpha = 1 and beta = 1. Note that since only two models are considered "
 "the model prior is equivalent to a uniform model prior."
 msgstr ""
+"对于每对 A - B，检验 A 是作为 B 的线性函数（即 l := A ~ 1 + B）被更好地预测，还是作为 B 的二次函数（即 q := A ~ 1 + B + B^2）被更好地预测。\n"
+"    使用贝叶斯回归的默认设置，即 alpha 设为 0.354 的 JZS 先验，模型先验使用 alpha = 1、beta = 1 的 Beta 二项分布。注意，由于只考虑两个模型，模型先验等价于均匀模型先验。"
 
 msgid ""
 "Evidence shown in favor of a linear model (l) against a quadratic model (q)."
-msgstr ""
+msgstr "证据支持线性模型 (l) 优于二次模型 (q)。"
 
 msgid ""
 "Evidence shown in favor of a quadratic model (q) against a linear model (l)."
-msgstr ""
+msgstr "证据支持二次模型 (q) 优于线性模型 (l)。"
 
 msgid ""
 "The Bernoulli family requires the dependent variable to be a factor with 2 "
 "levels."
-msgstr ""
+msgstr "伯努利族要求因变量是包含 2 个水平的因子。"
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be non-zero."
-msgstr ""
+msgstr "二项族要求权重变量（即试验总数）非零。"
 
 msgid ""
 "The Binomial family requires the dependent variable (i.e. proportion of "
 "successes) to be between 0 and 1 (inclusive)."
-msgstr ""
+msgstr "二项族要求因变量（即成功比例）介于 0 和 1（含）之间。"
 
 msgid ""
 "The Binomial family requires the weights variable (i.e. total number of "
 "trials) to be an integer."
-msgstr ""
+msgstr "二项族要求权重变量（即试验总数）为整数。"
 
 msgid ""
 "The Gamma family and the Inverse Gaussian family require the dependent "
 "variable to be positive."
-msgstr ""
+msgstr "Gamma 族和逆高斯族要求因变量为正。"
 
 msgid "The Poisson family requires the dependent variable to be an integer."
-msgstr ""
+msgstr "泊松族要求因变量为整数。"
 
 msgid ""
 "The Gaussian family with the log link requires the dependent variable to be "
 "positive."
-msgstr ""
+msgstr "具有 log 链接的高斯族要求因变量为正。"
 
 msgid ""
 "The Gaussian family requires the dependent variable to be a numerical "
 "variable."
-msgstr ""
+msgstr "高斯族要求因变量为数值变量。"
 
 msgid ""
 "Multinomial logistic regression requires the dependent variable to be a "
 "factor with at least 3 levels."
-msgstr ""
+msgstr "多项逻辑回归要求因变量是包含至少 3 个水平的因子。"
 
 msgid ""
 "Ordinal logistic regression requires the dependent variable to be a factor "
 "with at least 3 levels."
-msgstr ""
+msgstr "有序逻辑回归要求因变量是包含至少 3 个水平的因子。"
 
 msgid ""
 "Firth logistic regression requires the dependent variable to be a factor "
 "with 2 levels."
-msgstr ""
+msgstr "Firth 逻辑回归要求因变量是包含 2 个水平的因子。"
 
 msgid "Model Summary"
 msgstr "模型摘要"
 
 msgid "Model Summary - %s"
-msgstr ""
+msgstr "模型摘要 - %s"
 
 msgid "Model"
 msgstr "模型"
 
 msgid "Deviance"
-msgstr ""
+msgstr "偏差"
 
 msgid "AIC"
 msgstr "AIC"
@@ -535,10 +550,10 @@ msgid "df"
 msgstr "自由度"
 
 msgid "Null model contains nuisance parameters: %s."
-msgstr ""
+msgstr "零模型包含冗余参数：%s。"
 
 msgid "Model Fit"
-msgstr ""
+msgstr "模型拟合"
 
 msgid "Statistic"
 msgstr "统计量"
@@ -550,79 +565,79 @@ msgid "Estimate"
 msgstr "估计"
 
 msgid "Standard Error"
-msgstr ""
+msgstr "标准误"
 
 msgid "Lower Bound"
-msgstr ""
+msgstr "下界"
 
 msgid "Upper Bound"
-msgstr ""
+msgstr "上界"
 
 msgid "%1$s level '%2$s' coded as class 1."
-msgstr ""
+msgstr "%1$s 水平“%2$s”编码为类别 1。"
 
 msgid "%1$s levels: %2$s. '%3$s' is the reference level."
-msgstr ""
+msgstr "%1$s 水平：%2$s。“%3$s”是参照水平。"
 
 msgid "%1$s levels: %2$s. Linear predictors: %3$s."
-msgstr ""
+msgstr "%1$s 水平：%2$s。线性预测变量：%3$s。"
 
 msgid "Diagnostics"
-msgstr ""
+msgstr "诊断"
 
 msgid "Residuals vs. Fitted Plots"
-msgstr ""
+msgstr "残差-拟合值图"
 
 msgid "Standardized %1s residuals vs. fitted values"
-msgstr ""
+msgstr "标准化 %1s 残差与拟合值"
 
 msgid "Standardized %1s residual"
-msgstr ""
+msgstr "标准化 %1s 残差"
 
 msgid "%1s Residuals vs. Predictor Plots"
-msgstr ""
+msgstr "%1s 残差-预测变量图"
 
 msgid "Standardized %1$s residuals vs. %2$s"
-msgstr ""
+msgstr "标准化 %1$s 残差与 %2$s"
 
 msgid "Partial Residual Plots"
-msgstr ""
+msgstr "偏残差图"
 
 msgid "Partial residual plot for %1s"
-msgstr ""
+msgstr "%1s 的偏残差图"
 
 msgid "Partial residual for %1s"
-msgstr ""
+msgstr "%1s 的偏残差"
 
 msgid "Plot: Working responses vs. linear predictor"
-msgstr ""
+msgstr "图：工作响应值与线性预测变量"
 
 msgid "Working responses, z"
-msgstr ""
+msgstr "工作响应值，z"
 
 msgid "Outliers Tables"
-msgstr ""
+msgstr "异常值表"
 
 msgid "Table: Top n outliers based on %1s residuals"
-msgstr ""
+msgstr "表：基于 %1s 残差的前 n 个异常值"
 
 msgid "Case Number"
-msgstr ""
+msgstr "个案号"
 
 msgid "Multicollinearity Diagnostics"
-msgstr ""
+msgstr "多重共线性诊断"
 
 msgid "Tolerance"
-msgstr ""
+msgstr "容差"
 
 msgid "VIF"
 msgstr "VIF"
 
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr ""
+msgstr "估计边际均值和对比分析"
 
 msgid "Estimated Marginal Means"
-msgstr ""
+msgstr "估计边际均值"
 
 msgid "SE"
 msgstr "标准误"
@@ -640,87 +655,87 @@ msgid "t"
 msgstr "t"
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
-msgstr ""
+msgstr "结果位于响应尺度上。"
 
 msgid "Results are not on the response scale and might be misleading."
-msgstr ""
+msgstr "结果不位于响应尺度上，可能具有误导性。"
 
 msgid "Contrasts"
-msgstr ""
+msgstr "对比"
 
 msgid "Odds Ratio"
-msgstr ""
+msgstr "优势比"
 
 msgid "Ratio"
 msgstr "比率"
 
 msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
-msgstr ""
+msgstr "%s 的 ROC 曲线大多位于对角线下方。交换得分。"
 
 msgid "trying + %s"
-msgstr ""
+msgstr "尝试 + %s"
 
 msgid "F test assumes 'quasi%s' family"
-msgstr ""
+msgstr "F 检验假定 'quasi%s' 族"
 
 msgid ""
 "Stepwise procedures are not supported for models containing factors with "
 "more than 2 levels; retry the analysis using dummy variables"
-msgstr ""
+msgstr "步进方法不支持包含超过 2 个水平因子的模型；请改用虚拟变量重试分析"
 
 msgid ""
 "Stepwise procedures are not supported for interactions containing more than "
 "1 factor"
-msgstr ""
+msgstr "步进方法不支持包含超过 1 个因子的交互项"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry p-value needs to be smaller than "
 "removal p-value"
-msgstr ""
+msgstr "步进方法准则错误：进入 p 值需要小于移除 p 值"
 
 msgid ""
 "Error in Stepping Method Criteria: Entry F-value needs to be larger than "
 "removal F-value"
-msgstr ""
+msgstr "步进方法准则错误：进入 F 值需要大于移除 F 值"
 
 msgid "R"
-msgstr ""
+msgstr "R"
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
-msgstr ""
+msgstr "调整后 R%s"
 
 msgid "RMSE"
-msgstr ""
+msgstr "RMSE"
 
 msgid "R%s Change"
-msgstr ""
+msgstr "R%s 变化"
 
 msgid "F Change"
-msgstr ""
+msgstr "F 变化"
 
 msgid "df1"
 msgstr "df1"
 
 msgid "df2"
-msgstr ""
+msgstr "df2"
 
 msgid "Autocorrelation"
-msgstr ""
+msgstr "自相关"
 
 msgid "Durbin-Watson"
-msgstr ""
+msgstr "Durbin-Watson"
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
-msgstr ""
+msgstr "加权回归无法使用 Durbin-Watson 检验的 p 值。"
 
 msgid "No covariate could be entered in the model"
-msgstr ""
+msgstr "模型中无法加入协变量"
 
 msgid "ANOVA"
 msgstr "方差分析"
@@ -729,115 +744,115 @@ msgid "Sum of Squares"
 msgstr "平方和"
 
 msgid "Mean Square"
-msgstr ""
+msgstr "均方"
 
 msgid "F"
 msgstr "F"
 
 msgid "Regression"
-msgstr ""
+msgstr "回归"
 
 msgid "Total"
 msgstr "总计"
 
 msgid "Unstandardized"
-msgstr ""
+msgstr "未标准化"
 
 msgid "Standardized"
-msgstr ""
+msgstr "标准化"
 
 msgid "%.0f%% CI"
-msgstr ""
+msgstr "%.0f%% 置信区间"
 
 msgid "Collinearity Statistics"
-msgstr ""
+msgstr "共线性统计量"
 
 msgid ""
 "Standardized coefficients can only be computed for continuous, linear "
 "predictors."
-msgstr ""
+msgstr "标准化系数只能为连续、线性预测变量计算。"
 
 msgid ""
 "Standardized coefficients can only be computed for continuous predictors."
-msgstr ""
+msgstr "标准化系数只能为连续预测变量计算。"
 
 msgid ""
 "Missing coefficients are undefined because of singularities. Check the data "
 "for anything out of order!"
-msgstr ""
+msgstr "由于奇异性，缺失的系数未定义。请检查数据是否存在任何异常！"
 
 msgid "Bootstrap Coefficients"
-msgstr ""
+msgstr "自助法系数"
 
 msgid "Bias"
-msgstr ""
+msgstr "偏差"
 
 msgid "%s%% CI*"
-msgstr ""
+msgstr "%s%% 置信区间*"
 
 msgid "Bootstrapping based on %i replicates."
-msgstr ""
+msgstr "自助法基于 %i 个重复样本。"
 
 msgid ""
 "Coefficient estimate is based on the median of the bootstrap distribution."
-msgstr ""
+msgstr "系数估计基于自助法分布的中位数。"
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "偏差校正加速。"
 
 msgid "Some bootstrap results could not be computed."
-msgstr ""
+msgstr "部分自助法结果无法计算。"
 
 msgid "expecting both arguments to be data.frames"
-msgstr ""
+msgstr "期望两个参数都是数据框"
 
 #, fuzzy
 msgid "Regression Equations"
 msgstr "Pearson 相关性"
 
 msgid "Equation"
-msgstr ""
+msgstr "方程"
 
 msgid "Part And Partial Correlations"
-msgstr ""
+msgstr "部分和偏相关"
 
 msgid "Partial"
-msgstr ""
+msgstr "偏"
 
 msgid "Part"
-msgstr ""
+msgstr "部分"
 
 msgid "Coefficients Covariance Matrix"
-msgstr ""
+msgstr "系数协方差矩阵"
 
 msgid "Collinearity Diagnostics"
-msgstr ""
+msgstr "共线性诊断"
 
 msgid "Dimension"
-msgstr ""
+msgstr "维度"
 
 msgid "Eigenvalue"
-msgstr ""
+msgstr "特征值"
 
 msgid "Condition Index"
-msgstr ""
+msgstr "条件指数"
 
 msgid "Variance Proportions"
-msgstr ""
+msgstr "方差比例"
 
 msgid ""
 "Some collinearity diagnostics could not be computed. This is expected if the "
 "model contains singularities."
-msgstr ""
+msgstr "部分共线性诊断无法计算。如果模型包含奇异性，这是预期的。"
 
 msgid "Residuals Statistics"
-msgstr ""
+msgstr "残差统计量"
 
 msgid "Minimum"
-msgstr ""
+msgstr "最小值"
 
 msgid "Maximum"
-msgstr ""
+msgstr "最大值"
 
 msgid "Mean"
 msgstr "均值"
@@ -846,61 +861,61 @@ msgid "SD"
 msgstr "标准差"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
-msgstr ""
+msgstr "残差-因变量"
 
 msgid "Residuals"
-msgstr ""
+msgstr "残差"
 
 msgid "Residuals vs. Covariates"
-msgstr ""
+msgstr "残差-协变量"
 
 msgid "Residuals vs. %s"
-msgstr ""
+msgstr "残差-%s"
 
 msgid "Cannot plot residuals versus an interaction with a factor."
-msgstr ""
+msgstr "无法绘制残差与含因子的交互项的关系。"
 
 msgid "Residuals vs. Predicted"
-msgstr ""
+msgstr "残差-预测值"
 
 msgid "Predicted Values"
-msgstr ""
+msgstr "预测值"
 
 msgid "Residuals Histogram"
-msgstr ""
+msgstr "残差直方图"
 
 msgid "Standardized %s"
-msgstr ""
+msgstr "标准化 %s"
 
 msgid "Q-Q Plot Standardized Residuals"
-msgstr ""
+msgstr "标准化残差的 Q-Q 图"
 
 msgid "Partial plots are not supported for models containing interaction terms"
-msgstr ""
+msgstr "部分图不支持包含交互项的模型"
 
 msgid "%1$s vs. %2$s"
-msgstr ""
+msgstr "%1$s 与 %2$s"
 
 msgid "Partial plots are not supported for factors"
-msgstr ""
+msgstr "因子不支持部分图"
 
 msgid "Residuals %s"
-msgstr ""
+msgstr "残差 %s"
 
 msgid "Descriptives"
-msgstr ""
+msgstr "描述统计"
 
 msgid "M%s"
-msgstr ""
+msgstr "M%s"
 
 msgid "Std. Predicted Value"
-msgstr ""
+msgstr "标准化预测值"
 
 msgid "Standardized Residuals"
-msgstr ""
+msgstr "标准化残差"
 
 #, fuzzy
 msgid "%1$s includes %2$s"
@@ -912,103 +927,105 @@ msgid ""
 "        possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"Vovk-Sellke <em>p</em>-比值：基于 <em>p</em> 值，\n"
+"        支持 H%1$s 相对 H%2$s 的最大可能优势比等于 1/(-e <em>p</em> log(<em>p</em>))，其中 <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)。"
 
 msgid ""
 "The intercept model is omitted, as no meaningful information can be shown."
-msgstr ""
+msgstr "省略了截距模型，因为没有有意义的信息可显示。"
 
 msgid ""
 "There is only an intercept model, no meaningful information can be shown."
-msgstr ""
+msgstr "只有截距模型，没有有意义的信息可显示。"
 
 msgid "Marginal Effects Plots"
-msgstr ""
+msgstr "边际效应图"
 
 msgid "Marginal effect of %1$s on %2$s"
-msgstr ""
+msgstr "%1$s 对 %2$s 的边际效应"
 
 msgid "Response Optimizer"
-msgstr ""
+msgstr "响应优化器"
 
 msgid "Response Optimizer Settings"
-msgstr ""
+msgstr "响应优化器设置"
 
 msgid "Response"
-msgstr ""
+msgstr "响应"
 
 msgid "Goal"
-msgstr ""
+msgstr "目标"
 
 msgid "Target"
-msgstr ""
+msgstr "目标值"
 
 msgid "Weight"
-msgstr ""
+msgstr "权重"
 
 msgid "lower and upper bounds and target are"
-msgstr ""
+msgstr "下界、上界和目标值为"
 
 msgid "lower and upper bounds are"
-msgstr ""
+msgstr "下界和上界为"
 
 msgid "target is"
-msgstr ""
+msgstr "目标值为"
 
 msgid "The %s estimated from data."
-msgstr ""
+msgstr "从数据估计的 %s。"
 
 msgid "Response Optimizer Solution"
-msgstr ""
+msgstr "响应优化器解"
 
 msgid "Desirability"
-msgstr ""
+msgstr "合意度"
 
 msgid "%s fit"
-msgstr ""
+msgstr "%s 拟合"
 
 msgid "Optimization Plot"
-msgstr ""
+msgstr "优化图"
 
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
 "input parameters."
-msgstr ""
+msgstr "为所有预测变量输入值，以使用手动输入参数创建优化图。"
 
 msgid "Enter plausible numeric values for all continuous predictors."
-msgstr ""
+msgstr "为所有连续预测变量输入合理的数值。"
 
 msgid ""
 "Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
-msgstr ""
+msgstr "值“%1$s”不是因子“%2$s”的有效水平。允许的值：%3$s。"
 
 msgid "Optimization Plot Summary (Manual Predictor Values)"
-msgstr ""
+msgstr "优化图摘要（手动预测变量值）"
 
 msgid "Optimization Plot Summary"
-msgstr ""
+msgstr "优化图摘要"
 
 msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
-msgstr ""
+msgstr "连续预测变量的一个或多个输入参数超出设计空间。在设计空间之外进行外推可能无效。"
 
 msgid "Descriptives Plots"
-msgstr ""
+msgstr "描述统计图"
 
 msgid "All effects are specified as nuisance"
-msgstr ""
+msgstr "所有效应都被指定为冗余"
 
 msgid "There are nonpositive weights"
-msgstr ""
+msgstr "存在非正权重"
 
 msgid "Posterior Summary"
-msgstr ""
+msgstr "后验摘要"
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "模型比较"
 
 msgid "Model Comparison - %s"
-msgstr ""
+msgstr "模型比较 - %s"
 
 msgid ""
 "The Wilson model prior corresponds to a beta binomial prior with %1$s = 1 "
@@ -1017,6 +1034,9 @@ msgid ""
 "odds scale for each additional \n"
 "covariate added to the model (Consonni et al., 2018; Wilson et al., 2010)."
 msgstr ""
+"Wilson 模型先验对应于 %1$s = 1、%2$s = p * %3$s 的 Beta 二项先验，并且\n"
+"相当于在 log 优势比尺度上，每向模型添加一个额外协变量就近似惩罚 log(%3$s + 1)\n"
+"(Consonni et al., 2018; Wilson et al., 2010)。"
 
 msgid ""
 "The Castillo model prior corresponds to a beta binomial prior with %1$s = 1 "
@@ -1024,27 +1044,29 @@ msgid ""
 "for sparse regression when there are more covariates than observations "
 "(Castillo et al., 2015)."
 msgstr ""
+"Castillo 模型先验对应于 %1$s = 1、%2$s = p^u 的 Beta 二项先验，适用于\n"
+"协变量数多于观测数的稀疏回归 (Castillo et al., 2015)。"
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
 msgstr "模型"
 
 msgid "P(M)"
-msgstr ""
+msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|数据)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
 msgstr "所有模型都具有 %s。"
@@ -1052,22 +1074,22 @@ msgstr "所有模型都具有 %s。"
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
 "under \"Limit No. Models Shown\"."
-msgstr ""
+msgstr "“%s”表仅显示模型的子集；要查看所有模型，请在“限制显示的模型数量”下选择“否”。"
 
 msgid "Null model"
-msgstr ""
+msgstr "零模型"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "零模型（含 %s）"
 
 msgid "Posterior Summaries of Coefficients"
-msgstr ""
+msgstr "系数的后验摘要"
 
 msgid "BF<sub>inclusion</sub>"
-msgstr ""
+msgstr "BF<sub>inclusion</sub>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>inclusion</sub>)"
 
 msgid "%s%% Credible Interval"
 msgstr "%s%% 可信区间"
@@ -1076,193 +1098,198 @@ msgid "Coefficient"
 msgstr "系数"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(incl)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(excl)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(incl|数据)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(excl|数据)"
 
 msgid "<em>Warning.</em>"
-msgstr ""
+msgstr "<em>警告。</em>"
 
 msgid "Posterior Coefficients with %s%% Credible Interval"
-msgstr ""
+msgstr "具有 %s%% 可信区间的后验系数"
 
 msgid "Posterior Log Odds"
-msgstr ""
+msgstr "后验对数优势"
 
 msgid "Cannot display Posterior Log Odds when sampling method is MCMC."
-msgstr ""
+msgstr "当抽样方法为 MCMC 时，无法显示后验对数优势。"
 
 msgid "Residuals vs Fitted"
-msgstr ""
+msgstr "残差-拟合值"
 
 msgid "Predictions under BMA"
-msgstr ""
+msgstr "BMA 下的预测"
 
 msgid "Model Probabilities"
-msgstr ""
+msgstr "模型概率"
 
 msgid "Cumulative Probability"
-msgstr ""
+msgstr "累积概率"
 
 msgid "Model Search Order"
-msgstr ""
+msgstr "模型搜索顺序"
 
 msgid "Log(P(data|M)) vs. Model Size"
-msgstr ""
+msgstr "Log(P(data|M)) 与模型大小"
 
 msgid "Log(P(data|M))"
-msgstr ""
+msgstr "Log(P(data|M))"
 
 msgid "Model Dimension"
-msgstr ""
+msgstr "模型维度"
 
 msgid "Inclusion Probabilities"
-msgstr ""
+msgstr "包含概率"
 
 msgid "Marginal Inclusion Probability"
-msgstr ""
+msgstr "边际包含概率"
 
 msgid ""
 "Prior\n"
 "Inclusion\n"
 "Probabilities"
 msgstr ""
+"先验\n"
+"包含\n"
+"概率"
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "Q-Q 图"
 
 msgid "Marginal Posterior Distributions"
-msgstr ""
+msgstr "边际后验分布"
 
 msgid "Parameters estimates and/or credible intervals could not be calculated."
-msgstr ""
+msgstr "无法计算参数估计和/或可信区间。"
 
 msgid "Performance Diagnostics"
-msgstr ""
+msgstr "性能诊断"
 
 msgid "McFadden R%s"
-msgstr ""
+msgstr "McFadden R%s"
 
 msgid "Nagelkerke R%s"
-msgstr ""
+msgstr "Nagelkerke R%s"
 
 msgid "Tjur R%s"
-msgstr ""
+msgstr "Tjur R%s"
 
 msgid "Cox & Snell R%s"
-msgstr ""
+msgstr "Cox & Snell R%s"
 
 msgid "Standardized%s"
-msgstr ""
+msgstr "标准化%s"
 
 msgid "Wald Statistic"
-msgstr ""
+msgstr "Wald 统计量"
 
 msgid "Lower bound"
-msgstr ""
+msgstr "下界"
 
 msgid "Upper bound"
-msgstr ""
+msgstr "上界"
 
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
 "are standardized (X-standardization)."
-msgstr ""
+msgstr "标准化估计表示连续预测变量已标准化的估计值（X 标准化）。"
 
 msgid ""
 "Coefficient estimate and robust standard error are based on the median of "
 "the bootstrap distribution."
-msgstr ""
+msgstr "系数估计和稳健标准误基于自助法分布的中位数。"
 
 msgid "Factor Descriptives"
-msgstr ""
+msgstr "因子描述统计"
 
 msgid "Factor"
-msgstr ""
+msgstr "因子"
 
 msgid "Confusion matrix"
-msgstr ""
+msgstr "混淆矩阵"
 
 msgid "Observed"
-msgstr ""
+msgstr "观测"
 
 msgid "%% Correct"
-msgstr ""
+msgstr "%% 正确率"
 
 msgid "Performance metrics"
-msgstr ""
+msgstr "性能指标"
 
 msgid "Value"
 msgstr "值"
 
 msgid "Bootstrapping based on %i successful replicates."
-msgstr ""
+msgstr "自助法基于 %i 个成功的重复样本。"
 
 msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
 msgstr ""
+"部分置信区间无法计算。\n"
+"可能自助法重复样本过少。"
 
 msgid "Diagnostic plots"
-msgstr ""
+msgstr "诊断图"
 
 msgid "Estimates plots"
-msgstr ""
+msgstr "估计图"
 
 msgid "Predicted - residuals plot"
-msgstr ""
+msgstr "预测值-残差图"
 
 msgid "Predictor - residuals plots"
-msgstr ""
+msgstr "预测变量-残差图"
 
 msgid "Squared Pearson residuals plot"
-msgstr ""
+msgstr "Pearson 残差平方图"
 
 msgid "Independent - predicted plots"
-msgstr ""
+msgstr "自变量-预测值图"
 
 msgid "Performance plots"
-msgstr ""
+msgstr "性能图"
 
 msgid "ROC plot"
-msgstr ""
+msgstr "ROC 图"
 
 msgid "PR plot"
-msgstr ""
+msgstr "PR 图"
 
 msgid "Predicted Probability"
-msgstr ""
+msgstr "预测概率"
 
 msgid "Squared Pearson Residual"
-msgstr ""
+msgstr "Pearson 残差平方"
 
 msgid "False positive rate"
-msgstr ""
+msgstr "假阳性率"
 
 msgid "True positive rate"
-msgstr ""
+msgstr "真阳性率"
 
 msgid "Positive predictive value"
-msgstr ""
+msgstr "阳性预测值"
 
 msgid "%1$s%% bca%2$s Confidence interval"
-msgstr ""
+msgstr "%1$s%% bca%2$s 置信区间"
 
 msgid "%s%% Confidence interval"
-msgstr ""
+msgstr "%s%% 置信区间"
 
 msgid "%s <br> (odds ratio scale)"
-msgstr ""
+msgstr "%s <br>（优势比尺度）"
 
 msgid "Robust <br> %s"
-msgstr ""
+msgstr "稳健 <br> %s"
 
 msgid "Parameter"
 msgstr "参数"
@@ -1270,31 +1297,31 @@ msgstr "参数"
 msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
 "same as the coefficients are always included or excluded together."
-msgstr ""
+msgstr "因子 %s 内系数的包含/排除统计量相同，因为这些系数总是被一起包含或排除。"
 
 msgid "DV/Factor Descriptives"
-msgstr ""
+msgstr "DV/因子描述统计"
 
 msgid "DV/Factor"
-msgstr ""
+msgstr "DV/因子"
 
 msgid "Level"
-msgstr ""
+msgstr "水平"
 
 msgid "Covariate Descriptives"
-msgstr ""
+msgstr "协变量描述统计"
 
 msgid "Intercept"
 msgstr "截距"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "使用组合拟合的第 %1$d/%2$d 行"
+msgstr[1] "使用组合拟合的第 %1$d/%2$d 行"
 
 msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
-msgstr[0] ""
+msgstr[0] "以下预测变量被考虑但未纳入：%s。"
 
 #, fuzzy
 msgid "Regression Plot"
