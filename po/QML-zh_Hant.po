@@ -689,11 +689,11 @@ msgstr "Βeta 二項式"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "a"
-msgstr ""
+msgstr "a"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "b"
-msgstr ""
+msgstr "b"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Uniform"
@@ -713,7 +713,7 @@ msgstr "Castillo"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "u"
-msgstr ""
+msgstr "u"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli"
@@ -721,7 +721,7 @@ msgstr "Bernoulli"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Sampling Method"
@@ -1066,7 +1066,7 @@ msgstr "高斯"
 
 msgctxt "GlmInputComponent|"
 msgid "Gamma"
-msgstr ""
+msgstr "伽瑪"
 
 msgctxt "GlmInputComponent|"
 msgid "Inverse Gaussian"
@@ -1114,7 +1114,7 @@ msgstr "逆"
 
 msgctxt "GlmInputComponent|"
 msgid "1/mu^2"
-msgstr ""
+msgstr "1/μ²"
 
 msgctxt "GlmResidualAnalysisPlotsComponent|"
 msgid "Analysis of Residuals"
@@ -1445,19 +1445,19 @@ msgstr "alpha"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "CCH"
-msgstr ""
+msgstr "CCH"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "beta"
-msgstr ""
+msgstr "貝他"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "s"
-msgstr ""
+msgstr "s"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta-Prime"
-msgstr ""
+msgstr "貝他素數"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Instrinsic"
@@ -1477,11 +1477,11 @@ msgstr "Βeta 二項式"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "a"
-msgstr ""
+msgstr "a"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
-msgstr ""
+msgstr "b"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform"
@@ -1501,7 +1501,7 @@ msgstr "Castillo"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "u"
-msgstr ""
+msgstr "u"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli"
@@ -1509,7 +1509,7 @@ msgstr "Bernoulli"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Sampling Method"
