@@ -728,7 +728,7 @@ msgid "Ratio"
 msgstr "Ratio"
 
 msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
-msgstr ""
+msgstr "ROC-curve van %s ligt grotendeels onder de diagonaal. Scores worden gewijzigd."
 
 msgid "trying + %s"
 msgstr "proberen + %s"
@@ -1029,70 +1029,75 @@ msgid "Marginal effect of %1$s on %2$s"
 msgstr "Marginaal effect van %1$s op %2$s"
 
 msgid "Response Optimizer"
-msgstr ""
+msgstr "Responsoptimalisatie"
 
 msgid "Response Optimizer Settings"
-msgstr ""
+msgstr "Instellingen Responsoptimalisatie"
 
 msgid "Response"
-msgstr ""
+msgstr "Respons"
 
 msgid "Goal"
-msgstr ""
+msgstr "Doel"
 
 msgid "Target"
-msgstr ""
+msgstr "Doelwaarde"
 
 msgid "Weight"
-msgstr ""
+msgstr "Gewicht"
 
 msgid "lower and upper bounds and target are"
-msgstr ""
+msgstr "ondergrens, bovengrens en doelwaarde zijn"
 
 msgid "lower and upper bounds are"
-msgstr ""
+msgstr "ondergrens en bovengrens zijn"
 
 msgid "target is"
-msgstr ""
+msgstr "doelwaarde is"
 
 msgid "The %s estimated from data."
-msgstr ""
+msgstr "De %s geschat op basis van data."
 
 msgid "Response Optimizer Solution"
-msgstr ""
+msgstr "Oplossing Responsoptimalisatie"
 
 #, fuzzy
 msgid "Desirability"
 msgstr "Voorspelde kans"
 
 msgid "%s fit"
-msgstr ""
+msgstr "%s pasvorm"
 
 msgid "Optimization Plot"
-msgstr ""
+msgstr "Optimalisatieplot"
 
 msgid ""
 "Enter values for all predictors to create an optimization plot with manual "
 "input parameters."
 msgstr ""
+"Voer waarden in voor alle predictoren om een optimalisatieplot te maken met "
+"handmatig ingevoerde parameters."
 
 msgid "Enter plausible numeric values for all continuous predictors."
-msgstr ""
+msgstr "Voer aannemelijke numerieke waarden in voor alle continue predictoren."
 
 msgid ""
 "Value '%1$s' is not a valid level for factor '%2$s'. Allowed values: %3$s."
 msgstr ""
+"Waarde '%1$s' is geen geldig niveau voor factor '%2$s'. Toegestane waarden: %3$s."
 
 msgid "Optimization Plot Summary (Manual Predictor Values)"
-msgstr ""
+msgstr "Samenvatting Optimalisatieplot (Handmatig Ingevoerde Predictorwaarden)"
 
 msgid "Optimization Plot Summary"
-msgstr ""
+msgstr "Samenvatting Optimalisatieplot"
 
 msgid ""
 "One or more input parameters for continuous predictors are outside of the "
 "design space. Extrapolation beyond the design space might not be valid."
 msgstr ""
+"Een of meer invoerparameters voor continue predictoren vallen buiten de "
+"ontwerpruimte. Extrapolatie buiten de ontwerpruimte is mogelijk niet geldig."
 
 #, fuzzy
 msgid "Descriptives Plots"
