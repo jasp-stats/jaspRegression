@@ -1030,16 +1030,16 @@ msgid "Marginal effect of %1$s on %2$s"
 msgstr "Marginaler Effekt von %1$s auf %2$s"
 
 msgid "Response Optimizer"
-msgstr ""
+msgstr "Antwort-Optimierer"
 
 msgid "Response Optimizer Settings"
-msgstr ""
+msgstr "Einstellungen des Antwort-Optimierers"
 
 msgid "Response"
-msgstr ""
+msgstr "Antwort"
 
 msgid "Goal"
-msgstr ""
+msgstr "Ziel"
 
 msgid "Target"
 msgstr "Ziel"
@@ -1060,7 +1060,7 @@ msgid "The %s estimated from data."
 msgstr "%s geschätzt aus Daten."
 
 msgid "Response Optimizer Solution"
-msgstr ""
+msgstr "Lösung des Antwort-Optimierers"
 
 #, fuzzy
 msgid "Desirability"

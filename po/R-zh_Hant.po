@@ -157,10 +157,10 @@ msgid "Holm"
 msgstr "Holm 檢定"
 
 msgid "Homel"
-msgstr ""
+msgstr "Homel"
 
 msgid "Hochberg"
-msgstr ""
+msgstr "Hochberg"
 
 msgid "Multivariate-t"
 msgstr "多變量 t"
@@ -169,16 +169,16 @@ msgid "Tukey"
 msgstr "Tukey"
 
 msgid "Benjamini-Hochberg"
-msgstr ""
+msgstr "Benjamini-Hochberg"
 
 msgid "Benjamini-Yekutieli"
-msgstr ""
+msgstr "Benjamini-Yekutieli"
 
 msgid "Scheffé"
 msgstr "Scheffé 檢定"
 
 msgid "Sidak"
-msgstr ""
+msgstr "Sidak"
 
 msgid "Dunnett"
 msgstr "Dunnett檢定"
@@ -208,13 +208,13 @@ msgid "Residual"
 msgstr "殘差"
 
 msgid "DFBETAS_%1s"
-msgstr ""
+msgstr "DFBETAS_%1s"
 
 msgid "DFBETAS:Intercept"
 msgstr "DFBETAS:截距"
 
 msgid "DFBETAS:%1s"
-msgstr ""
+msgstr "DFBETAS：%1s"
 
 msgid "Mahalanobis distance cannot be computed for the intercept only model."
 msgstr "僅含截距的模型無法計算馬氏距離。"
@@ -679,7 +679,7 @@ msgid "ROC curve of %s mostly lying under the diagonal. Switching scores."
 msgstr "%s 之 ROC 曲線大部分落於對角線下方。將切換分數。"
 
 msgid "trying + %s"
-msgstr ""
+msgstr "嘗試 + %s"
 
 msgid "F test assumes 'quasi%s' family"
 msgstr "F 檢定假設「準 %s」族"
@@ -706,16 +706,16 @@ msgid ""
 msgstr "逐步法準則錯誤：進入 F 值須大於移除 F 值"
 
 msgid "R"
-msgstr ""
+msgstr "R"
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
 msgstr "調整後的R%s"
 
 msgid "RMSE"
-msgstr ""
+msgstr "RMSE"
 
 msgid "R%s Change"
 msgstr "R%s 改變量"
@@ -733,7 +733,7 @@ msgid "Autocorrelation"
 msgstr "自相關"
 
 msgid "Durbin-Watson"
-msgstr ""
+msgstr "Durbin-Watson"
 
 msgid "p-value for Durbin-Watson test is unavailable for weighted regression."
 msgstr "加權迴歸無法提供 Durbin-Watson 檢定之 p 值。"
@@ -751,7 +751,7 @@ msgid "Mean Square"
 msgstr "均方"
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr "迴歸"
@@ -912,7 +912,7 @@ msgid "Descriptives"
 msgstr "描述性統計"
 
 msgid "M%s"
-msgstr ""
+msgstr "M%s"
 
 msgid "Std. Predicted Value"
 msgstr "標準化預測值"
@@ -1052,13 +1052,13 @@ msgstr ""
 "適用於共變項數多於觀測數之稀疏迴歸（Castillo 等人，2015）。"
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "Log(BF<sub>10</sub>)"
 
 msgid "Models"
 msgstr "模型"
@@ -1067,10 +1067,10 @@ msgid "P(M)"
 msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|data)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
 msgstr "所有模型都包含 %s。"
@@ -1143,10 +1143,10 @@ msgid "Model Search Order"
 msgstr "模型搜尋順序"
 
 msgid "Log(P(data|M)) vs. Model Size"
-msgstr ""
+msgstr "Log(P(data|M)) 相對於模型大小"
 
 msgid "Log(P(data|M))"
-msgstr ""
+msgstr "Log(P(data|M))"
 
 msgid "Model Dimension"
 msgstr "模型維度"
@@ -1179,16 +1179,16 @@ msgid "Performance Diagnostics"
 msgstr "效能診斷"
 
 msgid "McFadden R%s"
-msgstr ""
+msgstr "McFadden R%s"
 
 msgid "Nagelkerke R%s"
-msgstr ""
+msgstr "Nagelkerke R%s"
 
 msgid "Tjur R%s"
-msgstr ""
+msgstr "Tjur R%s"
 
 msgid "Cox & Snell R%s"
-msgstr ""
+msgstr "Cox & Snell R%s"
 
 msgid "Standardized%s"
 msgstr "標準化 %s"
