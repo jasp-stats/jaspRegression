@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.96.4\n"
 "POT-Creation-Date: 2026-07-04 03:58\n"
-"PO-Revision-Date: 2026-09-14 02:26+0000\n"
+"PO-Revision-Date: 2026-09-15 03:57+0000\n"
 "Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/jasp/"
 "jaspregression-r/fa/>\n"
@@ -25,13 +25,13 @@ msgid "Scatterplot"
 msgstr ""
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "پیشین و پسین"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "بررسی استواری فاکتور بیزی"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "تحلیل ترتیبی"
 
 msgid "Bayesian Pearson Correlations"
 msgstr ""
@@ -58,7 +58,7 @@ msgid "Correlation Table"
 msgstr ""
 
 msgid "Pearson's r"
-msgstr ""
+msgstr "r پیرسون"
 
 msgid "Spearman's rho"
 msgstr ""
@@ -106,7 +106,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -136,7 +136,7 @@ msgid "Plotting is not possible: %s"
 msgstr ""
 
 msgid "Q-Q Plots"
-msgstr ""
+msgstr "نمودارهای Q-Q"
 
 msgid "Q-Q plot: Standardized %1s residuals"
 msgstr ""
@@ -190,7 +190,7 @@ msgid "P-values are adjusted using %s adjustment."
 msgstr ""
 
 msgid "Predicted"
-msgstr ""
+msgstr "پیش‌بینی‌شده"
 
 msgid "(Intercept)"
 msgstr ""
@@ -312,7 +312,7 @@ msgid "Kendall's Tau B"
 msgstr ""
 
 msgid "p-value"
-msgstr "p-مقدار"
+msgstr "مقدار p"
 
 msgid "Number of observations is < %s."
 msgstr ""
@@ -332,7 +332,7 @@ msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
 
 msgid "Shapiro-Wilk"
-msgstr "شاپیرو–ویلک"
+msgstr "شاپیرو-ویلک"
 
 msgid "Variables"
 msgstr ""
@@ -341,10 +341,10 @@ msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr ""
 
 msgid "Scatter Plots"
-msgstr ""
+msgstr "نمودارهای پراکنش"
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "نمودار همبستگی"
 
 msgid "Correlation undefined: %s"
 msgstr ""
@@ -363,7 +363,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "رسم نمودار امکان‌پذیر نیست: %s"
 
 msgid "Partial Pearson's r"
 msgstr ""
@@ -378,7 +378,7 @@ msgid "%s heatmap"
 msgstr ""
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "نقشه‌های حرارتی"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr ""
@@ -388,6 +388,9 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"حداکثر نسبت <em>p</em> ووک-سلکه: بر اساس مقدار <em>p</em>، حداکثر شانس ممکن "
+"به نفع H%1$s در برابر H%2$s برابر با 1/(-e <em>p</em> log(<em>p</em>)) برای "
+"<em>p</em> %3$s .37 است (سلکه، بایاری و برگر، 2001)."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -411,13 +414,13 @@ msgid "Could not compute the posteriors"
 msgstr ""
 
 msgid "Prior"
-msgstr ""
+msgstr "پیشین"
 
 msgid "Posterior"
-msgstr ""
+msgstr "پسین"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "بازه اطمینان %s%%:"
 
 msgid "Bayesian Correlation Pairwise Plots"
 msgstr ""
@@ -429,7 +432,7 @@ msgid "%1$s at kappa==%2$s"
 msgstr ""
 
 msgid "user prior"
-msgstr ""
+msgstr "پیشین کاربر"
 
 msgid "Stretched beta prior width"
 msgstr ""
@@ -542,13 +545,13 @@ msgid "Statistic"
 msgstr "آماره"
 
 msgid "Coefficients"
-msgstr "ضرایب"
+msgstr "ضریب‌ها"
 
 msgid "Estimate"
 msgstr "برآورد"
 
 msgid "Standard Error"
-msgstr ""
+msgstr "خطای معیار"
 
 msgid "Lower Bound"
 msgstr ""
@@ -623,7 +626,7 @@ msgid "Estimated Marginal Means"
 msgstr ""
 
 msgid "SE"
-msgstr "خطای استاندارد (SE)"
+msgstr "خطای معیار"
 
 msgid "Lower"
 msgstr "پایین"
@@ -638,7 +641,7 @@ msgid "t"
 msgstr "t"
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
 msgstr ""
@@ -688,7 +691,7 @@ msgid "R"
 msgstr ""
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
 msgstr ""
@@ -736,7 +739,7 @@ msgid "Regression"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "کل"
 
 msgid "Unstandardized"
 msgstr ""
@@ -831,10 +834,10 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "حداقل"
 
 msgid "Maximum"
-msgstr ""
+msgstr "حداکثر"
 
 msgid "Mean"
 msgstr "میانگین"
@@ -843,13 +846,13 @@ msgid "SD"
 msgstr "انحراف معیار"
 
 msgid "N"
-msgstr "N (تعداد)"
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
 
 msgid "Residuals"
-msgstr ""
+msgstr "باقی‌مانده‌ها"
 
 msgid "Residuals vs. Covariates"
 msgstr ""
@@ -989,7 +992,7 @@ msgid ""
 msgstr ""
 
 msgid "Descriptives Plots"
-msgstr ""
+msgstr "نمودارهای توصیفی"
 
 msgid "All effects are specified as nuisance"
 msgstr ""
@@ -1060,25 +1063,25 @@ msgid "Posterior Summaries of Coefficients"
 msgstr ""
 
 msgid "BF<sub>inclusion</sub>"
-msgstr ""
+msgstr "BF<sub>گنجاندن</sub>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr "فاصله باور %s%%"
+msgstr "بازه باورپذیر %s%%"
 
 msgid "Coefficient"
 msgstr "ضریب"
 
 msgid "P(incl)"
-msgstr "P(شامل)"
+msgstr "P(گنجاندن)"
 
 msgid "P(excl)"
 msgstr "P(حذف)"
 
 msgid "P(incl|data)"
-msgstr "P(شامل|داده‌ها)"
+msgstr "P(گنجاندن|داده)"
 
 msgid "P(excl|data)"
 msgstr "P(حذف|داده‌ها)"
@@ -1165,7 +1168,7 @@ msgid "Lower bound"
 msgstr ""
 
 msgid "Upper bound"
-msgstr ""
+msgstr "کران بالا"
 
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
@@ -1187,7 +1190,7 @@ msgid "Confusion matrix"
 msgstr ""
 
 msgid "Observed"
-msgstr ""
+msgstr "مشاهده‌شده"
 
 msgid "%% Correct"
 msgstr ""
@@ -1240,10 +1243,10 @@ msgid "Squared Pearson Residual"
 msgstr ""
 
 msgid "False positive rate"
-msgstr ""
+msgstr "نرخ مثبت کاذب"
 
 msgid "True positive rate"
-msgstr ""
+msgstr "نرخ مثبت واقعی"
 
 msgid "Positive predictive value"
 msgstr ""
