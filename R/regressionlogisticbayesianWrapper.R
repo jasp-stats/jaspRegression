@@ -50,8 +50,8 @@
 #' \itemize{
 #'   \item \code{"bernoulli"}:  Bernoulli prior. Default p = 0.5.
 #'   \item \code{"wilson"}: Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda * p, where p is the number of predictors in the model.
-#'   \item \code{"uniform"}: Uniform prior distribution
-#'   \item \code{"betaBinomial"}:  Default Beta(a = 1, b = 1).
+#'   \item \code{"uniform"}: Default uniform prior distribution
+#'   \item \code{"betaBinomial"}:  Beta(a = 1, b = 1).
 #'   \item \code{"castillo"}: Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.
 #' }
 #' @param modelProbabilitiesPlot,  Displays the cumulative distribution function of the model search.
@@ -112,7 +112,7 @@ RegressionLogisticBayesian <- function(
           logPosteriorOddsPlot = FALSE,
           marginalPosteriorPlot = FALSE,
           modelComplexityPlot = FALSE,
-          modelPrior = "betaBinomial",
+          modelPrior = "uniform",
           modelProbabilitiesPlot = FALSE,
           modelTerms = list(optionKey = "components", types = list(), value = list()),
           modelsShown = "limited",
