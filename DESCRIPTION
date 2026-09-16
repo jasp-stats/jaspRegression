@@ -29,7 +29,6 @@ Imports:
   mdscore,
   ppcor,
   purrr,
-  Rcpp,
   statmod,
   VGAM
 Remotes:
@@ -39,6 +38,6 @@ Remotes:
   jasp-stats/jaspDescriptives,
   jasp-stats/jaspGraphs,
   jasp-stats/jaspTTests,
-  vandenman/jaspTools
+  jasp-stats/jaspTools
 LinkingTo:
-  Rcpp
+  cpp11
