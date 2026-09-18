@@ -820,7 +820,7 @@ for sparse regression when there are more covariates than observations (Castillo
   i  <- index
 
   sel      <- x$conditionalmeans[, i] != 0
-  prob0    <- min(1, max(0, 1 - x$probne0[i]))
+  prob0    <- 1 - x$probne0[i]
   mixprobs <- x$postprobs[sel]/(1 - prob0)
   means    <- x$conditionalmeans[sel, i, drop = TRUE]
   sds      <- x$conditionalsd[sel, i, drop = TRUE]
@@ -1032,7 +1032,8 @@ for sparse regression when there are more covariates than observations (Castillo
     "hyperG"        = "hyper-g",
     "hyperGLaplace" = "hyper-g-laplace",
     "hyperGN"       = "hyper-g-n",
-    "jzs"           = "JZS"
+    "jzs"           = "JZS",
+    stop("Unknown prior ", as.character(options$priorRegressionCoefficients))
   )
 
   alpha <- .basregGetPriorParameter(prior, options, nrow(dataset))
@@ -1069,6 +1070,7 @@ for sparse regression when there are more covariates than observations (Castillo
   bas_lm[["BFinclusion"]] <- .basregComputeInclusionBF(bas_lm)
   bas_lm[["namesx"]][-1] <- .unvf(bas_lm[["namesx"]][-1])
   bas_lm[["nuisanceTerms"]] <- setNames(isNuisance, .unvf(names(isNuisance)))
+  bas_lm[["probne0"]] <- pmin(pmax(bas_lm[["probne0"]], 0), 1)
 
   basregContainer[["basregModel"]] <- createJaspState(bas_lm)
 
@@ -1076,36 +1078,34 @@ for sparse regression when there are more covariates than observations (Castillo
 }
 
 .basregGetPriorParameter <- function(prior, options, n) {
-  legacyAlpha <- options$gPriorAlpha
+  legacyAlpha <- options[["gPriorAlpha"]]
   priorParameter <- function(value, default) {
     if (!is.null(value)) value else if (!is.null(legacyAlpha)) legacyAlpha else default
   }
 
-  if (prior == "g-prior")
-    return(priorParameter(options$gPriorG, n))
-
   switch(
     prior,
-    "hyper-g"         = priorParameter(options$hyperGAlpha, 3),
-    "hyper-g-laplace" = priorParameter(options$hyperGLaplaceAlpha, 3),
-    "hyper-g-n"       = priorParameter(options$hyperGNAlpha, 3),
-    "JZS"             = options$jzsRScale^2,
+    "g-prior"         = if (options[["gPriorType"]] == "n") n else priorParameter(options[["gPriorG"]], n),
+    "hyper-g"         = priorParameter(options[["hyperGAlpha"]],        3),
+    "hyper-g-laplace" = priorParameter(options[["hyperGLaplaceAlpha"]], 3),
+    "hyper-g-n"       = priorParameter(options[["hyperGNAlpha"]],       3),
+    "JZS"             = options[["jzsRScale"]]^2,
     NULL
   )
 }
 
 .basregGetModelPrior <- function(options) {
-    nPreds <- length(options$modelTerms)
-    modelPrior <- switch(options$modelPrior,
+    nPreds <- length(options[["modelTerms"]])
+    modelPrior <- switch(options[["modelPrior"]],
 
       uniform      = BAS::uniform(),
-      bernoulli    = BAS::Bernoulli(options$bernoulliParam),
-      uniformSize  = BAS::beta.binomial(1.0,                                    1.0),
-      betaBinomial = BAS::beta.binomial(as.numeric(options$betaBinomialParamA), as.numeric(options$betaBinomialParamB)),
-      wilson       = BAS::beta.binomial(1.0,                                    as.numeric(nPreds * options$wilsonParamLambda)),
-      castillo     = BAS::beta.binomial(1.0,                                    as.numeric(nPreds ^ options$castilloParamU)),
+      bernoulli    = BAS::Bernoulli(options[["bernoulliParam"]]),
+      uniformSize  = BAS::beta.binomial(1.0,                                         1.0),
+      betaBinomial = BAS::beta.binomial(as.numeric(options[["betaBinomialParamA"]]), as.numeric(options[["betaBinomialParamB"]])),
+      wilson       = BAS::beta.binomial(1.0,                                         as.numeric(nPreds * options[["wilsonParamLambda"]])),
+      castillo     = BAS::beta.binomial(1.0,                                         as.numeric(nPreds ^ options[["castilloParamU"]])),
 
-      stop("Invalid model prior: ", options$modelPrior)
+      stop("Invalid model prior: ", options[["modelPrior"]])
     )
     return(modelPrior)
   }
@@ -1278,7 +1278,7 @@ for sparse regression when there are more covariates than observations (Castillo
     data = dataset,
     weights = weights,
     n.models = 1,
-    alpha = basregModel$g,
+    alpha = basregModel$alpha,
     initprobs = basregModel$probne0,
     prior = basregModel$prior,
     modelprior = basregModel$modelprior,

@@ -171,15 +171,15 @@ Upgrades
 
 		ChangeRename { from: "iterationsMCMC";								to:	"samples"									}
 		ChangeRename { from: "nSimForCRI";									to:	"numericalAccuracy"							}
-		
+
 
 	}
 
 	Upgrade
 	{
 		functionName:		"RegressionLinearBayesian"
-		fromVersion:		"0.95"
-		toVersion:			"0.96"
+		fromVersion:		"0.96.5"
+		toVersion:			"0.96.6"
 
 		ChangeRename
 		{
@@ -205,7 +205,11 @@ Upgrades
 			from: "gPriorAlpha"
 			to: "hyperGNAlpha"
 		}
-		ChangeRemove { name: "gPriorAlpha" }
+		ChangeRemove
+		{
+			condition: function(options) { return options["gPriorAlpha"] !== undefined; }
+			name: "gPriorAlpha"
+		}
 	}
 
 	Upgrade

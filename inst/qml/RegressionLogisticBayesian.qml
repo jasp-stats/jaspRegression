@@ -182,17 +182,21 @@ Form {
 			RadioButton { value: "ebLocal";		label: qsTr("EB-local")	; info: qsTr("Uses the MLE of g from the marginal likelihood within each model.")	}
 			RadioButton
 			{
-				value: "gPrior";
+				value: "gPrior"
 				label: qsTr("g-prior")
-				info: qsTr("Zellner's g-prior. There is an option to adjust the alpha parameter.")
+				info: qsTr("Zellner's g-prior. The default g = n is the unit-information prior.")
 				childrenOnSameRow: true
-				childrenArea.columnSpacing: 1
-				DoubleField
+				RadioButtonGroup
 				{
-					name: "gPriorAlpha"
-					label: qsTr("alpha")
-					defaultValue: 3.0
-					inclusive: JASP.None
+					name: "gPriorType"
+					RadioButton { value: "n"; label: qsTr("g = n"); info: qsTr("Set g to the number of observations, i.e., the unit-information prior.") ;checked: true }
+					RadioButton
+					{
+						value: "userDefined"; label: qsTr("g ="); info: qsTr("Specify a value for g.")
+						childrenOnSameRow: true
+						indentChildren: false
+						DoubleField { name: "gPriorAlpha"; label: ""; defaultValue: 1; min: 0; inclusive: JASP.None }
+					}
 				}
 			}
 			RadioButton
@@ -235,12 +239,13 @@ Form {
 
 		ColumnLayout
 		{
+
 			RadioButtonGroup
 			{
 				name: "modelPrior"
 				title: qsTr("Model Prior")
 				info: qsTr("Prior distribution on the models.")
-				RadioButton { checked: true; value: "uniformSize"; label: qsTr("Uniform over model size"); info: qsTr("Uniform prior distribution over expected number of included predictors. Each model with the same number of predictors receives the same prior probability. Identical to a Beta binomial with a = 1 and b = 1.") }
+				RadioButton { checked: true; value: "uniformSize"; label: qsTr("Uniform over model size"); info: qsTr("Uniform prior distribution over the number of included predictors (model size). Each model size receives the same prior probability, which is divided equally among the models of that size. Identical to a Beta binomial with a = 1 and b = 1.") }
 				RadioButton { value: "uniform"; label: qsTr("Uniform over models"); info: qsTr("Uniform prior distribution over the models. Each model receives the same prior probability.") }
 				RadioButton
 				{

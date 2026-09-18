@@ -1037,15 +1037,15 @@ for sparse regression when there are more covariates than observations (Castillo
 
   # convert QML input to prior value that bas.lm expects
   prior <- switch(
-    options$priorRegressionCoefficients,
+    options[["priorRegressionCoefficients"]],
     "aic"           = BAS::aic.prior(),
     "betaPrime"     = BAS::beta.prime(),
     "bic"           = BAS::bic.prior(),
     "ebLocal"       = BAS::EB.local(),
-    "cch"           = BAS::CCH(alpha = as.numeric(options$cchPriorAlpha),
-                               beta  = as.numeric(options$cchPriorBeta),
-                               s     = as.numeric(options$cchPriorS)),
-    "gPrior"        = BAS::g.prior(g = options$gPriorAlpha),
+    "cch"           = BAS::CCH(alpha = as.numeric(options[["cchPriorAlpha"]]),
+                               beta  = as.numeric(options[["cchPriorBeta"]]),
+                               s     = as.numeric(options[["cchPriorS"]])),
+    "gPrior"        = BAS::g.prior(g = as.numeric(if (options[["gPriorType"]] == "n") n else priorParameter(options[["gPriorAlpha"]], n))),
     "instrinsic"    = BAS::intrinsic(),
     "robust"        = BAS::robust()
   )
@@ -1084,6 +1084,7 @@ for sparse regression when there are more covariates than observations (Castillo
   basGlmObject[["namesx"]][-1] <- basGlmObject[["namesx"]][-1]
   basGlmObject[["namesx"]] <- .bayesianLogisticRegRenameTermsWithLevels(basGlmObject[["namesx"]], options[["covariates"]], options[["factors"]])
   basGlmObject[["nuisanceTerms"]] <- setNames(isNuisance, names(isNuisance))
+  basGlmObject[["probne0"]] <- pmin(pmax(basGlmObject[["probne0"]], 0), 1)
 
   bayesianLogisticRegContainer[["bayesianLogisticRegModel"]] <- createJaspState(basGlmObject)
 
