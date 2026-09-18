@@ -7,6 +7,9 @@ test_that("Main tables results match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- "contGamma"
     options$weights <- "facFifty"
@@ -19,6 +22,8 @@ test_that("Main tables results match", {
     options$setSeed <- TRUE
     options$residualsSavedToData   <-  FALSE
     options$residualSdsSavedToData <-  FALSE
+
+
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
     table <- results[["results"]][["basreg"]][["collection"]][["basreg_modelComparisonTable"]][["data"]]
     jaspTools::expect_equal_tables(
@@ -64,6 +69,9 @@ options <- jaspTools::analysisOptions("RegressionLinearBayesian")
 options$covariates <- c("adverts", "airplay", "attract")
 options$dependent <- "sales"
 options$modelPrior <- "betaBinomial"
+options$priorRegressionCoefficients <- "gPrior"
+options$gPriorType <- "userDefined"
+options$gPriorG <- 1
 options$modelTerms <- list(list(components = "adverts", isNuisance = FALSE),
                            list(components = "airplay", isNuisance = FALSE),
                            list(components = c("adverts", "airplay"), isNuisance = FALSE))
@@ -128,6 +136,9 @@ test_that("Coefficient plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma", "debCollin1", "contcor2")
     options$modelTerms <- list(
@@ -154,6 +165,9 @@ test_that("Residuals plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma")
     options$modelTerms <- list(
@@ -175,6 +189,9 @@ test_that("Models plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma", "contExpon", "contcor1")
     options$modelTerms <- list(
@@ -207,6 +224,10 @@ test_that("Model priors match", {
         list(components="contExpon", isNuisance=FALSE),
         list(components="contcor1", isNuisance=FALSE)
     )
+
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
 
     modelPriors <- list(
         uniform      = list(modelPrior = "uniform"),
@@ -307,6 +328,7 @@ test_that("Exporting residuals works", {
   options$weights <- "W"
   options$modelPrior <- "betaBinomial"
   options$priorRegressionCoefficients <- "gPrior"
+  options$gPriorType <- "userDefined"
   options$gPriorG <- 13
   options$residualsSavedToData   <- TRUE
   options$residualSdsSavedToData <- TRUE
@@ -340,7 +362,7 @@ test_that("Refitted median model preserves selection and produces weighted predi
   data("Hald", package = "BAS")
   weights <- seq_len(nrow(Hald))
   basModel <- BAS::bas.lm(
-    Y ~ ., data = Hald, weights = weights, prior = "g-prior", alpha = nrow(Hald),
+    Y ~ ., data = Hald, weights = weights, prior = "g-prior", alpha = 3, # intentionally not the more natural nrow(Hald), which is BAS's default, to test that the alpha parameter is preserved
     initprobs = c(1, 1, 0.5, 0.5, 0.5)
   )
   options <- list(
@@ -353,6 +375,8 @@ test_that("Refitted median model preserves selection and produces weighted predi
   expectedModel <- (0:(basModel$n.vars - 1))[basModel$probne0 > 0.5]
 
   expect_equal(medianModel$which[[1]], expectedModel)
+  expect_equal(medianModel$alpha, basModel$alpha)
+  expect_equal(medianModel$prior, basModel$prior)
   expect_length(refittedPredictions$fit, nrow(Hald))
   expect_length(refittedPredictions$se.pred, nrow(Hald))
   expect_true(all(is.finite(refittedPredictions$fit)))
@@ -366,7 +390,8 @@ test_that("Regression coefficient priors use their own parameter", {
         hyperGAlpha = 2.5,
         hyperGLaplaceAlpha = 3,
         hyperGNAlpha = 3.5,
-        jzsRScale = 0.5
+        jzsRScale = 0.5,
+        gPriorType = "userDefined"
     )
 
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", options, n = 100), 13)
@@ -381,7 +406,7 @@ test_that("Regression coefficient priors use their own parameter", {
     options$hyperGAlpha <- 3.75
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", options, n = 100), 100)
 
-    legacyOptions <- list(gPriorAlpha = 13, jzsRScale = 0.5)
+    legacyOptions <- list(gPriorAlpha = 13, jzsRScale = 0.5, gPriorType = "userDefined")
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", legacyOptions, n = 100), 13)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", legacyOptions, n = 100), 13)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-laplace", legacyOptions, n = 100), 13)
@@ -392,7 +417,7 @@ test_that("Regression coefficient priors use their own parameter", {
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", legacyOptions, n = 100), 25)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", legacyOptions, n = 100), 2.5)
 
-    defaultOptions <- list(jzsRScale = 0.5)
+    defaultOptions <- list(jzsRScale = 0.5, gPriorType = "userDefined")
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", defaultOptions, n = 100), 100)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", defaultOptions, n = 100), 3)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-laplace", defaultOptions, n = 100), 3)
