@@ -2,14 +2,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.96.4\n"
 "POT-Creation-Date: 2026-07-04 03:58\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Automatically generated\n"
-"Language-Team: none\n"
+"PO-Revision-Date: 2026-09-15 03:57+0000\n"
+"Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
+"Language-Team: Persian <https://hosted.weblate.org/projects/jasp/"
+"jaspregression-r/fa/>\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2026.10.dev0\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -23,13 +25,13 @@ msgid "Scatterplot"
 msgstr ""
 
 msgid "Prior and Posterior"
-msgstr ""
+msgstr "پیشین و پسین"
 
 msgid "Bayes Factor Robustness Check"
-msgstr ""
+msgstr "بررسی استواری فاکتور بیزی"
 
 msgid "Sequential Analysis"
-msgstr ""
+msgstr "تحلیل ترتیبی"
 
 msgid "Bayesian Pearson Correlations"
 msgstr ""
@@ -56,7 +58,7 @@ msgid "Correlation Table"
 msgstr ""
 
 msgid "Pearson's r"
-msgstr ""
+msgstr "r پیرسون"
 
 msgid "Spearman's rho"
 msgstr ""
@@ -65,7 +67,7 @@ msgid "Kendall's tau B"
 msgstr ""
 
 msgid "Pearson"
-msgstr ""
+msgstr "پیرسون"
 
 msgid "Spearman"
 msgstr ""
@@ -74,7 +76,7 @@ msgid "Kendall"
 msgstr ""
 
 msgid "Density"
-msgstr ""
+msgstr "چگالی"
 
 msgid "Plotting not possible: Number of observations is < 3"
 msgstr ""
@@ -104,7 +106,7 @@ msgid "Kendall's tau"
 msgstr ""
 
 msgid "n"
-msgstr ""
+msgstr "n"
 
 msgid "Upper %s%% CI"
 msgstr ""
@@ -134,7 +136,7 @@ msgid "Plotting is not possible: %s"
 msgstr ""
 
 msgid "Q-Q Plots"
-msgstr ""
+msgstr "نمودارهای Q-Q"
 
 msgid "Q-Q plot: Standardized %1s residuals"
 msgstr ""
@@ -146,13 +148,13 @@ msgid "P-values correspond to test of null hypothesis against %s."
 msgstr ""
 
 msgid "Results are averaged over the levels of: %s."
-msgstr ""
+msgstr "نتایج روی سطوح زیر میانگین‌گیری شده‌اند: %s."
 
 msgid "P-values are not adjusted."
 msgstr ""
 
 msgid "Holm"
-msgstr ""
+msgstr "هولم"
 
 msgid "Homel"
 msgstr ""
@@ -164,7 +166,7 @@ msgid "Multivariate-t"
 msgstr ""
 
 msgid "Tukey"
-msgstr ""
+msgstr "توکی"
 
 msgid "Benjamini-Hochberg"
 msgstr ""
@@ -173,22 +175,22 @@ msgid "Benjamini-Yekutieli"
 msgstr ""
 
 msgid "Scheffé"
-msgstr ""
+msgstr "شفه"
 
 msgid "Sidak"
 msgstr ""
 
 msgid "Dunnett"
-msgstr ""
+msgstr "دانت"
 
 msgid "Bonferroni"
-msgstr ""
+msgstr "بونفرونی"
 
 msgid "P-values are adjusted using %s adjustment."
 msgstr ""
 
 msgid "Predicted"
-msgstr ""
+msgstr "پیش‌بینی‌شده"
 
 msgid "(Intercept)"
 msgstr ""
@@ -230,7 +232,7 @@ msgid ""
 msgstr ""
 
 msgid "VS-MPR%s"
-msgstr ""
+msgstr "حداکثر نسبت p وووک-سلکه (VS-MPR) %s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value,\n"
@@ -283,10 +285,10 @@ msgid "Confidence intervals based on %i bootstrap replicates."
 msgstr ""
 
 msgid "p"
-msgstr ""
+msgstr "p"
 
 msgid "VS-MPR"
-msgstr ""
+msgstr "VS-MPR"
 
 msgid "Effect size (Fisher's z)"
 msgstr ""
@@ -304,13 +306,13 @@ msgid "tau B"
 msgstr ""
 
 msgid "Variable"
-msgstr ""
+msgstr "متغیّر"
 
 msgid "Kendall's Tau B"
 msgstr ""
 
 msgid "p-value"
-msgstr ""
+msgstr "مقدار p"
 
 msgid "Number of observations is < %s."
 msgstr ""
@@ -330,7 +332,7 @@ msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr ""
 
 msgid "Shapiro-Wilk"
-msgstr ""
+msgstr "شاپیرو-ویلک"
 
 msgid "Variables"
 msgstr ""
@@ -339,10 +341,10 @@ msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr ""
 
 msgid "Scatter Plots"
-msgstr ""
+msgstr "نمودارهای پراکنش"
 
 msgid "Correlation plot"
-msgstr ""
+msgstr "نمودار همبستگی"
 
 msgid "Correlation undefined: %s"
 msgstr ""
@@ -361,7 +363,7 @@ msgid ""
 msgstr ""
 
 msgid "Plotting not possible: %s"
-msgstr ""
+msgstr "رسم نمودار امکان‌پذیر نیست: %s"
 
 msgid "Partial Pearson's r"
 msgstr ""
@@ -376,7 +378,7 @@ msgid "%s heatmap"
 msgstr ""
 
 msgid "Heatmaps"
-msgstr ""
+msgstr "نقشه‌های حرارتی"
 
 msgid "%1$d%% CI: [%2$d, %3$d]"
 msgstr ""
@@ -386,6 +388,9 @@ msgid ""
 "maximum possible odds in favor of H%1$s over H%2$s equals 1/(-e <em>p</em> "
 "log(<em>p</em>)) for <em>p</em> %3$s .37 (Sellke, Bayarri, & Berger, 2001)."
 msgstr ""
+"حداکثر نسبت <em>p</em> ووک-سلکه: بر اساس مقدار <em>p</em>، حداکثر شانس ممکن "
+"به نفع H%1$s در برابر H%2$s برابر با 1/(-e <em>p</em> log(<em>p</em>)) برای "
+"<em>p</em> %3$s .37 است (سلکه، بایاری و برگر، 2001)."
 
 msgid ""
 "Effect size (Fisher's z): For large correlation coeffiecients (> 0.9) and "
@@ -409,13 +414,13 @@ msgid "Could not compute the posteriors"
 msgstr ""
 
 msgid "Prior"
-msgstr ""
+msgstr "پیشین"
 
 msgid "Posterior"
-msgstr ""
+msgstr "پسین"
 
 msgid "%s%% CI:"
-msgstr ""
+msgstr "بازه اطمینان %s%%:"
 
 msgid "Bayesian Correlation Pairwise Plots"
 msgstr ""
@@ -427,7 +432,7 @@ msgid "%1$s at kappa==%2$s"
 msgstr ""
 
 msgid "user prior"
-msgstr ""
+msgstr "پیشین کاربر"
 
 msgid "Stretched beta prior width"
 msgstr ""
@@ -510,13 +515,13 @@ msgid ""
 msgstr ""
 
 msgid "Model Summary"
-msgstr ""
+msgstr "خلاصه مدل"
 
 msgid "Model Summary - %s"
 msgstr ""
 
 msgid "Model"
-msgstr ""
+msgstr "مدل"
 
 msgid "Deviance"
 msgstr ""
@@ -528,7 +533,7 @@ msgid "BIC"
 msgstr ""
 
 msgid "df"
-msgstr ""
+msgstr "درجه آزادی"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr ""
@@ -537,16 +542,16 @@ msgid "Model Fit"
 msgstr ""
 
 msgid "Statistic"
-msgstr ""
+msgstr "آماره"
 
 msgid "Coefficients"
-msgstr ""
+msgstr "ضریب‌ها"
 
 msgid "Estimate"
-msgstr ""
+msgstr "برآورد"
 
 msgid "Standard Error"
-msgstr ""
+msgstr "خطای معیار"
 
 msgid "Lower Bound"
 msgstr ""
@@ -609,7 +614,7 @@ msgid "Multicollinearity Diagnostics"
 msgstr ""
 
 msgid "Tolerance"
-msgstr ""
+msgstr "تحمل"
 
 msgid "VIF"
 msgstr ""
@@ -621,22 +626,22 @@ msgid "Estimated Marginal Means"
 msgstr ""
 
 msgid "SE"
-msgstr ""
+msgstr "خطای معیار"
 
 msgid "Lower"
-msgstr ""
+msgstr "پایین"
 
 msgid "%s%% CI"
-msgstr ""
+msgstr "فاصله اطمینان %s%%"
 
 msgid "Upper"
-msgstr ""
+msgstr "بالا"
 
 msgid "t"
-msgstr ""
+msgstr "t"
 
 msgid "z"
-msgstr ""
+msgstr "z"
 
 msgid "Results are on the response scale."
 msgstr ""
@@ -686,7 +691,7 @@ msgid "R"
 msgstr ""
 
 msgid "R%s"
-msgstr ""
+msgstr "R%s"
 
 msgid "Adjusted R%s"
 msgstr ""
@@ -701,13 +706,13 @@ msgid "F Change"
 msgstr ""
 
 msgid "df1"
-msgstr ""
+msgstr "درجه آزادی 1"
 
 msgid "df2"
-msgstr ""
+msgstr "درجه آزادی 2"
 
 msgid "Autocorrelation"
-msgstr ""
+msgstr "خودهمبستگی"
 
 msgid "Durbin-Watson"
 msgstr ""
@@ -719,22 +724,22 @@ msgid "No covariate could be entered in the model"
 msgstr ""
 
 msgid "ANOVA"
-msgstr ""
+msgstr "تحلیل واریانس (ANOVA)"
 
 msgid "Sum of Squares"
-msgstr ""
+msgstr "مجموع توان‌های دوم"
 
 msgid "Mean Square"
-msgstr ""
+msgstr "میانگین توان‌های دوم"
 
 msgid "F"
-msgstr ""
+msgstr "F"
 
 msgid "Regression"
 msgstr ""
 
 msgid "Total"
-msgstr ""
+msgstr "کل"
 
 msgid "Unstandardized"
 msgstr ""
@@ -779,7 +784,7 @@ msgid ""
 msgstr ""
 
 msgid "Bias corrected accelerated."
-msgstr ""
+msgstr "تصحیح‌شده بر اساس اریبی و شتاب‌یافته (BCa)."
 
 msgid "Some bootstrap results could not be computed."
 msgstr ""
@@ -829,25 +834,25 @@ msgid "Residuals Statistics"
 msgstr ""
 
 msgid "Minimum"
-msgstr ""
+msgstr "حداقل"
 
 msgid "Maximum"
-msgstr ""
+msgstr "حداکثر"
 
 msgid "Mean"
-msgstr ""
+msgstr "میانگین"
 
 msgid "SD"
-msgstr ""
+msgstr "انحراف معیار"
 
 msgid "N"
-msgstr ""
+msgstr "N"
 
 msgid "Residuals vs. Dependent"
 msgstr ""
 
 msgid "Residuals"
-msgstr ""
+msgstr "باقی‌مانده‌ها"
 
 msgid "Residuals vs. Covariates"
 msgstr ""
@@ -886,7 +891,7 @@ msgid "Residuals %s"
 msgstr ""
 
 msgid "Descriptives"
-msgstr ""
+msgstr "آماره‌های توصیفی"
 
 msgid "M%s"
 msgstr ""
@@ -937,7 +942,7 @@ msgid "Target"
 msgstr ""
 
 msgid "Weight"
-msgstr ""
+msgstr "وزن"
 
 msgid "lower and upper bounds and target are"
 msgstr ""
@@ -987,7 +992,7 @@ msgid ""
 msgstr ""
 
 msgid "Descriptives Plots"
-msgstr ""
+msgstr "نمودارهای توصیفی"
 
 msgid "All effects are specified as nuisance"
 msgstr ""
@@ -999,7 +1004,7 @@ msgid "Posterior Summary"
 msgstr ""
 
 msgid "Model Comparison"
-msgstr ""
+msgstr "مقایسه مدل"
 
 msgid "Model Comparison - %s"
 msgstr ""
@@ -1020,28 +1025,28 @@ msgid ""
 msgstr ""
 
 msgid "BF<sub>10</sub>"
-msgstr ""
+msgstr "BF<sub>10</sub>"
 
 msgid "BF<sub>01</sub>"
-msgstr ""
+msgstr "BF<sub>01</sub>"
 
 msgid "Log(BF<sub>10</sub>)"
-msgstr ""
+msgstr "لگاریتم (BF<sub>10</sub>)"
 
 msgid "Models"
-msgstr ""
+msgstr "مدل‌ها"
 
 msgid "P(M)"
-msgstr ""
+msgstr "P(M)"
 
 msgid "P(M|data)"
-msgstr ""
+msgstr "P(M|داده‌ها)"
 
 msgid "BF<sub>M</sub>"
-msgstr ""
+msgstr "BF<sub>M</sub>"
 
 msgid "All models include %s."
-msgstr ""
+msgstr "تمام مدل‌ها شامل %s هستند."
 
 msgid ""
 "%sTable displays only a subset of models; to see all models, select \"No\" "
@@ -1049,37 +1054,37 @@ msgid ""
 msgstr ""
 
 msgid "Null model"
-msgstr ""
+msgstr "مدل پوچ"
 
 msgid "Null model (incl. %s)"
-msgstr ""
+msgstr "مدل پوچ (شامل %s)"
 
 msgid "Posterior Summaries of Coefficients"
 msgstr ""
 
 msgid "BF<sub>inclusion</sub>"
-msgstr ""
+msgstr "BF<sub>گنجاندن</sub>"
 
 msgid "Log(BF<sub>inclusion</sub>)"
 msgstr ""
 
 msgid "%s%% Credible Interval"
-msgstr ""
+msgstr "بازه باورپذیر %s%%"
 
 msgid "Coefficient"
-msgstr ""
+msgstr "ضریب"
 
 msgid "P(incl)"
-msgstr ""
+msgstr "P(گنجاندن)"
 
 msgid "P(excl)"
-msgstr ""
+msgstr "P(حذف)"
 
 msgid "P(incl|data)"
-msgstr ""
+msgstr "P(گنجاندن|داده)"
 
 msgid "P(excl|data)"
-msgstr ""
+msgstr "P(حذف|داده‌ها)"
 
 msgid "<em>Warning.</em>"
 msgstr ""
@@ -1130,7 +1135,7 @@ msgid ""
 msgstr ""
 
 msgid "Q-Q Plot"
-msgstr ""
+msgstr "نمودار Q-Q"
 
 msgid "Marginal Posterior Distributions"
 msgstr ""
@@ -1163,7 +1168,7 @@ msgid "Lower bound"
 msgstr ""
 
 msgid "Upper bound"
-msgstr ""
+msgstr "کران بالا"
 
 msgid ""
 "Standardized estimates represent estimates where the continuous predictors "
@@ -1179,13 +1184,13 @@ msgid "Factor Descriptives"
 msgstr ""
 
 msgid "Factor"
-msgstr ""
+msgstr "عامل"
 
 msgid "Confusion matrix"
 msgstr ""
 
 msgid "Observed"
-msgstr ""
+msgstr "مشاهده‌شده"
 
 msgid "%% Correct"
 msgstr ""
@@ -1194,7 +1199,7 @@ msgid "Performance metrics"
 msgstr ""
 
 msgid "Value"
-msgstr ""
+msgstr "مقدار"
 
 msgid "Bootstrapping based on %i successful replicates."
 msgstr ""
@@ -1202,7 +1207,7 @@ msgstr ""
 msgid ""
 "Some confidence intervals could not be computed.\n"
 "Possibly too few bootstrap replicates."
-msgstr ""
+msgstr "«برخی از فواصل اطمینان قابل محاسبه نبودند."
 
 msgid "Diagnostic plots"
 msgstr ""
@@ -1238,10 +1243,10 @@ msgid "Squared Pearson Residual"
 msgstr ""
 
 msgid "False positive rate"
-msgstr ""
+msgstr "نرخ مثبت کاذب"
 
 msgid "True positive rate"
-msgstr ""
+msgstr "نرخ مثبت واقعی"
 
 msgid "Positive predictive value"
 msgstr ""
@@ -1259,7 +1264,7 @@ msgid "Robust <br> %s"
 msgstr ""
 
 msgid "Parameter"
-msgstr ""
+msgstr "پارامتر"
 
 msgid ""
 "Inclusion/exclusion statistics for coefficients within factor(s) %s are the "
@@ -1273,13 +1278,13 @@ msgid "DV/Factor"
 msgstr ""
 
 msgid "Level"
-msgstr ""
+msgstr "سطح"
 
 msgid "Covariate Descriptives"
 msgstr ""
 
 msgid "Intercept"
-msgstr ""
+msgstr "عرض از مبدأ"
 
 msgid "using the %1$d/%2$d row from a combined fit"
 msgid_plural "using the %1$d/%2$d rows from a combined fit"
