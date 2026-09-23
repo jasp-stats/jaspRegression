@@ -36,6 +36,11 @@
 #' @param dependent, Dependent variable
 #' @param descriptives, Output table containing the mean, standard deviation, and sample size of the variables selected.
 #'    Defaults to \code{FALSE}.
+#' @param gPriorAlpha, Deprecated legacy parameter for Zellner's g-prior and the hyper-g family. Use the prior-specific parameter instead.
+#' @param gPriorG, Value of g for Zellner's g-prior. Defaults to the number of complete observations.
+#' @param hyperGAlpha, Alpha parameter for the hyper-g prior. Defaults to 3.
+#' @param hyperGLaplaceAlpha, Alpha parameter for the hyper-g-Laplace prior. Defaults to 3.
+#' @param hyperGNAlpha, Alpha parameter for the hyper-g-n prior. Defaults to 3.
 #' @param inclusionProbabilitiesPlot, Shows a histogram of the posterior inclusion probabilities. The dotted line displays the prior inclusion probabilities.
 #'    Defaults to \code{FALSE}.
 #' @param logPosteriorOddsPlot, Shows a heatmap of the log posterior odds against the model rank.
@@ -93,7 +98,7 @@
 #' @param weights, The weights used for weighted least square regression.
 RegressionLinearBayesian <- function(
           data = NULL,
-          version = "0.95",
+          version = "0.96.6",
           formula = NULL,
           isNuisance = NULL,
           bayesFactorOrder = "bestModelTop",
@@ -106,7 +111,11 @@ RegressionLinearBayesian <- function(
           dependent = list(types = list(), value = ""),
           descriptives = FALSE,
           effectsType = "allModels",
-          gPriorAlpha = 3,
+          gPriorAlpha = NULL,
+          gPriorG = NULL,
+          hyperGAlpha = NULL,
+          hyperGLaplaceAlpha = NULL,
+          hyperGNAlpha = NULL,
           inclusionProbabilitiesPlot = FALSE,
           jzsRScale = 0.354,
           logPosteriorOddsPlot = FALSE,

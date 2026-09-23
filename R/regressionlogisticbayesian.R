@@ -100,7 +100,7 @@ RegressionLogisticBayesianInternal <- function(jaspResults, dataset = NULL, opti
     bayesianLogisticRegContainer$position <- position
     bayesianLogisticRegContainer$dependOn(c(
       "dependent", "covariates", "factors", "weights", "modelTerms",
-      "priorRegressionCoefficients", "gPriorAlpha", "cchPriorAlpha", "cchPriorBeta", "cchPriorS",
+      "priorRegressionCoefficients", "gPriorType", "gPriorAlpha", "cchPriorAlpha", "cchPriorBeta", "cchPriorS",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
       "samplingMethod", "samples", "numberOfModels", "seed", "setSeed", "numericalAccuracy"
@@ -165,9 +165,10 @@ covariate added to the model (Consonni et al., 2018; Wilson et al., 2010).", "\u
 for sparse regression when there are more covariates than observations (Castillo et al., 2015).", "\u03B1", "\u03B2"))
   }
 
-  if (options$bayesFactorType == "BF10")      bfTitle <- gettext("BF<sub>10</sub>")
-  else if (options$bayesFactorType == "BF01") bfTitle <- gettext("BF<sub>01</sub>")
-  else                                        bfTitle <- gettext("Log(BF<sub>10</sub>)")
+  bfTitle <- .getModelComparisonBfTitle(options$bayesFactorType, options$bayesFactorOrder)
+
+  if (options$bayesFactorOrder == "bestModelTop")
+    modelComparisonTable$addFootnote(gettext("B denotes the best model."))
 
   modelComparisonTable$addColumnInfo(name = "Models",         type = "string", title = gettext("Models"))
   modelComparisonTable$addColumnInfo(name = "priorProbModel", type = "number", title = gettext("P(M)"))
@@ -1024,16 +1025,7 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 
   # select the type of model prior
-  if (options$modelPrior == "betaBinomial")
-    modelPrior <- BAS::beta.binomial(as.numeric(options$betaBinomialParamA), as.numeric(options$betaBinomialParamB))
-  else if (options$modelPrior == "uniform")
-    modelPrior <- BAS::uniform()
-  else if (options$modelPrior == "bernoulli")
-    modelPrior <- BAS::Bernoulli(options$bernoulliParam)
-  else if (options$modelPrior == "wilson")
-    modelPrior <- BAS::beta.binomial(1.0, as.numeric(nPreds * options$wilsonParamLambda))
-  else if (options$modelPrior == "castillo")
-    modelPrior <- BAS::beta.binomial(1.0, as.numeric(nPreds ^ options$castilloParamU))
+  modelPrior <- .basregGetModelPrior(options)
 
   # number of models
   n.models <- NULL
@@ -1045,15 +1037,15 @@ for sparse regression when there are more covariates than observations (Castillo
 
   # convert QML input to prior value that bas.lm expects
   prior <- switch(
-    options$priorRegressionCoefficients,
+    options[["priorRegressionCoefficients"]],
     "aic"           = BAS::aic.prior(),
     "betaPrime"     = BAS::beta.prime(),
     "bic"           = BAS::bic.prior(),
     "ebLocal"       = BAS::EB.local(),
-    "cch"           = BAS::CCH(alpha = as.numeric(options$cchPriorAlpha),
-                               beta  = as.numeric(options$cchPriorBeta),
-                               s     = as.numeric(options$cchPriorS)),
-    "gPrior"        = BAS::g.prior(g = options$gPriorAlpha),
+    "cch"           = BAS::CCH(alpha = as.numeric(options[["cchPriorAlpha"]]),
+                               beta  = as.numeric(options[["cchPriorBeta"]]),
+                               s     = as.numeric(options[["cchPriorS"]])),
+    "gPrior"        = BAS::g.prior(g = as.numeric(if (identical(options[["gPriorType"]], "n")) nrow(dataset) else options[["gPriorAlpha"]])),
     "instrinsic"    = BAS::intrinsic(),
     "robust"        = BAS::robust()
   )
@@ -1092,6 +1084,7 @@ for sparse regression when there are more covariates than observations (Castillo
   basGlmObject[["namesx"]][-1] <- basGlmObject[["namesx"]][-1]
   basGlmObject[["namesx"]] <- .bayesianLogisticRegRenameTermsWithLevels(basGlmObject[["namesx"]], options[["covariates"]], options[["factors"]])
   basGlmObject[["nuisanceTerms"]] <- setNames(isNuisance, names(isNuisance))
+  basGlmObject[["probne0"]] <- pmin(pmax(basGlmObject[["probne0"]], 0), 1)
 
   bayesianLogisticRegContainer[["bayesianLogisticRegModel"]] <- createJaspState(basGlmObject)
 
@@ -1260,25 +1253,22 @@ for sparse regression when there are more covariates than observations (Castillo
 
     nvar <- bayesianLogisticRegModel$n.vars - 1
     bestmodel <- (0:nvar)[bayesianLogisticRegModel$probne0 > 0.5]
-    best <- 1
     models <- rep(0, nvar + 1)
     models[bestmodel + 1] <- 1
-    if (sum(models) > 1) {
-      bayesianLogisticRegModel <- BAS::bas.glm(formula = modelFormula,
-                                               family  = binomial(link = "logit"),
-                                               data    = dataset,
-                                               weights = weights,
-                                               n.models = 1,
-                                               betaprior = bayesianLogisticRegModel$betaprior,
-                                               modelprior = bayesianLogisticRegModel$modelprior,
-                                               method     = toupper(options$samplingMethod),
-                                               update = NULL,
-                                               bestmodel = models,
-                                               MCMC.iterations = NULL,
-                                               renormalize  = TRUE,
-                                               force.heredity  = TRUE,
-                                               include.always = nullFormula)
-    }
+    bayesianLogisticRegModel <- BAS::bas.glm(formula = modelFormula,
+                                             family  = binomial(link = "logit"),
+                                             data    = dataset,
+                                             weights = weights,
+                                             n.models = 1,
+                                             betaprior = bayesianLogisticRegModel$betaprior,
+                                             modelprior = bayesianLogisticRegModel$modelprior,
+                                             method     = toupper(options$samplingMethod),
+                                             update = NULL,
+                                             bestmodel = models,
+                                             MCMC.iterations = NULL,
+                                             renormalize  = TRUE,
+                                             force.heredity  = TRUE,
+                                             include.always = nullFormula)
   }
   postprobs = bayesianLogisticRegModel$postprobs
   if (estimator == "MPM" | estimator == "HPM")

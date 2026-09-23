@@ -13,6 +13,7 @@ test_that("RegressionLinear results match", {
   # Encode and run analysis
   encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
   set.seed(1)
+  encoded$options$descriptivePlotHorizontalAxis <- ""
   results <- jaspTools::runAnalysis("RegressionLinear", encoded$dataset, encoded$options, encodedDataset = TRUE)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]

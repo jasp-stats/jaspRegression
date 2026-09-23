@@ -7,6 +7,9 @@ test_that("Main tables results match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- "contGamma"
     options$weights <- "facFifty"
@@ -19,12 +22,14 @@ test_that("Main tables results match", {
     options$setSeed <- TRUE
     options$residualsSavedToData   <-  FALSE
     options$residualSdsSavedToData <-  FALSE
+
+
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
     table <- results[["results"]][["basreg"]][["collection"]][["basreg_modelComparisonTable"]][["data"]]
     jaspTools::expect_equal_tables(
         table,
-        list("Null model", 1, 4.74865017735093, 0.826046120541498, 0, 0.5,
-             "contGamma", 0.210586158729818, 0.210586158729818, 0.173953879458502,
+        list("Null model", 1, 1.41415898152264, 0.585777072821738, 0, 0.5,
+             "contGamma", 0.707134072665074, 0.707134072665075, 0.414222927178262,
              1.55940279678024e-06, 0.5),
         label = "regressionTable"
     )
@@ -33,9 +38,9 @@ test_that("Main tables results match", {
     jaspTools::expect_equal_tables(
         table,
         list(1, "Intercept", -0.477863289393241, -0.255843391953333, 0, 0,
-             1, 1, 0.0989748100578513, -0.0887658028069459, 0.210586158729818,
-             "contGamma", -0.0481976534136304, -0.000116767975422579, 0.826046120541498,
-             0.5, 0.173953879458502, 0.5, 0.0241168865879483, 0.070739904433129
+             1, 1, 0.0990958319270768, -0.088008039721404, 0.707134072665075,
+             "contGamma", -0.062603708459968, -0.000157637515978536, 0.585777072821738,
+             0.5, 0.414222927178262, 0.5, 0.028020423972741, 0.0693220652388757
         ),
         label = "posteriorSummaryTable"
     )
@@ -64,6 +69,9 @@ options <- jaspTools::analysisOptions("RegressionLinearBayesian")
 options$covariates <- c("adverts", "airplay", "attract")
 options$dependent <- "sales"
 options$modelPrior <- "betaBinomial"
+options$priorRegressionCoefficients <- "gPrior"
+options$gPriorType <- "userDefined"
+options$gPriorG <- 1
 options$modelTerms <- list(list(components = "adverts", isNuisance = FALSE),
                            list(components = "airplay", isNuisance = FALSE),
                            list(components = c("adverts", "airplay"), isNuisance = FALSE))
@@ -77,9 +85,10 @@ results <- jaspTools::runAnalysis("RegressionLinearBayesian", testthat::test_pat
 test_that("Model Comparison - sales table results match", {
   table <- results[["results"]][["basreg"]][["collection"]][["basreg_modelComparisonTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                      list(1, 14.3947181553409, "adverts + airplay", 0.629285746598297, 0.642772909910809,
-                           0.111111111111111, 0.185253135065882, 1.11151881039529, "adverts + airplay + adverts<unicode><unicode><unicode>airplay",
-                           0.632270344815323, 0.357227090089191, 0.333333333333333, 8.35835904551863e-23,
+                      list(1, 5.270228526968, "adverts + airplay + adverts<unicode><unicode><unicode>airplay",
+                           0.632270344815323, 0.7249054837023, 0.333333333333333,
+                           1.13847052311215, 3.03592136194222, "adverts + airplay",
+                           0.629285746598296, 0.275094508412474, 0.111111111111111, 8.35835904551863e-23,
                            4.29802141261388e-22, "airplay", 0.358703726117256, 5.37252676576735e-23,
                            0.111111111111111, 2.33573121426008e-24, 1.20107579948757e-23,
                            "adverts", 0.334648067623073, 1.50134474935946e-24, 0.111111111111111,
@@ -91,16 +100,16 @@ test_that("Model Comparison - sales table results match", {
 test_that("Posterior Summaries of Coefficients table (all models) results match", {
   table <- results[["results"]][["basreg"]][["collection"]][["basreg_postSumContainer"]][["collection"]][["basreg_postSumContainer_postSumTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(1, "Intercept", 185.584190973766, 193.2, 0, 0, 1, 1, 3.49006833453854,
-                                      199.210562797446, 1.48905726277148e+22, "adverts", 0.0699687329978213,
-                                      0.0957495623188114, 0, 0.444444444444444, 1, 0.555555555555556,
-                                      0.0196173572277313, 0.144714226721958, 5.32855628489937e+23,
-                                      "airplay", 2.93147903286366, 3.70853874547101, 0, 0.444444444444444,
-                                      1, 0.555555555555556, 0.405127356180258, 4.57041250208677, 1.11151881039529,
+                                 list(1, "Intercept", 185.584190973766, 193.2, 0, 0, 1, 1, 3.4881473625465,
+                                      199.210562797446, 125307915.6303, "adverts", 0.0270883689845171,
+                                      0.0533840599976063, 0, 0.444444444444444, 1, 0.555555555555556,
+                                      0.0153320338949993, 0.085090567547742, 532995013.836511,
+                                      "airplay", 1.3615828086271, 1.95222334627145, 0, 0.444444444444444,
+                                      1, 0.555555555555556, 0.306097117095416, 2.54152744076409, 5.270228526968,
                                       "adverts<unicode><unicode><unicode><unicode><unicode><unicode><unicode><unicode><unicode>airplay",
-                                      -0.00189399793265812, -0.000322869356058448, 0.642772909910809,
-                                      0.666666666666667, 0.357227090089191, 0.333333333333333, 0.000610819394600897,
-                                      0.000241181445566148))
+                                      -0.00139087184559238, -0.000322869356058448, 0.2750945162977,
+                                      0.666666666666667, 0.7249054837023, 0.333333333333333, 0.000481709014770306,
+                                      0.000426382703700553))
 })
 
 options$effectsType <- "matchedModels"
@@ -110,23 +119,26 @@ results <- jaspTools::runAnalysis("RegressionLinearBayesian", testthat::test_pat
 test_that("Posterior Summaries of Coefficients table (matched models) results match", {
   table <- results[["results"]][["basreg"]][["collection"]][["basreg_postSumContainer"]][["collection"]][["basreg_postSumContainer_postSumTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(1, "Intercept", 185.584190973766, 193.2, 0, 0, 1, 1, 3.49006833453854,
-                                      199.210562797446, 2.39281417453861e+22, "adverts", 0.0699687329978213,
-                                      0.0957495623188114, 5.37252676576734e-23, 0.444444444444444,
-                                      0.642772909910809, 0.222222222222222, 0.0196173572277313, 0.144714226721958,
-                                      8.56262907217075e+23, "airplay", 2.93147903286366, 3.70853874547101,
-                                      1.50134474935946e-24, 0.444444444444444, 0.642772909910809,
-                                      0.222222222222222, 0.405127356180258, 4.57041250208677, 0.185253135065882,
+                                 list(1, "Intercept", 185.584190973766, 193.2, 0, 0, 1, 1, 3.4881473625465,
+                                      199.210562797446, 86178799.6466646, "adverts", 0.0270883689845171,
+                                      0.0533840599976063, 5.37252676576734e-23, 0.444444444444444,
+                                      0.275094509913426, 0.222222222222222, 0.0153320338949993, 0.085090567547742,
+                                      366560012.351291, "airplay", 1.3615828086271, 1.95222334627145,
+                                      1.50134474935946e-24, 0.444444444444444, 0.275094514796748,
+                                      0.222222222222222, 0.306097117095416, 2.54152744076409, 0.878371446338705,
                                       "adverts<unicode><unicode><unicode><unicode><unicode><unicode><unicode><unicode><unicode>airplay",
-                                      -0.00189399793265812, -0.000322869356058448, 0.642772909910809,
-                                      0.111111111111111, 0.357227090089191, 0.333333333333333, 0.000610819394600897,
-                                      0.000241181445566148))
+                                      -0.00139087184559238, -0.000322869356058448, 0.275094508412474,
+                                      0.111111111111111, 0.7249054837023, 0.333333333333333, 0.000481709014770306,
+                                      0.000426382703700553))
 })
 
 test_that("Coefficient plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma", "debCollin1", "contcor2")
     options$modelTerms <- list(
@@ -137,6 +149,8 @@ test_that("Coefficient plots match", {
     options$inclusionProbabilitiesPlot <- TRUE
     options$marginalPosteriorPlot <- TRUE
     options$posteriorSummaryPlotWithoutIntercept <- FALSE
+    options$residualsSavedToData <- FALSE
+    options$residualSdsSavedToData <- FALSE
 
     results <- jaspTools::runAnalysis("RegressionLinearBayesian", "test.csv", options)
 
@@ -151,6 +165,9 @@ test_that("Residuals plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma")
     options$modelTerms <- list(
@@ -172,6 +189,9 @@ test_that("Models plots match", {
     set.seed(1)
     options <- jaspTools::analysisOptions("RegressionLinearBayesian")
     options$modelPrior <- "betaBinomial"
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
     options$dependent <- "contNormal"
     options$covariates <- list("contGamma", "contExpon", "contcor1")
     options$modelTerms <- list(
@@ -205,6 +225,10 @@ test_that("Model priors match", {
         list(components="contcor1", isNuisance=FALSE)
     )
 
+    options$priorRegressionCoefficients <- "gPrior"
+    options$gPriorType <- "userDefined"
+    options$gPriorG <- 1
+
     modelPriors <- list(
         uniform      = list(modelPrior = "uniform"),
         betabinomial = list(modelPrior = "betaBinomial", betaBinomialParamA = 2, betaBinomialParamB = 3),
@@ -214,70 +238,69 @@ test_that("Model priors match", {
     )
 
     tables <- list(
-      uniform = list(1, 3.90143837337827, "Null model", 0, 0.357882899462674, 0.125,
-                     0.667063040584368, 2.19516621516207, "contcor1", 0.0259312818065142,
-                     0.238730455088721, 0.125, 0.250266509028401, 0.688641679428745,
-                     "contExpon", 0.00394490646287682, 0.0895661038894857, 0.125,
-                     0.245477808280897, 0.674195829319842, "contGamma", 0.00350468569669571,
-                     0.0878523097813097, 0.125, 0.24073279559456, 0.659935214199163,
-                     "contExpon + contcor1", 0.0305485694813512, 0.0861541508831363,
-                     0.125, 0.207447147529827, 0.561369587657518, "contGamma + contcor1",
-                     0.0271156286160025, 0.0742417866432354, 0.125, 0.0916338337573983,
-                     0.237342735695682, "contGamma + contExpon", 0.00794701370052642,
-                     0.0327941821139783, 0.125, 0.0915889308672561, 0.237222490352522,
-                     "contGamma + contExpon + contcor1", 0.0320272344954695, 0.03277811213746,
-                     0.125),
-      betabinomial = list(1, 3.76674705968188, "Null model", 0, 0.601068947543112, 0.285714285714286,
-                          0.667063040584368, 1.48036998661697, "contcor1", 0.0259312818065142,
-                          0.160380351899582, 0.114285714285714, 0.250266509028401, 0.496180698646568,
-                          "contExpon", 0.00394490646287682, 0.060170970874796, 0.114285714285714,
-                          0.245477808280897, 0.486091091246406, "contGamma", 0.00350468569669571,
-                          0.0590196351474355, 0.114285714285714, 0.24073279559456, 0.48404226619047,
-                          "contExpon + contcor1", 0.0305485694813512, 0.04340910242614,
-                          0.0857142857142857, 0.207447147529827, 0.414513847951994, "contGamma + contcor1",
-                          0.0271156286160025, 0.0374070115909721, 0.0857142857142857,
-                          0.0915889308672561, 0.17450152476059, "contGamma + contExpon + contcor1",
-                          0.0320272344954695, 0.0220205049131922, 0.114285714285714, 0.0916338337573983,
-                          0.179211605034763, "contGamma + contExpon", 0.00794701370052642,
-                          0.01652347560477, 0.0857142857142857),
-      wilson    = list(1, 3.00723842615036, "Null model", 0, 0.857437693351001, 0.666666666666667,
-                       0.667063040584368, 0.847009328691918, "contcor1", 0.0259312818065142,
-                       0.0714956243547957, 0.0833333333333333, 0.250266509028401, 0.303191058063168,
-                       "contExpon", 0.00394490646287682, 0.02682349227804, 0.0833333333333333,
-                       0.245477808280897, 0.297232917444893, "contGamma", 0.00350468569669571,
-                       0.0263102407126539, 0.0833333333333333, 0.24073279559456, 0.304492845967535,
-                       "contExpon + contcor1", 0.0305485694813512, 0.00737190617744777,
-                       0.0238095238095238, 0.207447147529827, 0.262122056715543, "contGamma + contcor1",
-                       0.0271156286160025, 0.00635260727393641, 0.0238095238095238,
-                       0.0916338337573983, 0.115373118783951, "contGamma + contExpon",
-                       0.00794701370052642, 0.00280608225178045, 0.0238095238095238,
-                       0.0915889308672561, 0.116558805489141, "contGamma + contExpon + contcor1",
-                       0.0320272344954695, 0.00140235360034472, 0.0119047619047619),
-      bernoulli = list(1, 0.362563657801133, "contGamma + contExpon + contcor1", 0.0320272344954695,
-                       0.209219538601646, 0.421875, 2.62840491001543, 1.37161839640395,
-                       "contExpon + contcor1", 0.0305485694813512, 0.183304554177243,
-                       0.140625, 7.28322772487837, 4.14432135426702, "contcor1", 0.0259312818065142,
-                       0.169310393792196, 0.046875, 2.26498055567969, 1.14639058082694,
-                       "contGamma + contcor1", 0.0271156286160025, 0.157959395600335,
-                       0.140625, 10.9183499635927, 5.82274069025381, "Null model",
-                       0, 0.08460489413608, 0.015625, 1.00049026546895, 0.458379911234064,
-                       "contGamma + contExpon", 0.00794701370052642, 0.0697740372389506,
-                       0.140625, 2.73249732973872, 1.37920924591115, "contExpon", 0.00394490646287682,
-                       0.0635213145064626, 0.046875, 2.68021261910655, 1.35106536878368,
-                       "contGamma", 0.00350468569669571, 0.0623058719470867, 0.046875),
-      castillo = list(1, 2.87159171765746, "Null model", 0, 0.895993407636698, 0.75,
-                      0.667063040584368, 0.785243329949621, "contcor1", 0.0259312818065142,
-                      0.0543349169856078, 0.0681818181818182, 0.250266509028401, 0.284395111302656,
-                      "contExpon", 0.00394490646287682, 0.0203851947492453, 0.0681818181818182,
-                      0.245477808280897, 0.278842351875457, "contGamma", 0.00350468569669571,
-                      0.0199951361764354, 0.0681818181818182, 0.24073279559456, 0.284788465921838,
-                      "contExpon + contcor1", 0.0305485694813512, 0.00392172723372142,
-                      0.0136363636363636, 0.207447147529827, 0.24527780194552, "contGamma + contcor1",
-                      0.0271156286160025, 0.00337947775672295, 0.0136363636363636,
-                      0.0916338337573983, 0.108139723436462, "contGamma + contExpon",
-                      0.00794701370052642, 0.00149278747205647, 0.0136363636363636,
-                      0.0915889308672561, 0.10897428428032, "contGamma + contExpon + contcor1",
-                      0.0320272344954695, 0.000497351989512453, 0.00454545454545455)
+      uniform = list(1, 1.57395624386139, "contcor1", 0.0259312818065143, 0.18357409334673, 0.125,
+                     0.794010210849689, 1.19441559641437, "contExpon + contcor1", 0.0305485694813511,
+                     0.145759704564778, 0.125, 0.741246077229015, 1.10254184869332,
+                     "Null model", 0, 0.136073576574137, 0.125,
+                     0.728427596222453, 1.08053229837658, "contGamma + contcor1", 0.0271156286160024,
+                     0.133720435545275, 0.125, 0.582716803831538, 0.838497469885551,
+                     "contGamma + contExpon + contcor1", 0.0320272344954692, 0.106971708941279,
+                     0.125, 0.577952636377137, 0.830828431679437, "contExpon",
+                     0.00394490646287671, 0.106097131220286, 0.125, 0.571678132607948,
+                     0.820751022205754, "contGamma", 0.0035046856966956,
+                     0.104945294879656, 0.125, 0.451360284108053, 0.632406344090376,
+                     "contGamma + contExpon", 0.00794701370052631, 0.0828580549278585, 0.125),
+      betabinomial = list(1, 1.09972042307322, "Null model", 0, 0.305501620632623, 0.285714285714286,
+                          1.34907965211537, 1.52986352799304, "contcor1", 0.0259312818065142,
+                          0.164858408033496, 0.114285714285714, 1.07118301902915, 1.16119361243271,
+                          "contExpon + contcor1", 0.0305485694813511, 0.0981744444922654, 0.0857142857142857,
+                          0.78613138299483, 0.823632568182213, "contGamma + contExpon + contcor1",
+                          0.0320272344954692, 0.0960657646140345, 0.114285714285714,
+                          0.779704141622828, 0.816189551972087, "contExpon", 0.00394490646287671,
+                          0.095280351551897, 0.114285714285714, 0.771239336260693, 0.806406645977901,
+                          "contGamma", 0.0035046856966956, 0.0942459468493083, 0.114285714285714,
+                          0.98270684810302, 1.05578959235875, "contGamma + contcor1", 0.0271156286160024,
+                          0.090065560410675, 0.0857142857142857, 0.608920975063185, 0.630469483121386,
+                          "contGamma + contExpon", 0.00794701370052642, 0.0558079034157001, 0.0857142857142857),
+      wilson    = list(1, 1.06012759862291, "Null model", 0, 0.679513393365172, 0.666666666666667,
+                       1.34907965211537, 1.42361890683027, "contcor1", 0.0259312818065142,
+                       0.114589711541102, 0.0833333333333333, 0.779704141622828, 0.780170359412781,
+                       "contExpon", 0.00394490646287682, 0.0662274258868758, 0.0833333333333333,
+                       0.771239336260693, 0.771106749727115, "contGamma", 0.00350468569669571,
+                       0.0655084323099008, 0.0833333333333333, 1.07118301902915, 1.09427558421677,
+                       "contExpon + contcor1", 0.0305485694813512, 0.0259958288634159,
+                       0.0238095238095238, 0.98270684810302, 1.00168385524689, "contGamma + contcor1",
+                       0.0271156286160025, 0.023848659465631278, 0.0238095238095238,
+                       0.608920975063185, 0.614965084193061, "contGamma + contExpon",
+                       0.00794701370052642, 0.0147774985020148, 0.0238095238095238,
+                       0.78613138299483, 0.799366351112873, "contGamma + contExpon + contcor1",
+                       0.0320272344954695, 0.00953905006588702, 0.0119047619047619),
+      bernoulli = list(1, 0.86399952797011, "contGamma + contExpon + contcor1", 0.0320272344954695,
+                       0.386685986331906, 0.421875, 1.36260050444544, 1.30198272344267,
+                       "contExpon + contcor1", 0.0305485694813512, 0.175632840012613,
+                       0.140625, 1.25005421404158, 1.17378768881987, "contGamma + contcor1",
+                       0.0271156286160024, 0.161126148908341, 0.140625,
+                       0.774579145719195, 0.677802664220887, "contGamma + contExpon",
+                       0.00794701370052631, 0.0998396336515175, 0.140625,
+                       1.71609947306256, 1.61856628588766, "contcor1", 0.0259312818065143,
+                       0.0737324019316511, 0.046875, 0.991824214741921, 0.905048940898302,
+                       "contExpon", 0.00394490646287671, 0.0426138360828165, 0.046875,
+                       0.981056542129886, 0.894790951609985, "contGamma", 0.0035046856966956,
+                       0.0421512018489849, 0.046875, 1.2720520025424, 1.16902822685253,
+                       "Null model", 0, 0.0182179512321698, 0.015625),
+      castillo = list(1, 1.05212996245477, "Null model", 0, 0.759406593919387, 0.75,
+                      1.34907965211537, 1.40358876767347, "contcor1", 0.0259312818065142,
+                      0.0931363621398984, 0.0681818181818182, 0.779704141622828, 0.777506836246215,
+                      "contExpon", 0.00394490646287682, 0.0538284060413301, 0.0681818181818182,
+                      0.771239336260693, 0.768591180409711, "contGamma", 0.00350468569669571,
+                      0.0532440215860347, 0.0681818181818182, 1.07118301902915, 1.08588823864352,
+                      "contExpon + contcor1", 0.0305485694813512, 0.0147902445080947,
+                      0.0136363636363636, 0.98270684810302, 0.994963745431394, "contGamma + contcor1",
+                      0.0271156286160025, 0.013568619278893999, 0.0136363636363636,
+                      0.608920975063185, 0.613306973652703, "contGamma + contExpon",
+                      0.00794701370052642, 0.008407610975251, 0.0136363636363636,
+                      0.78613138299483, 0.795250327948295, "contGamma + contExpon + contcor1",
+                      0.0320272344954695, 0.00361814155111055, 0.00454545454545455)
     )
 
     for (nm in names(modelPriors)) {
@@ -296,13 +319,17 @@ test_that("Model priors match", {
 test_that("Exporting residuals works", {
 
   data("Hald", package = "BAS")
+  Hald$W <- seq_len(nrow(Hald))
   options <- jaspTools::analysisOptions("RegressionLinearBayesian")
   options$dependent <- "Y"
   options$covariates <- paste0("X", 1:4)
   options$modelTerms <- lapply(options$covariates, function(x) list(components = x, isNuisance = FALSE))
+  options$modelTerms[[1]]$isNuisance <- TRUE
+  options$weights <- "W"
   options$modelPrior <- "betaBinomial"
   options$priorRegressionCoefficients <- "gPrior"
-  options$gPriorAlpha <- 13
+  options$gPriorType <- "userDefined"
+  options$gPriorG <- 13
   options$residualsSavedToData   <- TRUE
   options$residualSdsSavedToData <- TRUE
 
@@ -329,4 +356,82 @@ test_that("Exporting residuals works", {
 
 }
 
+})
+
+test_that("Refitted median model preserves selection and produces weighted predictions", {
+  data("Hald", package = "BAS")
+  weights <- seq_len(nrow(Hald))
+  basModel <- BAS::bas.lm(
+    Y ~ ., data = Hald, weights = weights, prior = "g-prior", alpha = 3, # intentionally not the more natural nrow(Hald), which is BAS's default, to test that the alpha parameter is preserved
+    initprobs = c(1, 1, 0.5, 0.5, 0.5)
+  )
+  options <- list(
+    dependent = "Y",
+    modelTerms = lapply(paste0("X", 1:4), function(x) list(component = x))
+  )
+
+  medianModel <- jaspRegression:::.basregRefitMedianModel(basModel, Hald, options, weights)
+  refittedPredictions <- predict(medianModel, estimator = "HPM", se.fit = TRUE)
+  expectedModel <- (0:(basModel$n.vars - 1))[basModel$probne0 > 0.5]
+
+  expect_equal(medianModel$which[[1]], expectedModel)
+  expect_equal(medianModel$alpha, basModel$alpha)
+  expect_equal(medianModel$prior, basModel$prior)
+  expect_length(refittedPredictions$fit, nrow(Hald))
+  expect_length(refittedPredictions$se.pred, nrow(Hald))
+  expect_true(all(is.finite(refittedPredictions$fit)))
+  expect_true(all(is.finite(refittedPredictions$se.pred)))
+  expect_true(1 %in% medianModel$which[[1]])
+})
+
+test_that("Regression coefficient priors use their own parameter", {
+    options <- list(
+        gPriorG = 13,
+        hyperGAlpha = 2.5,
+        hyperGLaplaceAlpha = 3,
+        hyperGNAlpha = 3.5,
+        jzsRScale = 0.5,
+        gPriorType = "userDefined"
+    )
+
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", options, n = 100), 13)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", modifyList(options, list(gPriorType = "n")), n = 100), 100)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", options, n = 100), 2.5)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-laplace", options, n = 100), 3)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-n", options, n = 100), 3.5)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("JZS", options, n = 100), 0.25)
+
+    options$gPriorG <- NULL
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", options, n = 100), 100)
+
+    options$hyperGAlpha <- 3.75
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", options, n = 100), 100)
+
+    legacyOptions <- list(gPriorAlpha = 13, jzsRScale = 0.5, gPriorType = "userDefined")
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", legacyOptions, n = 100), 13)
+    legacyOptions$gPriorType <- NULL
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", legacyOptions, n = 100), 13)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", legacyOptions, n = 100), 13)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-laplace", legacyOptions, n = 100), 13)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-n", legacyOptions, n = 100), 13)
+
+    legacyOptions$gPriorG <- 25
+    legacyOptions$hyperGAlpha <- 2.5
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", legacyOptions, n = 100), 25)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", legacyOptions, n = 100), 2.5)
+
+    defaultOptions <- list(jzsRScale = 0.5, gPriorType = "userDefined")
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", defaultOptions, n = 100), 100)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", defaultOptions, n = 100), 3)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-laplace", defaultOptions, n = 100), 3)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-n", defaultOptions, n = 100), 3)
+})
+
+test_that("Model comparison Bayes factor titles identify their reference model", {
+  expect_equal(jaspRegression:::.getModelComparisonBfTitle("BF10", "nullModelTop"), "\\(\\mathrm{BF}_{10}\\)")
+  expect_equal(jaspRegression:::.getModelComparisonBfTitle("BF01", "nullModelTop"), "\\(\\mathrm{BF}_{01}\\)")
+  expect_equal(jaspRegression:::.getModelComparisonBfTitle("LogBF10", "nullModelTop"), "\\(\\log(\\mathrm{BF}_{10})\\)")
+  expect_equal(jaspRegression:::.getModelComparisonBfTitle("BF10", "bestModelTop"), "\\(\\mathrm{BF}_{1\\mathrm{B}}\\)")
+  expect_equal(jaspRegression:::.getModelComparisonBfTitle("BF01", "bestModelTop"), "\\(\\mathrm{BF}_{\\mathrm{B}1}\\)")
+  expect_equal(jaspRegression:::.getModelComparisonBfTitle("LogBF10", "bestModelTop"), "\\(\\log(\\mathrm{BF}_{1\\mathrm{B}})\\)")
 })

@@ -102,7 +102,7 @@ Form {
 		name: "modelsShown"
 		title: qsTr("Limit No. Models Shown"); info: qsTr("By default, the output shows all the models computed. There is an option to show the best n models.")
 		RadioButton { value: "unlimited"; label: qsTr("No") }
-		RadioButton { 
+		RadioButton {
 			value: 				"limited"
 			label:				qsTr("Yes, show best")
 			checked: 			true
@@ -117,7 +117,7 @@ Form {
 		title: qsTr("Data")
 		CheckBox { name: "descriptives"; label: qsTr("Descriptives"); info: qsTr("Output table containing the mean, standard deviation, and sample size of the variables selected.") }
 	}
-	
+
 	Section
 	{
 		title: qsTr("Model")
@@ -125,7 +125,7 @@ Form {
 		VariablesForm
 		{
 			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-			
+
 			AvailableVariablesList
 			{
 				name:	"availableTerms"
@@ -140,7 +140,7 @@ Form {
 		}
 
 	}
-	
+
 	Section
 	{
 		title: qsTr("Plots")
@@ -167,7 +167,7 @@ Form {
 			CheckBox { name: "qqPlot";				label: qsTr("Q-Q plot of model averaged residuals"); info: qsTr("Displays a Q-Q plot of the model averaged predictions against the residuals.")	}
 		}
 	}
-	
+
 	Section
 	{
 		title: qsTr("Advanced Options")
@@ -181,21 +181,25 @@ Form {
 			RadioButton { value: "bic";			label: qsTr("BIC")	; info: qsTr("Compare models using the Bayesian Information Criterion.")		}
 			RadioButton { value: "ebLocal";		label: qsTr("EB-local")	; info: qsTr("Uses the MLE of g from the marginal likelihood within each model.")	}
 			RadioButton
-			{ 
-				value: "gPrior";			
+			{
+				value: "gPrior"
 				label: qsTr("g-prior")
-				info: qsTr("Zellner's g-prior. There is an option to adjust the alpha parameter.")
+				info: qsTr("Zellner's g-prior. The default g = n is the unit-information prior.")
 				childrenOnSameRow: true
-				childrenArea.columnSpacing: 1
-				DoubleField
+				RadioButtonGroup
 				{
-					name: "gPriorAlpha"
-					label: qsTr("alpha")
-					defaultValue: 3.0
-					inclusive: JASP.None
+					name: "gPriorType"
+					RadioButton { value: "n"; label: qsTr("g = n"); info: qsTr("Set g to the number of observations, i.e., the unit-information prior.") ;checked: true }
+					RadioButton
+					{
+						value: "userDefined"; label: qsTr("g ="); info: qsTr("Specify a value for g.")
+						childrenOnSameRow: true
+						indentChildren: false
+						DoubleField { name: "gPriorAlpha"; label: ""; defaultValue: 1; min: 0; inclusive: JASP.None }
+					}
 				}
 			}
-			RadioButton 
+			RadioButton
 			{
 				value: "cch"
 				label: qsTr("CCH")
@@ -235,21 +239,22 @@ Form {
 
 		ColumnLayout
 		{
+
 			RadioButtonGroup
 			{
 				name: "modelPrior"
 				title: qsTr("Model Prior")
 				info: qsTr("Prior distribution on the models.")
+				RadioButton { checked: true; value: "uniformSize"; label: qsTr("Uniform over model size"); info: qsTr("Uniform prior distribution over the number of included predictors (model size). Each model size receives the same prior probability, which is divided equally among the models of that size. Identical to a Beta binomial with a = 1 and b = 1.") }
+				RadioButton { value: "uniform"; label: qsTr("Uniform over models"); info: qsTr("Uniform prior distribution over the models. Each model receives the same prior probability.") }
 				RadioButton
 				{
-					checked: true
 					value: "betaBinomial"; label: qsTr("Beta binomial"); info: qsTr("Default Beta(a = 1, b = 1).")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
 					DoubleField { name: "betaBinomialParamA"; label: qsTr("a"); defaultValue: 1; inclusive: JASP.MaxOnly}
 					DoubleField { name: "betaBinomialParamB"; label: qsTr("b"); defaultValue: 1; inclusive: JASP.MaxOnly}
 				}
-				RadioButton { value: "uniform"; label: qsTr("Uniform");  info: qsTr("Uniform prior distribution.")}
 				RadioButton
 				{
 					value: "wilson"
@@ -312,9 +317,9 @@ Form {
 
 		}
 	}
-	
-	Common.ExportBayesian 
-	{ 
+
+	Common.ExportBayesian
+	{
 
 	summaryTypeValue: summaryType.currentLabel
 

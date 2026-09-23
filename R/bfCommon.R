@@ -42,6 +42,23 @@ hypMinSided <- c("less", "minSided",
   return(bfTitle)
 }
 
+.getModelComparisonBfTitle <- function(
+    bfType = c("BF10", "BF01", "LogBF10"),
+    order = c("bestModelTop", "nullModelTop")) {
+  bfType <- match.arg(bfType)
+  order <- match.arg(order)
+
+  reference <- if (order == "bestModelTop") "\\mathrm{B}" else "0"
+  title <- switch(
+    bfType,
+    "BF10" = sprintf("\\mathrm{BF}_{1%s}", reference),
+    "BF01" = sprintf("\\mathrm{BF}_{%s1}", reference),
+    "LogBF10" = sprintf("\\log(\\mathrm{BF}_{1%s})", reference)
+  )
+
+  jaspBase::mathExpression(title)
+}
+
 
 .bSelectItems <- function(options) {
   itemNames <- c("n", "stat", "bf", "upperCi", "lowerCi")
