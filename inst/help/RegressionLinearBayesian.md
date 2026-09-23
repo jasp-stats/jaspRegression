@@ -59,7 +59,8 @@ Compares each model against the model selected.
   - Hyper-g-n: A mixture of g-priors that where u = g/n and u  Beta(1, alpha/2) to provide consistency when the null model is true.
   - JZS: " Jeffreys-Zellner-Siow prior which uses the Jeffreys prior on sigma and the Zellner-Siow Cauchy prior on the coefficients. The optional parameter can be used to control the squared scale of the prior (default r-scale: 0.354).
 - Model prior: Prior distribution on the models.
-  - Uniform
+  - Uniform over model size: Gives each number of included predictors the same total prior probability. Equivalent to a Beta binomial with a = 1 and b = 1; this is the default.
+  - Uniform over models: Gives each individual model the same prior probability.
   - Wilson: Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda * p, where p is the number of predictors in the model.
   - Castillo: Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.
   - Beta binomial: Default Beta(a = 1, b = 1).

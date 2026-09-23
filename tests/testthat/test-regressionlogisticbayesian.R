@@ -26,6 +26,20 @@ options$residualsSavedToDataColumn <- ""
 set.seed(1)
 results <- jaspTools::runAnalysis("RegressionLogisticBayesian", santas_log, options)
 
+test_that("Logistic g-prior runs with either g setting", {
+  gOptions <- options
+  gOptions$priorRegressionCoefficients <- "gPrior"
+  gOptions$posteriorSummaryPlot <- FALSE
+  gOptions$posteriorSummaryTable <- FALSE
+
+  for (gType in c("n", "userDefined")) {
+    gOptions$gPriorType <- gType
+    gOptions$gPriorAlpha <- 3
+    gResults <- jaspTools::runAnalysis("RegressionLogisticBayesian", santas_log, gOptions)
+    expect_equal(gResults[["status"]], "complete")
+  }
+})
+
 test_that("Model Comparison - delivered table results match", {
   table <- results[["results"]][["bayesianLogisticReg"]][["collection"]][["bayesianLogisticReg_modelComparisonTable"]][["data"]]
   jaspTools::expect_equal_tables(table,

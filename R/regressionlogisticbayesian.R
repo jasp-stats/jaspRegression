@@ -100,7 +100,7 @@ RegressionLogisticBayesianInternal <- function(jaspResults, dataset = NULL, opti
     bayesianLogisticRegContainer$position <- position
     bayesianLogisticRegContainer$dependOn(c(
       "dependent", "covariates", "factors", "weights", "modelTerms",
-      "priorRegressionCoefficients", "gPriorAlpha", "cchPriorAlpha", "cchPriorBeta", "cchPriorS",
+      "priorRegressionCoefficients", "gPriorType", "gPriorAlpha", "cchPriorAlpha", "cchPriorBeta", "cchPriorS",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
       "samplingMethod", "samples", "numberOfModels", "seed", "setSeed", "numericalAccuracy"
@@ -1045,7 +1045,7 @@ for sparse regression when there are more covariates than observations (Castillo
     "cch"           = BAS::CCH(alpha = as.numeric(options[["cchPriorAlpha"]]),
                                beta  = as.numeric(options[["cchPriorBeta"]]),
                                s     = as.numeric(options[["cchPriorS"]])),
-    "gPrior"        = BAS::g.prior(g = as.numeric(if (options[["gPriorType"]] == "n") n else priorParameter(options[["gPriorAlpha"]], n))),
+    "gPrior"        = BAS::g.prior(g = as.numeric(if (identical(options[["gPriorType"]], "n")) nrow(dataset) else options[["gPriorAlpha"]])),
     "instrinsic"    = BAS::intrinsic(),
     "robust"        = BAS::robust()
   )
@@ -1253,25 +1253,22 @@ for sparse regression when there are more covariates than observations (Castillo
 
     nvar <- bayesianLogisticRegModel$n.vars - 1
     bestmodel <- (0:nvar)[bayesianLogisticRegModel$probne0 > 0.5]
-    best <- 1
     models <- rep(0, nvar + 1)
     models[bestmodel + 1] <- 1
-    if (sum(models) > 1) {
-      bayesianLogisticRegModel <- BAS::bas.glm(formula = modelFormula,
-                                               family  = binomial(link = "logit"),
-                                               data    = dataset,
-                                               weights = weights,
-                                               n.models = 1,
-                                               betaprior = bayesianLogisticRegModel$betaprior,
-                                               modelprior = bayesianLogisticRegModel$modelprior,
-                                               method     = toupper(options$samplingMethod),
-                                               update = NULL,
-                                               bestmodel = models,
-                                               MCMC.iterations = NULL,
-                                               renormalize  = TRUE,
-                                               force.heredity  = TRUE,
-                                               include.always = nullFormula)
-    }
+    bayesianLogisticRegModel <- BAS::bas.glm(formula = modelFormula,
+                                             family  = binomial(link = "logit"),
+                                             data    = dataset,
+                                             weights = weights,
+                                             n.models = 1,
+                                             betaprior = bayesianLogisticRegModel$betaprior,
+                                             modelprior = bayesianLogisticRegModel$modelprior,
+                                             method     = toupper(options$samplingMethod),
+                                             update = NULL,
+                                             bestmodel = models,
+                                             MCMC.iterations = NULL,
+                                             renormalize  = TRUE,
+                                             force.heredity  = TRUE,
+                                             include.always = nullFormula)
   }
   postprobs = bayesianLogisticRegModel$postprobs
   if (estimator == "MPM" | estimator == "HPM")

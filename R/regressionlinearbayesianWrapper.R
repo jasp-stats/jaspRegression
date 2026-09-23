@@ -98,7 +98,7 @@
 #' @param weights, The weights used for weighted least square regression.
 RegressionLinearBayesian <- function(
           data = NULL,
-          version = "0.96",
+          version = "0.96.6",
           formula = NULL,
           isNuisance = NULL,
           bayesFactorOrder = "bestModelTop",

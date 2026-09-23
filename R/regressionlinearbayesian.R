@@ -110,7 +110,7 @@ RegressionLinearBayesianInternal <- function(jaspResults, dataset = NULL, option
     basregContainer$position <- position
     basregContainer$dependOn(c(
       "dependent", "covariates", "weights", "modelTerms",
-      "priorRegressionCoefficients", "gPriorG", "hyperGAlpha", "hyperGLaplaceAlpha", "hyperGNAlpha", "gPriorAlpha", "jzsRScale",
+      "priorRegressionCoefficients", "gPriorType", "gPriorG", "hyperGAlpha", "hyperGLaplaceAlpha", "hyperGNAlpha", "gPriorAlpha", "jzsRScale",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
       "samplingMethod", "samples", "numberOfModels", "seed", "setSeed"
@@ -1085,7 +1085,7 @@ for sparse regression when there are more covariates than observations (Castillo
 
   switch(
     prior,
-    "g-prior"         = if (options[["gPriorType"]] == "n") n else priorParameter(options[["gPriorG"]], n),
+    "g-prior"         = if (identical(options[["gPriorType"]], "n")) n else priorParameter(options[["gPriorG"]], n),
     "hyper-g"         = priorParameter(options[["hyperGAlpha"]],        3),
     "hyper-g-laplace" = priorParameter(options[["hyperGLaplaceAlpha"]], 3),
     "hyper-g-n"       = priorParameter(options[["hyperGNAlpha"]],       3),

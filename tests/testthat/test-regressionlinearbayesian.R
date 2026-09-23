@@ -395,6 +395,7 @@ test_that("Regression coefficient priors use their own parameter", {
     )
 
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", options, n = 100), 13)
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", modifyList(options, list(gPriorType = "n")), n = 100), 100)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", options, n = 100), 2.5)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-laplace", options, n = 100), 3)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-n", options, n = 100), 3.5)
@@ -407,6 +408,8 @@ test_that("Regression coefficient priors use their own parameter", {
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", options, n = 100), 100)
 
     legacyOptions <- list(gPriorAlpha = 13, jzsRScale = 0.5, gPriorType = "userDefined")
+    expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", legacyOptions, n = 100), 13)
+    legacyOptions$gPriorType <- NULL
     expect_equal(jaspRegression:::.basregGetPriorParameter("g-prior", legacyOptions, n = 100), 13)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g", legacyOptions, n = 100), 13)
     expect_equal(jaspRegression:::.basregGetPriorParameter("hyper-g-laplace", legacyOptions, n = 100), 13)

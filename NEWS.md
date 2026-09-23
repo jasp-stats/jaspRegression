@@ -18,7 +18,7 @@
 
 ## Changed
 * Bayesian Linear and Logistic Regression: added the model prior "Uniform over model size", which is now the default (identical to the previous default, Beta binomial with a = 1 and b = 1); "Uniform" was renamed "Uniform over models" for clarity.
-* Bayesian Linear Regression: the g-prior, hyper-g, hyper-g-Laplace, and hyper-g-n priors now each have their own parameter instead of one shared alpha restricted to (2, 4). The g-prior now defaults to g = n (unit-information prior) instead of g = 3.
+* Bayesian Linear and Logistic Regression: the g-prior now defaults to g = n (the unit-information prior) instead of g = 3, with a choice between g = n and a supplied value. In Bayesian Linear Regression, the g-prior, hyper-g, hyper-g-Laplace, and hyper-g-n priors now each have their own parameter instead of one shared alpha restricted to (2, 4).
 
 ## Added
 * Added a "Descriptives Plots" section to Linear Regression for visualizing predictor–outcome relationships. Continuous predictors on the horizontal axis are shown as scatter plots with regression lines; categorical (or binned continuous) predictors are shown as group-means line plots, with optional "Separate Lines"/"Separate Plots" stratification, configurable scale-predictor grouping (SD or percentile), and error bars (CI or SE).
