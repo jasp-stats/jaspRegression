@@ -34,13 +34,23 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   .glmModelSummaryTable(jaspResults, dataset, options, ready, position = 1)
   .glmModelFitTable(    jaspResults, dataset, options, ready, position = 2)
   .glmEstimatesTable(   jaspResults, dataset, options, ready, position = 3)
+
+  #Brant test
+  # Only trigger the Brant test for ordinal logistic regression
+  isOrdinal <- options[["family"]] == "other" && options[["otherGlmModel"]] == "ordinalLogistic"
+  #both checks below necessary, switching model hides checkbox but does not reset
+  if (isOrdinal && options[["brantTest"]]) {
+    .glmBrantTable(jaspResults, dataset, options, ready, position = 4)
+  }
   if (options$family == "other") return()
 
+
+
   #diagnostic tables and plots
-  .glmDiagnostics(jaspResults, dataset, options, ready, position = 4)
+  .glmDiagnostics(jaspResults, dataset, options, ready, position = 5)
 
   #estimated marginal means table and contrast analysis
-  .glmEmm(jaspResults, dataset, options, ready, position = 5)
+  .glmEmm(jaspResults, dataset, options, ready, position = 6)
 
   if (options[["residualsSavedToData"]] && options[["residualsSavedToDataColumn"]] != "" && is.null(jaspResults[["residualsSavedToDataColumn"]]))
     .regressionExportResiduals(jaspResults, jaspResults[["glmModels"]][["object"]][["fullModel"]], dataset, options)
@@ -1196,4 +1206,67 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   return()
 }
+ #Brant test
+.glmBrantTable <- function(jaspResults, dataset, options, ready, position) {
+  if (!ready || !options[["brantTest"]] || !is.null(jaspResults[["brantTable"]]))
+    return()
 
+  brantTable <- createJaspTable(title = gettext("Brant Test for Proportional Odds Assumption"))
+  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest", "weights", "offset"))
+  brantTable$position <- position
+
+  brantTable$addColumnInfo(name = "variable", title = "",      type = "string")
+  brantTable$addColumnInfo(name = "chiSq",    title = "\u03A7\u00B2",    type = "number")
+  brantTable$addColumnInfo(name = "df",       title = gettext("df"),    type = "integer")
+  brantTable$addColumnInfo(name = "p",        title = gettext("p"),     type = "pvalue")
+  brantTable$addFootnote(gettext("H0: The proportional odds (parallel lines) assumption holds."))
+
+  jaspResults[["brantTable"]] <- brantTable
+
+  models <- .glmComputeModel(jaspResults, dataset, options)
+  fullModel <- models[["fullModel"]]
+
+  # Error if no variables in model
+  if (.isInterceptOnly(fullModel)) {
+    brantTable$setError(gettext("The Brant test requires at least one predictor in the model."))
+    return()
+  }
+  # Offset calculation not implemented
+  if (options[["offset"]] != "") {
+    brantTable$setError(gettext("The Brant test does not support offset terms."))
+    return()
+  }
+  # Weights calculation not implemented
+  if (options[["weights"]] != "") {
+    brantTable$setError(gettext("The Brant test does not support weighted models."))
+    return()
+  }
+
+  brantResult <- try(.glmBrantTest(fullModel, dataset, options),silent=TRUE)
+
+
+  if (jaspBase::isTryError(brantResult)) {
+    brantTable$setError(jaspBase::.extractErrorMessage(brantResult))
+    return()
+  }
+
+  # Add warning if negative chi-squares detected. This can happen for e.g. very small samples
+  # e.g. MASS::cars dataset, with gear~hp as model.
+  if (any(brantResult$chiSq < 0, na.rm = TRUE)) {
+    brantTable$addFootnote(
+      gettext("Negative \u03A7\u00B2 statistics are computational artifacts.
+              They indicate the estimated covariance matrix is not positive semi-definite
+              or is ill-conditioned, often due to small samples or sparse data.
+              Test results might be misleading.")
+    )
+  }
+
+  for (rowIndex in seq_len(nrow(brantResult))) {
+    brantTable$addRows(list(
+      variable = rownames(brantResult)[rowIndex],
+      chiSq    = brantResult[rowIndex, "chiSq"],
+      df       = brantResult[rowIndex, "df"],
+      p        = brantResult[rowIndex, "p"]
+    ))
+  }
+}

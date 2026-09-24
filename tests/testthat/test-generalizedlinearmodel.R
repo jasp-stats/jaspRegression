@@ -457,6 +457,156 @@ test_that("Ordinal logistic regression results match", {
 
 })
 
+# tests for the brant test option for ordinal logistic regression
+test_that("Brant test handles intercept-only models gracefully", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "facFive"
+  options$covariates <- character(0) # Empty predictors
+  options$factors <- character(0)
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testData, options)
+
+  tableError <- results[["results"]][["brantTable"]][["error"]][["errorMessage"]]
+
+  expect_identical(
+    tableError,
+    "The Brant test requires at least one predictor in the model.",
+    "Brant test intercept-only check"
+  )
+})
+
+test_that("Brant test runs successfully and matches STATA's brant output", {
+  dataset <- as.data.frame(quakes)
+  dataset$MagLevel <- cut(dataset$mag,
+                          breaks = 3,
+                          labels = c("Weak", "Moderate", "Strong"),
+                          ordered_result = TRUE)
+
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "MagLevel"
+  options$covariates <- c("depth", "stations")
+  options$modelTerms <- list(
+    list(components = "depth",    isNuisance = FALSE),
+    list(components = "stations", isNuisance = FALSE)
+  )
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, options)
+  table <- results[["results"]][["brantTable"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(
+    "Omnibus",    7.3465, 2, 0.0254,
+    "depth",      0.0241, 1, 0.8765,
+    "stations",   7.2115, 1, 0.0072
+  ))
+})
+
+test_that("Brant test correctly identifies perfect separation", {
+  dataset <- as.data.frame(mtcars)
+  dataset$cyl <- as.ordered(dataset$cyl)
+
+  #create a perfect separator
+  dataset$is_8_cyl <- ifelse(dataset$cyl == 8, 1, 0)
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "cyl"
+  options$covariates <- c("is_8_cyl")
+
+  options$modelTerms <- list(
+    list(components = "is_8_cyl", isNuisance = FALSE)
+  )
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, options)
+
+  tableError <- results[["results"]][["brantTable"]][["error"]][["errorMessage"]]
+  expect_identical(
+    tableError,
+    "Brant test failed: An underlying binary model exhibits perfect or near-perfect prediction."
+  )
+})
+
+test_that("Brant test displays 'not supported' message on models with offset terms", {
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "facFive"
+  options$covariates <- c("contNormal")
+  options$modelTerms <- list(
+    list(components = "contNormal", isNuisance = FALSE)
+  )
+  options$offset <- "contOutlier"
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", testData, options)
+
+  tableError <- results[["results"]][["brantTable"]][["error"]][["errorMessage"]]
+
+  expect_identical(
+    tableError,
+    "The Brant test does not support offset terms."
+  )
+})
+
+test_that("Brant test adds footnote for negative chi-square statistics", {
+  # Using mtcars as referenced in your source code comments (gear ~ hp)
+  dataset <- as.data.frame(mtcars)
+  dataset$gear <- as.ordered(dataset$gear)
+
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "gear"
+  options$covariates <- c("hp")
+  options$modelTerms <- list(
+    list(components = "hp", isNuisance = FALSE)
+  )
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, options)
+
+  footnotes <- results[["results"]][["brantTable"]][["footnotes"]]
+  footnote_texts <- sapply(footnotes, function(x) x$text)
+
+  expect_true(
+    any(grepl("Negative \u03A7\u00B2 statistics are computational artifacts", footnote_texts)),
+    "Negative chi-square footnote was not generated."
+  )
+})
+
+test_that("Brant test handles weighted models gracefully", {
+  dataset <- as.data.frame(quakes)
+  dataset$MagLevel <- cut(dataset$mag,
+                          breaks = 3,
+                          labels = c("Weak", "Moderate", "Strong"),
+                          ordered_result = TRUE)
+
+  options <- getOptions("GeneralizedLinearModel")
+  options$family <- "other"
+  options$otherGlmModel <- "ordinalLogistic"
+  options$dependent <- "MagLevel"
+  options$covariates <- c("depth")
+  options$modelTerms <- list(
+    list(components = "depth", isNuisance = FALSE)
+  )
+  options$weights <- "stations"
+  options$brantTest <- TRUE
+
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, options)
+
+  tableError <- results[["results"]][["brantTable"]][["error"]][["errorMessage"]]
+
+  expect_identical(
+    tableError,
+    "The Brant test does not support weighted models.",
+    "Brant test weights check"
+  )
+})
 
 # test firth logistic regression
 test_that("Firth logistic regression results match", {
