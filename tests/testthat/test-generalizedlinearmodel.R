@@ -127,8 +127,8 @@ results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path(
 test_that("Model summary table results match", {
   table <- results[["results"]][["modelSummary"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("H\u2080", 112.67, 150.147, 150.545,  10, "", "",
-                                      "H\u2081", 10.33,  49.808,  50.604,   9,  102.339, 0.000))})
+                                 list("H\u2080", 112.67, 150.147, 150.545,  10, "", "", "",
+                                      "H\u2081", 10.33,  49.808,  50.604,   9,  102.339, 1, 0.000))})
 
 
 # model fit table
@@ -422,6 +422,12 @@ test_that("Multinomial logistic regression results match", {
                                              0.67232619342689, 0.285848331445981, 0.422957604168159, -0.953382729130251,
                                              0.279941825642027, -0.336720451744112, "contNormal<unicode><unicode><unicode>4",
                                              0.284523464240265, 0.314629392300212, -1.07021295525633))
+
+  # df of the model comparison is the difference in estimated parameters (4 = 1 predictor x 4 non-reference categories)
+  table <- results[["results"]][["modelSummary"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(329.88758248682, 340.308263230772, "", "", 321.88758248682, 396,
+                                             "H<unicode>", "", 333.664265259043, 354.505626746948, 4.22331722777659,
+                                             4, 317.664265259043, 392, "H<unicode>", 0.376625967187306))
 
 })
 

@@ -175,8 +175,9 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   modelSummary$addColumnInfo(name = "dev", title = gettext("Deviance"), type = "number")
   modelSummary$addColumnInfo(name = "aic", title = gettext("AIC"),      type = "number")
   modelSummary$addColumnInfo(name = "bic", title = gettext("BIC"),      type = "number")
-  modelSummary$addColumnInfo(name = "dof", title = gettext("df"),       type = "integer")
+  modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
   modelSummary$addColumnInfo(name = "chi", title = "\u03A7\u00B2",      type = "number")
+  modelSummary$addColumnInfo(name = "ddf", title = gettext("df"),       type = "integer")
   modelSummary$addColumnInfo(name = "pvl", title = gettext("p"),        type = "pvalue")
 
   jaspResults[["modelSummary"]] <- modelSummary
@@ -268,6 +269,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
            bic = bicNullModel,
            dof = dofNullModel,
            chi = "",
+           ddf = "",
            pvl = ""),
       list(mod = "H\u2081",
            dev = devFullModel,
@@ -275,6 +277,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
            bic = bicFullModel,
            dof = dofFullModel,
            chi = chiValue,
+           ddf = dofNullModel - dofFullModel,
            pvl = pValue)
     )
   } else {
