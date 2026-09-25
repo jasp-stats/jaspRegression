@@ -127,8 +127,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   modelSummary$addColumnInfo(name = "dev", title = gettext("Deviance"), type = "number")
   modelSummary$addColumnInfo(name = "aic", title = gettext("AIC"),      type = "number", format="dp:3")
   modelSummary$addColumnInfo(name = "bic", title = gettext("BIC"),      type = "number", format="dp:3")
-  modelSummary$addColumnInfo(name = "dof", title = gettext("df"),       type = "integer")
+  modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
   modelSummary$addColumnInfo(name = "chi", title = "\u0394\u03A7\u00B2",type = "number", format="dp:3")
+  modelSummary$addColumnInfo(name = "ddf", title = gettext("df"),       type = "integer")
   modelSummary$addColumnInfo(name = "pvl", title = gettext("p"),        type = "pvalue")
   modelSummary$addColumnInfo(name = "fad", title = gettextf("McFadden R%s","\u00B2"),    type = "number")
   modelSummary$addColumnInfo(name = "nag", title = gettextf("Nagelkerke R%s","\u00B2"),  type = "number")
@@ -394,6 +395,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
             bic = .bic(mObj),
             dof = mObj[["df.residual"]],
             chi = lr[["stat"]],
+            ddf = lr[["df"]],
             pvl = lr[["pval"]],
             fad = fadden,
             nag = nagel,
@@ -408,6 +410,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
             bic = .bic(mObj),
             dof = mObj[["df.residual"]],
             chi = NULL,
+            ddf = NULL,
             pvl = NULL,
             fad = .mcFadden(mObj, mObj),
             nag = .nagelkerke(mObj, mObj),

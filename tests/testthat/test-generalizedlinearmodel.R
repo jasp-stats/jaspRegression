@@ -127,8 +127,8 @@ results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path(
 test_that("Model summary table results match", {
   table <- results[["results"]][["modelSummary"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("H\u2080", 112.67, 150.147, 150.545,  10, "", "",
-                                      "H\u2081", 10.33,  49.808,  50.604,   9,  102.339, 0.000))})
+                                 list("H\u2080", 112.67, 150.147, 150.545,  10, "", "", "",
+                                      "H\u2081", 10.33,  49.808,  50.604,   9,  102.339, 1, 0.000))})
 
 
 # model fit table
@@ -423,6 +423,12 @@ test_that("Multinomial logistic regression results match", {
                                              0.279941825642027, -0.336720451744112, "contNormal<unicode><unicode><unicode>4",
                                              0.284523464240265, 0.314629392300212, -1.07021295525633))
 
+  # df of the model comparison is the difference in estimated parameters (4 = 1 predictor x 4 non-reference categories)
+  table <- results[["results"]][["modelSummary"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(329.88758248682, 340.308263230772, "", "", 321.88758248682, 396,
+                                             "H<unicode>", "", 333.664265259043, 354.505626746948, 4.22331722777659,
+                                             4, 317.664265259043, 392, "H<unicode>", 0.376625967187306))
+
 })
 
 
@@ -479,5 +485,9 @@ test_that("Firth logistic regression results match", {
                                              0.687684018886119, 0.207349730577828, 0.161604008071805, 0.0438031690299891,
                                              0.864979794866346, 0.429594461170132, "contNormal", 0.0283926079313983,
                                              0.205791561077245, 4.80406875037797))
+
+  # the model-comparison df is not reported for Firth logistic regression (yet)
+  fields <- sapply(results[["results"]][["modelSummary"]][["schema"]][["fields"]], `[[`, "name")
+  testthat::expect_false("ddf" %in% fields)
 
 })

@@ -48,9 +48,10 @@ The following table summarized the available distributions (also called families
   - Deviance: -2*log(likelihood).
   - AIC: Akaike Information Criterion.
   - BIC: Bayesian Information Criterion.
-  - df: The degree of freedom of the corresponding model.
-  - X2: The chi-squared statistic used to compare the model (H1) against the null model (H0).
-  - p: The p-value of the chi-squared test.
+  - Residual df: The residual degrees of freedom of the corresponding model.
+  - X2: The chi-squared statistic used to compare the model (H1) against the null model (H0), i.e., the difference in deviance.
+  - df: The degrees of freedom of this model comparison, i.e., the difference in the number of estimated parameters between H1 and H0. Report these degrees of freedom (not the residual df) for the comparison of H1 against H0. Not shown for Firth logistic regression.
+  - p: The p-value of the chi-squared test. For the Gaussian, Gamma, and inverse Gaussian families, the p-value is based on an F-test with df and the residual df of H1 as its degrees of freedom.
 - Model Fit: A table providing information about the goodness-of-fit of the model, including the corresponding fit statistic, the degree of freedom (df) and the p-value.
   - Deviance goodness-of-fit: Goodness-of-fit test based on deviance residuals, comparing the current model against the saturated model.
   - Pearson goodness-of-fit: Goodness-of-fit test based on Pearson residuals, comparing the current model against the saturated model.  
