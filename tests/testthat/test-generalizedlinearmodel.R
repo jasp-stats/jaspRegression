@@ -486,4 +486,8 @@ test_that("Firth logistic regression results match", {
                                              0.864979794866346, 0.429594461170132, "contNormal", 0.0283926079313983,
                                              0.205791561077245, 4.80406875037797))
 
+  # the model-comparison df is not reported for Firth logistic regression (yet)
+  fields <- sapply(results[["results"]][["modelSummary"]][["schema"]][["fields"]], `[[`, "name")
+  testthat::expect_false("ddf" %in% fields)
+
 })
