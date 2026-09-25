@@ -89,9 +89,10 @@ Model summary:
 - Deviance: -2 x log-likelihood.
 - AIC (Akaike Information Criteria): Compare models using the Akaike Information Criterion.
 - BIC (Bayesian Information Criteria): Compare models using the Bayesian Information Criterion.
-- df: Degrees of freedom.
-- X2: chi-squared.
-- p: The p-value.
+- Residual df: Residual degrees of freedom of the model, i.e., the number of observations minus the number of estimated parameters.
+- ΔX2: Chi-squared statistic of the likelihood ratio test comparing the model to the previous model (the change in deviance).
+- df: Degrees of freedom of the likelihood ratio test, i.e., the difference in the number of estimated parameters between the model and the previous model. Report these degrees of freedom (not the residual df) for the change in model fit.
+- p: The p-value of the likelihood ratio test.
 - R squared value, i.e., the proportion of the total variance that is explained by the regression model. There are three pseudo R2 values calculated in JASP.
   - McFadden: calculated as one minus the ratio of the log-likelihood of the specified model to the log-likelihood of the null model. If the specified model fits the data relatively better than the null model, McFadden's R2 is close to 1. If the null model fits the data about the same as the specified model, McFadden's R2 is close to 0.
   - Cox & Snell: calculated as one minus the ratio of the likelihood of the null model to the likelihood of the specified model, with the ratio raised to the power of 2/n (sample size). Higher values indicate that the specified model fits the data relatively better than the null model. However, this index is bounded at one minus the likelihood of the null model raised to the power of 2/n, and under ideal circumstances can be only as high as 0.75.

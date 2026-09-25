@@ -96,9 +96,10 @@ Samenvatting model:
 - afwijking: -2 x log-likelihood.
 - AIC: Vergelijk modellen met het Akaike Informatie Criterium.
 - BIC: vergelijk modellen met het Bayesiaanse Informatie Criterium.
-- vg: Vrijheidsgraden.
-- X2: Chi-kwadraat.
-- p: De p-waarde.
+- Residuele vg: Residuele vrijheidsgraden van het model, d.w.z. het aantal observaties min het aantal geschatte parameters.
+- ΔX2: Chi-kwadraat toetsingsgrootheid van de likelihood-ratiotoets die het model vergelijkt met het vorige model (de verandering in deviance).
+- vg: Vrijheidsgraden van de likelihood-ratiotoets, d.w.z. het verschil in het aantal geschatte parameters tussen het model en het vorige model. Rapporteer deze vrijheidsgraden (niet de residuele vg) voor de verandering in model fit.
+- p: De p-waarde van de likelihood-ratiotoets.
 - Determinatiecoëfficient waarde (de proportie van de variantie die wordt verklaard door het model). Er zijn drie pseudo R^2 waarden beschikbaar in JASP: 
   - McFadden: berekend als 1 min de ratio van de log-likelihoods van het gespecificeerde model en het nul-model. Als het gespecificeerde model beter op de data past dan het nul-model, dan is McFadden's R2 in de buurt van 1. Als het nul-model ongeveer evengoed op de data past als het gespecificeerde model, dan is McFadden's R2 in de buurt van 0.
   - Cox & Snell: berekend als 1 min de ratio van de log-likelihoods van het gespecificeerde model en het nul-model, waarbij de ratio verheven wordt tot de macht 2/n (steekproefgrootte). Hogere waarden geven aan dat het gespecificeerde model relatief beter op de data past dan het nul-model. De Cox & Snell index heeft echter als limiet 1 min de likelihood van het nul-model, verheven tot de macht 2/n, en kan zelfs onder ideale omstandigheden niet hoger zijn dan 0.75.
