@@ -225,16 +225,15 @@ Form {
 				name: "modelPrior"
 				title: qsTr("Model Prior")
 				info: qsTr("Prior distribution on the models.")
+				RadioButton{ value: "uniform"; label: qsTr("Uniform"); info: qsTr("Default uniform prior distribution."); checked:true}
 				RadioButton
 				{
-					checked: true
-					value: "betaBinomial"; label: qsTr("Beta binomial"); info: qsTr("Default Beta(a = 1, b = 1).")
+					value: "betaBinomial"; label: qsTr("Beta binomial"); info: qsTr("Beta(a = 1, b = 1).")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
 					DoubleField { name: "betaBinomialParamA"; label: qsTr("a"); defaultValue: 1; inclusive: JASP.MaxOnly}
 					DoubleField { name: "betaBinomialParamB"; label: qsTr("b"); defaultValue: 1; inclusive: JASP.MaxOnly}
 				}
-				RadioButton { value: "uniform"; label: qsTr("Uniform"); info: qsTr("Uniform prior distribution.")}
 				RadioButton
 				{
 					value: "wilson"
