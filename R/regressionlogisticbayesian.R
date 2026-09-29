@@ -1262,7 +1262,7 @@ for sparse regression when there are more covariates than observations (Castillo
                                              n.models = 1,
                                              betaprior = bayesianLogisticRegModel$betaprior,
                                              modelprior = bayesianLogisticRegModel$modelprior,
-                                             method     = toupper(options$samplingMethod),
+                                             method     = "BAS", # this refit evaluates one known model; BAS errors with method = "MCMC" and n.models = 1, see https://github.com/merliseclyde/BAS/issues/107
                                              update = NULL,
                                              bestmodel = models,
                                              MCMC.iterations = NULL,
