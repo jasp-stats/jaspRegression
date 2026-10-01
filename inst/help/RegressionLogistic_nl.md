@@ -98,9 +98,9 @@ Met logistische regressie kan men een lineaire relatie tussen een of meer verkla
 Samenvatting model: 
 - Model: De verschillende hypothesen die worden vergeleken.
 - afwijking: -2 x log-likelihood.
+- Residuele vg: Residuele vrijheidsgraden van het model, d.w.z. het aantal observaties min het aantal geschatte parameters.
 - AIC: Vergelijk modellen met het Akaike Informatie Criterium.
 - BIC: vergelijk modellen met het Bayesiaanse Informatie Criterium.
-- Residuele vg: Residuele vrijheidsgraden van het model, d.w.z. het aantal observaties min het aantal geschatte parameters.
 - X2: Chi-kwadraat toetsingsgrootheid van de likelihood-ratiotoets die het model vergelijkt met het eerste model, M0 (het verschil in deviance). Wordt getoond als "Χ² vs. M₀" is geselecteerd, samen met de bijbehorende vg (het verschil in het aantal geschatte parameters tussen het model en M0) en p.
 - ΔX2: Chi-kwadraat toetsingsgrootheid van de likelihood-ratiotoets die het model vergelijkt met het vorige model (de verandering in deviance).
 - vg: Vrijheidsgraden van de likelihood-ratiotoets, d.w.z. het verschil in het aantal geschatte parameters tussen het model en het vorige model. Rapporteer deze vrijheidsgraden (niet de residuele vg) voor de verandering in model fit.

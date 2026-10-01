@@ -133,9 +133,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 
   modelSummary$addColumnInfo(name = "mod", title = gettext("Model"),    type = "string")
   modelSummary$addColumnInfo(name = "dev", title = gettext("Deviance"), type = "number")
+  modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
   modelSummary$addColumnInfo(name = "aic", title = gettext("AIC"),      type = "number", format="dp:3")
   modelSummary$addColumnInfo(name = "bic", title = gettext("BIC"),      type = "number", format="dp:3")
-  modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
 
   # .jasp files saved before these options existed do not contain them, so fall back to the QML defaults
   chiSquare       <- isTRUE(options[["chiSquare"]])

@@ -173,9 +173,9 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   modelSummary$addColumnInfo(name = "mod", title = gettext("Model"),    type = "string")
   modelSummary$addColumnInfo(name = "dev", title = gettext("Deviance"), type = "number")
+  modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
   modelSummary$addColumnInfo(name = "aic", title = gettext("AIC"),      type = "number")
   modelSummary$addColumnInfo(name = "bic", title = gettext("BIC"),      type = "number")
-  modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
   modelSummary$addColumnInfo(name = "chi", title = "\u03A7\u00B2",      type = "number")
   # the Firth model comparison needs a separate overhaul, so its df is not reported (yet)
   if (!(options[["family"]] == "other" && options[["otherGlmModel"]] == "firthLogistic"))

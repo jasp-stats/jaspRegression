@@ -46,9 +46,9 @@ The following table summarized the available distributions (also called families
 - Default Model Summary Table (always given)
   - Model: The different hypotheses (i.e. null vs. alternative) that are compared.
   - Deviance: -2*log(likelihood).
+  - Residual df: The residual degrees of freedom of the corresponding model.
   - AIC: Akaike Information Criterion.
   - BIC: Bayesian Information Criterion.
-  - Residual df: The residual degrees of freedom of the corresponding model.
   - X2: The chi-squared statistic used to compare the model (H1) against the null model (H0), i.e., the difference in deviance.
   - df: The degrees of freedom of this model comparison, i.e., the difference in the number of estimated parameters between H1 and H0. Report these degrees of freedom (not the residual df) for the comparison of H1 against H0. Not shown for Firth logistic regression.
   - p: The p-value of the chi-squared test. For the Gaussian, Gamma, and inverse Gaussian families, the p-value is based on an F-test with df and the residual df of H1 as its degrees of freedom.
