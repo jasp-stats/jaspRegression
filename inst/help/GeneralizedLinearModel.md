@@ -45,13 +45,14 @@ The following table summarized the available distributions (also called families
 #### Statistics
 - Default Model Summary Table (always given)
   - Model: The different hypotheses (i.e. null vs. alternative) that are compared.
-  - Deviance: -2*log(likelihood).
-  - Residual df: The residual degrees of freedom of the corresponding model.
+  - Deviance: The residual deviance of the model, i.e., how much worse the model fits than the saturated model (a model with one parameter per observation). For a binary dependent variable this equals -2*log(likelihood); for the Gaussian family it is the residual sum of squares.
+  - Residual df: The residual degrees of freedom of the corresponding model, i.e., the number of observations minus the number of estimated parameters.
   - AIC: Akaike Information Criterion.
   - BIC: Bayesian Information Criterion.
-  - X2: The chi-squared statistic used to compare the model (H1) against the null model (H0), i.e., the difference in deviance.
-  - df: The degrees of freedom of this model comparison, i.e., the difference in the number of estimated parameters between H1 and H0. Report these degrees of freedom (not the residual df) for the comparison of H1 against H0. Not shown for Firth logistic regression.
-  - p: The p-value of the chi-squared test. For the Gaussian, Gamma, and inverse Gaussian families, the p-value is based on an F-test with df and the residual df of H1 as its degrees of freedom.
+  - X2: The chi-squared statistic of the likelihood ratio test comparing the model (H1) against the null model (H0), i.e., the difference in deviance. Shown for the Bernoulli, Binomial, Poisson, and Other families.
+  - F: The F statistic comparing the model (H1) against the null model (H0), i.e., the difference in deviance divided by df and by the estimated dispersion of H1. Shown instead of X2 for the Gaussian, Gamma, and Inverse Gaussian families, because their dispersion is estimated.
+  - df: The degrees of freedom of this model comparison, i.e., the difference in the number of estimated parameters between H1 and H0. For the chi-squared test, report these degrees of freedom (not the residual df). For the F-test, report them together with the residual df of H1, i.e., F(df, residual df of H1). Not shown for Firth logistic regression.
+  - p: The p-value of the chi-squared test or, for the Gaussian, Gamma, and Inverse Gaussian families, of the F-test.
 - Model Fit: A table providing information about the goodness-of-fit of the model, including the corresponding fit statistic, the degree of freedom (df) and the p-value.
   - Deviance goodness-of-fit: Goodness-of-fit test based on deviance residuals, comparing the current model against the saturated model.
   - Pearson goodness-of-fit: Goodness-of-fit test based on Pearson residuals, comparing the current model against the saturated model.  

@@ -30,6 +30,7 @@
 * Fixed residual export for weighted Bayesian linear regressions using the median-probability model and custom null-model terms.
 * Updated Bayesian regression model-comparison headers to identify whether Bayes factors use the null or best model as their reference.
 * Logistic Regression and Generalized Linear Model: the "df" column in the Model Summary showed the residual degrees of freedom, not the degrees of freedom of the Χ² test next to it. It is now labelled "Residual df" and shown next to Deviance, as in R's output; the test's df has its own column.
+* Generalized Linear Model: for the Gaussian, Gamma, and Inverse Gaussian families, the Model Summary now shows the F statistic of the F-test that its p-value is based on, instead of the difference in deviance labelled Χ².
 
 ---
 

@@ -372,6 +372,31 @@ test_that("Gamma regression (with an offset term) results match", {
 
 })
 
+test_that("Model summary reports the F-test for families with an estimated dispersion", {
+  trees <- read.csv(testthat::test_path("trees.csv"))
+  options <- getOptions("GeneralizedLinearModel")
+  options$covariates <- "Girth"
+  options$dependent  <- "Volume"
+  options$modelTerms <- list(list(components = "Girth", isNuisance = FALSE))
+
+  options$family <- "gamma"
+  options$link   <- "log"
+  table <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("trees.csv"), options)[["results"]][["modelSummary"]]
+  reference <- anova(glm(Volume ~ 1,     family = Gamma(link = "log"), data = trees),
+                     glm(Volume ~ Girth, family = Gamma(link = "log"), data = trees), test = "F")
+  expect_equal(table[["data"]][[2]][["chi"]], reference[["F"]][2])
+  expect_equal(table[["data"]][[2]][["pvl"]], reference[["Pr(>F)"]][2])
+  titles <- vapply(table[["schema"]][["fields"]], `[[`, character(1), "title")
+  expect_true("F" %in% titles)
+  expect_false("Χ²" %in% titles)
+
+  # with the Gaussian family and identity link this is the F-test of linear regression
+  options$family <- "gaussian"
+  options$link   <- "identity"
+  table <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("trees.csv"), options)[["results"]][["modelSummary"]]
+  expect_equal(table[["data"]][[2]][["chi"]], anova(lm(Volume ~ Girth, data = trees))[["F value"]][1])
+})
+
 # test intercept-only model for confidence intervals
 test_that("Intercept-only binomial regression results match", {
   options <- getOptions("GeneralizedLinearModel")

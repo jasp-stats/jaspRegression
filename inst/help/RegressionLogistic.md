@@ -92,11 +92,11 @@ Model summary:
 - Model: The different hypotheses that are compared.
 - Deviance: -2 x log-likelihood.
 - Residual df: Residual degrees of freedom of the model, i.e., the number of observations minus the number of estimated parameters.
-- AIC (Akaike Information Criteria): Compare models using the Akaike Information Criterion.
-- BIC (Bayesian Information Criteria): Compare models using the Bayesian Information Criterion.
+- AIC (Akaike Information Criterion): Compare models using the Akaike Information Criterion.
+- BIC (Bayesian Information Criterion): Compare models using the Bayesian Information Criterion.
 - X2: Chi-squared statistic of the likelihood ratio test comparing the model to the first model, M0 (the difference in deviance). Shown when "Χ² vs. M₀" is selected, together with its df (the difference in the number of estimated parameters between the model and M0) and p.
-- ΔX2: Chi-squared statistic of the likelihood ratio test comparing the model to the previous model (the change in deviance).
-- df: Degrees of freedom of the likelihood ratio test, i.e., the difference in the number of estimated parameters between the model and the previous model. Report these degrees of freedom (not the residual df) for the change in model fit.
+- ΔX2: Chi-squared statistic of the likelihood ratio test comparing the model to the previous model (the change in deviance). Shown when "Χ² change" is selected (default).
+- df: Degrees of freedom of the likelihood ratio test, i.e., the difference in the number of estimated parameters between the model and the previous model (for ΔX2) or M0 (for X2). Report these degrees of freedom (not the residual df) for the likelihood ratio test.
 - p: The p-value of the likelihood ratio test.
 - R squared value, i.e., the proportion of the total variance that is explained by the regression model. There are three pseudo R2 values calculated in JASP.
   - McFadden: calculated as one minus the ratio of the log-likelihood of the specified model to the log-likelihood of the null model. If the specified model fits the data relatively better than the null model, McFadden's R2 is close to 1. If the null model fits the data about the same as the specified model, McFadden's R2 is close to 0.

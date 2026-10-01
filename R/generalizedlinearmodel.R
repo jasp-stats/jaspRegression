@@ -154,6 +154,11 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 }
 
 # Model Summary Table
+# families with an estimated dispersion parameter compare H1 and H0 with an F-test instead of a chi-squared test
+.glmUsesFTest <- function(options) {
+  !options[["family"]] %in% c("bernoulli", "binomial", "poisson", "other")
+}
+
 .glmModelSummaryTable <- function(jaspResults, dataset, options, ready, position) {
   if (!is.null(jaspResults[["modelSummary"]])) {
     return()
@@ -176,7 +181,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
   modelSummary$addColumnInfo(name = "aic", title = gettext("AIC"),      type = "number")
   modelSummary$addColumnInfo(name = "bic", title = gettext("BIC"),      type = "number")
-  modelSummary$addColumnInfo(name = "chi", title = "\u03A7\u00B2",      type = "number")
+  modelSummary$addColumnInfo(name = "chi", title = if (.glmUsesFTest(options)) gettext("F") else "\u03A7\u00B2", type = "number")
   # the Firth model comparison needs a separate overhaul, so its df is not reported (yet)
   if (!(options[["family"]] == "other" && options[["otherGlmModel"]] == "firthLogistic"))
     modelSummary$addColumnInfo(name = "ddf", title = gettext("df"),     type = "integer")
@@ -206,15 +211,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
       jaspResults[["modelSummary"]]$addFootnote(message)
     }
 
-    #log-likelihood ratio test to compare nested models (null vs full)
-    if (options[["family"]] %in% c("bernoulli", "binomial", "poisson", "other")) {
-      testType <- "Chisq"
-      pvalName <- "Pr(>Chi)"
-    }
-
-    else {
+    # compare the nested models (null vs full) with a likelihood ratio test, or an F-test if the dispersion is estimated
+    if (.glmUsesFTest(options)) {
       testType <- "F"
       pvalName <- "Pr(>F)"
+      jaspResults[["modelSummary"]]$addFootnote(gettextf("The F-test uses df and the residual df of %s as its degrees of freedom.", "H₁"))
+    } else {
+      testType <- "Chisq"
+      pvalName <- "Pr(>Chi)"
     }
 
     if (options[["family"]] == "other") {
@@ -260,7 +264,8 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
       anovaRes     <- anova(glmModels[["nullModel"]], glmModels[["fullModel"]],
                             test = testType)
-      chiValue     <- anovaRes$Deviance[[2]]
+      # for the chi-squared test the statistic is the difference in deviance
+      chiValue     <- if (testType == "F") anovaRes$F[[2]] else anovaRes$Deviance[[2]]
       pValue       <- anovaRes[[pvalName]][[2]]
     }
 
