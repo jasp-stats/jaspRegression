@@ -39,6 +39,10 @@ Met logistische regressie kan men een lineaire relatie tussen een of meer verkla
 ### Statistieken
 ---
 
+- Modelsamenvatting:
+  - Χ² verandering: Likelihood-ratiotoets van elk model tegen het vorige model (ΔX2, vg en p in de samenvatting van het model). Standaard geselecteerd.
+  - Χ² vs. M₀: Likelihood-ratiotoets van elk model tegen het eerste model, M₀ (X2, vg en p in de samenvatting van het model).
+
 - Beschrijvende statistieken: 
   - Factor: De niveaus van de afhankelijke variabele(n) en het aantal observaties per niveau. 
 
@@ -97,6 +101,7 @@ Samenvatting model:
 - AIC: Vergelijk modellen met het Akaike Informatie Criterium.
 - BIC: vergelijk modellen met het Bayesiaanse Informatie Criterium.
 - Residuele vg: Residuele vrijheidsgraden van het model, d.w.z. het aantal observaties min het aantal geschatte parameters.
+- X2: Chi-kwadraat toetsingsgrootheid van de likelihood-ratiotoets die het model vergelijkt met het eerste model, M0 (het verschil in deviance). Wordt getoond als "Χ² vs. M₀" is geselecteerd, samen met de bijbehorende vg (het verschil in het aantal geschatte parameters tussen het model en M0) en p.
 - ΔX2: Chi-kwadraat toetsingsgrootheid van de likelihood-ratiotoets die het model vergelijkt met het vorige model (de verandering in deviance).
 - vg: Vrijheidsgraden van de likelihood-ratiotoets, d.w.z. het verschil in het aantal geschatte parameters tussen het model en het vorige model. Rapporteer deze vrijheidsgraden (niet de residuele vg) voor de verandering in model fit.
 - p: De p-waarde van de likelihood-ratiotoets.

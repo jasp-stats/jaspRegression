@@ -32,6 +32,10 @@ Logistic regression allows the user to model a linear relationship between one o
 
 
 ### Statistics
+- Model Summary:
+  - Χ² change: Likelihood ratio test of each model against the previous model (ΔX2, df and p in the model summary). Selected by default.
+  - Χ² vs. M₀: Likelihood ratio test of each model against the first model, M₀ (X2, df and p in the model summary).
+
 - Descriptives:
   - Factor descriptives: The levels of the dependent variable(s) and the number of observations per level.
 
@@ -90,6 +94,7 @@ Model summary:
 - AIC (Akaike Information Criteria): Compare models using the Akaike Information Criterion.
 - BIC (Bayesian Information Criteria): Compare models using the Bayesian Information Criterion.
 - Residual df: Residual degrees of freedom of the model, i.e., the number of observations minus the number of estimated parameters.
+- X2: Chi-squared statistic of the likelihood ratio test comparing the model to the first model, M0 (the difference in deviance). Shown when "Χ² vs. M₀" is selected, together with its df (the difference in the number of estimated parameters between the model and M0) and p.
 - ΔX2: Chi-squared statistic of the likelihood ratio test comparing the model to the previous model (the change in deviance).
 - df: Degrees of freedom of the likelihood ratio test, i.e., the difference in the number of estimated parameters between the model and the previous model. Report these degrees of freedom (not the residual df) for the change in model fit.
 - p: The p-value of the likelihood ratio test.

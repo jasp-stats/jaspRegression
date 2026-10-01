@@ -229,6 +229,47 @@ test_that("Method=stepwise model summary table results match", {
     list(138.058400038431, 140.663570224419, 136.058400038431, 99, 0, 1,0))
 })
 
+test_that("Model summary reports the likelihood ratio tests against M0 and against the previous model", {
+  options <- initClassicalRegressionOptions("RegressionLogistic")
+  options$dependent  <- "delivered"
+  options$factors    <- "treat"
+  options$covariates <- "quantity"
+  options$modelTerms <- list(
+    list(components = NULL,                      name = "model0", title = "Model 0"),
+    list(components = list("treat"),             name = "model1", title = "Model 1"),
+    list(components = list("treat", "quantity"), name = "model2", title = "Model 2")
+  )
+  options$chiSquare       <- TRUE
+  options$chiSquareChange <- TRUE
+  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = santas_log, options)
+  table   <- results[["results"]][["modelSummary"]]
+
+  # reference deviances of the same three models
+  devM0 <- glm(delivered ~ 1,                family = binomial, data = santas_log)$deviance
+  devM1 <- glm(delivered ~ treat,            family = binomial, data = santas_log)$deviance
+  devM2 <- glm(delivered ~ treat + quantity, family = binomial, data = santas_log)$deviance
+
+  rowM1 <- table[["data"]][[2]]
+  rowM2 <- table[["data"]][[3]]
+  expect_equal(rowM2[["chi0"]], devM0 - devM2)
+  expect_equal(rowM2[["ddf0"]], 2)
+  expect_equal(rowM2[["pvl0"]], pchisq(devM0 - devM2, df = 2, lower.tail = FALSE))
+  expect_equal(rowM2[["chi"]],  devM1 - devM2)
+  expect_equal(rowM2[["ddf"]],  1)
+  expect_equal(rowM2[["pvl"]],  pchisq(devM1 - devM2, df = 1, lower.tail = FALSE))
+  # M1 is compared against M0 by both tests
+  expect_equal(rowM1[["chi0"]], rowM1[["chi"]])
+
+  columns <- vapply(table[["schema"]][["fields"]], `[[`, character(1), "name")
+  expect_true(all(c("chi0", "ddf0", "pvl0", "chi", "ddf", "pvl") %in% columns))
+
+  options$chiSquareChange <- FALSE
+  results <- jaspTools::runAnalysis("RegressionLogistic", dataset = santas_log, options)
+  columns <- vapply(results[["results"]][["modelSummary"]][["schema"]][["fields"]], `[[`, character(1), "name")
+  expect_true(all(c("chi0", "ddf0", "pvl0") %in% columns))
+  expect_false(any(c("chi", "ddf", "pvl") %in% columns))
+})
+
 test_that("Confusion Matrix Table Matches", {
     options <- initClassicalRegressionOptions("RegressionLogistic")
   options$residualCasewiseDiagnostic <- FALSE

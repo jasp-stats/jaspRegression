@@ -110,6 +110,14 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
 # Tables
 .reglogisticModelSummaryTable <- function(jaspResults, dataset,
                                           options, ready) {
+  # other output copies the dependencies of modelSummary, so the options that only select its test
+  # columns are tracked by a separate state that rebuilds just this table when they change
+  if (is.null(jaspResults[["modelSummaryTests"]])) {
+    jaspResults[["modelSummary"]] <- NULL
+    jaspResults[["modelSummaryTests"]] <- createJaspState(TRUE)
+    jaspResults[["modelSummaryTests"]]$dependOn(c("chiSquare", "chiSquareChange"))
+  }
+
   if(!is.null(jaspResults[["modelSummary"]]))
     return()
 
@@ -128,9 +136,23 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   modelSummary$addColumnInfo(name = "aic", title = gettext("AIC"),      type = "number", format="dp:3")
   modelSummary$addColumnInfo(name = "bic", title = gettext("BIC"),      type = "number", format="dp:3")
   modelSummary$addColumnInfo(name = "dof", title = gettext("Residual df"), type = "integer")
-  modelSummary$addColumnInfo(name = "chi", title = "\u0394\u03A7\u00B2",type = "number", format="dp:3")
-  modelSummary$addColumnInfo(name = "ddf", title = gettext("df"),       type = "integer")
-  modelSummary$addColumnInfo(name = "pvl", title = gettext("p"),        type = "pvalue")
+
+  # .jasp files saved before these options existed do not contain them, so fall back to the QML defaults
+  chiSquare       <- isTRUE(options[["chiSquare"]])
+  chiSquareChange <- !isFALSE(options[["chiSquareChange"]])
+  if (chiSquare) {
+    overtitle <- if (chiSquareChange) gettextf("vs. %s", "M\u2080") else NULL
+    modelSummary$addColumnInfo(name = "chi0", title = "\u03A7\u00B2",      type = "number", format="dp:3", overtitle = overtitle)
+    modelSummary$addColumnInfo(name = "ddf0", title = gettext("df"),       type = "integer",               overtitle = overtitle)
+    modelSummary$addColumnInfo(name = "pvl0", title = gettext("p"),        type = "pvalue",                overtitle = overtitle)
+  }
+  if (chiSquareChange) {
+    overtitle <- if (chiSquare) gettext("vs. previous model") else NULL
+    modelSummary$addColumnInfo(name = "chi",  title = "\u0394\u03A7\u00B2", type = "number", format="dp:3", overtitle = overtitle)
+    modelSummary$addColumnInfo(name = "ddf",  title = gettext("df"),        type = "integer",               overtitle = overtitle)
+    modelSummary$addColumnInfo(name = "pvl",  title = gettext("p"),         type = "pvalue",                overtitle = overtitle)
+  }
+
   modelSummary$addColumnInfo(name = "fad", title = gettextf("McFadden R%s","\u00B2"),    type = "number")
   modelSummary$addColumnInfo(name = "nag", title = gettextf("Nagelkerke R%s","\u00B2"),  type = "number")
   modelSummary$addColumnInfo(name = "tju", title = gettextf("Tjur R%s","\u00B2"),        type = "number")
@@ -387,13 +409,17 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
             coxSn  <- -1*.coxSnell(glmObj[[1]], mObj)
           }
 
-          lr <- .lrtest(glmObj[[midx-1]], mObj)
+          lr  <- .lrtest(glmObj[[midx-1]], mObj)
+          lr0 <- if (isTRUE(options[["chiSquare"]])) .lrtest(glmObj[[1]], mObj) else NULL
           rows[[midx]] <- list(
             mod = gettextf("M%s", intToUtf8(0x2080 + midx - 1, multiple = FALSE)),
             dev = mObj[["deviance"]],
             aic = mObj[["aic"]],
             bic = .bic(mObj),
             dof = mObj[["df.residual"]],
+            chi0 = lr0[["stat"]],
+            ddf0 = lr0[["df"]],
+            pvl0 = lr0[["pval"]],
             chi = lr[["stat"]],
             ddf = lr[["df"]],
             pvl = lr[["pval"]],
@@ -409,6 +435,9 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
             aic = mObj[["aic"]],
             bic = .bic(mObj),
             dof = mObj[["df.residual"]],
+            chi0 = NULL,
+            ddf0 = NULL,
+            pvl0 = NULL,
             chi = NULL,
             ddf = NULL,
             pvl = NULL,
