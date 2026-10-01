@@ -104,7 +104,7 @@ Form {
 		name: "modelsShown"
 		title: qsTr("Limit No. Models Shown"); info: qsTr("By default, the output shows all the models computed. There is an option to show the best n models.")
 		RadioButton { value: "unlimited"; label: qsTr("No") }
-		RadioButton { 
+		RadioButton {
 			value: "limited"
 			label: qsTr("Yes, show best")
 			checked: true
@@ -119,7 +119,7 @@ Form {
 		title: qsTr("Data")
 		CheckBox { name: "descriptives"; label: qsTr("Descriptives"); info: qsTr("Output table containing the mean, standard deviation, and sample size of the variables selected.") }
 	}
-	
+
 	Section
 	{
 		title: qsTr("Model")
@@ -127,7 +127,7 @@ Form {
 		VariablesForm
 		{
 			preferredHeight: jaspTheme.smallDefaultVariablesFormHeight
-			
+
 			AvailableVariablesList
 			{
 				name: "availableTerms"
@@ -142,7 +142,7 @@ Form {
 		}
 
 	}
-	
+
 	Section
 	{
 		title: qsTr("Plots")
@@ -169,7 +169,7 @@ Form {
 			CheckBox { name: "qqPlot";				label: qsTr("Q-Q plot of model averaged residuals"); info: qsTr("Displays a Q-Q plot of the model averaged predictions against the residuals.")	}
 		}
 	}
-	
+
 	Section
 	{
 		title: qsTr("Advanced Options")
@@ -183,33 +183,60 @@ Form {
 			RadioButton { value: "bic";			label: qsTr("BIC"); info: qsTr("Compare models using the Bayesian Information Criterion.")		}
 			RadioButton { value: "ebGlobal";	label: qsTr("EB-global"); info: qsTr("Global Empirical Bayes estimates of g in Zellner-Siow g-prior and model probabilities. Uses an EM algorithm to find a common or global estimate of g, averaged over all models. When it is not possible to enumerate all models, the EM algorithm uses only the models sampled under EB-local.")}
 			RadioButton { value: "ebLocal";		label: qsTr("EB-local"); info: qsTr("Uses the MLE of g from the marginal likelihood within each model.")	}
-			GridLayout
+			RadioButton
 			{
-				rowSpacing: jaspTheme.rowGroupSpacing
-				columnSpacing: 0
-				Group
+				value: "gPrior"
+				label: qsTr("g-prior")
+				info: qsTr("Zellner's g-prior. The default g = n is the unit-information prior.")
+				childrenOnSameRow: true
+				RadioButtonGroup
 				{
-					RadioButton { value: "gPrior";			label: qsTr("g-prior"); info: qsTr("Zellner's g-prior.")	;			id: gprior			}
-					RadioButton { value: "hyperG";			label: qsTr("Hyper-g"); info: qsTr("A mixture of g-priors where the prior on g/(1+g) is a Beta(1, alpha/2). This uses the Cephes library for evaluation of the marginal likelihoods and may be numerically unstable for large n or R2 close to 1. Default choice of alpha is 3.")	;			id: hyperg			}
-					RadioButton { value: "hyperGLaplace";	label: qsTr("Hyper-g-Laplace"); info: qsTr("Same as Hyper-g but uses a Laplace approximation to integrate over the prior on g.")	;	id: hyperglaplace	}
-					RadioButton { value: "hyperGN";			label: qsTr("Hyper-g-n"); info: qsTr("A mixture of g-priors where u = g/n and u Beta(1, alpha/2) to provide consistency when the null model is true.")	;		id: hypergn			}
+					name: "gPriorType"
+					RadioButton { value: "n"; label: qsTr("g = n"); info: qsTr("Set g to the number of observations, i.e., the unit-information prior.") ;checked: true }
+					RadioButton
+					{
+						value: "userDefined"; label: qsTr("g ="); info: qsTr("Specify a value for g.")
+						childrenOnSameRow: true
+						indentChildren: false
+						DoubleField { name: "gPriorG"; label: ""; defaultValue: 1; min: 0; inclusive: JASP.None }
+					}
 				}
-				DoubleField
-				{
-					name: "gPriorAlpha"
-					label: qsTr("alpha")
-					enabled: gprior.checked || hyperg.checked || hyperglaplace.checked || hypergn.checked
-					defaultValue: 3.0
-					min: 2
-					max: 4
-					inclusive: JASP.None
-				}
-				RadioButton { value: "jzs"; label: qsTr("JZS"); info: qsTr("Jeffreys-Zellner-Siow prior which uses the Jeffreys prior on sigma and the Zellner-Siow Cauchy prior on the coefficients. The optional parameter can be used to control the squared scale of the prior.") ; checked: true; id: jzs }
+			}
+			RadioButton
+			{
+				value: "hyperG"
+				label: qsTr("Hyper-g")
+				info: qsTr("A mixture of g-priors where the prior on g/(1+g) is a Beta(1, alpha/2). This uses the Cephes library for evaluation of the marginal likelihoods and may be numerically unstable for large n or R2 close to 1. Default choice of alpha is 3.")
+				childrenOnSameRow: true
+				DoubleField { name: "hyperGAlpha"; label: qsTr("alpha"); defaultValue: 3.0; min: 2; inclusive: JASP.None }
+			}
+			RadioButton
+			{
+				value: "hyperGLaplace"
+				label: qsTr("Hyper-g-Laplace")
+				info: qsTr("Same as Hyper-g but uses a Laplace approximation to integrate over the prior on g.")
+				childrenOnSameRow: true
+				DoubleField { name: "hyperGLaplaceAlpha"; label: qsTr("alpha"); defaultValue: 3.0; min: 2; inclusive: JASP.None }
+			}
+			RadioButton
+			{
+				value: "hyperGN"
+				label: qsTr("Hyper-g-n")
+				info: qsTr("A mixture of g-priors where u = g/n and u Beta(1, alpha/2) to provide consistency when the null model is true.")
+				childrenOnSameRow: true
+				DoubleField { name: "hyperGNAlpha"; label: qsTr("alpha"); defaultValue: 3.0; min: 2; inclusive: JASP.None }
+			}
+			RadioButton
+			{
+				value: "jzs"
+				label: qsTr("JZS")
+				info: qsTr("Jeffreys-Zellner-Siow prior which uses the Jeffreys prior on sigma and the Zellner-Siow Cauchy prior on the coefficients. The optional parameter can be used to control the squared scale of the prior.")
+				childrenOnSameRow: true
+				checked: true
 				DoubleField
 				{
 					name: "jzsRScale"
 					label: qsTr("r scale")
-					enabled: jzs.checked
 					fieldWidth: 50
 					defaultValue: 0.354
 					max: 100000
@@ -225,16 +252,16 @@ Form {
 				name: "modelPrior"
 				title: qsTr("Model Prior")
 				info: qsTr("Prior distribution on the models.")
+				RadioButton { checked: true; value: "uniformSize"; label: qsTr("Uniform over model size"); info: qsTr("Uniform prior distribution over the number of included predictors (model size). Each model size receives the same prior probability, which is divided equally among the models of that size. Identical to a Beta binomial with a = 1 and b = 1.") }
+				RadioButton { value: "uniform"; label: qsTr("Uniform over models"); info: qsTr("Uniform prior distribution over the models. Each model receives the same prior probability.") }
 				RadioButton
 				{
-					checked: true
 					value: "betaBinomial"; label: qsTr("Beta binomial"); info: qsTr("Default Beta(a = 1, b = 1).")
 					childrenOnSameRow: true
 					childrenArea.columnSpacing: 1
 					DoubleField { name: "betaBinomialParamA"; label: qsTr("a"); defaultValue: 1; inclusive: JASP.MaxOnly}
 					DoubleField { name: "betaBinomialParamB"; label: qsTr("b"); defaultValue: 1; inclusive: JASP.MaxOnly}
 				}
-				RadioButton { value: "uniform"; label: qsTr("Uniform"); info: qsTr("Uniform prior distribution.")}
 				RadioButton
 				{
 					value: "wilson"
@@ -298,9 +325,9 @@ Form {
 		}
 	}
 
-	Common.ExportBayesian 
-	{ 
-		summaryTypeValue: summaryType.currentLabel 
-	}	
+	Common.ExportBayesian
+	{
+		summaryTypeValue: summaryType.currentLabel
+	}
 
 }

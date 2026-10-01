@@ -171,8 +171,65 @@ Upgrades
 
 		ChangeRename { from: "iterationsMCMC";								to:	"samples"									}
 		ChangeRename { from: "nSimForCRI";									to:	"numericalAccuracy"							}
-		
 
+
+	}
+
+	Upgrade
+	{
+		functionName:		"RegressionLinearBayesian"
+		fromVersion:		"0.96.5"
+		toVersion:			"0.96.6"
+
+		ChangeRename
+		{
+			condition: function(options) { return options["priorRegressionCoefficients"] === "gPrior"; }
+			from: "gPriorAlpha"
+			to: "gPriorG"
+		}
+		ChangeSetValue
+		{
+			condition: function(options) { return options["priorRegressionCoefficients"] === "gPrior"; }
+			name: "gPriorType"
+			jsonValue: "userDefined"
+		}
+		ChangeRename
+		{
+			condition: function(options) { return options["priorRegressionCoefficients"] === "hyperG"; }
+			from: "gPriorAlpha"
+			to: "hyperGAlpha"
+		}
+		ChangeRename
+		{
+			condition: function(options) { return options["priorRegressionCoefficients"] === "hyperGLaplace"; }
+			from: "gPriorAlpha"
+			to: "hyperGLaplaceAlpha"
+		}
+		ChangeRename
+		{
+			condition: function(options) { return options["priorRegressionCoefficients"] === "hyperGN"; }
+			from: "gPriorAlpha"
+			to: "hyperGNAlpha"
+		}
+		ChangeRemove
+		{
+			condition: function(options) { return options["gPriorAlpha"] !== undefined; }
+			name: "gPriorAlpha"
+		}
+	}
+
+	Upgrade
+	{
+		functionName:		"RegressionLogisticBayesian"
+		fromVersion:		"0.96.5"
+		toVersion:			"0.96.6"
+
+		ChangeSetValue
+		{
+			condition: function(options) { return options["priorRegressionCoefficients"] === "gPrior"; }
+			name: "gPriorType"
+			jsonValue: "userDefined"
+		}
 	}
 
 	Upgrade

@@ -110,7 +110,7 @@ RegressionLinearBayesianInternal <- function(jaspResults, dataset = NULL, option
     basregContainer$position <- position
     basregContainer$dependOn(c(
       "dependent", "covariates", "weights", "modelTerms",
-      "priorRegressionCoefficients", "gPriorAlpha", "jzsRScale",
+      "priorRegressionCoefficients", "gPriorType", "gPriorG", "hyperGAlpha", "hyperGLaplaceAlpha", "hyperGNAlpha", "gPriorAlpha", "jzsRScale",
       "modelPrior", "betaBinomialParamA", "betaBinomialParamB", "bernoulliParam",
       "wilsonParamLambda", "castilloParamU",
       "samplingMethod", "samples", "numberOfModels", "seed", "setSeed"
@@ -167,9 +167,10 @@ covariate added to the model (Consonni et al., 2018; Wilson et al., 2010).", "\u
 for sparse regression when there are more covariates than observations (Castillo et al., 2015).", "\u03B1", "\u03B2"))
   }
 
-  if (options$bayesFactorType == "BF10")      bfTitle <- gettext("BF<sub>10</sub>")
-  else if (options$bayesFactorType == "BF01") bfTitle <- gettext("BF<sub>01</sub>")
-  else                                        bfTitle <- gettext("Log(BF<sub>10</sub>)")
+  bfTitle <- .getModelComparisonBfTitle(options$bayesFactorType, options$bayesFactorOrder)
+
+  if (options$bayesFactorOrder == "bestModelTop")
+    modelComparisonTable$addFootnote(gettext("B denotes the best model."))
 
   modelComparisonTable$addColumnInfo(name = "Models",         type = "string", title = gettext("Models"))
   modelComparisonTable$addColumnInfo(name = "priorProbModel", type = "number", title = gettext("P(M)"))
@@ -1008,16 +1009,7 @@ for sparse regression when there are more covariates than observations (Castillo
   }
 
   # select the type of model prior
-  if (options$modelPrior == "betaBinomial")
-    modelPrior <- BAS::beta.binomial(as.numeric(options$betaBinomialParamA), as.numeric(options$betaBinomialParamB))
-  else if (options$modelPrior == "uniform")
-    modelPrior <- BAS::uniform()
-  else if (options$modelPrior == "bernoulli")
-    modelPrior <- BAS::Bernoulli(options$bernoulliParam)
-  else if (options$modelPrior == "wilson")
-    modelPrior <- BAS::beta.binomial(1.0, as.numeric(nPreds * options$wilsonParamLambda))
-  else if (options$modelPrior == "castillo")
-    modelPrior <- BAS::beta.binomial(1.0, as.numeric(nPreds ^ options$castilloParamU))
+  modelPrior <- .basregGetModelPrior(options)
 
   # number of models
   n.models <- NULL
@@ -1040,19 +1032,11 @@ for sparse regression when there are more covariates than observations (Castillo
     "hyperG"        = "hyper-g",
     "hyperGLaplace" = "hyper-g-laplace",
     "hyperGN"       = "hyper-g-n",
-    "jzs"           = "JZS"
+    "jzs"           = "JZS",
+    stop("Unknown prior ", as.character(options$priorRegressionCoefficients))
   )
 
-  # parameter for hyper-g's or jzs (all use same alpha param in bas.lm)
-  alpha <- switch(
-    prior,
-    "g-prior"         = options$gPriorAlpha,
-    "hyper-g"         = options$gPriorAlpha,
-    "hyper-g-laplace" = options$gPriorAlpha,
-    "hyper-g-n"       = options$gPriorAlpha,
-    "JZS"             = options$jzsRScale^2,
-    NULL
-  )
+  alpha <- .basregGetPriorParameter(prior, options, nrow(dataset))
 
   # Bayesian Adaptive Sampling
   .setSeedJASP(options)
@@ -1086,11 +1070,45 @@ for sparse regression when there are more covariates than observations (Castillo
   bas_lm[["BFinclusion"]] <- .basregComputeInclusionBF(bas_lm)
   bas_lm[["namesx"]][-1] <- .unvf(bas_lm[["namesx"]][-1])
   bas_lm[["nuisanceTerms"]] <- setNames(isNuisance, .unvf(names(isNuisance)))
+  bas_lm[["probne0"]] <- pmin(pmax(bas_lm[["probne0"]], 0), 1)
 
   basregContainer[["basregModel"]] <- createJaspState(bas_lm)
 
   return(bas_lm)
 }
+
+.basregGetPriorParameter <- function(prior, options, n) {
+  legacyAlpha <- options[["gPriorAlpha"]]
+  priorParameter <- function(value, default) {
+    if (!is.null(value)) value else if (!is.null(legacyAlpha)) legacyAlpha else default
+  }
+
+  switch(
+    prior,
+    "g-prior"         = if (identical(options[["gPriorType"]], "n")) n else priorParameter(options[["gPriorG"]], n),
+    "hyper-g"         = priorParameter(options[["hyperGAlpha"]],        3),
+    "hyper-g-laplace" = priorParameter(options[["hyperGLaplaceAlpha"]], 3),
+    "hyper-g-n"       = priorParameter(options[["hyperGNAlpha"]],       3),
+    "JZS"             = options[["jzsRScale"]]^2,
+    NULL
+  )
+}
+
+.basregGetModelPrior <- function(options) {
+    nPreds <- length(options[["modelTerms"]])
+    modelPrior <- switch(options[["modelPrior"]],
+
+      uniform      = BAS::uniform(),
+      bernoulli    = BAS::Bernoulli(options[["bernoulliParam"]]),
+      uniformSize  = BAS::beta.binomial(1.0,                                         1.0),
+      betaBinomial = BAS::beta.binomial(as.numeric(options[["betaBinomialParamA"]]), as.numeric(options[["betaBinomialParamB"]])),
+      wilson       = BAS::beta.binomial(1.0,                                         as.numeric(nPreds * options[["wilsonParamLambda"]])),
+      castillo     = BAS::beta.binomial(1.0,                                         as.numeric(nPreds ^ options[["castilloParamU"]])),
+
+      stop("Invalid model prior: ", options[["modelPrior"]])
+    )
+    return(modelPrior)
+  }
 
 .basregCreateFormula <- function(dependent, modelTerms) {
   formula <- c(dependent, "~")
@@ -1205,22 +1223,9 @@ for sparse regression when there are more covariates than observations (Castillo
   # if neither of these errors occur in a future version then the original function can
   # probably be used again
 
-  if (estimator == "MPM") {
-    formula <- .basregCreateFormula(options$dependent, options$modelTerms)
-    nvar = basregModel$n.vars - 1
-    bestmodel <- (0:nvar)[basregModel$probne0 > 0.5]
-    best = 1
-    models <- rep(0, nvar + 1)
-    models[bestmodel + 1] <- 1
-    if (sum(models) > 1) {
-        basregModel <- BAS::bas.lm(formula = formula, data = dataset,
-                                   weights = weights,
-                                   n.models = 1,
-                                   alpha = basregModel$g, initprobs = basregModel$probne0,
-                                   prior = basregModel$prior, modelprior = basregModel$modelprior,
-                                   update = NULL, bestmodel = models, prob.local = 0)
-    }
-  }
+  if (estimator == "MPM")
+    basregModel <- .basregRefitMedianModel(basregModel, dataset, options, weights)
+
   postprobs = basregModel$postprobs
   if (estimator == "MPM" | estimator == "HPM")
     n.models = 1
@@ -1259,6 +1264,28 @@ for sparse regression when there are more covariates than observations (Castillo
              n.models = n.models, df = df, estimator = estimator)
   class(out) = "coef.bas"
   return(out)
+}
+
+.basregRefitMedianModel <- function(basregModel, dataset, options, weights = NULL) {
+  formula <- .basregCreateFormula(options$dependent, options$modelTerms)
+  nvar <- basregModel$n.vars - 1
+  medianModel <- (0:nvar)[basregModel$probne0 > 0.5]
+  bestmodel <- integer(nvar + 1)
+  bestmodel[medianModel + 1] <- 1
+
+  BAS::bas.lm(
+    formula = formula,
+    data = dataset,
+    weights = weights,
+    n.models = 1,
+    alpha = basregModel$alpha,
+    initprobs = basregModel$probne0,
+    prior = basregModel$prior,
+    modelprior = basregModel$modelprior,
+    update = NULL,
+    bestmodel = bestmodel,
+    prob.local = 0
+  )
 }
 
 .basregComputePriorMarginalInclusionProbs <- function(basregModel) {
@@ -1352,20 +1379,10 @@ for sparse regression when there are more covariates than observations (Castillo
 
   } else if (options[["summaryType"]] == "median") {
 
-    # We do this for the same reason we need .basregOverwritecoefBas some weird lazy evaluation issues in R.
-    # See also https://github.com/merliseclyde/BAS/issues/56, once that is fixed we can probably remove this
-    weights <- NULL
-    if (options$weights != "") {
-      weightsVar <- options$weights
-      weights <- dataset[[weightsVar]]
-    }
-
-    basregModelTemp <- basregModel
-    basregModelTemp$call$formula <- formula(basregModel$terms)
-    basregModelTemp$call$data    <- dataset
-    basregModelTemp$call$weights <- weights
-
-    predictions <- predict(basregModelTemp, se.fit = userWantsResidualSds, estimator = "MPM")
+    # BAS refits MPM models through lazily evaluated calls that are unreliable
+    # outside the environment where the original model was fitted.
+    basregModelTemp <- .basregRefitMedianModel(basregModel, dataset, options, basregModel[["weights"]])
+    predictions <- predict(basregModelTemp, se.fit = userWantsResidualSds, estimator = "HPM")
 
   } else {
 
