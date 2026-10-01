@@ -125,7 +125,7 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
     if (any(dataset[, options[["weights"]]] < 0) || any(!.is.wholenumber(dataset[, options[["weights"]]])))
       .quitAnalysis(gettext("The Binomial family requires the weights variable (i.e. total number of trials) to be an integer."))
 
-  } else if (options[["family"]] %in% c("Gamma", "inverse.gaussian")) {
+  } else if (options[["family"]] %in% c("gamma", "inverseGaussian")) {
 
     if (any(dataset[, options[["dependent"]]] <= 0))
       .quitAnalysis(gettext("The Gamma family and the Inverse Gaussian family require the dependent variable to be positive."))
