@@ -261,7 +261,7 @@ Form
 	{
 		title: qsTr("Descriptives Plots")
 		columns: 1
-		info: qsTr("Visualize the relationship between predictors and the dependent variable. Scale predictors can be placed on any axis and will be split into groups; categorical predictors are used directly. Use 'Separate Lines' or 'Separate Plots' to stratify by a second predictor.")
+		info: qsTr("Visualize the relationship between predictors and the dependent variable. A scale predictor on the horizontal axis gives a scatter plot with regression lines; a categorical predictor gives a plot of the group means. Use 'Separate Lines' or 'Separate Plots' to stratify by a second predictor; scale predictors there are split into groups.")
 
 		VariablesForm
 		{
@@ -276,7 +276,7 @@ Form
 			{
 				name:         "descriptivePlotHorizontalAxis"
 				title:        qsTr("Horizontal Axis")
-				info:         qsTr("Predictor to display on the horizontal axis. Scale predictors will be split into groups according to the Scale Predictor Grouping settings.")
+				info:         qsTr("Predictor to display on the horizontal axis. Scale predictors are shown as a scatter plot with regression lines; categorical predictors as group means.")
 				singleVariable: true
 			}
 			AssignedVariablesList
@@ -299,10 +299,11 @@ Form
 		{
 			title:   qsTr("Scale Predictor Grouping")
 			columns: 2
-			info:    qsTr("Controls how continuous (scale) predictors assigned to Horizontal Axis, Separate Lines, or Separate Plots are divided into discrete groups for plotting.")
+			info:    qsTr("Controls how continuous (scale) predictors assigned to Separate Lines or Separate Plots are divided into discrete groups for plotting.")
 
 			DropDown
 			{
+				id:    descriptivePlotScaleGroupingMethod
 				name:  "descriptivePlotScaleGroupingMethod"
 				label: qsTr("Grouping method")
 				info:  qsTr("Standard deviation: groups are defined by equal-width intervals around the mean (e.g., Low = below mean−SD, Medium = mean±SD, High = above mean+SD). Percentile: groups are equal-frequency bins based on quantile cut-points.")
@@ -314,12 +315,47 @@ Form
 
 			IntegerField
 			{
+				id:           descriptivePlotScaleGroups
 				name:         "descriptivePlotScaleGroups"
 				label:        qsTr("Number of groups")
 				info:         qsTr("Number of groups to create for each scale predictor. Minimum 2, maximum 10.")
 				defaultValue: 3
 				min:          2
 				max:          10
+			}
+
+			ComponentsList
+			{
+				id:                descriptivePlotScaleGroupLabels
+				name:              "descriptivePlotScaleGroupLabels"
+				title:             qsTr("Group labels")
+				info:              qsTr("Labels for the groups of binned scale predictors, from lowest to highest. Leave a field empty to use the default label shown in grey.")
+				Layout.columnSpan: 2
+				addItemManually:   false
+				values:            descriptivePlotScaleGroups.value
+
+				// Keep in sync with .linregSdGroupLabels() / .linregPercentileGroupLabels() in regressionlinear.R
+				function defaultGroupLabel(method, nGroups, index)
+				{
+					if (method === "percentile")
+						return qsTr("Q%1").arg(index + 1)
+
+					var sdLabels = {
+						2: [qsTr("Low"), qsTr("High")],
+						3: [qsTr("Low"), qsTr("Medium"), qsTr("High")],
+						4: [qsTr("Low"), qsTr("Med-Low"), qsTr("Med-High"), qsTr("High")],
+						5: [qsTr("Very Low"), qsTr("Low"), qsTr("Medium"), qsTr("High"), qsTr("Very High")]
+					}
+					return nGroups in sdLabels ? sdLabels[nGroups][index] : qsTr("G%1").arg(index + 1)
+				}
+
+				rowComponent: TextField
+				{
+					name:            "label"
+					label:           qsTr("Group %1").arg(rowIndex + 1)
+					placeholderText: descriptivePlotScaleGroupLabels.defaultGroupLabel(descriptivePlotScaleGroupingMethod.currentValue, descriptivePlotScaleGroups.value, rowIndex)
+					fieldWidth:      100 * preferencesModel.uiScale
+				}
 			}
 		}
 
@@ -328,27 +364,19 @@ Form
 			title: qsTr("Display")
 			CheckBox
 			{
-				name:    "descriptivePlotErrorBar"
-				label:   qsTr("Error bars")
+				name:    "descriptivePlotDataPoints"
+				label:   qsTr("Show data points")
 				checked: true
-				info:    qsTr("Show error bars on the plot. For scatter plots the shaded band represents the confidence/prediction interval of the regression line.")
-				RadioButtonGroup
-				{
-					name: "descriptivePlotErrorBarType"
-					RadioButton
-					{
-						value:             "ci"
-						label:             qsTr("Confidence interval")
-						checked:           true
-						childrenOnSameRow: true
-						CIField { name: "descriptivePlotCiLevel" }
-					}
-					RadioButton
-					{
-						value: "se"
-						label: qsTr("Standard error")
-					}
-				}
+				info:    qsTr("Show the individual observations in the scatter plot (scale predictor on the horizontal axis). Hiding them zooms in on the regression lines.")
+			}
+			CheckBox
+			{
+				name:              "descriptivePlotErrorBar"
+				label:             qsTr("Confidence interval")
+				checked:           true
+				childrenOnSameRow: true
+				info:              qsTr("Show confidence intervals: error bars around the group means, or a shaded band around the regression line in the scatter plot.")
+				CIField { name: "descriptivePlotCiLevel" }
 			}
 		}
 	}
