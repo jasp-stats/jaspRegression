@@ -23,6 +23,7 @@ import JASP.Controls
 // All Analysis forms must be built with the From QML item
 Group {
 	property bool otherFamilyNotSelected: family.currentValue !== "other";
+    property bool isOrdinalModel: false
 
 	VariablesForm
 	{
@@ -126,6 +127,7 @@ Group {
 
 			onCurrentValueChanged:
 			{
+                isOrdinalModel = (family.currentValue === "other") && (otherGlmModel.currentValue === "ordinalLogistic");
 				if (!familyMap[currentValue].includes(link.value))
 				{
 					for (var i = 0; i < link.buttons.length; i++)
@@ -232,6 +234,10 @@ Group {
 				{ label: qsTr("Ordinal Logistic Regression"),	        value: "ordinalLogistic"},
 				{ label: qsTr("Firth Logistic Regression"),				value: "firthLogistic"}
 			]
+            onCurrentValueChanged:
+                {
+                    isOrdinalModel = (family.currentValue === "other") && (otherGlmModel.currentValue === "ordinalLogistic");
+                }
 		}
 	}
 }
