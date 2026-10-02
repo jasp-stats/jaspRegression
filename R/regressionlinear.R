@@ -2854,7 +2854,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   plotContainer$dependOn(c(
     "dependent", "covariates", "factors",
     "descriptivePlotHorizontalAxis", "descriptivePlotSeparateLines", "descriptivePlotSeparatePlot",
-    "descriptivePlotErrorBar", "descriptivePlotErrorBarType", "descriptivePlotCiLevel",
+    "descriptivePlotErrorBar", "descriptivePlotCiLevel",
     "descriptivePlotScaleGroupingMethod", "descriptivePlotScaleGroups", "descriptivePlotScaleGroupLabels",
     "descriptivePlotDataPoints"
   ))
@@ -2867,7 +2867,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   nGroups    <- options[["descriptivePlotScaleGroups"]]
   method     <- options[["descriptivePlotScaleGroupingMethod"]]
   plotErrorBars <- options[["descriptivePlotErrorBar"]]
-  errorBarType  <- options[["descriptivePlotErrorBarType"]]
   conf.interval <- options[["descriptivePlotCiLevel"]]
 
   # Work on a copy of the data so we can safely recode variables
@@ -2933,7 +2932,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     conf.interval = conf.interval,
     na.rm         = TRUE,
     .drop         = FALSE,
-    errorBarType  = errorBarType
+    errorBarType  = "ci"
   )
 
   colnames(summaryStat)[colnames(summaryStat) == dependent] <- "dependent"

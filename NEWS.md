@@ -21,7 +21,7 @@
 * Bayesian Linear and Logistic Regression: the g-prior now defaults to g = n (the unit-information prior) instead of g = 3, with a choice between g = n and a supplied value. In Bayesian Linear Regression, the g-prior, hyper-g, hyper-g-Laplace, and hyper-g-n priors now each have their own parameter instead of one shared alpha restricted to (2, 4).
 
 ## Added
-* Added a "Descriptives Plots" section to Linear Regression for visualizing predictor–outcome relationships. Continuous predictors on the horizontal axis are shown as scatter plots with regression lines; categorical (or binned continuous) predictors are shown as group-means line plots, with optional "Separate Lines"/"Separate Plots" stratification, configurable scale-predictor grouping (SD or percentile), and error bars (CI or SE).
+* Added a "Descriptives Plots" section to Linear Regression for visualizing predictor–outcome relationships. Continuous predictors on the horizontal axis are shown as scatter plots with regression lines; categorical (or binned continuous) predictors are shown as group-means line plots, with optional "Separate Lines"/"Separate Plots" stratification, configurable scale-predictor grouping (SD or percentile), and confidence intervals.
 * Linear Regression descriptives plots: the labels of the groups that scale predictors are split into can now be edited ("Group labels"), and the data points in the scatter plot can be hidden ("Show data points", on by default).
 
 ## Fixed

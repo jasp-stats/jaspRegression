@@ -371,27 +371,12 @@ Form
 			}
 			CheckBox
 			{
-				name:    "descriptivePlotErrorBar"
-				label:   qsTr("Error bars")
-				checked: true
-				info:    qsTr("Show error bars on the plot. For scatter plots the shaded band is the confidence interval of the regression line.")
-				RadioButtonGroup
-				{
-					name: "descriptivePlotErrorBarType"
-					RadioButton
-					{
-						value:             "ci"
-						label:             qsTr("Confidence interval")
-						checked:           true
-						childrenOnSameRow: true
-						CIField { name: "descriptivePlotCiLevel" }
-					}
-					RadioButton
-					{
-						value: "se"
-						label: qsTr("Standard error")
-					}
-				}
+				name:              "descriptivePlotErrorBar"
+				label:             qsTr("Confidence interval")
+				checked:           true
+				childrenOnSameRow: true
+				info:              qsTr("Show confidence intervals: error bars around the group means, or a shaded band around the regression line in the scatter plot.")
+				CIField { name: "descriptivePlotCiLevel" }
 			}
 		}
 	}
