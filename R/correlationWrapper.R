@@ -21,50 +21,52 @@
 #'
 #' The Correlation analysis allows estimation of the population correlation, as well as testing the null hypothesis that the population correlation between pairs of variables equals 0. All possible pairs of the specified variables are analyzed.
 #' ## Assumptions (Pearson's rho)
-#' - The variables are both continuous
-#' - The data are a random sample from the population
-#' - The pairs of variables follow a bivariate normal distribution in the population
-#' - The relationship between the variables is linear
-#' ## Assumptions (Spearman's rho and Kendall's tau)
-#' - Ordinal or continuous variables
-#' - The data are a random sample from the population
-#' - The relationship between the pairs of variables is monotonic
+#' - The variables are both continuous. 
+#' - The data are a random sample from the population. 
+#' - The pairs of variables follow a bivariate normal distribution in the population. 
+#' - The relationship between the variables is linear. 
+#' ## Assumptions (Spearman's rho and Kendall's tau).
+#' - Ordinal or continuous variables.
+#' - The data are a random sample from the population.
+#' - The relationship between the pairs of variables is monotonic.
 #'
-#' @param ci, Confidence intervals for the population correlation (only available for the Pearson correlation). By default is set at 95% but the percentage can be changed. There is also an option to set up a bootstrap estimation, set at 1000 by default with the option to change it into the desired number.
+#' @param ci, Confidence intervals for the population correlation (available only for the Pearson correlation). The default is set at 95%, but this percentage can be adjusted. Additionally, you can set up bootstrap estimation, using 1000 replications by default but it can be modified to your desired number.
 #'    Defaults to \code{FALSE}.
-#' @param covariance,  The covariance between each pair of variables.
+#' @param covariance, The covariance between each pair of variables.
 #'    Defaults to \code{FALSE}.
 #' @param effectSize, The Fisher transformed effect size with standard error.
 #'    Defaults to \code{FALSE}.
-#' @param heatmapPlot, Display a correlation heatmap for Pearson, Spearman, and Kendall's tau B coefficients separately.
+#' @param heatmapPlot, Displays a correlation heatmap for Pearson, Spearman, and Kendall's tau B coefficients separately.
 #'    Defaults to \code{FALSE}.
-#' @param kendallsTauB, Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when data is not normally distributed
+#' @param kendallsTauB, Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when the data are not normally distributed.
 #'    Defaults to \code{FALSE}.
-#' @param pairwiseDisplay, Display a table where one row corresponds to one pair of the specified variables, and the scatter plots are shown individually for each pair. If unticked, the results are presented in matrix format, with variable names in the columns and rows.
+#' @param pairwiseDisplay, Displays a table where one row corresponds to one pair of the specified variables, and the scatter plots are shown individually for each pair. If unticked, the results are presented in matrix format, with variable names in the columns and rows.
 #'    Defaults to \code{TRUE}.
 #' @param partialOutVariables, Variables to partial out in order to compute partial correlations.
-#' @param pearson, Pearson's product moment correlation coefficient. This is the famous r coefficient
+#' @param pearson, Pearson's product moment correlation coefficient.
 #'    Defaults to \code{TRUE}.
 #' @param sampleSize, The number of complete observations for a given pair of variables.
 #'    Defaults to \code{FALSE}.
-#' @param scatterPlot, Display a scatter plots for each possible combination of the selected variables. In a matrix format, these are placed above the diagonal.
+#' @param scatterPlot, Displays scatter plots for all variable pairs. In a matrix format, these are placed above the diagonal. For partial correlations, plots show the relationship between X and Y after removing the effect of Z, and axes then represent residuals from regressing X and Y on Z.
+#'    Defaults to \code{FALSE}.
+#' @param scatterPlotCi, Displays the specified confidence interval around the regression line on the plot.
 #'    Defaults to \code{FALSE}.
 #' @param scatterPlotDensity, Display histogram and the corresponding density plot for each variable. In a matrix format, these are placed on the diagonal
 #'    Defaults to \code{FALSE}.
 #' @param scatterPlotStatistic, Display the correlation coefficient(s) in the plot. This option also adds the x% confidence interval(s) as specified in the Confidence Intervals option.
 #'    Defaults to \code{FALSE}.
-#' @param significanceFlagged, Mark statistically significant correlations.
+#' @param significanceFlagged, Marks statistically significant correlations.
 #'    Defaults to \code{FALSE}.
-#' @param significanceReport, Display the p-value corresponding to the observed correlation.
+#' @param significanceReport, Displays the p-value corresponding to the observed correlation.
 #'    Defaults to \code{TRUE}.
-#' @param spearman, Spearman's rank-order correlation coefficient to quantify the monotonic association between two variables by ranking the observations. Use when data is not normally distributed
+#' @param spearman, Spearman's rank-order correlation coefficient to quantify the monotonic association between two variables by ranking the observations. Use when the data are not normally distributed.
 #'    Defaults to \code{FALSE}.
-#' @param variables, Variables for which to compute the correlation coefficient
-#' @param vovkSellke, Shows the maximum ratio of the lieklihood of the obtained p value under H1 vs the likelihood of the obtained p value under H0. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H0
+#' @param variables, Variables for which to compute the correlation coefficient.
+#' @param vovkSellke, Shows the maximum ratio of the likelihood of the obtained p value under H1 vs the likelihood of the obtained p value under H0. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H0.
 #'    Defaults to \code{FALSE}.
 Correlation <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           alternative = "twoSided",
           assumptionCheckMultivariateEnergy = FALSE,
           assumptionCheckMultivariateMardia = FALSE,

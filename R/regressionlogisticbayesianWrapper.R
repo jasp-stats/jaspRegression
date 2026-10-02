@@ -19,21 +19,19 @@
 
 #' Bayesian Logistic Regression
 #'
-#' The Bayesian Linear Regression allows you to model a linear relationship between one or more explanatory variable/s and a continuous dependent variable.
+#' The Bayesian Logistic Regression allows you to model a linear relationship between one or more explanatory variable/s and a categorical dependent variable.
 #' ## Assumptions
-#' - The dependent variables are categorical
-#' - The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
-#' - The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
-#' - The residuals are uncorrelated with each other.
-#' - The residuals are normally distributed with a mean zero.
-#' - The covariate and the experiment effect are independent.
+#' - The dependent variable is binary.
+#' - The observations are independent of one another.
+#' - The logit (log-odds) of the outcome is linearly related to the continuous predictors.
+#' - There is little or no multicollinearity among the predictors.
 #'
-#' @param bayesFactorOrder, Compares each model against the model selected here
+#' @param bayesFactorOrder, Compares each model against the model selected here.
 #' \itemize{
-#'   \item \code{"nullModelTop"}: All models are compared to the null model
-#'   \item \code{"bestModelTop"}: All models are compared to the best model
+#'   \item \code{"bestModelTop"}: All models are compared to the best model.
+#'   \item \code{"nullModelTop"}: All models are compared to the null model.
 #' }
-#' @param covariates,  In this box the variables that are covariates can be selected. Covariates are continuous variables that have an influence on the dependent variable but are not part of the experimental manipulation.
+#' @param covariates, Drag the variables that are covariates to this box. Covariates are continuous variables that have an influence on the dependent variable but are not part of the experimental manipulation.
 #' @param dependent, The variable of interest, also called outcome variable. Needs to be categorical for this analysis.
 #' @param descriptives, Output table containing the mean, standard deviation, and sample size of the variables selected.
 #'    Defaults to \code{FALSE}.
@@ -42,57 +40,61 @@
 #'    Defaults to \code{FALSE}.
 #' @param logPosteriorOddsPlot, Shows a heatmap of the log posterior odds against the model rank.
 #'    Defaults to \code{FALSE}.
-#' @param marginalPosteriorPlot, Displays a plot of the marginal posterior distribution for each predictor
+#' @param marginalPosteriorPlot, Displays a plot of the marginal posterior distribution for each predictor.
 #'    Defaults to \code{FALSE}.
-#' @param modelComplexityPlot,  Shows the relation between model fit and complexity.
+#' @param modelComplexityPlot, Shows the relation between model fit and complexity.
 #'    Defaults to \code{FALSE}.
 #' @param modelPrior, Prior distribution on the models.
 #' \itemize{
-#'   \item \code{"bernoulli"}:  Bernoulli prior. Default p = 0.5.
+#'   \item \code{"uniformSize"}: Uniform prior distribution over the number of included predictors (model size). Each model size receives the same prior probability, which is divided equally among the models of that size. Identical to a Beta binomial with a = 1 and b = 1.
+#'   \item \code{"uniform"}: Uniform prior distribution over the models. Each model receives the same prior probability.
+#'   \item \code{"betaBinomial"}: Default Beta(a = 1, b = 1).
 #'   \item \code{"wilson"}: Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda * p, where p is the number of predictors in the model.
-#'   \item \code{"uniform"}: Uniform prior distribution
-#'   \item \code{"betaBinomial"}:  Default Beta(a = 1, b = 1).
 #'   \item \code{"castillo"}: Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p is the number of predictors in the model.
+#'   \item \code{"bernoulli"}: Bernoulli prior. Default p = 0.5.
 #' }
-#' @param modelProbabilitiesPlot,  Displays the cumulative distribution function of the model search.
+#' @param modelProbabilitiesPlot, Displays the cumulative distribution function of the model search.
 #'    Defaults to \code{FALSE}.
 #' @param modelsShown, By default, the output shows all the models computed. There is an option to show the best n models.
 #' \itemize{
 #'   \item \code{"unlimited"}
 #'   \item \code{"limited"}
 #' }
-#' @param posteriorSummaryPlot, Displays plot of the most likely values of the effect size for each predictor with their corresponding credible interval.
+#' @param numericalAccuracy, Accuracy of credible intervals. There is an option to select the number of samples used to estimate the credible interval. The more samples the more accurate the credible intervals will be.
+#' @param posteriorSummaryPlot, Displays a plot of the most likely values of the effect size for each model with their corresponding credible intervals.
 #'    Defaults to \code{FALSE}.
-#' @param posteriorSummaryTable,  Output table containing the Marginal Posterior Summaries of Coefficients. Options available to compare across models or across matched models
+#' @param posteriorSummaryPlotWithoutIntercept, By clicking this box, the intercept is omitted from the plot.
+#'    Defaults to \code{FALSE}.
+#' @param posteriorSummaryTable, Output table containing the Marginal Posterior Summaries of Coefficients.
 #'    Defaults to \code{FALSE}.
 #' @param priorRegressionCoefficients, Prior distribution for regression coefficients. Several options are available:
 #' \itemize{
-#'   \item \code{"ebLocal"}:  Uses the MLE of g from the marginal likelihood within each model.
-#'   \item \code{"instrinsic"}
-#'   \item \code{"robust"}
+#'   \item \code{"aic"}: Compare models using the Akaike Information Criterion.
 #'   \item \code{"bic"}: Compare models using the Bayesian Information Criterion.
-#'   \item \code{"aic"}:  Compare models using the Akaike Information Criterion.
+#'   \item \code{"ebLocal"}: Uses the MLE of g from the marginal likelihood within each model.
+#'   \item \code{"gPrior"}: Zellner's g-prior. The default g = n is the unit-information prior.
 #'   \item \code{"cch"}
 #'   \item \code{"betaPrime"}
-#'   \item \code{"gPrior"}: Zellner's g-prior. There is an option to change the alpha.
+#'   \item \code{"instrinsic"}
+#'   \item \code{"robust"}
 #' }
-#' @param qqPlot, Displays a Q-Q plot of the model averaged predictions against the residuals
+#' @param qqPlot, Displays a Q-Q plot of the model averaged predictions against the residuals.
 #'    Defaults to \code{FALSE}.
-#' @param residualSdsSavedToData, The posterior standard deviation of the residuals.
+#' @param residualSdsSavedToData, Appends the posterior standard deviation of the residuals as a new column in the data file.
 #'    Defaults to \code{FALSE}.
-#' @param residualsSavedToData, The posterior mean of the residuals.
+#' @param residualsSavedToData, Appends the posterior mean of the residuals as a new column in the data file.
 #'    Defaults to \code{FALSE}.
 #' @param residualsVsFittedPlot, Plots the residuals of the model averaged predictions against the residuals.
 #'    Defaults to \code{FALSE}.
 #' @param samplingMethod, Indicates the sampling method to be used. It is recommended to use BAS when the model space can be enumerated.
 #' \itemize{
 #'   \item \code{"bas"}: Uses Bayesian Adaptive Sampling (without replacement). These can be updated based on estimates of the marginal inclusion. No. models indicates the number of models to sample without replacement. Setting the value to 0 implies the analysis will attempt to enumerate all models.
-#'   \item \code{"mcmc"}: Samples with replacement via a MCMC algorithm that combines the birth/death random walk with a random swap move to interchange a variable in the model. No. samples indicates the number of MCMC samples to draw. Setting the value to 0 implies the number of MCMC iterations is equal to 10 times the number of models. Sampling stops when min(number of models, MCMC iterations) is reached.
+#'   \item \code{"mcmc"}: Samples with replacement via an MCMC algorithm that combines the birth/death random walk with a random swap move to interchange a variable in the model. No. samples indicates the number of MCMC samples to draw. Setting the value to 0 implies the number of MCMC iterations is equal to 10 times the number of models. Sampling stops when min(number of models, MCMC iterations) is reached.
 #' }
-#' @param weights, The weights used for weighted least square regression.
+#' @param weights, The weights used for weighted least squares regression.
 RegressionLogisticBayesian <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           bayesFactorOrder = "bestModelTop",
           bayesFactorType = "BF10",
           bernoulliParam = 0.5,
@@ -107,12 +109,13 @@ RegressionLogisticBayesian <- function(
           descriptives = FALSE,
           effectsType = "allModels",
           factors = list(types = list(), value = list()),
-          gPriorAlpha = 3,
+          gPriorAlpha = 1,
+          gPriorType = "n",
           inclusionProbabilitiesPlot = FALSE,
           logPosteriorOddsPlot = FALSE,
           marginalPosteriorPlot = FALSE,
           modelComplexityPlot = FALSE,
-          modelPrior = "betaBinomial",
+          modelPrior = "uniformSize",
           modelProbabilitiesPlot = FALSE,
           modelTerms = list(optionKey = "components", types = list(), value = list()),
           modelsShown = "limited",

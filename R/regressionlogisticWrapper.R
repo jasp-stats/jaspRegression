@@ -21,14 +21,12 @@
 #'
 #' Logistic regression allows the user to model a linear relationship between one or more explanatory variable/s and a categorical dependent variable.
 #' ## Assumptions
-#' - The dependent variables are categorical
-#' - The dependent variable is linearly related to all predictors and the effects of the predictors are additive.
-#' - The assumption of homoscedasticity is met. Homoscedasticity entails that the error variance of each predictor is constant across all values of that predictor.
-#' - The residuals are uncorrelated with each other.
-#' - The residuals are normally distributed with a mean zero.
-#' - The covariate and the experiment effect are independent.
+#' - The dependent variable is binary.
+#' - The observations are independent of one another.
+#' - The logit (log-odds) of the outcome is linearly related to the continuous predictors.
+#' - There is little or no multicollinearity among the predictors.
 #'
-#' @param accuracy, How often the model's prediction match the actual outcomes
+#' @param accuracy, How often the model's prediction match the actual outcomes.
 #'    Defaults to \code{FALSE}.
 #' @param auc, Area Under the Curve.
 #'    Defaults to \code{FALSE}.
@@ -36,61 +34,71 @@
 #'    Defaults to \code{FALSE}.
 #' @param coefficientBootstrap, By selecting this option, bootstrapped estimation is applied. By default, the number of replications is set to 5000. This can be changed into the desired number.
 #'    Defaults to \code{FALSE}.
-#' @param coefficientCi, Coverage of the confidence intervals in percentages. The default value is 95.
+#' @param coefficientCi, Coverage of the confidence intervals in percentages. The default value is 95%, which can be changed by the user.
 #'    Defaults to \code{FALSE}.
 #' @param coefficientEstimate, Coefficient estimates, standard errors, z-values, and their corresponding p-values.
 #'    Defaults to \code{TRUE}.
-#' @param coefficientStandardized, Standardized estimates represent estimates were the predictors are standardized (X-standardization).
+#' @param coefficientStandardized, Standardized estimates represent estimates where the predictors are standardized (X-standardization).
 #'    Defaults to \code{FALSE}.
 #' @param conditionalEstimatePlot, The plots are conditional in the sense that they display the probability of the categorical dependent variable for all levels of the predictor variables given the reference level of all other factors.
 #'    Defaults to \code{FALSE}.
+#' @param conditionalEstimatePlotCi, Displays the specified confidence interval around the regression line on the plot.
+#' @param conditionalEstimatePlotPoints, Displays individual data points on the plot.
+#'    Defaults to \code{FALSE}.
 #' @param confusionMatrix, The confusion matrix indicates how well the model predicts the outcomes. The table is showing actual versus predicted outcomes and can be used to determine the accuracy of the model.
 #'    Defaults to \code{FALSE}.
-#' @param covarianceRatio, The degree to which a case influences the variance of the regression parameters. Tells when the covariance ratio is greater than 3 * k/(n-k).
+#' @param covarianceRatio, The degree to which a case influences the variance of the regression parameters. Indicated in the table when the covariance ratio is greater than 3 * k/(n-k).
 #'    Defaults to \code{FALSE}.
-#' @param covariates,  In this box the variable that is the covariate can be selected. Covariates are continuous variables that have an influence on the dependent variable but are not part of the experimental manipulation.
+#' @param covariates, Continuous predictor variable(s). If ordinal variables are entered it is assumed that their levels are equidistant. Hence, ordinal variables are treated as continuous predictor variables.
 #' @param dependent, The variable of interest. This is also called the outcome variable. In case of multiple dependent variables, specify the order in which the predictors are entered into the model i.e., hierarchical regression analysis. A block of one or more predictors represents one step in the hierarchy.
 #' @param descriptives, The levels of the dependent variable/s and the number of observations per level.
 #'    Defaults to \code{FALSE}.
-#' @param dfbetas, The difference between a parameter estimated using all cases and estimated when one case is excluded. tells when the absolute value of DFBETAS is greater than 1.
+#' @param dfbetas, The difference between a parameter estimated using all cases and estimated when one case is excluded. Indicated in the table when the absolute value of DFBETAS is greater than 1.
 #'    Defaults to \code{FALSE}.
-#' @param dffits, The difference between the predicted value for a case when the model is estimated including or excluding that case. tells when the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)) 
+#' @param dffits, The difference between the predicted value for a case when the model is estimated including or excluding that case. Indicated in the table when the absolute value of DFFITS is greater than 3 * sqrt(k/(n-k)).
 #'    Defaults to \code{FALSE}.
-#' @param fMeasure, This is based on the amount of systematic variance divided by the amount of unsystematic variance i.e., mean squares for the model / the residual mean squares
+#' @param fMeasure, The F-measure is based on the amount of systematic variance divided by the amount of unsystematic variance i.e., mean squares for the model / the residual mean squares.
 #'    Defaults to \code{FALSE}.
-#' @param factors, The variables that are manipulated/define the different groups. These are also called the independent variables.
+#' @param factors, Categorical predictor variable(s). Ordinal variables here are treated as categorical predictor variables, thus, the ordinal information is ignored.
 #' @param hMeasure, A more theoretically robust and advanced alternative to the AUC.
 #'    Defaults to \code{FALSE}.
 #' @param independentVsPredictedPlot, Plots the model predictions against each independent variable.
 #'    Defaults to \code{FALSE}.
-#' @param independentVsPredictedPlotIncludeInteractions, also add every two-way interaction
+#' @param independentVsPredictedPlotIncludeInteractions, Adds every two-way interaction.
 #'    Defaults to \code{TRUE}.
-#' @param independentVsPredictedPlotUseLogit, plot predicted probabilities on the logit scale, to ensure a linear relation
+#' @param independentVsPredictedPlotUseLogit, Plots predicted probabilities on the logit scale, to ensure a linear relation.
 #'    Defaults to \code{TRUE}.
-#' @param interceptTerm, Ticking this box will add a coefficient estimate of the intercept as well. This corresponds to the first level for the independent variable
+#' @param interceptTerm, Ticking this box will add a coefficient estimate of the intercept as well. This corresponds to the first level for the independent variable.
 #'    Defaults to \code{TRUE}.
-#' @param leverage, The influence of the observed value of the outcome variable over the predicted values. Tells when the leverages are greater than 3 * k/n.
+#' @param leverage, The influence of the observed value of the outcome variable over the predicted values. Indicated in the table when the leverage is greater than 3 * k/n.
 #'    Defaults to \code{FALSE}.
-#' @param mahalanobis, Measures the distance of cases from the mean(s) of the predictor variable(s)
+#' @param mahalanobis, Measures the distance of cases from the mean(s) of the predictor variable(s).
 #'    Defaults to \code{FALSE}.
+#' @param method, Specify the method for entering predictors into the model. For the Enter method, predictors are added as specified in the Model tab. With Forward, Backward, or Stepwise methods, predictors assigned to Model 1 are treated as candidate variables that can be added to or removed from the model based on AIC. Predictors assigned to Model 0 are forced into the model and remain in all steps, regardless of AIC.
+#' \itemize{
+#'   \item \code{"enter"} (default) : All predictors are entered into the models as specified in the Model tab.
+#'   \item \code{"backward"}: All predictors are entered simultaneously, and then removed sequentially based on AIC.
+#'   \item \code{"forward"}: Predictors are entered sequentially based on AIC.
+#'   \item \code{"stepwise"}: Predictors are entered sequentially based on AIC; after each step, the least useful predictor is removed.
+#' }
 #' @param modelTerms, The independent variables and covariates included in the model. By default, all the main effects and interaction effects of the specified independent variables, and the covariates are included in the model.
-#' @param multicollinearity, Display Tolerance and Variance Inflation Factor for each predictor in the model to assess multicollinearity.
+#' @param multicollinearity, Displays Tolerance and Variance Inflation Factor for each predictor in the model to assess multicollinearity.
 #'    Defaults to \code{FALSE}.
 #' @param oddsRatio, Odds ratio is an indicator of the change in odds resulting from a unit change in the predictor.
 #'    Defaults to \code{TRUE}.
 #' @param precision, Precision describes the proportion of true positives to all positives. Also called the positive predictive value.
 #'    Defaults to \code{FALSE}.
-#' @param precisionRecallPlot, Displays the Positive predicitve value on the y axis vs the true positive rate/sensitivity on the x axis. Useful for imbalanced datadets. The cutoff step determines the threshold at which an observation is classified as positive or negative. 
+#' @param precisionRecallPlot, Displays the Positive predicitve value on the y axis vs the true positive rate/sensitivity on the x axis. Useful for imbalanced datasets. The cutoff step determines the threshold at which an observation is classified as positive or negative. 
+#'    Defaults to \code{FALSE}.
+#' @param precisionRecallPlotCutoffLabel, By clicking this box, the specified cutoff step is displayed on the precision recall plot.
 #'    Defaults to \code{FALSE}.
 #' @param predictionsSavedToData, Save the predictions of the most complex model as a new column in the data file
 #'    Defaults to \code{FALSE}.
-#' @param residualCasewiseDiagnosticType, Casewise and sumamrized diagnostics for the residuals. There is an option to display diagnostics for cases where the absolut value of the standardized residual is larger than x (defaultis x=3). There is another option to display diagnostics for cases where the value of Cook’s distance is larger than x (default is x = 1.). And there is also an option to display diagnostics for all cases.
-#' \itemize{
-#'   \item \code{"allCases"}
-#'   \item \code{"outliersOutside"}
-#'   \item \code{"cooksDistance"}
-#' }
-#' @param residualStatistic, Display descriptive statistics of the residuals and predicted values
+#' @param quadraticTerms, Include quadratic terms for the covariates in each model.
+#'    Defaults to \code{FALSE}.
+#' @param residualCasewiseDiagnostic, Provides casewise diagnostics for residuals, displaying cases above a threshold based on standardized residuals (default: 3) or Cook's distance (default: 1), or displaying all cases.
+#'    Defaults to \code{FALSE}.
+#' @param residualStatistic, Displays descriptive statistics of the residuals and predicted values.
 #'    Defaults to \code{FALSE}.
 #' @param residualVsFittedPlot, Scatterplot of the values of the residuals against the predicted values.
 #'    Defaults to \code{FALSE}.
@@ -100,13 +108,15 @@
 #'    Defaults to \code{FALSE}.
 #' @param residualsSavedToDataType, Choose the type of residual to be appended. Raw residuals are simply the differences between observation and model prediction, standardized residuals divide each residual by an estimate of its standard deviation (using rstandard()), whereas studentized residuals divide each residual by an unbiased estimate of its standard deviation computed by refitting the model without that observation  (using rstudent()).
 #' \itemize{
-#'   \item \code{"student"}
 #'   \item \code{"raw"}
 #'   \item \code{"standard"}
+#'   \item \code{"student"}
 #' }
-#' @param robustSe, this option controls for errors that are not independent and identically distributed. The use of robust standard errors will not change the coefficient estimates. If this option is not selected the normal standard error will be computed.
+#' @param robustSe, This option controls for errors that are not independent and identically distributed. The use of robust standard errors will not change the coefficient estimates. If this option is not selected the normal standard error will be computed.
 #'    Defaults to \code{FALSE}.
-#' @param rocPlot, Plots performance of the model by plotting the true positive rate to the false positive rate. The cutoff step determines the thereshold at which an observation is classified as positive or a negative.
+#' @param rocPlot, Plots performance of the model by plotting the true positive rate to the false positive rate. The cutoff step determines the threshold at which an observation is classified as positive or a negative.
+#'    Defaults to \code{FALSE}.
+#' @param rocPlotCutoffLabel, By clicking this box, the specified cutoff step is displayed on the performance plot.
 #'    Defaults to \code{FALSE}.
 #' @param sensitivity, Sensitivity describes the proportion of true positives.
 #'    Defaults to \code{FALSE}.
@@ -114,12 +124,12 @@
 #'    Defaults to \code{FALSE}.
 #' @param squaredPearsonResidualVsFittedPlot, With the Squared Pearson residuals plot one can check for overdispersion of the model. Overdispersion indicates that the actual data show greater variability than the model has predicted.
 #'    Defaults to \code{FALSE}.
-#' @param vovkSellke, Shows the maximum ratio of the lieklihood of the obtained p value under H1 vs the likelihood of the obtained p value under H0. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H0
+#' @param vovkSellke, Shows the maximum ratio of the likelihood of the obtained p value under H1 vs the likelihood of the obtained p value under H0. For example, if the two-sided p-value equals .05, the Vovk-Sellke MPR equals 2.46, indicating that this p-value is at most 2.46 times more likely to occur under H1 than under H0.
 #'    Defaults to \code{FALSE}.
-#' @param weights, The weights used for weighted least square regression.
+#' @param weights, The weights used for weighted least squares regression.
 RegressionLogistic <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           accuracy = FALSE,
           auc = FALSE,
           brierScore = FALSE,
@@ -162,6 +172,7 @@ RegressionLogistic <- function(
           precisionRecallPlotCutoffStep = 0.2,
           predictionsSavedToData = FALSE,
           predictionsSavedToDataColumn = "",
+          quadraticTerms = FALSE,
           residualCasewiseDiagnostic = FALSE,
           residualCasewiseDiagnosticCooksDistanceThreshold = 1,
           residualCasewiseDiagnosticType = "outliersOutside",

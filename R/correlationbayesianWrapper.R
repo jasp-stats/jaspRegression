@@ -19,18 +19,18 @@
 
 #' Bayesian Correlation
 #'
-#' The Bayesian Correlation analysis allows for the estimation of the population correlation, as well as the comparison of hypotheses. The three comparisons are (i) between the null hypothesis (H0) that the correlation between pairs of variables equal 0, and the alternative hypothesis (H1) that the population correlation takes its value between -1 and 1; (ii) between H0 and the alternative hypothesis (H+) that the population correlation is positive; and (iii) between H0 and the alternative hypothesis (H-) that the population correlation is negative. All possible pairs of the specified variables are analyzed.
+#' The Bayesian Correlation analysis allows for the estimation of the population correlation, as well as the comparison of hypotheses. The three comparisons are (i) between the null hypothesis (H0) that the correlation between pairs of variables equals 0, and the alternative hypothesis (H1) that the population correlation takes its value between -1 and 1; (ii) between H0 and the alternative hypothesis (H+) that the population correlation is positive; and (iii) between H0 and the alternative hypothesis (H-) that the population correlation is negative. All possible pairs of the specified variables are analyzed.
 #' ## Assumptions (Pearson's rho)
-#' - The variables are both continuous
-#' - The data are a random sample from the population
-#' The pairs of variables follow a bivariate normal distribution in the population
-#'  - The relationship between the variables is linear
+#' - The variables are both continuous.
+#' - The data are a random sample from the population.
+#' - The pairs of variables follow a bivariate normal distribution in the population.
+#'  - The relationship between the variables is linear.
 #' ## Assumptions (Kendall's tau)
-#' - Ordinal or continuous variables
-#' - The data are a random sample from the population
-#' - The relationship between the pairs of variables is monotonic
+#' - Ordinal or continuous variables.
+#' - The data are a random sample from the population.
+#' - The relationship between the pairs of variables is monotonic.
 #'
-#' @param bayesFactorReport, Report Bayes factor for each test.
+#' @param bayesFactorReport, Reports Bayes factor for each test.
 #'    Defaults to \code{TRUE}.
 #' @param bfRobustnessPlot, Displays the Bayes factor as a function of the width of the stretched beta prior on the correlation for each specified pair of variables. The width of the kappa prior is varied between 0 and 2.
 #'    Defaults to \code{FALSE}.
@@ -40,21 +40,21 @@
 #'    Defaults to \code{FALSE}.
 #' @param bfSequentialPlotAdditionalInfo, Adds the Bayes factor computed with the user-defined prior; adds a probability wheel depicting the odds of the data under the null vs. alternative hypothesis; shows the decisiveness of the evidence in terms of Jeffreys' (1961) evidence categories.
 #'    Defaults to \code{TRUE}.
-#' @param ci, Display central 95% credible intervals for the correlation coefficient. The percentage can be changed.
+#' @param ci, Displays central 95% credible intervals for the correlation coefficient. The percentage can be changed.
 #'    Defaults to \code{FALSE}.
-#' @param kendall, Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when data is not normally distributed
+#' @param kendall, Kendall's tau-b rank-order correlation coefficient to quantify the monotonic association between two variables by comparing concordant and non-concordant pairs. Use when the data are not normally distributed.
 #'    Defaults to \code{FALSE}.
 #' @param linearityTest, Compute a test for the linearity of the relationship between the two variables by comparing a linear model to a quadratic model.
 #'    Defaults to \code{FALSE}.
-#' @param matrixPlot, Display a grid of scatterplots for each possible combination of the selected variables. These are placed above the diagonal.
+#' @param matrixPlot, Displays a grid of scatterplots for each possible combination of the selected variables. These are placed above the diagonal.
 #'    Defaults to \code{FALSE}.
-#' @param matrixPlotDensity, Display histogram and the corresponding density plot for each variable. These are placed on the diagonal.
+#' @param matrixPlotDensity, Displays a histogram and the corresponding density plot for each variable. These are placed on the diagonal.
 #'    Defaults to \code{FALSE}.
-#' @param matrixPlotPosterior, Display posterior distribution of the correlation coefficient for each possible combination of the selected variables. These are placed below the diagonal.
+#' @param matrixPlotPosterior, Displays posterior distribution of the correlation coefficient for each possible combination of the selected variables. These are placed below the diagonal.
 #'    Defaults to \code{FALSE}.
-#' @param pairwiseDisplay, Display a table where one row corresponds to one pair of the specified variables. If unticked, the results are presented in matrix format, with variable names in the columns and rows.
+#' @param pairwiseDisplay, Displays a table where one row corresponds to one pair of the specified variables. If unticked, the results are presented in matrix format, with variable names in the columns and rows.
 #'    Defaults to \code{TRUE}.
-#' @param pearson, Pearson's product moment correlation coefficient. This is the famous r value
+#' @param pearson, Pearson's product moment correlation coefficient. This is the famous r value.
 #'    Defaults to \code{TRUE}.
 #' @param priorPosteriorPlot, Displays the prior and posterior distribution of the correlation under the alternative hypothesis for each specified pair of variables.
 #'    Defaults to \code{FALSE}.
@@ -62,16 +62,16 @@
 #'    Defaults to \code{TRUE}.
 #' @param priorPosteriorPlotAdditionalTestingInfo, Adds the Bayes factor computed with the user-defined prior; adds a probability wheel depicting the odds of the data under the null vs. alternative hypothesis (Assuming null and alternative had equal probability a priori).
 #'    Defaults to \code{TRUE}.
-#' @param sampleSize, Report the sample size for each test.
+#' @param sampleSize, Reports the sample size for each test.
 #'    Defaults to \code{FALSE}.
 #' @param scatterPlot, Displays scatterplots for each specified pair of variables.
 #'    Defaults to \code{TRUE}.
-#' @param supportCorrelationFlagged, Indicate which correlation coefficients yield Bayes factors greater than 10, 30, and 100.
+#' @param supportCorrelationFlagged, Indicates which correlation coefficients yield Bayes factors greater than 10, 30, and 100.
 #'    Defaults to \code{FALSE}.
-#' @param variables, - Assigned variables: Variables for which to compute the correlation coefficient
+#' @param variables, Variables for which to compute the correlation coefficient.
 CorrelationBayesian <- function(
           data = NULL,
-          version = "0.95",
+          version = "1",
           alternative = "twoSided",
           bayesFactorReport = TRUE,
           bayesFactorType = "BF10",
