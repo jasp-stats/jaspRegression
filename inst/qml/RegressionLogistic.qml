@@ -91,14 +91,7 @@ Form
 	Section
 	{
 		title: qsTr("Statistics")
-
-		Group
-		{
-			title: qsTr("Model Summary")
-			CheckBox { name: "chiSquareChange";	label: qsTr("Χ² change");	info: qsTr("Likelihood ratio test of each model against the previous model: the change in deviance (ΔΧ²), with its degrees of freedom and p-value."); checked: true }
-			CheckBox { name: "chiSquare";		label: qsTr("Χ² vs. M₀");	info: qsTr("Likelihood ratio test of each model against the first model (M₀): the difference in deviance (Χ²), with its degrees of freedom and p-value.") }
-		}
-
+		
 		Group
 		{
 			title: qsTr("Descriptives")
