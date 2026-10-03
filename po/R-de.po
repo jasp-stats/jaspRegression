@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-07-04 03:58\n"
+"POT-Creation-Date: 2026-10-03 03:01\n"
 "PO-Revision-Date: 2026-08-01 03:51+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -1145,14 +1145,8 @@ msgstr ""
 "für sparse Regression, wenn es mehr Kovariate als Beobachtungen gibt "
 "(Castillo et al., 2015)."
 
-msgid "BF<sub>10</sub>"
-msgstr "BF<sub>10</sub>"
-
-msgid "BF<sub>01</sub>"
-msgstr "BF<sub>01</sub>"
-
-msgid "Log(BF<sub>10</sub>)"
-msgstr "Log(BF<sub>10</sub>)"
+msgid "B denotes the best model."
+msgstr ""
 
 msgid "Models"
 msgstr "Modelle"
@@ -1441,6 +1435,15 @@ msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
 msgstr[0] "Regressionsdiagramm"
 msgstr[1] "Partielles Regressionsdiagramm"
+
+#~ msgid "BF<sub>10</sub>"
+#~ msgstr "BF<sub>10</sub>"
+
+#~ msgid "BF<sub>01</sub>"
+#~ msgstr "BF<sub>01</sub>"
+
+#~ msgid "Log(BF<sub>10</sub>)"
+#~ msgstr "Log(BF<sub>10</sub>)"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"

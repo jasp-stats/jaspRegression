@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2026-07-04 03:58\n"
+"POT-Creation-Date: 2026-10-03 03:01\n"
 "PO-Revision-Date: 2026-07-19 06:01+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -1051,14 +1051,8 @@ msgstr ""
 "Castillo 模型先驗對應於 beta 二項先驗，其中 %1$s = 1，%2$s = p^u， \n"
 "適用於共變項數多於觀測數之稀疏迴歸（Castillo 等人，2015）。"
 
-msgid "BF<sub>10</sub>"
-msgstr "BF<sub>10</sub>"
-
-msgid "BF<sub>01</sub>"
-msgstr "BF<sub>01</sub>"
-
-msgid "Log(BF<sub>10</sub>)"
-msgstr "Log(BF<sub>10</sub>)"
+msgid "B denotes the best model."
+msgstr ""
 
 msgid "Models"
 msgstr "模型"
@@ -1331,6 +1325,15 @@ msgstr[0] "以下預測變項曾被考慮但未納入：%s。"
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
 msgstr[0] "迴歸圖"
+
+#~ msgid "BF<sub>10</sub>"
+#~ msgstr "BF<sub>10</sub>"
+
+#~ msgid "BF<sub>01</sub>"
+#~ msgstr "BF<sub>01</sub>"
+
+#~ msgid "Log(BF<sub>10</sub>)"
+#~ msgstr "Log(BF<sub>10</sub>)"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"

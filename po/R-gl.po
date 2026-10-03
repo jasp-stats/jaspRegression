@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-07-04 03:58\n"
+"POT-Creation-Date: 2026-10-03 03:01\n"
 "PO-Revision-Date: 2026-09-26 15:24+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/"
@@ -1148,14 +1148,8 @@ msgstr ""
 "para a regresión exigua cando hai máis covariantes que observacións "
 "(Castillo et al., 2015)."
 
-msgid "BF<sub>10</sub>"
-msgstr "FB<sub>10</sub>"
-
-msgid "BF<sub>01</sub>"
-msgstr "FB<sub>01</sub>"
-
-msgid "Log(BF<sub>10</sub>)"
-msgstr "Log(FB<sub>10</sub>)"
+msgid "B denotes the best model."
+msgstr ""
 
 msgid "Models"
 msgstr "Modelos"
@@ -1441,6 +1435,15 @@ msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
 msgstr[0] "Gráfica da regresión"
 msgstr[1] "Gráfica da regresión parcial"
+
+#~ msgid "BF<sub>10</sub>"
+#~ msgstr "FB<sub>10</sub>"
+
+#~ msgid "BF<sub>01</sub>"
+#~ msgstr "FB<sub>01</sub>"
+
+#~ msgid "Log(BF<sub>10</sub>)"
+#~ msgstr "Log(FB<sub>10</sub>)"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"

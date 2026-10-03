@@ -697,10 +697,6 @@ msgid "b"
 msgstr "b"
 
 msgctxt "RegressionLinearBayesian|"
-msgid "Uniform"
-msgstr "Uniforme"
-
-msgctxt "RegressionLinearBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
 
@@ -1479,10 +1475,6 @@ msgstr "a"
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
 msgstr "b"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform"
-msgstr "Uniforme"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
@@ -2327,10 +2319,6 @@ msgstr ""
 "estimación habitual o global de g, promediada sobre todos los modelos. "
 "Cuando no es posible enumerar todos los modelos, el algoritmo EM utiliza "
 "solo los modelos muestreados bajo EB-local."
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Zellner's g-prior."
-msgstr "Previa g de Zellner."
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -3540,10 +3528,6 @@ msgid "Default Beta(a = 1, b = 1)."
 msgstr "Predeterminada Beta(a = 1, b = 1)."
 
 msgctxt "RegressionLinearBayesian|"
-msgid "Uniform prior distribution."
-msgstr "Distribución previa Uniforme."
-
-msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
 msgstr "Bernoulli previa. Por defecto, p = 0.5."
 
@@ -3844,16 +3828,8 @@ msgstr ""
 "Utiliza el EMV de g de la verosimilitud marginal dentro de cada modelo."
 
 msgctxt "RegressionLogisticBayesian|"
-msgid "Zellner's g-prior. There is an option to adjust the alpha parameter."
-msgstr "Previa g de Zellner. Hay opción de ajustar el parámetro alfa."
-
-msgctxt "RegressionLogisticBayesian|"
 msgid "Default Beta(a = 1, b = 1)."
 msgstr "Predeterminada Beta(a = 1, b = 1)."
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform prior distribution."
-msgstr "Distribución previa Uniforme."
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
@@ -4252,3 +4228,87 @@ msgstr ""
 msgctxt "RegressionLinear|"
 msgid "Standard error"
 msgstr "Error típico"
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
+msgstr ""
