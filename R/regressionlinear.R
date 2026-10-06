@@ -2854,8 +2854,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   plotContainer$dependOn(c(
     "dependent", "covariates", "factors",
     "descriptivePlotHorizontalAxis", "descriptivePlotSeparateLines", "descriptivePlotSeparatePlot",
-    "descriptivePlotErrorBar", "descriptivePlotErrorBarType", "descriptivePlotCiLevel",
-    "descriptivePlotScaleGroupingMethod", "descriptivePlotScaleGroups"
+    "descriptivePlotErrorBar", "descriptivePlotCiLevel",
+    "descriptivePlotScaleGroupingMethod", "descriptivePlotScaleGroups", "descriptivePlotScaleGroupLabels",
+    "descriptivePlotDataPoints"
   ))
   container[["descriptivePlotsContainer"]] <- plotContainer
 
@@ -2866,7 +2867,6 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   nGroups    <- options[["descriptivePlotScaleGroups"]]
   method     <- options[["descriptivePlotScaleGroupingMethod"]]
   plotErrorBars <- options[["descriptivePlotErrorBar"]]
-  errorBarType  <- options[["descriptivePlotErrorBarType"]]
   conf.interval <- options[["descriptivePlotCiLevel"]]
 
   # Work on a copy of the data so we can safely recode variables
@@ -2877,13 +2877,26 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   linesIsScale <- linesVar != "" && linesVar %in% covariates
   plotsIsScale <- plotsVar != "" && plotsVar %in% covariates
 
+  # User-supplied labels for the groups of binned scale predictors; empty fields keep the default label
+  groupLabels <- .linregResolveGroupLabels(
+    custom   = .linregCustomGroupLabels(options[["descriptivePlotScaleGroupLabels"]]),
+    defaults = .linregDefaultGroupLabels(method, nGroups)
+  )
+  if ((linesIsScale || plotsIsScale) && anyDuplicated(groupLabels)) {
+    # a container error only shows on its children, so put the error on a placeholder plot
+    errorPlot <- createJaspPlot(title = "")
+    errorPlot$setError(gettext("The group labels for scale predictors must be unique."))
+    plotContainer[["descriptivesPlot"]] <- errorPlot
+    return()
+  }
+
   # Always bin scale variables in Separate Lines / Separate Plots roles.
   # The horizontal axis scale variable is never binned — it stays continuous
   # and is always plotted directly as a scatter plot with regression lines.
   if (linesIsScale)
-    dat[[linesVar]] <- .linregBinScaleVariable(dat[[linesVar]], method, nGroups)
+    dat[[linesVar]] <- .linregBinScaleVariable(dat[[linesVar]], method, nGroups, groupLabels)
   if (plotsIsScale)
-    dat[[plotsVar]] <- .linregBinScaleVariable(dat[[plotsVar]], method, nGroups)
+    dat[[plotsVar]] <- .linregBinScaleVariable(dat[[plotsVar]], method, nGroups, groupLabels)
 
   # Ensure grouping variables (lines / plots) are proper factors
   for (v in c(linesVar, plotsVar)) {
@@ -2892,37 +2905,18 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
 
   # ---- Path 1: continuous x-axis → scatter + lm regression line(s) ----------
-  # linesVar (if present) has been binned above and is passed as the split/group.
+  # linesVar (if present) has been binned above and is used as the group.
   if (horizIsScale) {
-
-    splitScatterOptions                                       <- options
-    splitScatterOptions[["colorPalette"]]                     <- "colorblind3"
-    splitScatterOptions[["scatterPlotLegend"]]                <- TRUE
-    splitScatterOptions[["scatterPlotRegressionLine"]]        <- TRUE
-    splitScatterOptions[["scatterPlotRegressionLineCi"]]      <- plotErrorBars
-    splitScatterOptions[["scatterPlotRegressionLineType"]]    <- "linear"
-    splitScatterOptions[["scatterPlotGraphTypeAbove"]]        <- "none"
-    splitScatterOptions[["scatterPlotGraphTypeRight"]]        <- "none"
-    splitScatterOptions[["scatterPlotRegressionLineCiLevel"]] <- conf.interval
 
     if (plotsVar != "") {
       for (thisLevel in levels(dat[[plotsVar]])) {
-        subData      <- dat[dat[[plotsVar]] == thisLevel, , drop = FALSE]
+        subData      <- dat[!is.na(dat[[plotsVar]]) & dat[[plotsVar]] == thisLevel, , drop = FALSE]
         thisPlotName <- paste0(horizVar, " - ", dependent, ": ", plotsVar, " = ", thisLevel)
-        jaspDescriptives::.descriptivesScatterPlots(
-          plotContainer, subData, c(horizVar, dependent),
-          split = if (linesVar != "") linesVar else NULL,
-          options = splitScatterOptions, name = thisPlotName,
-          dependOnVariables = FALSE
-        )
+        .linregDescriptiveScatterPlot(plotContainer, subData, horizVar, dependent, linesVar, options, thisPlotName)
       }
     } else {
-      jaspDescriptives::.descriptivesScatterPlots(
-        plotContainer, dat, c(horizVar, dependent),
-        split = if (linesVar != "") linesVar else NULL,
-        options = splitScatterOptions,
-        dependOnVariables = FALSE
-      )
+      .linregDescriptiveScatterPlot(plotContainer, dat, horizVar, dependent, linesVar, options,
+                                    paste(horizVar, "-", dependent))
     }
     return()
   }
@@ -2938,7 +2932,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     conf.interval = conf.interval,
     na.rm         = TRUE,
     .drop         = FALSE,
-    errorBarType  = errorBarType
+    errorBarType  = "ci"
   )
 
   colnames(summaryStat)[colnames(summaryStat) == dependent] <- "dependent"
@@ -3059,9 +3053,66 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return()
 }
 
+# Scatter plot of the dependent variable against a scale predictor, with a least-squares
+# line (and confidence band) per group of linesVar
+.linregDescriptiveScatterPlot <- function(container, dat, horizVar, dependent, linesVar, options, plotName) {
 
-# Bin a continuous variable into a labelled factor with nGroups levels
-.linregBinScaleVariable <- function(x, method, nGroups) {
+  scatterPlot <- createJaspPlot(title = plotName)
+  container[[plotName]] <- scatterPlot
+
+  hasGroups <- linesVar != ""
+  plotData  <- na.omit(dat[, c(horizVar, dependent, if (hasGroups) linesVar), drop = FALSE])
+
+  if (nrow(plotData) < 2L) {
+    scatterPlot$setError(gettext("Plotting not possible: fewer than 2 complete observations."))
+    return()
+  }
+
+  df <- data.frame(x = plotData[[horizVar]], y = plotData[[dependent]])
+  if (hasGroups) {
+    df$group <- plotData[[linesVar]]
+    mapping  <- ggplot2::aes(x = x, y = y, group = group, color = group, fill = group)
+  } else {
+    mapping  <- ggplot2::aes(x = x, y = y)
+  }
+
+  p <- ggplot2::ggplot(df, mapping) +
+    (if (options[["descriptivePlotDataPoints"]]) jaspGraphs::geom_point()) +
+    ggplot2::geom_smooth(
+      formula = y ~ x, method = "lm",
+      se      = options[["descriptivePlotErrorBar"]],
+      level   = options[["descriptivePlotCiLevel"]]
+    )
+
+  # Axis ranges follow what is drawn, so hiding the points zooms in on the regression lines.
+  # Zoom with coord_cartesian: scale limits would drop observations before the lines are fitted.
+  scales  <- ggplot2::ggplot_build(p)$layout$get_scales(1L)
+  xBreaks <- jaspGraphs::getPrettyAxisBreaks(scales$x$get_limits())
+  yBreaks <- jaspGraphs::getPrettyAxisBreaks(scales$y$get_limits())
+
+  p <- p +
+    ggplot2::scale_x_continuous(breaks = xBreaks) +
+    ggplot2::scale_y_continuous(breaks = yBreaks) +
+    ggplot2::coord_cartesian(xlim = range(xBreaks), ylim = range(yBreaks)) +
+    ggplot2::labs(x = horizVar, y = dependent) +
+    jaspGraphs::geom_rangeframe() +
+    jaspGraphs::themeJaspRaw(legend.position = if (hasGroups) "right" else "none")
+
+  if (hasGroups) {
+    # drop = FALSE keeps the colour of each group identical across Separate Plots
+    p <- p +
+      jaspGraphs::scale_JASPcolor_discrete(palette = "colorblind3", drop = FALSE) +
+      jaspGraphs::scale_JASPfill_discrete(palette = "colorblind3", drop = FALSE) +
+      ggplot2::labs(color = linesVar, fill = linesVar)
+  }
+
+  scatterPlot$plotObject <- p
+}
+
+
+# Bin a continuous variable into a labelled factor with nGroups levels.
+# labels (optional) replaces the default group labels; see .linregResolveGroupLabels.
+.linregBinScaleVariable <- function(x, method, nGroups, labels = NULL) {
   x       <- as.numeric(x)
   nGroups <- as.integer(nGroups)
 
@@ -3077,7 +3128,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     rawBreaks <- mn + offsets * sdd
     breaks    <- unique(rawBreaks)
     nBins     <- length(breaks) + 1
-    labels    <- .linregSdGroupLabels(nBins)
+    labels    <- .linregResolveGroupLabels(labels, .linregSdGroupLabels(nBins))
 
     result <- cut(x, breaks = c(-Inf, breaks, Inf), labels = labels, include.lowest = TRUE)
 
@@ -3087,21 +3138,47 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     nBins  <- length(breaks) - 1
 
     if (nBins < 1L)
-      return(factor(rep("All", length(x))))
+      return(factor(rep(gettext("All"), length(x))))
 
-    labels <- paste0("Q", seq_len(nBins))
+    labels <- .linregResolveGroupLabels(labels, .linregPercentileGroupLabels(nBins))
     result <- cut(x, breaks = breaks, labels = labels, include.lowest = TRUE)
   }
 
   return(result)
 }
 
+.linregDefaultGroupLabels <- function(method, nGroups) {
+  if (method == "sd") .linregSdGroupLabels(nGroups) else .linregPercentileGroupLabels(nGroups)
+}
+
+# Keep in sync with defaultGroupLabel() in RegressionLinear.qml, which shows these as placeholders
 .linregSdGroupLabels <- function(nGroups) {
   switch(as.character(nGroups),
-    "2" = c("Low", "High"),
-    "3" = c("Low", "Medium", "High"),
-    "4" = c("Low", "Med-Low", "Med-High", "High"),
-    "5" = c("Very Low", "Low", "Medium", "High", "Very High"),
-    paste0("G", seq_len(nGroups))
+    "2" = c(gettext("Low"), gettext("High")),
+    "3" = c(gettext("Low"), gettext("Medium"), gettext("High")),
+    "4" = c(gettext("Low"), gettext("Med-Low"), gettext("Med-High"), gettext("High")),
+    "5" = c(gettext("Very Low"), gettext("Low"), gettext("Medium"), gettext("High"), gettext("Very High")),
+    gettextf("G%d", seq_len(nGroups))
   )
+}
+
+.linregPercentileGroupLabels <- function(nGroups) {
+  gettextf("Q%d", seq_len(nGroups))
+}
+
+# Custom labels from the descriptivePlotScaleGroupLabels ComponentsList, one per group ("" if left empty)
+.linregCustomGroupLabels <- function(rows) {
+  vapply(rows, function(row) {
+    label <- row[["label"]]
+    if (is.null(label)) "" else as.character(label)
+  }, character(1), USE.NAMES = FALSE)
+}
+
+# Empty custom labels fall back to the defaults. Custom labels are ignored when their number
+# does not match the number of bins (e.g., when ties merge percentile bins).
+.linregResolveGroupLabels <- function(custom, defaults) {
+  if (length(custom) != length(defaults))
+    return(defaults)
+  custom <- trimws(custom)
+  return(ifelse(is.na(custom) | custom == "", defaults, custom))
 }
