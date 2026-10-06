@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.0\n"
-"POT-Creation-Date: 2026-07-04 03:58\n"
+"POT-Creation-Date: 2026-10-03 03:01\n"
 "PO-Revision-Date: 2026-06-04 12:01+0000\n"
 "Last-Translator: Mert Şişmanoğlu <me@mertsismanoglu.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
@@ -1112,14 +1112,8 @@ msgstr ""
 "gözlem sayısından daha fazla kovaryat olduğunda seyrek regresyon için "
 "uygundur (Castillo vd., 2015)."
 
-msgid "BF<sub>10</sub>"
-msgstr "BF<sub>10</sub>"
-
-msgid "BF<sub>01</sub>"
-msgstr "BF<sub>01</sub>"
-
-msgid "Log(BF<sub>10</sub>)"
-msgstr "Log(BF<sub>10</sub>)"
+msgid "B denotes the best model."
+msgstr ""
 
 msgid "Models"
 msgstr "Modeller"
@@ -1403,6 +1397,15 @@ msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
 msgstr[0] "Regresyon"
 msgstr[1] "Regresyon"
+
+#~ msgid "BF<sub>10</sub>"
+#~ msgstr "BF<sub>10</sub>"
+
+#~ msgid "BF<sub>01</sub>"
+#~ msgstr "BF<sub>01</sub>"
+
+#~ msgid "Log(BF<sub>10</sub>)"
+#~ msgstr "Log(BF<sub>10</sub>)"
 
 #~ msgid "Partial Regression Plot"
 #~ msgid_plural "Partial Regression Plots"

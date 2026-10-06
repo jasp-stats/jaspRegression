@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.0\n"
-"POT-Creation-Date: 2026-07-04 03:58\n"
+"POT-Creation-Date: 2026-10-03 03:01\n"
 "PO-Revision-Date: 2024-06-30 10:01+0000\n"
 "Last-Translator: Marco Capozzi <giammarcous@yahoo.com>\n"
 "Language-Team: Italian <https://hosted.weblate.org/projects/jasp/"
@@ -1048,14 +1048,8 @@ msgid ""
 "(Castillo et al., 2015)."
 msgstr ""
 
-msgid "BF<sub>10</sub>"
-msgstr "BF<sub>10</sub>"
-
-msgid "BF<sub>01</sub>"
-msgstr "BF<sub>01</sub>"
-
-msgid "Log(BF<sub>10</sub>)"
-msgstr "Log(BF<sub>10</sub>)"
+msgid "B denotes the best model."
+msgstr ""
 
 msgid "Models"
 msgstr "Modelli"
@@ -1327,6 +1321,15 @@ msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
 msgstr[0] "Correlazioni di Pearson"
 msgstr[1] "Correlazioni di Pearson"
+
+#~ msgid "BF<sub>10</sub>"
+#~ msgstr "BF<sub>10</sub>"
+
+#~ msgid "BF<sub>01</sub>"
+#~ msgstr "BF<sub>01</sub>"
+
+#~ msgid "Log(BF<sub>10</sub>)"
+#~ msgstr "Log(BF<sub>10</sub>)"
 
 #~ msgid "italic(r)"
 #~ msgstr "italic(r)"

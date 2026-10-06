@@ -697,10 +697,6 @@ msgid "b"
 msgstr "b"
 
 msgctxt "RegressionLinearBayesian|"
-msgid "Uniform"
-msgstr "Uniform"
-
-msgctxt "RegressionLinearBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
 
@@ -1479,10 +1475,6 @@ msgstr "a"
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
 msgstr "b"
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform"
-msgstr "Uniform"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
@@ -2325,10 +2317,6 @@ msgstr ""
 "bzw. globalen Schätzer von g zu finden, gemittelt über alle Modelle. Falls "
 "es unmöglich ist, alle Modelle aufzuzählen, nutzt der EM-Algorithmus nur die "
 "Modelle aus der EB-lokal-Stichprobe."
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Zellner's g-prior."
-msgstr "Zellners g-Prior."
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -3533,10 +3521,6 @@ msgid "Default Beta(a = 1, b = 1)."
 msgstr "Standard Beta(a = 1, b = 1)."
 
 msgctxt "RegressionLinearBayesian|"
-msgid "Uniform prior distribution."
-msgstr "Gleichverteilter Prior."
-
-msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
 msgstr "Bernoulli-Prior. Standard p = 0.5."
 
@@ -3842,17 +3826,8 @@ msgstr ""
 "Likelihood innerhalb jedes Modells."
 
 msgctxt "RegressionLogisticBayesian|"
-msgid "Zellner's g-prior. There is an option to adjust the alpha parameter."
-msgstr ""
-"Zellners g-Prior. Es gibt eine Option zum Anpassen des alpha-Parameters."
-
-msgctxt "RegressionLogisticBayesian|"
 msgid "Default Beta(a = 1, b = 1)."
 msgstr "Standard Beta(a = 1, b = 1)."
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform prior distribution."
-msgstr "Gleichverteilter Prior."
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
@@ -4259,3 +4234,87 @@ msgstr ""
 msgctxt "RegressionLinear|"
 msgid "Standard error"
 msgstr "Standardfehler"
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
+msgstr ""

@@ -2426,10 +2426,6 @@ msgid "g-prior"
 msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
-msgid "Zellner's g-prior."
-msgstr ""
-
-msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g"
 msgstr ""
 
@@ -2502,14 +2498,6 @@ msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
 msgid "b"
-msgstr ""
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Uniform"
-msgstr ""
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Uniform prior distribution."
 msgstr ""
 
 msgctxt "RegressionLinearBayesian|"
@@ -3488,10 +3476,6 @@ msgid "g-prior"
 msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
-msgid "Zellner's g-prior. There is an option to adjust the alpha parameter."
-msgstr ""
-
-msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
 msgstr ""
 
@@ -3541,14 +3525,6 @@ msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "b"
-msgstr ""
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform"
-msgstr ""
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform prior distribution."
 msgstr ""
 
 msgctxt "RegressionLogisticBayesian|"
@@ -3648,4 +3624,88 @@ msgid ""
 "Accuracy of credible intervals. There is an option to select the number of "
 "samples used to estimate the credible interval. The more samples the more "
 "accurate the credible intervals will be."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
 msgstr ""

@@ -25,7 +25,6 @@
 * Linear Regression descriptives plots: the labels of the groups that scale predictors are split into can now be edited ("Group labels"), and the data points in the scatter plot can be hidden ("Show data points", on by default).
 * Logistic Regression and Generalized Linear Model (except Firth logistic regression): the Model Summary table now reports the degrees of freedom of the model comparison (the change in model fit, `df`) next to the (Δ)Χ², analogous to df1 in Linear Regression. The existing column is relabelled "Residual df".
 
-
 ## Fixed
 * Corrected the Logistic Regression assumptions in the help and info text (frequentist and Bayesian). Removed assumptions that do not apply to logistic regression (normality of residuals, homoscedasticity, a linear dependent-variable/predictor relationship) and now state the actual assumptions: binary outcome, independent observations, linearity of the logit in the continuous predictors, and no multicollinearity.
 * Fixed residual export for weighted Bayesian linear regressions using the median-probability model and custom null-model terms.
@@ -33,7 +32,6 @@
 * Logistic Regression and Generalized Linear Model: the "df" column in the Model Summary showed the residual degrees of freedom, not the degrees of freedom of the Χ² test next to it. It is now labelled "Residual df" and shown next to Deviance, as in R's output; the test's df has its own column.
 * Generalized Linear Model: for the Gaussian, Gamma, and Inverse Gaussian families, the Model Summary now shows the F statistic of the F-test that its p-value is based on, instead of the difference in deviance labelled Χ².
 * Generalized Linear Model: the Gamma and Inverse Gaussian families now show a clear error message when the dependent variable is not positive.
-
 
 ---
 

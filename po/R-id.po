@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
-"POT-Creation-Date: 2026-07-04 03:58\n"
+"POT-Creation-Date: 2026-10-03 03:01\n"
 "PO-Revision-Date: 2026-08-24 01:51+0000\n"
 "Last-Translator: Zahid Rizky Fakhri <zahidrizkyfakhri@gmail.com>\n"
 "Language-Team: Indonesian <https://hosted.weblate.org/projects/jasp/"
@@ -1116,14 +1116,8 @@ msgstr ""
 "untuk regresi berjarang ketika ada lebih banyak kovariat daripada observasi "
 "(Castillo et al., 2015)."
 
-msgid "BF<sub>10</sub>"
-msgstr "BF<sub>10</sub>"
-
-msgid "BF<sub>01</sub>"
-msgstr "BF<sub>01</sub>"
-
-msgid "Log(BF<sub>10</sub>)"
-msgstr "Log(BF<sub>10</sub>)"
+msgid "B denotes the best model."
+msgstr ""
 
 msgid "Models"
 msgstr "Model"
@@ -1399,8 +1393,18 @@ msgstr[0] "menggunakan %1$d/%2$d baris dari kesesuaian terkombinasi"
 
 msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
-msgstr[0] "Prediktor berikut telah dipertimbangkan tetapi tidak disertakan: %s."
+msgstr[0] ""
+"Prediktor berikut telah dipertimbangkan tetapi tidak disertakan: %s."
 
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
 msgstr[0] "Diagram Regresi Parsial"
+
+#~ msgid "BF<sub>10</sub>"
+#~ msgstr "BF<sub>10</sub>"
+
+#~ msgid "BF<sub>01</sub>"
+#~ msgstr "BF<sub>01</sub>"
+
+#~ msgid "Log(BF<sub>10</sub>)"
+#~ msgstr "Log(BF<sub>10</sub>)"

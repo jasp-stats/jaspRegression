@@ -127,8 +127,8 @@ results <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path(
 test_that("Model summary table results match", {
   table <- results[["results"]][["modelSummary"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("H\u2080", 112.67, 150.147, 150.545,  10, "", "",
-                                      "H\u2081", 10.33,  49.808,  50.604,   9,  102.339, 0.000))})
+                                 list("H\u2080", 112.67, 150.147, 150.545,  10, "", "", "",
+                                      "H\u2081", 10.33,  49.808,  50.604,   9,  102.339, 1, 0.000))})
 
 
 # model fit table
@@ -372,6 +372,31 @@ test_that("Gamma regression (with an offset term) results match", {
 
 })
 
+test_that("Model summary reports the F-test for families with an estimated dispersion", {
+  trees <- read.csv(testthat::test_path("trees.csv"))
+  options <- getOptions("GeneralizedLinearModel")
+  options$covariates <- "Girth"
+  options$dependent  <- "Volume"
+  options$modelTerms <- list(list(components = "Girth", isNuisance = FALSE))
+
+  options$family <- "gamma"
+  options$link   <- "log"
+  table <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("trees.csv"), options)[["results"]][["modelSummary"]]
+  reference <- anova(glm(Volume ~ 1,     family = Gamma(link = "log"), data = trees),
+                     glm(Volume ~ Girth, family = Gamma(link = "log"), data = trees), test = "F")
+  expect_equal(table[["data"]][[2]][["chi"]], reference[["F"]][2])
+  expect_equal(table[["data"]][[2]][["pvl"]], reference[["Pr(>F)"]][2])
+  titles <- vapply(table[["schema"]][["fields"]], `[[`, character(1), "title")
+  expect_true("F" %in% titles)
+  expect_false("Χ²" %in% titles)
+
+  # with the Gaussian family and identity link this is the F-test of linear regression
+  options$family <- "gaussian"
+  options$link   <- "identity"
+  table <- jaspTools::runAnalysis("GeneralizedLinearModel", testthat::test_path("trees.csv"), options)[["results"]][["modelSummary"]]
+  expect_equal(table[["data"]][[2]][["chi"]], anova(lm(Volume ~ Girth, data = trees))[["F value"]][1])
+})
+
 # test intercept-only model for confidence intervals
 test_that("Intercept-only binomial regression results match", {
   options <- getOptions("GeneralizedLinearModel")
@@ -422,6 +447,12 @@ test_that("Multinomial logistic regression results match", {
                                              0.67232619342689, 0.285848331445981, 0.422957604168159, -0.953382729130251,
                                              0.279941825642027, -0.336720451744112, "contNormal<unicode><unicode><unicode>4",
                                              0.284523464240265, 0.314629392300212, -1.07021295525633))
+
+  # df of the model comparison is the difference in estimated parameters (4 = 1 predictor x 4 non-reference categories)
+  table <- results[["results"]][["modelSummary"]][["data"]]
+  jaspTools::expect_equal_tables(table, list(329.88758248682, 340.308263230772, "", "", 321.88758248682, 396,
+                                             "H<unicode>", "", 333.664265259043, 354.505626746948, 4.22331722777659,
+                                             4, 317.664265259043, 392, "H<unicode>", 0.376625967187306))
 
 })
 
@@ -479,5 +510,9 @@ test_that("Firth logistic regression results match", {
                                              0.687684018886119, 0.207349730577828, 0.161604008071805, 0.0438031690299891,
                                              0.864979794866346, 0.429594461170132, "contNormal", 0.0283926079313983,
                                              0.205791561077245, 4.80406875037797))
+
+  # the model-comparison df is not reported for Firth logistic regression (yet)
+  fields <- sapply(results[["results"]][["modelSummary"]][["schema"]][["fields"]], `[[`, "name")
+  testthat::expect_false("ddf" %in% fields)
 
 })

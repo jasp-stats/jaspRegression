@@ -573,10 +573,6 @@ msgid "p"
 msgstr "p"
 
 msgctxt "RegressionLinearBayesian|"
-msgid "Uniform"
-msgstr "Uniforme"
-
-msgctxt "RegressionLinearBayesian|"
 msgid "Sampling Method"
 msgstr "Método de amostragem"
 
@@ -1481,10 +1477,6 @@ msgid "b"
 msgstr "b"
 
 msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform"
-msgstr "Uniforme"
-
-msgctxt "RegressionLogisticBayesian|"
 msgid "Wilson"
 msgstr "Wilson"
 
@@ -2324,10 +2316,6 @@ msgstr ""
 "estimativa comum ou global de g, calculada com base na média de todos os "
 "modelos. Quando não é possível enumerar todos os modelos, o algoritmo EM "
 "utiliza apenas os modelos amostrados sob EB-local."
-
-msgctxt "RegressionLinearBayesian|"
-msgid "Zellner's g-prior."
-msgstr "g-prior de Zellner."
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -3511,10 +3499,6 @@ msgid "Default Beta(a = 1, b = 1)."
 msgstr "Padrão Beta(a = 1, b = 1)."
 
 msgctxt "RegressionLinearBayesian|"
-msgid "Uniform prior distribution."
-msgstr "Distribuição anterior uniforme."
-
-msgctxt "RegressionLinearBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
 msgstr "Bernoulli anterior. Padrão p = 0,5."
 
@@ -3805,16 +3789,8 @@ msgid "Uses the MLE of g from the marginal likelihood within each model."
 msgstr "Usa o EMV de g da verossimilhança marginal dentro de cada modelo."
 
 msgctxt "RegressionLogisticBayesian|"
-msgid "Zellner's g-prior. There is an option to adjust the alpha parameter."
-msgstr "g-prior de Zellner. Há uma opção para ajustar o parâmetro alfa."
-
-msgctxt "RegressionLogisticBayesian|"
 msgid "Default Beta(a = 1, b = 1)."
 msgstr "Padrão Beta(a = 1, b = 1)."
-
-msgctxt "RegressionLogisticBayesian|"
-msgid "Uniform prior distribution."
-msgstr "Distribuição uniforme anterior."
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Bernoulli prior. Default p = 0.5."
@@ -4156,4 +4132,88 @@ msgstr ""
 
 msgctxt "RegressionLinear|"
 msgid "Standard error"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLinearBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Zellner's g-prior. The default g = n is the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g = n"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Set g to the number of observations, i.e., the unit-information prior."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "g ="
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Specify a value for g."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over model size"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the number of included predictors (model "
+"size). Each model size receives the same prior probability, which is divided "
+"equally among the models of that size. Identical to a Beta binomial with a = "
+"1 and b = 1."
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid "Uniform over models"
+msgstr ""
+
+msgctxt "RegressionLogisticBayesian|"
+msgid ""
+"Uniform prior distribution over the models. Each model receives the same "
+"prior probability."
 msgstr ""
