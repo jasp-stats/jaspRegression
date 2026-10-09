@@ -56,7 +56,7 @@ test_that("Main tables results match", {
     plot <- results[["state"]][["figures"]][[1]][["obj"]]
     jaspTools::expect_equal_plots(plot, "posteriorCoefficientsWithCRI", "RegressionLinearBayesian")
 
-    ybreaks <- jaspGraphs::getAxisBreaks(plot)[["y"]]
+    ybreaks <- jaspGraphs::getAxisBreaks(jaspGraphs::materializeJaspPlotRecipe(plot))[["y"]]
     testthat::expect_true(
       # to test if the ybreaks contain scientific notation, we print the ybreaks and check if there is any ... e-... in there
       !any(grepl("e-", capture.output(print(ybreaks)), fixed = TRUE)),
