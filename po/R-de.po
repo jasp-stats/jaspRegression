@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2026-08-01 03:51+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/"
@@ -595,17 +595,27 @@ msgstr "Modell"
 msgid "Deviance"
 msgstr "Devianz"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "Residuum"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Nullmodell enthält Störparameter: %s."
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "Modell-Anpassung"
@@ -813,9 +823,6 @@ msgstr "Quadratsumme"
 
 msgid "Mean Square"
 msgstr "Mittlere Quadratsumme"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "Regression"

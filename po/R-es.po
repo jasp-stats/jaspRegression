@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: JASP 0.9.2\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2026-09-26 15:24+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Spanish <https://hosted.weblate.org/projects/jasp/"
@@ -598,17 +598,27 @@ msgstr "Modelo"
 msgid "Deviance"
 msgstr "Desviación"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "Error"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "gl"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "El modelo nulo contiene parámetros molestos: %s."
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "Ajuste del modelo"
@@ -817,9 +827,6 @@ msgstr "Suma de Cuadrados"
 
 msgid "Mean Square"
 msgstr "Cuadrado Medio"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "Regresión"

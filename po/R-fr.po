@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.17.2\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2024-07-11 15:09+0000\n"
 "Last-Translator: Florent Michelot <internet@florent.michelot.info>\n"
 "Language-Team: French <https://hosted.weblate.org/projects/jasp/"
@@ -600,17 +600,27 @@ msgstr "Modèle"
 msgid "Deviance"
 msgstr "Déviance"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "Résidu"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "ddl"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Le modèle nul contient des paramètres de nuisance : %s."
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "Ajustement du modèle"
@@ -828,9 +838,6 @@ msgstr "Somme des carrés"
 
 msgid "Mean Square"
 msgstr "Moyenne des carrés"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "Régression"

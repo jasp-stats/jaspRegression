@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.5\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -521,16 +521,25 @@ msgstr ""
 msgid "Deviance"
 msgstr ""
 
+msgid "Residual df"
+msgstr ""
+
 msgid "AIC"
 msgstr ""
 
 msgid "BIC"
 msgstr ""
 
+msgid "F"
+msgstr ""
+
 msgid "df"
 msgstr ""
 
 msgid "Null model contains nuisance parameters: %s."
+msgstr ""
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
 msgstr ""
 
 msgid "Model Fit"
@@ -725,9 +734,6 @@ msgid "Sum of Squares"
 msgstr ""
 
 msgid "Mean Square"
-msgstr ""
-
-msgid "F"
 msgstr ""
 
 msgid "Regression"

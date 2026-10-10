@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.19.2\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2026-03-22 14:09+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/"
@@ -577,17 +577,27 @@ msgstr "மாதிரியுரு"
 msgid "Deviance"
 msgstr "விலகல்"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "மீதமுள்ள"
+
 msgid "AIC"
 msgstr "எஐசி"
 
 msgid "BIC"
 msgstr "பிஐசி"
 
+msgid "F"
+msgstr "எஃப்"
+
 msgid "df"
 msgstr "டிஎஃப்"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "சுழிய மாதிரியில் தொல்லை அளவுருக்கள் உள்ளன: %s."
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "மாதிரி பொருத்தம்"
@@ -790,9 +800,6 @@ msgstr "சதுரங்களின் தொகை"
 
 msgid "Mean Square"
 msgstr "சராசரி நாற்கை"
-
-msgid "F"
-msgstr "எஃப்"
 
 msgid "Regression"
 msgstr "பின்னடைவு"

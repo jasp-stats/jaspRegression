@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2026-07-10 05:01+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
@@ -546,17 +546,27 @@ msgstr "模型"
 msgid "Deviance"
 msgstr "偏差"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "残差"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "自由度"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "零模型包含冗余参数：%s。"
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "模型拟合"
@@ -751,9 +761,6 @@ msgstr "平方和"
 
 msgid "Mean Square"
 msgstr "均方"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "回归"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.0.0\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2026-10-04 03:51+0000\n"
 "Last-Translator: Koji Kosugi <kosugitti@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/"
@@ -564,17 +564,27 @@ msgstr "モデル"
 msgid "Deviance"
 msgstr "逸脱度"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "残差"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Nullモデルには局外パラメータが含まれています: %s。"
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "モデルのあてはまり"
@@ -774,9 +784,6 @@ msgstr "平方和"
 
 msgid "Mean Square"
 msgstr "平均平方"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "回帰"

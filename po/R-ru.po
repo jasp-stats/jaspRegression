@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2025-04-14 23:01+0000\n"
 "Last-Translator: MikeWinny <winny63@gmail.com>\n"
 "Language-Team: Russian <https://hosted.weblate.org/projects/jasp/"
@@ -631,11 +631,18 @@ msgstr "Модель"
 msgid "Deviance"
 msgstr "Отклонение"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "Остатки"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
+
+msgid "F"
+msgstr "F"
 
 msgid "df"
 msgstr "df"
@@ -643,6 +650,9 @@ msgstr "df"
 #, fuzzy
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Нулевая модель содержит мешающие параметры: %s."
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 #, fuzzy
 msgid "Model Fit"
@@ -878,9 +888,6 @@ msgstr "Сумма квадратов"
 #, fuzzy
 msgid "Mean Square"
 msgstr "Дисперсия"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "Регрессия"

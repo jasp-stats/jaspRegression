@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.95.0\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2026-06-04 12:01+0000\n"
 "Last-Translator: Mert Şişmanoğlu <me@mertsismanoglu.com>\n"
 "Language-Team: Turkish <https://hosted.weblate.org/projects/jasp/"
@@ -580,17 +580,27 @@ msgstr "Model"
 msgid "Deviance"
 msgstr "Sapma"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "Artık"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "sd"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "Null model rahatsızlık parametreleri içerir: %s."
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "Model Uyumu"
@@ -795,9 +805,6 @@ msgstr "Kareler Toplamı"
 
 msgid "Mean Square"
 msgstr "Ortalama Kare"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "Regresyon"

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2025-10-12 08:59+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/"
@@ -600,17 +600,27 @@ msgstr "Modelo"
 msgid "Deviance"
 msgstr "Desvio"
 
+#, fuzzy
+msgid "Residual df"
+msgstr "Resíduos"
+
 msgid "AIC"
 msgstr "AIC"
 
 msgid "BIC"
 msgstr "BIC"
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "gl"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "O modelo nulo contém parâmetros incômodos: %s."
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
+msgstr ""
 
 msgid "Model Fit"
 msgstr "Ajuste do Modelo"
@@ -817,9 +827,6 @@ msgstr "Soma dos quadrados"
 
 msgid "Mean Square"
 msgstr "Média Quadrática"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr "Regressão"

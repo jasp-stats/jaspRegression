@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.96.4\n"
-"POT-Creation-Date: 2026-10-03 03:01\n"
+"POT-Creation-Date: 2026-10-10 02:57\n"
 "PO-Revision-Date: 2026-09-15 03:57+0000\n"
 "Last-Translator: Sohrab Delshad <sdel4030@gmail.com>\n"
 "Language-Team: Persian <https://hosted.weblate.org/projects/jasp/"
@@ -526,16 +526,26 @@ msgstr "مدل"
 msgid "Deviance"
 msgstr ""
 
+#, fuzzy
+msgid "Residual df"
+msgstr "باقی‌مانده‌ها"
+
 msgid "AIC"
 msgstr ""
 
 msgid "BIC"
 msgstr ""
 
+msgid "F"
+msgstr "F"
+
 msgid "df"
 msgstr "درجه آزادی"
 
 msgid "Null model contains nuisance parameters: %s."
+msgstr ""
+
+msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
 msgstr ""
 
 msgid "Model Fit"
@@ -731,9 +741,6 @@ msgstr "مجموع توان‌های دوم"
 
 msgid "Mean Square"
 msgstr "میانگین توان‌های دوم"
-
-msgid "F"
-msgstr "F"
 
 msgid "Regression"
 msgstr ""
