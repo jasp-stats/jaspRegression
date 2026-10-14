@@ -1216,13 +1216,14 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
 
   return()
 }
- #Brant test
+#Brant test
 .glmBrantTable <- function(jaspResults, dataset, options, ready, position) {
   if (!ready || !options[["brantTest"]] || !is.null(jaspResults[["brantTable"]]))
     return()
 
   brantTable <- createJaspTable(title = gettext("Brant Test for Proportional Odds Assumption"))
-  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest", "weights", "offset"))
+  brantTable$dependOn(options = c("dependent", "modelTerms", "otherGlmModel", "brantTest", "weights", "offset",
+                                  "family","link","interceptTerm"))
   brantTable$position <- position
 
   brantTable$addColumnInfo(name = "variable", title = "",      type = "string")
@@ -1261,14 +1262,9 @@ GeneralizedLinearModelInternal <- function(jaspResults, dataset = NULL, options,
   }
 
   # Add warning if negative chi-squares detected. This can happen for e.g. very small samples
-  # e.g. MASS::cars dataset, with gear~hp as model.
+  # e.g. mtcars dataset, with gear~hp as model.
   if (any(brantResult$chiSq < 0, na.rm = TRUE)) {
-    brantTable$addFootnote(
-      gettext("Negative \u03A7\u00B2 statistics are computational artifacts.
-              They indicate the estimated covariance matrix is not positive semi-definite
-              or is ill-conditioned, often due to small samples or sparse data.
-              Test results might be misleading.")
-    )
+    brantTable$addFootnote(gettext("Negative \u03A7\u00B2 statistics are computational artifacts. They indicate the estimated covariance matrix is not positive semi-definite or is ill-conditioned, often due to small samples or sparse data. Test results might be misleading."))
   }
 
   for (rowIndex in seq_len(nrow(brantResult))) {

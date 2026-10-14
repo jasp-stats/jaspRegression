@@ -1092,7 +1092,7 @@
 
   # Fit Binary GLMs
   binaryData <- as.data.frame(xMain)
-  models <- lapply(1:numThresholds, function(thresholdIndex) {
+  models <- lapply(seq_len(numThresholds), function(thresholdIndex) {
     binaryData[["yBin"]] <- as.numeric(yNumeric > thresholdIndex)
     fitBinary <- VGAM::vglm(yBin ~ ., family = VGAM::binomialff(), data = binaryData)
 
@@ -1113,7 +1113,7 @@
 
   # Block covariance matrix assembly
   covarianceTotal <- matrix(0, nrow = numThresholds * numPredictors, ncol = numThresholds * numPredictors)
-  for (threshRow in 1:numThresholds) {
+  for (threshRow in seq_len(numThresholds)) {
     weightRow  <- (piList[[threshRow]] * (1 - piList[[threshRow]]))
     inverseRow <- solve(t(xGlm) %*% (weightRow * xGlm))
 
@@ -1163,7 +1163,7 @@
   rownames(omnibusResult) <- "Omnibus"
 
   # Variable-specific tests
-  variableResult <- do.call(rbind, lapply(1:numPredictors, function(predictorIndex) {
+  variableResult <- do.call(rbind, lapply(seq_len(numPredictors), function(predictorIndex) {
     sequenceIndex  <- seq(from = predictorIndex, to = (numThresholds * numPredictors), by = numPredictors)
     contrastSubset <- contrastOmnibus[, sequenceIndex, drop = FALSE]
     relevantRows   <- which(rowSums(contrastSubset != 0) > 0)

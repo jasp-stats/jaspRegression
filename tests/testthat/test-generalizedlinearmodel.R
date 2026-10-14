@@ -585,7 +585,7 @@ test_that("Brant test displays 'not supported' message on models with offset ter
 })
 
 test_that("Brant test adds footnote for negative chi-square statistics", {
-  # Using mtcars as referenced in your source code comments (gear ~ hp)
+  # gear ~ hp in mtcars produces negative chi-square statistics
   dataset <- as.data.frame(mtcars)
   dataset$gear <- as.ordered(dataset$gear)
 
