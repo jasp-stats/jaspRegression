@@ -2018,7 +2018,16 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregInsertPlot <- function(jaspPlot, func, ...) {
-  p <- try(func(...))
+  # These helpers already accept plain vectors and drawing settings. Other
+  # builders still consume fitted models and are deliberately left unchanged.
+  p <- try({
+    if (identical(func, .linregPlotResiduals))
+      .regressionPlotRecipe("jaspRegression:::.linregPlotResiduals", list(...))
+    else if (identical(func, .linregPlotResidualsHistogram))
+      .regressionPlotRecipe("jaspRegression:::.linregPlotResidualsHistogram", list(...))
+    else
+      func(...)
+  })
 
   if (inherits(p, "try-error")) {
    errorMessage <- .extractErrorMessage(p)

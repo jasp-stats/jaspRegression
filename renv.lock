@@ -4680,7 +4680,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspBase",
-      "RemoteSha": "763cb835a7589b72da079b95bbf9491abad4fab3"
+      "RemoteSha": "b187388a5e412c0d683c78ffd657908473859c2d"
     },
     "jaspDescriptives": {
       "Package": "jaspDescriptives",
@@ -4733,7 +4733,7 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspGraphs",
-      "RemoteSha": "23cdda0d795329eb99a2659bf6f325a9194ff292"
+      "RemoteSha": "288d2751131ee6ac17362bd89d2ed7d9c0c67c7c"
     },
     "jaspTTests": {
       "Package": "jaspTTests",
@@ -4754,6 +4754,34 @@
       "RemoteUsername": "jasp-stats",
       "RemoteRepo": "jaspTTests",
       "RemoteSha": "8c9f68ac784679aff9bc94151a92d7067bd41c1a"
+    },
+    "jaspTools": {
+      "Package": "jaspTools",
+      "Version": "0.20.1",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteUsername": "jasp-stats",
+      "RemoteRepo": "jaspTools",
+      "RemoteRef": "master",
+      "RemoteSha": "1a109435bfdbedbae1e5fda5ceb39d227ca8e842",
+      "Requirements": [
+        "DBI",
+        "RSQLite",
+        "archive",
+        "cli",
+        "data.table",
+        "httr",
+        "jsonlite",
+        "lifecycle",
+        "pkgload",
+        "remotes",
+        "rjson",
+        "stringi",
+        "stringr",
+        "testthat",
+        "vdiffr"
+      ]
     },
     "jomo": {
       "Package": "jomo",

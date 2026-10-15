@@ -1250,6 +1250,10 @@ CorrelationInternal <- function(jaspResults, dataset, options){
     data$label <- ifelse(data$p < 0.01 & !is.na(data$cor), paste0(data$label, "*"), data$label)
     data$label <- ifelse(data$p < 0.001 & !is.na(data$cor), paste0(data$label, "*"), data$label)
   }
+  .regressionPlotRecipe("jaspRegression:::.corrDrawHeatmap", list(data = data))
+}
+
+.corrDrawHeatmap <- function(data) {
   p <- ggplot2::ggplot(data, ggplot2::aes(x = var1, y = var2, fill = cor)) +
     ggplot2::geom_tile() +
     ggplot2::geom_text(ggplot2::aes(x = var1, y = var2, label = label), size = 5) +
