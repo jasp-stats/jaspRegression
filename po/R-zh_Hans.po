@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2026-10-10 02:57\n"
-"PO-Revision-Date: 2026-10-24 11:33+0000\n"
+"PO-Revision-Date: 2026-10-25 11:51+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hans/>\n"
@@ -40,7 +40,7 @@ msgid "Bayesian Kendall's Tau Correlations"
 msgstr "贝叶斯 Kendall's Tau 相关性"
 
 msgid "Bayesian Spearman Correlations"
-msgstr "贝叶斯斯 Spearman 相关性"
+msgstr "贝叶斯 Spearman 相关性"
 
 msgid "Bayesian Correlation Table"
 msgstr "贝叶斯相关表"
@@ -58,13 +58,13 @@ msgid "Correlation Table"
 msgstr "相关表"
 
 msgid "Pearson's r"
-msgstr "Pearson 的 r"
+msgstr "Pearson 相关系数"
 
 msgid "Spearman's rho"
-msgstr "Spearman 的 rho"
+msgstr "Spearman 相关系数"
 
 msgid "Kendall's tau B"
-msgstr "Kendall 的 tau B"
+msgstr "Kendall tau-b 相关系数"
 
 msgid "Pearson"
 msgstr "Pearson"
@@ -103,7 +103,7 @@ msgid "Kendall's"
 msgstr "Kendall 的"
 
 msgid "Kendall's tau"
-msgstr "Kendall's tau"
+msgstr "Kendall's tau 相关系数"
 
 msgid "n"
 msgstr "n"
@@ -148,7 +148,7 @@ msgid "P-values correspond to test of null hypothesis against %s."
 msgstr "P 值对应于针对 %s 检验零假设。"
 
 msgid "Results are averaged over the levels of: %s."
-msgstr "结果在以下水平上进行平均：%s。"
+msgstr "结果在以下变量的水平上取平均：%s。"
 
 msgid "P-values are not adjusted."
 msgstr "P 值未进行校正。"
@@ -195,9 +195,8 @@ msgstr "预测"
 msgid "(Intercept)"
 msgstr "（截距）"
 
-#, fuzzy
 msgid "Influential Cases"
-msgstr "序贯分析"
+msgstr "影响点"
 
 msgid "Std. Residual"
 msgstr "标准化残差"
@@ -296,7 +295,7 @@ msgid "VS-MPR"
 msgstr "VS-MPR"
 
 msgid "Effect size (Fisher's z)"
-msgstr "效应量 (Fisher 的 z)"
+msgstr "效应量（Fisher's z）"
 
 msgid "SE Effect size"
 msgstr "效应量标准误"
@@ -337,7 +336,7 @@ msgid "Shapiro-Wilk Test for Multivariate Normality"
 msgstr "多元正态性的 Shapiro-Wilk 检验"
 
 msgid "Shapiro-Wilk"
-msgstr "Shapiro-Wilk"
+msgstr "Shapiro-Wilk 检验"
 
 msgid "Variables"
 msgstr "变量"
@@ -345,7 +344,6 @@ msgstr "变量"
 msgid "Shapiro-Wilk Test for Bivariate Normality"
 msgstr "双变量正态性的 Shapiro-Wilk 检验"
 
-#, fuzzy
 msgid "Scatter Plots"
 msgstr "散点图"
 
@@ -470,7 +468,7 @@ msgstr ""
 "对于每对 A - B，检验 A 是作为 B 的线性函数（即 l := A ~ 1 + B）被更好地预测，"
 "还是作为 B 的二次函数（即 q := A ~ 1 + B + B^2）被更好地预测。\n"
 "    使用贝叶斯回归的默认设置，即 alpha 设为 0.354 的 JZS 先验，模型先验使用 "
-"alpha = 1、beta = 1 的 Beta 二项分布。注意，由于只考虑两个模型，模型先验等价"
+"alpha = 1、beta = 1 的 Beta-二项分布。注意，由于只考虑两个模型，模型先验等价"
 "于均匀模型先验。"
 
 msgid ""
@@ -559,13 +557,13 @@ msgid "F"
 msgstr "F"
 
 msgid "df"
-msgstr "自由度"
+msgstr "df"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "零模型包含冗余参数：%s。"
 
 msgid "The F-test uses df and the residual df of %s as its degrees of freedom."
-msgstr ""
+msgstr "F 检验使用 %s 的 df 和残差 df 作为其自由度。"
 
 msgid "Model Fit"
 msgstr "模型拟合"
@@ -643,10 +641,10 @@ msgid "Multicollinearity Diagnostics"
 msgstr "多重共线性诊断"
 
 msgid "Tolerance"
-msgstr "容差"
+msgstr "容忍度"
 
 msgid "VIF"
-msgstr "VIF"
+msgstr "方差膨胀因子（VIF）"
 
 msgid "Estimated Marginal Means and Contrast Analysis"
 msgstr "估计边际均值和对比分析"
@@ -658,13 +656,13 @@ msgid "SE"
 msgstr "标准误"
 
 msgid "Lower"
-msgstr "下界"
+msgstr "下限"
 
 msgid "%s%% CI"
 msgstr "%s%% 置信区间"
 
 msgid "Upper"
-msgstr "上界"
+msgstr "上限"
 
 msgid "t"
 msgstr "t"
@@ -818,9 +816,8 @@ msgstr "部分自助法结果无法计算。"
 msgid "expecting both arguments to be data.frames"
 msgstr "期望两个参数都是数据框"
 
-#, fuzzy
 msgid "Regression Equations"
-msgstr "Pearson 相关性"
+msgstr "回归方程"
 
 msgid "Equation"
 msgstr "方程"
@@ -864,7 +861,7 @@ msgid "Minimum"
 msgstr "最小值"
 
 msgid "Maximum"
-msgstr "最大值"
+msgstr "最大"
 
 msgid "Mean"
 msgstr "均值"
@@ -929,9 +926,8 @@ msgstr "标准化预测值"
 msgid "Standardized Residuals"
 msgstr "标准化残差"
 
-#, fuzzy
 msgid "%1$s includes %2$s"
-msgstr "所有模型都具有 %s。"
+msgstr "%1$s 包含 %2$s"
 
 msgid ""
 "Vovk-Sellke Maximum <em>p</em>-Ratio: Based on the <em>p</em>-value, the "
@@ -1065,7 +1061,7 @@ msgstr ""
 "协变量数多于观测数的稀疏回归 (Castillo et al., 2015)。"
 
 msgid "B denotes the best model."
-msgstr ""
+msgstr "B 表示最佳模型。"
 
 msgid "Models"
 msgstr "模型"
@@ -1336,10 +1332,9 @@ msgid "The following predictor was considered but not included: %s."
 msgid_plural "The following predictors were considered but not included: %s."
 msgstr[0] "以下预测变量被考虑但未纳入：%s。"
 
-#, fuzzy
 msgid "Regression Plot"
 msgid_plural "Partial Regression Plot"
-msgstr[0] "Pearson 相关性"
+msgstr[0] "回归图"
 
 #~ msgid "BF<sub>10</sub>"
 #~ msgstr "BF<sub>10</sub>"
