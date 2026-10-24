@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2026-10-10 02:57\n"
-"PO-Revision-Date: 2026-07-10 05:01+0000\n"
-"Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
+"PO-Revision-Date: 2026-10-24 11:33+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hans/>\n"
 "Language: zh_Hans\n"
@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2026.7.1.dev0\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgid ""
 "For all tests, the alternative hypothesis specifies that the %s is positive."
@@ -25,7 +25,7 @@ msgid "Scatterplot"
 msgstr "散点图"
 
 msgid "Prior and Posterior"
-msgstr "先验和后验"
+msgstr "先验与后验"
 
 msgid "Bayes Factor Robustness Check"
 msgstr "贝叶斯因子稳健性检验"
@@ -103,7 +103,7 @@ msgid "Kendall's"
 msgstr "Kendall 的"
 
 msgid "Kendall's tau"
-msgstr "Kendall 的 tau"
+msgstr "Kendall's tau"
 
 msgid "n"
 msgstr "n"
@@ -193,7 +193,7 @@ msgid "Predicted"
 msgstr "预测"
 
 msgid "(Intercept)"
-msgstr "(截距)"
+msgstr "（截距）"
 
 #, fuzzy
 msgid "Influential Cases"
@@ -546,9 +546,8 @@ msgstr "模型"
 msgid "Deviance"
 msgstr "偏差"
 
-#, fuzzy
 msgid "Residual df"
-msgstr "残差"
+msgstr "残差自由度"
 
 msgid "AIC"
 msgstr "AIC"
@@ -978,16 +977,16 @@ msgid "Weight"
 msgstr "权重"
 
 msgid "lower and upper bounds and target are"
-msgstr "下界、上界和目标值为"
+msgstr "下界和上界以及目标为"
 
 msgid "lower and upper bounds are"
 msgstr "下界和上界为"
 
 msgid "target is"
-msgstr "目标值为"
+msgstr "目标为"
 
 msgid "The %s estimated from data."
-msgstr "从数据估计的 %s。"
+msgstr "从数据估计的%s。"
 
 msgid "Response Optimizer Solution"
 msgstr "响应优化器解"
@@ -1117,7 +1116,7 @@ msgid "P(excl)"
 msgstr "P(excl)"
 
 msgid "P(incl|data)"
-msgstr "P(incl|数据)"
+msgstr "P(包含|数据)"
 
 msgid "P(excl|data)"
 msgstr "P(excl|数据)"
