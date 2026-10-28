@@ -330,6 +330,36 @@ test_that("Descriptives plot with continuous predictor (scatter) matches", {
   jaspTools::expect_equal_plots(testPlot, "descriptives-scatter")
 })
 
+test_that("Descriptives plot with continuous predictor without data points matches", {
+  options <- initOptsLinReg()
+
+  options$factors    <- "facExperim"
+  options$descriptivePlotHorizontalAxis <- "contGamma"
+  options$descriptivePlotSeparateLines  <- "facExperim"
+  options$descriptivePlotDataPoints     <- FALSE
+
+  results  <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  testPlot <- results[["state"]][["figures"]][[1]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "descriptives-scatter-no-points")
+})
+
+test_that("Descriptives plot with duplicate group labels gives an error", {
+  options <- initOptsLinReg()
+
+  options$factors    <- "facGender"
+  options$descriptivePlotHorizontalAxis   <- "facGender"
+  options$descriptivePlotSeparateLines    <- "contGamma"
+  options$descriptivePlotScaleGroups      <- 3
+  options$descriptivePlotScaleGroupLabels <- list(
+    list(label = "Same", value = "1"), list(label = "Same", value = "2"), list(label = "", value = "3")
+  )
+
+  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  plotContainer <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_descriptivePlotsContainer"]]
+  errorPlot     <- plotContainer[["collection"]][["modelContainer_descriptivePlotsContainer_descriptivesPlot"]]
+  expect_identical(errorPlot[["error"]][["errorMessage"]], "The group labels for scale predictors must be unique.")
+})
+
 test_that("Analysis handles errors", {
   options <- initOptsLinReg()
 
