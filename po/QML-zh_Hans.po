@@ -6,10 +6,16 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Language: zh_Hans\n"
 "X-Qt-Contexts: true\n"
+"PO-Revision-Date: 2026-10-26 14:51+0000\n"
+"Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
+"Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
+"projects/jasp/jaspregression-qml/zh_Hans/>\n"
+"Language: zh_Hans\n"
+"X-Generator: Weblate 2026.11.dev0\n"
 
 msgctxt "Description|"
 msgid "Regression"
-msgstr "回归"
+msgstr "回归分析"
 
 msgctxt "Description|"
 msgid "Evaluate the association between variables"
@@ -53,15 +59,15 @@ msgstr "样本相关系数"
 
 msgctxt "Correlation|"
 msgid "Pearson's r"
-msgstr "皮尔逊系数( Pearson's r)"
+msgstr "Pearson 相关系数"
 
 msgctxt "Correlation|"
 msgid "Spearman's rho"
-msgstr "斯皮尔曼系数( Spearman's rho)"
+msgstr "Spearman 相关系数"
 
 msgctxt "Correlation|"
 msgid "Kendall's tau-b"
-msgstr "肯德尔系数( Kendall's tau-b)"
+msgstr "Kendall tau-b 相关系数"
 
 msgctxt "Correlation|"
 msgid "Additional Options"
@@ -193,15 +199,15 @@ msgstr "总体相关系数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Pearson's rho"
-msgstr "皮尔逊系数( Pearson's rho)"
+msgstr "Pearson rho 相关系数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Spearman's rho"
-msgstr "斯皮尔曼系数( Spearman's rho)"
+msgstr "Spearman 相关系数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau-b"
-msgstr "肯德尔系数( Kendall's tau-b)"
+msgstr "Kendall tau-b 相关系数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Additional Options"
@@ -273,7 +279,7 @@ msgstr "先验"
 
 msgctxt "CorrelationBayesian|"
 msgid "Stretched beta prior width"
-msgstr "拉伸 beta 先验宽度"
+msgstr "拉伸 Beta 先验宽度"
 
 msgctxt "CorrelationBayesian|"
 msgid "Plot Individual Pairs"
@@ -285,7 +291,7 @@ msgstr "绘图的相关系数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Kendall's tau"
-msgstr "Kendall's tau系数"
+msgstr "Kendall's tau 相关系数"
 
 msgctxt "CorrelationBayesian|"
 msgid "Scatterplot"
@@ -521,11 +527,11 @@ msgstr "后验摘要"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across all models"
-msgstr "跨所有模型"
+msgstr "跨所有模型比较"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Across matched models"
-msgstr "跨匹配的模型"
+msgstr "跨匹配模型比较"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Plot of coefficients"
@@ -665,7 +671,7 @@ msgstr "EB-local"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "g-prior"
-msgstr "EB-local"
+msgstr "g 先验"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Hyper-g"
@@ -697,7 +703,7 @@ msgstr "模型先验"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Beta binomial"
-msgstr "Beta-binomial分布"
+msgstr "Beta-二项分布"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "a"
@@ -921,7 +927,7 @@ msgstr "Predictor - residual plots"
 
 msgctxt "RegressionLogistic|"
 msgid "Squared Pearson residuals plot"
-msgstr "平方 Pearson 残差图"
+msgstr "Pearson 残差平方图"
 
 msgctxt "RegressionLogistic|"
 msgid "Residual Type"
@@ -941,7 +947,7 @@ msgstr "性能图"
 
 msgctxt "RegressionLogistic|"
 msgid "ROC plot"
-msgstr "ROC图"
+msgstr "ROC 图"
 
 msgctxt "RegressionLogistic|"
 msgid "Cutoff step"
@@ -981,7 +987,7 @@ msgstr "广义线性模型"
 
 msgctxt "EmmComponent|"
 msgid "Estimated Marginal Means and Contrast Analysis"
-msgstr "估计的边际均值和对比分析"
+msgstr "估计边际均值和对比分析"
 
 msgctxt "EmmComponent|"
 msgid "Model variables"
@@ -1017,7 +1023,7 @@ msgstr "P 值调整"
 
 msgctxt "EmmComponent|"
 msgid "Multivariate-t"
-msgstr "多变量-t"
+msgstr "多元 t"
 
 msgctxt "EmmComponent|"
 msgid "None"
@@ -1217,7 +1223,7 @@ msgstr "容忍度"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "VIF"
-msgstr "VIF"
+msgstr "方差膨胀因子（VIF）"
 
 msgctxt "GeneralizedLinearModel|"
 msgid "Advanced Options"
@@ -1305,7 +1311,7 @@ msgstr "省略截距"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Best model"
-msgstr "最优模型"
+msgstr "最佳模型"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Most complex model"
@@ -1389,7 +1395,7 @@ msgstr "对数后验几率"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Log(P(data|M)) vs. model size"
-msgstr "Log(P(data|M)) 与 模型大小"
+msgstr "Log(P(data|M)) 与模型大小"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Model probabilities"
@@ -1429,7 +1435,7 @@ msgstr "EB-local"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "g-prior"
-msgstr "g-prior"
+msgstr "g 先验"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "alpha"
@@ -1465,7 +1471,7 @@ msgstr "模型先验"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Beta binomial"
-msgstr "Beta-binomial"
+msgstr "Beta-二项分布"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "a"
@@ -1533,7 +1539,7 @@ msgstr "标准差"
 
 msgctxt "Correlation|"
 msgid "Effect size (Fisher's z)"
-msgstr "效应量(Fisher's z)"
+msgstr "效应量（Fisher's z）"
 
 msgctxt "OutlierComponent|"
 msgid "Residuals"
@@ -1545,7 +1551,7 @@ msgstr "统计量"
 
 msgctxt "OutlierComponent|"
 msgid "Casewise diagnostics"
-msgstr "个案诊断（ Casewise diagnostics）"
+msgstr "逐例诊断"
 
 msgctxt "OutlierComponent|"
 msgid "Std. residual >"
@@ -1559,12 +1565,10 @@ msgctxt "OutlierComponent|"
 msgid "All"
 msgstr "全部"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "DFBETAS"
 msgstr "DFBETAS"
 
-#, fuzzy
 msgctxt "OutlierComponent|"
 msgid "DFFITS"
 msgstr "DFFITS"
@@ -1647,17 +1651,15 @@ msgctxt "ExportBayesian|"
 msgid "Export"
 msgstr "导出"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "Append columns to data"
 msgstr "向数据中追加列"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals (%1)"
-msgstr "残差 (%1)"
+msgstr "残差（%1）"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "Column name"
 msgstr "列名"
@@ -1666,12 +1668,11 @@ msgctxt "ExportBayesian|"
 msgid "e.g., residuals"
 msgstr "例如：残差"
 
-#, fuzzy, qt-format
+#, qt-format
 msgctxt "ExportBayesian|"
 msgid "Residuals std. deviations (%1)"
-msgstr "残差的标准偏差（%1）"
+msgstr "残差标准差（%1）"
 
-#, fuzzy
 msgctxt "ExportBayesian|"
 msgid "e.g., residual sd"
 msgstr "例如：残差标准差"
@@ -1680,12 +1681,10 @@ msgctxt "ExportFreq|"
 msgid "Export"
 msgstr "导出"
 
-#, fuzzy
 msgctxt "ExportFreq|"
 msgid "Append residuals to data"
-msgstr "将残差追加到数据集中"
+msgstr "将残差追加到数据中"
 
-#, fuzzy
 msgctxt "ExportFreq|"
 msgid "Column name"
 msgstr "列名"
@@ -2015,7 +2014,7 @@ msgctxt "GeneralizedLinearModel|"
 msgid ""
 " A table showing multicollinearity diagnostics of the model. The choices of "
 "measures are as follows."
-msgstr "一个显示模型多重共线性诊断的表格。可选择的测度如下。"
+msgstr " 一个显示模型多重共线性诊断的表格。可选择的测度如下。"
 
 msgctxt "GeneralizedLinearModel|"
 msgid ""
@@ -2216,7 +2215,7 @@ msgid ""
 "g, averaged over all models. When it is not possible to enumerate all "
 "models, the EM algorithm uses only the models sampled under EB-local."
 msgstr ""
-"Zellner-Siow g-先验和模型概率中 g 的全局经验贝叶斯估计。使用 EM 算法在所有模"
+"Zellner-Siow g 先验和模型概率中 g 的全局经验贝叶斯估计。使用 EM 算法在所有模"
 "型上找到 g 的公共或全局估计的平均值。当无法枚举所有模型时，EM 算法仅使用在 "
 "EB-local 下抽样的模型。"
 
@@ -2244,7 +2243,7 @@ msgid ""
 "Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda "
 "* p, where p is the number of predictors in the model."
 msgstr ""
-"默认 lambda = 1。等价于 a = 1、b = lambda * p 的 Beta 二项分布，其中 p 是模型"
+"默认 lambda = 1。等价于 a = 1、b = lambda * p 的 Beta-二项分布，其中 p 是模型"
 "中的预测变量数。"
 
 msgctxt "RegressionLinearBayesian|"
@@ -2252,7 +2251,7 @@ msgid ""
 "Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p "
 "is the number of predictors in the model."
 msgstr ""
-"默认 u = 1。等价于 a = 1、b = p^u 的 Beta 二项分布，其中 p 是模型中的预测变量"
+"默认 u = 1。等价于 a = 1、b = p^u 的 Beta-二项分布，其中 p 是模型中的预测变量"
 "数。"
 
 msgctxt "RegressionLinearBayesian|"
@@ -2484,7 +2483,7 @@ msgid ""
 "Default lambda = 1. Equivalent to a Beta binomial with a = 1 and b = lambda "
 "* p, where p is the number of predictors in the model."
 msgstr ""
-"默认 lambda = 1。等价于 a = 1、b = lambda * p 的 Beta 二项分布，其中 p 是模型"
+"默认 lambda = 1。等价于 a = 1、b = lambda * p 的 Beta-二项分布，其中 p 是模型"
 "中的预测变量数。"
 
 msgctxt "RegressionLogisticBayesian|"
@@ -2492,7 +2491,7 @@ msgid ""
 "Default u = 1. Equivalent to a Beta binomial with a = 1 and b = p^u, where p "
 "is the number of predictors in the model."
 msgstr ""
-"默认 u = 1。等价于 a = 1、b = p^u 的 Beta 二项分布，其中 p 是模型中的预测变量"
+"默认 u = 1。等价于 a = 1、b = p^u 的 Beta-二项分布，其中 p 是模型中的预测变量"
 "数。"
 
 msgctxt "RegressionLogisticBayesian|"
@@ -3190,7 +3189,7 @@ msgstr "使用 Akaike 信息准则比较模型。"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Uses the MLE of g from the marginal likelihood within each model."
-msgstr "使用每个模型内边际似然的 g 的极大似然估计（MLE）。"
+msgstr "使用每个模型内边际似然的 g 的最大似然估计（MLE）。"
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -3199,8 +3198,8 @@ msgid ""
 "be numerically unstable for large n or R2 close to 1. Default choice of "
 "alpha is 3."
 msgstr ""
-"g-先验的混合，其中 g/(1+g) 上的先验为 Beta(1, alpha/2)。这使用 Cephes 库评估"
-"边际似然，对于较大的 n 或接近 1 的 R2 可能在数值上不稳定。alpha 的默认选择为 "
+"g 先验的混合，其中 g/(1+g) 上的先验为 Beta(1, alpha/2)。这使用 Cephes 库评估"
+"边际似然，对于较大的 n 或接近 1 的 R² 可能在数值上不稳定。alpha 的默认选择为 "
 "3。"
 
 msgctxt "RegressionLinearBayesian|"
@@ -3208,7 +3207,7 @@ msgid ""
 "A mixture of g-priors where u = g/n and u Beta(1, alpha/2) to provide "
 "consistency when the null model is true."
 msgstr ""
-"g-先验的混合，其中 u = g/n 且 u 服从 Beta(1, alpha/2)，以在零模型为真时提供一"
+"g 先验的混合，其中 u = g/n 且 u 服从 Beta(1, alpha/2)，以在零模型为真时提供一"
 "致性。"
 
 msgctxt "RegressionLinearBayesian|"
@@ -3350,7 +3349,7 @@ msgid ""
 "positive or negative. "
 msgstr ""
 "在 y 轴上显示阳性预测值，在 x 轴上显示真阳性率/灵敏度。适用于不平衡数据集。分"
-"界步长决定观测被分类为阳性或阴性的阈值。"
+"界步长决定观测被分类为阳性或阴性的阈值。 "
 
 msgctxt "RegressionLogistic|"
 msgid ""
@@ -3460,7 +3459,7 @@ msgstr "使用 Akaike 信息准则比较模型。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uses the MLE of g from the marginal likelihood within each model."
-msgstr "使用每个模型内边际似然的 g 的极大似然估计（MLE）。"
+msgstr "使用每个模型内边际似然的 g 的最大似然估计（MLE）。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Default Beta(a = 1, b = 1)."
@@ -3553,7 +3552,6 @@ msgstr ""
 "显示标准化残差的 Q-Q 图。置信带显示正态性下残差的预期范围；带外的点表明偏离正"
 "态性。"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Confidence interval"
 msgstr "置信区间"
@@ -3612,7 +3610,6 @@ msgctxt "RegressionLinear|"
 msgid "Response Optimizer"
 msgstr "响应优化器"
 
-#, fuzzy
 msgctxt "RegressionLinear|"
 msgid "Output"
 msgstr "输出"
@@ -3796,7 +3793,7 @@ msgstr "标准差"
 
 msgctxt "RegressionLinear|"
 msgid "Percentile"
-msgstr "百分位"
+msgstr "百分位法"
 
 msgctxt "RegressionLinear|"
 msgid "Number of groups"
@@ -3823,27 +3820,27 @@ msgstr "标准误"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Zellner's g-prior. The default g = n is the unit-information prior."
-msgstr ""
+msgstr "Zellner g 先验。默认 g = n 为单位信息先验。"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "g = n"
-msgstr ""
+msgstr "g = n"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Set g to the number of observations, i.e., the unit-information prior."
-msgstr ""
+msgstr "将 g 设为观测数，即单位信息先验。"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "g ="
-msgstr ""
+msgstr "g ="
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Specify a value for g."
-msgstr ""
+msgstr "指定 g 的值。"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Uniform over model size"
-msgstr ""
+msgstr "模型大小均匀先验"
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
@@ -3852,40 +3849,42 @@ msgid ""
 "equally among the models of that size. Identical to a Beta binomial with a = "
 "1 and b = 1."
 msgstr ""
+"对纳入预测变量数（模型大小）的均匀先验分布。每个模型大小获得相同的先验概率，"
+"并在该大小的模型之间均分。等同于 a = 1、b = 1 的 Beta-二项分布。"
 
 msgctxt "RegressionLinearBayesian|"
 msgid "Uniform over models"
-msgstr ""
+msgstr "模型均匀先验"
 
 msgctxt "RegressionLinearBayesian|"
 msgid ""
 "Uniform prior distribution over the models. Each model receives the same "
 "prior probability."
-msgstr ""
+msgstr "对模型的均匀先验分布。每个模型获得相同的先验概率。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Zellner's g-prior. The default g = n is the unit-information prior."
-msgstr ""
+msgstr "Zellner g 先验。默认 g = n 为单位信息先验。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "g = n"
-msgstr ""
+msgstr "g = n"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Set g to the number of observations, i.e., the unit-information prior."
-msgstr ""
+msgstr "将 g 设为观测数，即单位信息先验。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "g ="
-msgstr ""
+msgstr "g ="
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Specify a value for g."
-msgstr ""
+msgstr "指定 g 的值。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform over model size"
-msgstr ""
+msgstr "模型大小均匀先验"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid ""
@@ -3894,13 +3893,15 @@ msgid ""
 "equally among the models of that size. Identical to a Beta binomial with a = "
 "1 and b = 1."
 msgstr ""
+"对纳入预测变量数（模型大小）的均匀先验分布。每个模型大小获得相同的先验概率，"
+"并在该大小的模型之间均分。等同于 a = 1、b = 1 的 Beta-二项分布。"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid "Uniform over models"
-msgstr ""
+msgstr "模型均匀先验"
 
 msgctxt "RegressionLogisticBayesian|"
 msgid ""
 "Uniform prior distribution over the models. Each model receives the same "
 "prior probability."
-msgstr ""
+msgstr "对模型的均匀先验分布。每个模型获得相同的先验概率。"
