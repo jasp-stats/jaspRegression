@@ -194,12 +194,7 @@ RegressionLogistic <- function(
           vovkSellke = FALSE,
           weights = list(types = list(), value = "")) {
 
-   defaultArgCalls <- formals(jaspRegression::RegressionLogistic)
-   defaultArgs <- lapply(defaultArgCalls, eval)
-   options <- as.list(match.call())[-1L]
-   options <- lapply(options, eval)
-   defaults <- setdiff(names(defaultArgs), names(options))
-   options[defaults] <- defaultArgs[defaults]
+   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 

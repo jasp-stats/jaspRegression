@@ -106,12 +106,7 @@ Correlation <- function(
           variables = list(types = list(), value = list()),
           vovkSellke = FALSE) {
 
-   defaultArgCalls <- formals(jaspRegression::Correlation)
-   defaultArgs <- lapply(defaultArgCalls, eval)
-   options <- as.list(match.call())[-1L]
-   options <- lapply(options, eval)
-   defaults <- setdiff(names(defaultArgs), names(options))
-   options[defaults] <- defaultArgs[defaults]
+   options <- mget(names(formals(sys.function())), envir = environment(), inherits = FALSE)
    options[["data"]] <- NULL
    options[["version"]] <- NULL
 
