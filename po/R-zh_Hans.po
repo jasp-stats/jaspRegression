@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: jaspRegression 0.15\n"
 "POT-Creation-Date: 2026-10-10 02:57\n"
-"PO-Revision-Date: 2026-10-26 12:51+0000\n"
+"PO-Revision-Date: 2026-11-01 08:51+0000\n"
 "Last-Translator: Shun Wang <shuonwang@gmail.com>\n"
 "Language-Team: Chinese (Simplified Han script) <https://hosted.weblate.org/"
 "projects/jasp/jaspregression-r/zh_Hans/>\n"
@@ -557,7 +557,7 @@ msgid "F"
 msgstr "F"
 
 msgid "df"
-msgstr "df"
+msgstr "自由度"
 
 msgid "Null model contains nuisance parameters: %s."
 msgstr "零模型包含冗余参数：%s。"
@@ -575,7 +575,7 @@ msgid "Coefficients"
 msgstr "系数"
 
 msgid "Estimate"
-msgstr "估计"
+msgstr "估计值"
 
 msgid "Standard Error"
 msgstr "标准误"
@@ -662,7 +662,7 @@ msgid "%s%% CI"
 msgstr "%s%% 置信区间"
 
 msgid "Upper"
-msgstr "上限"
+msgstr "上界"
 
 msgid "t"
 msgstr "t"
@@ -888,7 +888,7 @@ msgid "Cannot plot residuals versus an interaction with a factor."
 msgstr "无法绘制残差与含因子的交互项的关系。"
 
 msgid "Residuals vs. Predicted"
-msgstr "残差-预测值"
+msgstr "残差对预测值"
 
 msgid "Predicted Values"
 msgstr "预测值"
@@ -1224,7 +1224,7 @@ msgid "Confusion matrix"
 msgstr "混淆矩阵"
 
 msgid "Observed"
-msgstr "观测"
+msgstr "观测值"
 
 msgid "%% Correct"
 msgstr "%% 正确率"
