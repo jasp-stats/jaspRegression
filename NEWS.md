@@ -16,6 +16,12 @@
 
 # jaspRegression (development version)
 
+## Added
+* Linear Regression: term specification of the models ("Specify" in the Model section): transform or code each variable (logarithms, powers, polynomials, splines, bins, centering, codings, ...), define a variable several times, offsets, and an intercept per model (Enter method).
+
+## Fixed
+* Linear Regression: the coefficient covariance matrix lost its first predictor when the intercept was not included.
+
 ## Changed
 * Bayesian Linear and Logistic Regression: added the model prior "Uniform over model size", which is now the default (identical to the previous default, Beta binomial with a = 1 and b = 1); "Uniform" was renamed "Uniform over models" for clarity.
 * Bayesian Linear and Logistic Regression: the g-prior now defaults to g = n (the unit-information prior) instead of g = 3, with a choice between g = n and a supplied value. In Bayesian Linear Regression, the g-prior, hyper-g, hyper-g-Laplace, and hyper-g-n priors now each have their own parameter instead of one shared alpha restricted to (2, 4).

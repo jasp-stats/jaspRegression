@@ -30,7 +30,8 @@ Linear regression allows the user to model a linear relationship between one or 
     - Components: All the independent variables that can be included in the model. 
     - Model terms: The independent variables in the model. By default, all the main effects of the specified independent variables are included in the model. To include interactions, click multiple variables (e.g., by holding the ctrl/cmd button on your keyboard while clicking) and drag those into the `Model Terms` box. 
     - Add to null model: The independent variables included in the model can be selected to add to the null model.
-- Include intercept:
+- Specify: defines the terms of the models (term specification). Every variable has a term; it can be transformed (e.g., a logarithm, a power, a polynomial, a spline, bins) or, for a factor, coded (e.g., treatment with a reference level, sum, Helmert), and further terms of a variable can be added, also offsets (a variable or a number with the coefficient fixed at 1). The available list then offers these terms and `(Intercept)`, which go into the models like variables; each model has its own intercept. Only the Enter method is available, and the partial and marginal plots are not.
+- Include intercept (without the term specification):
   - Include the intercept in the regression model.
 
 ### Statistics
