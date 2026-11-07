@@ -10,10 +10,9 @@ test_that("GeneralizedLinearModel results match", {
   opts <- jaspTools::analysisOptions(jaspFile)
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("GeneralizedLinearModel", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("GeneralizedLinearModel", dataset, opts)
 
   plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_glmPlotResQQ"]][["collection"]][["diagnosticsContainer_glmPlotResQQ_quantileResidualQqPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
@@ -29,35 +28,35 @@ test_that("GeneralizedLinearModel results match", {
 
   table <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_outlierTables"]][["collection"]][["diagnosticsContainer_outlierTables_quantileResidualOutlierTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(9, 2.10698284422105, 1, -1.36906660365315, 11, -1.08991121387782
+    list(9, 2.10698284432175, 1, -1.36906660374493, 11, -1.08991121365178
     ))
 
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_partialResidualPlot"]][["collection"]][["diagnosticsContainer_partialResidualPlot_jaspColumn1"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_partialResidualPlot"]][["collection"]][["diagnosticsContainer_partialResidualPlot_Hours"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-4_partial-residual-plot-for-jaspcolumn1")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-4_partial-residual-plot-for-hours")
 
-  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_quantileResidualVsPredictorPlot"]][["collection"]][["diagnosticsContainer_quantileResidualVsPredictorPlot_jaspColumn1"]][["data"]]
+  plotName <- results[["results"]][["diagnosticsContainer"]][["collection"]][["diagnosticsContainer_quantileResidualVsPredictorPlot"]][["collection"]][["diagnosticsContainer_quantileResidualVsPredictorPlot_Hours"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-5_standardized-quantile-residuals-vs-jaspcolumn1")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-5_standardized-quantile-residuals-vs-hours")
 
   table <- results[["results"]][["estimatesTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(-4.70447922924669, -3.21909139466423, -3.92359655506097, "(Intercept)",
-     3.02549037349438e-25, 0.377958944698631, -10.3810125678848,
-     0.000783381003863431, 0.00123187871784827, 0.000999237231007308,
-     "jaspColumn1", 2.06501535779309e-18, 0.000114150499713778, 8.75368249383753
-    ))
+    list(-4.70447922904707, -3.21909139451491, -3.92359655488897, "(Intercept)",
+     3.02549037679962e-25, 0.37795894468586, -10.3810125677805, 0.000783381003814545,
+     0.00123187871778689, 0.000999237230952839, "Hours", 2.0650153620726e-18,
+     0.000114150499710604, 8.75368249360376))
 
   table <- results[["results"]][["modelFitTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(9, 10.3314656594169, "Deviance", 0.324323585924635, 9, 9.25083866566519,
-     "Pearson", 0.414449329827485))
+    list(9, 10.3314656582448, "Deviance", 0.32432358601475, 9, 9.25083866431235,
+     "Pearson", 0.41444932994877))
 
   table <- results[["results"]][["modelSummary"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(150.14676873699, 150.544664009789, "", "", 112.670049156685, 10, "H<unicode>",
-     "", 49.8081852397221, 50.6039757853188, 102.338583497268, 1, 10.3314656594169,
-     9, "H<unicode>", 4.67987874608065e-24))
+    list(150.14676873699, 150.544664009789, "", "", 112.670049147247, 10,
+     "H<unicode>", "", 49.8081852397221, 50.6039757853188, 102.338583489002,
+     1, 10.3314656582448, 9, "H<unicode>", 4.67987876560886e-24
+    ))
 
 })
 
