@@ -180,11 +180,11 @@ test_that("Fields Book - Chapter 10 results match", {
   )
   output10 <- results[["results"]][["estimatesTableBootstrapping"]][["data"]]
   jaspTools::expect_equal_tables(output10,
-                      list("TRUE", 0.0499135607262049, 1.8487167467187, "(Intercept)", 0.408753000376651,
-                           "FALSE", -0.00676602090084683, 0.221423402843459, "treat (1)",
-                           0.545714072912926, "FALSE", -0.0107304860810226, -0.0951900669778652,
-                           "quantity", 0.176386961737937, "FALSE", -0.0115090562401219,
-                           -1.0338758817337, "treat (1) * quantity", 0.245734251200521
+                      list("TRUE", 0.0310117638620551, 1.83881002314576, "(Intercept)", 0.396741897351854,
+                           "FALSE", 0.00418848966174268, 0.194581493856941, "treat (1)",
+                           0.533883855670116, "FALSE", -0.00151721292373704, -0.0857110745515169,
+                           "quantity", 0.173332201784873, "FALSE", -0.0145170235669472,
+                           -1.03385820893859, "treat (1) * quantity", 0.23791734274721
                       )
   )
 })
@@ -321,9 +321,10 @@ test_that("Error Handling", {
 
   # infinity check
     options <- initClassicalRegressionOptions("RegressionLogistic")
-  options$covariates <- list("debInf")
+  # the form refuses debInf as a covariate (a single distinct value), contInf has one infinite value
+  options$covariates <- list("contInf")
   options$dependent <- "contBinom"
-  results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
+  results <- jaspTools::runAnalysis("RegressionLogistic", testDataWithCheckColumns("debug.csv"), options)
   status <- results[["status"]]
   expect_identical(status, "validationError")
 
@@ -331,17 +332,15 @@ test_that("Error Handling", {
     options <- initClassicalRegressionOptions("RegressionLogistic")
   options$covariates <- list("debMiss99")
   options$dependent <- "contBinom"
-  results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
-  status <- results[["status"]]
-  expect_identical(status, "validationError")
+  expect_error(jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options),
+               "Minimum number of numeric values is 2. Variable debMiss99 has only 1 different numeric values", fixed = TRUE)
 
   # variance check
     options <- initClassicalRegressionOptions("RegressionLogistic")
   options$covariates <- list("debSame")
   options$dependent <- "contBinom"
-  results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
-  status <- results[["status"]]
-  expect_identical(status, "validationError")
+  expect_error(jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options),
+               "Minimum number of numeric values is 2. Variable debSame has only 1 different numeric values", fixed = TRUE)
 })
 
 test_that("Pseudo R-squared are correct", {

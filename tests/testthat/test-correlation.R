@@ -188,12 +188,18 @@ test_that("Correlation Table hypothesis correlated negatively match", {
 test_that("Analysis handles errors", {
   options <- jaspTools::analysisOptions("Correlation")
   options$pairwiseDisplay <- TRUE
-  options$variables <- c("contNormal", "debMiss99", "debSame")
+  # the form refuses a variable with a single distinct value (debSame, debMiss99) before the analysis runs
+  options$variables <- c("contNormal", "debSame")
+  expect_error(jaspTools::runAnalysis("Correlation", "debug.csv", options),
+               "Minimum number of numeric values is 2. Variable debSame has only 1 different numeric values", fixed = TRUE,
+               label="No variance check")
+
+  options$variables <- c("contNormal", "contTwoObs", "contInf")
   set.seed(1)
-  results <- jaspTools::runAnalysis("Correlation", "debug.csv", options)
+  results <- jaspTools::runAnalysis("Correlation", testDataWithCheckColumns("debug.csv"), options)
   expect_identical(results[["results"]][["errorMessage"]],
-                   "The following problem(s) occurred while running the analysis:<ul><li>The variance in debSame is equal to 0</li><li>Number of observations is < 3 in debMiss99</li></ul>",
-                   label="Inf covariate check")
+                   "The following problem(s) occurred while running the analysis:<ul><li>Infinity found in contInf</li><li>Number of observations is < 3 in contTwoObs</li></ul>",
+                   label="Inf and too few observations check")
 })
 
 
@@ -262,17 +268,17 @@ test_that("Bootstrapping results match", {
 
   table <- results[["results"]][["mainTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list(0.111065415602727, 0.00638598576879268, 0.105175421195814, 0.194277297531271,
-                                      0.179666477474329, 0.0247584345587612, 0.0766902175159553, 0.328094117381122,
-                                      "-", 0.195812907755063, -0.00131873961408421, 0.0533190778275557,
-                                      0.344854893960198, "contNormal", "contcor1", -0.140516924209084,
-                                      -0.310221936506635, 0.0901883731446404, -0.0198180653820397,
-                                      -0.152460812916382, -0.389197019667127, 0.214536946611116, 0.0363882005780523,
-                                      "-", -0.203777241507667, -0.447142385021777, 0.0955590913846829,
-                                      -0.00255717986984448, "contNormal", "debMiss30", -0.0439397364731327,
-                                      -0.152851036115505, 0.596221799762719, 0.0795466356087932, -0.103189761028142,
-                                      -0.282205586036634, 0.402374946397542, 0.0781503832304625, "-",
-                                      -0.0890439951881228, -0.260856052506065, 0.470233930910906,
-                                      0.121736428310888, "contcor1", "debMiss30"))
+                                 list(0.111065415602727, 0.0221619033581608, 0.105175421195814, 0.204876946362671,
+                                      0.179666477474329, 0.0462888314611629, 0.076690217515955, 0.349895169217453,
+                                      "-", 0.195812907755063, 0.0308826737901461, 0.0533190778275557,
+                                      0.327560463666212, "contNormal", "contcor1", -0.140516924209084,
+                                      -0.282699827038326, 0.0901883731446405, 0.00744448542325924,
+                                      -0.152460812916382, -0.346661867909192, 0.214536946611116, 0.0533408213786898,
+                                      "-", -0.203777241507667, -0.381512965981502, 0.0955590913846829,
+                                      0.0143736213294987, "contNormal", "debMiss30", -0.0439397364731327,
+                                      -0.152861424747088, 0.59622179976272, 0.0475331201803621, -0.10318976102814,
+                                      -0.261357519143593, 0.402374946397552, 0.052886106369191, "-",
+                                      -0.0890439951881228, -0.284766070332761, 0.470233930910906,
+                                      0.0943541167911875, "contcor1", "debMiss30"))
 })
 

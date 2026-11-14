@@ -10,10 +10,9 @@ test_that("RegressionLinear (analysis 2) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[2]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("RegressionLinear", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset, opts)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -27,7 +26,7 @@ test_that("RegressionLinear (analysis 2) results match", {
     list("FALSE", 5.70627794978487, "M<unicode>", "(Intercept)", 1.59908972195528e-84,
      33.8574464300821, 193.2, "TRUE", 7.53657467947199, "M<unicode>",
      "(Intercept)", 5.96781719797365e-43, 17.7985283125294, 134.139937812074,
-     "FALSE", 0.0096323662152302, "M<unicode>", "jaspColumn1", 2.941979852166e-19,
+     "FALSE", 0.0096323662152302, "M<unicode>", "adverts", 2.941979852166e-19,
      0.578487741981689, 9.9793221962315, 0.0961244859738771))
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
@@ -44,10 +43,9 @@ test_that("Correlation (analysis 3) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[3]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("Correlation", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("Correlation", dataset, opts)
 
   plotName <- results[["results"]][["corrPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
@@ -55,13 +53,13 @@ test_that("Correlation (analysis 3) results match", {
 
   table <- results[["results"]][["mainTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list("<unicode>", "<unicode>", 0.578487741981689, 1.47098992608298e-19,
-     0.598918797598854, 3.71256583393742e-21, 0.326111052237613,
-     1.22366825028451e-06, "jaspColumn1", "", "", "<unicode>", "<unicode>",
-     0.101882810327344, 0.0755655792503954, 0.0807515070094318, 0.127832275464997,
-     "jaspColumn2", "", "", "", "", "<unicode>", "<unicode>", 0.181988633025724,
-     0.00495218610474086, "jaspColumn3", "", "", "", "", "", "",
-     "<unicode>", "<unicode>", "jaspColumn4"))
+    list(0.578487741981689, 1.47098992608298e-19, 0.598918797598854, 3.71256583393742e-21,
+     0.326111052237613, 1.22366825028451e-06, "<unicode>", "<unicode>",
+     "sales", "<unicode>", "<unicode>", 0.101882810327344, 0.0755655792503954,
+     0.0807515070094318, 0.127832275464997, "", "", "adverts", "",
+     "", "<unicode>", "<unicode>", 0.181988633025724, 0.00495218610474086,
+     "", "", "airplay", "", "", "", "", "<unicode>", "<unicode>",
+     "", "", "attract"))
 
 })
 
@@ -72,10 +70,9 @@ test_that("RegressionLinear (analysis 4) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[4]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("RegressionLinear", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset, opts)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -93,40 +90,39 @@ test_that("RegressionLinear (analysis 4) results match", {
     list("FALSE", 7.53657467947199, 119.277680821137, "M<unicode>", "(Intercept)",
      5.96781719797365e-43, 17.7985283125294, 134.139937812074, 149.002194803012,
      "FALSE", 0.0096323662152302, 0.0771292914445231, "M<unicode>",
-     "jaspColumn1", 2.941979852166e-19, 0.578487741981689, 9.9793221962315,
+     "adverts", 2.941979852166e-19, 0.578487741981689, 9.9793221962315,
      0.0961244859738771, 0.115119680503231, "TRUE", 17.3500005649351,
      -60.8296096716466, "M<unicode>", "(Intercept)", 0.126669773576494,
      -1.53388804006521, -26.6129583616785, 7.60369294828964, "FALSE",
-     0.00692301687199934, 0.0712316582019458, "M<unicode>", "jaspColumn1",
+     0.00692301687199934, 0.0712316582019458, "M<unicode>", "adverts",
      5.05493680123701e-26, 0.510846225434074, 12.2612477656671, 0.0848848251534775,
      0.0985379921050091, "FALSE", 0.277770831682515, 2.81962186317387,
-     "M<unicode>", "jaspColumn2", 1.32630717054867e-25, 0.511988143597586,
+     "M<unicode>", "airplay", 1.32630717054867e-25, 0.511988143597586,
      12.1230337617277, 3.36742517051031, 3.91522847784674, "FALSE",
-     2.43784926487601, 6.27855217709139, "M<unicode>", "jaspColumn3",
+     2.43784926487601, 6.27855217709139, "M<unicode>", "attract",
      9.49212095293173e-06, 0.191683427305029, 4.54758846836075, 11.0863352045519,
      15.8941182320124))
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_collinearityTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(0.107365142721572, "FALSE", 1, 1, 1.78526971455686, 0.107365142721572,
-     "M<unicode>", 0.892634857278428, "FALSE", 2.88340248305523,
-     2, 0.214730285443144, 0.892634857278428, "M<unicode>", 0.0027733197842981,
-     "TRUE", 1, 1, 3.56209116007091, 0.0225857350059735, 0.0112171605460822,
-     0.0029255359699434, "M<unicode>", 0.00638420233463998, "FALSE",
-     3.40061065062144, 2, 0.308028717932371, 0.959884547749367, 0.0534836169252785,
-     0.00762912419680946, "M<unicode>", 0.053686366785412, "FALSE",
-     5.70369260905288, 3, 0.109494626328104, 0.0152175030783237,
-     0.932404779245674, 0.0685406415888729, "M<unicode>", 0.93715611109565,
-     "FALSE", 13.2187952880243, 4, 0.0203854956686162, 0.00231221416633616,
-     0.00289444328296513, 0.920904698244374, "M<unicode>"))
+    list(0.107365142721572, "FALSE", 0.107365142721572, 1, 1, 1.78526971455686,
+     "M<unicode>", 0.892634857278428, "FALSE", 0.892634857278428,
+     2.88340248305523, 2, 0.214730285443144, "M<unicode>", 0.0027733197842981,
+     "TRUE", 0.0225857350059735, 0.0112171605460822, 0.0029255359699434,
+     1, 1, 3.56209116007091, "M<unicode>", 0.00638420233463998, "FALSE",
+     0.959884547749367, 0.0534836169252785, 0.00762912419680946,
+     3.40061065062144, 2, 0.308028717932371, "M<unicode>", 0.053686366785412,
+     "FALSE", 0.0152175030783237, 0.932404779245674, 0.0685406415888729,
+     5.70369260905288, 3, 0.109494626328104, "M<unicode>", 0.93715611109565,
+     "FALSE", 0.00231221416633616, 0.00289444328296513, 0.920904698244374,
+     13.2187952880243, 4, 0.0203854956686162, "M<unicode>"))
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_descriptivesTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(200, 80.698956672563, 5.70627794978487, 193.2, "jaspColumn4",
-     200, 485.655207961017, 34.3410090867798, 614.412255, "jaspColumn1",
-     200, 12.2695848979433, 0.867590668367979, 27.5, "jaspColumn2",
-     200, 1.39528999525341, 0.0986619017365434, 6.77, "jaspColumn3"
-    ))
+    list(200, 80.698956672563, 5.70627794978487, 193.2, "sales", 200, 485.655207961017,
+     34.3410090867798, 614.412255, "adverts", 200, 12.2695848979433,
+     0.867590668367979, 27.5, "airplay", 200, 1.39528999525341, 0.0986619017365434,
+     6.77, "attract"))
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_influenceTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
