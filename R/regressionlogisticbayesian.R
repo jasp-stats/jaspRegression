@@ -494,18 +494,10 @@ for sparse regression when there are more covariates than observations (Castillo
     upper = confInt[, 2]
   )
 
-  p <- try({
-    yBreaks <- jaspGraphs::getPrettyAxisBreaks(range(c(confInt)))
-    g <- ggplot2::ggplot(data = df, mapping = ggplot2::aes(x = x, y = y, ymin = lower, ymax = upper)) +
-      ggplot2::geom_point(size = 4) +
-      ggplot2::geom_errorbar(, width = 0.2) +
-      ggplot2::scale_x_discrete(name = "") +
-      ggplot2::scale_y_continuous(name = expression(beta), breaks = yBreaks, limits = range(yBreaks))
-    jaspGraphs::themeJasp(g) +
-      ggplot2::theme(
-        axis.title.y = ggplot2::element_text(angle = 0, vjust = .5, size = 20)
-      )
-  })
+  p <- try(.regressionPlotRecipe(
+    "jaspRegression:::.regressionDrawSummary",
+    list(df = df, confInt = confInt)
+  ))
 
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
@@ -559,16 +551,10 @@ for sparse regression when there are more covariates than observations (Castillo
     y = y
   )
 
-  p <- try({
-    xBreaks <- jaspGraphs::getPrettyAxisBreaks(dfPoints[["x"]], 3)
-    g <- jaspGraphs::drawAxis()
-    g <- g + ggplot2::geom_hline(yintercept = 0, linetype = 2, col = "gray")
-    g <- jaspGraphs::drawPoints(g, dat = dfPoints, size = 2, alpha = .85)
-    g <- jaspGraphs::drawSmooth(g, dat = dfPoints, color = "red", alpha = .7) +
-      ggplot2::ylab("Residuals") +
-      ggplot2::scale_x_continuous(name = gettext("Predictions under BMA"), breaks = xBreaks, limits = range(xBreaks))
-    jaspGraphs::themeJasp(g)
-  })
+  p <- try(.regressionPlotRecipe(
+    "jaspRegression:::.regressionDrawBMAResiduals",
+    list(dfPoints = dfPoints)
+  ))
 
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
@@ -598,14 +584,10 @@ for sparse regression when there are more covariates than observations (Castillo
     y = cum.prob
   )
 
-  p <- try({
-    xBreaks <- round(seq(1, bayesianLogisticRegModel$n.models, length.out = min(5, bayesianLogisticRegModel$n.models)))
-    g <- jaspGraphs::drawSmooth(dat = dfPoints, color = "red", alpha = .7)
-    g <- jaspGraphs::drawPoints(g, dat = dfPoints, size = 4) +
-      ggplot2::scale_y_continuous(name = gettext("Cumulative Probability"), limits = 0:1) +
-      ggplot2::scale_x_continuous(name = gettext("Model Search Order"), breaks = xBreaks)
-    jaspGraphs::themeJasp(g)
-  })
+  p <- try(.regressionPlotRecipe(
+    "jaspRegression:::.regressionDrawModelProbabilities",
+    list(dfPoints = dfPoints, nModels = bayesianLogisticRegModel$n.models)
+  ))
 
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
@@ -635,15 +617,10 @@ for sparse regression when there are more covariates than observations (Castillo
     y = logmarg
   )
 
-  p <- try({
-    # gonna assume here that dim (the number of parameters) is always an integer
-    xBreaks <- unique(round(pretty(dim)))
-    yBreaks <- jaspGraphs::getPrettyAxisBreaks(range(logmarg))
-    g <- jaspGraphs::drawPoints(dat = dfPoints, size = 4) +
-      ggplot2::scale_y_continuous(name = gettext("Log(P(data|M))"),  breaks = yBreaks, limits = range(yBreaks)) +
-      ggplot2::scale_x_continuous(name = gettext("Model Dimension"), breaks = xBreaks)
-    jaspGraphs::themeJasp(g)
-  })
+  p <- try(.regressionPlotRecipe(
+    "jaspRegression:::.regressionDrawModelComplexity",
+    list(dfPoints = dfPoints, dim = dim, logmarg = logmarg)
+  ))
 
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
@@ -689,23 +666,10 @@ for sparse regression when there are more covariates than observations (Castillo
   )
   base <- .1
 
-  p <- try({
-    yLimits <- c(0, base * ceiling(max(c(priorProb, probne0)) / base))
-    yBreaks <- seq(yLimits[1], yLimits[2], length.out = 5)
-
-    g <- ggplot2::ggplot(data = dfBar, mapping = ggplot2::aes(x = x, y = y)) +
-      ggplot2::geom_bar(width = width, stat = "identity", fill = "gray80", show.legend = FALSE)
-    g <- jaspGraphs::drawLines(g, dat = dfLine,
-                               mapping = ggplot2::aes(x = x, y = y, group = g, linetype = g0), show.legend = TRUE) +
-      ggplot2::scale_y_continuous(gettext("Marginal Inclusion Probability"), breaks = yBreaks, limits = yLimits) +
-      ggplot2::xlab("") +
-      ggplot2::scale_linetype_manual(name = "", values = 2, labels = gettext("Prior\nInclusion\nProbabilities"))
-
-    jaspGraphs::themeJasp(g, horizontal = TRUE, legend.position = "right") +
-      ggplot2::theme(
-        legend.title = ggplot2::element_text(size = .8*jaspGraphs::graphOptions("fontsize"))
-      )
-  })
+  p <- try(.regressionPlotRecipe(
+    "jaspRegression:::.regressionDrawInclusion",
+    list(dfBar = dfBar, dfLine = dfLine, width = width, base = base, priorProb = priorProb, probne0 = probne0)
+  ))
 
   if (isTryError(p)) {
     errorMessage <- gettextf("Plotting not possible: %s", .extractErrorMessage(p))
@@ -730,7 +694,7 @@ for sparse regression when there are more covariates than observations (Castillo
   p <- try({
     x <- fitted(bayesianLogisticRegModel, estimator = "BMA")
     y <- bayesianLogisticRegModel$Y - x
-    jaspGraphs::plotQQnorm(y)
+    .regressionPlotRecipe("jaspGraphs::plotQQnorm", list(residuals = y))
   })
 
   if (isTryError(p)) {
