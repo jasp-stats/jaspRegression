@@ -21,6 +21,11 @@
       dataset = dataset
     )
     options$modelTerms[[i]]$components <- tmp[[1]]
+
+    # term specification: the variable of each term definition (a constant offset has none)
+    for (j in seq_along(options$modelTerms[[i]][["definitions"]]))
+      if (!is.null(options$modelTerms[[i]][["definitions"]][[j]][["variable"]]))
+        options$modelTerms[[i]][["definitions"]][[j]][["variable"]] <- .harmonizeVariableEncoding(options$modelTerms[[i]][["definitions"]][[j]][["variable"]], dataset)
   }
   options
 }
