@@ -199,6 +199,36 @@ test_that("Linearity table results match", {
   )
 })
 
+test_that("Correlation matrix plot with ranks leaves out missing values", {
+  # x is missing in row 3 and y in row 6, so each variable has 7 values and there are 6 complete pairs.
+  # Ranked within the complete pairs, x (1, 2, 4, 5, 7, 8) becomes 1 to 6 and y (2, 1, 3, 6, 8, 7) becomes 2, 1, 3, 4, 6, 5
+  dataset <- data.frame(x = c(1, 2, NA, 4, 5, 6, 7, 8),
+                        y = c(2, 1, 4, 3, 6, NA, 8, 7))
+
+  options <- jaspTools::analysisOptions("CorrelationBayesian")
+  options$variables <- c("x", "y")
+  options$pearson <- FALSE
+  options$kendall <- TRUE
+  options$matrixPlot <- TRUE
+  options$priorWidth <- 1
+  set.seed(1)
+  results <- jaspTools::runAnalysis("CorrelationBayesian", dataset, options)
+  plotName <- results[["results"]][["matrixPlot"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  points <- ggplot2::layer_data(testPlot$subplots[[1]], 1)
+  expect_equal(points$x, c(1, 2, 3, 4, 5, 6))
+  expect_equal(points$y, c(2, 1, 3, 4, 6, 5))
+
+  # the histograms on the diagonal show the ranks of the 7 values of each variable
+  options$matrixPlotDensity <- TRUE
+  set.seed(1)
+  results <- jaspTools::runAnalysis("CorrelationBayesian", dataset, options)
+  plotName <- results[["results"]][["matrixPlot"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  expect_equal(sort(testPlot$subplots[[4]]$data$x), c(1, 2, 3, 4, 5, 6, 7))
+  expect_equal(sort(testPlot$subplots[[7]]$data$x), c(1, 2, 3, 4, 5, 6, 7))
+})
+
 
 # TODO(Alexander): Solve in  and perhaps in
 #   1. .drawPosteriorPlotCorBayes
