@@ -377,9 +377,10 @@
   # compute residuals
   stdResid <- .glmStdResidCompute(model = model, residType = residType, options = options)
 
-  p <- jaspGraphs::plotQQnorm(stdResid, ablineColor = "darkred", ablineOrigin = TRUE,
-                              identicalAxes = TRUE,
-                              ciLevel = ciLevel)
+  p <- .regressionPlotRecipe("jaspGraphs::plotQQnorm", list(
+    residuals = stdResid, ablineColor = "darkred", ablineOrigin = TRUE,
+    identicalAxes = TRUE, ciLevel = ciLevel
+  ))
 
   return(p)
 }
