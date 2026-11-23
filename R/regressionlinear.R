@@ -1350,7 +1350,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       # these don't exist for the intercept or categorical predictors.
       standCoeff <- NULL
       if (!identical(rawNames[[i]], "(Intercept)") && !hasFactors)
-        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, unstandCoeff)
+        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, unstandCoeff, options[["weights"]])
 
       # tolerance/ VIF is only shown for the first level of categorical variables/ interactions
       tolerance <- VIF <- NULL
@@ -1486,17 +1486,26 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   return(result)
 }
 
-.linregGetStandardizedCoefficient <- function(dataset, dependent, predictor, unstandCoeff) {
-  sdDependent <- sd(dataset[[dependent]])
+.linregGetStandardizedCoefficient <- function(dataset, dependent, predictor, unstandCoeff, weights = "") {
+  # with WLS weights, use weighted standard deviations, as the model does
+  # (the normalising constant cancels in the ratio, so sum(w) is used)
+  sdFun <- sd
+  if (weights != "") {
+    w     <- dataset[[weights]]
+    # NA for a term that is not a column of the data (quadratic terms), as sd() gives
+    sdFun <- function(x) if (is.null(x)) NA else sqrt(sum(w * (x - stats::weighted.mean(x, w))^2) / sum(w))
+  }
+
+  sdDependent <- sdFun(dataset[[dependent]])
 
   if (.linregIsInteraction(predictor))
-    sdIndependent <- sd(.linregMakeCombinedVariableFromInteraction(predictor, dataset))
+    sdIndependent <- sdFun(.linregMakeCombinedVariableFromInteraction(predictor, dataset))
   # else if (grepl(pattern = "I\\(([^)]+)\\^2\\)", predictor))
   #   # if quadratic term, calculate sd of squared variable
   #   # this is probably not conventional so for now we omit this calculation and don't present std b's
   #   sdIndependent <- sd(dataset[[gsub("\u00B2", "", .linregPrettyQuadraticName(predictor))]]^2)
   else
-    sdIndependent <- sd(dataset[[predictor]])
+    sdIndependent <- sdFun(dataset[[predictor]])
 
   return(unstandCoeff * sdIndependent / sdDependent)
 }
