@@ -665,8 +665,10 @@ CorrelationBayesianInternal <- function(jaspResults, dataset=NULL, options, ...)
     obj <- try(jaspGraphs::ggMatrixPlot(plotList = plotMat, leftLabels = labels, topLabels = labels,
                                         scaleXYlabels = 0.9, labelPos=labelPos))
   } else {
-    obj <- try(jaspGraphs::JASPScatterPlot(x = if (useRanks) rank(dataset[[options[["variables"]][1]]]) else dataset[[options[["variables"]][1]]],
-                                           y = if (useRanks) rank(dataset[[options[["variables"]][2]]]) else dataset[[options[["variables"]][2]]],
+    subData <- dataset[, vars, drop=FALSE]
+    subData <- subData[complete.cases(subData), , drop=FALSE]
+    obj <- try(jaspGraphs::JASPScatterPlot(x = if (useRanks) rank(subData[[vars[1]]]) else subData[[vars[1]]],
+                                           y = if (useRanks) rank(subData[[vars[2]]]) else subData[[vars[2]]],
                                            xName = labels[1],
                                            yName = labels[2],
                                            forceLinearSmooth = TRUE,
