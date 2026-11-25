@@ -32,6 +32,7 @@
 * Generalized Linear Model: for the Gaussian, Gamma, and Inverse Gaussian families, the Model Summary now shows the F statistic of the F-test that its p-value is based on, instead of the difference in deviance labelled Χ².
 * Generalized Linear Model: the Gamma and Inverse Gaussian families now show a clear error message when the dependent variable is not positive.
 * Linear Regression: with WLS weights, the Standardized coefficients now use weighted standard deviations, as the model does. In a model with one predictor and an intercept, this coefficient is now the weighted correlation, which equals R in size ([Issue #4727](https://github.com/jasp-stats/jasp-issues/issues/4727)).
+* Bayesian Correlation: with Kendall's tau-b, the correlation matrix plot no longer ranks missing values as the highest values. The scatter plot of two variables now shows only the complete pairs, and the histograms on the diagonal rank only the observed values ([Issue #4722](https://github.com/jasp-stats/jasp-issues/issues/4722)).
 
 ---
 

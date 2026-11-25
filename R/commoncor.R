@@ -124,7 +124,7 @@ gettextf <- function(fmt, ..., domain = NULL)  {
     return(.displayError(errorMessage = gettext("Plotting not possible: Infinite value(s)")))
 
   if (!options[["pearson"]])
-    variable <- rank(variable)
+    variable <- rank(variable, na.last = "keep")
 
   p <- .plotMarginalCor(variable = variable, xName = xName, yName = yName)
 
