@@ -1,0 +1,188 @@
+context("Library: Album Sales")
+
+# This test file was auto-generated from a JASP example file.
+# The JASP file is stored in tests/testthat/jaspfiles/library/.
+
+test_that("RegressionLinear (analysis 2) results match", {
+
+  # Run the R syntax of analysis 2 of the JASP example file on the data of the file
+  jaspFile <- testthat::test_path("jaspfiles", "library", "Album Sales.jasp")
+  set.seed(1)
+  results <- jaspTools::runAnalysisSyntax(jaspFile = jaspFile, jaspRegression::RegressionLinear(
+          data = NULL,
+          version = "0.96.5",
+          covariates = ~ adverts,
+          dependent = ~ sales,
+          modelTerms = list(list(components = list(types = list(), value = list()), name = "model0", title = "Model 0"), list(components = list(types = "scale", value = list("adverts")), name = "model1", title = "Model 1")),
+          optimizationPlotCustomParameterValues = list(optionKey = "variable", types = "scale", value = list(list(variable = "adverts"))),
+          rSquaredChange = FALSE,
+          residualCasewiseDiagnosticCooksDistanceThreshold = 0,
+          residualHistogramStandardizedPlot = FALSE))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list("TRUE", 99.5868714961987, 433687.832532257, 433687.832532257,
+     "Regression", 1, "M<unicode>", 2.94197985216596e-19, "FALSE",
+     4354.86953266537, 862264.167467743, "Residual", 198, "M<unicode>",
+     "FALSE", 1295952, "Total", 199, "M<unicode>"))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list("FALSE", 5.70627794978487, "M<unicode>", "(Intercept)", 1.59908972195528e-84,
+     33.8574464300821, 193.2, "TRUE", 7.53657467947199, "M<unicode>",
+     "(Intercept)", 5.96781719797365e-43, 17.7985283125294, 134.139937812074,
+     "FALSE", 0.0096323662152302, "M<unicode>", "adverts", 2.941979852166e-19,
+     0.578487741981689, 9.9793221962315, 0.0961244859738771))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list(0, 0, 80.698956672563, 0, "M<unicode>", 0.578487741981689, 0.334648067623073,
+     65.9914352978125, 0.33128770432824, "M<unicode>"))
+
+})
+
+test_that("Correlation (analysis 3) results match", {
+
+  # Run the R syntax of analysis 3 of the JASP example file on the data of the file
+  jaspFile <- testthat::test_path("jaspfiles", "library", "Album Sales.jasp")
+  set.seed(1)
+  results <- jaspTools::runAnalysisSyntax(jaspFile = jaspFile, jaspRegression::Correlation(
+          data = NULL,
+          version = "0.96.5",
+          alternative = "greater",
+          pairwiseDisplay = FALSE,
+          scatterPlot = TRUE,
+          scatterPlotDensity = TRUE,
+          scatterPlotStatistic = TRUE,
+          variables = ~ sales + adverts + airplay + attract))
+
+  plotName <- results[["results"]][["corrPlot"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "analysis-3_figure-1_correlation-plot")
+
+  table <- results[["results"]][["mainTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list(0.578487741981689, 1.47098992608298e-19, 0.598918797598854, 3.71256583393742e-21,
+     0.326111052237613, 1.22366825028451e-06, "<unicode>", "<unicode>",
+     "sales", "<unicode>", "<unicode>", 0.101882810327344, 0.0755655792503954,
+     0.0807515070094318, 0.127832275464997, "", "", "adverts", "",
+     "", "<unicode>", "<unicode>", 0.181988633025724, 0.00495218610474086,
+     "", "", "airplay", "", "", "", "", "<unicode>", "<unicode>",
+     "", "", "attract"))
+
+})
+
+test_that("RegressionLinear (analysis 4) results match", {
+
+  # Run the R syntax of analysis 4 of the JASP example file on the data of the file
+  jaspFile <- testthat::test_path("jaspfiles", "library", "Album Sales.jasp")
+  set.seed(1)
+  results <- jaspTools::runAnalysisSyntax(jaspFile = jaspFile, jaspRegression::RegressionLinear(
+          data = NULL,
+          version = "0.96.5",
+          coefficientCi = TRUE,
+          collinearityDiagnostic = TRUE,
+          covariates = ~ adverts + airplay + attract,
+          dependent = ~ sales,
+          descriptives = TRUE,
+          modelTerms = list(list(components = list(types = "scale", value = list("adverts")), name = "model0", title = "Model 0"), list(components = list(types = list("scale", "scale", "scale"), value = list("adverts", "airplay", "attract")), name = "model1", title = "Model 1")),
+          optimizationPlotCustomParameterValues = list(optionKey = "variable", types = list("scale", "scale", "scale"), value = list(list(variable = "adverts"), list(variable = "airplay"), list(variable = "attract"))),
+          residualCasewiseDiagnostic = TRUE,
+          residualCasewiseDiagnosticCooksDistanceThreshold = 0,
+          residualCasewiseDiagnosticZThreshold = 2,
+          residualHistogramPlot = TRUE,
+          residualQqPlot = TRUE,
+          residualVsFittedPlot = TRUE))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list("FALSE", 99.5868714961987, 433687.832532257, 433687.832532257,
+     "Regression", 1, "M<unicode>", 2.94197985216596e-19, "FALSE",
+     4354.86953266537, 862264.167467743, "Residual", 198, "M<unicode>",
+     "FALSE", 1295952, "Total", 199, "M<unicode>", "TRUE", 129.498273390974,
+     287125.806089999, 861377.418269998, "Regression", 3, "M<unicode>",
+     2.87553505648767e-46, "FALSE", 2217.2172537245, 434574.581730002,
+     "Residual", 196, "M<unicode>", "FALSE", 1295952, "Total", 199,
+     "M<unicode>"))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list("FALSE", 7.53657467947199, 119.277680821137, "M<unicode>", "(Intercept)",
+     5.96781719797365e-43, 17.7985283125294, 134.139937812074, 149.002194803012,
+     "FALSE", 0.0096323662152302, 0.0771292914445231, "M<unicode>",
+     "adverts", 2.941979852166e-19, 0.578487741981689, 9.9793221962315,
+     0.0961244859738771, 0.115119680503231, "TRUE", 17.3500005649351,
+     -60.8296096716466, "M<unicode>", "(Intercept)", 0.126669773576494,
+     -1.53388804006521, -26.6129583616785, 7.60369294828964, "FALSE",
+     0.00692301687199934, 0.0712316582019458, "M<unicode>", "adverts",
+     5.05493680123701e-26, 0.510846225434074, 12.2612477656671, 0.0848848251534775,
+     0.0985379921050091, "FALSE", 0.277770831682515, 2.81962186317387,
+     "M<unicode>", "airplay", 1.32630717054867e-25, 0.511988143597586,
+     12.1230337617277, 3.36742517051031, 3.91522847784674, "FALSE",
+     2.43784926487601, 6.27855217709139, "M<unicode>", "attract",
+     9.49212095293173e-06, 0.191683427305029, 4.54758846836075, 11.0863352045519,
+     15.8941182320124))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_collinearityTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list(0.107365142721572, "FALSE", 0.107365142721572, 1, 1, 1.78526971455686,
+     "M<unicode>", 0.892634857278428, "FALSE", 0.892634857278428,
+     2.88340248305523, 2, 0.214730285443144, "M<unicode>", 0.0027733197842981,
+     "TRUE", 0.0225857350059735, 0.0112171605460822, 0.0029255359699434,
+     1, 1, 3.56209116007091, "M<unicode>", 0.00638420233463998, "FALSE",
+     0.959884547749367, 0.0534836169252785, 0.00762912419680946,
+     3.40061065062144, 2, 0.308028717932371, "M<unicode>", 0.053686366785412,
+     "FALSE", 0.0152175030783237, 0.932404779245674, 0.0685406415888729,
+     5.70369260905288, 3, 0.109494626328104, "M<unicode>", 0.93715611109565,
+     "FALSE", 0.00231221416633616, 0.00289444328296513, 0.920904698244374,
+     13.2187952880243, 4, 0.0203854956686162, "M<unicode>"))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_descriptivesTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list(200, 80.698956672563, 5.70627794978487, 193.2, "sales", 200, 485.655207961017,
+     34.3410090867798, 614.412255, "adverts", 200, 12.2695848979433,
+     0.867590668367979, 27.5, "airplay", 200, 1.39528999525341, 0.0986619017365434,
+     6.77, "attract"))
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_influenceTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list(1, 0.0587038820601737, 330, 229.920254782558, 100.079745217442,
+     2.17740408238379, 2, 0.010889432250004, 120, 228.948991725879,
+     -108.948991725879, -2.32308277865479, 10, 0.017756471647924,
+     300, 200.466248756041, 99.5337512439587, 2.13028877629468, 47,
+     0.024115187915313, 40, 154.969819283836, -114.969819283836,
+     -2.46099615091923, 52, 0.0331591773716574, 190, 92.5973385351762,
+     97.4026614648238, 2.0994462133587, 55, 0.0404158965707359, 190,
+     304.123081395714, -114.123081395714, -2.45591293513707, 61,
+     0.00594835802830876, 300, 201.189704978232, 98.8102950217684,
+     2.1040787529007, 68, 0.0222889831193745, 70, 180.415641506173,
+     -110.415641506173, -2.36354940981169, 100, 0.0313640206351771,
+     250, 152.713339076214, 97.2866609237864, 2.09539916076742, 164,
+     0.0707658817516239, 120, 241.32404875998, -121.32404875998,
+     -2.62881409071654, 169, 0.0508669997203077, 360, 215.867537706139,
+     144.132462293861, 3.09333296653134, 200, 0.0251345530959372,
+     110, 207.206059703631, -97.2060597036309, -2.08804417375657
+    ))
+
+  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_residualsQQPlot"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "analysis-4_figure-1_q-q-plot-standardized-residuals")
+
+  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_residualsVsHistPlot"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "analysis-4_figure-2_standardized-residuals-histogram")
+
+  plotName <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_residualsVsPredPlot"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  jaspTools::expect_equal_plots(testPlot, "analysis-4_figure-3_residuals-vs-predicted")
+
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+    list(0.578487741981689, 0.334648067623073, 0.334648067623073, 65.9914352978125,
+     0.33128770432824, 1, 198, "M<unicode>", 2.94197985216596e-19,
+     0.815271541864743, 0.664667686974516, 0.330019619351443, 47.0873364475471,
+     0.659535049530249, 2, 196, "M<unicode>", 6.87939491037927e-30
+    ))
+
+})
+
