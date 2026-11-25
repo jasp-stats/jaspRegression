@@ -437,3 +437,23 @@ test_that("Performance plots match", {
   jaspTools::expect_equal_plots(testPlot, "prPlot")
 
 })
+
+test_that("The conditional estimates plot names the dependent variable after logistf is loaded", {
+  # logistf (Firth logistic regression in the generalized linear model) imports formula.tools, whose
+  # as.character() method gives a formula as one string
+  loadNamespace("logistf")
+
+  options <- initClassicalRegressionOptions("RegressionLogistic")
+  options$dependent <- "facGender"
+  options$covariates <- "contNormal"
+  options$modelTerms <- list(
+    list(components = NULL, name = "model0", title = "Model 0"),
+    list(components = list("contNormal"), name = "model1", title = "Model 1")
+  )
+  options$conditionalEstimatePlot <- TRUE
+  results <- jaspTools::runAnalysis("RegressionLogistic", "debug.csv", options)
+
+  plotName <- results[["results"]][["estimatesPlot"]][["collection"]][["estimatesPlot_contNormal"]][["data"]]
+  testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
+  expect_identical(deparse1(ggplot2::get_labs(testPlot)[["y"]]), deparse1(expression("P(" * "facGender" ~ "=" ~ "m" * ")")))
+})
