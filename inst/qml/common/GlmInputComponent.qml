@@ -23,6 +23,7 @@ import JASP.Controls
 // All Analysis forms must be built with the From QML item
 Group {
 	property bool otherFamilyNotSelected: family.currentValue !== "other";
+	property bool isOrdinalModel: family.currentValue === "other" && otherGlmModel.currentValue === "ordinalLogistic"
 
 	VariablesForm
 	{
