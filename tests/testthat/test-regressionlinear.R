@@ -993,3 +993,39 @@ test_that("VIF is correct when the model contains factors", {
          0.531086364342148, 0.416285068431465, 0.491762787848195, "H<unicode>"
     ))
 })
+
+test_that("Standardized coefficients use the WLS weights", {
+  # https://github.com/jasp-stats/jasp-issues/issues/4727
+  # with one predictor the standardized coefficient equals the weighted correlation, which is R:
+  # cov.wt(cbind(x, y), wt = w, cor = TRUE)$cor[1, 2] = sqrt(summary(lm(y ~ x, weights = w))$r.squared) = 0.788771149090996
+  dataset <- data.frame(y = c(4, 7, 1, 8, 4, 7, 8, 8),
+                        x = c(3, 9, 4, 8, 6, 7, 7, 6),
+                        w = c(1, 1, 4, 4, 4, 4, 4, 4))
+  options <- initOptsLinReg()
+  options$dependent <- "y"
+  options$covariates <- "x"
+  options$weights <- "w"
+  options$modelTerms <- list(
+    list(components = NULL, name = "model0", title = "Model 0"),
+    list(components = "x", name = "model1", title = "Model 1")
+  )
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset, options)
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
+  expect_equal(table[[3]][["standCoeff"]], 0.788771149090996, tolerance = 1e-8)
+
+  # with several predictors and an interaction: coef(lm(z(y) ~ z(x1) + z(x2) + z(x1 * x2), weights = w))
+  # where z() standardises with the weighted mean and the weighted standard deviation
+  dataset <- data.frame(y  = c(3, 6, 5, 9, 6, 9, 10, 2, 11, 8),
+                        x1 = c(2, 4, 3, 7, 5, 6, 8, 1, 9, 5),
+                        x2 = c(5, 3, 6, 2, 4, 7, 3, 6, 2, 8),
+                        w  = c(1, 2, 1, 3, 2, 1, 4, 2, 1, 3))
+  options$covariates <- c("x1", "x2")
+  options$modelTerms <- list(
+    list(components = NULL, name = "model0", title = "Model 0"),
+    list(components = list("x1", "x2", list("x1", "x2")), name = "model1", title = "Model 1")
+  )
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset, options)
+  table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_coeffTable"]][["data"]]
+  standCoeffs <- vapply(table[3:5], `[[`, numeric(1), "standCoeff")
+  expect_equal(standCoeffs, c(0.900633217756624, -0.00672368862837408, 0.199000668687073), tolerance = 1e-8)
+})
