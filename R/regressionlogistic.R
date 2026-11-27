@@ -1080,7 +1080,7 @@ RegressionLogisticInternal <- function(jaspResults, dataset = NULL, options, ...
   # Calculate ribbon & main line
   ribdat <- .glmLogRegRibbon(mObj, pred, options$conditionalEstimatePlotCi)
   # Find predicted level
-  predVar   <- as.character(mObj[["terms"]])[2]
+  predVar   <- deparse1(mObj[["terms"]][[2]])
   predLevel <- levels(mObj[["data"]][[predVar]])[2]
 
   # this will become the y-axis title

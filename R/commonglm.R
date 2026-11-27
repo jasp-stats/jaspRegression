@@ -669,7 +669,7 @@
 }
 
 .predLevel <- function(glmModel) {
-  predVar <- as.character(glmModel[["terms"]])[2]
+  predVar <- deparse1(glmModel[["terms"]][[2]])
   return(levels(glmModel[["data"]][[predVar]])[2])
 }
 
