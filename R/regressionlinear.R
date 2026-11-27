@@ -17,8 +17,17 @@
 
 RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
+  if (.linregIsAdvanced(options)) {
+    # every model has its own intercept; the global option now only drives the displays that assume one for all models
+    options[["interceptTerm"]]  <- all(vapply(options[["modelTerms"]], function(model) !isFALSE(model[["intercept"]]), logical(1L)))
+    options[["quadraticTerms"]] <- FALSE # the term specification has Power and Polynomial instead
+  }
+
   nModels <- length(options[["modelTerms"]])
-  ready <- options$dependent != "" && (length(options[["modelTerms"]][[nModels]][["components"]]) > 0 || options$interceptTerm)
+  ready <- if (.linregIsAdvanced(options)) # any model with a term (a constant offset has no components) or an intercept
+    options$dependent != "" && any(vapply(options[["modelTerms"]], function(model) length(model[["terms"]]) > 0 || !isFALSE(model[["intercept"]]), logical(1L)))
+  else
+    options$dependent != "" && (length(options[["modelTerms"]][[nModels]][["components"]]) > 0 || options$interceptTerm)
 
   if (ready) {
     dataset <- .linregReadDataset(dataset, options)
@@ -143,6 +152,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregCheckErrors <- function(dataset, options) {
+  if (.linregIsAdvanced(options) && options$method != "enter")
+    jaspBase::.quitAnalysis(gettext("The term specification supports the Enter method only."))
+  # the stepping methods take the predictors of Model 0 as fixed and those of the last model as candidates
+  if (options$method %in% c("backward", "forward", "stepwise") && length(options[["modelTerms"]]) < 2L)
+    jaspBase::.quitAnalysis(gettext("Backward, forward and stepwise need a second model: Model 0 has the predictors that stay in the model, the last model the candidates."))
+
   stepwiseProcedureChecks <- NULL
   if (options$method %in% c("backward", "forward", "stepwise")) {
     stepwiseProcedureChecks <- list(
@@ -264,10 +279,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
       summaryTable$addFootnote(message = gettext("p-value for Durbin-Watson test is unavailable for weighted regression."))
   }
 
-  if (options[["method"]] == "enter") {
-    for (i in seq_along(options$modelTerms))
-      .linregAddPredictorsInModelFootnote(summaryTable, options[["modelTerms"]][[i]][["components"]], i, options[["covariates"]], options[["quadraticTerms"]])
-  }
+  if (options[["method"]] == "enter")
+    .linregAddModelFootnotes(summaryTable, model, options)
+
+  if (.linregIsAdvanced(options) && !is.null(model) && (options[["rSquaredChange"]] || options[["fChange"]]))
+    .linregAddAdvancedChangeFootnotes(summaryTable, model)
 
   if (!is.null(model)) {
     if (length(model) == 1 && length(model[[1]]$predictors) == 0 && !options$interceptTerm)
@@ -319,10 +335,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   anovaTable$addColumnInfo(name = "F",     title = gettext("F"),              type = "number")
   anovaTable$addColumnInfo(name = "p",     title = gettext("p"),              type = "pvalue")
 
-  if (options[["method"]] == "enter") {
-    for (i in seq_along(options$modelTerms))
-      .linregAddPredictorsInModelFootnote(anovaTable, options[["modelTerms"]][[i]][["components"]], i, options[["covariates"]], options[["quadraticTerms"]])
-  }
+  if (options[["method"]] == "enter")
+    .linregAddModelFootnotes(anovaTable, model, options)
 
   .linregAddVovkSellke(anovaTable, options$vovkSellke)
 
@@ -548,16 +562,19 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
       coefs <- coef(model[[i]][["fit"]])
       names(coefs) <- .linregMakePrettyNames(model[[i]][["fit"]])
+      if (.linregIsAdvancedFit(model[[i]][["fit"]]) && attr(stats::terms(model[[i]][["fit"]]), "intercept") == 0L)
+        coefs <- c(0, coefs) # an advanced model without intercept: the equation starts at 0
 
       coefFormula <- paste(ifelse(sign(coefs[-1])==1, " +", " \u2013"),
                            .formatCoefEquation(abs(coefs[-1]), digits = .numDecimals),
                            names(coefs)[-1],
                            collapse = "", sep = " ")
       .linregGetParametersAndLevels(model[[i]][["fit"]])
+      offsets <- attr(model[[i]][["fit"]], "advancedOffsets") # coefficient 1: added by name
       # Now add dependent name and intercept
       filledFormula <- paste0(options[["dependent"]], " = ",
                               .formatCoefEquation(coefs[1], digits = .numDecimals),
-                              coefFormula)
+                              coefFormula, if (length(offsets) > 0L) paste0(" + ", offsets, collapse = ""))
 
       equationTable$addRows(list(
         model = model[[i]]$title,
@@ -642,7 +659,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   for (i in indicesOfModelsWithPredictors) {
     isNewGroup <- i > 1
 
-    covData <- .linregGetCovarianceMatrix(model[[i]]$fit, rawNames, prettyNames)
+    covData <- if (.linregIsAdvancedFit(model[[i]]$fit))
+      .linregGetCovarianceMatrixAdvanced(model[[i]]$fit, .linregPredictorNames(model))
+    else
+      .linregGetCovarianceMatrix(model[[i]]$fit, rawNames, prettyNames)
     if (nrow(covData) > 0) {
       covData <- cbind(covData, .isNewGroup = c(isNewGroup, rep(F, nrow(covData) - 1)), model = model[[i]]$title)
       covMatTable$addRows(covData)
@@ -661,7 +681,7 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   collDiagTable$addColumnInfo(name = "condIndex",  title = gettext("Condition Index"), type = "number")
 
   if (!is.null(model)) {
-    .linregAddPredictorsAsColumns(collDiagTable, model, options[["interceptTerm"]], overtitle = gettext("Variance Proportions"), format = "number")
+    .linregAddPredictorsAsColumns(collDiagTable, model, options[["interceptTerm"]] || .linregIsAdvanced(options), overtitle = gettext("Variance Proportions"), format = "number")   # term specification: the intercept column when a model has one
     .linregAddInterceptNotShownFootnote(collDiagTable, model, options)
     .linregFillCollinearityDiagnosticsTable(collDiagTable, model, options)
   }
@@ -727,6 +747,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (!is.null(finalModel)) {
     predictors <- finalModel$predictors
+    if (.linregIsAdvancedFit(finalModel$fit)) # advanced terms are expressions: plot against the raw covariates
+      predictors <- intersect(unlist(options$covariates), all.vars(stats::formula(finalModel$fit))[-1L])
 
     for (predictor in predictors)
       .linregCreatePlotPlaceholder(residualsVsCovContainer, index = .unvf(predictor), title = gettextf("Residuals vs. %s", .unvf(predictor)))
@@ -829,6 +851,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                                   "partialResidualPlotPredictionInterval", "partialResidualPlotPredictionIntervalLevel"))
   partialPlotContainer$position <- position
   modelContainer[["partialPlotContainer"]] <- partialPlotContainer
+
+  if (.linregIsAdvanced(options)) {
+    .linregCreatePlotPlaceholder(partialPlotContainer, index = "placeholder", title = "")
+    return(.linregAdvancedNotAvailable(partialPlotContainer, gettext("Partial plots")))
+  }
 
   predictors <- .linregGetPredictors(options$modelTerms[[length(options$modelTerms)]][["components"]])
   if (any(.linregIsInteraction(predictors))) {
@@ -936,6 +963,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
   if (options$method %in% c("backward", "forward", "stepwise") && length(predictorsInFull) > 0)
     model <- .linregGetModelSteppingMethod(dependent, predictorsInFull, predictorsInNull, dataset, options, weights)
+  else if (.linregIsAdvanced(options))
+    model <- .linregGetModelAdvanced(dependent, options, dataset, weights)
   else
     model <- .linregGetModelEnterMethod(dependent, modelTerms = options[["modelTerms"]], dataset, options, weights)
 
@@ -945,6 +974,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     model[[i]][["title"]]         <-  gettextf("M%s", intToUtf8(0x2080 + modNum - 1, multiple = FALSE)) # singleModel[["title"]]
     model[[i]][["summary"]]       <- .linregGetSummary(singleModel$fit)
     model[[i]][["rSquareChange"]] <- .linregGetrSquaredChange(singleModel$fit, i, model[1:i], options)
+    if (isFALSE(singleModel[["nested"]])) # advanced models that are not nested: the change is descriptive, no F test
+      model[[i]][["rSquareChange"]][c("Fc", "df1", "df2", "p")] <- NA
+    if (isFALSE(singleModel[["comparable"]])) # an uncentered R^2 (no intercept) next to a centered one: no change at all
+      model[[i]][["rSquareChange"]][["R2c"]] <- NA
   }
 
   modelContainer[["model"]] <- createJaspState(model)
@@ -1213,7 +1246,13 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     if (weights == "") # if regression is not weighted, calculate p-value with lmtest (car method is unstable)
       # TODO: this can fail when there are many interactions between factors. Do we want to show a footnote about that?
       durbinWatson[["p"]] <- tryCatch(
-        lmtest::dwtest(fit, alternative = c("two.sided"))$p.value,
+        if (is.null(fit$offset))
+          lmtest::dwtest(fit, alternative = c("two.sided"))$p.value
+        else { # lmtest refits without the offset: give it the response minus the offset (term specification)
+          response <- stats::model.response(stats::model.frame(fit)) - fit$offset
+          design   <- stats::model.matrix(fit)
+          lmtest::dwtest(response ~ design - 1, alternative = c("two.sided"))$p.value
+        },
         error = function(e) NaN
       )
   }
@@ -1232,7 +1271,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   if (currentIndex == 1) {
     # if we include the intercept, the number of coefficients to compare the null model to is 1
     # otherwise there are no coefficients
-    prevCoefs    <- if(options[["interceptTerm"]]) numeric(1) else numeric(0)
+    hasIntercept <- if (.linregIsAdvancedFit(fit)) attr(stats::terms(fit), "intercept") == 1L else options[["interceptTerm"]]
+    prevCoefs    <- if(hasIntercept) numeric(1) else numeric(0)
     prevRSquared <- 0
   } else {
     prevCoefs    <- stats::coefficients(processedModels[[currentIndex - 1]]$fit)
@@ -1344,22 +1384,27 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
     for (i in seq_along(names)) {
 
-      hasFactors <- any(dataClasses[rawNames[[i]]] == "factor")
+      hasFactors <- if (!is.null(attr(fit, "advancedCategorical"))) attr(fit, "advancedCategorical")[i] else any(dataClasses[rawNames[[i]]] == "factor")
       unstandCoeff <- estimates[i, "Estimate"]
       predictor <- paste(rawNames[[i]], collapse = ":")
       # these don't exist for the intercept or categorical predictors.
       standCoeff <- NULL
       if (!identical(rawNames[[i]], "(Intercept)") && !hasFactors)
-        standCoeff <- .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, unstandCoeff)
+        standCoeff <- if (.linregIsAdvancedFit(fit))
+          .linregGetStandardizedCoefficientAdvanced(fit, i, unstandCoeff)
+        else
+          .linregGetStandardizedCoefficient(dataset, options[["dependent"]], predictor, unstandCoeff)
 
-      # tolerance/ VIF is only shown for the first level of categorical variables/ interactions
+      # tolerance/ VIF is only shown for the first level of categorical variables/ interactions (and for the first column
+      # of a term with several, such as a polynomial or spline, of the term specification)
+      severalColumns <- hasFactors || (.linregIsAdvancedFit(fit) && sum(attr(fit[["x"]], "assign") == attr(fit[["x"]], "assign")[i]) > 1L)
       tolerance <- VIF <- NULL
-      if (!is.null(collinearityDiagnostics) && !identical(predictor, "(Intercept)") && (!hasFactors || !factorsSeen[[rawNames[[i]], nomatch = FALSE]])) {
+      if (!is.null(collinearityDiagnostics) && !identical(predictor, "(Intercept)") && (!severalColumns || !factorsSeen[[rawNames[[i]], nomatch = FALSE]])) {
 
         tolerance  <- collinearityDiagnostics[["tolerance"]][[predictor]]
         VIF        <- collinearityDiagnostics[["VIF"]][[predictor]]
 
-        if (hasFactors)
+        if (severalColumns)
           factorsSeen[[rawNames[[i]]]] <- TRUE
 
       }
@@ -1393,10 +1438,12 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetBootstrapCoefficients <- function(fit, dataset, options) {
-  .bootstrapping <- function(data, indices, formula, wlsWeights) {
+  .bootstrapping <- function(data, indices, formula, wlsWeights, advancedFit) {
     progressbarTick()
 
     d <- data[indices, , drop = FALSE] # allows boot to select sample
+    if (!is.null(advancedFit))
+      return(coef(.linregRefitAdvanced(advancedFit, d, wlsWeights)))
     if (wlsWeights == "") {
       fit <- lm(formula = formula, data = d)
     } else {
@@ -1420,7 +1467,8 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     summary <- boot::boot(data = dataset, statistic = .bootstrapping,
                           R = options$coefficientBootstrapSamples,
                           formula = formula(fit),
-                          wlsWeights = options$weights)
+                          wlsWeights = options$weights,
+                          advancedFit = if (.linregIsAdvancedFit(fit)) fit)   # its constant offset and weights follow the rows
 
     coefficients  <- matrixStats::colMedians(summary$t, na.rm = TRUE)
     bias          <- colMeans(summary$t, na.rm = TRUE) - summary$t0
@@ -1502,6 +1550,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetPartAndPartialCorrelation <- function(fit, predictors, dataset, options) {
+  if (.linregIsAdvancedFit(fit))
+    return(.linregGetPartAndPartialCorrelationAdvanced(fit))
+
   formula <- formula(fit)
   R2      <- summary(fit)[["r.squared"]]
 
@@ -1958,13 +2009,28 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 
 .linregAddPredictorsAsColumns <- function(jaspTable, model, includeIntercept = TRUE, type = "number", format = NULL, overtitle = NULL) {
 
-  titles <- .linregMakePrettyNames(model)
-  if (!includeIntercept)
-    titles <- titles[-1L]
+  titles <- if (includeIntercept) .linregMakePrettyNames(model) else .linregPredictorNames(model)
 
   for (title in titles)
     jaspTable$addColumnInfo(name = title, title = title, type = type, format = format, overtitle = overtitle)
 
+}
+
+# The display names of the coefficients of all models but their intercepts, found by R's name: a model may have no
+# intercept, and a predictor may be called like the translated intercept.
+.linregPredictorNames <- function(model) {
+  fits <- Filter(Negate(is.null), lapply(model, `[[`, "fit"))
+  return(unique(unlist(lapply(fits, function(fit) .linregMakePrettyNames(fit)[names(stats::coef(fit)) != "(Intercept)"]), use.names = FALSE)))
+}
+
+.linregAddModelFootnotes <- function(jaspTable, model, options) {
+  if (!.linregIsAdvanced(options)) {
+    for (i in seq_along(options$modelTerms))
+      .linregAddPredictorsInModelFootnote(jaspTable, options[["modelTerms"]][[i]][["components"]], i, options[["covariates"]], options[["quadraticTerms"]])
+  } else {
+    for (singleModel in model)
+      .linregAddPredictorsInModelFootnote(jaspTable, as.list(singleModel[["labels"]]), singleModel[["number"]], NULL, FALSE)
+  }
 }
 
 .linregAddPredictorsInModelFootnote <- function(jaspTable, modelTerms, modelIndex, covariates, quadraticTerms) {
@@ -2040,6 +2106,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
 }
 
 .linregGetParametersAndLevels.lm <- function(model) {
+  if (.linregIsAdvancedFit(model))
+    return(.linregGetParametersAndLevelsAdvanced(model))
+
   predictors <- all.vars(formula(model))[-1L]
   .linregGetParametersAndLevels(.linregGetParameterNames(model), predictors)
 }
@@ -2109,6 +2178,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
     # we could also distinguish between these cases by giving the return value of .linregGetParametersAndLevels a class.
     return(unique(unlist(lapply(info, function(x) .linregMakePrettyNames.lm(x[["fit"]])), use.names = FALSE)))
   }
+
+  if (!is.null(info[["prettyNames"]])) # advanced fits: the labels of jaspBase::modelTermsLabels()
+    return(info[["prettyNames"]])
 
   title <- character(length(info[["paramsRaw"]]))
   for (j in seq_along(title)) {
@@ -2184,6 +2256,11 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
                                     "marginalPlotPredictionInterval", "marginalPlotPredictionIntervalLevel"))
   marginalPlotsContainer$position <- position
   modelContainer[["marginalPlotsContainer"]] <- marginalPlotsContainer
+
+  if (.linregIsAdvanced(options)) {
+    .linregCreatePlotPlaceholder(marginalPlotsContainer, index = "placeholder", title = "")
+    return(.linregAdvancedNotAvailable(marginalPlotsContainer, gettext("Marginal effects plots")))
+  }
 
   if (!is.null(finalModel)) {
     predictors <- finalModel$predictors
@@ -2444,6 +2521,10 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   }
   roContainer <- modelContainer[["responseOptimizer"]]
 
+  # a rank or normal-score term depends on the whole sample: a single new row has no rank of its own
+  if (isTRUE(attr(fit, "sampleDependent")))
+    return(roContainer$setError(gettext("The response optimizer is not available for models with rank or normal-score terms.")))
+
   # Get optimizer settings
   goal <- options[["responseOptimizerGoal"]]
   if (is.null(goal) || identical(goal, "")) goal <- "maximize"
@@ -2520,7 +2601,9 @@ RegressionLinearInternal <- function(jaspResults, dataset = NULL, options) {
   for (fac in factors) {
     newdata[[fac]] <- factor(as.character(settings[[fac]]), levels = levels(dataset[[fac]]))
   }
-  return(as.numeric(predict(fit, newdata = newdata)))
+  prediction <- as.numeric(predict(fit, newdata = newdata))
+  constant   <- attr(fit, "constantOffset") # an advanced fit: predict() adds the offsets of the formula, not this one
+  return(if (is.null(constant)) prediction else prediction + constant)
 }
 
 .linregPredictDesirability <- function(contValues, fit, dataset, covariates, factors,

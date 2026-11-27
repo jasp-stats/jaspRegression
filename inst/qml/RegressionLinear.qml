@@ -63,13 +63,18 @@ Form
 			info: qsTr("Model terms: The independent variables in the model. By default, all the main effects of the specified independent variables are included in the model. To include interactions, click multiple variables by holding the ctrl/command button while clicking, and drag those into the Model Terms box.")
 			nested:				nested.checked
 			allowInteraction:	true
-			initNumberFactors:	2
+			initNumberFactors:	1		// pilot: one model to start with (more with +)
 			baseName:			"model"
 			baseTitle:			"Model"
 			availableVariablesList.source: ['covariates', 'factors']
 			startIndex:			0
 			availableVariablesListName: "availableTerms"
 			allowedColumns:		[]
+			advancedAvailable:	true
+			advanced:			true	// pilot: new analyses start with the term specification (saved analyses keep theirs)
+			// the general specifications of the installed JASP, and the ones this analysis supports on top of them
+			continuousSpecifications:	["default", "offset", "offsetConstant", "rank", "normalScores"]
+			categoricalSpecifications:	["default", "indicator"]
 		}
 
 		CheckBox
@@ -81,9 +86,10 @@ Form
 			visible: 	false
 		}
 
-		CheckBox { name: "interceptTerm"; label: qsTr("Include intercept"); info: qsTr("Include the intercept in the regression model.") ; checked: true }
+		// shown without the term specification only: with it, each model has its own intercept and powers
+		CheckBox { name: "interceptTerm"; visible: !factors.advancedActive; label: qsTr("Include intercept"); info: qsTr("Include the intercept in the regression model.") ; checked: true }
 
-		CheckBox { name: "quadraticTerms"; label: qsTr("Include quadratic terms"); info: qsTr("Include quadratic terms for the covariates in each model.") }
+		CheckBox { name: "quadraticTerms"; visible: !factors.advancedActive; label: qsTr("Include quadratic terms"); info: qsTr("Include quadratic terms for the covariates in each model.") }
 
 	}
 

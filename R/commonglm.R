@@ -828,11 +828,14 @@
     for (option in tableOptionsClicked) {
       if (option == "dfbetas") {
         predictors <- names(model$coefficients)
+        labels     <- attr(model, "advancedLabels") # display labels of an advanced Linear Regression fit
         for (predictor in predictors) {
           dfbetasName  <- gettextf("DFBETAS_%1s", predictor)
           colNameList <- c(colNameList, dfbetasName)
           if (predictor == "(Intercept)")
             dfbetasTitle <- gettext("DFBETAS:Intercept")
+          else if (!is.null(labels))
+            dfbetasTitle <- gettextf("DFBETAS:%1s", labels[match(predictor, predictors)])
           else
             dfbetasTitle <- gettextf("DFBETAS:%1s", gsub(":", "*", predictor))
           influenceTable$addColumnInfo(name = dfbetasName, title = dfbetasTitle, type = "number")
