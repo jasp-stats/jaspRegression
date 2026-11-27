@@ -10,10 +10,9 @@ test_that("RegressionLinear (analysis 2) results match", {
   opts <- jaspTools::analysisOptions(jaspFile)[[2]]
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("RegressionLinear", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("RegressionLinear", dataset, opts)
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_anovaTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
@@ -29,7 +28,7 @@ test_that("RegressionLinear (analysis 2) results match", {
      "TRUE", 1.41197828710779, 26.7762221827865, "M<unicode>", "(Intercept)",
      5.70690457996434e-38, 20.9480892235324, 29.5782471400245, 32.3802720972626,
      "FALSE", 0.158336131923101, -0.968898666442348, "M<unicode>",
-     "jaspColumn1", 7.50303223656677e-05, -0.385409058932744, -4.13478438443952,
+     "PA", 7.50303223656677e-05, -0.385409058932744, -4.13478438443952,
      -0.654685765768193, -0.340472865094038))
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_summaryTable"]][["data"]]

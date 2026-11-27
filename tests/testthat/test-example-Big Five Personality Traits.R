@@ -10,50 +10,49 @@ test_that("Correlation results match", {
   opts <- jaspTools::analysisOptions(jaspFile)
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("Correlation", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("Correlation", dataset, opts)
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn1_jaspColumn2"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Agreeableness_Conscientiousness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-1_jaspcolumn1-vs-jaspcolumn2")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-1_agreeableness-vs-conscientiousness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn1_jaspColumn3"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Extraversion_Agreeableness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-2_jaspcolumn1-vs-jaspcolumn3")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-2_extraversion-vs-agreeableness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn1_jaspColumn4"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Extraversion_Conscientiousness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-3_jaspcolumn1-vs-jaspcolumn4")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-3_extraversion-vs-conscientiousness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn1_jaspColumn5"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Extraversion_Openness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-4_jaspcolumn1-vs-jaspcolumn5")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-4_extraversion-vs-openness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn2_jaspColumn3"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Neuroticism_Agreeableness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-5_jaspcolumn2-vs-jaspcolumn3")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-5_neuroticism-vs-agreeableness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn2_jaspColumn4"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Neuroticism_Conscientiousness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-6_jaspcolumn2-vs-jaspcolumn4")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-6_neuroticism-vs-conscientiousness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn2_jaspColumn5"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Neuroticism_Extraversion"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-7_jaspcolumn2-vs-jaspcolumn5")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-7_neuroticism-vs-extraversion")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn3_jaspColumn4"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Neuroticism_Openness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-8_jaspcolumn3-vs-jaspcolumn4")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-8_neuroticism-vs-openness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn3_jaspColumn5"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Openness_Agreeableness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-9_jaspcolumn3-vs-jaspcolumn5")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-9_openness-vs-agreeableness")
 
-  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_jaspColumn4_jaspColumn5"]][["data"]]
+  plotName <- results[["results"]][["corrPlot"]][["collection"]][["corrPlot_Openness_Conscientiousness"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
-  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-10_jaspcolumn4-vs-jaspcolumn5")
+  jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-10_openness-vs-conscientiousness")
 
   plotName <- results[["results"]][["heatmaps"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
@@ -61,23 +60,24 @@ test_that("Correlation results match", {
 
   table <- results[["results"]][["mainTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(-0.350078559661139, -0.424730517332571, 7.3229619483706e-16, -0.270698020821203,
-     "-", "jaspColumn1", "jaspColumn2", -0.0103826467347444, -0.0979840238070771,
-     0.816857869597485, 0.0773783908706577, "-", "jaspColumn1", "jaspColumn3",
-     -0.134322225812043, -0.219428213531435, 0.0026153282451028,
-     -0.0471874494565636, "-", "jaspColumn1", "jaspColumn4", -0.368006436206105,
-     -0.441451087941555, 1.75902170749649e-17, -0.289663492413263,
-     "-", "jaspColumn1", "jaspColumn5", 0.267130892389201, 0.18374449471465,
-     1.28782907848919e-09, 0.346700077546044, "-", "jaspColumn2",
-     "jaspColumn3", 0.0545473493953726, -0.033302533897992, 0.223387556959248,
-     0.141560810754256, "-", "jaspColumn2", "jaspColumn4", 0.0645917390961748,
-     -0.0232304277256849, 0.149244102980625, 0.151424644297581, "-",
-     "jaspColumn2", "jaspColumn5", 0.159208473526591, 0.0725304901911447,
-     0.000351675992676603, 0.243499543445293, "-", "jaspColumn3",
-     "jaspColumn4", -0.0134488495998729, -0.10102030021429, 0.76418760028676,
-     0.0743293974929718, "-", "jaspColumn3", "jaspColumn5", 0.158670001224872,
-     0.0719809468027763, 0.000368493644268167, 0.242979800569512,
-     "-", "jaspColumn4", "jaspColumn5"))
+    list(-0.350078559679593, -0.424730517349808, 7.3229619211462e-16, -0.270698020840693,
+     "-", "Neuroticism", "Extraversion", -0.010382646757846, -0.0979840238299593,
+     0.816857869197202, 0.077378390847692, "-", "Neuroticism", "Openness",
+     -0.134322225752612, -0.219428213473826, 0.00261532825667304,
+     -0.0471874493961752, "-", "Neuroticism", "Agreeableness", -0.368006436237568,
+     -0.441451087970854, 1.75902169561888e-17, -0.2896634924466,
+     "-", "Neuroticism", "Conscientiousness", 0.267130892411439,
+     0.183744494737788, 1.28782907428469e-09, 0.346700077567113,
+     "-", "Extraversion", "Openness", 0.0545473493385421, -0.0333025339549289,
+     0.223387557442278, 0.141560810698398, "-", "Extraversion", "Agreeableness",
+     0.0645917390761422, -0.0232304277457905, 0.149244103107034,
+     0.151424644277926, "-", "Extraversion", "Conscientiousness",
+     0.159208473487536, 0.0725304901512851, 0.000351675993869984,
+     0.243499543407598, "-", "Openness", "Agreeableness", -0.0134488495677684,
+     -0.101020300182508, 0.764187600833046, 0.0743293975249047, "-",
+     "Openness", "Conscientiousness", 0.158670001176117, 0.0719809467530214,
+     0.000368493645824265, 0.242979800522451, "-", "Agreeableness",
+     "Conscientiousness"))
 
 })
 

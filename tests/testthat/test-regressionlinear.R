@@ -133,8 +133,8 @@ test_that("Part and Partial Correlations table results match", {
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_partialCorTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
                                  list("FALSE", "M<unicode>", "debCollin2", -0.0094541786161782, -0.0094541786161782,
-                                      "TRUE", "M<unicode>", "contGamma", -0.0617145529439822, -0.0617173111983367,
-                                      "FALSE", "M<unicode>", "debCollin2", -0.0198338559459935, -0.0198687032851424
+                                      "TRUE", "M<unicode>", "debCollin2", -0.0198338559459933, -0.0198687032851422,
+                                      "FALSE", "M<unicode>", "contGamma", -0.0617145529439821, -0.0617173111983366
                                  )
   )
 })
@@ -342,14 +342,11 @@ test_that("Analysis handles errors", {
   results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
   expect_identical(results[["status"]], "validationError", label="Inf dependent check")
 
+  # the form refuses debInf as a covariate (a single distinct value), contInf has one infinite value
   options$dependent <- "contNormal"
-  options$covariates <- "debInf"
-  options$modelTerms <- list(
-    list(components=NULL, name="model0", title = "Model 0"),
-    list(components=list(options$covariates), name="model1", title = "Model 1")
-  )
-  options$modelTerms <- list(list(components="debInf", name="model0", title = "Model 0"))
-  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
+  options$covariates <- "contInf"
+  options$modelTerms <- list(list(components="contInf", name="model0", title = "Model 0"))
+  results <- jaspTools::runAnalysis("RegressionLinear", testDataWithCheckColumns(), options)
   expect_identical(results[["status"]], "validationError", label="Inf covariate check")
 
   options$covariates <- "contGamma"
@@ -377,8 +374,9 @@ test_that("Analysis handles errors", {
     list(components=NULL, name="model0", title = "Model 0"),
     list(components=list(options$covariates), name="model1", title = "Model 1")
   )
-  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  expect_identical(results[["status"]], "validationError", label="No variance covariate check")
+  expect_error(jaspTools::runAnalysis("RegressionLinear", "test.csv", options),
+               "Minimum number of numeric values is 2. Variable debSame has only 1 different numeric values", fixed = TRUE,
+               label="No variance covariate check")
 
   options$dependent <- "contGamma"
   options$covariates <- "contcor1"
@@ -397,8 +395,9 @@ test_that("Analysis handles errors", {
     list(components=NULL, name="model0", title = "Model 0"),
     list(components=list(options$covariates), name="model1", title = "Model 1")
   )
-  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  expect_identical(results[["status"]], "validationError", label="Too few obs dependent check")
+  expect_error(jaspTools::runAnalysis("RegressionLinear", "test.csv", options),
+               "Minimum number of numeric values is 1. Variable debNaN has only 0 different numeric values", fixed = TRUE,
+               label="Too few obs dependent check")
 
   options$dependent <- "contGamma"
   options$covariates <- "debNaN"
@@ -406,8 +405,9 @@ test_that("Analysis handles errors", {
     list(components=NULL, name="model0", title = "Model 0"),
     list(components=list(options$covariates), name="model1", title = "Model 1")
   )
-  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  expect_identical(results[["status"]], "validationError", label="Too few obs covariate check")
+  expect_error(jaspTools::runAnalysis("RegressionLinear", "test.csv", options),
+               "Minimum number of numeric values is 2. Variable debNaN has only 0 different numeric values", fixed = TRUE,
+               label="Too few obs covariate check")
 
   options$dependent <- "contGamma"
   options$covariates <- "contNormal"
@@ -416,8 +416,9 @@ test_that("Analysis handles errors", {
     list(components=NULL, name="model0", title = "Model 0"),
     list(components=list(options$covariates), name="model1", title = "Model 1")
   )
-  results <- jaspTools::runAnalysis("RegressionLinear", "test.csv", options)
-  expect_identical(results[["status"]], "validationError", label="Too few obs weights check")
+  expect_error(jaspTools::runAnalysis("RegressionLinear", "test.csv", options),
+               "Minimum number of numeric values is 1. Variable debNaN has only 0 different numeric values", fixed = TRUE,
+               label="Too few obs weights check")
 
   options <- jaspTools::analysisOptions("RegressionLinear")
   options$dependent <- "contNormal"
@@ -495,24 +496,24 @@ test_that("Bootstrapping runs", {
 
   table <- results[["results"]][["modelContainer"]][["collection"]][["modelContainer_bootstrapCoeffTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-                                 list("FALSE", 0.0998957223362395, -0.000889223735744071, -0.400661842088638,
-                                      "H<unicode>", "(Intercept)", 0.1200000001, -0.198940836903414,
-                                      0.0235981427404004, "FALSE", 0.112187827694195, -0.00253188343531965,
-                                      -0.0441455978813581, "H<unicode>", "contcor1", 0.1800000001,
-                                      0.176524255654758, 0.394786085624383, "TRUE", 0.175150315273731,
-                                      -0.00289810869532725, -0.654200114073205, "H<unicode>", "(Intercept)",
-                                      0.0700000001, -0.361576874223558, 0.0143680426079194, "FALSE",
-                                      0.116836035315656, 0.0113358413902619, -0.0430592781366748,
-                                      "H<unicode>", "contcor1", 0.1200000001, 0.191798786560478, 0.443064395802951,
-                                      "FALSE", 0.274053233142539, -0.0338647998948993, -0.663094065407741,
-                                      "H<unicode>", "facFive (2)", 0.9900000001, -0.0182010680002372,
-                                      0.520022559578832, "FALSE", 0.321752383164526, -0.0110564722644724,
-                                      -0.0861099530443645, "H<unicode>", "facFive (3)", 0.1200000001,
-                                      0.529159014118249, 1.11379895505474, "FALSE", 0.326698225179954,
-                                      -0.0131956271183243, -0.714263511271674, "H<unicode>", "facFive (4)",
-                                      0.9200000001, -0.0271369694556396, 0.636248056838376, "FALSE",
-                                      0.336066363446404, 0.0515283211744709, -0.404736238389874, "H<unicode>",
-                                      "facFive (5)", 0.6200000001, 0.385401773180763, 0.837810349834156
+                                 list("FALSE", 0.11073235853296, 0.00191788421934722, -0.43442722668221,
+                                      "M<unicode>", "(Intercept)", 0.0800000001, -0.197418028837481,
+                                      0.0288130065571982, "FALSE", 0.11452902405485, 0.00418482841679538,
+                                      -0.020717190917827, "M<unicode>", "contcor1", 0.1700000001,
+                                      0.172246647640362, 0.413317808786661, "TRUE", 0.172119984194013,
+                                      0.00178831436723675, -0.703559792529432, "M<unicode>", "(Intercept)",
+                                      0.0400000001, -0.344410402566418, -0.0421571876889891, "FALSE",
+                                      0.111380392845284, 0.00392835331721267, -0.0264265297206333,
+                                      "M<unicode>", "contcor1", 0.0900000001, 0.184738361769119, 0.408487141752064,
+                                      "FALSE", 0.246974784074955, -0.00151465398510327, -0.590887384995991,
+                                      "M<unicode>", "facFive (2)", 0.8700000001, -0.00501676070321145,
+                                      0.491304466532988, "FALSE", 0.32777313979979, -0.00117245889452167,
+                                      0.0281777225625422, "M<unicode>", "facFive (3)", 0.0400000001,
+                                      0.494650964943703, 1.31579806783013, "FALSE", 0.285482839169982,
+                                      0.00239407746841372, -0.62223702753946, "M<unicode>", "facFive (4)",
+                                      0.8500000001, -0.0628504250479154, 0.525008770969966, "FALSE",
+                                      0.323456454621169, 0.00998699071976084, -1.01274730074905, "M<unicode>",
+                                      "facFive (5)", 0.5700000001, 0.323508910403083, 0.803874682329656
                                       )
                                  )
 })

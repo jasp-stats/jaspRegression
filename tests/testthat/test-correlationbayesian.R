@@ -79,20 +79,21 @@ test_that("Bayesian Correlation Matrix Plot matches", {
 test_that("Analysis handles errors", {
   options <- jaspTools::analysisOptions("CorrelationBayesian")
 
-  options$variables <- c("contNormal", "debInf")
-  results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
+  # the form refuses debInf (a single distinct value), contInf has one infinite value
+  options$variables <- c("contNormal", "contInf")
+  results <- jaspTools::runAnalysis("CorrelationBayesian", testDataWithCheckColumns(), options)
   notes <- unlist(results[["results"]][["corBayesTable"]][["footnotes"]])
   expect_true(any(grepl("infinity", notes, ignore.case=TRUE)), label = "Inf check")
 
   options$variables <- c("contNormal", "debSame")
-  results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
-  notes <- unlist(results[["results"]][["corBayesTable"]][["footnotes"]])
-  expect_true(any(grepl("variance", notes, ignore.case=TRUE)), label = "No variance check")
+  expect_error(jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options),
+               "Minimum number of numeric values is 2. Variable debSame has only 1 different numeric values", fixed = TRUE,
+               label = "No variance check")
 
   options$variables <- c("contNormal", "debMiss99")
-  results <- jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options)
-  notes <- unlist(results[["results"]][["corBayesTable"]][["footnotes"]])
-  expect_true(any(grepl("observations", notes, ignore.case=TRUE)), label = "Too few obs check")
+  expect_error(jaspTools::runAnalysis("CorrelationBayesian", "test.csv", options),
+               "Minimum number of numeric values is 2. Variable debMiss99 has only 1 different numeric values", fixed = TRUE,
+               label = "Too few obs check")
 })
 
 

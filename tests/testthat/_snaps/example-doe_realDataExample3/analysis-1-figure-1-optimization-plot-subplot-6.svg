@@ -55,8 +55,8 @@
 <text x='189.85' y='548.80' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>1</text>
 <text x='393.76' y='548.80' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>2</text>
 <text x='597.66' y='548.80' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='9.46px' lengthAdjust='spacingAndGlyphs'>3</text>
-<text x='393.76' y='572.82' text-anchor='middle' style='font-size: 15.30px; font-family: sans;' textLength='89.31px' lengthAdjust='spacingAndGlyphs'>jaspColumn4</text>
-<text transform='translate(10.53,271.17) rotate(-90)' text-anchor='middle' style='font-size: 15.30px; font-family: sans;' textLength='89.31px' lengthAdjust='spacingAndGlyphs'>jaspColumn3</text>
+<text x='393.76' y='572.82' text-anchor='middle' style='font-size: 15.30px; font-family: sans;' textLength='46.78px' lengthAdjust='spacingAndGlyphs'>Nozzle</text>
+<text transform='translate(10.53,271.17) rotate(-90)' text-anchor='middle' style='font-size: 15.30px; font-family: sans;' textLength='67.20px' lengthAdjust='spacingAndGlyphs'>Syruploss</text>
 <text x='393.76' y='11.70' text-anchor='middle' style='font-size: 17.00px; font-family: sans;' textLength='352.49px' lengthAdjust='spacingAndGlyphs'>analysis-1_figure-1_optimization-plot-subplot-6</text>
 </g>
 </svg>

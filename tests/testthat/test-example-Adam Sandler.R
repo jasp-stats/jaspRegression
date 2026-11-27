@@ -10,29 +10,28 @@ test_that("CorrelationBayesian results match", {
   opts <- jaspTools::analysisOptions(jaspFile)
   dataset <- jaspTools::extractDatasetFromJASPFile(jaspFile)
 
-  # Encode and run analysis
-  encoded <- jaspTools:::encodeOptionsAndDataset(opts, dataset)
+  # Run analysis
   set.seed(1)
-  results <- jaspTools::runAnalysis("CorrelationBayesian", encoded$dataset, encoded$options, encodedDataset = TRUE)
+  results <- jaspTools::runAnalysis("CorrelationBayesian", dataset, opts)
 
   table <- results[["results"]][["corBayesTable"]][["data"]]
   jaspTools::expect_equal_tables(table,
-    list(5.02017487281891, -0.0286389027751801, "-", "jaspColumn1", "jaspColumn2"
+    list(5.02017487281891, -0.0286389027751801, "-", "Freshness", "Box Office ($M)"
     ))
 
-  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_bfRobustnessPlot"]][["data"]]
+  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness_bfRobustnessPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-1_bayes-factor-robustness-check", tolerance = 1e-3)
 
-  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_bfSequentialPlot"]][["data"]]
+  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness_bfSequentialPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-2_sequential-analysis", tolerance = 1e-3)
 
-  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_priorPosteriorPlot"]][["data"]]
+  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness_priorPosteriorPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-3_prior-and-posterior")
 
-  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2"]][["collection"]][["pairsPlotCollection_jaspColumn1-jaspColumn2_scatterPlot"]][["data"]]
+  plotName <- results[["results"]][["pairsPlotCollection"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness"]][["collection"]][["pairsPlotCollection_Box Office ($M)-Freshness_scatterPlot"]][["data"]]
   testPlot <- results[["state"]][["figures"]][[plotName]][["obj"]]
   jaspTools::expect_equal_plots(testPlot, "analysis-1_figure-4_scatterplot")
 
