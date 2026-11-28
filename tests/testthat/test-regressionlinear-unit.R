@@ -45,3 +45,34 @@ test_that("Test that .linregBinScaleVariable handles zero-variance input", {
   binned <- jaspRegression:::.linregBinScaleVariable(rep(5, 10), method = "sd", nGroups = 3)
   expect_identical(nlevels(binned), 1L)
 })
+
+test_that("Test that .linregCustomGroupLabels extracts one label per row", {
+  rows <- list(list(label = "Lo", value = "1"), list(label = "", value = "2"), list(value = "3"))
+  expect_identical(jaspRegression:::.linregCustomGroupLabels(rows), c("Lo", "", ""))
+  expect_identical(jaspRegression:::.linregCustomGroupLabels(NULL), character(0))
+})
+
+test_that("Test that .linregResolveGroupLabels falls back to the defaults", {
+  defaults <- c("Low", "Medium", "High")
+  # empty and whitespace-only labels keep the default
+  expect_identical(jaspRegression:::.linregResolveGroupLabels(c(" Lo ", "", "  "), defaults), c("Lo", "Medium", "High"))
+  # a label count that does not match the bins is ignored
+  expect_identical(jaspRegression:::.linregResolveGroupLabels(c("Lo", "Hi"), defaults), defaults)
+  expect_identical(jaspRegression:::.linregResolveGroupLabels(character(0), defaults), defaults)
+})
+
+test_that("Test that .linregBinScaleVariable uses custom labels", {
+  x <- seq(0, 100, by = 1)
+
+  binned <- jaspRegression:::.linregBinScaleVariable(x, method = "sd", nGroups = 3, labels = c("Lo", "", "Hi"))
+  expect_identical(levels(binned), c("Lo", "Medium", "Hi"))
+  expect_identical(as.character(binned[x == 100]), "Hi")
+
+  binned2 <- jaspRegression:::.linregBinScaleVariable(1:100, method = "percentile", nGroups = 2, labels = c("Bottom", "Top"))
+  expect_identical(levels(binned2), c("Bottom", "Top"))
+
+  # ties merge percentile bins, so the custom labels no longer match and the defaults are used
+  tied    <- c(rep(1, 60), 2:41) # quartile cut-points 1, 1, 1, 16.25, 41 -> 2 bins
+  binned3 <- jaspRegression:::.linregBinScaleVariable(tied, method = "percentile", nGroups = 4, labels = c("A", "B", "C", "D"))
+  expect_identical(levels(binned3), c("Q1", "Q2"))
+})
